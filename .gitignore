@@ -248,5 +248,5 @@ mix-manifest.json
 .php-cs-fixer.cache
 
 /build
-/components/**/build
+/blocks/**/build
 ### END custom ###

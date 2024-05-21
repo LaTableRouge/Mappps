@@ -69,5 +69,6 @@ require MPS_PATH . 'includes/register-page.php';
 * Register une catégorie pour les blocks
 * Enqueue les blocs react
 */
+require MPS_PATH . 'includes/custom-fields/coordinates.php';
 require MPS_PATH . 'includes/blocks/categories-register.php';
 require MPS_PATH . 'includes/blocks/blocks-register.php';

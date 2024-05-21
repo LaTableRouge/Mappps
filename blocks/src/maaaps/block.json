@@ -13,6 +13,9 @@
     "align": true,
     "spacing": {
       "padding": true
+    },
+    "dimensions": {
+      "aspectRatio": true
     }
   },
   "attributes": {
