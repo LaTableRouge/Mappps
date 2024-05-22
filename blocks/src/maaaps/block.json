@@ -21,6 +21,18 @@
   "attributes": {
     "blockId": {
       "type": "string"
+    },
+    "post-type": {
+      "type": "string",
+      "default": "post"
+    },
+    "taxonomies": {
+			"type": "array",
+			"default": ["category", "post_tag"]
+		},
+    "taxonomy": {
+      "type": "string",
+      "default": null
     }
   },
   "textdomain": "maaaps",
