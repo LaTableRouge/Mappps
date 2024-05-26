@@ -1,40 +1,21 @@
-import apiFetch from '@wordpress/api-fetch'
-import { useEffect, useRef, useState } from '@wordpress/element'
-import { addQueryArgs } from '@wordpress/url'
+import { useSelect } from '@wordpress/data'
+import { useEffect } from '@wordpress/element'
 
-export default function GetTaxonomies() {
-  const [taxonomies, setTaxonomies] = useState([])
-  // we don't want to update state on an unmounted component
-  const isStillMounted = useRef()
+export default function GetTaxonomies(postType = '', attributes, setAttributes) {
+  const fetchedTaxonomies = useSelect(
+    (select) => {
+      const { getTaxonomies } = select('core')
+
+      return getTaxonomies({ type: postType })
+    },
+    [postType]
+  )
 
   useEffect(() => {
-    isStillMounted.current = true
-    apiFetch({
-      path: addQueryArgs('/wp/v2/taxonomies', {})
-    })
-      .then((data) => {
-        if (isStillMounted.current) {
-          for (const key in data) {
-            if (Object.hasOwnProperty.call(data, key)) {
-              const element = data[key]
-              taxonomies.push({
-                name: element.name,
-                slug: element.slug,
-                types: element.types
-              })
-            }
-          }
-          if (taxonomies.length) {
-            setTaxonomies(taxonomies)
-          }
-        }
-      })
-      .catch(() => {
-        if (isStillMounted.current) {
-          setTaxonomies([])
-        }
-      })
-  }, [setTaxonomies, isStillMounted])
-
-  return taxonomies
+    if (fetchedTaxonomies) {
+      if (attributes.taxonomies !== fetchedTaxonomies) {
+        setAttributes({ taxonomies: fetchedTaxonomies })
+      }
+    }
+  }, [fetchedTaxonomies])
 }

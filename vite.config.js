@@ -355,7 +355,10 @@ export default defineConfig({
           chore === 'all' || chore === 'lint:js'
             ? {
               name: 'lint:js',
-              run: [`${beautifyObject.js_lint.config} ${beautifyObject.js_lint.files.length > 1 ? `{${beautifyObject.js_lint.files.join(',')}}` : beautifyObject.js_lint.files.join(',')}/**/*.{js,jsx}`],
+              run: [
+                `${beautifyObject.js_lint.config} ${beautifyObject.js_lint.files.length > 1 ? `{${beautifyObject.js_lint.files.join(',')}}` : beautifyObject.js_lint.files.join(',')}/**/*.jsx`,
+                `${beautifyObject.js_lint.config} ${beautifyObject.js_lint.files.length > 1 ? `{${beautifyObject.js_lint.files.join(',')}}` : beautifyObject.js_lint.files.join(',')}/**/*.js`
+              ],
             }
             : false,
           chore === 'all' || chore === 'lint:php'

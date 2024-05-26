@@ -22,17 +22,25 @@
     "blockId": {
       "type": "string"
     },
-    "post-type": {
+    "postType": {
       "type": "string",
       "default": "post"
     },
     "taxonomies": {
-			"type": "array",
-			"default": ["category", "post_tag"]
-		},
-    "taxonomy": {
-      "type": "string",
-      "default": null
+      "type": "array",
+      "default": []
+    },
+    "selectedTaxonomies": {
+      "type": "array",
+      "default": []
+    },
+    "categories": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedCategories": {
+      "type": "array",
+      "default": []
     }
   },
   "textdomain": "maaaps",

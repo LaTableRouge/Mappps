@@ -1,41 +1,33 @@
-import apiFetch from '@wordpress/api-fetch'
-import { useEffect, useRef, useState } from '@wordpress/element'
-import { addQueryArgs } from '@wordpress/url'
+import { useEntityRecords } from '@wordpress/core-data'
 
-export default function QueryData(url) {
-  // are we loading the posts?
-  const [isLoading, setLoading] = useState(true)
-  // the posts we're displaying
-  const [posts, setPosts] = useState([])
-  // we don't want to update state on an unmounted component
-  const isStillMounted = useRef()
+export default function QueryData(postType = '', taxonomies = [], categories = []) {
+  let hasGlobResolved = 0
+  const globRecords = []
 
-  useEffect(() => {
-    isStillMounted.current = true
-    apiFetch({
-      // TODO: custom url for other query points
-      path: addQueryArgs('/wp/v2/posts', {})
-    })
-      .then((data) => {
-        if (isStillMounted.current) {
-          if (data.length) {
-            data = data.filter((post) => !!post.meta.lat && !!post.meta.lng)
-          }
-          setPosts(data)
-          setLoading(false)
-        }
-      })
-      .catch(() => {
-        if (isStillMounted.current) {
-          setPosts([])
-          setLoading(false)
-        }
-      })
-  }, [setPosts, setLoading, isStillMounted])
+  taxonomies.forEach((taxonomy) => {
+    const args = {
+      per_page: -1,
+      status: 'publish',
+      tax_relation: 'OR'
+    }
+    if (taxonomy === 'post_tag') {
+      taxonomy = 'tags'
+    }
+    args[taxonomy] = categories
+
+    const { hasResolved, records } = useEntityRecords('postType', postType, args)
+    if (hasResolved) {
+      hasGlobResolved++
+      globRecords.push(...records)
+    }
+
+    if (taxonomies.length === hasGlobResolved) {
+      hasGlobResolved = true
+    }
+  })
 
   return {
-    mounted: isStillMounted,
-    loading: isLoading,
-    posts
+    resolved: hasGlobResolved,
+    posts: globRecords
   }
 }

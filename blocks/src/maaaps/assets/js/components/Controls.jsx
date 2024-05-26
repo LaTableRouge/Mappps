@@ -2,19 +2,24 @@ import { InspectorControls } from '@wordpress/block-editor'
 import { PanelBody } from '@wordpress/components'
 
 import GetPostTypes from '../utils/GetPostTypes'
+import SelectCategories from './controls/SelectCategories'
 import SelectPostType from './controls/SelectPostType'
-import SelectTaxonomy from './controls/SelectTaxonomy'
+import SelectTaxonomies from './controls/SelectTaxonomies'
 
 export default function Controls(props) {
-  const { setAttributes, attributes, allTaxonomies } = props
+  const { setAttributes, attributes } = props
 
   const postTypes = GetPostTypes()
+  const selectedPostType = attributes.postType
+
+  console.log(attributes)
 
   return (
     <InspectorControls>
       <PanelBody>
-        {!!postTypes.length && <SelectPostType postTypes={postTypes} setAttributes={setAttributes} />}
-        {!!attributes.taxonomies.length && <SelectTaxonomy allTaxonomies={allTaxonomies} taxonomies={attributes.taxonomies} setAttributes={setAttributes} />}
+        {!!postTypes.length && <SelectPostType postTypes={postTypes} defaultValue={selectedPostType} setAttributes={setAttributes} />}
+        <SelectTaxonomies setAttributes={setAttributes} attributes={attributes} />
+        <SelectCategories setAttributes={setAttributes} attributes={attributes} />
       </PanelBody>
     </InspectorControls>
   )

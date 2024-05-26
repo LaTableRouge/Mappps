@@ -5,7 +5,6 @@ import { useEffect } from '@wordpress/element'
 
 import Controls from './components/Controls'
 import Map from './components/Map'
-import GetTaxonomies from './utils/GetTaxonomies'
 import QueryData from './utils/QueryData'
 
 export default function Edit({ attributes, setAttributes }) {
@@ -15,17 +14,14 @@ export default function Edit({ attributes, setAttributes }) {
     setAttributes({ blockId: blockProps.id })
   }, [])
 
-  const fetchedDatas = QueryData()
-  const mounted = fetchedDatas.mounted
-  const loading = fetchedDatas.loading
+  const fetchedDatas = QueryData(attributes.postType, attributes.selectedTaxonomies, attributes.selectedCategories)
+  const resolved = fetchedDatas.resolved
   const posts = fetchedDatas.posts
-
-  const allTaxonomies = GetTaxonomies()
 
   return (
     <>
-      <Controls allTaxonomies={allTaxonomies} setAttributes={setAttributes} attributes={attributes} />
-      <section {...blockProps}>{posts.length ? <Map posts={posts} /> : null}</section>
+      <Controls setAttributes={setAttributes} attributes={attributes} />
+      {resolved && <section {...blockProps}>{posts.length ? <Map posts={posts} /> : null}</section>}
     </>
   )
 }
