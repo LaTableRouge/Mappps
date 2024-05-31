@@ -32,13 +32,17 @@
     },
     "selectedTaxonomies": {
       "type": "array",
-      "default": []
+      "default": ["category"]
     },
     "categories": {
       "type": "object",
       "default": {}
     },
     "selectedCategories": {
+      "type": "array",
+      "default": []
+    },
+    "posts": {
       "type": "array",
       "default": []
     }

@@ -10,13 +10,13 @@ import QueryData from './utils/QueryData'
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps()
 
+  const fetchedDatas = QueryData(setAttributes, attributes.postType, attributes.selectedTaxonomies, attributes.selectedCategories)
+  const resolved = fetchedDatas.resolved
+  const posts = fetchedDatas.posts
+
   useEffect(() => {
     setAttributes({ blockId: blockProps.id })
   }, [])
-
-  const fetchedDatas = QueryData(attributes.postType, attributes.selectedTaxonomies, attributes.selectedCategories)
-  const resolved = fetchedDatas.resolved
-  const posts = fetchedDatas.posts
 
   return (
     <>

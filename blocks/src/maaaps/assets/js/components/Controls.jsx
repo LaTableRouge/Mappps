@@ -12,8 +12,6 @@ export default function Controls(props) {
   const postTypes = GetPostTypes()
   const selectedPostType = attributes.postType
 
-  console.log(attributes)
-
   return (
     <InspectorControls>
       <PanelBody>

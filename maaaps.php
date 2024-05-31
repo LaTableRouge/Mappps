@@ -73,89 +73,89 @@ require MPS_PATH . 'includes/custom-fields/coordinates.php';
 require MPS_PATH . 'includes/blocks/categories-register.php';
 require MPS_PATH . 'includes/blocks/blocks-register.php';
 
-function h5_create_custom_post_type() {
-    // Set UI labels for Custom Post Type
-    $labels = [
-        'name' => _x('Voitures', 'Post Type General Name'),
-        'singular_name' => _x('Voiture', 'Post Type Singular Name'),
-        'menu_name' => __('Voitures'),
-        'all_items' => __('Toutes les voitures'),
-        'view_item' => __('Voir les voitures'),
-        'add_new_item' => __('Ajouter une voiture'),
-        'add_new' => __('Ajouter'),
-        'edit_item' => __('Editer la voiture'),
-        'update_item' => __('Mettre à jour la voiture'),
-        'search_items' => __('Rechercher une voiture'),
-        'not_found' => __('Non trouvé'),
-        'not_found_in_trash' => __('Non trouvé dans la corbeille'),
-    ];
+// function h5_create_custom_post_type() {
+//     // Set UI labels for Custom Post Type
+//     $labels = [
+//         'name' => _x('Voitures', 'Post Type General Name'),
+//         'singular_name' => _x('Voiture', 'Post Type Singular Name'),
+//         'menu_name' => __('Voitures'),
+//         'all_items' => __('Toutes les voitures'),
+//         'view_item' => __('Voir les voitures'),
+//         'add_new_item' => __('Ajouter une voiture'),
+//         'add_new' => __('Ajouter'),
+//         'edit_item' => __('Editer la voiture'),
+//         'update_item' => __('Mettre à jour la voiture'),
+//         'search_items' => __('Rechercher une voiture'),
+//         'not_found' => __('Non trouvé'),
+//         'not_found_in_trash' => __('Non trouvé dans la corbeille'),
+//     ];
 
-    // Set other options for Custom Post Type
-    $args = [
-        'label' => __('Voitures'),
-        'description' => __('Voitures'),
-        'labels' => $labels,
-        // Features this CPT supports in Post Editor
-        'supports' => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
-        // Possibilité d'associer ce cpt avec une/plusieurs taxonomy ou une/plusieurs custom taxonomies
-        //'taxonomies' => ['marques', 'couleurs'],
-        'taxonomies' => ['marques'],
-        /* A hierarchical CPT is like Pages and can have
-        * Parent and child items. A non-hierarchical CPT
-        * is like Posts.
-        */
-        'hierarchical' => true,
-        'public' => true,
-        'show_ui' => true,
-        'show_in_menu' => true,
-        'show_in_nav_menus' => true,
-        'show_in_admin_bar' => true,
-        'menu_icon' => 'NOM_DASHICON', // https://developer.wordpress.org/resource/dashicons/
-        'menu_position' => 5,
-        'has_archive' => true,
-        'exclude_from_search' => false,
-        'capability_type' => 'post',
-        'show_in_rest' => true,
-    ];
+//     // Set other options for Custom Post Type
+//     $args = [
+//         'label' => __('Voitures'),
+//         'description' => __('Voitures'),
+//         'labels' => $labels,
+//         // Features this CPT supports in Post Editor
+//         'supports' => ['title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields'],
+//         // Possibilité d'associer ce cpt avec une/plusieurs taxonomy ou une/plusieurs custom taxonomies
+//         //'taxonomies' => ['marques', 'couleurs'],
+//         'taxonomies' => ['marques'],
+//         /* A hierarchical CPT is like Pages and can have
+//         * Parent and child items. A non-hierarchical CPT
+//         * is like Posts.
+//         */
+//         'hierarchical' => true,
+//         'public' => true,
+//         'show_ui' => true,
+//         'show_in_menu' => true,
+//         'show_in_nav_menus' => true,
+//         'show_in_admin_bar' => true,
+//         'menu_icon' => 'NOM_DASHICON', // https://developer.wordpress.org/resource/dashicons/
+//         'menu_position' => 5,
+//         'has_archive' => true,
+//         'exclude_from_search' => false,
+//         'capability_type' => 'post',
+//         'show_in_rest' => true,
+//     ];
 
-    // Registering your Custom Post Type
-    register_post_type('voitures', $args);
-}
+//     // Registering your Custom Post Type
+//     register_post_type('voitures', $args);
+// }
 
-// Hook into the 'init' action so that the function containing our post type registration is not unnecessarily executed.
-add_action('init', 'h5_create_custom_post_type', 0);
+// // Hook into the 'init' action so that the function containing our post type registration is not unnecessarily executed.
+// add_action('init', 'h5_create_custom_post_type', 0);
 
-/**
- * Créer une taxonomy MARQUE pour un custom post type VOITURE
- *
- * @see register_post_type() for registering custom post types.
- */
-function h5_custom_taxo_name() {
-    $labels = [
-        'name' => _x('Marques','taxonomy general name'),
-        'singular_name' => _x('Marque','taxonomy singular name'),
-        'search_items' => __('Chercher une marque'),
-        'all_items' => __('Toutes les marques'),
-        'edit_item' => __('Editer la marque'),
-        'update_item' => __('Mettre à jour la marque'),
-        'add_new_item' => __('Ajouter une marque'),
-        'new_item_name' => __('Nom de la nouvelle marque'),
-        'menu_name' => __('Marques'),
-    ];
+// /**
+//  * Créer une taxonomy MARQUE pour un custom post type VOITURE
+//  *
+//  * @see register_post_type() for registering custom post types.
+//  */
+// function h5_custom_taxo_name() {
+//     $labels = [
+//         'name' => _x('Marques','taxonomy general name'),
+//         'singular_name' => _x('Marque','taxonomy singular name'),
+//         'search_items' => __('Chercher une marque'),
+//         'all_items' => __('Toutes les marques'),
+//         'edit_item' => __('Editer la marque'),
+//         'update_item' => __('Mettre à jour la marque'),
+//         'add_new_item' => __('Ajouter une marque'),
+//         'new_item_name' => __('Nom de la nouvelle marque'),
+//         'menu_name' => __('Marques'),
+//     ];
 
-    $args = [
-        'hierarchical' => true,
-        'labels' => $labels,
-        'show_in_rest' => true,
-        'show_ui' => true,
-        'show_admin_column' => true,
-        'query_var' => true,
-        'rewrite' => ['slug' => 'marques'],
-    ];
+//     $args = [
+//         'hierarchical' => true,
+//         'labels' => $labels,
+//         'show_in_rest' => true,
+//         'show_ui' => true,
+//         'show_admin_column' => true,
+//         'query_var' => true,
+//         'rewrite' => ['slug' => 'marques'],
+//     ];
 
-    register_taxonomy('marques','voitures', $args);
-    //Il est possible d'associer cette taxonomy à plusieurs CPT en déclarant d'autre cpt (motos ici)
-    //register_taxonomy( 'marques',['voitures', 'motos'], $args );
-}
-// hook into the init action and call h5_custom_taxo_name when it fires
-add_action('init', 'h5_custom_taxo_name', 0);
+//     register_taxonomy('marques','voitures', $args);
+//     //Il est possible d'associer cette taxonomy à plusieurs CPT en déclarant d'autre cpt (motos ici)
+//     //register_taxonomy( 'marques',['voitures', 'motos'], $args );
+// }
+// // hook into the init action and call h5_custom_taxo_name when it fires
+// add_action('init', 'h5_custom_taxo_name', 0);

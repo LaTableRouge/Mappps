@@ -2,31 +2,32 @@
  * The script that'll be called when the block is rendered on the front-end
  */
 window.addEventListener('DOMContentLoaded', () => {
-  const bongoCatAnimate = (block, timerAnimation, delayAnimation) => {
-    const bongoCat = block.querySelector('svg.bongocat')
-    if (bongoCat) {
-      bongoCat.classList.remove('animation-pause')
-      clearTimeout(timerAnimation)
-      timerAnimation = setTimeout(() => {
-        bongoCat.classList.add('animation-pause')
-      }, delayAnimation)
-    }
-  }
-
-  const blocks = document.querySelectorAll('.wp-block-hmb-bongo-cat[data-animate="true"]:not(.js-intialized)')
+  const blocks = document.querySelectorAll('.wp-block-mps-maaaps:not(.is-init)')
   if (blocks.length) {
     blocks.forEach((block) => {
-      block.classList.add('js-initialized')
+      let postIDs = block.dataset.posts
+      if (postIDs) {
+        postIDs = JSON.parse(postIDs)
+        console.log(postIDs)
+        if (postIDs.length) {
+          block.classList.add('is-init')
 
-      const delayAnimation = 250
-      let timerAnimation
-      window.addEventListener('keydown', (e) => {
-        bongoCatAnimate(block, timerAnimation, delayAnimation)
-      })
+          const args = {
+            per_page: 100,
+            include: postIDs
+          }
 
-      window.addEventListener('click', (e) => {
-        bongoCatAnimate(block, timerAnimation, delayAnimation)
-      })
+          fetch(`http://local.wp-preview.com/wp-json/wp/v2/posts?${new URLSearchParams(args)}`).then(async (response) => {
+            // const totalPages = response.headers.get('x-wp-totalpages')
+
+            response = await response.json()
+
+            if (response.length) {
+              console.log(response)
+            }
+          })
+        }
+      }
     })
   }
 })
