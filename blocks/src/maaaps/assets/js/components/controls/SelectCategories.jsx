@@ -4,20 +4,20 @@ import { __ } from '@wordpress/i18n'
 import GetCategories from '../../utils/GetCategories'
 
 export default function SelectCategories(props) {
-  const { setAttributes, attributes } = props
+  const { setAttributes, taxonomies, defaultValue } = props
 
-  GetCategories(attributes.selectedTaxonomies, attributes, setAttributes)
-  const categories = attributes.categories
-  const defaultValue = attributes.selectedCategories
+  const categories = GetCategories(taxonomies)
 
   const options = []
-  for (const key in categories) {
-    if (Object.hasOwnProperty.call(categories, key)) {
-      const elements = categories[key]
-      if (elements.length) {
-        elements.forEach((element) => {
-          options.push({ label: element.name, value: element.id })
-        })
+  if (Object.keys(categories).length) {
+    for (const key in categories) {
+      if (Object.hasOwnProperty.call(categories, key)) {
+        const elements = categories[key]
+        if (elements.length) {
+          elements.forEach((element) => {
+            options.push({ label: element.name, value: element.id })
+          })
+        }
       }
     }
   }
@@ -29,7 +29,12 @@ export default function SelectCategories(props) {
       options={options}
       defaultValue={defaultValue}
       onChange={(value) => {
-        setAttributes({ selectedCategories: value })
+        setAttributes({
+          selectedCategories: value,
+          categories,
+          posts: [],
+          selectedPosts: []
+        })
       }}
     />
   )

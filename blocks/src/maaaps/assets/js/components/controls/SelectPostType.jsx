@@ -25,7 +25,9 @@ export default function SelectPostType(props) {
           taxonomies: [],
           selectedTaxonomies: [],
           categories: {},
-          selectedCategories: []
+          selectedCategories: [],
+          posts: [],
+          selectedPosts: []
         })
       }}
     />

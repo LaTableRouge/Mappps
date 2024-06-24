@@ -1,7 +1,6 @@
 import { useSelect } from '@wordpress/data'
-import { useEffect } from '@wordpress/element'
 
-export default function GetTaxonomies(postType = '', attributes, setAttributes) {
+export default function GetTaxonomies(postType = '') {
   const fetchedTaxonomies = useSelect(
     (select) => {
       const { getTaxonomies } = select('core')
@@ -11,11 +10,5 @@ export default function GetTaxonomies(postType = '', attributes, setAttributes) 
     [postType]
   )
 
-  useEffect(() => {
-    if (fetchedTaxonomies) {
-      if (attributes.taxonomies !== fetchedTaxonomies) {
-        setAttributes({ taxonomies: fetchedTaxonomies })
-      }
-    }
-  }, [fetchedTaxonomies])
+  return fetchedTaxonomies
 }

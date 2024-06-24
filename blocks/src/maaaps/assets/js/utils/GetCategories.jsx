@@ -1,5 +1,5 @@
 import { useSelect } from '@wordpress/data'
-import { useEffect, useMemo } from '@wordpress/element'
+import { useMemo } from '@wordpress/element'
 
 const getAssociateTaxonomyCategories = (taxonomies, categoriesToExclude) => {
   const records = useSelect(
@@ -48,28 +48,10 @@ const getAssociateTaxonomyCategories = (taxonomies, categoriesToExclude) => {
   return categories
 }
 
-export default function GetCategories(taxonomies = [], attributes, setAttributes) {
+export default function GetCategories(taxonomies = []) {
   const categoriesToExclude = [1]
 
   const categories = getAssociateTaxonomyCategories(taxonomies, categoriesToExclude)
 
-  const selectedCategories = []
-  for (const key in categories) {
-    if (Object.hasOwnProperty.call(categories, key)) {
-      const elements = categories[key]
-      if (elements.length) {
-        elements.forEach((element) => {
-          selectedCategories.push(element.id)
-        })
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (Object.keys(categories).length) {
-      if (JSON.stringify(attributes.categories) !== JSON.stringify(categories)) {
-        setAttributes({ categories, selectedCategories })
-      }
-    }
-  }, [categories])
+  return categories
 }

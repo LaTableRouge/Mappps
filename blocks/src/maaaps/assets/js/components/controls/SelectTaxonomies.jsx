@@ -4,16 +4,16 @@ import { __ } from '@wordpress/i18n'
 import GetTaxonomies from '../../utils/GetTaxonomies'
 
 export default function SelectTaxonomies(props) {
-  const { setAttributes, attributes } = props
+  const { setAttributes, postType, defaultValue } = props
 
-  GetTaxonomies(attributes.postType, attributes, setAttributes)
-  const taxonomies = attributes.taxonomies
-  const defaultValue = attributes.selectedTaxonomies
+  const taxonomies = GetTaxonomies(postType) || []
 
   const options = []
-  taxonomies.forEach((taxonomy) => {
-    options.push({ label: taxonomy.name, value: taxonomy.slug })
-  })
+  if (taxonomies.length) {
+    taxonomies.forEach((taxonomy) => {
+      options.push({ label: taxonomy.name, value: taxonomy.slug })
+    })
+  }
 
   return (
     <SelectControl
@@ -24,8 +24,11 @@ export default function SelectTaxonomies(props) {
       onChange={(value) => {
         setAttributes({
           selectedTaxonomies: value,
+          taxonomies,
           categories: {},
-          selectedCategories: []
+          selectedCategories: [],
+          posts: [],
+          selectedPosts: []
         })
       }}
     />
