@@ -1,6 +1,13 @@
 @charset "UTF-8";
 
+// 1. Configuration and helpers
+@import 'abstracts/keyframes';
+
+// 5. Components
+@import 'components/loader';
+
 .wp-block-mps-maaaps {
   display: grid;
   aspect-ratio: 1;
+  position: relative;
 }

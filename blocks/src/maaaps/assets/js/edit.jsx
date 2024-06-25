@@ -4,9 +4,8 @@ import { useBlockProps } from '@wordpress/block-editor'
 import { useEffect } from '@wordpress/element'
 
 import Controls from './components/Controls'
+import Loader from './components/Loader'
 import Map from './components/Map'
-
-// import GetPosts from './utils/GetPosts'
 
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps()
@@ -18,11 +17,11 @@ export default function Edit({ attributes, setAttributes }) {
   return (
     <>
       <Controls setAttributes={setAttributes} attributes={attributes} />
-      {!!attributes.selectedPosts.length && (
-        <section {...blockProps}>
-          <Map selectedPosts={attributes.selectedPosts} posts={attributes.posts} />
-        </section>
-      )}
+      <section {...blockProps}>
+        {!!attributes.selectedPosts.length && <Map selectedPosts={attributes.selectedPosts} posts={attributes.posts} />}
+
+        <Loader hasPosts={!!attributes.selectedPosts.length} />
+      </section>
     </>
   )
 }
