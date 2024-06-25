@@ -11,9 +11,6 @@ export default function GetPosts(postType = '', taxonomies = [], categories = []
       status: 'publish',
       tax_relation: 'OR'
     }
-    if (taxonomy === 'post_tag') {
-      taxonomy = 'tags'
-    }
     args[taxonomy] = categories
 
     const { hasResolved, records } = useEntityRecords('postType', postType, args)
@@ -33,6 +30,6 @@ export default function GetPosts(postType = '', taxonomies = [], categories = []
 
   return {
     resolved: hasGlobResolved,
-    posts: globRecords
+    posts: [...new Set(globRecords)] // remove duplicates
   }
 }

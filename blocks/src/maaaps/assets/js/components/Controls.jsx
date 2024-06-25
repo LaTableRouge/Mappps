@@ -14,7 +14,19 @@ export default function Controls(props) {
   const selectedPostType = attributes.postType
   const selectedPosts = attributes.posts
   const selectedTaxonomies = attributes.selectedTaxonomies
+  const taxonomies = attributes.taxonomies
   const selectedCategories = attributes.selectedCategories
+
+  // Convert taxonomy slug into rest_base
+  const sanitizedSelectedTaxonomies = []
+  if (selectedTaxonomies.length && taxonomies.length) {
+    selectedTaxonomies.forEach((slug) => {
+      const foundTaxonomy = taxonomies.find((o) => o.slug === slug)
+      if (foundTaxonomy) {
+        sanitizedSelectedTaxonomies.push(foundTaxonomy.rest_base)
+      }
+    })
+  }
 
   return (
     <InspectorControls>
@@ -23,7 +35,13 @@ export default function Controls(props) {
         {!!selectedPostType && <SelectTaxonomies setAttributes={setAttributes} postType={selectedPostType} defaultValue={selectedTaxonomies} />}
         {!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} taxonomies={selectedTaxonomies} defaultValue={selectedCategories} />}
         {!!selectedCategories.length && (
-          <SelectPosts setAttributes={setAttributes} postType={selectedPostType} taxonomies={selectedTaxonomies} categories={selectedCategories} defaultValue={selectedPosts} />
+          <SelectPosts
+            setAttributes={setAttributes}
+            postType={selectedPostType}
+            taxonomies={sanitizedSelectedTaxonomies}
+            categories={selectedCategories}
+            defaultValue={selectedPosts}
+          />
         )}
       </PanelBody>
     </InspectorControls>
