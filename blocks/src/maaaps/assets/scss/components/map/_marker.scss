@@ -1,0 +1,46 @@
+.custom-marker {
+  .marker-icon__pulse {
+    // position: absolute;
+    // z-index: -2;
+    // bottom: calc((var(--markerSize) / (var(--markerSize) / 10)) * -1%);
+    // left: 50%;
+    // width: 14px;
+    // height: 14px;
+    // margin: 0;
+    // transform: translate(-50%) rotateX(55deg);
+    // animation: easeIn 3s ease-in;
+    // border-radius: 50%;
+    // background: var(--gray-500);
+
+    // &::after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 40px;
+    //   height: 40px;
+    //   margin: -13px 0 0 -13px;
+    //   animation: pulsate 2s ease-out;
+    //   animation-iteration-count: infinite;
+    //   border-radius: 50%;
+    //   opacity: 0;
+    //   box-shadow: 0 0 1px 2px var(--gray-500);
+    //   filter: alpha(opacity=0);
+    // }
+  }
+
+  &--active {
+    // TODO
+  }
+
+  &--cluster {
+    .marker-icon {
+      &__child-count {
+        position: absolute;
+        z-index: 1;
+        top: 20%;
+        left: 47%;
+        transform: translateX(-50%);
+        color: white;
+      }
+    }
+  }
+}

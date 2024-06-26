@@ -4,19 +4,20 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import MarkerClusterGroup from '@changey/react-leaflet-markercluster'
 import { useMemo } from '@wordpress/element'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
+import MarkerCluster from './map/MarkerCluster'
 import Markers from './map/Markers'
 
-const Map = ({ posts, selectedPosts, tiles }) => {
+const Map = ({ posts, selectedPosts, tiles, cluster, geolocation, colors }) => {
   posts = posts.filter((post) => selectedPosts.includes(`${post.id}`))
-  const markers = Markers(posts)
+
+  const markers = Markers(posts, colors.marker)
 
   const markerGroup = useMemo(() => {
-    return <MarkerClusterGroup>{markers}</MarkerClusterGroup>
+    return cluster ? MarkerCluster(markers, colors.cluster) : markers
   }, [markers])
 
   return (

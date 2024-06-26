@@ -52,16 +52,44 @@
     },
     "mapTiles": {
       "type": "array",
-      "default" :[
-        { "label": "CartoDB Voyager", "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" },
-        { "label": "CartoDB Positron", "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" },
-        { "label": "OSM Mapnik", "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png" },
-        { "label": "Open Topo Map", "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}{r}.png" }
+      "default": [
+        {
+          "label": "CartoDB Voyager",
+          "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+        },
+        {
+          "label": "CartoDB Positron",
+          "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        },
+        {
+          "label": "OSM Mapnik",
+          "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png"
+        },
+        {
+          "label": "Open Topo Map",
+          "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}{r}.png"
+        }
       ]
     },
     "selectedMapTiles": {
       "type": "string",
       "default": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+    },
+    "selectedMarkerColor": {
+      "type": "string",
+      "default": "#2b82cb"
+    },
+    "selectedClusterColor": {
+      "type": "string",
+      "default": "#2b20cb"
+    },
+    "isClustered": {
+      "type": "boolean",
+      "default": true
+    },
+    "isGeolocated": {
+      "type": "boolean",
+      "default": true
     }
   },
   "textdomain": "maaaps",

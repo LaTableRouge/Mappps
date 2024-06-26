@@ -18,7 +18,15 @@ export default function Edit({ attributes, setAttributes }) {
     <>
       <Controls setAttributes={setAttributes} attributes={attributes} />
       <section {...blockProps}>
-        {!!attributes.selectedPosts.length && <Map selectedPosts={attributes.selectedPosts} posts={attributes.posts} tiles={attributes.selectedMapTiles} />}
+        {!!attributes.selectedPosts.length && (
+          <Map
+            selectedPosts={attributes.selectedPosts}
+            posts={attributes.posts}
+            tiles={attributes.selectedMapTiles}
+            cluster={attributes.isClustered}
+            colors={{ marker: attributes.selectedMarkerColor, cluster: attributes.selectedClusterColor }}
+          />
+        )}
 
         <Loader hasPosts={!!attributes.selectedPosts.length} />
       </section>

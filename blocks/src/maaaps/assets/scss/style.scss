@@ -4,7 +4,8 @@
 @import 'abstracts/keyframes';
 
 // 5. Components
-@import 'components/loader';
+@import 'components/map/loader';
+@import 'components/map/marker';
 
 .wp-block-mps-maaaps {
   display: grid;

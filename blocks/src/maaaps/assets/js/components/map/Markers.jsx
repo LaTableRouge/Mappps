@@ -1,17 +1,11 @@
-import L from 'leaflet'
 import { Marker, Popup } from 'react-leaflet'
 
-import redFilledMarker from '../../../img/red-filled-marker.svg'
+// import redFilledMarker from '../../../img/red-filled-marker.svg'
+import Icon from './Icon'
 
-export default function Markers(posts) {
-  const redMarker = L.icon({
-    iconUrl: redFilledMarker,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40]
-  })
-
+export default function Markers(posts, color) {
   return posts.map((post, index) => (
-    <Marker key={index} position={[post.meta.lat, post.meta.lng]} icon={redMarker}>
+    <Marker key={index} position={[post.meta.lat, post.meta.lng]} icon={Icon('', color)}>
       <Popup>
         <div>
           <strong>{post.title.rendered}</strong>
