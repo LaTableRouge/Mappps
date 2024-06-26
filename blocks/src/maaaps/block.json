@@ -81,7 +81,7 @@
     },
     "selectedClusterColor": {
       "type": "string",
-      "default": "#2b20cb"
+      "default": "#FCA311"
     },
     "isClustered": {
       "type": "boolean",
@@ -90,6 +90,10 @@
     "isGeolocated": {
       "type": "boolean",
       "default": true
+    },
+    "selectedDisplayType": {
+      "type": "string",
+      "default": "full"
     }
   },
   "textdomain": "maaaps",

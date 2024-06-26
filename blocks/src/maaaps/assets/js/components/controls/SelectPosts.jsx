@@ -28,12 +28,26 @@ export default function SelectPosts(props) {
       posts.forEach((post) => {
         postIDs.push(`${post.id}`)
       })
-      setAttributes({
-        posts: posts,
-        selectedPosts: postIDs
-      })
+
+      if (postIDs.length) {
+        setAttributes({
+          posts: posts,
+          selectedPosts: postIDs,
+          firstSelectedPost: Number(postIDs[0])
+        })
+      } else {
+        setAttributes({
+          posts: [],
+          selectedPosts: [],
+          firstSelectedPost: null
+        })
+      }
     } else {
-      setAttributes({ posts: [] })
+      setAttributes({
+        posts: [],
+        selectedPosts: [],
+        firstSelectedPost: null
+      })
     }
   }, [resolved])
 

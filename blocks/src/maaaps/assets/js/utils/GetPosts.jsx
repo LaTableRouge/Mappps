@@ -9,7 +9,8 @@ export default function GetPosts(postType = '', taxonomies = [], categories = []
     const args = {
       per_page: -1,
       status: 'publish',
-      tax_relation: 'OR'
+      tax_relation: 'OR',
+      _embed: ''
     }
     args[taxonomy] = categories
 

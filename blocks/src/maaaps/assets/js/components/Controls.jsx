@@ -5,6 +5,7 @@ import { __ } from '@wordpress/i18n'
 import GetPostTypes from '../utils/GetPostTypes'
 import ColorMap from './controls/ColorMap'
 import SelectCategories from './controls/SelectCategories'
+import SelectDisplayType from './controls/SelectDisplayType'
 import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
@@ -27,6 +28,7 @@ export default function Controls(props) {
   const isGeolocated = attributes.isGeolocated
   const selectedMarkerColor = attributes.selectedMarkerColor
   const selectedClusterColor = attributes.selectedClusterColor
+  const selectedDisplayType = attributes.selectedDisplayType
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -62,6 +64,7 @@ export default function Controls(props) {
             <SelectTiles setAttributes={setAttributes} options={mapTiles} defaultValue={selectedMapTiles} />
             <ToggleMarkerCluster setAttributes={setAttributes} defaultValue={isClustered} />
             <ToggleGeolocation setAttributes={setAttributes} defaultValue={isGeolocated} />
+            <SelectDisplayType setAttributes={setAttributes} defaultValue={selectedDisplayType} />
           </PanelBody>
           <ColorMap setAttributes={setAttributes} defaultValues={{ marker: selectedMarkerColor, cluster: selectedClusterColor }} isClustered={isClustered} />
         </>

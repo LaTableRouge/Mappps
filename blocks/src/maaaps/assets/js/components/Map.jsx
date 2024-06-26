@@ -11,9 +11,7 @@ import ChangeView from '../utils/ChangeView'
 import MarkerCluster from './map/MarkerCluster'
 import Markers from './map/Markers'
 
-const Map = ({ posts, selectedPosts, tiles, cluster, geolocation, colors }) => {
-  posts = posts.filter((post) => selectedPosts.includes(`${post.id}`))
-
+const Map = ({ posts, tiles, cluster, geolocation, colors }) => {
   const markers = Markers(posts, colors.marker)
 
   const markerGroup = useMemo(() => {
