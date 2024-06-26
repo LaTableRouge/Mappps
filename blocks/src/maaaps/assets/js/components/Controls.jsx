@@ -6,6 +6,7 @@ import SelectCategories from './controls/SelectCategories'
 import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
+import SelectTiles from './controls/SelectTiles'
 
 export default function Controls(props) {
   const { setAttributes, attributes } = props
@@ -16,6 +17,8 @@ export default function Controls(props) {
   const selectedTaxonomies = attributes.selectedTaxonomies
   const taxonomies = attributes.taxonomies
   const selectedCategories = attributes.selectedCategories
+  const mapTiles = attributes.mapTiles
+  const selectedMapTiles = attributes.selectedMapTiles
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -43,6 +46,7 @@ export default function Controls(props) {
             defaultValue={selectedPosts}
           />
         )}
+        {!!selectedPosts.length && <SelectTiles setAttributes={setAttributes} options={mapTiles} defaultValue={selectedMapTiles} />}
       </PanelBody>
     </InspectorControls>
   )

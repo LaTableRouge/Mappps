@@ -1,12 +1,15 @@
 import { latLngBounds } from 'leaflet'
+import { GestureHandling } from 'leaflet-gesture-handling'
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 
 function ChangeView({ center, zoom, markers, posts }) {
   const map = useMap()
 
-  // --------------------add google map gesture handling
-  map.gestureHandling.enable()
+  useEffect(() => {
+    map.addHandler('gestureHandling', GestureHandling)
+    map.gestureHandling.enable()
+  }, [map])
 
   // --------------- Change map bounds when the marker list change to fit the displayed markers onto the map
   const [bounds, setBounds] = useState(() => {
