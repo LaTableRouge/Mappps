@@ -2,7 +2,7 @@ import { PanelColorSettings } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
 export default function ColorMap(props) {
-  const { setAttributes, defaultValues, isClustered } = props
+  const { setAttributes, defaultValues, isClustered, hasSearchColor } = props
 
   return (
     <PanelColorSettings
@@ -20,6 +20,13 @@ export default function ColorMap(props) {
           label: __('Cluster'),
           onChange: (value) => {
             setAttributes({ selectedClusterColor: value })
+          }
+        },
+        hasSearchColor && {
+          value: defaultValues.search,
+          label: __('Search'),
+          onChange: (value) => {
+            setAttributes({ selectedSearchColor: value })
           }
         }
       ].filter(Boolean)}

@@ -50,6 +50,10 @@
       "type": "array",
       "default": []
     },
+    "filteredPosts": {
+      "type": "array",
+      "default": []
+    },
     "mapTiles": {
       "type": "array",
       "default": [
@@ -83,6 +87,10 @@
       "type": "string",
       "default": "#FCA311"
     },
+    "selectedSearchColor": {
+      "type": "string",
+      "default": "#6ee9a2"
+    },
     "isClustered": {
       "type": "boolean",
       "default": true
@@ -94,6 +102,18 @@
     "selectedDisplayType": {
       "type": "string",
       "default": "full"
+    },
+    "selectedSearchResult": {
+      "type": "object",
+      "default": {}
+    },
+    "displaySearch": {
+      "type": "boolean",
+      "default": true
+    },
+    "limitedSearch": {
+      "type": "boolean",
+      "default": false
     }
   },
   "textdomain": "maaaps",

@@ -6,6 +6,7 @@ export default function Article({ post }) {
   const title = post.title.rendered
   const excerpt = post.excerpt
   const sticky = post.sticky
+  const id = post.id
 
   const embed = post._embedded
   const thumbnailInfos = {}
@@ -26,12 +27,10 @@ export default function Article({ post }) {
   }
 
   return (
-    <article className="sidebar__article" data-sticky={sticky}>
+    <article className="sidebar__article" data-sticky={sticky} data-id={id}>
       <Thumbnail title={thumbnailInfos.title} url={thumbnailInfos.url} />
-      <div className="article__text-wrapper">
-        <Title text={title} />
-        <Excerpt text={excerpt.raw} />
-      </div>
+      <Title text={title} />
+      <Excerpt text={excerpt.raw} />
     </article>
   )
 }

@@ -10,8 +10,9 @@ import { MapContainer, TileLayer } from 'react-leaflet'
 import ChangeView from '../utils/ChangeView'
 import MarkerCluster from './map/MarkerCluster'
 import Markers from './map/Markers'
+import SearchMarker from './map/SearchMarker'
 
-const Map = ({ posts, tiles, cluster, geolocation, colors }) => {
+const Map = ({ posts, tiles, cluster, geolocation, colors, selectedSearchResult, displaySearch, limitedSearch }) => {
   const markers = Markers(posts, colors.marker)
 
   const markerGroup = useMemo(() => {
@@ -19,15 +20,13 @@ const Map = ({ posts, tiles, cluster, geolocation, colors }) => {
   }, [markers])
 
   return (
-    <MapContainer
-      className="maaaps__leaflet"
-      // center={[51.505, -0.09]}
-      // zoom="13"
-      scrollWheelZoom={false}
-    >
+    <MapContainer className="maaaps__leaflet" scrollWheelZoom={false}>
       <ChangeView markers={markers} posts={posts} />
       <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' url={tiles} className="mapTiles" />
+
       {markerGroup}
+
+      {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <SearchMarker selectedSearchResult={selectedSearchResult} color={colors.search} />}
     </MapContainer>
   )
 }

@@ -1,0 +1,35 @@
+.sidebar__article {
+  display: grid;
+  grid-template-areas:
+    'picture title'
+    'picture excerpt'
+    'picture excerpt';
+  grid-template-columns: auto 1fr;
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  column-gap: calc(var(--spacing) / 2);
+  border-bottom: 1px solid #dedee4;
+  font-size: 16px;
+
+  --thumbnail-size: 60px;
+  --spacing: 28px;
+
+  .article {
+    &__picture-wrapper {
+      grid-area: picture;
+      width: var(--thumbnail-size);
+      aspect-ratio: 1;
+      overflow: hidden;
+      object-fit: contain;
+      border-radius: 5px;
+    }
+
+    &__title {
+      grid-area: title;
+      font-weight: 500;
+    }
+
+    &__excerpt {
+      grid-area: excerpt;
+    }
+  }
+}

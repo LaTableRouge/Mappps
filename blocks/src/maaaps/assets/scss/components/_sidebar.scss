@@ -1,0 +1,8 @@
+.maaaps__sidebar {
+  grid-area: sidebar;
+  width: 25cqw;
+  overflow-y: auto;
+
+  @import 'sidebar/article';
+  @import 'sidebar/search';
+}

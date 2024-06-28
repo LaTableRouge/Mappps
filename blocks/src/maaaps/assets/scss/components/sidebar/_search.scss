@@ -1,0 +1,82 @@
+.sidebar__search-wrapper {
+  position: relative;
+
+  .search-wrapper {
+    &__form {
+      position: relative;
+
+      .form {
+        &__input {
+          position: relative;
+          width: 100%;
+          padding: calc(var(--wp--preset--spacing--xs) / 2) calc(var(--wp--preset--spacing--sm) * 3) calc(var(--wp--preset--spacing--xs) / 2) var(--wp--preset--spacing--sm);
+          overflow: hidden;
+          border: none;
+          border-radius: 200px;
+          background-color: var(--wp--preset--color--gray-100);
+
+          &::-webkit-search-cancel-button {
+            display: none;
+          }
+        }
+
+        &__button {
+          position: absolute;
+          top: 50%;
+          right: var(--wp--preset--spacing--sm);
+          padding: 0;
+          transform: translateY(-50%);
+          border: none;
+          background: none;
+          color: var(--wp--preset--color--gray-700);
+        }
+      }
+    }
+
+    &__results {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      max-height: 200px;
+      overflow-y: auto;
+      border-radius: var(--wp--custom--border-radius-lg);
+      background-color: var(--wp--preset--color--white);
+      box-shadow: 0 4px 6px -2px #0000000d;
+      box-shadow: 0 10px 15px -3px #0000001a;
+      overscroll-behavior: contain;
+
+      ul {
+        margin: 0;
+        padding: calc(var(--wp--preset--spacing--sm) / 2) 0;
+        padding: calc(var(--wp--preset--spacing--sm) / 2) 20px;
+        list-style: none;
+
+        li {
+          display: flex;
+          padding: var(--wp--preset--spacing--sm) 0;
+
+          & + li {
+            border-top: 1px solid var(--wp--preset--color--gray-300);
+          }
+
+          a {
+            display: block;
+            padding: 0 6px;
+            color: var(--wp--preset--color--gray-700);
+            text-decoration: none;
+
+            &[href] {
+              transition: var(--nomotion, background-color 0.3s ease);
+              border-radius: var(--wp--custom--border-radius-sm);
+
+              &:hover {
+                background-color: var(--wp--preset--color--gray-100);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

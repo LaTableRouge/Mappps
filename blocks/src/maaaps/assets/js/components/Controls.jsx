@@ -11,7 +11,9 @@ import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
 import SelectTiles from './controls/SelectTiles'
 import ToggleGeolocation from './controls/ToggleGeolocation'
+import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
+import ToggleSearch from './controls/ToggleSearch'
 
 export default function Controls(props) {
   const { setAttributes, attributes } = props
@@ -28,7 +30,10 @@ export default function Controls(props) {
   const isGeolocated = attributes.isGeolocated
   const selectedMarkerColor = attributes.selectedMarkerColor
   const selectedClusterColor = attributes.selectedClusterColor
+  const selectedSearchColor = attributes.selectedSearchColor
   const selectedDisplayType = attributes.selectedDisplayType
+  const displaySearch = attributes.displaySearch
+  const limitedSearch = attributes.limitedSearch
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -65,8 +70,15 @@ export default function Controls(props) {
             <ToggleMarkerCluster setAttributes={setAttributes} defaultValue={isClustered} />
             <ToggleGeolocation setAttributes={setAttributes} defaultValue={isGeolocated} />
             <SelectDisplayType setAttributes={setAttributes} defaultValue={selectedDisplayType} />
+            <ToggleSearch setAttributes={setAttributes} defaultValue={displaySearch} />
+            {displaySearch && <ToggleLimitedSearch setAttributes={setAttributes} defaultValue={limitedSearch} />}
           </PanelBody>
-          <ColorMap setAttributes={setAttributes} defaultValues={{ marker: selectedMarkerColor, cluster: selectedClusterColor }} isClustered={isClustered} />
+          <ColorMap
+            setAttributes={setAttributes}
+            defaultValues={{ marker: selectedMarkerColor, cluster: selectedClusterColor, search: selectedSearchColor }}
+            isClustered={isClustered}
+            hasSearchColor={displaySearch && !limitedSearch}
+          />
         </>
       )}
     </InspectorControls>

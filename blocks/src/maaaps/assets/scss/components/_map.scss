@@ -1,0 +1,5 @@
+.maaaps__leaflet {
+  grid-area: map;
+
+  @import 'map/marker';
+}

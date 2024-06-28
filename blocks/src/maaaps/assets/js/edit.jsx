@@ -20,18 +20,27 @@ export default function Edit({ attributes, setAttributes }) {
     posts = attributes.posts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
   }
 
+  if (attributes.filteredPosts.length) {
+    posts = attributes.filteredPosts
+  }
+
   return (
     <>
       <Controls setAttributes={setAttributes} attributes={attributes} />
       <section {...blockProps}>
-        {attributes.selectedDisplayType === 'full' && !!posts.length && <Sidebar posts={posts} />}
+        {attributes.selectedDisplayType === 'full' && !!posts.length && (
+          <Sidebar posts={posts} setAttributes={setAttributes} displaySearch={attributes.displaySearch} limitedSearch={attributes.limitedSearch} />
+        )}
 
         {!!posts.length && (
           <Map
             posts={posts}
             tiles={attributes.selectedMapTiles}
             cluster={attributes.isClustered}
-            colors={{ marker: attributes.selectedMarkerColor, cluster: attributes.selectedClusterColor }}
+            colors={{ marker: attributes.selectedMarkerColor, cluster: attributes.selectedClusterColor, search: attributes.selectedSearchColor }}
+            selectedSearchResult={attributes.selectedSearchResult}
+            displaySearch={attributes.displaySearch}
+            limitedSearch={attributes.limitedSearch}
           />
         )}
 

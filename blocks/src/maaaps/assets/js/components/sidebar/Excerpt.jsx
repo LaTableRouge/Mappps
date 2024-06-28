@@ -1,3 +1,3 @@
 export default function Excerpt({ text }) {
-  return <div className="text-wrapper__excerpt">{text}</div>
+  return text && <div className="article__excerpt">{text}</div>
 }
