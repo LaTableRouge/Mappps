@@ -50,10 +50,6 @@
       "type": "array",
       "default": []
     },
-    "filteredPosts": {
-      "type": "array",
-      "default": []
-    },
     "mapTiles": {
       "type": "array",
       "default": [
@@ -91,6 +87,18 @@
       "type": "string",
       "default": "#6ee9a2"
     },
+    "selectedPrimaryColor": {
+      "type": "string",
+      "default": "#ffed00"
+    },
+    "selectedSecondaryColor": {
+      "type": "string",
+      "default": "#2c4965"
+    },
+    "selectedGeolocationColor": {
+      "type": "string",
+      "default": "#2c4965"
+    },
     "isClustered": {
       "type": "boolean",
       "default": true
@@ -102,10 +110,6 @@
     "selectedDisplayType": {
       "type": "string",
       "default": "full"
-    },
-    "selectedSearchResult": {
-      "type": "object",
-      "default": {}
     },
     "displaySearch": {
       "type": "boolean",

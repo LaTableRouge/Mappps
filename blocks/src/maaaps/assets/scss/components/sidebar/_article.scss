@@ -1,31 +1,42 @@
 .sidebar__article {
   display: grid;
-  grid-template-areas:
-    'picture title'
-    'picture excerpt'
-    'picture excerpt';
-  grid-template-columns: auto 1fr;
-  padding: calc(var(--spacing) / 2) var(--spacing);
-  column-gap: calc(var(--spacing) / 2);
-  border-bottom: 1px solid #dedee4;
-  font-size: 16px;
+  grid-template-areas: var(--areas, 'title' 'excerpt' 'excerpt');
+  grid-template-columns: var(--template-columns, initial);
+  grid-template-rows: auto 1fr 1fr;
+  padding: var(--spacing-md) var(--spacing-lg);
+  column-gap: var(--spacing-md);
+  transition: var(--nomotion, background-color 0.3s ease);
+  border-bottom: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  font-size: var(--font-level-md);
+  cursor: pointer;
+  user-select: none;
+
+  &:has(.article__picture-wrapper) {
+    --areas: 'picture title' 'picture excerpt' 'picture excerpt';
+    --template-columns: auto 1fr;
+  }
+
+  &:hover {
+    background-color: var(--color-gray-100);
+  }
 
   --thumbnail-size: 60px;
-  --spacing: 28px;
 
   .article {
     &__picture-wrapper {
       grid-area: picture;
+      align-self: center;
       width: var(--thumbnail-size);
-      aspect-ratio: 1;
       overflow: hidden;
-      object-fit: contain;
       border-radius: 5px;
+      aspect-ratio: 1;
+      object-fit: contain;
     }
 
     &__title {
       grid-area: title;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     &__excerpt {

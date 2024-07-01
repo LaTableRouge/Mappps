@@ -5,7 +5,7 @@ import Icon from './Icon'
 
 export default function Markers(posts, color) {
   return posts.map((post, index) => (
-    <Marker key={index} position={[post.meta.lat, post.meta.lng]} icon={Icon('', color)}>
+    <Marker key={index} position={[post.meta.lat, post.meta.lng]} icon={Icon('', color)} data={post}>
       <Popup>
         <div>
           <strong>{post.title.rendered}</strong>

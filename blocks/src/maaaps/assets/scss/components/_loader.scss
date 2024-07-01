@@ -6,7 +6,7 @@
   inset: 0;
 
   --spinner-size: 125px;
-  --color: #bcbcbc;
+  --color: var(--color-gray-400);
 
   &[data-has-posts='true'] {
     opacity: 0;

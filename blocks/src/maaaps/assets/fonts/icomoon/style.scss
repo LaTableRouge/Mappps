@@ -1,0 +1,148 @@
+@import 'variables';
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  font-style: normal;
+  font-weight: normal;
+  src:
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?vb6skj') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?vb6skj') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?vb6skj##{$icomoon-font-family}') format('svg');
+  font-display: block;
+}
+
+[class^='icon-maaaps-'],
+[class*=' icon-maaaps-'] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  line-height: 1;
+  text-transform: none;
+  speak: never;
+}
+
+.icon-maaaps-new-tab {
+  &::before {
+    content: $icon-maaaps-new-tab;
+  }
+}
+
+.icon-maaaps-exit {
+  &::before {
+    content: $icon-maaaps-exit;
+  }
+}
+
+.icon-maaaps-download {
+  &::before {
+    content: $icon-maaaps-download;
+  }
+}
+
+.icon-maaaps-upload {
+  &::before {
+    content: $icon-maaaps-upload;
+  }
+}
+
+.icon-maaaps-plus {
+  &::before {
+    content: $icon-maaaps-plus;
+  }
+}
+
+.icon-maaaps-bin {
+  &::before {
+    content: $icon-maaaps-bin;
+  }
+}
+
+.icon-maaaps-pen {
+  &::before {
+    content: $icon-maaaps-pen;
+  }
+}
+
+.icon-maaaps-filter {
+  &::before {
+    content: $icon-maaaps-filter;
+  }
+}
+
+.icon-maaaps-mail {
+  &::before {
+    content: $icon-maaaps-mail;
+  }
+}
+
+.icon-maaaps-phone {
+  &::before {
+    content: $icon-maaaps-phone;
+  }
+}
+
+.icon-maaaps-check {
+  &::before {
+    content: $icon-maaaps-check;
+  }
+}
+
+.icon-maaaps-eye {
+  &::before {
+    content: $icon-maaaps-eye;
+  }
+}
+
+.icon-maaaps-cross {
+  &::before {
+    content: $icon-maaaps-cross;
+  }
+}
+
+.icon-maaaps-information {
+  &::before {
+    content: $icon-maaaps-information;
+  }
+}
+
+.icon-maaaps-search {
+  &::before {
+    content: $icon-maaaps-search;
+  }
+}
+
+.icon-maaaps-arrow-left {
+  &::before {
+    content: $icon-maaaps-arrow-left;
+  }
+}
+
+.icon-maaaps-arrow-right-plain {
+  &::before {
+    content: $icon-maaaps-arrow-right-plain;
+  }
+}
+
+.icon-maaaps-arrow-left-plain {
+  &::before {
+    content: $icon-maaaps-arrow-left-plain;
+  }
+}
+
+.icon-maaaps-arrow-right {
+  &::before {
+    content: $icon-maaaps-arrow-right;
+  }
+}
+
+.icon-maaaps-user {
+  &::before {
+    content: $icon-maaaps-user;
+  }
+}

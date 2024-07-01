@@ -1,20 +1,24 @@
 @charset "UTF-8";
-
 // 1. Configuration and helpers
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/animations';
 @import 'abstracts/keyframes';
+@import 'abstracts/responsive';
 
 .wp-block-mps-maaaps {
-  display: grid;
-  display: grid;
-  position: relative;
-  grid-template-areas: 'sidebar map';
-  grid-template-columns: auto 1fr;
-  width: 100%;
-  aspect-ratio: 1;
-  container-type: inline-size;
-  container-name: maaaps;
+  // 2. Vendors
+  @import 'vendors/reset';
 
-  // 5. Components
+  // 3. Base stuff
+  @import 'base/fonts';
+  @import 'base/root';
+  @import 'base/base';
+  @import 'base/typography';
+  @import 'base/helpers';
+
+  // 4. Components
   @import 'components/loader';
   @import 'components/map';
   @import 'components/sidebar';

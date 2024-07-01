@@ -3,7 +3,7 @@ import { GestureHandling } from 'leaflet-gesture-handling'
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 
-function ChangeView({ center, zoom, markers, posts }) {
+function ChangeView({ center, zoom, markers, posts, selectedPost }) {
   const map = useMap()
 
   useEffect(() => {
@@ -38,8 +38,21 @@ function ChangeView({ center, zoom, markers, posts }) {
   }, [posts])
 
   useEffect(() => {
-    map.fitBounds(bounds)
+    if (!Object.keys(selectedPost).length) {
+      map.fitBounds(bounds)
+    }
   }, [bounds])
+
+  useEffect(() => {
+    if (markers.length && Object.keys(selectedPost).length) {
+      const selectedMarker = markers.find((marker) => marker.props.data.id === selectedPost.id)
+      if (selectedMarker) {
+        map.flyTo(selectedMarker.props.position, map.getZoom())
+      }
+    } else {
+      map.fitBounds(bounds)
+    }
+  }, [selectedPost])
 
   return null
 }

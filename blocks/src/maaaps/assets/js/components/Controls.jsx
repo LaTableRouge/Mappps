@@ -32,6 +32,8 @@ export default function Controls(props) {
   const selectedClusterColor = attributes.selectedClusterColor
   const selectedSearchColor = attributes.selectedSearchColor
   const selectedDisplayType = attributes.selectedDisplayType
+  const selectedPrimaryColor = attributes.selectedPrimaryColor
+  const selectedSecondaryColor = attributes.selectedSecondaryColor
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
 
@@ -75,7 +77,13 @@ export default function Controls(props) {
           </PanelBody>
           <ColorMap
             setAttributes={setAttributes}
-            defaultValues={{ marker: selectedMarkerColor, cluster: selectedClusterColor, search: selectedSearchColor }}
+            defaultValues={{
+              marker: selectedMarkerColor,
+              cluster: selectedClusterColor,
+              search: selectedSearchColor,
+              primary: selectedPrimaryColor,
+              secondary: selectedSecondaryColor
+            }}
             isClustered={isClustered}
             hasSearchColor={displaySearch && !limitedSearch}
           />

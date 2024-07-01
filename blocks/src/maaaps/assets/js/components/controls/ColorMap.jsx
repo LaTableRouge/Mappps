@@ -9,6 +9,20 @@ export default function ColorMap(props) {
       title={__('Colors')}
       colorSettings={[
         {
+          value: defaultValues.primary,
+          label: __('Primary'),
+          onChange: (value) => {
+            setAttributes({ selectedPrimaryColor: value })
+          }
+        },
+        {
+          value: defaultValues.secondary,
+          label: __('Secondary'),
+          onChange: (value) => {
+            setAttributes({ selectedSecondaryColor: value })
+          }
+        },
+        {
           value: defaultValues.marker,
           label: __('Marker'),
           onChange: (value) => {
