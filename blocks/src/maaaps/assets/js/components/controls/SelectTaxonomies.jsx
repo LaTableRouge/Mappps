@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n'
 import GetTaxonomies from '../../utils/GetTaxonomies'
 
 export default function SelectTaxonomies(props) {
-  const { setAttributes, postType, defaultValue } = props
+  const { defaultValue, postType, setAttributes } = props
 
   const taxonomies = GetTaxonomies(postType) || []
 
@@ -17,10 +17,10 @@ export default function SelectTaxonomies(props) {
 
   return (
     <SelectControl
-      label={__('Taxonomies', 'maaaps')}
       multiple
-      options={options}
       defaultValue={defaultValue}
+      label={__('Taxonomies', 'maaaps')}
+      options={options}
       onChange={(value) => {
         setAttributes({
           selectedTaxonomies: value,

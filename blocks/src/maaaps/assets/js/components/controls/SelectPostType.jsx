@@ -2,7 +2,7 @@ import { SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function SelectPostType(props) {
-  const { setAttributes, postTypes, defaultValue } = props
+  const { defaultValue, postTypes, setAttributes } = props
 
   const options = []
   postTypes.forEach((postType) => {
@@ -11,9 +11,9 @@ export default function SelectPostType(props) {
 
   return (
     <SelectControl
+      defaultValue={defaultValue}
       label={__('Post type', 'maaaps')}
       options={options}
-      defaultValue={defaultValue}
       onChange={(value) => {
         let selectedPostType = postTypes.filter((postType) => postType.slug === value)
         if (selectedPostType.length) {

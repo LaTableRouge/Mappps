@@ -6,9 +6,9 @@ export default function ToggleMarkerCluster(props) {
 
   return (
     <ToggleControl
-      label={__('Marker clustering', 'maaaps')}
-      help={defaultValue ? __('Markers will be clustered', 'maaaps') : __('Markers will not be clustered', 'maaaps')}
       checked={defaultValue}
+      help={defaultValue ? __('Markers will be clustered', 'maaaps') : __('Markers will not be clustered', 'maaaps')}
+      label={__('Marker clustering', 'maaaps')}
       onChange={(value) => {
         setAttributes({ isClustered: value })
       }}

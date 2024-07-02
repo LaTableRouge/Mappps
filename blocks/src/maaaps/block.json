@@ -118,6 +118,18 @@
     "limitedSearch": {
       "type": "boolean",
       "default": false
+    },
+    "selectedMarkerSize": {
+      "type": "number",
+      "default": 40
+    },
+    "selectedMarkerClusterSize": {
+      "type": "number",
+      "default": 50
+    },
+    "selectedMaxZoom": {
+      "type": "number",
+      "default": 13
     }
   },
   "textdomain": "maaaps",

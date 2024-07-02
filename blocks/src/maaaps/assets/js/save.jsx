@@ -12,7 +12,7 @@ export default function Save({ attributes }) {
   }
 
   return (
-    <section {...blockProps} id={blockId} data-posts={JSON.stringify(posts)}>
+    <section {...blockProps} data-posts={JSON.stringify(posts)} id={blockId}>
       <style className={`style--${blockId}`}>{createInlineStyle(styleObject, blockId)}</style>
 
       <div className="maaaps__leaflet"></div>

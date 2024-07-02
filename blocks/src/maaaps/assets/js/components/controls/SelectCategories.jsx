@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n'
 import GetCategories from '../../utils/GetCategories'
 
 export default function SelectCategories(props) {
-  const { setAttributes, taxonomies, defaultValue } = props
+  const { defaultValue, setAttributes, taxonomies } = props
 
   const categories = GetCategories(taxonomies)
 
@@ -24,10 +24,10 @@ export default function SelectCategories(props) {
 
   return (
     <SelectControl
-      label={__('Categories', 'maaaps')}
       multiple
-      options={options}
       defaultValue={defaultValue}
+      label={__('Categories', 'maaaps')}
+      options={options}
       onChange={(value) => {
         setAttributes({
           selectedCategories: value,

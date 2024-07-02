@@ -1,6 +1,14 @@
-$icomoon-font-family: 'icomoon' !default;
+$icomoon-font-family: 'maaaps-icon' !default;
 $icomoon-font-path: 'fonts' !default;
 
+$icon-maaaps-refresh: unquote('"\\e91b"');
+$icon-maaaps-minus: unquote('"\\e91a"');
+$icon-maaaps-sun: unquote('"\\e90f"');
+$icon-maaaps-moon: unquote('"\\e915"');
+$icon-maaaps-marker: unquote('"\\e916"');
+$icon-maaaps-geolocation: unquote('"\\e917"');
+$icon-maaaps-fullscreen: unquote('"\\e918"');
+$icon-maaaps-fullscreen-exit: unquote('"\\e919"');
 $icon-maaaps-new-tab: unquote('"\\e908"');
 $icon-maaaps-exit: unquote('"\\e90e"');
 $icon-maaaps-download: unquote('"\\e906"');

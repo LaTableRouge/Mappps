@@ -3,10 +3,10 @@ import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function MarkerGeolocation({ coordinates, color }) {
+export default function MarkerGeolocation({ color, coordinates }) {
   return (
     <>
-      <Marker position={coordinates} icon={Icon('', color)}>
+      <Marker icon={Icon('', color)} position={coordinates}>
         <Popup>
           <div>
             <strong>{__('You are here', 'maaaps')}</strong>

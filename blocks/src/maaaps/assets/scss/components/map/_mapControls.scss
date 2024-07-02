@@ -1,0 +1,14 @@
+.leaflet-control-container {
+  a {
+    text-decoration: none;
+
+    &:has(span[class^='icon-maaaps']) {
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  span[class^='icon-maaaps'] {
+    font-size: 15px;
+  }
+}

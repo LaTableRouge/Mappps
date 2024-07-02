@@ -2,7 +2,7 @@ import Excerpt from './Excerpt'
 import Thumbnail from './Thumbnail'
 import Title from './Title'
 
-export default function Article({ post, setSelectedPost, selectedPost }) {
+export default function Article({ post, selectedPost, setSelectedPost }) {
   const title = post.title.rendered
   const excerpt = post.excerpt
   const sticky = post.sticky
@@ -29,8 +29,8 @@ export default function Article({ post, setSelectedPost, selectedPost }) {
   return (
     <article
       className="sidebar__article"
-      data-sticky={sticky}
       data-id={id}
+      data-sticky={sticky}
       onClick={(e) => {
         e.preventDefault()
 

@@ -9,9 +9,15 @@ import Loader from './components/map/Loader'
 import Sidebar from './components/Sidebar'
 
 export default function Edit({ attributes, setAttributes }) {
+  // attributes are the states stored by Wordpress
+  // They are defined in the block.json
+
+  // BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
   const blockProps = useBlockProps()
   blockProps.style = {
     ...blockProps.style,
+    '--marker-size': attributes.selectedMarkerSize,
+    '--cluster-size': attributes.selectedMarkerClusterSize,
     '--color-primary': attributes.selectedPrimaryColor,
     '--color-secondary': attributes.selectedSecondaryColor,
     '--color-marker': attributes.selectedMarkerColor,
@@ -24,6 +30,8 @@ export default function Edit({ attributes, setAttributes }) {
     setAttributes({ blockId: blockProps.id })
   }, [])
 
+  // States that aren't stored by Wordrpess
+  // They are only usefull for the preview
   const [filteredPosts, setFilteredPosts] = useState([])
   const [selectedPost, setSelectedPost] = useState({})
   const [selectedSearchResult, setSelectedSearchResult] = useState({})
@@ -37,39 +45,48 @@ export default function Edit({ attributes, setAttributes }) {
     posts = filteredPosts
   }
 
+  // TODO avec RUDY:
+  // Change view (avec fitbound & geolocation & ouverture du cluster on click etc....)
+  // Reset view
+  // Marker active
+
   return (
     <>
-      <Controls setAttributes={setAttributes} attributes={attributes} />
+      <Controls attributes={attributes} setAttributes={setAttributes} />
       <section {...blockProps}>
         {attributes.selectedDisplayType === 'full' && !!posts.length && (
           <Sidebar
-            posts={posts}
-            setAttributes={setAttributes}
-            selectedPost={selectedPost}
-            setSelectedPost={setSelectedPost}
-            setFilteredPosts={setFilteredPosts}
-            setSelectedSearchResult={setSelectedSearchResult}
             displaySearch={attributes.displaySearch}
             limitedSearch={attributes.limitedSearch}
+            posts={posts}
+            selectedPost={selectedPost}
+            setAttributes={setAttributes}
+            setFilteredPosts={setFilteredPosts}
+            setSelectedPost={setSelectedPost}
+            setSelectedSearchResult={setSelectedSearchResult}
           />
         )}
 
         {!!posts.length && (
           <Map
-            posts={posts}
-            tiles={attributes.selectedMapTiles}
             cluster={attributes.isClustered}
+            clusterSize={attributes.selectedMarkerClusterSize}
             colors={{
               marker: attributes.selectedMarkerColor,
               cluster: attributes.selectedClusterColor,
               search: attributes.selectedSearchColor,
               geolocationMarker: attributes.selectedGeolocationColor
             }}
-            selectedSearchResult={selectedSearchResult}
-            selectedPost={selectedPost}
             displaySearch={attributes.displaySearch}
-            limitedSearch={attributes.limitedSearch}
             isGeolocated={attributes.isGeolocated}
+            limitedSearch={attributes.limitedSearch}
+            markerSize={attributes.selectedMarkerSize}
+            maxZoom={attributes.selectedMaxZoom}
+            minZoom={attributes.selectedMinZoom}
+            posts={posts}
+            selectedPost={selectedPost}
+            selectedSearchResult={selectedSearchResult}
+            tiles={attributes.selectedMapTiles}
           />
         )}
 

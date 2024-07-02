@@ -6,9 +6,9 @@ export default function ToggleLimitedSearch(props) {
 
   return (
     <ToggleControl
-      label={__('Limit search results?', 'maaaps')}
-      help={defaultValue ? __('Search results will be limited to the selected posts', 'maaaps') : ''}
       checked={defaultValue}
+      help={defaultValue ? __('Search results will be limited to the selected posts', 'maaaps') : ''}
+      label={__('Limit search results?', 'maaaps')}
       onChange={(value) => {
         setAttributes({ limitedSearch: value, selectedSearchResult: {} })
       }}

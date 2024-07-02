@@ -2,7 +2,7 @@ import { SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function SelectDisplayType(props) {
-  const { setAttributes, defaultValue } = props
+  const { defaultValue, setAttributes } = props
 
   const options = [
     { label: __('Map + Sidebar'), value: 'full' },
@@ -11,9 +11,9 @@ export default function SelectDisplayType(props) {
 
   return (
     <SelectControl
+      defaultValue={defaultValue}
       label={__('Display mode', 'maaaps')}
       options={options}
-      defaultValue={defaultValue}
       onChange={(value) => {
         setAttributes({ selectedDisplayType: value })
       }}

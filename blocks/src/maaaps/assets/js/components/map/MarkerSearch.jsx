@@ -2,10 +2,10 @@ import { Marker, Popup, Rectangle } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function MarkerSearch({ selectedSearchResult, color }) {
+export default function MarkerSearch({ color, selectedSearchResult }) {
   return (
     <>
-      <Marker position={[selectedSearchResult.y, selectedSearchResult.x]} icon={Icon('', color)}>
+      <Marker icon={Icon('', color)} position={[selectedSearchResult.y, selectedSearchResult.x]}>
         <Popup>
           <div>
             <strong>{selectedSearchResult.label}</strong>

@@ -3,7 +3,7 @@ import { GestureHandling } from 'leaflet-gesture-handling'
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 
-function ChangeView({ center, zoom, markers, posts, selectedPost }) {
+function ChangeView({ center, markers, posts, selectedPost, zoom }) {
   const map = useMap()
 
   useEffect(() => {

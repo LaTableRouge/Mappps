@@ -2,9 +2,9 @@ import MarkerClusterGroup from '@changey/react-leaflet-markercluster'
 
 import Icon from './Icon'
 
-export default function MarkerCluster(markers, color) {
+export default function MarkerCluster(markers, color, size) {
   return (
-    <MarkerClusterGroup iconCreateFunction={(cluster) => Icon('cluster', color, false, cluster)} key={Date.now()}>
+    <MarkerClusterGroup key={Date.now()} iconCreateFunction={(cluster) => Icon('cluster', color, size, cluster)}>
       {markers}
     </MarkerClusterGroup>
   )

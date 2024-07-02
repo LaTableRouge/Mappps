@@ -5,9 +5,9 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?vb6skj') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?vb6skj') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?vb6skj##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?aqe6f3') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?aqe6f3') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?aqe6f3##{$icomoon-font-family}') format('svg');
   font-display: block;
 }
 
@@ -25,6 +25,54 @@
   line-height: 1;
   text-transform: none;
   speak: never;
+}
+
+.icon-maaaps-refresh {
+  &::before {
+    content: $icon-maaaps-refresh;
+  }
+}
+
+.icon-maaaps-minus {
+  &::before {
+    content: $icon-maaaps-minus;
+  }
+}
+
+.icon-maaaps-sun {
+  &::before {
+    content: $icon-maaaps-sun;
+  }
+}
+
+.icon-maaaps-moon {
+  &::before {
+    content: $icon-maaaps-moon;
+  }
+}
+
+.icon-maaaps-marker {
+  &::before {
+    content: $icon-maaaps-marker;
+  }
+}
+
+.icon-maaaps-geolocation {
+  &::before {
+    content: $icon-maaaps-geolocation;
+  }
+}
+
+.icon-maaaps-fullscreen {
+  &::before {
+    content: $icon-maaaps-fullscreen;
+  }
+}
+
+.icon-maaaps-fullscreen-exit {
+  &::before {
+    content: $icon-maaaps-fullscreen-exit;
+  }
 }
 
 .icon-maaaps-new-tab {

@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetPostTypes from '../utils/GetPostTypes'
 import ColorMap from './controls/ColorMap'
+import InputMaxZoom from './controls/NumberMaxZoom'
 import SelectCategories from './controls/SelectCategories'
 import SelectDisplayType from './controls/SelectDisplayType'
 import SelectPosts from './controls/SelectPosts'
@@ -14,9 +15,11 @@ import ToggleGeolocation from './controls/ToggleGeolocation'
 import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleSearch from './controls/ToggleSearch'
+import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
+import UnitMarkerSize from './controls/UnitMarkerSize'
 
 export default function Controls(props) {
-  const { setAttributes, attributes } = props
+  const { attributes, setAttributes } = props
 
   const postTypes = GetPostTypes()
   const selectedPostType = attributes.postType
@@ -36,6 +39,9 @@ export default function Controls(props) {
   const selectedSecondaryColor = attributes.selectedSecondaryColor
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
+  const selectedMaxZoom = attributes.selectedMaxZoom
+  const selectedMarkerSize = attributes.selectedMarkerSize
+  const selectedMarkerClusterSize = attributes.selectedMarkerClusterSize
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -50,33 +56,35 @@ export default function Controls(props) {
 
   return (
     <InspectorControls>
-      <PanelBody title={__('Data settings', 'maaaps')} initialOpen={true}>
-        {!!postTypes.length && <SelectPostType postTypes={postTypes} defaultValue={selectedPostType} setAttributes={setAttributes} />}
-        {!!selectedPostType && <SelectTaxonomies setAttributes={setAttributes} postType={selectedPostType} defaultValue={selectedTaxonomies} />}
-        {!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} taxonomies={selectedTaxonomies} defaultValue={selectedCategories} />}
+      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+        {!!postTypes.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} />}
+        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} />}
+        {!!selectedTaxonomies.length && <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} taxonomies={selectedTaxonomies} />}
         {!!selectedCategories.length && (
           <SelectPosts
-            setAttributes={setAttributes}
-            postType={selectedPostType}
-            taxonomies={sanitizedSelectedTaxonomies}
             categories={selectedCategories}
             defaultValue={selectedPosts}
+            postType={selectedPostType}
+            setAttributes={setAttributes}
+            taxonomies={sanitizedSelectedTaxonomies}
           />
         )}
       </PanelBody>
 
       {!!selectedPosts.length && (
         <>
-          <PanelBody title={__('Render settings', 'maaaps')} initialOpen={false}>
-            <SelectTiles setAttributes={setAttributes} options={mapTiles} defaultValue={selectedMapTiles} />
-            <ToggleMarkerCluster setAttributes={setAttributes} defaultValue={isClustered} />
-            <ToggleGeolocation setAttributes={setAttributes} defaultValue={isGeolocated} />
-            <SelectDisplayType setAttributes={setAttributes} defaultValue={selectedDisplayType} />
-            <ToggleSearch setAttributes={setAttributes} defaultValue={displaySearch} />
-            {displaySearch && <ToggleLimitedSearch setAttributes={setAttributes} defaultValue={limitedSearch} />}
+          <PanelBody initialOpen={false} title={__('Render settings', 'maaaps')}>
+            <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
+            <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
+            <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
+            <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
+            <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} />
+            <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
+            <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
+            <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
+            {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
           </PanelBody>
           <ColorMap
-            setAttributes={setAttributes}
             defaultValues={{
               marker: selectedMarkerColor,
               cluster: selectedClusterColor,
@@ -84,8 +92,9 @@ export default function Controls(props) {
               primary: selectedPrimaryColor,
               secondary: selectedSecondaryColor
             }}
-            isClustered={isClustered}
             hasSearchColor={displaySearch && !limitedSearch}
+            isClustered={isClustered}
+            setAttributes={setAttributes}
           />
         </>
       )}

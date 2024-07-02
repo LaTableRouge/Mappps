@@ -1,5 +1,6 @@
 import { useEntityRecords } from '@wordpress/core-data'
 
+// Get posts/records by Post Types, Taxonomies & Categories
 export default function GetPosts(postType = '', taxonomies = [], categories = []) {
   let hasGlobResolved = false
   let resolvedCounter = 0

@@ -5,9 +5,9 @@ import { __ } from '@wordpress/i18n'
 import GetPosts from '../../utils/GetPosts'
 
 export default function SelectPosts(props) {
-  const { setAttributes, postType, taxonomies, categories, defaultValue } = props
+  const { categories, defaultValue, postType, setAttributes, taxonomies } = props
 
-  const { resolved, posts } = GetPosts(postType, taxonomies, categories)
+  const { posts, resolved } = GetPosts(postType, taxonomies, categories)
 
   const hasDefaultValue = defaultValue.length
 
@@ -55,10 +55,10 @@ export default function SelectPosts(props) {
     <>
       {!!resolved && (
         <SelectControl
-          label={__('Posts', 'maaaps')}
           multiple
-          options={options}
           defaultValue={defaultValue}
+          label={__('Posts', 'maaaps')}
+          options={options}
           onChange={(value) => {
             setAttributes({
               selectedPosts: value

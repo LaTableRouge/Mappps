@@ -5,7 +5,7 @@ export default function Thumbnail({ title, url }) {
 
   return (
     <div className="article__picture-wrapper">
-      <img src={url} alt={title} width={60} height={60}></img>
+      <img alt={title} height={60} src={url} width={60}></img>
     </div>
   )
 }

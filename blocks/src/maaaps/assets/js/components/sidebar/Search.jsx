@@ -4,7 +4,7 @@ import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
 import { sluggify } from '../../common/functions'
 
-export default function Search({ setAttributes, limitedSearch, posts, setSelectedSearchResult, setFilteredPosts }) {
+export default function Search({ limitedSearch, posts, setAttributes, setFilteredPosts, setSelectedSearchResult }) {
   const [results, setResults] = useState([])
   const [showReset, setShowReset] = useState('none')
   const [showResults, setShowResults] = useState(false)
@@ -29,6 +29,11 @@ export default function Search({ setAttributes, limitedSearch, posts, setSelecte
       <form
         className="search-wrapper__form"
         role="search"
+        onReset={(e) => {
+          // e.preventDefault()
+
+          resetForm()
+        }}
         onSubmit={async (e) => {
           e.preventDefault()
 
@@ -52,17 +57,12 @@ export default function Search({ setAttributes, limitedSearch, posts, setSelecte
             setFilteredPosts([])
           }
         }}
-        onReset={(e) => {
-          // e.preventDefault()
-
-          resetForm()
-        }}
       >
         <input
-          type="search"
-          name="s"
           className="form__input"
+          name="s"
           placeholder={__('Search...', 'maaaps')}
+          type="search"
           onKeyUp={(e) => {
             e.preventDefault()
 
@@ -74,12 +74,12 @@ export default function Search({ setAttributes, limitedSearch, posts, setSelecte
           }}
         />
 
-        <button type="reset" aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" style={{ display: showReset }}>
+        <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" style={{ display: showReset }} type="reset">
           <span className="icon-maaaps-cross"></span>
           <span className="screen-reader-text">{__('Clear', 'maaaps')}</span>
         </button>
 
-        <button type="submit" aria-label={__('Search', 'maaaps')} className="form__button form__button--submit">
+        <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" type="submit">
           {/* <span className='icon-maaaps-search'></span> */}
           <span className="screen-reader-text">{__('Search', 'maaaps')}</span>
         </button>

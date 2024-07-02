@@ -1,45 +1,43 @@
 import L from 'leaflet'
 
-const Icon = (type, color, isSelected = false, cluster, markerSize = 40) => {
-  let html = ''
+const Icon = (type, color, markerSize = 40, cluster, isSelected = false) => {
+  let html = /* html */ '<div class="marker-icon">'
   let className = ''
 
   if (type === 'cluster') {
-    html = /* html */ `
-      <svg
-        class="marker-icon"
-        version="1.1"
-        xmlns:serif="http://www.serif.com/"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        x="0px"
-        y="0px"
-        viewBox="0 0 40 40"
-        width="${markerSize}px"
-        height="${markerSize}px"
-        style="enable-background:new 0 0 40 40;"
-        xml:space="preserve"
-      >
-        <path
-          fill="${color}"
-          d="M33.3,15.2c0-7.4-6-13.3-13.3-13.3S6.7,7.8,6.7,15.2c0,3.7,1.5,7.1,4,9.5c2.5,2.5,4.8,5.8,6.5,8.5S20,38,20,38
-          s1.1-2.1,2.8-4.8c1.7-2.7,4-6.1,6.5-8.5S33.3,18.9,33.3,15.2z M20,20.6c-2.9,0-5.2-2.3-5.2-5.2c0-2.8,2.3-5.2,5.2-5.2
-          s5.2,2.3,5.2,5.2C25.2,18.2,22.9,20.6,20,20.6z"
-        />
-        <circle
-          cx="20"
-          cy="15.4"
-          r="8.1"
-        />
-      </svg>
-      <div class="marker-icon__child-count">${cluster.getChildCount()}</div>
-      <div class="marker-icon__pulse"></div>
+    html += /* html */ `
+    <svg
+      version="1.1"
+      xmlns:serif="http://www.serif.com/"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      x="0px"
+      y="0px"
+      viewBox="0 0 40 40"
+      width="${markerSize}px"
+      height="${markerSize}px"
+      style="enable-background:new 0 0 40 40;"
+      xml:space="preserve"
+    >
+      <path
+        fill="${color}"
+        d="M33.3,15.2c0-7.4-6-13.3-13.3-13.3S6.7,7.8,6.7,15.2c0,3.7,1.5,7.1,4,9.5c2.5,2.5,4.8,5.8,6.5,8.5S20,38,20,38
+        s1.1-2.1,2.8-4.8c1.7-2.7,4-6.1,6.5-8.5S33.3,18.9,33.3,15.2z M20,20.6c-2.9,0-5.2-2.3-5.2-5.2c0-2.8,2.3-5.2,5.2-5.2
+        s5.2,2.3,5.2,5.2C25.2,18.2,22.9,20.6,20,20.6z"
+      />
+      <circle
+        cx="20"
+        cy="15.4"
+        r="8.1"
+      />
+    </svg>
+    <div class="marker-icon__child-count">${cluster.getChildCount()}</div>
+    <div class="marker-icon__pulse"></div>
     `
-    className = 'custom-marker--cluster'
+    className = 'custom-marker custom-marker--cluster'
   } else {
-    html = /* html */ `
+    html += /* html */ `
       <svg
-        class="marker-icon"
         version="1.1"
         xmlns:serif="http://www.serif.com/"
         xmlns="http://www.w3.org/2000/svg"
@@ -61,6 +59,8 @@ const Icon = (type, color, isSelected = false, cluster, markerSize = 40) => {
     `
     className = 'custom-marker'
   }
+
+  html += /* html */ '</div>'
 
   return L.divIcon({
     html: html,

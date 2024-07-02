@@ -1,6 +1,7 @@
 import { useSelect } from '@wordpress/data'
 import { useMemo } from '@wordpress/element'
 
+// Get categories by taxonomies
 const getAssociateTaxonomyCategories = (taxonomies, categoriesToExclude) => {
   const records = useSelect(
     (select) => {

@@ -2,11 +2,10 @@ import { PanelColorSettings } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
 export default function ColorMap(props) {
-  const { setAttributes, defaultValues, isClustered, hasSearchColor } = props
+  const { defaultValues, hasSearchColor, isClustered, setAttributes } = props
 
   return (
     <PanelColorSettings
-      title={__('Colors')}
       colorSettings={[
         {
           value: defaultValues.primary,
@@ -44,6 +43,7 @@ export default function ColorMap(props) {
           }
         }
       ].filter(Boolean)}
+      title={__('Colors')}
     />
   )
 }

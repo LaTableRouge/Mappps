@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n'
 import { useMap } from 'react-leaflet'
 
-export default function MapControls({ setGeolocationCoordinates, geolocationCoordinates }) {
+export default function MapControls({ geolocationCoordinates, isGeolocated, setGeolocationCoordinates }) {
   const map = useMap()
 
   return (
@@ -10,54 +10,70 @@ export default function MapControls({ setGeolocationCoordinates, geolocationCoor
       <div className="leaflet-top leaflet-right">
         <div className="leaflet-control-zoom leaflet-bar leaflet-control">
           <a
+            aria-disabled="false"
+            aria-label={__('Zoom in', 'maaaps')}
             className="leaflet-control-zoom-in"
             href="#"
-            title={__('Zoom in', 'maaaps')}
             role="button"
-            aria-label={__('Zoom in', 'maaaps')}
-            aria-disabled="false"
+            title={__('Zoom in', 'maaaps')}
             onClick={(e) => {
               e.preventDefault()
               map.zoomIn()
             }}
           >
-            <span aria-hidden="true">+</span>
+            <span aria-hidden="true" className="icon-maaaps-plus"></span>
           </a>
           <a
+            aria-disabled="false"
+            aria-label={__('Zoom out', 'maaaps')}
             className="leaflet-control-zoom-out"
             href="#"
-            title={__('Zoom out', 'maaaps')}
             role="button"
-            aria-label={__('Zoom out', 'maaaps')}
-            aria-disabled="false"
+            title={__('Zoom out', 'maaaps')}
             onClick={(e) => {
               e.preventDefault()
               map.zoomOut()
             }}
           >
-            <span aria-hidden="true">-</span>
+            <span aria-hidden="true" className="icon-maaaps-minus"></span>
           </a>
           <a
-            className="leaflet-control-geolocation"
-            href="#"
-            title={__('Find your position', 'maaaps')}
-            role="button"
-            aria-label={__('Find your position', 'maaaps')}
             aria-disabled="false"
+            aria-label={__('Reset view', 'maaaps')}
+            className="leaflet-control-reset"
+            href="#"
+            role="button"
+            title={__('Reset view', 'maaaps')}
             onClick={(e) => {
               e.preventDefault()
-              if (Object.keys(geolocationCoordinates).length) {
-                setGeolocationCoordinates({})
-              } else {
-                map.locate().on('locationfound', function (e) {
-                  map.flyTo(e.latlng, map.getZoom())
-                  setGeolocationCoordinates(e.latlng)
-                })
-              }
+              // TODO: reset view fit bound
             }}
           >
-            <span aria-hidden="true">-</span>
+            <span aria-hidden="true" className="icon-maaaps-refresh"></span>
           </a>
+          {isGeolocated && (
+            <a
+              aria-disabled="false"
+              aria-label={__('Find your position', 'maaaps')}
+              className="leaflet-control-geolocation"
+              href="#"
+              role="button"
+              title={__('Find your position', 'maaaps')}
+              onClick={(e) => {
+                e.preventDefault()
+                if (Object.keys(geolocationCoordinates).length) {
+                  setGeolocationCoordinates({})
+                } else {
+                  map.locate().on('locationfound', function (e) {
+                    map.flyTo(e.latlng, map.getZoom())
+                    setGeolocationCoordinates(e.latlng)
+                  })
+                }
+              }}
+            >
+              <span aria-hidden="true" className="icon-maaaps-geolocation"></span>
+            </a>
+          )}
         </div>
       </div>
       <div className="leaflet-bottom leaflet-left"></div>
