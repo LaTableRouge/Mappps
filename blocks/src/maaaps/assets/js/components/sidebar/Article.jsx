@@ -28,7 +28,7 @@ export default function Article({ post, selectedPost, setSelectedPost }) {
 
   return (
     <article
-      className="sidebar__article"
+      className="articles-wrapper__article"
       data-id={id}
       data-sticky={sticky}
       onClick={(e) => {

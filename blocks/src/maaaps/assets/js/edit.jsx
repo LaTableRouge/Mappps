@@ -64,6 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
             setFilteredPosts={setFilteredPosts}
             setSelectedPost={setSelectedPost}
             setSelectedSearchResult={setSelectedSearchResult}
+            title={attributes.title}
           />
         )}
 

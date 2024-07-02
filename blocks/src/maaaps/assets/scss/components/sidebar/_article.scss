@@ -1,4 +1,4 @@
-.sidebar__article {
+.articles-wrapper__article {
   display: grid;
   grid-template-areas: var(--areas, 'title' 'excerpt' 'excerpt');
   grid-template-columns: var(--template-columns, initial);

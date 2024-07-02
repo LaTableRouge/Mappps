@@ -21,7 +21,12 @@
   grid-template-areas: 'sidebar map';
   grid-template-columns: auto 1fr;
   width: 100%;
-  aspect-ratio: 1;
+  aspect-ratio: var(--base-aspect-ratio);
   container-type: inline-size;
   container-name: maaaps;
+
+  &[style*='aspect-ratio: auto;'],
+  &[style*='aspect-ratio:auto;'] {
+    aspect-ratio: var(--base-aspect-ratio) !important;
+  }
 }

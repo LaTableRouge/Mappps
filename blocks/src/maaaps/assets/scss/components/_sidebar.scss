@@ -1,8 +1,18 @@
 .maaaps__sidebar {
+  display: grid;
   grid-area: sidebar;
+  grid-template-rows: auto 1fr;
   width: 25cqw;
-  overflow-y: auto;
+  overflow: hidden;
 
-  @import 'sidebar/article';
-  @import 'sidebar/search';
+  .sidebar__articles-wrapper {
+    overflow-y: auto;
+
+    @import 'sidebar/article';
+  }
+
+  .sidebar__heading {
+    @import 'sidebar/search';
+    @import 'sidebar/title';
+  }
 }
