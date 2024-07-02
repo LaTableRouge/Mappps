@@ -45,10 +45,6 @@
       "type": "array",
       "default": []
     },
-    "posts": {
-      "type": "array",
-      "default": []
-    },
     "selectedPosts": {
       "type": "array",
       "default": []

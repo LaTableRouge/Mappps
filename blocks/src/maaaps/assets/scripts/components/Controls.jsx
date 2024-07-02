@@ -18,12 +18,10 @@ import ToggleSearch from './controls/ToggleSearch'
 import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
 
-export default function Controls(props) {
-  const { attributes, setAttributes } = props
-
+export default function Controls({ attributes, queriedPosts, setAttributes, setQueriedPosts }) {
   const postTypes = GetPostTypes()
   const selectedPostType = attributes.postType
-  const selectedPosts = attributes.posts
+  const selectedPosts = attributes.selectedPosts
   const selectedTaxonomies = attributes.selectedTaxonomies
   const taxonomies = attributes.taxonomies
   const selectedCategories = attributes.selectedCategories
@@ -57,15 +55,18 @@ export default function Controls(props) {
   return (
     <InspectorControls>
       <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
-        {!!postTypes.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} />}
-        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} />}
-        {!!selectedTaxonomies.length && <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} taxonomies={selectedTaxonomies} />}
+        {!!postTypes.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+        {!!selectedTaxonomies.length && (
+          <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />
+        )}
         {!!selectedCategories.length && (
           <SelectPosts
             categories={selectedCategories}
-            defaultValue={selectedPosts}
+            defaultValue={queriedPosts}
             postType={selectedPostType}
             setAttributes={setAttributes}
+            setQueriedPosts={setQueriedPosts}
             taxonomies={sanitizedSelectedTaxonomies}
           />
         )}

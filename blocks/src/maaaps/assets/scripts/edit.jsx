@@ -1,4 +1,4 @@
-import '../scss/editor.scss'
+import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
 import { useEffect, useState } from '@wordpress/element'
@@ -29,16 +29,18 @@ export default function Edit({ attributes, setAttributes }) {
   useEffect(() => {
     setAttributes({ blockId: blockProps.id })
   }, [])
+  console.log(attributes)
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
   const [filteredPosts, setFilteredPosts] = useState([])
   const [selectedPost, setSelectedPost] = useState({})
+  const [queriedPosts, setQueriedPosts] = useState([])
   const [selectedSearchResult, setSelectedSearchResult] = useState({})
 
   let posts = []
   if (attributes.selectedPosts.length) {
-    posts = attributes.posts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
+    posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
   }
 
   if (filteredPosts.length) {
@@ -52,7 +54,7 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <>
-      <Controls attributes={attributes} setAttributes={setAttributes} />
+      <Controls attributes={attributes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
       <section {...blockProps}>
         {attributes.selectedDisplayType === 'full' && !!posts.length && (
           <Sidebar
@@ -91,7 +93,7 @@ export default function Edit({ attributes, setAttributes }) {
           />
         )}
 
-        <Loader hasPosts={!!attributes.selectedPosts.length} />
+        <Loader hasPosts={!!queriedPosts.length} />
       </section>
     </>
   )

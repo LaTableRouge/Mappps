@@ -1,0 +1,202 @@
+# Copyright (C) 2024 LaTableRouge
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Maaaps 0.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-07-02T13:23:40+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: maaaps\n"
+
+#. Plugin Name of the plugin
+#: includes/register-page.php:13
+msgid "Maaaps"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/MLNOP/Maaaps"
+msgstr ""
+
+#. Description of the plugin
+msgid "A plugin that dsiplay maps"
+msgstr ""
+
+#. Author of the plugin
+msgid "LaTableRouge"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://mlnop.fr/"
+msgstr ""
+
+#: includes/blocks/categories-register.php:10
+msgid "Maaaps - Blocks"
+msgstr ""
+
+#: includes/register-page.php:12
+msgid "Setup"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "The maximum zoom level allowed for the map"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Maximum zoom"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Categories"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Display mode"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Posts"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Post type"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Taxonomies"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Map tiles style"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Users will be able to geolocate themselves"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Geolocation"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Search results will be limited to the selected posts"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Limit search results?"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Markers will be clustered"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Markers will not be clustered"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Marker clustering"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "A search bar will be displayed"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Display search bar?"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "The displayed sizes of the cluster icons"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Cluster icon size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "The displayed sizes of the marker icons"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Marker icon size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Data settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Render settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Zoom in"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Zoom out"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Reset view"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Find your position"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "You are here"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Search..."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Clear"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Search"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Your map"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block title"
+msgid "Maaaps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block description"
+msgid "A bloc that display maps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block keyword"
+msgid "mps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block keyword"
+msgid "maps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block keyword"
+msgid "leaflet"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+msgctxt "block keyword"
+msgid "maaaps"
+msgstr ""

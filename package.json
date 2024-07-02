@@ -7,7 +7,8 @@
     "Wordpress plugin",
     "Gutenberg blocks",
     "leaflet",
-    "maps"
+    "maps",
+    "openstreetmap"
   ],
   "author": "LaTableRouge",
   "license": "GNU GENERAL PUBLIC LICENSE",

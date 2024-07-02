@@ -3,9 +3,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetCategories from '../../utils/GetCategories'
 
-export default function SelectCategories(props) {
-  const { defaultValue, setAttributes, taxonomies } = props
-
+export default function SelectCategories({ defaultValue, setAttributes, setQueriedPosts, taxonomies }) {
   const categories = GetCategories(taxonomies)
 
   const options = []
@@ -29,10 +27,10 @@ export default function SelectCategories(props) {
       label={__('Categories', 'maaaps')}
       options={options}
       onChange={(value) => {
+        setQueriedPosts([])
         setAttributes({
           selectedCategories: value,
           categories,
-          posts: [],
           selectedPosts: []
         })
       }}

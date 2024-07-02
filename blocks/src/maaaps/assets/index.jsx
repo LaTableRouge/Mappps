@@ -5,7 +5,7 @@
  *
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
-import './scss/style.scss'
+import './styles/style.scss'
 
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
@@ -18,8 +18,8 @@ import metadata from '../block.json'
 /**
  * Internal dependencies
  */
-import Edit from './js/edit'
-import Save from './js/save'
+import Edit from './scripts/edit'
+import Save from './scripts/save'
 
 /**
  * Every block starts by registering a new block type definition.

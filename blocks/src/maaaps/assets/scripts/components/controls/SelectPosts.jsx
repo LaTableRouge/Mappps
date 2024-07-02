@@ -4,9 +4,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetPosts from '../../utils/GetPosts'
 
-export default function SelectPosts(props) {
-  const { categories, defaultValue, postType, setAttributes, taxonomies } = props
-
+export default function SelectPosts({ categories, defaultValue, postType, setAttributes, setQueriedPosts, taxonomies }) {
   const { posts, resolved } = GetPosts(postType, taxonomies, categories)
 
   const hasDefaultValue = defaultValue.length
@@ -30,23 +28,20 @@ export default function SelectPosts(props) {
       })
 
       if (postIDs.length) {
+        setQueriedPosts(posts)
         setAttributes({
-          posts: posts,
-          selectedPosts: postIDs,
-          firstSelectedPost: Number(postIDs[0])
+          selectedPosts: postIDs
         })
       } else {
+        setQueriedPosts([])
         setAttributes({
-          posts: [],
-          selectedPosts: [],
-          firstSelectedPost: null
+          selectedPosts: []
         })
       }
     } else {
+      setQueriedPosts([])
       setAttributes({
-        posts: [],
-        selectedPosts: [],
-        firstSelectedPost: null
+        selectedPosts: []
       })
     }
   }, [resolved])

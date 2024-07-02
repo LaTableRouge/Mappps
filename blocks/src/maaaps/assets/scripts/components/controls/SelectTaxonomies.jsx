@@ -3,9 +3,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetTaxonomies from '../../utils/GetTaxonomies'
 
-export default function SelectTaxonomies(props) {
-  const { defaultValue, postType, setAttributes } = props
-
+export default function SelectTaxonomies({ defaultValue, postType, setAttributes, setQueriedPosts }) {
   const taxonomies = GetTaxonomies(postType) || []
 
   const options = []
@@ -22,12 +20,12 @@ export default function SelectTaxonomies(props) {
       label={__('Taxonomies', 'maaaps')}
       options={options}
       onChange={(value) => {
+        setQueriedPosts([])
         setAttributes({
           selectedTaxonomies: value,
           taxonomies,
           categories: {},
           selectedCategories: [],
-          posts: [],
           selectedPosts: []
         })
       }}
