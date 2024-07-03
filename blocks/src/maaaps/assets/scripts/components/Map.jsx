@@ -14,7 +14,21 @@ import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
-const Map = ({ cluster, clusterSize, colors, displaySearch, isGeolocated, limitedSearch, markerSize, maxZoom, posts, selectedPost, selectedSearchResult, tiles }) => {
+const Map = ({
+  cluster,
+  clusterSize,
+  colors,
+  displaySearch,
+  isGeolocated,
+  limitedSearch,
+  markerSize,
+  maxZoom,
+  mobileIsMapDisplayed,
+  posts,
+  selectedPost,
+  selectedSearchResult,
+  tiles
+}) => {
   const markers = Markers(posts, colors.marker, markerSize)
 
   const markerGroup = useMemo(() => {
@@ -24,22 +38,24 @@ const Map = ({ cluster, clusterSize, colors, displaySearch, isGeolocated, limite
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
 
   return (
-    <MapContainer className="maaaps__leaflet" doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false}>
-      <ChangeView markers={markers} posts={posts} selectedPost={selectedPost} />
+    <div className="maaaps__leaflet" data-map-shown={mobileIsMapDisplayed}>
+      <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false}>
+        <ChangeView markers={markers} posts={posts} selectedPost={selectedPost} />
 
-      <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
+        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
 
-      <MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} />
+        <MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} />
 
-      {/* Posts markers */}
-      {markerGroup}
+        {/* Posts markers */}
+        {markerGroup}
 
-      {/* Geolocation marker */}
-      {isGeolocated && Object.keys(geolocationCoordinates).length && <MarkerGeolocation color={colors.geolocationMarker} coordinates={geolocationCoordinates} />}
+        {/* Geolocation marker */}
+        {isGeolocated && Object.keys(geolocationCoordinates).length && <MarkerGeolocation color={colors.geolocationMarker} coordinates={geolocationCoordinates} />}
 
-      {/* Search marker */}
-      {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <MarkerSearch color={colors.search} selectedSearchResult={selectedSearchResult} />}
-    </MapContainer>
+        {/* Search marker */}
+        {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <MarkerSearch color={colors.search} selectedSearchResult={selectedSearchResult} />}
+      </MapContainer>
+    </div>
   )
 }
 

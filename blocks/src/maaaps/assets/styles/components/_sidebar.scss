@@ -1,9 +1,13 @@
 .maaaps__sidebar {
   display: grid;
-  grid-area: sidebar;
   grid-template-rows: auto 1fr;
-  width: 25cqw;
+  width: 100%;
   overflow: hidden;
+
+  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    grid-area: sidebar;
+    width: 25cqw;
+  }
 
   .sidebar__articles-wrapper {
     overflow-y: auto;

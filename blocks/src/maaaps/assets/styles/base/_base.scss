@@ -18,15 +18,36 @@
 
   display: grid;
   position: relative;
-  grid-template-areas: 'sidebar map';
-  grid-template-columns: auto 1fr;
   width: 100%;
-  aspect-ratio: var(--base-aspect-ratio);
+  overflow: hidden;
   container-type: inline-size;
   container-name: maaaps;
 
-  &[style*='aspect-ratio: auto;'],
-  &[style*='aspect-ratio:auto;'] {
-    aspect-ratio: var(--base-aspect-ratio) !important;
+  .responsive-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    height: var(--mobile-height, 100svh);
+    overflow: hidden;
+
+    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+      grid-template-areas: 'sidebar map';
+      grid-template-columns: auto 1fr;
+      height: initial;
+      aspect-ratio: inherit;
+    }
+
+    // Aspect ratio handle because it's fucked up
+    &:not(:has([style*='aspect-ratio'])) {
+      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+        aspect-ratio: var(--base-aspect-ratio);
+      }
+    }
+
+    &[style*='aspect-ratio: auto;'],
+    &[style*='aspect-ratio:auto;'] {
+      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+        aspect-ratio: var(--base-aspect-ratio) !important;
+      }
+    }
   }
 }

@@ -7,6 +7,7 @@ import Controls from './components/Controls'
 import Map from './components/Map'
 import Loader from './components/map/Loader'
 import Sidebar from './components/Sidebar'
+import Toggles from './components/Toggles'
 
 export default function Edit({ attributes, setAttributes }) {
   // attributes are the states stored by Wordpress
@@ -29,7 +30,6 @@ export default function Edit({ attributes, setAttributes }) {
   useEffect(() => {
     setAttributes({ blockId: blockProps.id })
   }, [])
-  console.log(attributes)
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
@@ -37,6 +37,7 @@ export default function Edit({ attributes, setAttributes }) {
   const [selectedPost, setSelectedPost] = useState({})
   const [queriedPosts, setQueriedPosts] = useState([])
   const [selectedSearchResult, setSelectedSearchResult] = useState({})
+  const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(false)
 
   let posts = []
   if (attributes.selectedPosts.length) {
@@ -56,42 +57,47 @@ export default function Edit({ attributes, setAttributes }) {
     <>
       <Controls attributes={attributes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
       <section {...blockProps}>
-        {attributes.selectedDisplayType === 'full' && !!posts.length && (
-          <Sidebar
-            displaySearch={attributes.displaySearch}
-            limitedSearch={attributes.limitedSearch}
-            posts={posts}
-            selectedPost={selectedPost}
-            setAttributes={setAttributes}
-            setFilteredPosts={setFilteredPosts}
-            setSelectedPost={setSelectedPost}
-            setSelectedSearchResult={setSelectedSearchResult}
-            title={attributes.title}
-          />
-        )}
+        <div className="responsive-wrapper">
+          {attributes.selectedDisplayType === 'full' && !!posts.length && (
+            <Sidebar
+              displaySearch={attributes.displaySearch}
+              limitedSearch={attributes.limitedSearch}
+              posts={posts}
+              selectedPost={selectedPost}
+              setAttributes={setAttributes}
+              setFilteredPosts={setFilteredPosts}
+              setSelectedPost={setSelectedPost}
+              setSelectedSearchResult={setSelectedSearchResult}
+              title={attributes.title}
+            />
+          )}
 
-        {!!posts.length && (
-          <Map
-            cluster={attributes.isClustered}
-            clusterSize={attributes.selectedMarkerClusterSize}
-            colors={{
-              marker: attributes.selectedMarkerColor,
-              cluster: attributes.selectedClusterColor,
-              search: attributes.selectedSearchColor,
-              geolocationMarker: attributes.selectedGeolocationColor
-            }}
-            displaySearch={attributes.displaySearch}
-            isGeolocated={attributes.isGeolocated}
-            limitedSearch={attributes.limitedSearch}
-            markerSize={attributes.selectedMarkerSize}
-            maxZoom={attributes.selectedMaxZoom}
-            minZoom={attributes.selectedMinZoom}
-            posts={posts}
-            selectedPost={selectedPost}
-            selectedSearchResult={selectedSearchResult}
-            tiles={attributes.selectedMapTiles}
-          />
-        )}
+          {!!posts.length && (
+            <Map
+              cluster={attributes.isClustered}
+              clusterSize={attributes.selectedMarkerClusterSize}
+              colors={{
+                marker: attributes.selectedMarkerColor,
+                cluster: attributes.selectedClusterColor,
+                search: attributes.selectedSearchColor,
+                geolocationMarker: attributes.selectedGeolocationColor
+              }}
+              displaySearch={attributes.displaySearch}
+              isGeolocated={attributes.isGeolocated}
+              limitedSearch={attributes.limitedSearch}
+              markerSize={attributes.selectedMarkerSize}
+              maxZoom={attributes.selectedMaxZoom}
+              minZoom={attributes.selectedMinZoom}
+              mobileIsMapDisplayed={mobileIsMapDisplayed}
+              posts={posts}
+              selectedPost={selectedPost}
+              selectedSearchResult={selectedSearchResult}
+              tiles={attributes.selectedMapTiles}
+            />
+          )}
+        </div>
+
+        <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />
 
         <Loader hasPosts={!!queriedPosts.length} />
       </section>
