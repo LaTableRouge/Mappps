@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/filters",
+  "title": "Filters",
+  "category": "maaaps",
+  "description": "Contains the filters.",
+  "textdomain": "maaaps",
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}

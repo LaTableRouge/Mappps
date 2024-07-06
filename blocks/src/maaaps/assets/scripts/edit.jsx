@@ -1,12 +1,10 @@
 import '../styles/editor.scss'
 
-import { useBlockProps } from '@wordpress/block-editor'
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
-import Map from './components/Map'
-import Loader from './components/map/Loader'
-import Sidebar from './components/Sidebar'
+// import Sidebar from './components/Sidebar'
 import Toggles from './components/Toggles'
 
 export default function Edit({ attributes, setAttributes }) {
@@ -34,10 +32,17 @@ export default function Edit({ attributes, setAttributes }) {
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
   const [filteredPosts, setFilteredPosts] = useState([])
-  const [selectedPost, setSelectedPost] = useState({})
+  // const [selectedPost, setSelectedPost] = useState({})
   const [queriedPosts, setQueriedPosts] = useState([])
-  const [selectedSearchResult, setSelectedSearchResult] = useState({})
+  // const [selectedSearchResult, setSelectedSearchResult] = useState({})
   const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(false)
+
+  // const [height, setHeight] = useState(0)
+  // const ref = useRef(null)
+
+  // useEffect(() => {
+  //   setHeight(ref.current.clientHeight)
+  // })
 
   let posts = []
   if (attributes.selectedPosts.length) {
@@ -48,59 +53,82 @@ export default function Edit({ attributes, setAttributes }) {
     posts = filteredPosts
   }
 
+  // Child block change listener : https://wordpress.stackexchange.com/questions/406384/how-to-output-child-block-attributes-on-a-parent-block
+
   // TODO avec RUDY:
   // Change view (avec fitbound & geolocation & ouverture du cluster on click etc....)
   // Reset view
   // Marker active
 
+  // TODO:
+  // Refacto en blocks séparés
+  // -- Maaaps
+  // ---- Leaflet map
+  // ------ Popup
+  // ---- Sidebar
+  // ------ Title
+  // ------ Filters
+  // ------ Search
+  // ------ List
+  // -------- List element
+  // -------- List element detail
+
   return (
-    <>
+    <section {...blockProps}>
       <Controls attributes={attributes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-      <section {...blockProps}>
-        <div className="responsive-wrapper">
-          {attributes.selectedDisplayType === 'full' && !!posts.length && (
-            <Sidebar
-              displaySearch={attributes.displaySearch}
-              limitedSearch={attributes.limitedSearch}
-              posts={posts}
-              selectedPost={selectedPost}
-              setAttributes={setAttributes}
-              setFilteredPosts={setFilteredPosts}
-              setSelectedPost={setSelectedPost}
-              setSelectedSearchResult={setSelectedSearchResult}
-              title={attributes.title}
-            />
-          )}
+      {!!posts.length && (
+        <InnerBlocks
+          template={[
+            ['mps/loader', {}],
+            ['mps/sidebar', {}],
+            ['mps/map', {}]
+          ]}
+        />
+      )}
 
-          {!!posts.length && (
-            <Map
-              cluster={attributes.isClustered}
-              clusterSize={attributes.selectedMarkerClusterSize}
-              colors={{
-                marker: attributes.selectedMarkerColor,
-                cluster: attributes.selectedClusterColor,
-                search: attributes.selectedSearchColor,
-                geolocationMarker: attributes.selectedGeolocationColor
-              }}
-              displaySearch={attributes.displaySearch}
-              isGeolocated={attributes.isGeolocated}
-              limitedSearch={attributes.limitedSearch}
-              markerSize={attributes.selectedMarkerSize}
-              maxZoom={attributes.selectedMaxZoom}
-              minZoom={attributes.selectedMinZoom}
-              mobileIsMapDisplayed={mobileIsMapDisplayed}
-              posts={posts}
-              selectedPost={selectedPost}
-              selectedSearchResult={selectedSearchResult}
-              tiles={attributes.selectedMapTiles}
-            />
-          )}
-        </div>
+      {/* <div className="responsive-wrapper" ref={ref} style={{'--maaaps-height': `${height}px`}}> */}
+      {attributes.selectedDisplayType === 'full' && !!posts.length && (
+        <></>
+        // <Sidebar
+        //   displaySearch={attributes.displaySearch}
+        //   limitedSearch={attributes.limitedSearch}
+        //   posts={posts}
+        //   selectedPost={selectedPost}
+        //   setAttributes={setAttributes}
+        //   setFilteredPosts={setFilteredPosts}
+        //   setSelectedPost={setSelectedPost}
+        //   setSelectedSearchResult={setSelectedSearchResult}
+        //   title={attributes.title}
+        // />
+      )}
 
-        <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />
+      {/* {!!posts.length && (
+          <Map
+            cluster={attributes.isClustered}
+            clusterSize={attributes.selectedMarkerClusterSize}
+            colors={{
+              marker: attributes.selectedMarkerColor,
+              cluster: attributes.selectedClusterColor,
+              search: attributes.selectedSearchColor,
+              geolocationMarker: attributes.selectedGeolocationColor
+            }}
+            displaySearch={attributes.displaySearch}
+            isGeolocated={attributes.isGeolocated}
+            limitedSearch={attributes.limitedSearch}
+            markerSize={attributes.selectedMarkerSize}
+            maxZoom={attributes.selectedMaxZoom}
+            mobileIsMapDisplayed={mobileIsMapDisplayed}
+            posts={posts}
+            selectedPost={selectedPost}
+            selectedSearchResult={selectedSearchResult}
+            tiles={attributes.selectedMapTiles}
+          />
+        )} */}
+      {/* </div> */}
 
-        <Loader hasPosts={!!queriedPosts.length} />
-      </section>
-    </>
+      <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />
+
+      {/* <Loader hasPosts={!!queriedPosts.length} /> */}
+    </section>
   )
 }

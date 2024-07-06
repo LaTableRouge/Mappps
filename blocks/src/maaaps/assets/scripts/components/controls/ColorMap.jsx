@@ -20,28 +20,28 @@ export default function ColorMap(props) {
           onChange: (value) => {
             setAttributes({ selectedSecondaryColor: value })
           }
-        },
-        {
-          value: defaultValues.marker,
-          label: __('Marker'),
-          onChange: (value) => {
-            setAttributes({ selectedMarkerColor: value })
-          }
-        },
-        isClustered && {
-          value: defaultValues.cluster,
-          label: __('Cluster'),
-          onChange: (value) => {
-            setAttributes({ selectedClusterColor: value })
-          }
-        },
-        hasSearchColor && {
-          value: defaultValues.search,
-          label: __('Search'),
-          onChange: (value) => {
-            setAttributes({ selectedSearchColor: value })
-          }
         }
+        // {
+        //   value: defaultValues.marker,
+        //   label: __('Marker'),
+        //   onChange: (value) => {
+        //     setAttributes({ selectedMarkerColor: value })
+        //   }
+        // },
+        // isClustered && {
+        //   value: defaultValues.cluster,
+        //   label: __('Cluster'),
+        //   onChange: (value) => {
+        //     setAttributes({ selectedClusterColor: value })
+        //   }
+        // },
+        // hasSearchColor && {
+        //   value: defaultValues.search,
+        //   label: __('Search'),
+        //   onChange: (value) => {
+        //     setAttributes({ selectedSearchColor: value })
+        //   }
+        // }
       ].filter(Boolean)}
       title={__('Colors')}
     />

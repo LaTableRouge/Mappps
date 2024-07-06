@@ -1,0 +1,54 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/post-template",
+  "title": "Post Template",
+  "category": "maaaps",
+  "parent": [
+    "mps/maaaps"
+  ],
+  "description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
+  "textdomain": "maaaps",
+  "usesContext": [
+    "mps/postIDs",
+    "mps/postType"
+  ],
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "color": {
+      "gradients": true,
+      "link": true,
+      "__experimentalDefaultControls": {
+        "background": true,
+        "text": true
+      }
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "__experimentalFontFamily": true,
+      "__experimentalFontWeight": true,
+      "__experimentalFontStyle": true,
+      "__experimentalTextTransform": true,
+      "__experimentalTextDecoration": true,
+      "__experimentalLetterSpacing": true,
+      "__experimentalDefaultControls": {
+        "fontSize": true
+      }
+    },
+    "spacing": {
+      "blockGap": true,
+      "padding": true,
+      "margin": true
+    },
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}

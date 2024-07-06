@@ -1,7 +1,6 @@
-import { RichText } from '@wordpress/block-editor'
+import { InnerBlocks, RichText } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
-import Article from './sidebar/Article'
 import Search from './sidebar/Search'
 
 export default function Sidebar({ displaySearch, limitedSearch, posts, selectedPost, setAttributes, setFilteredPosts, setSelectedPost, setSelectedSearchResult, title }) {
@@ -22,11 +21,12 @@ export default function Sidebar({ displaySearch, limitedSearch, posts, selectedP
         )}
       </header>
 
-      <div className="sidebar__articles-wrapper">
+      <InnerBlocks template={[['mps/post-template', {}]]} />
+      {/* <div className="sidebar__articles-wrapper">
         {posts.map((post, index) => (
           <Article key={index} post={post} selectedPost={selectedPost} setSelectedPost={setSelectedPost} />
         ))}
-      </div>
+      </div> */}
     </aside>
   )
 }

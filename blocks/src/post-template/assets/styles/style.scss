@@ -1,0 +1,11 @@
+.maaaps__post-template {
+  height: calc(var(--maaaps-height) - var(--maaaps-sidebar-header-height));
+  overflow: auto;
+
+  & > ul {
+    display: grid;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

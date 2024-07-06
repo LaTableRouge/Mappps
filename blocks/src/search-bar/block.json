@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/searchbar",
+  "title": "Search bar",
+  "category": "maaaps",
+  "description": "Contains search bar.",
+  "textdomain": "maaaps",
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "attributes": {
+    "searchValue": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}

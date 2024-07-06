@@ -11,12 +11,18 @@
     "html": false,
     "anchor": true,
     "align": true,
+    "layout": true,
+    "interactivity": true,
     "spacing": {
       "padding": true
     },
     "dimensions": {
       "aspectRatio": true
     }
+  },
+  "providesContext": {
+    "mps/postIDs": "selectedPosts",
+    "mps/postType": "postType"
   },
   "attributes": {
     "blockId": {
@@ -49,43 +55,7 @@
       "type": "array",
       "default": []
     },
-    "mapTiles": {
-      "type": "array",
-      "default": [
-        {
-          "label": "CartoDB Voyager",
-          "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-        },
-        {
-          "label": "CartoDB Positron",
-          "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-        },
-        {
-          "label": "OSM Mapnik",
-          "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png"
-        },
-        {
-          "label": "Open Topo Map",
-          "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}{r}.png"
-        }
-      ]
-    },
-    "selectedMapTiles": {
-      "type": "string",
-      "default": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-    },
-    "selectedMarkerColor": {
-      "type": "string",
-      "default": "#2b82cb"
-    },
-    "selectedClusterColor": {
-      "type": "string",
-      "default": "#FCA311"
-    },
-    "selectedSearchColor": {
-      "type": "string",
-      "default": "#6ee9a2"
-    },
+
     "selectedPrimaryColor": {
       "type": "string",
       "default": "#ffed00"
@@ -94,18 +64,7 @@
       "type": "string",
       "default": "#2c4965"
     },
-    "selectedGeolocationColor": {
-      "type": "string",
-      "default": "#2c4965"
-    },
-    "isClustered": {
-      "type": "boolean",
-      "default": true
-    },
-    "isGeolocated": {
-      "type": "boolean",
-      "default": true
-    },
+
     "selectedDisplayType": {
       "type": "string",
       "default": "full"
@@ -117,18 +76,6 @@
     "limitedSearch": {
       "type": "boolean",
       "default": false
-    },
-    "selectedMarkerSize": {
-      "type": "number",
-      "default": 40
-    },
-    "selectedMarkerClusterSize": {
-      "type": "number",
-      "default": 50
-    },
-    "selectedMaxZoom": {
-      "type": "number",
-      "default": 13
     }
   },
   "textdomain": "maaaps",

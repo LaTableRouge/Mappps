@@ -23,6 +23,24 @@
   container-type: inline-size;
   container-name: maaaps;
 
+  // Aspect ratio handle because it's fucked up
+  &:not([style*='aspect-ratio']) {
+    .responsive-wrapper {
+      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+        aspect-ratio: var(--base-aspect-ratio);
+      }
+    }
+  }
+
+  &[style*='aspect-ratio: auto'],
+  &[style*='aspect-ratio:auto'] {
+    .responsive-wrapper {
+      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+        aspect-ratio: var(--base-aspect-ratio) !important;
+      }
+    }
+  }
+
   .responsive-wrapper {
     display: grid;
     grid-template-columns: 1fr;
@@ -36,17 +54,10 @@
       aspect-ratio: inherit;
     }
 
-    // Aspect ratio handle because it's fucked up
-    &:not(:has([style*='aspect-ratio'])) {
+    & > .block-editor-inner-blocks:has(aside.maaaps__sidebar) {
       @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-        aspect-ratio: var(--base-aspect-ratio);
-      }
-    }
-
-    &[style*='aspect-ratio: auto;'],
-    &[style*='aspect-ratio:auto;'] {
-      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-        aspect-ratio: var(--base-aspect-ratio) !important;
+        grid-area: sidebar;
+        width: 25cqw;
       }
     }
   }

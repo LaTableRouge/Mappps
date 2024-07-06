@@ -8,7 +8,6 @@ window.addEventListener('DOMContentLoaded', () => {
       let postIDs = block.dataset.posts
       if (postIDs) {
         postIDs = JSON.parse(postIDs)
-        console.log(postIDs)
         if (postIDs.length) {
           block.classList.add('is-init')
 

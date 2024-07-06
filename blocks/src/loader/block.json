@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/loader",
+  "title": "Loader",
+  "category": "maaaps",
+  "description": "Contains the global loader.",
+  "textdomain": "maaaps",
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "interactivity": {
+      "clientNavigation": true
+    },
+    "color": {
+      "__experimentalDefaultControls": {
+        "background": true,
+        "text": true
+      }
+    }
+  },
+  "parent": [
+    "mps/maaaps"
+  ],
+  "usesContext": [
+    "mps/postIDs"
+  ],
+  "attributes": {
+    "selectedSpinnerSize": {
+      "type": "number",
+      "default": 125
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "color": {
+          "text": "#bdbdbd",
+          "background": "#ffffff"
+        }
+      }
+    }
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}
