@@ -20,7 +20,7 @@ export default function SelectPostType({ defaultValue, postTypes, setAttributes,
 
         setQueriedPosts([])
         setAttributes({
-          postType: selectedPostType.slug,
+          postType: selectedPostType.slug ?? '',
           taxonomies: [],
           selectedTaxonomies: [],
           categories: {},

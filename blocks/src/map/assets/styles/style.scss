@@ -1,0 +1,8 @@
+.wp-block-mps-map {
+  display: grid;
+  height: 100%;
+  margin: 0;
+
+  @import 'components/marker';
+  @import 'components/mapControls';
+}

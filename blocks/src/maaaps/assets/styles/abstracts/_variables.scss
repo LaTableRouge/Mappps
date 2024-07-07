@@ -66,7 +66,8 @@ $radiuses: (
 
 // Custom sizes (like the header height for example)
 $customs: (
-  base-aspect-ratio: calc(16 / 9)
+  base-aspect-ratio: calc(16 / 9),
+  sidebar-size: 25cqw
 );
 
 $shadows: (

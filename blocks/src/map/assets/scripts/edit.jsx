@@ -15,7 +15,17 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
   const postType = context['mps/postType']
   const postIDs = context['mps/postIDs']
 
+  // BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
   const blockProps = useBlockProps()
+  blockProps.style = {
+    ...blockProps.style,
+    '--marker-size': attributes.selectedMarkerSize,
+    '--cluster-size': attributes.selectedMarkerClusterSize,
+    '--color-marker': attributes.selectedMarkerColor,
+    '--color-cluster': attributes.selectedClusterColor,
+    '--color-search': attributes.selectedSearchColor,
+    '--color-geolocation': attributes.selectedGeolocationColor
+  }
 
   // attributes are the states stored by Wordpress
   // They are defined in the block.json
@@ -25,7 +35,7 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
 
   const posts = []
   if (postIDs.length) {
-    postIDs.forEach((id) => {
+    postIDs.slice(0, 10).forEach((id) => {
       const { record } = useEntityRecord('postType', postType, id)
       if (record) {
         posts.push({
@@ -54,28 +64,32 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <Controls
-        attributes={attributes}
-        colors={colors}
-        isClustered={isClustered}
-        isGeolocated={isGeolocated}
-        mapTiles={mapTiles}
-        selectedMapTiles={selectedMapTiles}
-        selectedMarkerClusterSize={selectedMarkerClusterSize}
-        selectedMarkerSize={selectedMarkerSize}
-        selectedMaxZoom={selectedMaxZoom}
-        setAttributes={setAttributes}
-      />
-      <Map
-        colors={colors}
-        isClustered={isClustered}
-        isGeolocated={isGeolocated}
-        posts={posts}
-        selectedMapTiles={selectedMapTiles}
-        selectedMarkerClusterSize={selectedMarkerClusterSize}
-        selectedMarkerSize={selectedMarkerSize}
-        selectedMaxZoom={selectedMaxZoom}
-      />
+      {!!posts.length && (
+        <>
+          <Controls
+            attributes={attributes}
+            colors={colors}
+            isClustered={isClustered}
+            isGeolocated={isGeolocated}
+            mapTiles={mapTiles}
+            selectedMapTiles={selectedMapTiles}
+            selectedMarkerClusterSize={selectedMarkerClusterSize}
+            selectedMarkerSize={selectedMarkerSize}
+            selectedMaxZoom={selectedMaxZoom}
+            setAttributes={setAttributes}
+          />
+          <Map
+            colors={colors}
+            isClustered={isClustered}
+            isGeolocated={isGeolocated}
+            posts={posts}
+            selectedMapTiles={selectedMapTiles}
+            selectedMarkerClusterSize={selectedMarkerClusterSize}
+            selectedMarkerSize={selectedMarkerSize}
+            selectedMaxZoom={selectedMaxZoom}
+          />
+        </>
+      )}
     </div>
   )
 }

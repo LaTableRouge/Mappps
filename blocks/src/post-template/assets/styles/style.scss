@@ -1,11 +1,12 @@
-.maaaps__post-template {
-  height: calc(var(--maaaps-height) - var(--maaaps-sidebar-header-height));
+.wp-block-mps-post-template {
+  height: 100%;
+  margin: 0;
   overflow: auto;
 
   & > ul {
     display: grid;
-    margin: 0;
-    padding: 0;
+    margin: 0 !important;
+    padding: 0 !important;
     list-style: none;
   }
 }

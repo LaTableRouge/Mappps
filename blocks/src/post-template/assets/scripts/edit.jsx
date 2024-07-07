@@ -33,8 +33,8 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
   const blocks = GetBlocks(clientId)
 
   return (
-    <nav className="maaaps__post-template">
-      <ul {...blockProps}>
+    <nav {...blockProps}>
+      <ul>
         {blockContexts
           && blockContexts.map((blockContext) => (
             <BlockContextProvider key={blockContext.postId} value={blockContext}>

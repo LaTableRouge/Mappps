@@ -55,7 +55,6 @@
       "type": "array",
       "default": []
     },
-
     "selectedPrimaryColor": {
       "type": "string",
       "default": "#ffed00"

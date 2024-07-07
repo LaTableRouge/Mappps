@@ -2,6 +2,8 @@ import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
 
+import Controls from './components/Controls'
+
 export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps()
 
@@ -13,6 +15,7 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <div {...blockProps}>
+      <Controls limitedSearch={attributes.limitedSearch} />
       <button
         onClick={() => {
           setAttributes({ searchValue: 'aayayayay' + new Date() })

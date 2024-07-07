@@ -14,17 +14,15 @@ export default function Edit({ attributes, clientId, setAttributes }) {
   // GetChildAttributes(setAttributes, clientId, 'childValues')
 
   return (
-    <aside className="maaaps__sidebar">
-      <div {...blockProps}>
-        <InnerBlocks
-          template={[
-            ['core/paragraph', {}],
-            ['mps/searchbar', {}],
-            ['mps/filters', {}],
-            ['mps/post-template', {}]
-          ]}
-        />
-      </div>
+    <aside {...blockProps}>
+      <InnerBlocks
+        template={[
+          ['core/paragraph', {}],
+          ['mps/searchbar', {}],
+          ['mps/filters', {}],
+          ['mps/post-template', {}]
+        ]}
+      />
     </aside>
   )
 }

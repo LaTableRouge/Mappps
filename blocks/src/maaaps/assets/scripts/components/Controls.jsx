@@ -2,38 +2,23 @@ import { InspectorControls } from '@wordpress/block-editor'
 import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-import GetPostTypes from '../utils/GetPostTypes'
 import ColorMap from './controls/ColorMap'
 import SelectCategories from './controls/SelectCategories'
-import SelectDisplayType from './controls/SelectDisplayType'
 import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
-import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
-import ToggleSearch from './controls/ToggleSearch'
 
-export default function Controls({ attributes, queriedPosts, setAttributes, setQueriedPosts }) {
-  const postTypes = GetPostTypes()
+export default function Controls({ attributes, postTypes, queriedPosts, setAttributes, setQueriedPosts }) {
   const selectedPostType = attributes.postType
   const selectedPosts = attributes.selectedPosts
   const selectedTaxonomies = attributes.selectedTaxonomies
   const taxonomies = attributes.taxonomies
   const selectedCategories = attributes.selectedCategories
-  // const mapTiles = attributes.mapTiles
-  // const selectedMapTiles = attributes.selectedMapTiles
   const isClustered = attributes.isClustered
-  // const isGeolocated = attributes.isGeolocated
-  const selectedMarkerColor = attributes.selectedMarkerColor
-  const selectedClusterColor = attributes.selectedClusterColor
-  const selectedSearchColor = attributes.selectedSearchColor
-  const selectedDisplayType = attributes.selectedDisplayType
   const selectedPrimaryColor = attributes.selectedPrimaryColor
   const selectedSecondaryColor = attributes.selectedSecondaryColor
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
-  // const selectedMaxZoom = attributes.selectedMaxZoom
-  // const selectedMarkerSize = attributes.selectedMarkerSize
-  // const selectedMarkerClusterSize = attributes.selectedMarkerClusterSize
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -46,6 +31,8 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
     })
   }
 
+  console.log(queriedPosts)
+
   return (
     <InspectorControls>
       <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
@@ -57,7 +44,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
         {!!selectedCategories.length && (
           <SelectPosts
             categories={selectedCategories}
-            defaultValue={queriedPosts}
+            defaultValue={selectedPosts}
             postType={selectedPostType}
             setAttributes={setAttributes}
             setQueriedPosts={setQueriedPosts}
@@ -68,22 +55,8 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
 
       {!!selectedPosts.length && (
         <>
-          <PanelBody initialOpen={false} title={__('Render settings', 'maaaps')}>
-            {/* <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} /> */}
-            {/* <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} /> */}
-            {/* <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} /> */}
-            <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
-            {/* <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} /> */}
-            {/* <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} /> */}
-            {/* <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} /> */}
-            <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
-            {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
-          </PanelBody>
           <ColorMap
             defaultValues={{
-              marker: selectedMarkerColor,
-              cluster: selectedClusterColor,
-              search: selectedSearchColor,
               primary: selectedPrimaryColor,
               secondary: selectedSecondaryColor
             }}

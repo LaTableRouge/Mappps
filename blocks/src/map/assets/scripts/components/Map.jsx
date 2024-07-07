@@ -25,24 +25,22 @@ const Map = ({ colors, isClustered, isGeolocated, posts, selectedMapTiles, selec
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
 
   return (
-    <div className="maaaps__leaflet" style={{ width: '500px', height: '500px' }}>
-      <MapContainer doubleClickZoom={false} maxZoom={selectedMaxZoom} scrollWheelZoom={false} zoomControl={false}>
-        <ChangeView markers={markers} posts={posts} />
+    <MapContainer doubleClickZoom={false} maxZoom={selectedMaxZoom} scrollWheelZoom={false} zoomControl={false}>
+      <ChangeView markers={markers} posts={posts} />
 
-        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedMapTiles} />
+      <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedMapTiles} />
 
-        <MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} />
+      <MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} />
 
-        {/* Posts markers */}
-        {markerGroup}
+      {/* Posts markers */}
+      {markerGroup}
 
-        {/* Geolocation marker */}
-        {isGeolocated && Object.keys(geolocationCoordinates).length && <MarkerGeolocation color={colors.geolocationMarker} coordinates={geolocationCoordinates} />}
+      {/* Geolocation marker */}
+      {isGeolocated && Object.keys(geolocationCoordinates).length && <MarkerGeolocation color={colors.geolocationMarker} coordinates={geolocationCoordinates} />}
 
-        {/* Search marker */}
-        {/* {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <MarkerSearch color={colors.search} selectedSearchResult={selectedSearchResult} />} */}
-      </MapContainer>
-    </div>
+      {/* Search marker */}
+      {/* {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <MarkerSearch color={colors.search} selectedSearchResult={selectedSearchResult} />} */}
+    </MapContainer>
   )
 }
 

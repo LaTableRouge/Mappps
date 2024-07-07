@@ -18,6 +18,10 @@
     "searchValue": {
       "type": "string",
       "default": ""
+    },
+    "limitedSearch": {
+      "type": "boolean",
+      "default": false
     }
   },
   "viewScript": "file:./assets/view.js",
