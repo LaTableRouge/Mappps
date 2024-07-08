@@ -129,6 +129,10 @@
     "selectedMaxZoom": {
       "type": "number",
       "default": 13
+    },
+    "selectedMaxMarkerZoom": {
+      "type": "number",
+      "default": 13
     }
   },
   "textdomain": "maaaps",

@@ -21,3 +21,12 @@ export const sluggify = (e) => {
 export const getConfigFromAttributes = (attributes) => {
   return Object.fromEntries(Object.entries(attributes).filter(([key]) => key !== 'blockId'))
 }
+
+export const delay = (n) => {
+  n = n || 2000
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, n)
+  })
+}

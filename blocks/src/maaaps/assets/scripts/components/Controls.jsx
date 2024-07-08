@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetPostTypes from '../utils/GetPostTypes'
 import ColorMap from './controls/ColorMap'
+import InputMaxMarkerZoom from './controls/NumberMaxMarkerZoom'
 import InputMaxZoom from './controls/NumberMaxZoom'
 import SelectCategories from './controls/SelectCategories'
 import SelectDisplayType from './controls/SelectDisplayType'
@@ -38,6 +39,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
   const selectedMaxZoom = attributes.selectedMaxZoom
+  const selectedMaxMarkerZoom = attributes.selectedMaxMarkerZoom
   const selectedMarkerSize = attributes.selectedMarkerSize
   const selectedMarkerClusterSize = attributes.selectedMarkerClusterSize
 
@@ -80,6 +82,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
             <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
             <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} />
+            <InputMaxMarkerZoom defaultValue={selectedMaxMarkerZoom} max={selectedMaxZoom} setAttributes={setAttributes} />
             <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
             <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
             <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />

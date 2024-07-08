@@ -2,9 +2,7 @@ import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
-import { sluggify } from '../../common/functions'
-
-export default function Search({ limitedSearch, posts, setAttributes, setFilteredPosts, setSelectedSearchResult }) {
+export default function Search({ limitedSearch, setSearchValue, setSelectedSearchResult }) {
   const [results, setResults] = useState([])
   const [showReset, setShowReset] = useState('none')
   const [showResults, setShowResults] = useState(false)
@@ -13,7 +11,7 @@ export default function Search({ limitedSearch, posts, setAttributes, setFiltere
 
   const resetForm = () => {
     setSelectedSearchResult({})
-    setFilteredPosts([])
+    setSearchValue('')
     setShowReset('none')
     setResults([])
     setShowResults(false)
@@ -40,13 +38,9 @@ export default function Search({ limitedSearch, posts, setAttributes, setFiltere
           const searchInputValue = e.target.s.value
 
           if (limitedSearch) {
-            // Search only in previously selected posts
-            const searchValue = new RegExp(sluggify(searchInputValue), '')
-            const filteredPosts = posts.filter((post) => post.slug.match(searchValue))
-
-            setAttributes({ filteredPosts })
+            // Search only in posts
             setSelectedSearchResult({})
-            setFilteredPosts(filteredPosts)
+            setSearchValue(searchInputValue)
           } else {
             // Search worldwide
             const searchResults = await provider.search({ query: searchInputValue })
@@ -54,7 +48,7 @@ export default function Search({ limitedSearch, posts, setAttributes, setFiltere
             setResults(searchResults)
             setShowResults(true)
             setSelectedSearchResult({})
-            setFilteredPosts([])
+            setSearchValue('')
           }
         }}
       >
