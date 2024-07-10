@@ -22,9 +22,6 @@
     "blockId": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
     "postType": {
       "type": "string",
       "default": "post"

@@ -1,13 +1,14 @@
 import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
-import { createRef, useEffect, useRef, useState } from '@wordpress/element'
+import { createRef, useRef, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
 import Map from './components/Map'
 import Loader from './components/map/Loader'
 import Sidebar from './components/Sidebar'
 import Toggles from './components/Toggles'
+import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
 
 export default function Edit({ attributes, setAttributes }) {
@@ -28,10 +29,6 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-geolocation': attributes.selectedGeolocationColor
   }
 
-  useEffect(() => {
-    setAttributes({ blockId: blockProps.id })
-  }, [])
-
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
@@ -42,9 +39,11 @@ export default function Edit({ attributes, setAttributes }) {
   const [searchValue, setSearchValue] = useState('') // search value
 
   let posts = []
+  let filtersList = {}
   if (attributes.selectedPosts.length) {
     posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
-    FilterPosts(posts, filters, searchValue)
+    filtersList = CreateFilters(attributes.categories, attributes.taxonomies, posts)
+    posts = FilterPosts(posts, filters, searchValue)
   }
 
   const markerRefs = useRef([])
@@ -55,9 +54,9 @@ export default function Edit({ attributes, setAttributes }) {
 
   // TODO avec RUDY:
   // Marker active
+  // offset map bound
+  // Sidebar size
   // Filters
-
-  console.log(attributes)
 
   return (
     <>
@@ -69,11 +68,11 @@ export default function Edit({ attributes, setAttributes }) {
               articleRefs={articleRefs}
               displaySearch={attributes.displaySearch}
               filters={filters}
+              filtersList={filtersList}
               limitedSearch={attributes.limitedSearch}
               markerRefs={markerRefs}
               posts={posts}
               selectedPost={selectedPost}
-              setAttributes={setAttributes}
               setFilters={setFilters}
               setSearchValue={setSearchValue}
               setSelectedPost={setSelectedPost}
