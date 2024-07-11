@@ -17,7 +17,8 @@
     --template-columns: auto 1fr;
   }
 
-  &:hover {
+  &:hover,
+  &[data-selected='true'] {
     background-color: var(--color-gray-100);
   }
 

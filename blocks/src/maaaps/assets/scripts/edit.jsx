@@ -3,6 +3,7 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { createRef, useRef, useState } from '@wordpress/element'
 
+import { sortStickyPosts } from './common/functions'
 import Controls from './components/Controls'
 import Map from './components/Map'
 import Loader from './components/map/Loader'
@@ -24,9 +25,10 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-primary': attributes.selectedPrimaryColor,
     '--color-secondary': attributes.selectedSecondaryColor,
     '--color-marker': attributes.selectedMarkerColor,
+    '--color-marker-active': attributes.selectedActiveMarkerColor,
     '--color-cluster': attributes.selectedClusterColor,
-    '--color-search': attributes.selectedSearchColor,
-    '--color-geolocation': attributes.selectedGeolocationColor,
+    '--color-marker-search': attributes.selectedSearchColor,
+    '--color-marker-geolocation': attributes.selectedGeolocationColor,
     '--sidebar-size': attributes.selectedSidebarSize
   }
 
@@ -47,17 +49,20 @@ export default function Edit({ attributes, setAttributes }) {
     posts = FilterPosts(posts, filters, searchValue)
   }
 
+  if (attributes.putStickyFirst) {
+    posts = sortStickyPosts(posts)
+  }
+
+  // Create ref for markers & article (in the sidebar) for better association when clicking
   const markerRefs = useRef([])
   markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-  const articleRefs = useRef([])
-  articleRefs.current = posts.map((_, i) => articleRefs.current[i] ?? createRef())
+  const postRefs = useRef([])
+  postRefs.current = posts.map((_, i) => postRefs.current[i] ?? createRef())
 
-  // TODO avec RUDY:
-  // Marker active +  popup
+  // TODO:
   // offset map bound
-  // Sidebar size
-  // Filters
+  // style desktop & mobile
 
   return (
     <>
@@ -66,12 +71,12 @@ export default function Edit({ attributes, setAttributes }) {
         <div className="responsive-wrapper">
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
-              articleRefs={articleRefs}
               displaySearch={attributes.displaySearch}
               filters={filters}
               filtersList={filtersList}
               limitedSearch={attributes.limitedSearch}
               markerRefs={markerRefs}
+              postRefs={postRefs}
               posts={posts}
               selectedPost={selectedPost}
               setFilters={setFilters}
@@ -84,7 +89,6 @@ export default function Edit({ attributes, setAttributes }) {
 
           {!!posts.length && (
             <Map
-              articleRefs={articleRefs}
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
               colors={{
@@ -101,6 +105,7 @@ export default function Edit({ attributes, setAttributes }) {
               maxMarkerZoom={attributes.selectedMaxMarkerZoom}
               maxZoom={attributes.selectedMaxZoom}
               mobileIsMapDisplayed={mobileIsMapDisplayed}
+              postRefs={postRefs}
               posts={posts}
               selectedPost={selectedPost}
               selectedSearchResult={selectedSearchResult}
@@ -110,8 +115,7 @@ export default function Edit({ attributes, setAttributes }) {
           )}
         </div>
 
-        <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />
-
+        {!!posts.length && <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />}
         <Loader hasPosts={!!queriedPosts.length} />
       </section>
     </>

@@ -7,6 +7,16 @@ const Icon = (type, color, markerSize = '40px', cluster, isSelected = false) => 
   const markerSizeUnitStrip = parseInt(markerSize, 10)
 
   if (type === 'cluster') {
+    // let isInCluster = false
+    // const clusterChildMarkers = cluster.getAllChildMarkers()
+    // if (isSelected) {
+    //   for (const clusterChildMarker of clusterChildMarkers) {
+    //     if (clusterChildMarker.options.data.id === isSelected.id) {
+    //       isInCluster = true
+    //     }
+    //   }
+    // }
+
     html += /* html */ `
     <svg
       version="1.1"
@@ -47,8 +57,8 @@ const Icon = (type, color, markerSize = '40px', cluster, isSelected = false) => 
         x="0px"
         y="0px"
         viewBox="0 0 40 40"
-        width="${markerSize}px"
-        height="${markerSize}px"
+        width="${markerSize}"
+        height="${markerSize}"
         style="enable-background:new 0 0 40 40;"
         xml:space="preserve"
       >
@@ -59,7 +69,7 @@ const Icon = (type, color, markerSize = '40px', cluster, isSelected = false) => 
       </svg>
       <div class="marker-icon__pulse"></div>
     `
-    className = 'custom-marker'
+    className = `custom-marker ${type && `custom-marker--${type}`}`
   }
 
   html += /* html */ '</div>'

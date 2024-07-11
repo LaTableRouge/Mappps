@@ -2,8 +2,8 @@ import Excerpt from './Excerpt'
 import Thumbnail from './Thumbnail'
 import Title from './Title'
 
-export default function Article({ post, selectedPost, setSelectedPost }) {
-  const title = post.title.rendered
+export default function Article({ post, postRef, selectedPost, setSelectedPost }) {
+  const title = post.title.raw
   const excerpt = post.excerpt
   const sticky = post.sticky
   const id = post.id
@@ -14,7 +14,7 @@ export default function Article({ post, selectedPost, setSelectedPost }) {
     const thumbnail = embed['wp:featuredmedia']
     if (thumbnail && thumbnail[0]) {
       const thumbnailDetails = thumbnail[0]?.media_details
-      const thumbnailTitle = thumbnail[0]?.title?.rendered
+      const thumbnailTitle = thumbnail[0]?.title?.raw
 
       if (thumbnailDetails) {
         const thumbnailSizes = thumbnailDetails.sizes
@@ -28,8 +28,10 @@ export default function Article({ post, selectedPost, setSelectedPost }) {
 
   return (
     <article
+      key={id}
+      ref={postRef}
       className="articles-wrapper__article"
-      data-id={id}
+      data-selected={post === selectedPost}
       data-sticky={sticky}
       onClick={(e) => {
         e.preventDefault()

@@ -5,7 +5,7 @@ import Icon from './Icon'
 
 export default function MarkerGeolocation(color, coordinates) {
   return (
-    <Marker icon={Icon('', color)} position={coordinates}>
+    <Marker icon={Icon('geolocation', color)} position={coordinates}>
       <Popup>
         <div>
           <strong>{__('You are here', 'maaaps')}</strong>

@@ -25,19 +25,17 @@ function ChangeView({ markerGeolocation, markers, markerSearch, maxMarkerZoom, r
       const marker = markerRef.current
       const cluster = refCluster.current
       if (marker) {
-        // const popup = marker._popup
+        const popup = marker._popup
         if (marker.options.data.id === selectedPost.id) {
           const parentElement = cluster.getVisibleParent(marker)
           if (parentElement) {
             if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
-              zoomSmoothly(cluster, marker)
+              zoomSmoothly(cluster, marker, popup)
             } else {
-              // setCurrentPopup(popup);
-              zoomSmoothly(null, null)
+              zoomSmoothly(null, null, popup)
             }
           } else {
-            // setCurrentPopup(popup);
-            zoomSmoothly(null, null)
+            zoomSmoothly(null, null, popup)
           }
         }
       }

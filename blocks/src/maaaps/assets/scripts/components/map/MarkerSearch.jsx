@@ -5,7 +5,7 @@ import Icon from './Icon'
 export default function MarkerSearch(color, data, ref) {
   return (
     <>
-      <Marker ref={ref} icon={Icon('', color)} position={[data.y, data.x]}>
+      <Marker ref={ref} icon={Icon('search', color)} position={[data.y, data.x]}>
         <Popup>
           <div>
             <strong>{data.label}</strong>

@@ -75,6 +75,10 @@
       "type": "string",
       "default": "#2b82cb"
     },
+    "selectedActiveMarkerColor": {
+      "type": "string",
+      "default": "#ff7272"
+    },
     "selectedClusterColor": {
       "type": "string",
       "default": "#FCA311"
@@ -100,6 +104,10 @@
       "default": true
     },
     "isGeolocated": {
+      "type": "boolean",
+      "default": true
+    },
+    "putStickyFirst": {
       "type": "boolean",
       "default": true
     },

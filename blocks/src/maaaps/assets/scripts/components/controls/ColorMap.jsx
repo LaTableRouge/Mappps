@@ -26,6 +26,13 @@ export default function ColorMap({ defaultValues, hasSearchColor, isClustered, s
             setAttributes({ selectedMarkerColor: value })
           }
         },
+        {
+          value: defaultValues.markerActive,
+          label: __('Marker'),
+          onChange: (value) => {
+            setAttributes({ selectedActiveMarkerColor: value })
+          }
+        },
         isClustered && {
           value: defaultValues.cluster,
           label: __('Cluster'),

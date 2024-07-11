@@ -16,6 +16,7 @@ import ToggleGeolocation from './controls/ToggleGeolocation'
 import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleSearch from './controls/ToggleSearch'
+import ToggleStickyFirst from './controls/ToggleStickyFirst'
 import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
 import UnitSidebarSize from './controls/UnitSidebarSize'
@@ -32,10 +33,12 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
   const isClustered = attributes.isClustered
   const isGeolocated = attributes.isGeolocated
   const selectedMarkerColor = attributes.selectedMarkerColor
+  const selectedActiveMarkerColor = attributes.selectedActiveMarkerColor
   const selectedClusterColor = attributes.selectedClusterColor
   const selectedSearchColor = attributes.selectedSearchColor
   const selectedDisplayType = attributes.selectedDisplayType
   const selectedSidebarSize = attributes.selectedSidebarSize
+  const putStickyFirst = attributes.putStickyFirst
   const selectedPrimaryColor = attributes.selectedPrimaryColor
   const selectedSecondaryColor = attributes.selectedSecondaryColor
   const displaySearch = attributes.displaySearch
@@ -85,6 +88,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
                 <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
                 {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
                 <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />
+                <ToggleStickyFirst defaultValue={putStickyFirst} setAttributes={setAttributes} />
               </>
             )}
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
@@ -98,6 +102,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
           <ColorMap
             defaultValues={{
               marker: selectedMarkerColor,
+              markerActive: selectedActiveMarkerColor,
               cluster: selectedClusterColor,
               search: selectedSearchColor,
               primary: selectedPrimaryColor,

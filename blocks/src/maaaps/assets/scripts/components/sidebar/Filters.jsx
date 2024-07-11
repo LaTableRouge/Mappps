@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n'
+
 export default function Filters({ filters, filtersList, setFilters }) {
   const tempFilters = Object.keys(filters).length ? Object.entries(filters) : Object.entries(filtersList)
 

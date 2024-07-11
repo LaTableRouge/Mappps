@@ -15,8 +15,6 @@ import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
 const Map = ({
-  articleRefs,
-
   cluster,
   clusterSize,
   colors,
@@ -28,6 +26,7 @@ const Map = ({
   maxMarkerZoom,
   maxZoom,
   mobileIsMapDisplayed,
+  postRefs,
   posts,
   selectedPost,
   selectedSearchResult,
@@ -36,10 +35,10 @@ const Map = ({
 }) => {
   const clusterRef = useRef(null)
 
-  const markers = Markers(posts, colors.marker, markerSize, markerRefs)
+  const markers = Markers(posts, colors.marker, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost)
 
   const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, colors.cluster, clusterSize, clusterRef) : markers
+    return cluster ? MarkerCluster(markers, colors.cluster, clusterSize, clusterRef, selectedPost) : markers
   }, [markers])
 
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})

@@ -30,3 +30,15 @@ export const delay = (n) => {
     }, n)
   })
 }
+
+export const sortStickyPosts = (posts) => {
+  return posts.sort((a, b) => {
+    if (a.sticky) {
+      return -1
+    }
+    if (b.sticky) {
+      return 1
+    }
+    return 0
+  })
+}

@@ -4,6 +4,14 @@
     position: relative;
     container-type: inline-size;
     container-name: maaaps-marker;
+    transition: var(--nomotion, transform 0.2s ease-in-out);
+
+    svg {
+      path {
+        transition: var(--nomotion, fill 0.2s ease-in-out);
+        fill: var(--svg-fill-color, var(--color-marker));
+      }
+    }
 
     &__pulse {
       display: grid;
@@ -36,10 +44,25 @@
   }
 
   &--active {
-    // TODO
+    --svg-fill-color: var(--color-marker-active);
+
+    .marker-icon {
+      transform: scale(1.1);
+      transform-origin: bottom center;
+    }
+  }
+
+  &--search {
+    --svg-fill-color: var(--color-marker-search);
+  }
+
+  &--geolocation {
+    --svg-fill-color: var(--color-marker-geolocation);
   }
 
   &--cluster {
+    --svg-fill-color: var(--color-cluster);
+
     .marker-icon {
       &__child-count {
         position: absolute;
