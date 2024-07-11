@@ -1,9 +1,7 @@
-import { __experimentalNumberControl as UnitControl } from '@wordpress/components'
+import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function UnitMarkerClusterSize(props) {
-  const { defaultValue, setAttributes } = props
-
+export default function UnitMarkerClusterSize({ defaultValue, setAttributes }) {
   return (
     <UnitControl
       help={__('The displayed sizes of the cluster icons', 'maaaps')}

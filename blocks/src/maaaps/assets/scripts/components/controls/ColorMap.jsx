@@ -1,9 +1,7 @@
 import { PanelColorSettings } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
-export default function ColorMap(props) {
-  const { defaultValues, hasSearchColor, isClustered, setAttributes } = props
-
+export default function ColorMap({ defaultValues, hasSearchColor, isClustered, setAttributes }) {
   return (
     <PanelColorSettings
       colorSettings={[

@@ -18,6 +18,7 @@ import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleSearch from './controls/ToggleSearch'
 import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
+import UnitSidebarSize from './controls/UnitSidebarSize'
 
 export default function Controls({ attributes, queriedPosts, setAttributes, setQueriedPosts }) {
   const postTypes = GetPostTypes()
@@ -34,6 +35,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
   const selectedClusterColor = attributes.selectedClusterColor
   const selectedSearchColor = attributes.selectedSearchColor
   const selectedDisplayType = attributes.selectedDisplayType
+  const selectedSidebarSize = attributes.selectedSidebarSize
   const selectedPrimaryColor = attributes.selectedPrimaryColor
   const selectedSecondaryColor = attributes.selectedSecondaryColor
   const displaySearch = attributes.displaySearch
@@ -77,16 +79,21 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
       {!!selectedPosts.length && (
         <>
           <PanelBody initialOpen={false} title={__('Render settings', 'maaaps')}>
+            <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
+            {selectedDisplayType === 'full' && (
+              <>
+                <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
+                {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
+                <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />
+              </>
+            )}
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
             <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
-            <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
             <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} />
             <InputMaxMarkerZoom defaultValue={selectedMaxMarkerZoom} max={selectedMaxZoom} setAttributes={setAttributes} />
             <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
             <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
-            <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
-            {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
           </PanelBody>
           <ColorMap
             defaultValues={{

@@ -1,8 +1,10 @@
 import L from 'leaflet'
 
-const Icon = (type, color, markerSize = 40, cluster, isSelected = false) => {
+const Icon = (type, color, markerSize = '40px', cluster, isSelected = false) => {
   let html = /* html */ '<div class="marker-icon">'
   let className = ''
+
+  const markerSizeUnitStrip = parseInt(markerSize, 10)
 
   if (type === 'cluster') {
     html += /* html */ `
@@ -14,8 +16,8 @@ const Icon = (type, color, markerSize = 40, cluster, isSelected = false) => {
       x="0px"
       y="0px"
       viewBox="0 0 40 40"
-      width="${markerSize}px"
-      height="${markerSize}px"
+      width="${markerSize}"
+      height="${markerSize}"
       style="enable-background:new 0 0 40 40;"
       xml:space="preserve"
     >
@@ -64,9 +66,10 @@ const Icon = (type, color, markerSize = 40, cluster, isSelected = false) => {
 
   return L.divIcon({
     html: html,
-    iconSize: [markerSize, markerSize],
+    iconSize: [markerSizeUnitStrip, markerSizeUnitStrip],
+    iconAnchor: [markerSizeUnitStrip / 2, markerSizeUnitStrip],
     className: `${className}${isSelected ? ' custom-marker--active' : ''}`,
-    popupAnchor: [0, -markerSize]
+    popupAnchor: [0, -markerSizeUnitStrip]
   })
 }
 

@@ -6,7 +6,7 @@
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
     grid-area: sidebar;
-    width: 25cqw;
+    width: var(--sidebar-size, 25cqw);
   }
 
   .sidebar__articles-wrapper {

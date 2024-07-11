@@ -16,6 +16,7 @@ import MarkerSearch from './map/MarkerSearch'
 
 const Map = ({
   articleRefs,
+
   cluster,
   clusterSize,
   colors,
@@ -88,11 +89,9 @@ const Map = ({
 
         {/* Geolocation marker */}
         {markerGeolocationMemo}
-        {/* {isGeolocated && Object.keys(geolocationCoordinates).length && <MarkerGeolocation color={colors.geolocationMarker} coordinates={geolocationCoordinates} />} */}
 
         {/* Search marker */}
         {markerSearchMemo}
-        {/* {displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length && <MarkerSearch color={colors.search} selectedSearchResult={selectedSearchResult} />} */}
       </MapContainer>
     </div>
   )

@@ -1,9 +1,7 @@
 import { ToggleControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function ToggleLimitedSearch(props) {
-  const { defaultValue, setAttributes } = props
-
+export default function ToggleLimitedSearch({ defaultValue, setAttributes }) {
   return (
     <ToggleControl
       checked={defaultValue}

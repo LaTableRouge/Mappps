@@ -26,7 +26,8 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-marker': attributes.selectedMarkerColor,
     '--color-cluster': attributes.selectedClusterColor,
     '--color-search': attributes.selectedSearchColor,
-    '--color-geolocation': attributes.selectedGeolocationColor
+    '--color-geolocation': attributes.selectedGeolocationColor,
+    '--sidebar-size': attributes.selectedSidebarSize
   }
 
   // States that aren't stored by Wordrpess
@@ -53,7 +54,7 @@ export default function Edit({ attributes, setAttributes }) {
   articleRefs.current = posts.map((_, i) => articleRefs.current[i] ?? createRef())
 
   // TODO avec RUDY:
-  // Marker active
+  // Marker active +  popup
   // offset map bound
   // Sidebar size
   // Filters

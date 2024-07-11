@@ -1,9 +1,7 @@
 import { __experimentalNumberControl as NumberControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function InputMaxZoom(props) {
-  const { defaultValue, setAttributes } = props
-
+export default function InputMaxZoom({ defaultValue, setAttributes }) {
   return (
     <NumberControl
       help={__('The maximum zoom level allowed for the map', 'maaaps')}

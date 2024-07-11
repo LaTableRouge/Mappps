@@ -116,12 +116,12 @@
       "default": false
     },
     "selectedMarkerSize": {
-      "type": "number",
-      "default": 40
+      "type": "string",
+      "default": "40px"
     },
     "selectedMarkerClusterSize": {
-      "type": "number",
-      "default": 50
+      "type": "string",
+      "default": "50px"
     },
     "selectedMaxZoom": {
       "type": "number",
@@ -130,6 +130,10 @@
     "selectedMaxMarkerZoom": {
       "type": "number",
       "default": 13
+    },
+    "selectedSidebarSize": {
+      "type": "string",
+      "default": "25cqw"
     }
   },
   "textdomain": "maaaps",

@@ -1,9 +1,7 @@
 import { SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function SelectTiles(props) {
-  const { defaultValue, options, setAttributes } = props
-
+export default function SelectTiles({ defaultValue, options, setAttributes }) {
   return (
     <SelectControl
       defaultValue={defaultValue}
