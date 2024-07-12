@@ -2,7 +2,7 @@ import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function Markers(posts, color, size, markerRefs, postRefs, setSelectedPost, selectedPost) {
+export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost) {
   return posts.map((post, index) => {
     const isSelected = selectedPost.id === post.id
 
@@ -21,7 +21,7 @@ export default function Markers(posts, color, size, markerRefs, postRefs, setSel
             }
           }
         }}
-        icon={Icon('', color, size, false, isSelected)}
+        icon={Icon('', size, false, isSelected)}
         position={[post.meta.lat, post.meta.lng]}
       >
         <Popup>

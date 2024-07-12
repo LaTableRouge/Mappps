@@ -17,7 +17,6 @@ import MarkerSearch from './map/MarkerSearch'
 const Map = ({
   cluster,
   clusterSize,
-  colors,
   displaySearch,
   isGeolocated,
   limitedSearch,
@@ -31,20 +30,21 @@ const Map = ({
   selectedPost,
   selectedSearchResult,
   setSelectedPost,
+  setSelectedSearchResult,
   tiles
 }) => {
   const clusterRef = useRef(null)
 
-  const markers = Markers(posts, colors.marker, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost)
+  const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost)
 
   const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, colors.cluster, clusterSize, clusterRef, selectedPost) : markers
+    return cluster ? MarkerCluster(markers, clusterSize, clusterRef, selectedPost) : markers
   }, [markers])
 
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
-      return MarkerGeolocation(colors.geolocationMarker, geolocationCoordinates)
+      return MarkerGeolocation(geolocationCoordinates)
     } else {
       return null
     }
@@ -53,7 +53,7 @@ const Map = ({
   const refMarkerSearch = useRef(null)
   const markerSearchMemo = useMemo(() => {
     if (displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length) {
-      return MarkerSearch(colors.search, selectedSearchResult, refMarkerSearch)
+      return MarkerSearch(selectedSearchResult, refMarkerSearch)
     } else {
       return null
     }
@@ -81,6 +81,7 @@ const Map = ({
           isGeolocated={isGeolocated}
           setGeolocationCoordinates={setGeolocationCoordinates}
           setSelectedPost={setSelectedPost}
+          setSelectedSearchResult={setSelectedSearchResult}
         />
 
         {/* Posts markers */}

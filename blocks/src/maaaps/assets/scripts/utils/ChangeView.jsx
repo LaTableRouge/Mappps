@@ -80,6 +80,7 @@ function ChangeView({ markerGeolocation, markers, markerSearch, maxMarkerZoom, r
 
   useEffect(() => {
     if (refMarkerSearch.current) {
+      // map.fitBounds(refMarkerSearch.current.getBounds(), { padding: [10, 10] })
       map.setView(refMarkerSearch.current.getLatLng(), maxMarkerZoom)
     }
   }, [markerSearch])

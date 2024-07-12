@@ -1,18 +1,18 @@
-import { Marker, Popup, Rectangle } from 'react-leaflet'
+import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function MarkerSearch(color, data, ref) {
+export default function MarkerSearch(data, ref) {
   return (
     <>
-      <Marker ref={ref} icon={Icon('search', color)} position={[data.y, data.x]}>
+      <Marker ref={ref} icon={Icon('search')} position={[data.y, data.x]}>
         <Popup>
           <div>
             <strong>{data.label}</strong>
           </div>
         </Popup>
       </Marker>
-      <Rectangle bounds={data.bounds} pathOptions={{ color }} />
+      {/* <Rectangle ref={ref} bounds={data.bounds} className='custom-rectangle custom-rectangle--search' /> */}
     </>
   )
 }

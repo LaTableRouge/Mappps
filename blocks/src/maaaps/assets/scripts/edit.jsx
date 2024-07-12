@@ -91,12 +91,6 @@ export default function Edit({ attributes, setAttributes }) {
             <Map
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
-              colors={{
-                marker: attributes.selectedMarkerColor,
-                cluster: attributes.selectedClusterColor,
-                search: attributes.selectedSearchColor,
-                geolocationMarker: attributes.selectedGeolocationColor
-              }}
               displaySearch={attributes.displaySearch}
               isGeolocated={attributes.isGeolocated}
               limitedSearch={attributes.limitedSearch}
@@ -110,6 +104,7 @@ export default function Edit({ attributes, setAttributes }) {
               selectedPost={selectedPost}
               selectedSearchResult={selectedSearchResult}
               setSelectedPost={setSelectedPost}
+              setSelectedSearchResult={setSelectedSearchResult}
               tiles={attributes.selectedMapTiles}
             />
           )}

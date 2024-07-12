@@ -21,7 +21,7 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
     <div
       className="sidebar__search-wrapper"
       onBlur={() => {
-        setShowResults(false)
+        // setShowResults(false)
       }}
     >
       <form
@@ -86,6 +86,7 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
               <li
                 key={index}
                 onClick={() => {
+                  console.log(result)
                   setSelectedSearchResult(result)
                 }}
               >
