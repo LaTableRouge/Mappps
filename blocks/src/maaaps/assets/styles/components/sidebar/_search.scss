@@ -1,7 +1,6 @@
 .sidebar__search-wrapper {
   position: relative;
-  padding: var(--spacing-md) var(--spacing-lg);
-  background-color: var(--color-white);
+  margin: var(--spacing-md) var(--spacing-lg);
 
   .search-wrapper {
     &__form {

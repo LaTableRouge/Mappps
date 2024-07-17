@@ -12,6 +12,7 @@ import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
 import SelectTiles from './controls/SelectTiles'
+import ToggleFilters from './controls/ToggleFilters'
 import ToggleGeolocation from './controls/ToggleGeolocation'
 import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
@@ -41,6 +42,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
   const putStickyFirst = attributes.putStickyFirst
   const selectedPrimaryColor = attributes.selectedPrimaryColor
   const selectedSecondaryColor = attributes.selectedSecondaryColor
+  const displayFilters = attributes.displayFilters
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
   const selectedMaxZoom = attributes.selectedMaxZoom
@@ -85,6 +87,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
             <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
             {selectedDisplayType === 'full' && (
               <>
+                <ToggleFilters defaultValue={displayFilters} setAttributes={setAttributes} />
                 <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
                 {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
                 <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />

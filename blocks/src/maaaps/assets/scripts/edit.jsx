@@ -47,6 +47,9 @@ export default function Edit({ attributes, setAttributes }) {
   let filtersList = {}
   if (attributes.selectedPosts.length) {
     posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
+  }
+
+  if (attributes.displayFilters) {
     filtersList = CreateFilters(attributes.categories, attributes.taxonomies, posts)
     posts = FilterPosts(posts, filters, searchValue)
   }
@@ -65,6 +68,8 @@ export default function Edit({ attributes, setAttributes }) {
   // TODO:
   // offset map bound
   // style desktop & mobile
+  // Marker cluster size fix
+  // Search blur & z index
 
   return (
     <>
@@ -73,6 +78,7 @@ export default function Edit({ attributes, setAttributes }) {
         <div className="responsive-wrapper">
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
+              displayFilters={attributes.displayFilters}
               displaySearch={attributes.displaySearch}
               filters={filters}
               filtersList={filtersList}

@@ -3,7 +3,7 @@
   grid-template-areas: var(--areas, 'title' 'excerpt' 'excerpt');
   grid-template-columns: var(--template-columns, initial);
   grid-template-rows: auto 1fr 1fr;
-  padding: var(--spacing-md) var(--spacing-lg);
+  padding: var(--spacing-sm) var(--spacing-lg);
   column-gap: var(--spacing-md);
   transition: var(--nomotion, background-color 0.3s ease);
   border-bottom: 1px solid var(--color-gray-300);
@@ -42,6 +42,8 @@
 
     &__excerpt {
       grid-area: excerpt;
+      font-size: 14px;
+      line-height: 1.1;
     }
   }
 }

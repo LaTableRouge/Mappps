@@ -3,6 +3,7 @@ import Filters from './sidebar/Filters'
 import Search from './sidebar/Search'
 
 export default function Sidebar({
+  displayFilters,
   displaySearch,
   filters,
   filtersList,
@@ -20,7 +21,7 @@ export default function Sidebar({
       <header className="sidebar__heading">
         {displaySearch && <Search limitedSearch={limitedSearch} setSearchValue={setSearchValue} setSelectedSearchResult={setSelectedSearchResult} />}
 
-        <Filters filters={filters} filtersList={filtersList} setFilters={setFilters} />
+        {displayFilters && <Filters filters={filters} filtersList={filtersList} setFilters={setFilters} />}
       </header>
 
       <div className="sidebar__articles-wrapper">

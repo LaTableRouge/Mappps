@@ -3,6 +3,7 @@
   grid-template-rows: auto 1fr;
   width: 100%;
   overflow: hidden;
+  background-color: var(--color-white);
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
     grid-area: sidebar;
@@ -11,6 +12,7 @@
 
   .sidebar__articles-wrapper {
     overflow-y: auto;
+    border-top: 1px solid var(--color-gray-300);
 
     @import 'sidebar/article';
   }

@@ -115,6 +115,10 @@
       "type": "string",
       "default": "full"
     },
+    "displayFilters": {
+      "type": "boolean",
+      "default": true
+    },
     "displaySearch": {
       "type": "boolean",
       "default": true

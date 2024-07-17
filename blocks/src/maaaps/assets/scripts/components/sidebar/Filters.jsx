@@ -55,9 +55,11 @@ export default function Filters({ filters, filtersList, setFilters }) {
       {!!tempFilters.length && (
         <form
           className="filters-wrapper__form"
-          // onSubmit={}
           onReset={(e) => {
             resetFilters()
+          }}
+          onSubmit={(e) => {
+            e.preventDefault()
           }}
         >
           <ul className="form__list">
