@@ -37,6 +37,10 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
 
           const searchInputValue = e.target.s.value
 
+          if (!searchInputValue.length) {
+            return false
+          }
+
           if (limitedSearch) {
             // Search only in posts
             setSelectedSearchResult({})
@@ -68,13 +72,13 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
           }}
         />
 
-        <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" style={{ display: showReset }} type="reset">
+        <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" style={{ display: showReset }} title={__('Clear', 'maaaps')} type="reset">
           <span className="icon-maaaps-cross"></span>
           <span className="screen-reader-text">{__('Clear', 'maaaps')}</span>
         </button>
 
-        <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" type="submit">
-          {/* <span className='icon-maaaps-search'></span> */}
+        <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" title={__('Search', 'maaaps')} type="submit">
+          <span className="icon-maaaps-search"></span>
           <span className="screen-reader-text">{__('Search', 'maaaps')}</span>
         </button>
       </form>
@@ -86,7 +90,6 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
               <li
                 key={index}
                 onClick={() => {
-                  console.log(result)
                   setSelectedSearchResult(result)
                 }}
               >

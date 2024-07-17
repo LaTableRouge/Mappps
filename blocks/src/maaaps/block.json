@@ -89,7 +89,7 @@
     },
     "selectedPrimaryColor": {
       "type": "string",
-      "default": "#ffed00"
+      "default": "#6ee9a2"
     },
     "selectedSecondaryColor": {
       "type": "string",

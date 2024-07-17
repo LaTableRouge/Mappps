@@ -3,7 +3,7 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { createRef, useRef, useState } from '@wordpress/element'
 
-import { sortStickyPosts } from './common/functions'
+import { isColorLight, sortStickyPosts } from './common/functions'
 import Controls from './components/Controls'
 import Map from './components/Map'
 import Loader from './components/map/Loader'
@@ -29,7 +29,9 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-cluster': attributes.selectedClusterColor,
     '--color-marker-search': attributes.selectedSearchColor,
     '--color-marker-geolocation': attributes.selectedGeolocationColor,
-    '--sidebar-size': attributes.selectedSidebarSize
+    '--sidebar-size': attributes.selectedSidebarSize,
+    '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
+    '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)'
   }
 
   // States that aren't stored by Wordrpess

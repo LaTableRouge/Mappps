@@ -12,10 +12,11 @@
       .form {
         &__input {
           width: 100%;
+          min-height: initial;
           padding: var(--spacing-sm) calc(var(--spacing-sm) * 3) var(--spacing-sm) 0;
           overflow: hidden;
           border: none;
-          border-bottom: 1px solid var(--color-gray-300);
+          border-bottom: 1px solid var(--color-primary);
           border-radius: 0;
 
           &:focus {
@@ -26,28 +27,49 @@
           &::-webkit-search-cancel-button {
             display: none;
           }
+
+          &:placeholder-shown {
+            & ~ [type='submit'] {
+              cursor: not-allowed;
+
+              &:hover {
+                opacity: initial;
+              }
+            }
+          }
         }
 
         &__button {
           z-index: 1;
+          width: var(--button-size);
+          height: var(--button-size);
           padding: 0;
           transition: var(--nomotion, opacity 0.2s ease-in-out);
           border: none;
           background: none;
-          color: var(--color-gray-700);
           cursor: pointer;
+
+          --button-size: 18px;
 
           &:hover {
             opacity: 0.8;
           }
-          // &--submit {
-          //   height: 30px;
-          //   width: 30px;
-          // }
+
+          &--submit {
+            padding: var(--spacing-sm);
+            border-top-left-radius: var(--radius-md);
+            border-top-right-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+            border-bottom-left-radius: 0;
+            background-color: var(--color-primary);
+            color: var(--color-button-primary);
+          }
+
           &--reset {
             position: absolute;
-            right: 5px;
-            bottom: var(--spacing-sm);
+            right: var(--button-size);
+            bottom: 0;
+            color: var(--color-gray-700);
             font-size: 10px;
           }
         }

@@ -5,9 +5,9 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?aqe6f3') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?aqe6f3') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?aqe6f3##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?lkrjxr') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?lkrjxr') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?lkrjxr##{$icomoon-font-family}') format('svg');
   font-display: block;
 }
 
@@ -186,6 +186,12 @@
 .icon-maaaps-arrow-right {
   &::before {
     content: $icon-maaaps-arrow-right;
+  }
+}
+
+.icon-maaaps-arrow-bottom {
+  &::before {
+    content: $icon-maaaps-arrow-bottom;
   }
 }
 

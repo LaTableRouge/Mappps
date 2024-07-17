@@ -27,44 +27,71 @@ export default function Filters({ filters, filtersList, setFilters }) {
     setFilters(tempFilters)
   }
 
+  const resetFilters = () => {
+    const tempFilters = filters.length ? filters : filtersList
+
+    for (const key in tempFilters) {
+      if (Object.hasOwnProperty.call(tempFilters, key)) {
+        const taxonomy = tempFilters[key]
+        let categories = taxonomy.categories
+        categories = categories.map((category) => {
+          if (category.checked) {
+            category.checked = false
+          }
+          return category
+        })
+      }
+    }
+
+    setFilters(tempFilters)
+  }
+
   return (
     <details className="sidebar__filters-wrapper">
-      <summary>{__('Filters', 'maaaps')}</summary>
+      <summary>
+        {__('Filters', 'maaaps')}
+        <span className="icon-maaaps-filter"></span>
+      </summary>
       {!!tempFilters.length && (
         <form
           className="filters-wrapper__form"
-          // onSubmit={(e) => {}}
+          // onSubmit={}
+          onReset={(e) => {
+            resetFilters()
+          }}
         >
           <ul className="form__list">
             {tempFilters.map(([key, taxonomy], i) => (
               <li key={i} className="list__element">
                 <label htmlFor={key}>
-                  <span>{taxonomy.name}</span>
                   <input
                     checked={taxonomy.checked ?? false}
                     id={key}
-                    name={taxonomy.slug}
+                    name={key}
                     type="checkbox"
                     onChange={(e) => {
                       handleChange(e.target)
+                      // e.preventDefault()
                     }}
                   />
+                  <span>{taxonomy.name}</span>
                 </label>
 
                 <ul className="list__sublist">
                   {taxonomy.categories.map((category, i) => (
                     <li key={i} className="list__element">
-                      <label htmlFor={`${key}-${category.id}`}>
-                        <span>{category.name}</span>
+                      <label htmlFor={`${key}---${category.id}`}>
                         <input
                           checked={category.checked ?? false}
                           id={`${key}---${category.id}`}
-                          name={category.id}
+                          name={`${key}---${category.id}`}
                           type="checkbox"
                           onChange={(e) => {
                             handleChange(e.target)
+                            // e.preventDefault()
                           }}
                         />
+                        <span>{category.name}</span>
                       </label>
                     </li>
                   ))}
@@ -73,14 +100,16 @@ export default function Filters({ filters, filtersList, setFilters }) {
             ))}
           </ul>
 
-          <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" type="reset">
-            <span className="icon-maaaps-cross"></span>
-            <span className="screen-reader-text">{__('Clear', 'maaaps')}</span>
+          <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" title={__('Clear', 'maaaps')} type="reset">
+            {__('Reset', 'maaaps')}
+            {/* <span className="icon-maaaps-cross"></span>
+            <span className="screen-reader-text">{__('Clear', 'maaaps')}</span> */}
           </button>
 
-          <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" type="submit">
-            {/* <span className='icon-maaaps-search'></span> */}
-            <span className="screen-reader-text">{__('Search', 'maaaps')}</span>
+          <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" title={__('Search', 'maaaps')} type="submit">
+            {__('Filter', 'maaaps')}
+            {/* <span className='icon-maaaps-filter'></span> */}
+            {/* <span className="screen-reader-text">{__('Search', 'maaaps')}</span> */}
           </button>
         </form>
       )}
