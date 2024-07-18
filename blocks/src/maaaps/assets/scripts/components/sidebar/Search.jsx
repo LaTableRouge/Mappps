@@ -1,4 +1,4 @@
-import { useState } from '@wordpress/element'
+import { useCallback, useEffect, useRef, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
@@ -6,6 +6,20 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
   const [results, setResults] = useState([])
   const [showReset, setShowReset] = useState('none')
   const [showResults, setShowResults] = useState(false)
+
+  // Close search results on click outside
+  const mobileMenuRef = useRef()
+  const closeOpenMenus = useCallback(
+    (e) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(e.target)) {
+        setShowResults(false)
+      }
+    },
+    [showResults]
+  )
+  useEffect(() => {
+    document.addEventListener('mousedown', closeOpenMenus)
+  }, [closeOpenMenus])
 
   const provider = new OpenStreetMapProvider()
 
@@ -18,12 +32,7 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
   }
 
   return (
-    <div
-      className="sidebar__search-wrapper"
-      onBlur={() => {
-        // setShowResults(false)
-      }}
-    >
+    <div ref={mobileMenuRef} className="sidebar__search-wrapper">
       <form
         className="search-wrapper__form"
         role="search"

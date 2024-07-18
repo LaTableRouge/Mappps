@@ -46,8 +46,10 @@
   &--active {
     --svg-fill-color: var(--color-marker-active);
 
+    stroke: var(--color-secondary);
+
     .marker-icon {
-      transform: scale(1.1);
+      transform: scale(1.4);
       transform-origin: bottom center;
     }
   }

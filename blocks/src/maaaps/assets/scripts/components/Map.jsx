@@ -38,7 +38,7 @@ const Map = ({
   const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost)
 
   const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, clusterSize, clusterRef, selectedPost) : markers
+    return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
   }, [markers])
 
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
