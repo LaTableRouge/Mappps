@@ -2,7 +2,6 @@ import { InspectorControls } from '@wordpress/block-editor'
 import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-import GetPostTypes from '../utils/GetPostTypes'
 import ColorMap from './controls/ColorMap'
 import InputMaxMarkerZoom from './controls/NumberMaxMarkerZoom'
 import InputMaxZoom from './controls/NumberMaxZoom'
@@ -22,8 +21,7 @@ import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
 import UnitSidebarSize from './controls/UnitSidebarSize'
 
-export default function Controls({ attributes, queriedPosts, setAttributes, setQueriedPosts }) {
-  const postTypes = GetPostTypes()
+export default function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
   const selectedPostType = attributes.postType
   const selectedPosts = attributes.selectedPosts
   const selectedTaxonomies = attributes.selectedTaxonomies
@@ -72,7 +70,7 @@ export default function Controls({ attributes, queriedPosts, setAttributes, setQ
         {!!selectedCategories.length && (
           <SelectPosts
             categories={selectedCategories}
-            defaultValue={queriedPosts}
+            defaultValue={selectedPosts}
             postType={selectedPostType}
             setAttributes={setAttributes}
             setQueriedPosts={setQueriedPosts}

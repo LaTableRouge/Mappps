@@ -9,8 +9,10 @@ import Map from './components/Map'
 import Loader from './components/map/Loader'
 import Sidebar from './components/Sidebar'
 import Toggles from './components/Toggles'
+import Wizard from './components/Wizard'
 import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
+import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, setAttributes }) {
   // attributes are the states stored by Wordpress
@@ -68,13 +70,13 @@ export default function Edit({ attributes, setAttributes }) {
   // TODO:
   // offset map bound
   // style desktop & mobile
-  // Marker cluster size fix
-  // Search blur & z index
 
-  return (
-    <>
-      <Controls attributes={attributes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+  const postTypes = GetPostTypes()
+
+  if (attributes.selectedPosts.length) {
+    return (
       <section {...blockProps}>
+        <Controls attributes={attributes} postTypes={postTypes.types} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
         <div className="responsive-wrapper">
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
@@ -121,6 +123,12 @@ export default function Edit({ attributes, setAttributes }) {
         {!!posts.length && <Toggles mobileIsMapDisplayed={mobileIsMapDisplayed} setMobileIsMapDisplayed={setMobileIsMapDisplayed} />}
         <Loader hasPosts={!!queriedPosts.length} />
       </section>
-    </>
-  )
+    )
+  } else {
+    return (
+      <section {...blockProps}>
+        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+      </section>
+    )
+  }
 }

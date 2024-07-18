@@ -1,10 +1,10 @@
-import { SelectControl } from '@wordpress/components'
+import { SelectControl, Spinner } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 import GetCategories from '../../utils/GetCategories'
 
 export default function SelectCategories({ defaultValue, setAttributes, setQueriedPosts, taxonomies }) {
-  const categories = GetCategories(taxonomies)
+  const { categories, resolved } = GetCategories(taxonomies)
 
   const options = []
   if (Object.keys(categories).length) {
@@ -20,20 +20,31 @@ export default function SelectCategories({ defaultValue, setAttributes, setQueri
     }
   }
 
-  return (
-    <SelectControl
-      multiple
-      defaultValue={defaultValue}
-      label={__('Categories', 'maaaps')}
-      options={options}
-      onChange={(value) => {
-        setQueriedPosts([])
-        setAttributes({
-          selectedCategories: value,
-          categories,
-          selectedPosts: []
-        })
-      }}
-    />
-  )
+  if (resolved) {
+    return (
+      <>
+        {/* eslint-disable-next-line multiline-ternary */}
+        {Object.keys(categories).length ? (
+          <SelectControl
+            multiple
+            defaultValue={defaultValue}
+            label={__('Categories', 'maaaps')}
+            options={options}
+            onChange={(value) => {
+              setQueriedPosts([])
+              setAttributes({
+                selectedCategories: value,
+                categories
+                // selectedPosts: []
+              })
+            }}
+          />
+        ) : (
+          __('No categories could be recovered.', 'maaaps')
+        )}
+      </>
+    )
+  } else {
+    return <Spinner />
+  }
 }
