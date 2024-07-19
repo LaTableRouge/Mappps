@@ -42,8 +42,19 @@
 
     &__excerpt {
       grid-area: excerpt;
+      overflow: hidden;
       font-size: 14px;
       line-height: 1.1;
+
+      @supports (-webkit-line-clamp: 3) {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+
+      @supports not (-webkit-line-clamp: 3) {
+        height: 47px;
+      }
     }
   }
 }

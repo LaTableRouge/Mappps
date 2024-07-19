@@ -1,7 +1,6 @@
-import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-export default function Filters({ filters, filtersList, setFilters }) {
+export default function Filters({ filters, filtersList, filtersOpen, setFilters, setFiltersOpen, setSelectedPost }) {
   const tempFilters = Object.keys(filters).length ? Object.entries(filters) : Object.entries(filtersList)
 
   const selectedFiltersCounter = tempFilters
@@ -22,7 +21,6 @@ export default function Filters({ filters, filtersList, setFilters }) {
 
       tempFilters[searchedTaxonomy].categories[categoryIndex].checked = isChecked
     } else {
-      tempFilters[searchedTaxonomy].checked = isChecked
       const categories = tempFilters[searchedTaxonomy].categories
 
       tempFilters[searchedTaxonomy].categories = categories.map((category) => {
@@ -40,6 +38,8 @@ export default function Filters({ filters, filtersList, setFilters }) {
     for (const key in tempFilters) {
       if (Object.hasOwnProperty.call(tempFilters, key)) {
         const taxonomy = tempFilters[key]
+        taxonomy.checked = false
+
         let categories = taxonomy.categories
         categories = categories.map((category) => {
           if (category.checked) {
@@ -53,7 +53,10 @@ export default function Filters({ filters, filtersList, setFilters }) {
     setFilters(tempFilters)
   }
 
-  const [filtersOpen, setFiltersOpen] = useState(false)
+  const isTaxonomyChecked = (taxonomy) => {
+    const checkedCategories = taxonomy.categories.filter((e) => e.checked)
+    return checkedCategories.length === taxonomy.categories.length
+  }
 
   return (
     <>
@@ -66,6 +69,7 @@ export default function Filters({ filters, filtersList, setFilters }) {
             e.preventDefault()
 
             setFiltersOpen(!filtersOpen)
+            setSelectedPost({})
           }}
         >
           {__('Filters', 'maaaps')}
@@ -107,7 +111,7 @@ export default function Filters({ filters, filtersList, setFilters }) {
                 <li key={i} className="list__element">
                   <label htmlFor={key}>
                     <input
-                      checked={taxonomy.checked ?? false}
+                      checked={isTaxonomyChecked(taxonomy)}
                       id={key}
                       name={key}
                       type="checkbox"

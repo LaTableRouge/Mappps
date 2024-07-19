@@ -37,12 +37,12 @@ const getAssociateTaxonomyCategories = (taxonomies, categoriesToExclude) => {
       const filteredCategories = flatArray.filter((category) => !categoriesToExclude.includes(category.id))
 
       if (filteredCategories.length) {
-        filteredCategories.forEach(({ id, name, taxonomy }) => {
+        filteredCategories.forEach(({ id, link, name, taxonomy }) => {
           if (!categories[taxonomy]) {
             categories[taxonomy] = []
           }
 
-          categories[taxonomy].push({ name, id })
+          categories[taxonomy].push({ name, id, link })
         })
       }
     }

@@ -1,8 +1,8 @@
-import { Marker, Popup } from 'react-leaflet'
+import { Marker } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost) {
+export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen) {
   return posts.map((post, index) => {
     const isSelected = selectedPost.id === post.id
 
@@ -13,27 +13,25 @@ export default function Markers(posts, size, markerRefs, postRefs, setSelectedPo
         data={post}
         eventHandlers={{
           click: (e) => {
-            setSelectedPost(post)
+            if (post !== selectedPost) {
+              // Close the filters
+              setFiltersOpen(false)
 
-            // Scroll the sidebar
-            const associatedPost = postRefs.current[index]
-            if (associatedPost.current) {
-              const target = associatedPost.current
-              const parent = associatedPost.current.parentNode
-              parent.scroll({ top: target.offsetTop - parent.offsetTop, behavior: 'smooth' })
+              setSelectedPost(post)
+
+              // Scroll the sidebar
+              const associatedPost = postRefs.current[index]
+              if (associatedPost.current) {
+                const target = associatedPost.current
+                const parent = associatedPost.current.parentNode
+                parent.scroll({ top: target.offsetTop - parent.offsetTop, behavior: 'smooth' })
+              }
             }
           }
         }}
         icon={Icon('', size, false, isSelected)}
         position={[post.meta.lat, post.meta.lng]}
-      >
-        <Popup>
-          <div>
-            <strong>{post.title.raw}</strong>
-          </div>
-          <div dangerouslySetInnerHTML={{ __html: post.excerpt.raw }} />
-        </Popup>
-      </Marker>
+      />
     )
   })
 }

@@ -1,8 +1,8 @@
-import Excerpt from './Excerpt'
-import Thumbnail from './Thumbnail'
-import Title from './Title'
+import Excerpt from './article/Excerpt'
+import Thumbnail from './article/Thumbnail'
+import Title from './article/Title'
 
-export default function Article({ post, postRef, selectedPost, setSelectedPost }) {
+export default function Article({ post, postRef, selectedPost, setFiltersOpen, setSelectedPost }) {
   const title = post.title.raw
   const excerpt = post.excerpt
   const sticky = post.sticky
@@ -38,10 +38,12 @@ export default function Article({ post, postRef, selectedPost, setSelectedPost }
 
         if (post !== selectedPost) {
           setSelectedPost(post)
+          // Close the filters
+          setFiltersOpen(false)
         }
       }}
     >
-      <Thumbnail title={thumbnailInfos.title} url={thumbnailInfos.url} />
+      <Thumbnail height={60} title={thumbnailInfos.title} url={thumbnailInfos.url} width={60} />
       <Title text={title} />
       <Excerpt text={excerpt.raw} />
     </article>

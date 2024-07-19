@@ -20,6 +20,7 @@ const Map = ({
   displaySearch,
   isGeolocated,
   limitedSearch,
+  markerOffset,
   markerRefs,
   markerSize,
   maxMarkerZoom,
@@ -29,13 +30,14 @@ const Map = ({
   posts,
   selectedPost,
   selectedSearchResult,
+  setFiltersOpen,
   setSelectedPost,
   setSelectedSearchResult,
   tiles
 }) => {
   const clusterRef = useRef(null)
 
-  const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost)
+  const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen)
 
   const markerGroup = useMemo(() => {
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
@@ -64,6 +66,7 @@ const Map = ({
       <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false}>
         <ChangeView
           markerGeolocation={markerGeolocationMemo}
+          markerOffset={markerOffset}
           markers={markers}
           markerSearch={markerSearchMemo}
           maxMarkerZoom={maxMarkerZoom}

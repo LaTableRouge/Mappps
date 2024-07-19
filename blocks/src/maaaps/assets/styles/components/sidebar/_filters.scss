@@ -49,7 +49,7 @@
     position: absolute;
     top: 0;
     left: 100%;
-    width: var(--popups-size, max-content);
+    width: var(--filter-size, max-content);
     min-width: max-content;
     padding: var(--spacing-md);
     transform: translateX(var(--form-transform, -100%));

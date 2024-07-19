@@ -5,7 +5,7 @@ import { useMap } from 'react-leaflet'
 
 import { delay } from '../common/functions'
 
-function ChangeView({ markerGeolocation, markers, markerSearch, maxMarkerZoom, refCluster, refMarkerSearch, refsMarker, selectedPost }) {
+function ChangeView({ markerGeolocation, markerOffset, markers, markerSearch, maxMarkerZoom, refCluster, refMarkerSearch, refsMarker, selectedPost }) {
   const map = useMap()
 
   async function zoomSmoothly(cluster = null, marker = null, popup) {
@@ -89,7 +89,7 @@ function ChangeView({ markerGeolocation, markers, markerSearch, maxMarkerZoom, r
     if (markers.length && Object.keys(selectedPost).length) {
       const selectedMarker = markers.find((marker) => marker.props.data.id === selectedPost.id)
       if (selectedMarker) {
-        map.setView(selectedMarker.props.position, maxMarkerZoom)
+        map.fitBounds([selectedMarker.props.position], { paddingTopLeft: [markerOffset, 0], maxZoom: maxMarkerZoom })
         zoomOntoMarker()
       }
     } else {

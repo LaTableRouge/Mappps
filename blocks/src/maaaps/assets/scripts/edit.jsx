@@ -13,6 +13,7 @@ import Wizard from './components/Wizard'
 import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
 import GetPostTypes from './utils/GetPostTypes'
+import GetSelectedPostTerms from './utils/GetSelectedPostTerms'
 
 export default function Edit({ attributes, setAttributes }) {
   // attributes are the states stored by Wordpress
@@ -32,7 +33,8 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-marker-search': attributes.selectedSearchColor,
     '--color-marker-geolocation': attributes.selectedGeolocationColor,
     '--sidebar-size': attributes.selectedSidebarSize,
-    '--popups-size': attributes.selectedPopupsSize,
+    '--popup-size': attributes.selectedPopupsSize,
+    '--filter-size': attributes.selectedFiltersSize,
     '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
     '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)'
   }
@@ -41,13 +43,17 @@ export default function Edit({ attributes, setAttributes }) {
   // They are only usefull for the preview
 
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
+  const [selectedPostTerms, setSelectedPostTerms] = useState({}) // the associated terms of the selected post
   const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
   const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
   const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(false) // mobile toggle
   const [filters, setFilters] = useState({}) // filters object
+  const [filtersOpen, setFiltersOpen] = useState(false) // filters open/close state
   const [searchValue, setSearchValue] = useState('') // search value
-  const [wrapperMaxHeight, setWrapperMaxHeight] = useState(0)
-  const ref = useRef(null)
+  const [wrapperMaxHeight, setWrapperMaxHeight] = useState(0) // The height of the whole block
+  const [popupWidth, setPopupWidth] = useState(0) // The height of the whole block
+  const wrapperRef = useRef(null)
+  const popupRef = useRef(null)
 
   let posts = []
   let filtersList = {}
@@ -76,27 +82,44 @@ export default function Edit({ attributes, setAttributes }) {
   // style desktop & mobile
 
   useEffect(() => {
-    setWrapperMaxHeight(ref.current.clientHeight)
+    console.log('wrapper Ref')
+    setWrapperMaxHeight(wrapperRef.current.clientHeight)
+  }, [wrapperRef])
+
+  useEffect(() => {
+    if (popupRef.current) {
+      setPopupWidth(popupRef.current.clientWidth)
+    }
   })
+
+  useEffect(() => {
+    if (Object.keys(selectedPost).length) {
+      setSelectedPostTerms(GetSelectedPostTerms(selectedPost, attributes.taxonomies, attributes.categories))
+    }
+  }, [selectedPost])
 
   const postTypes = GetPostTypes()
   if (attributes.selectedPosts.length) {
     return (
       <section {...blockProps}>
         <Controls attributes={attributes} postTypes={postTypes.types} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-        <div ref={ref} className="responsive-wrapper" style={{ '--max-height': `${wrapperMaxHeight}px` }}>
+        <div ref={wrapperRef} className="responsive-wrapper" style={{ '--max-height': `${wrapperMaxHeight}px` }}>
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
               displayFilters={attributes.displayFilters}
               displaySearch={attributes.displaySearch}
               filters={filters}
               filtersList={filtersList}
+              filtersOpen={filtersOpen}
               limitedSearch={attributes.limitedSearch}
               markerRefs={markerRefs}
+              popupRef={popupRef}
               postRefs={postRefs}
               posts={posts}
               selectedPost={selectedPost}
+              selectedPostTerms={selectedPostTerms}
               setFilters={setFilters}
+              setFiltersOpen={setFiltersOpen}
               setSearchValue={setSearchValue}
               setSelectedPost={setSelectedPost}
               setSelectedSearchResult={setSelectedSearchResult}
@@ -111,6 +134,7 @@ export default function Edit({ attributes, setAttributes }) {
               displaySearch={attributes.displaySearch}
               isGeolocated={attributes.isGeolocated}
               limitedSearch={attributes.limitedSearch}
+              markerOffset={popupWidth}
               markerRefs={markerRefs}
               markerSize={attributes.selectedMarkerSize}
               maxMarkerZoom={attributes.selectedMaxMarkerZoom}
@@ -120,6 +144,7 @@ export default function Edit({ attributes, setAttributes }) {
               posts={posts}
               selectedPost={selectedPost}
               selectedSearchResult={selectedSearchResult}
+              setFiltersOpen={setFiltersOpen}
               setSelectedPost={setSelectedPost}
               setSelectedSearchResult={setSelectedSearchResult}
               tiles={attributes.selectedMapTiles}
