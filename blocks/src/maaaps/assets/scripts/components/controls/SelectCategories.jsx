@@ -1,10 +1,17 @@
 import { SelectControl, Spinner } from '@wordpress/components'
+import { useEffect } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import GetCategories from '../../utils/GetCategories'
 
 export default function SelectCategories({ defaultValue, setAttributes, setQueriedPosts, taxonomies }) {
   const { categories, resolved } = GetCategories(taxonomies)
+
+  useEffect(() => {
+    if (resolved && Object.keys(categories).length) {
+      setAttributes({ categories })
+    }
+  }, [resolved])
 
   const options = []
   if (Object.keys(categories).length) {
@@ -33,8 +40,7 @@ export default function SelectCategories({ defaultValue, setAttributes, setQueri
             onChange={(value) => {
               setQueriedPosts([])
               setAttributes({
-                selectedCategories: value,
-                categories
+                selectedCategories: value
                 // selectedPosts: []
               })
             }}

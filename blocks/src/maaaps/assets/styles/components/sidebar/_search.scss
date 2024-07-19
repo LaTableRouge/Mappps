@@ -45,14 +45,14 @@
         &__button {
           z-index: 1;
           width: var(--button-size);
-          height: var(--button-size);
+          height: calc(var(--button-size) + 2px);
           padding: 0;
           transition: var(--nomotion, opacity 0.2s ease-in-out);
           border: none;
           background: none;
           cursor: pointer;
 
-          --button-size: 18px;
+          --button-size: 32px;
 
           &:hover {
             opacity: 0.8;

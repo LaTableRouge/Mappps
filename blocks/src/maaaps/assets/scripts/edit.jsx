@@ -32,6 +32,7 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-marker-search': attributes.selectedSearchColor,
     '--color-marker-geolocation': attributes.selectedGeolocationColor,
     '--sidebar-size': attributes.selectedSidebarSize,
+    '--popups-size': attributes.selectedPopupsSize,
     '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
     '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)'
   }

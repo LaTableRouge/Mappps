@@ -1,5 +1,6 @@
 .maaaps__sidebar {
   display: grid;
+  z-index: 999;
   grid-template-rows: auto 1fr;
   width: 100%;
   max-height: inherit;

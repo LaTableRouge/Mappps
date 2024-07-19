@@ -1,4 +1,5 @@
 import { SelectControl, Spinner } from '@wordpress/components'
+import { useEffect } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import GetTaxonomies from '../../utils/GetTaxonomies'
@@ -12,6 +13,12 @@ export default function SelectTaxonomies({ defaultValue, postType, setAttributes
       options.push({ label: taxonomy.name, value: taxonomy.slug })
     })
   }
+
+  useEffect(() => {
+    if (resolved && Object.keys(taxonomies).length) {
+      setAttributes({ taxonomies })
+    }
+  }, [resolved])
 
   if (resolved) {
     return (
@@ -27,7 +34,6 @@ export default function SelectTaxonomies({ defaultValue, postType, setAttributes
               setQueriedPosts([])
               setAttributes({
                 selectedTaxonomies: value,
-                taxonomies,
                 categories: {},
                 selectedCategories: []
                 // selectedPosts: []

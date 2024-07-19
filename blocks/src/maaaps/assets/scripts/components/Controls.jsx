@@ -17,8 +17,10 @@ import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleSearch from './controls/ToggleSearch'
 import ToggleStickyFirst from './controls/ToggleStickyFirst'
+import UnitFiltersSize from './controls/UnitFiltersSize'
 import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
+import UnitPopupsSize from './controls/UnitPopupsSize'
 import UnitSidebarSize from './controls/UnitSidebarSize'
 
 export default function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
@@ -38,6 +40,8 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
   const selectedGeolocationColor = attributes.selectedGeolocationColor
   const selectedDisplayType = attributes.selectedDisplayType
   const selectedSidebarSize = attributes.selectedSidebarSize
+  const selectedPopupsSize = attributes.selectedPopupsSize
+  const selectedFiltersSize = attributes.selectedFiltersSize
   const putStickyFirst = attributes.putStickyFirst
   const selectedPrimaryColor = attributes.selectedPrimaryColor
   const selectedSecondaryColor = attributes.selectedSecondaryColor
@@ -94,6 +98,8 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
                 <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
                 {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
                 <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />
+                <UnitPopupsSize defaultValue={selectedPopupsSize} setAttributes={setAttributes} />
+                <UnitFiltersSize defaultValue={selectedFiltersSize} setAttributes={setAttributes} />
                 <ToggleStickyFirst defaultValue={putStickyFirst} setAttributes={setAttributes} />
               </>
             )}

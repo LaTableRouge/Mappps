@@ -10,17 +10,18 @@
 //
 
 & {
+  display: grid;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  container-type: inline-size;
+  container-name: maaaps;
+
   *,
   *::before,
   *::after {
     box-sizing: inherit;
   }
-
-  display: grid;
-  position: relative;
-  overflow: hidden;
-  container-type: inline-size;
-  container-name: maaaps;
 
   .responsive-wrapper {
     display: grid;

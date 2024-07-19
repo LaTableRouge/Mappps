@@ -146,6 +146,14 @@
     "selectedSidebarSize": {
       "type": "string",
       "default": "25cqw"
+    },
+    "selectedPopupsSize": {
+      "type": "string",
+      "default": "20cqw"
+    },
+    "selectedFiltersSize": {
+      "type": "string",
+      "default": "15cqw"
     }
   },
   "textdomain": "maaaps",

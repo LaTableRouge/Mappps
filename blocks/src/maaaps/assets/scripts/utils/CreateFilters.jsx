@@ -10,7 +10,7 @@ export default function CreateFilters(categories, taxonomies, posts, setFilters)
       posts.forEach((post) => {
         // eslint-disable-next-line camelcase
         const postAssociatedCategories = post[rest_base]
-        if (postAssociatedCategories.length) {
+        if (postAssociatedCategories.length && associatedCategories && associatedCategories.length) {
           associatedCategories.forEach((category) => {
             if (postAssociatedCategories.includes(category.id)) {
               // eslint-disable-next-line camelcase
