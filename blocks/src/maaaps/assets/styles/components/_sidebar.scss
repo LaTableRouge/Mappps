@@ -2,7 +2,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   width: 100%;
-  overflow: hidden;
+  max-height: inherit;
   background-color: var(--color-white);
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
@@ -11,8 +11,10 @@
   }
 
   .sidebar__articles-wrapper {
+    position: relative;
     overflow-y: auto;
     border-top: 1px solid var(--color-gray-300);
+    overscroll-behavior: contain;
 
     @import 'sidebar/article';
   }

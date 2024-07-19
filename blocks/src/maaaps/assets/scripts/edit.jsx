@@ -1,7 +1,7 @@
 import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
-import { createRef, useRef, useState } from '@wordpress/element'
+import { createRef, useEffect, useRef, useState } from '@wordpress/element'
 
 import { isColorLight, sortStickyPosts } from './common/functions'
 import Controls from './components/Controls'
@@ -38,12 +38,15 @@ export default function Edit({ attributes, setAttributes }) {
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
+
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
   const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
   const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
   const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(false) // mobile toggle
   const [filters, setFilters] = useState({}) // filters object
   const [searchValue, setSearchValue] = useState('') // search value
+  const [wrapperMaxHeight, setWrapperMaxHeight] = useState(0)
+  const ref = useRef(null)
 
   let posts = []
   let filtersList = {}
@@ -71,13 +74,16 @@ export default function Edit({ attributes, setAttributes }) {
   // offset map bound
   // style desktop & mobile
 
-  const postTypes = GetPostTypes()
+  useEffect(() => {
+    setWrapperMaxHeight(ref.current.clientHeight)
+  })
 
+  const postTypes = GetPostTypes()
   if (attributes.selectedPosts.length) {
     return (
       <section {...blockProps}>
         <Controls attributes={attributes} postTypes={postTypes.types} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-        <div className="responsive-wrapper">
+        <div ref={ref} className="responsive-wrapper" style={{ '--max-height': `${wrapperMaxHeight}px` }}>
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
               displayFilters={attributes.displayFilters}

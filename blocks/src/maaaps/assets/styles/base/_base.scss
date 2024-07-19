@@ -18,7 +18,6 @@
 
   display: grid;
   position: relative;
-  width: 100%;
   overflow: hidden;
   container-type: inline-size;
   container-name: maaaps;
@@ -26,6 +25,7 @@
   .responsive-wrapper {
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
     height: var(--mobile-height, 100svh);
     overflow: hidden;
 
@@ -33,6 +33,7 @@
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
       height: initial;
+      max-height: var(--max-height);
       aspect-ratio: inherit;
     }
 

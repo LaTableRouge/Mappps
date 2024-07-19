@@ -15,9 +15,12 @@ export default function Markers(posts, size, markerRefs, postRefs, setSelectedPo
           click: (e) => {
             setSelectedPost(post)
 
+            // Scroll the sidebar
             const associatedPost = postRefs.current[index]
             if (associatedPost.current) {
-              associatedPost.current.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              const target = associatedPost.current
+              const parent = associatedPost.current.parentNode
+              parent.scroll({ top: target.offsetTop - parent.offsetTop, behavior: 'smooth' })
             }
           }
         }}

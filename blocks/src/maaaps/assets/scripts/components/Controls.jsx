@@ -35,6 +35,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
   const selectedActiveMarkerColor = attributes.selectedActiveMarkerColor
   const selectedClusterColor = attributes.selectedClusterColor
   const selectedSearchColor = attributes.selectedSearchColor
+  const selectedGeolocationColor = attributes.selectedGeolocationColor
   const selectedDisplayType = attributes.selectedDisplayType
   const selectedSidebarSize = attributes.selectedSidebarSize
   const putStickyFirst = attributes.putStickyFirst
@@ -57,6 +58,10 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
         sanitizedSelectedTaxonomies.push(foundTaxonomy.rest_base)
       }
     })
+  }
+
+  if (!postTypes) {
+    return false
   }
 
   return (
@@ -106,6 +111,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
               markerActive: selectedActiveMarkerColor,
               cluster: selectedClusterColor,
               search: selectedSearchColor,
+              geolocation: selectedGeolocationColor,
               primary: selectedPrimaryColor,
               secondary: selectedSecondaryColor
             }}
