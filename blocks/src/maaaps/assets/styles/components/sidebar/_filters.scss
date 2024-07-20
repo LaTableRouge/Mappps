@@ -99,6 +99,8 @@
         overflow: auto;
 
         .list__element {
+          position: relative;
+
           label {
             display: flex;
             align-items: center;
@@ -109,6 +111,19 @@
 
           & + .list__element {
             margin-top: var(--spacing-sm);
+          }
+
+          &:has(.list__sublist) {
+            &::before {
+              content: '';
+              position: absolute;
+              top: 32px;
+              bottom: 0;
+              left: 7px;
+              width: 1px;
+              transform: translateX(50%);
+              background-color: var(--color-gray-300);
+            }
           }
         }
 

@@ -23,33 +23,26 @@
     box-sizing: inherit;
   }
 
+  --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
+
   .responsive-wrapper {
     display: grid;
     grid-template-columns: 1fr;
     width: 100%;
     height: var(--mobile-height, 100svh);
+    max-height: var(--mobile-height, 100svh);
     overflow: hidden;
+
+    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+      --is-mobile: red;
+    }
 
     @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
       height: initial;
-      max-height: var(--max-height);
-      aspect-ratio: inherit;
-    }
-
-    // Aspect ratio handle because it's fucked up
-    &:not(:has([style*='aspect-ratio'])) {
-      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-        aspect-ratio: var(--base-aspect-ratio);
-      }
-    }
-
-    &[style*='aspect-ratio: auto;'],
-    &[style*='aspect-ratio:auto;'] {
-      @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-        aspect-ratio: var(--base-aspect-ratio) !important;
-      }
+      max-height: calc(100cqw / (var(--ratio)));
+      aspect-ratio: var(--ratio);
     }
   }
 }

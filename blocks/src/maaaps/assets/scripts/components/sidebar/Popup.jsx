@@ -1,6 +1,7 @@
 import { __ } from '@wordpress/i18n'
 
 import Excerpt from './article/Excerpt'
+import GeolocationLink from './article/GeolocationLink'
 import Terms from './article/Terms'
 import Thumbnail from './article/Thumbnail'
 import Title from './article/Title'
@@ -10,6 +11,9 @@ export default function Popup({ post, postRef, selectedPost, selectedPostTerms, 
   const excerpt = post.excerpt
   const sticky = post.sticky
   const id = post.id
+
+  const lat = post.meta.lat
+  const lng = post.meta.lng
 
   const embed = post._embedded
   const thumbnailInfos = {}
@@ -52,6 +56,7 @@ export default function Popup({ post, postRef, selectedPost, selectedPostTerms, 
       <div className="article__content">
         <Title text={title} />
         <Terms termList={selectedPostTerms} />
+        <GeolocationLink lat={lat} lng={lng} />
         <Excerpt text={excerpt.raw} />
       </div>
 

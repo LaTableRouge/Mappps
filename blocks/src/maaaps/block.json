@@ -154,6 +154,10 @@
     "selectedFiltersSize": {
       "type": "string",
       "default": "15cqw"
+    },
+    "selectedBoundsPadding": {
+      "type": "number",
+      "default": 70
     }
   },
   "textdomain": "maaaps",

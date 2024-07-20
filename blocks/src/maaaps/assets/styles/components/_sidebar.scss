@@ -1,13 +1,13 @@
 .maaaps__sidebar {
   display: grid;
   position: relative;
-  z-index: 999;
   grid-template-rows: auto 1fr;
   width: 100%;
   max-height: inherit;
   background-color: var(--color-white);
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    z-index: 999;
     grid-area: sidebar;
     width: var(--sidebar-size, 25cqw);
   }
@@ -24,11 +24,17 @@
   .sidebar__popups-wrapper {
     display: grid;
     position: absolute;
+    z-index: 1;
     top: 0;
     bottom: 0;
     left: 100%;
     grid-template: 'popup' auto;
     width: var(--popup-size, max-content);
+    pointer-events: none;
+
+    &:has([data-selected='true']) {
+      pointer-events: initial;
+    }
 
     @import 'sidebar/popup';
   }

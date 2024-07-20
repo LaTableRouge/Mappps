@@ -3,6 +3,7 @@ import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 import ColorMap from './controls/ColorMap'
+import InputBoundsPadding from './controls/NumberBoundsPadding'
 import InputMaxMarkerZoom from './controls/NumberMaxMarkerZoom'
 import InputMaxZoom from './controls/NumberMaxZoom'
 import SelectCategories from './controls/SelectCategories'
@@ -48,6 +49,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
   const displayFilters = attributes.displayFilters
   const displaySearch = attributes.displaySearch
   const limitedSearch = attributes.limitedSearch
+  const selectedBoundsPadding = attributes.selectedBoundsPadding
   const selectedMaxZoom = attributes.selectedMaxZoom
   const selectedMaxMarkerZoom = attributes.selectedMaxMarkerZoom
   const selectedMarkerSize = attributes.selectedMarkerSize
@@ -108,6 +110,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
             <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} />
             <InputMaxMarkerZoom defaultValue={selectedMaxMarkerZoom} max={selectedMaxZoom} setAttributes={setAttributes} />
+            <InputBoundsPadding defaultValue={selectedBoundsPadding} max={selectedMaxZoom} setAttributes={setAttributes} />
             <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
             <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
           </PanelBody>

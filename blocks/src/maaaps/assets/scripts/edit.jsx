@@ -1,7 +1,7 @@
 import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
-import { createRef, useEffect, useRef, useState } from '@wordpress/element'
+import { createRef, useCallback, useEffect, useRef, useState } from '@wordpress/element'
 
 import { isColorLight, sortStickyPosts } from './common/functions'
 import Controls from './components/Controls'
@@ -38,10 +38,15 @@ export default function Edit({ attributes, setAttributes }) {
     '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
     '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)'
   }
+  if (blockProps.style.aspectRatio) {
+    if (blockProps.style.aspectRatio !== 'auto') {
+      blockProps.style['--aspect-ratio'] = blockProps.style.aspectRatio
+    }
+    delete blockProps.style.aspectRatio
+  }
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
-
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
   const [selectedPostTerms, setSelectedPostTerms] = useState({}) // the associated terms of the selected post
   const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
@@ -50,10 +55,11 @@ export default function Edit({ attributes, setAttributes }) {
   const [filters, setFilters] = useState({}) // filters object
   const [filtersOpen, setFiltersOpen] = useState(false) // filters open/close state
   const [searchValue, setSearchValue] = useState('') // search value
-  const [wrapperMaxHeight, setWrapperMaxHeight] = useState(0) // The height of the whole block
   const [popupWidth, setPopupWidth] = useState(0) // The height of the whole block
-  const wrapperRef = useRef(null)
-  const popupRef = useRef(null)
+  // const popupRef = useRef(null)
+  const [isMobileView, setIsMobileView] = useState(false) // The height of the whole block
+
+  console.log(isMobileView)
 
   let posts = []
   let filtersList = {}
@@ -78,32 +84,46 @@ export default function Edit({ attributes, setAttributes }) {
   postRefs.current = posts.map((_, i) => postRefs.current[i] ?? createRef())
 
   // TODO:
-  // offset map bound
   // style desktop & mobile
+  // Style rtl
 
-  useEffect(() => {
-    console.log('wrapper Ref')
-    setWrapperMaxHeight(wrapperRef.current.clientHeight)
-  }, [wrapperRef])
-
-  useEffect(() => {
-    if (popupRef.current) {
-      setPopupWidth(popupRef.current.clientWidth)
+  // Set the popup size for the marker offset (needed because cqw is not a px value)
+  const popupRef = useCallback((node) => {
+    if (!node) {
+      return
     }
-  })
+    const resizeObserver = new ResizeObserver(() => {
+      setPopupWidth(node.clientWidth)
+    })
+    resizeObserver.observe(node)
+  }, [])
 
+  // Get the terms of the selected post
   useEffect(() => {
     if (Object.keys(selectedPost).length) {
       setSelectedPostTerms(GetSelectedPostTerms(selectedPost, attributes.taxonomies, attributes.categories))
     }
   }, [selectedPost])
 
+  // Check if the wrapper is in mobile view (container query check)
+  const wrapperRef = useCallback((node) => {
+    if (!node) {
+      return
+    }
+    const resizeObserver = new ResizeObserver(() => {
+      const isMobile = !!window.getComputedStyle(node).getPropertyValue('--is-mobile').length
+      // const isDesktop = !!window.getComputedStyle(node).getPropertyValue('--is-desktop').length
+      setIsMobileView(isMobile)
+    })
+    resizeObserver.observe(node)
+  }, [])
+
   const postTypes = GetPostTypes()
   if (attributes.selectedPosts.length) {
     return (
       <section {...blockProps}>
         <Controls attributes={attributes} postTypes={postTypes.types} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-        <div ref={wrapperRef} className="responsive-wrapper" style={{ '--max-height': `${wrapperMaxHeight}px` }}>
+        <div ref={wrapperRef} className="responsive-wrapper">
           {attributes.selectedDisplayType === 'full' && !!posts.length && (
             <Sidebar
               displayFilters={attributes.displayFilters}
@@ -129,6 +149,7 @@ export default function Edit({ attributes, setAttributes }) {
 
           {!!posts.length && (
             <Map
+              boundsPadding={attributes.selectedBoundsPadding}
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
               displaySearch={attributes.displaySearch}

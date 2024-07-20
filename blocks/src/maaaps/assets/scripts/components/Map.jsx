@@ -15,6 +15,7 @@ import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
 const Map = ({
+  boundsPadding,
   cluster,
   clusterSize,
   displaySearch,
@@ -63,8 +64,9 @@ const Map = ({
 
   return (
     <div className="maaaps__leaflet" data-map-shown={mobileIsMapDisplayed}>
-      <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false}>
+      <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
         <ChangeView
+          boundsPadding={boundsPadding}
           markerGeolocation={markerGeolocationMemo}
           markerOffset={markerOffset}
           markers={markers}

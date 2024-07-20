@@ -39,6 +39,7 @@
       border: none;
       border-radius: 200px;
       background-color: var(--color-white);
+      box-shadow: var(--shadow-button);
       cursor: pointer;
       aspect-ratio: 1;
 
@@ -105,7 +106,24 @@
     }
 
     .article__excerpt {
-      margin-top: var(--spacing-md);
+      max-height: 27cqh;
+      margin-top: var(--spacing-lg);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+
+    .article__geolocation-link {
+      display: flex;
+      align-items: flex-end;
+      margin-top: var(--spacing-lg);
+      line-height: 1;
+      text-decoration: none;
+      gap: var(--spacing-xs);
+
+      span[class^='icon-maaaps'] {
+        color: var(--color-secondary);
+        font-size: var(--font-level-lg);
+      }
     }
   }
 
