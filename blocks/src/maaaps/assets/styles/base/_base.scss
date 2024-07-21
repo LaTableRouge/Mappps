@@ -13,6 +13,7 @@
   display: grid;
   position: relative;
   box-sizing: border-box;
+  grid-template: 'main' auto;
   overflow: hidden;
   container-type: inline-size;
   container-name: maaaps;
@@ -27,6 +28,7 @@
 
   .responsive-wrapper {
     display: grid;
+    grid-area: main;
     grid-template-columns: 1fr;
     width: 100%;
     height: var(--mobile-height, 100svh);

@@ -47,6 +47,14 @@ function mps_register_react_blocks() {
                             'maaaps',
                             get_template_directory() . '/lang'
                         );
+                        wp_localize_script(
+                            $handle,
+                            'fw_data',
+                            [
+                                'url' => get_site_url(),
+                                'rest_url' => get_rest_url(null, ''),
+                            ]
+                        );
                     }
                 }
             }

@@ -1,9 +1,17 @@
 .maaaps__loader {
-  position: absolute;
   z-index: 9999;
+  grid-area: main;
+  width: 100%;
+  height: var(--mobile-height, 100svh);
+  max-height: var(--mobile-height, 100svh);
   transition: var(--nomotion, opacity 0.2s ease-in-out);
   background-color: var(--wp--preset--color--base);
-  inset: 0;
+
+  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    height: initial;
+    max-height: calc(100cqw / (var(--ratio)));
+    aspect-ratio: var(--ratio);
+  }
 
   --spinner-size: 125px;
   --color: var(--color-gray-400);

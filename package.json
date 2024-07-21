@@ -252,7 +252,8 @@
       "wp": true,
       "jQuery": true,
       "block_params": true,
-      "plugin_params": true
+      "plugin_params": true,
+      "fw_data": true
     },
     "plugins": [
       "react",

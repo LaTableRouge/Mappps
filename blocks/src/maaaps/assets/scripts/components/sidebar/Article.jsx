@@ -3,8 +3,8 @@ import Thumbnail from './article/Thumbnail'
 import Title from './article/Title'
 
 export default function Article({ post, postRef, selectedPost, setFiltersOpen, setMobileIsMapDisplayed, setSelectedPost }) {
-  const title = post.title.raw
-  const excerpt = post.excerpt
+  const title = post.title.rendered
+  const excerpt = post.excerpt.rendered
   const sticky = post.sticky
   const id = post.id
 
@@ -14,7 +14,7 @@ export default function Article({ post, postRef, selectedPost, setFiltersOpen, s
     const thumbnail = embed['wp:featuredmedia']
     if (thumbnail && thumbnail[0]) {
       const thumbnailDetails = thumbnail[0]?.media_details
-      const thumbnailTitle = thumbnail[0]?.title?.raw
+      const thumbnailTitle = thumbnail[0]?.title?.rendered
 
       if (thumbnailDetails) {
         const thumbnailSizes = thumbnailDetails.sizes
@@ -49,7 +49,7 @@ export default function Article({ post, postRef, selectedPost, setFiltersOpen, s
     >
       <Thumbnail height={60} title={thumbnailInfos.title} url={thumbnailInfos.url} width={60} />
       <Title text={title} />
-      <Excerpt text={excerpt.raw} />
+      <Excerpt text={excerpt} />
     </article>
   )
 }

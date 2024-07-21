@@ -34,7 +34,7 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
             instructions={__('Select the data source of the items to be displayed on the map.', 'maaaps')}
             label={__('Data source', 'maaaps')}
           >
-            <SelectPostType postTypes={postTypes.types} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+            <SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
             {!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
 

@@ -10,8 +10,8 @@ export default function Popups({ popupRef, postRefs, posts, selectedPost, select
   return (
     <div ref={popupRef} className="popups-wrapper">
       {posts.map((post, index) => {
-        const title = post.title.raw
-        const excerpt = post.excerpt
+        const title = post.title.rendered
+        const excerpt = post.excerpt.rendered
         const sticky = post.sticky
         const id = post.id
 
@@ -24,7 +24,7 @@ export default function Popups({ popupRef, postRefs, posts, selectedPost, select
           const thumbnail = embed['wp:featuredmedia']
           if (thumbnail && thumbnail[0]) {
             const thumbnailDetails = thumbnail[0]?.media_details
-            const thumbnailTitle = thumbnail[0]?.title?.raw
+            const thumbnailTitle = thumbnail[0]?.title?.rendered
 
             if (thumbnailDetails) {
               const thumbnailSizes = thumbnailDetails.sizes
@@ -60,7 +60,7 @@ export default function Popups({ popupRef, postRefs, posts, selectedPost, select
               <Title text={title} />
               <Terms termList={selectedPostTerms} />
               <GeolocationLink lat={lat} lng={lng} />
-              <Excerpt text={excerpt.raw} />
+              <Excerpt text={excerpt} />
             </div>
 
             <footer className="article__footer">

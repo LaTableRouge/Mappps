@@ -66,14 +66,14 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
     })
   }
 
-  if (!postTypes) {
+  if (!postTypes.resolved) {
     return false
   }
 
   return (
     <InspectorControls>
       <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
-        {!!postTypes.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+        {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedTaxonomies.length && (
           <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />
