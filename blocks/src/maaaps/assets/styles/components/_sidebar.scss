@@ -21,24 +21,6 @@
     @import 'sidebar/article';
   }
 
-  .sidebar__popups-wrapper {
-    display: grid;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    bottom: 0;
-    left: 100%;
-    grid-template: 'popup' auto;
-    width: var(--popup-size, max-content);
-    pointer-events: none;
-
-    &:has([data-selected='true']) {
-      pointer-events: initial;
-    }
-
-    @import 'sidebar/popup';
-  }
-
   .sidebar__heading {
     @import 'sidebar/search';
     @import 'sidebar/filters';

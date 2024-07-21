@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n'
 
-export default function Toggles({ mobileIsMapDisplayed, setMobileIsMapDisplayed }) {
+export default function Toggles({ displayFilters, mobileIsMapDisplayed, selectedFiltersCounter, setFiltersOpen, setMobileIsMapDisplayed, setSelectedPost }) {
   return (
     <div className="maaaps__toggles-wrapper">
       {mobileIsMapDisplayed
@@ -26,6 +26,23 @@ export default function Toggles({ mobileIsMapDisplayed, setMobileIsMapDisplayed 
           {__('See the map', 'maaaps')}
         </button>
           )}
+
+      {displayFilters && (
+        <button
+          aria-label={__('Open filters', 'maaaps')}
+          className="toggles-wrapper__button toggles-wrapper__button--filters"
+          title={__('Open filters', 'maaaps')}
+          onClick={(e) => {
+            e.preventDefault()
+            setFiltersOpen(true)
+            setSelectedPost({})
+          }}
+        >
+          <span className="icon-maaaps-filter"></span>
+          <span className="screen-reader-text">{__('Open filters', 'maaaps')}</span>
+          {!!selectedFiltersCounter && <span className="counter">{selectedFiltersCounter}</span>}
+        </button>
+      )}
     </div>
   )
 }

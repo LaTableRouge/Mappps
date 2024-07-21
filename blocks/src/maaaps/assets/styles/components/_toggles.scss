@@ -1,15 +1,22 @@
+.responsive-wrapper {
+  &[data-mobile-map-display='true'][data-filters-open='false'] {
+    .maaaps__toggles-wrapper {
+      --toggle-filters-opacity: 1;
+      --toggle-filters-transition: var(--nomotion, opacity 0.2s ease-in-out 0.2s);
+      --toggle-filters-pe: all;
+    }
+  }
+}
+
 .maaaps__toggles-wrapper {
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
     display: none;
   }
 
-  display: flex;
   position: absolute;
+  inset: 0;
   z-index: 9999;
-  right: 0;
-  bottom: var(--spacing-lg);
-  left: 0;
-  justify-content: center;
+  pointer-events: none;
 
   .toggles-wrapper__button {
     padding: var(--spacing-sm) var(--spacing-md);
@@ -20,5 +27,23 @@
     box-shadow: var(--shadow-button);
     text-transform: uppercase;
     cursor: pointer;
+    pointer-events: all;
+
+    &--map,
+    &--list {
+      position: absolute;
+      bottom: var(--spacing-lg);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &--filters {
+      position: absolute;
+      top: var(--spacing-lg);
+      left: var(--spacing-lg);
+      transition: var(--toggle-filters-transition, var(--nomotion, opacity 0.1s ease-in-out));
+      opacity: var(--toggle-filters-opacity, 0);
+      pointer-events: var(--toggle-filters-pe, none);
+    }
   }
 }

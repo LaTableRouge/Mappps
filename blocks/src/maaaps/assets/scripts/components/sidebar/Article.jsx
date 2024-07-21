@@ -2,7 +2,7 @@ import Excerpt from './article/Excerpt'
 import Thumbnail from './article/Thumbnail'
 import Title from './article/Title'
 
-export default function Article({ post, postRef, selectedPost, setFiltersOpen, setSelectedPost }) {
+export default function Article({ post, postRef, selectedPost, setFiltersOpen, setMobileIsMapDisplayed, setSelectedPost }) {
   const title = post.title.raw
   const excerpt = post.excerpt
   const sticky = post.sticky
@@ -38,8 +38,12 @@ export default function Article({ post, postRef, selectedPost, setFiltersOpen, s
 
         if (post !== selectedPost) {
           setSelectedPost(post)
+
           // Close the filters
           setFiltersOpen(false)
+
+          // Show the map in mobile
+          setMobileIsMapDisplayed(true)
         }
       }}
     >

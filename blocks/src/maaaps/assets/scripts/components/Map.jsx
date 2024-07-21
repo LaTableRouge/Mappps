@@ -20,6 +20,7 @@ const Map = ({
   clusterSize,
   displaySearch,
   isGeolocated,
+  isMobileView,
   limitedSearch,
   markerOffset,
   markerRefs,
@@ -67,6 +68,7 @@ const Map = ({
       <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
         <ChangeView
           boundsPadding={boundsPadding}
+          isMobileView={isMobileView}
           markerGeolocation={markerGeolocationMemo}
           markerOffset={markerOffset}
           markers={markers}
