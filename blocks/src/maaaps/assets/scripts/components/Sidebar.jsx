@@ -28,7 +28,7 @@ export default function Sidebar({
             <div className="sidebar__filters-wrapper">
               <button
                 aria-label={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
-                className="filters-wrapper__toggle"
+                className="custom-button custom-button__with-icon filters-wrapper__toggle"
                 title={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
                 onClick={(e) => {
                   e.preventDefault()
@@ -38,7 +38,7 @@ export default function Sidebar({
                 }}
               >
                 {__('Filters', 'maaaps')}
-                {!!selectedFiltersCounter && <span className="toggle__counter">{selectedFiltersCounter}</span>}
+                {!!selectedFiltersCounter && <span className="counter">{selectedFiltersCounter}</span>}
                 <span className="icon-maaaps-filter"></span>
               </button>
             </div>

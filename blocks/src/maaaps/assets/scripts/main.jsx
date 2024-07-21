@@ -26,6 +26,7 @@ export default function Main({ attributes, queriedPosts }) {
   const [searchValue, setSearchValue] = useState('') // search value
   const [popupOffset, setPopupOffset] = useState(0) // The height of the whole block
   const [isMobileView, setIsMobileView] = useState(false) // The height of the whole block
+  const [wrapperHeight, setWrapperHeight] = useState(0) // The height of the whole block
   // ----------
 
   // ---------- Other variables
@@ -70,6 +71,7 @@ export default function Main({ attributes, queriedPosts }) {
     const resizeObserver = new ResizeObserver(() => {
       const isMobile = !!window.getComputedStyle(node).getPropertyValue('--is-mobile').length
       setIsMobileView(isMobile)
+      setWrapperHeight(node.clientHeight)
     })
     resizeObserver.observe(node)
   }, [])
@@ -95,6 +97,7 @@ export default function Main({ attributes, queriedPosts }) {
         data-is-mobile={isMobileView}
         data-mobile-map-display={mobileIsMapDisplayed}
         data-selected-post={!!Object.keys(selectedPost).length}
+        style={{ '--wrapper-height': `${wrapperHeight}px` }}
       >
         {attributes.selectedDisplayType === 'full' && !!posts.length && (
           <Sidebar
@@ -140,9 +143,19 @@ export default function Main({ attributes, queriedPosts }) {
               tiles={attributes.selectedMapTiles}
             />
 
-            {attributes.displayFilters && <Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />}
+            {attributes.displayFilters && (
+              <Filters filtersOpen={filtersOpen} isMobileView={isMobileView} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />
+            )}
 
-            <Popups popupRef={popupRef} postRefs={postRefs} posts={posts} selectedPost={selectedPost} selectedPostTerms={selectedPostTerms} setSelectedPost={setSelectedPost} />
+            <Popups
+              isMobileView={isMobileView}
+              popupRef={popupRef}
+              postRefs={postRefs}
+              posts={posts}
+              selectedPost={selectedPost}
+              selectedPostTerms={selectedPostTerms}
+              setSelectedPost={setSelectedPost}
+            />
 
             {isMobileView && (
               <Toggles

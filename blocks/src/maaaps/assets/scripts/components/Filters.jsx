@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n'
 
-export default function Filters({ filtersOpen, setFilters, setFiltersOpen, tempFilters }) {
+export default function Filters({ filtersOpen, isMobileView, setFilters, setFiltersOpen, tempFilters }) {
   const handleChange = (e) => {
     const isChecked = e.checked
 
@@ -58,13 +58,15 @@ export default function Filters({ filtersOpen, setFilters, setFiltersOpen, tempF
           }}
           onSubmit={(e) => {
             e.preventDefault()
+
+            setFiltersOpen(false)
           }}
         >
           <div className="filters-form__header">
             <div className="header__title">{__('Filters', 'maaaps')}</div>
             <button
               aria-label={__('Close filters', 'maaaps')}
-              className="header__close"
+              className="custom-button custom-button__only-icon header__close"
               title={__('Close filters', 'maaaps')}
               type="button"
               onClick={(e) => {
@@ -119,17 +121,17 @@ export default function Filters({ filtersOpen, setFilters, setFiltersOpen, tempF
           </ul>
 
           <div className="filters-form__footer">
-            <button aria-label={__('Reset', 'maaaps')} className="filters-form__button filters-form__button--reset" title={__('Reset', 'maaaps')} type="reset">
+            <button aria-label={__('Reset', 'maaaps')} className="custom-button footer__reset" title={__('Reset', 'maaaps')} type="reset">
               {__('Reset', 'maaaps')}
               {/* <span className="icon-maaaps-cross"></span>
               <span className="screen-reader-text">{__('Reset', 'maaaps')}</span> */}
             </button>
 
-            {/* <button aria-label={__('Filter', 'maaaps')} className="form__button form__button--submit" title={__('Filter', 'maaaps')} type="submit"> */}
-            {/* {__('Filter', 'maaaps')} */}
-            {/* <span className='icon-maaaps-filter'></span> */}
-            {/* <span className="screen-reader-text">{__('Filter', 'maaaps')}</span> */}
-            {/* </button> */}
+            <button aria-label={__('Filter', 'maaaps')} className="custom-button footer__submit" title={__('Filter', 'maaaps')} type="submit">
+              {__('Filter', 'maaaps')}
+              {/* <span className='icon-maaaps-filter'></span> */}
+              {/* <span className="screen-reader-text">{__('Filter', 'maaaps')}</span> */}
+            </button>
           </div>
         </form>
       )}

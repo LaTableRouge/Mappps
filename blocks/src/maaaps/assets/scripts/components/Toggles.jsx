@@ -6,7 +6,7 @@ export default function Toggles({ displayFilters, mobileIsMapDisplayed, selected
       {mobileIsMapDisplayed
         ? (
         <button
-          className="toggles-wrapper__button toggles-wrapper__button--list"
+          className="custom-button toggles-wrapper__list"
           onClick={(e) => {
             e.preventDefault()
             setMobileIsMapDisplayed(false)
@@ -17,7 +17,7 @@ export default function Toggles({ displayFilters, mobileIsMapDisplayed, selected
           )
         : (
         <button
-          className="toggles-wrapper__button toggles-wrapper__button--map"
+          className="custom-button toggles-wrapper__map"
           onClick={(e) => {
             e.preventDefault()
             setMobileIsMapDisplayed(true)
@@ -30,7 +30,7 @@ export default function Toggles({ displayFilters, mobileIsMapDisplayed, selected
       {displayFilters && (
         <button
           aria-label={__('Open filters', 'maaaps')}
-          className="toggles-wrapper__button toggles-wrapper__button--filters"
+          className="custom-button custom-button__only-icon toggles-wrapper__filters"
           title={__('Open filters', 'maaaps')}
           onClick={(e) => {
             e.preventDefault()

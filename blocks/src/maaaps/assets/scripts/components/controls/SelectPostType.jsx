@@ -3,7 +3,6 @@ import { __ } from '@wordpress/i18n'
 
 export default function SelectPostType({ defaultValue, postTypes, setAttributes, setQueriedPosts }) {
   const options = []
-  console.log(postTypes)
   postTypes.types.forEach((postType) => {
     options.push({ label: postType.name, value: postType.slug })
   })
@@ -22,8 +21,8 @@ export default function SelectPostType({ defaultValue, postTypes, setAttributes,
         setQueriedPosts([])
         setAttributes({
           postType: selectedPostType.slug ?? '',
-          postTypeRestBase: selectedPostType.rest_base,
-          postTypeRestNamespace: selectedPostType.rest_namespace,
+          postTypeRestBase: selectedPostType.rest_base ?? '',
+          postTypeRestNamespace: selectedPostType.rest_namespace ?? '',
           taxonomies: [],
           selectedTaxonomies: [],
           categories: {},

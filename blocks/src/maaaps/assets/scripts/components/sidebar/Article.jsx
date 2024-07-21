@@ -14,13 +14,13 @@ export default function Article({ post, postRef, selectedPost, setFiltersOpen, s
     const thumbnail = embed['wp:featuredmedia']
     if (thumbnail && thumbnail[0]) {
       const thumbnailDetails = thumbnail[0]?.media_details
-      const thumbnailTitle = thumbnail[0]?.title?.rendered
+      const thumbnailAlt = thumbnail[0]?.alt_text
 
       if (thumbnailDetails) {
         const thumbnailSizes = thumbnailDetails.sizes
         if (thumbnailSizes) {
           thumbnailInfos.url = thumbnailSizes.thumbnail.source_url
-          thumbnailInfos.title = thumbnailTitle
+          thumbnailInfos.alt = thumbnailAlt
         }
       }
     }
@@ -47,7 +47,7 @@ export default function Article({ post, postRef, selectedPost, setFiltersOpen, s
         }
       }}
     >
-      <Thumbnail height={60} title={thumbnailInfos.title} url={thumbnailInfos.url} width={60} />
+      <Thumbnail height={60} title={thumbnailInfos.alt} url={thumbnailInfos.url} width={60} />
       <Title text={title} />
       <Excerpt text={excerpt} />
     </article>

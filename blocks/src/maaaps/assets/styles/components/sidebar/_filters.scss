@@ -3,27 +3,10 @@
   margin: var(--spacing-md) var(--spacing-lg);
 
   .filters-wrapper__toggle {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--spacing-sm);
-    transition: var(--nomotion, opacity 0.2s ease-in-out);
-    border: none;
-    border-radius: var(--radius-md);
     background-color: var(--color-primary);
     color: var(--color-button-primary);
-    cursor: pointer;
-    user-select: none;
 
-    &:hover {
-      opacity: 0.8;
-    }
-
-    span[class^='icon-maaaps-'] {
-      margin-left: auto;
-    }
-
-    .toggle__counter {
+    .counter {
       display: grid;
       min-width: 16px;
       height: 16px;

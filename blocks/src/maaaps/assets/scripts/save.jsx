@@ -7,6 +7,7 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import { useBlockProps } from '@wordpress/block-editor'
 
 import { isColorLight } from './common/functions'
+import Loader from './components/Loader'
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
@@ -35,5 +36,9 @@ export default function Save({ attributes }) {
     delete blockProps.style.aspectRatio
   }
 
-  return <section {...blockProps} data-attributes={JSON.stringify(attributes)}></section>
+  return (
+    <section {...blockProps} data-attributes={JSON.stringify(attributes)}>
+      <Loader />
+    </section>
+  )
 }

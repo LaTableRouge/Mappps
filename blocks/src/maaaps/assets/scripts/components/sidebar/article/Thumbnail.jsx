@@ -1,11 +1,13 @@
-export default function Thumbnail({ height, title, url, width }) {
+import placeholder from '../../../../img/placeholder.webp'
+
+export default function Thumbnail({ alt, height, url, width }) {
   if (!url) {
-    return ''
+    url = placeholder
   }
 
   return (
     <div className="article__picture-wrapper">
-      <img alt={title} height={height} src={url} width={width}></img>
+      <img alt={alt} height={height} src={url} width={width}></img>
     </div>
   )
 }

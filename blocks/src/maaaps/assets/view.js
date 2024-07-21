@@ -20,9 +20,12 @@ window.addEventListener('DOMContentLoaded', () => {
       const restBase = attributes.postTypeRestBase
 
       if (postIDs.length && restBase && restNamespace) {
+        // root.render(<Main attributes={attributes} queriedPosts={[]} />)
+
         const args = {
           per_page: postIDs.length,
-          include: postIDs
+          include: postIDs,
+          _embed: ''
         }
 
         fetch(`${fw_data.rest_url}${restNamespace}/${restBase}?${new URLSearchParams(args)}`).then(async (response) => {

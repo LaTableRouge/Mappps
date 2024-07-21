@@ -1,14 +1,16 @@
+import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import Excerpt from './sidebar/article/Excerpt'
-import GeolocationLink from './sidebar/article/GeolocationLink'
 import Terms from './sidebar/article/Terms'
 import Thumbnail from './sidebar/article/Thumbnail'
 import Title from './sidebar/article/Title'
 
-export default function Popups({ popupRef, postRefs, posts, selectedPost, selectedPostTerms, setSelectedPost }) {
+export default function Popups({ isMobileView, popupRef, postRefs, posts, selectedPost, selectedPostTerms, setSelectedPost }) {
+  const [isExpanded, setIsExpanded] = useState(false)
+
   return (
-    <div ref={popupRef} className="popups-wrapper">
+    <div ref={popupRef} className="popups-wrapper" data-expanded={isExpanded}>
       {posts.map((post, index) => {
         const title = post.title.rendered
         const excerpt = post.excerpt.rendered
@@ -22,15 +24,16 @@ export default function Popups({ popupRef, postRefs, posts, selectedPost, select
         const thumbnailInfos = {}
         if (embed) {
           const thumbnail = embed['wp:featuredmedia']
+          console.log(thumbnail)
           if (thumbnail && thumbnail[0]) {
             const thumbnailDetails = thumbnail[0]?.media_details
-            const thumbnailTitle = thumbnail[0]?.title?.rendered
+            const thumbnailAlt = thumbnail[0]?.alt_text
 
             if (thumbnailDetails) {
               const thumbnailSizes = thumbnailDetails.sizes
               if (thumbnailSizes) {
                 thumbnailInfos.url = thumbnailSizes.medium.source_url
-                thumbnailInfos.title = thumbnailTitle
+                thumbnailInfos.alt = thumbnailAlt
               }
             }
           }
@@ -38,37 +41,69 @@ export default function Popups({ popupRef, postRefs, posts, selectedPost, select
 
         return (
           <article key={id} ref={postRefs.current[index]} className="popups-wrapper__article" data-selected={post === selectedPost} data-sticky={sticky}>
-            <header className="article__header">
-              <Thumbnail height={180} title={thumbnailInfos.title} url={thumbnailInfos.url} width={480} />
+            <div className="article__scroll-wrapper">
+              <header className="article__header">
+                {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                <a href={post.link} target="_blank" title={__('Open in new tab', 'maaaps')}>
+                  <Thumbnail height={180} title={thumbnailInfos.alt} url={thumbnailInfos.url} width={480} />
+                </a>
 
-              <button
-                aria-label={__('Close preview', 'maaaps')}
-                className="header__close"
-                title={__('Close preview', 'maaaps')}
-                onClick={(e) => {
-                  e.preventDefault()
+                <div className="header__cta-wrapper">
+                  {isMobileView && (
+                    <button
+                      aria-label={isExpanded ? __('Shrink', 'maaaps') : __('Expand', 'maaaps')}
+                      className="custom-button custom-button__only-icon cta-wrapper__expand"
+                      title={isExpanded ? __('Shrink', 'maaaps') : __('Expand', 'maaaps')}
+                      onClick={(e) => {
+                        e.preventDefault()
 
-                  setSelectedPost({})
-                }}
-              >
-                <span className="icon-maaaps-cross"></span>
-                <span className="screen-reader-text">{__('Close preview', 'maaaps')}</span>
-              </button>
-            </header>
+                        setIsExpanded(!isExpanded)
+                      }}
+                    >
+                      <span className={isExpanded ? 'icon-maaaps-shrink' : 'icon-maaaps-enlarge'}></span>
+                      <span className="screen-reader-text">{__('Expand/Shrink', 'maaaps')}</span>
+                    </button>
+                  )}
 
-            <div className="article__content">
-              <Title text={title} />
-              <Terms termList={selectedPostTerms} />
-              <GeolocationLink lat={lat} lng={lng} />
-              <Excerpt text={excerpt} />
+                  {/* eslint-disable-next-line react/jsx-no-target-blank */}
+                  <a className="custom-button custom-button__only-icon cta-wrapper__new-tab" href={post.link} target="_blank" title={__('Open in new tab', 'maaaps')}>
+                    <span className="icon-maaaps-new-tab"></span>
+                    <span className="screen-reader-text">{__('Open in new tab', 'maaaps')}</span>
+                  </a>
+
+                  <a
+                    className="custom-button custom-button__only-icon cta-wrapper__map"
+                    href={`https://maps.google.com/maps?daddr=${lat},${lng}&amp;ll=`}
+                    rel="noreferrer"
+                    target="_blank"
+                    title={__('View itinerary', 'maaaps')}
+                  >
+                    <span className="icon-maaaps-map"></span>
+                    <span className="screen-reader-text">{__('View itinerary', 'maaaps')}</span>
+                  </a>
+
+                  <button
+                    aria-label={__('Close preview', 'maaaps')}
+                    className="custom-button custom-button__only-icon cta-wrapper__close"
+                    title={__('Close preview', 'maaaps')}
+                    onClick={(e) => {
+                      e.preventDefault()
+
+                      setSelectedPost({})
+                    }}
+                  >
+                    <span className="icon-maaaps-cross"></span>
+                    <span className="screen-reader-text">{__('Close preview', 'maaaps')}</span>
+                  </button>
+                </div>
+              </header>
+
+              <div className="article__content">
+                <Title text={title} />
+                <Terms termList={selectedPostTerms} />
+                <Excerpt text={excerpt} />
+              </div>
             </div>
-
-            <footer className="article__footer">
-              {/* eslint-disable-next-line react/jsx-no-target-blank */}
-              <a href={post.link} target="_blank" title={__('Open in new tab', 'maaaps')}>
-                {__('See more', 'maaaps')}
-              </a>
-            </footer>
           </article>
         )
       })}

@@ -49,8 +49,6 @@ export default function Edit({ attributes, setAttributes }) {
   const postTypes = GetPostTypes()
   // ----------
 
-  console.log(attributes)
-
   // TODO:
   // style desktop & mobile
   // Style rtl
