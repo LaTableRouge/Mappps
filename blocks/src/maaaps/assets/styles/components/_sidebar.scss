@@ -3,7 +3,7 @@
   position: relative;
   grid-template-rows: auto 1fr;
   width: 100%;
-  max-height: inherit;
+  height: inherit;
   background-color: var(--color-white);
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {

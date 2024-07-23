@@ -24,7 +24,6 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
         const thumbnailInfos = {}
         if (embed) {
           const thumbnail = embed['wp:featuredmedia']
-          console.log(thumbnail)
           if (thumbnail && thumbnail[0]) {
             const thumbnailDetails = thumbnail[0]?.media_details
             const thumbnailAlt = thumbnail[0]?.alt_text

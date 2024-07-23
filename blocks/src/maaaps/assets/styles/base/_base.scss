@@ -42,8 +42,8 @@
     @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
-      height: initial;
-      max-height: calc(100cqw / (var(--ratio)));
+      height: calc(100cqw / (var(--ratio)));
+      max-height: 80svh;
       aspect-ratio: var(--ratio);
     }
   }

@@ -5,11 +5,13 @@
   height: var(--mobile-height, 100svh);
   max-height: var(--mobile-height, 100svh);
   transition: var(--nomotion, opacity 0.2s ease-in-out);
-  background-color: var(--wp--preset--color--base);
+  border: 2px solid var(--color-gray-400);
+  background-color: var(--color-white);
+  user-select: none;
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-    height: initial;
-    max-height: calc(100cqw / (var(--ratio)));
+    height: calc(100cqw / (var(--ratio)));
+    max-height: 80svh;
     aspect-ratio: var(--ratio);
   }
 
@@ -22,6 +24,28 @@
   }
 
   .loader {
+    &__helper-text {
+      position: absolute;
+      top: 15%;
+      left: 50%;
+      max-width: 100%;
+      padding: var(--spacing-md);
+      transform: translateX(-50%);
+      color: var(--color-gray-700);
+
+      .helper-text__animate {
+        animation: easeIn 1.5s ease-in var(--delay, 0s) infinite alternate-reverse;
+
+        &:nth-child(2) {
+          --delay: 0.5s;
+        }
+
+        &:nth-child(3) {
+          --delay: 1s;
+        }
+      }
+    }
+
     &__spinner {
       position: absolute;
       top: 50%;

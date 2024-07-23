@@ -1,7 +1,8 @@
 import { __ } from '@wordpress/i18n'
 
-export default function Filters({ filtersOpen, isMobileView, setFilters, setFiltersOpen, tempFilters }) {
-  const handleChange = (e) => {
+export default function Filters({ filtersOpen, setFilters, setFiltersOpen, tempFilters }) {
+  const handleChange = (e, filtersList) => {
+    const tempFilters = { ...filtersList } // reconstruct a new object to not alter the one passed by the parameters
     const isChecked = e.checked
 
     const searchedInfos = e.id.split('---')
@@ -90,7 +91,7 @@ export default function Filters({ filtersOpen, isMobileView, setFilters, setFilt
                     name={key}
                     type="checkbox"
                     onChange={(e) => {
-                      handleChange(e.target)
+                      handleChange(e.target, tempFilters)
                       // e.preventDefault()
                     }}
                   />
@@ -107,7 +108,7 @@ export default function Filters({ filtersOpen, isMobileView, setFilters, setFilt
                           name={`${key}---${category.id}`}
                           type="checkbox"
                           onChange={(e) => {
-                            handleChange(e.target)
+                            handleChange(e.target, tempFilters)
                             // e.preventDefault()
                           }}
                         />

@@ -30,7 +30,7 @@ export default function SelectTaxonomies({ defaultValue, postType, setAttributes
             defaultValue={defaultValue}
             label={__('Taxonomies', 'maaaps')}
             options={options}
-            onChange={async (value) => {
+            onChange={(value) => {
               setQueriedPosts([])
               setAttributes({
                 selectedTaxonomies: value,

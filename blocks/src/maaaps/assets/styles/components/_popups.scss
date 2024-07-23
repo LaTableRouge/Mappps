@@ -97,8 +97,9 @@
 
         .cta-wrapper__close {
           margin-left: var(--spacing-xs);
-          background-color: var(--color-secondary);
-          color: var(--color-button-secondary);
+
+          --bg-color: var(--color-secondary);
+          --color: var(--color-button-secondary);
         }
       }
     }

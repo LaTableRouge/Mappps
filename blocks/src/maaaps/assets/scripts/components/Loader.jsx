@@ -1,6 +1,19 @@
-export default function Loader({ hasPosts = false }) {
+import { __ } from '@wordpress/i18n'
+
+export default function Loader({ hasPosts = false, inEditor = false, isSelected = false }) {
   return (
     <div className="maaaps__loader" data-has-posts={hasPosts}>
+      {inEditor && isSelected && (
+        <div className="loader__helper-text">
+          {__('Waiting for data to be loaded', 'maaaps')}
+          <span className="helper-text__animate">.</span>
+          <span className="helper-text__animate">.</span>
+          <span className="helper-text__animate">.</span>
+        </div>
+      )}
+
+      {inEditor && !isSelected && <div className="loader__helper-text">{__('Click me to load the block', 'maaaps')}</div>}
+
       <div className="loader__spinner"></div>
       <div className="loader__map">
         <svg height="265.7" preserveAspectRatio="xMinYMin meet" viewBox="-500 5 500 500" width="989.4" xmlns="http://www.w3.org/2000/svg">

@@ -21,7 +21,14 @@ export default function Sidebar({
   return (
     <aside className="maaaps__sidebar">
       <header className="sidebar__heading">
-        {displaySearch && <Search limitedSearch={limitedSearch} setSearchValue={setSearchValue} setSelectedSearchResult={setSelectedSearchResult} />}
+        {displaySearch && (
+          <Search
+            limitedSearch={limitedSearch}
+            setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+            setSearchValue={setSearchValue}
+            setSelectedSearchResult={setSelectedSearchResult}
+          />
+        )}
 
         {displayFilters && (
           <>

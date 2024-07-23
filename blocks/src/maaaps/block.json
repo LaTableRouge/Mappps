@@ -86,31 +86,31 @@
     },
     "selectedMarkerColor": {
       "type": "string",
-      "default": "#2b82cb"
+      "default": "#94D2BD"
     },
     "selectedActiveMarkerColor": {
       "type": "string",
-      "default": "#ff7272"
+      "default": "#AE2012"
     },
     "selectedClusterColor": {
       "type": "string",
-      "default": "#FCA311"
+      "default": "#0A9396"
     },
     "selectedSearchColor": {
       "type": "string",
-      "default": "#6ee9a2"
-    },
-    "selectedPrimaryColor": {
-      "type": "string",
-      "default": "#6ee9a2"
-    },
-    "selectedSecondaryColor": {
-      "type": "string",
-      "default": "#2c4965"
+      "default": "#CA6702"
     },
     "selectedGeolocationColor": {
       "type": "string",
-      "default": "#2c4965"
+      "default": "#C375DA"
+    },
+    "selectedPrimaryColor": {
+      "type": "string",
+      "default": "#EE9B00"
+    },
+    "selectedSecondaryColor": {
+      "type": "string",
+      "default": "#001219"
     },
     "isClustered": {
       "type": "boolean",
@@ -171,6 +171,9 @@
     "selectedBoundsPadding": {
       "type": "number",
       "default": 70
+    },
+    "selectedPlaceholderPictureId": {
+      "type": "number"
     }
   },
   "textdomain": "maaaps",

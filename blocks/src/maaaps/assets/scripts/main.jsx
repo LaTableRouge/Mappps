@@ -12,7 +12,7 @@ import FilterPosts from './utils/FilterPosts'
 import GetFilterCount from './utils/GetFiltersCount'
 import GetSelectedPostTerms from './utils/GetSelectedPostTerms'
 
-export default function Main({ attributes, queriedPosts }) {
+export default function Main({ attributes, inEditor = false, isSelected, queriedPosts }) {
   // NEED: queriedPosts
 
   // ----------States that aren't stored by Wordrpess
@@ -143,9 +143,7 @@ export default function Main({ attributes, queriedPosts }) {
               tiles={attributes.selectedMapTiles}
             />
 
-            {attributes.displayFilters && (
-              <Filters filtersOpen={filtersOpen} isMobileView={isMobileView} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />
-            )}
+            {attributes.displayFilters && <Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />}
 
             <Popups
               isMobileView={isMobileView}
@@ -171,7 +169,7 @@ export default function Main({ attributes, queriedPosts }) {
         )}
       </div>
 
-      <Loader hasPosts={!!queriedPosts.length} />
+      <Loader hasPosts={!!queriedPosts.length} inEditor={inEditor} isSelected={isSelected} />
     </>
   )
 }

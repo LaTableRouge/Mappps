@@ -6,24 +6,30 @@ export default function Toggles({ displayFilters, mobileIsMapDisplayed, selected
       {mobileIsMapDisplayed
         ? (
         <button
-          className="custom-button toggles-wrapper__list"
+          aria-label={__('See the list', 'maaaps')}
+          className="custom-button custom-button__only-icon toggles-wrapper__list"
+          title={__('See the list', 'maaaps')}
           onClick={(e) => {
             e.preventDefault()
             setMobileIsMapDisplayed(false)
           }}
         >
-          {__('See the list', 'maaaps')}
+          <span className="icon-maaaps-list"></span>
+          <span className="screen-reader-text">{__('See the list', 'maaaps')}</span>
         </button>
           )
         : (
         <button
-          className="custom-button toggles-wrapper__map"
+          aria-label={__('See the map', 'maaaps')}
+          className="custom-button custom-button__only-icon toggles-wrapper__map"
+          title={__('See the map', 'maaaps')}
           onClick={(e) => {
             e.preventDefault()
             setMobileIsMapDisplayed(true)
           }}
         >
-          {__('See the map', 'maaaps')}
+          <span className="icon-maaaps-map"></span>
+          <span className="screen-reader-text">{__('See the map', 'maaaps')}</span>
         </button>
           )}
 

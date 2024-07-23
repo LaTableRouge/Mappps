@@ -70,7 +70,6 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
                   setGeolocationCoordinates({})
                 } else {
                   map.locate().on('locationfound', function (e) {
-                    map.flyTo(e.latlng, map.getZoom())
                     setGeolocationCoordinates(e.latlng)
                   })
                 }

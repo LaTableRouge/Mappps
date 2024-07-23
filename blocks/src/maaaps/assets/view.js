@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import { createRoot } from '@wordpress/element'
+import { createRoot } from 'react-dom/client'
 
 import Main from './scripts/main'
 

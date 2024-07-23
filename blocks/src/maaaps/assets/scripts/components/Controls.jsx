@@ -126,6 +126,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
             }}
             hasSearchColor={displaySearch && !limitedSearch}
             isClustered={isClustered}
+            isGeolocated={isGeolocated}
             setAttributes={setAttributes}
           />
         </>

@@ -1,6 +1,6 @@
 .sidebar__search-wrapper {
   position: relative;
-  margin: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-lg);
 
   &:has(.search-wrapper__results) {
     --button-radius-bottom: 0;

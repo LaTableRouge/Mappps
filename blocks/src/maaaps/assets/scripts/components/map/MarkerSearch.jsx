@@ -4,15 +4,12 @@ import Icon from './Icon'
 
 export default function MarkerSearch(data, ref) {
   return (
-    <>
-      <Marker ref={ref} icon={Icon('search')} position={[data.y, data.x]}>
-        <Popup>
-          <div>
-            <strong>{data.label}</strong>
-          </div>
-        </Popup>
-      </Marker>
-      {/* <Rectangle ref={ref} bounds={data.bounds} className='custom-rectangle custom-rectangle--search' /> */}
-    </>
+    <Marker ref={ref} icon={Icon('search')} position={[data.y, data.x]}>
+      <Popup>
+        <div>
+          <strong>{data.label}</strong>
+        </div>
+      </Popup>
+    </Marker>
   )
 }

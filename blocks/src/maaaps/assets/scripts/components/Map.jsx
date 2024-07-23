@@ -45,10 +45,11 @@ const Map = ({
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
   }, [markers])
 
+  const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
-      return MarkerGeolocation(geolocationCoordinates)
+      return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation)
     } else {
       return null
     }
@@ -76,6 +77,7 @@ const Map = ({
           maxMarkerZoom={maxMarkerZoom}
           posts={posts}
           refCluster={clusterRef}
+          refMarkerGeolocation={refMarkerGeolocation}
           refMarkerSearch={refMarkerSearch}
           refsMarker={markerRefs}
           selectedPost={selectedPost}

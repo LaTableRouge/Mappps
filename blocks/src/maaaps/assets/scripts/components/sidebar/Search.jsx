@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
-export default function Search({ limitedSearch, setSearchValue, setSelectedSearchResult }) {
+export default function Search({ limitedSearch, setMobileIsMapDisplayed, setSearchValue, setSelectedSearchResult }) {
   const [results, setResults] = useState([])
   const [showReset, setShowReset] = useState('none')
   const [showResults, setShowResults] = useState(false)
@@ -41,7 +41,7 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
 
           resetForm()
         }}
-        onSubmit={async (e) => {
+        onSubmit={(e) => {
           e.preventDefault()
 
           const searchInputValue = e.target.s.value
@@ -56,12 +56,12 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
             setSearchValue(searchInputValue)
           } else {
             // Search worldwide
-            const searchResults = await provider.search({ query: searchInputValue })
-
-            setResults(searchResults)
-            setShowResults(true)
-            setSelectedSearchResult({})
-            setSearchValue('')
+            provider.search({ query: searchInputValue }).then(function (searchResults) {
+              setResults(searchResults)
+              setShowResults(true)
+              setSelectedSearchResult({})
+              setSearchValue('')
+            })
           }
         }}
       >
@@ -100,6 +100,8 @@ export default function Search({ limitedSearch, setSearchValue, setSelectedSearc
                 key={index}
                 onClick={() => {
                   setSelectedSearchResult(result)
+                  setMobileIsMapDisplayed(true)
+                  setShowResults(false)
                 }}
               >
                 <span>{result.label}</span>
