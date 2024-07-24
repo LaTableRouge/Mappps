@@ -20,7 +20,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
   const [selectedPostTerms, setSelectedPostTerms] = useState({}) // the associated terms of the selected post
   const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
-  const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(false) // mobile toggle
+  const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(true) // mobile toggle
   const [filters, setFilters] = useState({}) // filters object
   const [filtersOpen, setFiltersOpen] = useState(false) // filters open/close state
   const [searchValue, setSearchValue] = useState('') // search value
@@ -162,6 +162,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
             {isMobileView && (
               <Toggles
                 displayFilters={attributes.displayFilters}
+                hasSidebar={attributes.selectedDisplayType === 'full'}
                 mobileIsMapDisplayed={mobileIsMapDisplayed}
                 selectedFiltersCounter={filtersCount}
                 setFiltersOpen={setFiltersOpen}
