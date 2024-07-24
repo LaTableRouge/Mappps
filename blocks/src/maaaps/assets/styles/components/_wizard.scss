@@ -1,0 +1,28 @@
+.maaaps__wizard {
+  .components-placeholder__fieldset {
+    gap: var(--spacing-md);
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+      display: flex;
+    }
+
+    & > form {
+      display: inherit;
+      width: initial;
+      gap: inherit;
+    }
+
+    .components-base-control {
+      &__field {
+        margin-bottom: 0;
+      }
+    }
+
+    .components-button {
+      display: block;
+      align-self: end;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@charset "UTF-8";
+// 1. Configuration and helpers
+@import 'abstracts/functions';
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+@import 'abstracts/animations';
+@import 'abstracts/keyframes';
+@import 'abstracts/responsive';
+
+.wp-block-mps-maaaps {
+  // 2. Vendors
+  @import 'vendors/reset';
+
+  // 3. Base stuff
+  @import 'base/fonts';
+  @import 'base/root';
+  @import 'base/base';
+  @import 'base/typography';
+  @import 'base/helpers';
+
+  // 4. Components
+  @import 'components/wizard';
+  @import 'components/loader';
+  @import 'components/map';
+  @import 'components/sidebar';
+  @import 'components/popups';
+  @import 'components/filters';
+  @import 'components/toggles';
+  @import 'components/html-components/checkbox';
+  @import 'components/html-components/button';
+  @import 'components/html-components/img';
+}

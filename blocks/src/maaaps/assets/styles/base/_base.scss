@@ -1,0 +1,50 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+//
+// Make all elements from the DOM inherit from the parent box-sizing
+// Since `*` has a specificity of 0, it does not override the `html` value
+// making all elements inheriting from the root box-sizing value
+// See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+//
+
+& {
+  display: grid;
+  box-sizing: border-box;
+  grid-template: 'main' auto;
+  overflow: hidden;
+  container-type: inline-size;
+  container-name: maaaps;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
+
+  .responsive-wrapper {
+    display: grid;
+    position: relative;
+    grid-area: main;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: var(--mobile-height, 80svh);
+    max-height: var(--mobile-height, 80svh);
+    overflow: hidden;
+
+    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+      --is-mobile: red;
+    }
+
+    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+      grid-template-areas: 'sidebar map';
+      grid-template-columns: auto 1fr;
+      height: calc(100cqw / (var(--ratio)));
+      max-height: 80svh;
+      aspect-ratio: var(--ratio);
+    }
+  }
+}

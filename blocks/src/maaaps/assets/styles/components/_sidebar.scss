@@ -1,0 +1,28 @@
+.maaaps__sidebar {
+  display: grid;
+  position: relative;
+  grid-template-rows: auto 1fr;
+  width: 100%;
+  height: inherit;
+  background-color: var(--color-white);
+
+  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    z-index: 999;
+    grid-area: sidebar;
+    width: var(--sidebar-size, 25cqw);
+  }
+
+  .sidebar__articles-wrapper {
+    position: relative;
+    overflow-y: auto;
+    border-top: 1px solid var(--color-gray-300);
+    overscroll-behavior: contain;
+
+    @import 'sidebar/article';
+  }
+
+  .sidebar__heading {
+    @import 'sidebar/search';
+    @import 'sidebar/filters';
+  }
+}

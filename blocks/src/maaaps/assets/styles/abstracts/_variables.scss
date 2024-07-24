@@ -1,0 +1,98 @@
+// Img
+$pictures-path: '../img';
+
+//Fonts
+$fonts-path: '../fonts';
+$icomoon-font-path: '#{$fonts-path}/icomoon/fonts';
+$fonts: (
+  'title': (
+    'name': 'Arial',
+    'serif': sans-serif
+  ),
+  'text': (
+    'name': 'Arial',
+    'serif': sans-serif
+  ),
+  'icon': (
+    'name': 'icomoon'
+  )
+);
+
+// Font-sizes must be converted to rem, use function calculateRem or min-max-interpolation
+// - The base max breakpoint is 1600px and the min is 768px (defined by Wordpress)
+$font-sizes: (
+  xl: calculate-rem(30),
+  lg: calculate-rem(24),
+  md: calculate-rem(16),
+  sm: calculate-rem(12),
+  xs: calculate-rem(10)
+);
+
+// Colors must be named in kebab case based on this: https://colornamer.robertcooper.me/ or this https://materialui.co/colors
+$colors: (
+  'white': #fff,
+  'black': #000,
+  'gray-50': #fafafa,
+  'gray-100': #f5f5f5,
+  'gray-200': #eee,
+  'gray-300': #e0e0e0,
+  'gray-400': #bdbdbd,
+  'gray-500': #9e9e9e,
+  'gray-600': #757575,
+  'gray-700': #616161,
+  'gray-800': #424242,
+  'gray-900': #212121
+);
+
+$state-colors: (
+  'danger': #dc3545,
+  'warning': #ffc107,
+  'info': #17a2b8,
+  'success': #28a745
+);
+
+$spacings: (
+  xl: calculate-rem(64),
+  lg: calculate-rem(32),
+  md: calculate-rem(16),
+  sm: calculate-rem(8),
+  xs: calculate-rem(4)
+);
+
+$radiuses: (
+  xl: 19px,
+  md: 5px
+);
+
+// Custom sizes (like the header height for example)
+$customs: (
+  base-aspect-ratio: calc(16 / 9)
+);
+
+$shadows: (
+  'filter': 0 10px 20px 0 rgba(196, 200, 208, 0.44),
+  'search': 0 10px 20px 0 rgba(196, 200, 208, 0.44),
+  'button': 0 3px 12px 0 rgba(0, 0, 0, 0.1)
+);
+
+// Theses under are basic ones for more flexible responsive design
+$grid-breakpoints: (
+  xs: 0,
+  sm: 600px,
+  md: 782px,
+  lg: 960px,
+  xl: 1280px,
+  xxl: 1440px,
+  fhd: 1920px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+  fhd: 1440px
+);
+
+$mobile-breakpoint: lg;
