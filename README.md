@@ -53,6 +53,7 @@ wp i18n make-json lang/ --no-purge
 - [x] Save part
 - [x] Style desktop
 - [x] Style mobile
+- [x] Toggle popup outside/inside map
 
 ### Documentation
 

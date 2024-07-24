@@ -41,7 +41,6 @@ define('MPS_PATH', plugin_dir_path(__FILE__));
 define('MPS_REACT_PATH', MPS_PATH . 'blocks/build');
 define('MPS_BASE_NAME', basename(dirname(__FILE__)));
 
-
 require MPS_PATH . 'includes/load-textdomain.php';
 
 /*
