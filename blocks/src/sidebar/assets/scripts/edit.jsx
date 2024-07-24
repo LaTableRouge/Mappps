@@ -2,7 +2,7 @@ import '../styles/editor.scss'
 
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 
-export default function Edit({ attributes, clientId, setAttributes }) {
+export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
   const blockProps = useBlockProps()
 
   // attributes are the states stored by Wordpress
@@ -10,8 +10,6 @@ export default function Edit({ attributes, clientId, setAttributes }) {
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
-
-  // GetChildAttributes(setAttributes, clientId, 'childValues')
 
   return (
     <aside {...blockProps}>

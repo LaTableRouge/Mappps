@@ -22,18 +22,28 @@
   },
   "providesContext": {
     "mps/postIDs": "selectedPosts",
-    "mps/postType": "postType"
+    "mps/postType": "postType",
+    "mps/props": "postType"
   },
   "attributes": {
     "blockId": {
       "type": "string"
     },
-    "title": {
-      "type": "string"
-    },
     "postType": {
       "type": "string",
       "default": "post"
+    },
+    "postTypeRestBase": {
+      "type": "string",
+      "default": "posts"
+    },
+    "postTypeRestNamespace": {
+      "type": "string",
+      "default": "wp/v2"
+    },
+    "siteURL": {
+      "type": "string",
+      "default": ""
     },
     "taxonomies": {
       "type": "array",
@@ -57,24 +67,11 @@
     },
     "selectedPrimaryColor": {
       "type": "string",
-      "default": "#ffed00"
+      "default": "#EE9B00"
     },
     "selectedSecondaryColor": {
       "type": "string",
-      "default": "#2c4965"
-    },
-
-    "selectedDisplayType": {
-      "type": "string",
-      "default": "full"
-    },
-    "displaySearch": {
-      "type": "boolean",
-      "default": true
-    },
-    "limitedSearch": {
-      "type": "boolean",
-      "default": false
+      "default": "#001219"
     }
   },
   "textdomain": "maaaps",

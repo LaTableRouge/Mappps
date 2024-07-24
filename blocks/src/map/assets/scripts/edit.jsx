@@ -11,7 +11,7 @@ import { useEntityRecord } from '@wordpress/core-data'
 import Controls from './components/Controls'
 import Map from './components/Map'
 
-export default function Edit({ attributes, clientId, context, setAttributes }) {
+export default function Edit({ attributes, context, setAttributes }) {
   const postType = context['mps/postType']
   const postIDs = context['mps/postIDs']
 
@@ -35,7 +35,7 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
 
   const posts = []
   if (postIDs.length) {
-    postIDs.slice(0, 10).forEach((id) => {
+    postIDs.slice(0, 3).forEach((id) => {
       const { record } = useEntityRecord('postType', postType, id)
       if (record) {
         posts.push({

@@ -6,18 +6,29 @@
   "category": "maaaps",
   "description": "Contains search bar.",
   "textdomain": "maaaps",
+  "ancestor": [
+    "mps/sidebar"
+  ],
   "supports": {
     "reusable": false,
     "html": false,
     "layout": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
     "interactivity": {
       "clientNavigation": true
     }
   },
   "attributes": {
-    "searchValue": {
-      "type": "string",
-      "default": ""
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "margin": "2rem"
+        }
+      }
     },
     "limitedSearch": {
       "type": "boolean",

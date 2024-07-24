@@ -1,13 +1,10 @@
-import { Button, SelectControl } from '@wordpress/components'
-import { useState } from '@wordpress/element'
+import { Button, SelectControl, Spinner } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 import GetPosts from '../../utils/GetPosts'
 
-export default function SelectPosts({ categories, defaultValue, postType, setAttributes, setQueriedPosts, taxonomies }) {
+export default function SelectPosts({ categories, defaultValue, postType, setAttributes, taxonomies }) {
   const { posts, resolved } = GetPosts(postType, taxonomies, categories)
-
-  const [selectedPosts, setSelectedPosts] = useState([])
 
   const hasDefaultValue = defaultValue.length
 
@@ -22,54 +19,35 @@ export default function SelectPosts({ categories, defaultValue, postType, setAtt
     })
   }
 
-  return (
-    <>
-      {!!resolved && (
-        <form
-          role="form"
-          onSubmit={(e) => {
-            e.preventDefault()
+  if (resolved) {
+    return (
+      <>
+        {posts.length
+          ? (
+          <form
+            role="form"
+            onSubmit={(e) => {
+              e.preventDefault()
 
-            if (resolved && posts.length) {
-              setQueriedPosts(posts)
-
-              if (hasDefaultValue) {
-                setAttributes({
-                  selectedPosts
-                })
-              } else {
-                const postIDs = []
-                posts.forEach((post) => {
-                  postIDs.push(`${post.id}`)
-                })
-                setAttributes({
-                  selectedPosts: postIDs
-                })
-              }
-            } else {
-              setQueriedPosts([])
+              const selectedPosts = Array.from(e.target.posts.selectedOptions, (option) => option.value)
               setAttributes({
-                selectedPosts: []
+                selectedPosts
               })
-            }
-          }}
-        >
-          <SelectControl
-            multiple
-            defaultValue={defaultValue}
-            label={__('Posts', 'maaaps')}
-            name="posts"
-            options={options}
-            onChange={(value) => {
-              setSelectedPosts(value)
             }}
-          />
+          >
+            <SelectControl multiple defaultValue={defaultValue} label={__('Posts', 'maaaps')} name="posts" options={options} />
 
-          <Button type="submit" variant="primary">
-            {__('Confirm selection', 'maaaps')}
-          </Button>
-        </form>
-      )}
-    </>
-  )
+            <Button type="submit" variant="primary">
+              {__('Confirm selection', 'maaaps')}
+            </Button>
+          </form>
+            )
+          : (
+              __('No posts could be recovered.', 'maaaps')
+            )}
+      </>
+    )
+  } else {
+    return <Spinner />
+  }
 }

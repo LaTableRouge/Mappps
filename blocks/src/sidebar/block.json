@@ -6,6 +6,9 @@
   "category": "maaaps",
   "description": "Contains the block elements used to render the sidebar, like the posts, search bar, title, and filters.",
   "textdomain": "maaaps",
+  "ancestor": [
+    "mps/maaaps-block"
+  ],
   "supports": {
     "reusable": false,
     "html": false,

@@ -7,7 +7,7 @@ import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
 import GetBlocks from './utils/GetBlocks'
 
-export default function Edit({ attributes, clientId, context, setAttributes }) {
+export default function Edit({ attributes, clientId, context, isSelected, setAttributes }) {
   const blockProps = useBlockProps()
 
   // attributes & context are the states stored by Wordpress
@@ -21,7 +21,7 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
 
   const blockContexts = useMemo(
     () =>
-      postIDs?.slice(0, 10).map((id) => ({
+      postIDs?.slice(0, 3).map((id) => ({
         postType,
         postId: id
       })),
