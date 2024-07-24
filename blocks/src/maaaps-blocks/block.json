@@ -1,9 +1,9 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/maaaps",
+  "name": "mps/maaaps-blocks",
   "version": "0.0.1",
-  "title": "Maaaps",
+  "title": "Maaaps (blocks)",
   "category": "maaaps",
   "icon": "block-default",
   "description": "A bloc that display maps",

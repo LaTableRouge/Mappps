@@ -21,7 +21,7 @@
     }
   },
   "parent": [
-    "mps/maaaps"
+    "mps/maaaps-blocks"
   ],
   "usesContext": [
     "mps/postIDs"

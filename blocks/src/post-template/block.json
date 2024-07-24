@@ -5,7 +5,7 @@
   "title": "Post Template",
   "category": "maaaps",
   "parent": [
-    "mps/maaaps"
+    "mps/maaaps-blocks"
   ],
   "description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
   "textdomain": "maaaps",
