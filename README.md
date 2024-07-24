@@ -49,10 +49,11 @@ wp i18n make-json lang/ --no-purge
 ## Roadmap
 
 - [ ] Translation (English/French)
-- [ ] Edit part
-- [ ] Save part
-- [ ] Style desktop
-- [ ] Style mobile
+- [x] Edit part
+- [x] Save part
+- [x] Style desktop
+- [x] Style mobile
+- [x] Toggle popup outside/inside map
 
 ### Documentation
 

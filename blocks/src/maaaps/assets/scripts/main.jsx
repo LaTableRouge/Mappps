@@ -143,17 +143,21 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               tiles={attributes.selectedMapTiles}
             />
 
-            {attributes.displayFilters && <Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />}
+            {attributes.selectedDisplayType === 'full' && attributes.displayFilters && (
+              <Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />
+            )}
 
-            <Popups
-              isMobileView={isMobileView}
-              popupRef={popupRef}
-              postRefs={postRefs}
-              posts={posts}
-              selectedPost={selectedPost}
-              selectedPostTerms={selectedPostTerms}
-              setSelectedPost={setSelectedPost}
-            />
+            {attributes.selectedDisplayType === 'full' && !!posts.length && (
+              <Popups
+                isMobileView={isMobileView}
+                popupRef={popupRef}
+                postRefs={postRefs}
+                posts={posts}
+                selectedPost={selectedPost}
+                selectedPostTerms={selectedPostTerms}
+                setSelectedPost={setSelectedPost}
+              />
+            )}
 
             {isMobileView && (
               <Toggles
