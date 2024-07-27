@@ -10,6 +10,7 @@
 
     & > form {
       display: inherit;
+      grid-template-columns: inherit;
       width: initial;
       gap: inherit;
     }

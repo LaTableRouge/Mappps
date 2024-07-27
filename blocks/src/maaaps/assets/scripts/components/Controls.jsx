@@ -94,17 +94,9 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
         <>
           <PanelBody initialOpen={false} title={__('Render settings', 'maaaps')}>
             <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
-            {selectedDisplayType === 'full' && (
-              <>
-                <ToggleFilters defaultValue={displayFilters} setAttributes={setAttributes} />
-                <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
-                {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
-                <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />
-                <UnitPopupsSize defaultValue={selectedPopupsSize} setAttributes={setAttributes} />
-                <UnitFiltersSize defaultValue={selectedFiltersSize} setAttributes={setAttributes} />
-                <ToggleStickyFirst defaultValue={putStickyFirst} setAttributes={setAttributes} />
-              </>
-            )}
+          </PanelBody>
+
+          <PanelBody initialOpen={false} title={__('Map settings', 'maaaps')}>
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
             <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
@@ -114,6 +106,19 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
             <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
             <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
           </PanelBody>
+
+          {selectedDisplayType === 'full' && (
+            <PanelBody initialOpen={false} title={__('Sidebar settings', 'maaaps')}>
+              <ToggleFilters defaultValue={displayFilters} setAttributes={setAttributes} />
+              <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
+              {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}
+              <UnitSidebarSize defaultValue={selectedSidebarSize} setAttributes={setAttributes} />
+              <UnitPopupsSize defaultValue={selectedPopupsSize} setAttributes={setAttributes} />
+              <UnitFiltersSize defaultValue={selectedFiltersSize} setAttributes={setAttributes} />
+              <ToggleStickyFirst defaultValue={putStickyFirst} setAttributes={setAttributes} />
+            </PanelBody>
+          )}
+
           <ColorMap
             defaultValues={{
               marker: selectedMarkerColor,

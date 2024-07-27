@@ -171,9 +171,6 @@
     "selectedBoundsPadding": {
       "type": "number",
       "default": 70
-    },
-    "selectedPlaceholderPictureId": {
-      "type": "number"
     }
   },
   "textdomain": "maaaps",
