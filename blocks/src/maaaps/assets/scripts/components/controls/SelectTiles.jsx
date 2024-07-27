@@ -5,7 +5,7 @@ export default function SelectTiles({ defaultValue, options, setAttributes }) {
   return (
     <SelectControl
       defaultValue={defaultValue}
-      label={__('Map tiles style', 'maaaps')}
+      label={__('Map tiles', 'maaaps')}
       options={options}
       onChange={(value) => {
         setAttributes({

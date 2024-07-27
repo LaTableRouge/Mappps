@@ -30,7 +30,6 @@ export default function Edit({ attributes, isSelected, setAttributes }) {
   // TODO:
   // style desktop & mobile
   // Style rtl
-  // Mobile popup expand
 
   if (attributes.selectedPosts.length) {
     return (
