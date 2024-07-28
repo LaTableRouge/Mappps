@@ -4,80 +4,82 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maaaps 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"POT-Creation-Date: 2024-07-28T07:21:35+00:00\n"
+"PO-Revision-Date: 2024-07-28 09:31+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-28T07:21:35+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.9.0\n"
+"X-Generator: Poedit 3.4.4\n"
 "X-Domain: maaaps\n"
 
 #. Plugin Name of the plugin
-#: includes/register-page.php:13
-#: templates/admin.php:35
+#: includes/register-page.php:13 templates/admin.php:35
 msgid "Maaaps"
-msgstr ""
+msgstr "Maaaps"
 
 #. Plugin URI of the plugin
 msgid "https://github.com/LaTableRouge/Maaaps"
-msgstr ""
+msgstr "https://github.com/LaTableRouge/Maaaps"
 
 #. Description of the plugin
 msgid "A plugin that dsiplay maps"
-msgstr ""
+msgstr "Un plugin pour afficher des cartes"
 
 #. Author of the plugin
 msgid "LaTableRouge"
-msgstr ""
+msgstr "LaTableRouge"
 
 #. Author URI of the plugin
 msgid "https://mlnop.fr/"
-msgstr ""
+msgstr "https://mlnop.fr/"
 
 #: includes/blocks/categories-register.php:10
 msgid "Maaaps - Blocks"
-msgstr ""
+msgstr "Maaaps - Blocs"
 
 #: includes/register-page.php:12
 msgid "Setup"
-msgstr ""
+msgstr "Configuration"
 
 #: templates/admin.php:2
 msgid "Getting Started with the Maaaps Plugin"
-msgstr ""
+msgstr "Démarrer avec le plugin Maaaps"
 
 #: templates/admin.php:3
-msgid "Welcome to the comprehensive guide on how to get started with our Maaaps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively."
+msgid ""
+"Welcome to the comprehensive guide on how to get started with our Maaaps "
+"Plugin. This plugin allows you to display maps with markers based on the "
+"latitude and longitude provided in your posts. Follow the steps below to set "
+"up and utilize the plugin effectively."
 msgstr ""
 
 #: templates/admin.php:5
 msgid "Table of Contents"
 msgstr ""
 
-#: templates/admin.php:7
-#: templates/admin.php:13
+#: templates/admin.php:7 templates/admin.php:13
 msgid "Creating Posts with Location Data"
 msgstr ""
 
-#: templates/admin.php:8
-#: templates/admin.php:29
+#: templates/admin.php:8 templates/admin.php:29
 msgid "Displaying the Map"
 msgstr ""
 
-#: templates/admin.php:9
-#: templates/admin.php:40
+#: templates/admin.php:9 templates/admin.php:40
 msgid "Troubleshooting"
 msgstr ""
 
-#: templates/admin.php:10
-#: templates/admin.php:47
+#: templates/admin.php:10 templates/admin.php:47
 msgid "FAQs"
 msgstr ""
 
 #: templates/admin.php:14
-msgid "To display markers on the map, you need to add latitude and longitude custom fields to your posts. Follow these steps:"
+msgid ""
+"To display markers on the map, you need to add latitude and longitude custom "
+"fields to your posts. Follow these steps:"
 msgstr ""
 
 #: templates/admin.php:16
@@ -88,8 +90,7 @@ msgstr ""
 msgid "Go to"
 msgstr ""
 
-#: templates/admin.php:16
-#: blocks/build/maaaps/assets/index.js:1
+#: templates/admin.php:16 blocks/build/maaaps/assets/index.js:1
 msgid "Posts"
 msgstr ""
 
@@ -114,7 +115,8 @@ msgid "Scroll down to the \"Custom Fields\" section."
 msgstr ""
 
 #: templates/admin.php:21
-msgid "If the \"Custom Fields\" section is not visible, enable it by clicking on"
+msgid ""
+"If the \"Custom Fields\" section is not visible, enable it by clicking on"
 msgstr ""
 
 #: templates/admin.php:21
@@ -198,7 +200,8 @@ msgid "Publish"
 msgstr ""
 
 #: templates/admin.php:30
-msgid "To display the map on your site, you can use the provided Gutenberg block."
+msgid ""
+"To display the map on your site, you can use the provided Gutenberg block."
 msgstr ""
 
 #: templates/admin.php:32
@@ -254,7 +257,9 @@ msgid "Check Custom Fields:"
 msgstr ""
 
 #: templates/admin.php:43
-msgid "Ensure that the latitude and longitude fields are correctly added to your posts."
+msgid ""
+"Ensure that the latitude and longitude fields are correctly added to your "
+"posts."
 msgstr ""
 
 #: templates/admin.php:44
@@ -277,8 +282,7 @@ msgstr ""
 msgid "Block settings"
 msgstr ""
 
-#: templates/admin.php:50
-#: blocks/build/maaaps/assets/index.js:1
+#: templates/admin.php:50 blocks/build/maaaps/assets/index.js:1
 msgid "Render settings"
 msgstr ""
 
@@ -287,11 +291,16 @@ msgid "What if I have multiple posts with the same location?"
 msgstr ""
 
 #: templates/admin.php:53
-msgid "The plugin support the clustering for the markers, you can disable it but then the map will display overlapping markers."
+msgid ""
+"The plugin support the clustering for the markers, you can disable it but "
+"then the map will display overlapping markers."
 msgstr ""
 
 #: templates/admin.php:56
-msgid "We hope this guide helps you get started with the Maaaps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github."
+msgid ""
+"We hope this guide helps you get started with the Maaaps Plugin. Should you "
+"have any questions or need further assistance, please use the issue section "
+"in the Github."
 msgstr ""
 
 #: templates/admin.php:57
@@ -364,23 +373,23 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Display filters?"
-msgstr ""
+msgstr "Afficher les filtres ?"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Users will be able to geolocate themselves"
-msgstr ""
+msgstr "Les utilisateurs pourront se géolocaliser"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Geolocation"
-msgstr ""
+msgstr "Géolocalisation"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Search results will be limited to the selected posts"
-msgstr ""
+msgstr "Les résultats de la recherche seront limités aux articles sélectionnés"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Limit search results?"
-msgstr ""
+msgstr "Limiter les résultats de la recherche ?"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Markers will be clustered"
@@ -396,11 +405,11 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "A search bar will be displayed"
-msgstr ""
+msgstr "Une barre de recherche sera affichée"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Display search bar?"
-msgstr ""
+msgstr "Afficher la barre de recherche ?"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Sticky posts will be displayed first in the sidebar"
@@ -416,7 +425,7 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Filters size"
-msgstr ""
+msgstr "Taille des filtres"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "The displayed sizes of the cluster icons"
@@ -440,7 +449,7 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Popups size"
-msgstr ""
+msgstr "Taille des popups"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Desktop only"
@@ -448,173 +457,151 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Sidebar size"
-msgstr ""
+msgstr "Taille de la barre latérale"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Data settings"
-msgstr ""
+msgstr "Paramètres des données"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Map settings"
-msgstr ""
+msgstr "Paramètres de la carte"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Sidebar settings"
-msgstr ""
+msgstr "Paramètres de la barre latérale"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Select the data source of the items to be displayed on the map."
 msgstr ""
+"Sélectionnez la source de données des éléments à afficher sur la carte."
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Data source"
-msgstr ""
+msgstr "Source de données"
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "No post types could be recovered."
-msgstr ""
+msgstr "Aucun type de publication n'a pu être récupéré."
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Filters"
-msgstr ""
+msgstr "Filtres"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Close filters"
-msgstr ""
+msgstr "Fermer les filtres"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Reset"
-msgstr ""
+msgstr "Réinitialiser"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Filter"
-msgstr ""
+msgstr "Filtrer"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Waiting for data to be loaded"
-msgstr ""
+msgstr "En attente du chargement des données"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Click me to load the block"
-msgstr ""
+msgstr "Cliquez pour charger le bloc"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Zoom in"
-msgstr ""
+msgstr "Zoomer"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Zoom out"
-msgstr ""
+msgstr "Dézoomer"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Reset view"
-msgstr ""
+msgstr "Remise à zéro de l'affichage"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Find your position"
-msgstr ""
+msgstr "Trouvez votre position"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "You are here"
-msgstr ""
+msgstr "Vous êtes ici"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Open in new tab"
-msgstr ""
+msgstr "Ouvrir dans un nouvel onglet"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Shrink"
-msgstr ""
+msgstr "Réduire"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Expand"
-msgstr ""
+msgstr "Développer"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Expand/Shrink"
-msgstr ""
+msgstr "Développer/Réduire"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "View itinerary"
-msgstr ""
+msgstr "Voir l'itinéraire"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Close preview"
-msgstr ""
+msgstr "Fermer la prévisualisation"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Search..."
-msgstr ""
+msgstr "Rechercher..."
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Clear"
-msgstr ""
+msgstr "Effacer"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Search"
-msgstr ""
+msgstr "Rechercher"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "Open filters"
-msgstr ""
+msgstr "Ouvrir les filtres"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "See the list"
-msgstr ""
+msgstr "Voir la liste"
 
-#: blocks/build/maaaps/assets/index.js:1
-#: blocks/build/maaaps/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "See the map"
-msgstr ""
+msgstr "Voir la carte"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block title"
 msgid "Maaaps"
-msgstr ""
+msgstr "Maaaps"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block description"
 msgid "A bloc that display maps"
-msgstr ""
+msgstr "Un plugin pour afficher des cartes"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
 msgid "mps"
-msgstr ""
+msgstr "mps"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
 msgid "maps"
-msgstr ""
+msgstr "cartes"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
 msgid "leaflet"
-msgstr ""
+msgstr "leaflet"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
 msgid "maaaps"
-msgstr ""
+msgstr "maaaps"

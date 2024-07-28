@@ -13,7 +13,7 @@
   "author": "LaTableRouge",
   "license": "GNU GENERAL PUBLIC LICENSE",
   "repository": {
-    "url": "https://github.com/MLNOP/Maaaps"
+    "url": "https://github.com/LaTableRouge/Maaaps"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
