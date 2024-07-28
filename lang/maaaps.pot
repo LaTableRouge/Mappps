@@ -9,14 +9,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-28T07:21:35+00:00\n"
+"POT-Creation-Date: 2024-07-28T12:40:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: maaaps\n"
 
 #. Plugin Name of the plugin
 #: includes/register-page.php:13
-#: templates/admin.php:35
 msgid "Maaaps"
 msgstr ""
 
@@ -85,16 +84,7 @@ msgid "Add a New Post:"
 msgstr ""
 
 #: templates/admin.php:16
-msgid "Go to"
-msgstr ""
-
-#: templates/admin.php:16
-#: blocks/build/maaaps/assets/index.js:1
-msgid "Posts"
-msgstr ""
-
-#: templates/admin.php:16
-msgid "Add New"
+msgid "Go to \"Posts\" > \"Add New\"."
 msgstr ""
 
 #: templates/admin.php:17
@@ -114,75 +104,19 @@ msgid "Scroll down to the \"Custom Fields\" section."
 msgstr ""
 
 #: templates/admin.php:21
-msgid "If the \"Custom Fields\" section is not visible, enable it by clicking on"
-msgstr ""
-
-#: templates/admin.php:21
-msgid "Screen Options"
-msgstr ""
-
-#: templates/admin.php:21
-msgid "at the top right of the screen (the three dots) and go to"
-msgstr ""
-
-#: templates/admin.php:21
-msgid "Preferences"
-msgstr ""
-
-#: templates/admin.php:21
-msgid "then check"
-msgstr ""
-
-#: templates/admin.php:21
-msgid "Custom Fields"
+msgid "If the \"Custom Fields\" section is not visible, enable it by clicking on \"Screen Options\" at the top right of the screen (the three dots) and go to \"Preferences\" then check \"Custom Fields\"."
 msgstr ""
 
 #: templates/admin.php:22
-msgid "Click on"
+msgid "Click on \"Add Custom Field\"."
 msgstr ""
 
 #: templates/admin.php:22
-msgid "Add Custom Field"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "In the"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "Name"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "field, enter or select"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "lat"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "and in the"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "Value"
-msgstr ""
-
-#: templates/admin.php:22
-msgid "field, enter the latitude coordinate."
+msgid "In the \"Name\" field, enter or select \"lat\" and in the \"Value\" field, enter the latitude coordinate."
 msgstr ""
 
 #: templates/admin.php:23
-msgid "Repeat the above step for the"
-msgstr ""
-
-#: templates/admin.php:23
-msgid "lng"
-msgstr ""
-
-#: templates/admin.php:23
-msgid "field."
+msgid "Repeat the above step for the \"lng\" field."
 msgstr ""
 
 #: templates/admin.php:26
@@ -191,10 +125,6 @@ msgstr ""
 
 #: templates/admin.php:26
 msgid "Once all details are filled in, click"
-msgstr ""
-
-#: templates/admin.php:26
-msgid "Publish"
 msgstr ""
 
 #: templates/admin.php:30
@@ -218,15 +148,7 @@ msgid "Add Block:"
 msgstr ""
 
 #: templates/admin.php:35
-msgid "Click the"
-msgstr ""
-
-#: templates/admin.php:35
-msgid "+"
-msgstr ""
-
-#: templates/admin.php:35
-msgid "icon to add a new block and search for"
+msgid "Click the \"+\" icon to add a new block and search for \"Maaaps\"."
 msgstr ""
 
 #: templates/admin.php:36
@@ -270,16 +192,7 @@ msgid "Can I customize the markers on the map?"
 msgstr ""
 
 #: templates/admin.php:50
-msgid "Yes, you can customize the marker color and size inside the"
-msgstr ""
-
-#: templates/admin.php:50
-msgid "Block settings"
-msgstr ""
-
-#: templates/admin.php:50
-#: blocks/build/maaaps/assets/index.js:1
-msgid "Render settings"
+msgid "Yes, you can customize the marker color and size inside the \"Block settings\" > \"Render settings\"."
 msgstr ""
 
 #: templates/admin.php:52
@@ -332,6 +245,10 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Display mode"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Posts"
 msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
@@ -452,6 +369,10 @@ msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "Data settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+msgid "Render settings"
 msgstr ""
 
 #: blocks/build/maaaps/assets/index.js:1
