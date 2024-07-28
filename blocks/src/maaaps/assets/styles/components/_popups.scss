@@ -3,7 +3,7 @@
   position: absolute;
   z-index: 99999;
   bottom: var(--spacing-lg);
-  left: 50%;
+  inset-inline-start: 50%;
   grid-template: 'popup' auto;
   width: 340px;
   max-width: calc(100% - (var(--spacing-md) * 2));
@@ -23,7 +23,7 @@
 
     top: 0;
     bottom: 0;
-    left: var(--sidebar-size, 25cqw);
+    inset-inline-start: var(--sidebar-size, 25cqw);
     width: var(--popup-size, max-content);
     height: var(--wrapper-height);
     transform: translateX(var(--popup-transform, -100%));
@@ -71,6 +71,10 @@
     .article__header {
       position: relative;
 
+      & > a {
+        display: block;
+      }
+
       .article__picture-wrapper {
         transition: var(--nomotion, aspect-ratio 0.2s ease-in-out);
         aspect-ratio: var(--article-picture-ratio, 27/9);
@@ -105,7 +109,7 @@
     }
 
     .article__content {
-      padding: 0 var(--spacing-md);
+      padding: 0 var(--spacing-lg);
 
       .article__title {
         margin-bottom: var(--spacing-md);

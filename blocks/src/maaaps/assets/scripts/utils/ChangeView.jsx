@@ -126,7 +126,7 @@ function ChangeView({
   }, [markerSearch])
 
   useEffect(() => {
-    if (markers.length && Object.keys(selectedPost).length) {
+    if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {
       let selectedMarker = refsMarker.current.find((markerRef) => markerRef.current && markerRef.current.options.data.id === selectedPost.id)
       if (selectedMarker.current) {
         selectedMarker = selectedMarker.current

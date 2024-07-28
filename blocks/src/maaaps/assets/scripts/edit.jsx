@@ -27,10 +27,6 @@ export default function Edit({ attributes, isSelected, setAttributes }) {
   const postTypes = GetPostTypes()
   // ----------
 
-  // TODO:
-  // style desktop & mobile
-  // Style rtl
-
   if (attributes.selectedPosts.length) {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
