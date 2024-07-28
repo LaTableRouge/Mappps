@@ -12,9 +12,16 @@ function mps_register_page() {
         __('Setup', 'maaaps'),
         __('Maaaps', 'maaaps'),
         'manage_options',
-        MPS_BASE_NAME . '/templates/admin.php',
-        '',
+        'mps_admin',
+        'mps_page_callback',
         $svgString
     );
 }
 add_action('admin_menu', 'mps_register_page');
+
+function mps_page_callback() {
+    printf(
+        '<article class="wrap" id="mps_root">%s</article>',
+        esc_html__( 'Loading…', 'maaaps' )
+    );
+}

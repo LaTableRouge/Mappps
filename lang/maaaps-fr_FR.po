@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Maaaps 0.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-07-28T12:40:15+00:00\n"
-"PO-Revision-Date: 2024-07-28 15:02+0200\n"
+"POT-Creation-Date: 2024-07-28T16:49:29+00:00\n"
+"PO-Revision-Date: 2024-07-28 18:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -44,222 +44,9 @@ msgstr "Maaaps - Blocs"
 msgid "Setup"
 msgstr "Configuration"
 
-#: templates/admin.php:2
-msgid "Getting Started with the Maaaps Plugin"
-msgstr "Premiers pas avec l'extension Maaaps"
-
-#: templates/admin.php:3
-msgid ""
-"Welcome to the comprehensive guide on how to get started with our Maaaps "
-"Plugin. This plugin allows you to display maps with markers based on the "
-"latitude and longitude provided in your posts. Follow the steps below to set "
-"up and utilize the plugin effectively."
-msgstr ""
-"Bienvenue dans le guide de démarrage de l'extension Maaaps. Cette extension "
-"vous permet d'afficher des cartes avec des marqueurs basés sur des latitudes "
-"et longitudes fournies dans vos publications. Suivez les étapes ci-dessous "
-"pour configurer le plugin et apprendre à l'utiliser."
-
-#: templates/admin.php:5
-msgid "Table of Contents"
-msgstr "Table des matières"
-
-#: templates/admin.php:7 templates/admin.php:13
-msgid "Creating Posts with Location Data"
-msgstr "Créer des publications avec des données géographiques"
-
-#: templates/admin.php:8 templates/admin.php:29
-msgid "Displaying the Map"
-msgstr "Afficher la carte"
-
-#: templates/admin.php:9 templates/admin.php:40
-msgid "Troubleshooting"
-msgstr "Dépannage"
-
-#: templates/admin.php:10 templates/admin.php:47
-msgid "FAQs"
-msgstr "FAQ"
-
-#: templates/admin.php:14
-msgid ""
-"To display markers on the map, you need to add latitude and longitude custom "
-"fields to your posts. Follow these steps:"
-msgstr ""
-"Pour afficher des marqueurs sur la carte, vous devez ajouter des champs "
-"personnalisés de latitude et de longitude à vos publications. Voici comment "
-"procéder :"
-
-#: templates/admin.php:16
-msgid "Add a New Post:"
-msgstr "Ajouter un nouvel article :"
-
-#: templates/admin.php:16
-msgid "Go to \"Posts\" > \"Add New\"."
-msgstr "Rendez vous dans \"Articles\" > \" Ajouter un nouvel article\"."
-
-#: templates/admin.php:17
-msgid "Enter Post Details:"
-msgstr "Saisissez les informations de la publication :"
-
-#: templates/admin.php:17
-msgid "Fill in the title, excerpt, category, tags and picture."
-msgstr ""
-"Complétez le titre, l'extrait, la/les catégorie(s), les étiquettes et "
-"l'image à la une."
-
-#: templates/admin.php:18
-msgid "Add Custom Fields:"
-msgstr "Ajouter un champ personnalisé :"
-
-#: templates/admin.php:20
-msgid "Scroll down to the \"Custom Fields\" section."
-msgstr "Faites défiler la page jusqu'à la section \"Champs personnalisés\"."
-
-#: templates/admin.php:21
-msgid ""
-"If the \"Custom Fields\" section is not visible, enable it by clicking on "
-"\"Screen Options\" at the top right of the screen (the three dots) and go to "
-"\"Preferences\" then check \"Custom Fields\"."
-msgstr ""
-"Si la section \"Champs personnalisés\" n'est pas visible, activez-la en "
-"cliquant sur \"Options\" en haut à droite de l'écran (les trois points), "
-"puis allez dans \"Préférences\" et cochez \"Champs personnalisés\"."
-
-#: templates/admin.php:22
-msgid "Click on \"Add Custom Field\"."
-msgstr "Cliquez sur \"Ajouter un champ personnalisé\"."
-
-#: templates/admin.php:22
-msgid ""
-"In the \"Name\" field, enter or select \"lat\" and in the \"Value\" field, "
-"enter the latitude coordinate."
-msgstr ""
-"Dans le champ \"Nom\", ajoutez ou sélectionnez \"lat\" puis ajoutez la "
-"coordonnée de latitude."
-
-#: templates/admin.php:23
-msgid "Repeat the above step for the \"lng\" field."
-msgstr "Répétez l'étape ci-dessus pour le champ \"lng\"."
-
-#: templates/admin.php:26
-msgid "Publish the Post:"
-msgstr "Publiez l'article :"
-
-#: templates/admin.php:26
-msgid "Once all details are filled in, click"
-msgstr "Une fois toutes les informations remplis, cliquez sur"
-
-#: templates/admin.php:30
-msgid ""
-"To display the map on your site, you can use the provided Gutenberg block."
-msgstr ""
-"Pour afficher la carte sur votre site, vous pouvez utiliser le bloc "
-"Gutenberg fourni."
-
-#: templates/admin.php:32
-msgid "Using Gutenberg Block"
-msgstr "Utilisation du bloc Gutenberg"
-
-#: templates/admin.php:34
-msgid "Edit Page/Post:"
-msgstr "Modifier la publication :"
-
-#: templates/admin.php:34
-msgid "Open the page or post where you want to add the map."
-msgstr "Sélectionnez la page ou l'article où vous souhaitez afficher la carte."
-
-#: templates/admin.php:35
-msgid "Add Block:"
-msgstr "Ajouter un bloc :"
-
-#: templates/admin.php:35
-msgid "Click the \"+\" icon to add a new block and search for \"Maaaps\"."
-msgstr ""
-"Cliquez sur l'icône \"+\" pour ajouter un nouveau bloc et cherchez "
-"\"Maaaps\"."
-
-#: templates/admin.php:36
-msgid "Configure Block:"
-msgstr "Configurer le bloc :"
-
-#: templates/admin.php:36
-msgid "Select the block and configure any additional settings if necessary."
-msgstr ""
-"Sélectionnez le bloc et configurez tout les réglages à votre convenance."
-
-#: templates/admin.php:37
-msgid "Publish/Update:"
-msgstr "Publier/Mettre à jour :"
-
-#: templates/admin.php:37
-msgid "Save your changes."
-msgstr "Sauvegardez vos modifications."
-
-#: templates/admin.php:41
-msgid "If the map does not display correctly, consider the following:"
-msgstr ""
-"Si la carte ne s'affiche pas correctement, les points suivants peuvent peut-"
-"être poser problème :"
-
-#: templates/admin.php:43
-msgid "Check Custom Fields:"
-msgstr "Vérifiez les champs personnalisés :"
-
-#: templates/admin.php:43
-msgid ""
-"Ensure that the latitude and longitude fields are correctly added to your "
-"posts."
-msgstr ""
-"Assurez-vous que les champs de latitude et de longitude sont correctement "
-"ajoutés à vos publications."
-
-#: templates/admin.php:44
-msgid "Block:"
-msgstr "Vérifiez le bloc :"
-
-#: templates/admin.php:44
-msgid "Verify that the block is correctly added to your page or post."
-msgstr ""
-"Assurez vous que le bloc est bien ajouté correctement sur la publication "
-"souhaitée."
-
-#: templates/admin.php:48
-msgid "Can I customize the markers on the map?"
-msgstr "Est-ce que je peux personnaliser les marqueurs sur la carte ?"
-
-#: templates/admin.php:50
-msgid ""
-"Yes, you can customize the marker color and size inside the \"Block "
-"settings\" > \"Render settings\"."
-msgstr ""
-"Oui, vous pouvez personnaliser la couleur et la taille du marqueur dans "
-"\"Réglages du bloc\" > \"Réglages d'affichage\"."
-
-#: templates/admin.php:52
-msgid "What if I have multiple posts with the same location?"
-msgstr "Que faire si j'ai plusieurs publications avec la même localisation ?"
-
-#: templates/admin.php:53
-msgid ""
-"The plugin support the clustering for the markers, you can disable it but "
-"then the map will display overlapping markers."
-msgstr ""
-"L'extension permet l'agrégation des marqueurs. Cette option est désactivable "
-"cependant les marqueurs se superposeront."
-
-#: templates/admin.php:56
-msgid ""
-"We hope this guide helps you get started with the Maaaps Plugin. Should you "
-"have any questions or need further assistance, please use the issue section "
-"in the Github."
-msgstr ""
-"Nous espérons que ce guide a pu vous aider à comprendre le fonctionnement de "
-"l'extension Maaaps. Si vous avez des questions ou besoin d'aide avec cette "
-"extension, merci d'utiliser la section Issue sur GitHub."
-
-#: templates/admin.php:57
-msgid "Submit an issue"
-msgstr "Envoyer un bug"
+#: includes/register-page.php:25
+msgid "Loading…"
+msgstr "Chargement..."
 
 #: blocks/build/maaaps/assets/index.js:1
 msgid "The padding value for the bounds of the map"
@@ -546,6 +333,223 @@ msgstr "Voir la liste"
 #: blocks/build/maaaps/assets/index.js:1 blocks/build/maaaps/assets/view.js:1
 msgid "See the map"
 msgstr "Voir la carte"
+
+#: build/index.js:1
+msgid "Getting Started with the Maaaps Plugin"
+msgstr "Premiers pas avec l'extension Maaaps"
+
+#: build/index.js:1
+msgid ""
+"Welcome to the comprehensive guide on how to get started with our Maaaps "
+"Plugin. This plugin allows you to display maps with markers based on the "
+"latitude and longitude provided in your posts. Follow the steps below to set "
+"up and utilize the plugin effectively."
+msgstr ""
+"Bienvenue dans le guide de démarrage de l'extension Maaaps. Cette extension "
+"vous permet d'afficher des cartes avec des marqueurs basés sur des latitudes "
+"et longitudes fournies dans vos publications. Suivez les étapes ci-dessous "
+"pour configurer le plugin et apprendre à l'utiliser."
+
+#: build/index.js:1
+msgid "Table of Contents"
+msgstr "Table des matières"
+
+#: build/index.js:1
+msgid "Creating Posts with Location Data"
+msgstr "Créer des publications avec des données géographiques"
+
+#: build/index.js:1
+msgid "Displaying the Map"
+msgstr "Afficher la carte"
+
+#: build/index.js:1
+msgid "Troubleshooting"
+msgstr "Dépannage"
+
+#: build/index.js:1
+msgid "FAQs"
+msgstr "FAQ"
+
+#: build/index.js:1
+msgid ""
+"To display markers on the map, you need to add latitude and longitude custom "
+"fields to your posts. Follow these steps:"
+msgstr ""
+"Pour afficher des marqueurs sur la carte, vous devez ajouter des champs "
+"personnalisés de latitude et de longitude à vos publications. Voici comment "
+"procéder :"
+
+#: build/index.js:1
+msgid "Add a New Post:"
+msgstr "Ajouter un nouvel article :"
+
+#: build/index.js:1
+msgid "Go to \"Posts\" > \"Add New\"."
+msgstr "Rendez vous dans \"Articles\" > \" Ajouter un nouvel article\"."
+
+#: build/index.js:1
+msgid "Enter Post Details:"
+msgstr "Saisissez les informations de la publication :"
+
+#: build/index.js:1
+msgid "Fill in the title, excerpt, category, tags and picture."
+msgstr ""
+"Complétez le titre, l'extrait, la/les catégorie(s), les étiquettes et "
+"l'image à la une."
+
+#: build/index.js:1
+msgid "Add Custom Fields:"
+msgstr "Ajouter un champ personnalisé :"
+
+#: build/index.js:1
+msgid "Scroll down to the \"Custom Fields\" section."
+msgstr "Faites défiler la page jusqu'à la section \"Champs personnalisés\"."
+
+#: build/index.js:1
+msgid ""
+"If the \"Custom Fields\" section is not visible, enable it by clicking on "
+"\"Screen Options\" at the top right of the screen (the three dots) and go to "
+"\"Preferences\" then check \"Custom Fields\"."
+msgstr ""
+"Si la section \"Champs personnalisés\" n'est pas visible, activez-la en "
+"cliquant sur \"Options\" en haut à droite de l'écran (les trois points), "
+"puis allez dans \"Préférences\" et cochez \"Champs personnalisés\"."
+
+#: build/index.js:1
+msgid "Click on \"Add Custom Field\"."
+msgstr "Cliquez sur \"Ajouter un champ personnalisé\"."
+
+#: build/index.js:1
+msgid ""
+"In the \"Name\" field, enter or select \"lat\" and in the \"Value\" field, "
+"enter the latitude coordinate."
+msgstr ""
+"Dans le champ \"Nom\", ajoutez ou sélectionnez \"lat\" puis ajoutez la "
+"coordonnée de latitude."
+
+#: build/index.js:1
+msgid "Repeat the above step for the \"lng\" field."
+msgstr "Répétez l'étape ci-dessus pour le champ \"lng\"."
+
+#: build/index.js:1
+msgid "Publish the Post:"
+msgstr "Publiez l'article :"
+
+#: build/index.js:1
+msgid "Once all details are filled in, click on \"Publish\"."
+msgstr "Une fois toutes les informations remplis, cliquez sur \"Publier\"."
+
+#: build/index.js:1
+msgid ""
+"To display the map on your site, you can use the provided Gutenberg block."
+msgstr ""
+"Pour afficher la carte sur votre site, vous pouvez utiliser le bloc "
+"Gutenberg fourni."
+
+#: build/index.js:1
+msgid "Using Gutenberg Block"
+msgstr "Utilisation du bloc Gutenberg"
+
+#: build/index.js:1
+msgid "Edit Page/Post:"
+msgstr "Modifier la publication :"
+
+#: build/index.js:1
+msgid "Open the page or post where you want to add the map."
+msgstr "Sélectionnez la page ou l'article où vous souhaitez afficher la carte."
+
+#: build/index.js:1
+msgid "Add Block:"
+msgstr "Ajouter un bloc :"
+
+#: build/index.js:1
+msgid "Click the \"+\" icon to add a new block and search for \"Maaaps\"."
+msgstr ""
+"Cliquez sur l'icône \"+\" pour ajouter un nouveau bloc et cherchez "
+"\"Maaaps\"."
+
+#: build/index.js:1
+msgid "Configure Block:"
+msgstr "Configurer le bloc :"
+
+#: build/index.js:1
+msgid "Select the block and configure any additional settings if necessary."
+msgstr ""
+"Sélectionnez le bloc et configurez tout les réglages à votre convenance."
+
+#: build/index.js:1
+msgid "Publish/Update:"
+msgstr "Publier/Mettre à jour :"
+
+#: build/index.js:1
+msgid "Save your changes."
+msgstr "Sauvegardez vos modifications."
+
+#: build/index.js:1
+msgid "If the map does not display correctly, consider the following:"
+msgstr ""
+"Si la carte ne s'affiche pas correctement, les points suivants peuvent peut-"
+"être poser problème :"
+
+#: build/index.js:1
+msgid "Check Custom Fields:"
+msgstr "Vérifiez les champs personnalisés :"
+
+#: build/index.js:1
+msgid ""
+"Ensure that the latitude and longitude fields are correctly added to your "
+"posts."
+msgstr ""
+"Assurez-vous que les champs de latitude et de longitude sont correctement "
+"ajoutés à vos publications."
+
+#: build/index.js:1
+msgid "Block:"
+msgstr "Vérifiez le bloc :"
+
+#: build/index.js:1
+msgid "Verify that the block is correctly added to your page or post."
+msgstr ""
+"Assurez vous que le bloc est bien ajouté correctement sur la publication "
+"souhaitée."
+
+#: build/index.js:1
+msgid "Can I customize the markers on the map?"
+msgstr "Est-ce que je peux personnaliser les marqueurs sur la carte ?"
+
+#: build/index.js:1
+msgid ""
+"Yes, you can customize the marker color and size inside the \"Block "
+"settings\" > \"Render settings\"."
+msgstr ""
+"Oui, vous pouvez personnaliser la couleur et la taille du marqueur dans "
+"\"Réglages du bloc\" > \"Réglages d'affichage\"."
+
+#: build/index.js:1
+msgid "What if I have multiple posts with the same location?"
+msgstr "Que faire si j'ai plusieurs publications avec la même localisation ?"
+
+#: build/index.js:1
+msgid ""
+"The plugin support the clustering for the markers, you can disable it but "
+"then the map will display overlapping markers."
+msgstr ""
+"L'extension permet l'agrégation des marqueurs. Cette option est désactivable "
+"cependant les marqueurs se superposeront."
+
+#: build/index.js:1
+msgid ""
+"We hope this guide helps you get started with the Maaaps Plugin. Should you "
+"have any questions or need further assistance, please use the issue section "
+"in the Github."
+msgstr ""
+"Nous espérons que ce guide a pu vous aider à comprendre le fonctionnement de "
+"l'extension Maaaps. Si vous avez des questions ou besoin d'aide avec cette "
+"extension, merci d'utiliser la section Issue sur GitHub."
+
+#: build/index.js:1
+msgid "Submit an issue"
+msgstr "Envoyer un bug"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block title"
