@@ -1,4 +1,24 @@
 .leaflet-control-container {
+  .leaflet-left {
+    left: initial;
+    inset-inline-start: 0;
+
+    .leaflet-control {
+      margin-left: initial;
+      margin-inline-start: 10px;
+    }
+  }
+
+  .leaflet-right {
+    right: initial;
+    inset-inline-end: 0;
+
+    .leaflet-control {
+      margin-right: initial;
+      margin-inline-end: 10px;
+    }
+  }
+
   a {
     text-decoration: none;
 

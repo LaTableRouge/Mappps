@@ -9,7 +9,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   width: 100%;
-  padding: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
   transform: translateX(var(--form-transform, -100%));
   transition: var(--form-transition, var(--nomotion, transform 0.3s ease-in-out 0.15s), var(--nomotion, opacity 0.3s ease-in-out));
   opacity: var(--form-opacity, 0);
@@ -82,7 +82,7 @@
             position: absolute;
             top: 32px;
             bottom: 0;
-            left: 7px;
+            inset-inline-start: 7px;
             width: 1px;
             transform: translateX(50%);
             background-color: var(--color-gray-300);
