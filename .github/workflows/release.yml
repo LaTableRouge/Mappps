@@ -22,7 +22,7 @@ jobs:
       - name: Compile CSS and Javascript
         run: |
           npm ci --ignore-scripts
-          npm run prod --chore=ci && npm run build:blocks
+          npm run build && npm run build:blocks
 
       # Zip le plugin dans une release clean de tout fichiers inutiles
       - name: Zip release
