@@ -15,17 +15,20 @@ If not already done, run `npm install` in this directory
 
 ### 🧙‍♂️ Development Scripts
 
-We use vite.js and wp-scripts to facilitate and optimize our development.
+We use wp-scripts to facilitate and optimize our development.
 
 The list of development scripts is listed below:
 
 | NPM Command                | Action                                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| npm run prod               | compiles `maaaps` plugin files (\*.scss, \*.js) and deploys static files to the **build/** directory of the plugin.                                  |
-| npm run build              | lints, formats, and compiles `maaaps` plugin files (\*.php, \*.scss, \*.js) and deploys static files to the **build/** directory of the plugin.      |
-| npm run watch              | starts a local development server accessible directly on **local.your-host.com**, compiles and reloads static files (\*.scss, \*.js) on each change. |
-| npm run watch:blocks       | compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                          |
-| npm run build:blocks       | lints, formats, and compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.      |
+| npm run prod               | watch `maaaps` plugin files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the plugin.                             |
+| npm run build              | compiles `maaaps` plugin files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the plugin.                          |
+| npm run watch:blocks       | watch `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                             |
+| npm run build:blocks       | compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                          |
+| npm run beautify:all       | lint and prettify all assets (\*.php, \*.scss, \*.js) from plugin and blocks.                                                                        |
+| composer lint:php          | lint php files (\*.php) from plugin.                                                                                                                 |
+
+‼️‼️ Before any commit you should run `npm run beautify:all` and `composer lint:php` ‼️‼️
 
 ### Creating REACT Blocks
 
@@ -48,7 +51,7 @@ wp i18n make-json lang/ --no-purge
 
 ## Roadmap
 
-- [ ] Translation (English/French)
+- [x] Translation (English/French)
 - [x] Edit part
 - [x] Save part
 - [x] Style desktop

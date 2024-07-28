@@ -17,22 +17,23 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "vite",
-    "prod": "vite build",
-    "build": "npm run prod --chore=all",
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
     "watch:blocks": "wp-scripts start --webpack-src-dir=blocks/src --output-path=blocks/build",
     "build:blocks": "wp-scripts build --webpack-src-dir=blocks/src --output-path=blocks/build",
+    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/src/**/assets/styles/**,src/styles,blocks/src/**/assets/styles}*.scss",
+    "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/src/**/assets/styles/**,src/styles,blocks/src/**/assets/styles}/*.scss",
+    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
+    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
+    "beautify:all": "npm run lint:scss && npm run lint:js && npm run prettier:scss && npm run prettier:js",
     "plugin-zip": "wp-scripts plugin-zip",
-    "version-update": "npm run prod --chore=version",
-    "prepare": "husky install && composer install && npm run prod && npm run build:blocks"
+    "prepare": "husky install && composer install && npm run build && npm run build:blocks"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@mlnop/string-replace": "^1.0.5",
     "@rollup/plugin-terser": "^0.4.4",
     "@wordpress/scripts": "^28.3.0",
-    "autoprefixer": "^10.4.19",
     "browserslist": "^4.23.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
@@ -57,9 +58,7 @@
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-config-standard": "^34.0.0",
     "stylelint-order": "^6.0.3",
-    "validate-branch-name": "^1.3.0",
-    "vite": "^5.2.11",
-    "vite-plugin-run": "^0.4.1"
+    "validate-branch-name": "^1.3.0"
   },
   "dependencies": {
     "@changey/react-leaflet-markercluster": "^4.0.0-rc1",
@@ -78,7 +77,6 @@
     "react-transition-group": "^4.4.5"
   },
   "files": [
-    "!vite.config.js",
     "maaaps.php",
     "lang/",
     "build/",
