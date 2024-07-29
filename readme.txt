@@ -4,10 +4,10 @@ Requires at least: 6.2
 Tested up to: 6.6
 Requires PHP: 7.4
 Stable tag: 0.0.6
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-== Description ==
+== Short Description ==
 
 Maaaps, is a plugin designed to display maps with the help of Leaflet.
 It's main purpose is to quickly make store locator for Wordpress webistes.
