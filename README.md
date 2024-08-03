@@ -21,7 +21,7 @@ The list of development scripts is listed below:
 
 | NPM Command                | Action                                                                                                                                               |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| npm run prod               | watch `maaaps` plugin files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the plugin.                             |
+| npm run start               | watch `maaaps` plugin files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the plugin.                             |
 | npm run build              | compiles `maaaps` plugin files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the plugin.                          |
 | npm run watch:blocks       | watch `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                             |
 | npm run build:blocks       | compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                          |
@@ -56,6 +56,8 @@ wp i18n make-json lang/ --no-purge
 - [x] Save part
 - [x] Style desktop
 - [x] Style mobile
+- [] Toggle between popup from sidebar to marker popup
+- [] Back office quote html tag (I18n)
 
 ### Documentation
 

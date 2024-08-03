@@ -11,7 +11,7 @@
   },
   "scripts": {
     "lint:php": [
-        "vendor/bin/php-cs-fixer.bat fix -v --show-progress=dots --using-cache=no --config=.php-cs-fixer.php maaaps.php includes"
+      "vendor/bin/php-cs-fixer.bat fix -v --show-progress=dots --using-cache=no --config=.php-cs-fixer.php maaaps.php includes"
     ]
-}
+  }
 }
