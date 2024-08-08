@@ -5,9 +5,8 @@ import AlterBlockProps from './utils/AlterBlockProps'
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
 
-  const { posts } = attributes
   return (
-    <section {...AlterBlockProps(blockProps, attributes)} data-posts={JSON.stringify(posts)}>
+    <section {...AlterBlockProps(blockProps, attributes)} data-attributes={JSON.stringify(attributes)} id={attributes.blockId}>
       <div className="responsive-wrapper">
         <InnerBlocks.Content />
       </div>

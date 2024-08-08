@@ -1,7 +1,7 @@
 import '../styles/editor.scss'
 
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
-import { useCallback, useState } from '@wordpress/element'
+import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
 import Wizard from './components/Wizard'
@@ -50,6 +50,10 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     resizeObserver.observe(node)
   }, [])
   // ----------
+
+  useEffect(() => {
+    setAttributes({ blockId: clientId })
+  }, [clientId])
 
   if (attributes.selectedPosts.length) {
     return (
