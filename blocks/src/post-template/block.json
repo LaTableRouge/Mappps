@@ -53,5 +53,6 @@
   "viewScript": "file:./assets/view.js",
   "editorScript": "file:./assets/index.jsx",
   "editorStyle": "file:./assets/index.css",
-  "style": "file:./assets/style-index.css"
+  "style": "file:./assets/style-index.css",
+  "render": "file:./render.php"
 }

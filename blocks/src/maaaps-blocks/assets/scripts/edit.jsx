@@ -4,12 +4,11 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useCallback, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
-// import Sidebar from './components/Sidebar'
 import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
 
-export default function Edit({ attributes, isSelected, setAttributes }) {
+export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
   // Child block change listener : https://wordpress.stackexchange.com/questions/406384/how-to-output-child-block-attributes-on-a-parent-block
 
   // TODO:
@@ -52,11 +51,6 @@ export default function Edit({ attributes, isSelected, setAttributes }) {
   }, [])
   // ----------
 
-  // TODO:
-  // style desktop & mobile
-  // Style rtl
-  // Mobile popup expand
-
   if (attributes.selectedPosts.length) {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
@@ -66,8 +60,8 @@ export default function Edit({ attributes, isSelected, setAttributes }) {
           <InnerBlocks
             template={[
               ['mps/loader', {}],
-              ['mps/sidebar', {}],
-              ['mps/map', {}]
+              ['mps/sidebar', {}]
+              // ['mps/map', {}]
             ]}
           />
         </div>

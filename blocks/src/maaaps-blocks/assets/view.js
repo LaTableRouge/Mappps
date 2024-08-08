@@ -1,32 +1,25 @@
-/**
- * The script that'll be called when the block is rendered on the front-end
- */
-window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mps-maaaps:not(.is-init)')
-  if (blocks.length) {
-    blocks.forEach((block) => {
-      let postIDs = block.dataset.posts
-      if (postIDs) {
-        postIDs = JSON.parse(postIDs)
-        if (postIDs.length) {
-          block.classList.add('is-init')
+// https://wordpress.stackexchange.com/questions/415232/how-can-i-render-a-built-in-gutenberg-block-with-innerblocks-outside-of-the-bloc
 
-          const args = {
-            per_page: 100,
-            include: postIDs
-          }
+// window.addEventListener('DOMContentLoaded', () => {
+//   const blocks = document.querySelectorAll('.wp-block-mps-maaaps-blocks:not(.is-init)')
+//   if (blocks.length) {
+//     blocks.forEach((block) => {
+//       block.classList.add('is-init')
+//       const root = createRoot(block)
+//       let innerBlocks = block.dataset.blocks
+//       if (innerBlocks) {
+//         innerBlocks = JSON.parse(block.dataset.blocks)
+//         if (Object.keys(innerBlocks).length && innerBlocks.blocks.length) {
+//           root.render(<Main blocks={innerBlocks.blocks} />)
+//         }
+//       }
+//     })
+//   }
+// })
 
-          fetch(`http://local.wp-preview.com/wp-json/wp/v2/posts?${new URLSearchParams(args)}`).then(async (response) => {
-            // const totalPages = response.headers.get('x-wp-totalpages')
-
-            response = await response.json()
-
-            if (response.length) {
-              console.log(response)
-            }
-          })
-        }
-      }
-    })
-  }
-})
+// TODO:
+//  - Faire en sorte que le rendu back-office soit utilisable et rende bien avec les paramètres de personnalisation.
+//    tout n'a pas besoin d'être dfonctionnel en back-office
+//  - Faire un script global dans view.js contenant l'init de la map les filtres etc...
+//  - Concernant le post-template prendre le fonctionnement de gutenberg avec le render.php
+//  - Simplifier au mieux les scripts de composants secondaires.
