@@ -1,4 +1,4 @@
-export default function Loader({ hasPosts = false }) {
+export default function Loader() {
   return (
     <>
       <div className="loader__spinner"></div>

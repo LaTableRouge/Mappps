@@ -1,6 +1,44 @@
+import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css'
+import 'leaflet-defaulticon-compatibility'
+import 'leaflet/dist/leaflet.css'
+import '@changey/react-leaflet-markercluster/dist/styles.min.css'
+import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
+
+import { createRoot } from 'react-dom/client'
+
+import Main from '../../map/assets/scripts/main'
+
 window.addEventListener('DOMContentLoaded', () => {
   const blocks = document.querySelectorAll('.wp-block-mps-maaaps-blocks:not(.is-init)')
   if (blocks.length) {
+    if (window['mps-maaaps-blocks'] === undefined) {
+      window['mps-maaaps-blocks'] = {
+        blocks: [],
+        eventsNames: [
+          'setSelectedPosts',
+          'setSelectedPostTerms',
+          'setSearchValue',
+          'setSelectedSearchResult',
+          'setMobileIsMapDisplayed',
+          'setFilters',
+          'setSelectedPosts',
+          'setFiltersOpen'
+        ]
+      }
+    }
+
+    if (typeof window['mps-maaaps-blocks'].getBlock !== 'function') {
+      window['mps-maaaps-blocks'].getBlock = (blockId) => {
+        const block = window['mps-maaaps-blocks'].blocks.find((block) => block.id === blockId)
+        const index = window['mps-maaaps-blocks'].blocks.findIndex((block) => block.id === blockId)
+
+        return {
+          block,
+          index
+        }
+      }
+    }
+
     blocks.forEach((block) => {
       block.classList.add('is-init')
 
@@ -18,19 +56,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
 
         fetch(`${fw_data.rest_url}${restNamespace}/${restBase}?${new URLSearchParams(args)}`).then(async (response) => {
-          // const totalPages = response.headers.get('x-wp-totalpages')
-
           response = await response.json()
 
           if (response.length) {
-            if (window['mps-maaaps-blocks'] === undefined) {
-              window['mps-maaaps-blocks'] = []
-            }
-
             // THis is the "states" that'll store usefull data
             // unfortunately this block could not be rendered in full React.js
             // See the full React.js implementation here : https://github.com/LaTableRouge/Maaaps/blob/master/blocks/src/maaaps/assets/scripts/main.jsx
-            window['mps-maaaps-blocks'].push({
+            window['mps-maaaps-blocks'].blocks.push({
               id,
               queriedPosts: response,
               selectedPost: {},
@@ -39,8 +71,27 @@ window.addEventListener('DOMContentLoaded', () => {
               selectedSearchResult: {},
               mobileIsMapDisplayed: true,
               filters: {},
-              filtersOpen: false
+              filtersOpen: false,
+              posts: response,
+              map: false
             })
+
+            // Map rendering
+            const mapChildBlock = block.querySelector('.wp-block-mps-map')
+            if (mapChildBlock) {
+              mapChildBlock.classList.add('is-init')
+
+              const attributes = JSON.parse(mapChildBlock.dataset.attributes)
+
+              const root = createRoot(mapChildBlock)
+              root.render(<Main attributes={attributes} queriedPosts={response} />)
+            }
+
+            // Loader rendering (!! always in last !!)
+            const loaderChildBlock = block.querySelector('.wp-block-mps-loader')
+            if (loaderChildBlock) {
+              loaderChildBlock.dataset.hasPosts = true
+            }
           }
         })
       }

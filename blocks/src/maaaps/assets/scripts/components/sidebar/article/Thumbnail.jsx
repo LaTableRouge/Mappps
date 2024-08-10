@@ -1,8 +1,6 @@
-import placeholder from '../../../../img/placeholder.webp'
-
 export default function Thumbnail({ alt, height, url, width }) {
   if (!url) {
-    url = placeholder
+    return
   }
 
   return (

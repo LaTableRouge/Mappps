@@ -89,6 +89,8 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
                       e.preventDefault()
 
                       setSelectedPost({})
+
+                      setIsExpanded(false)
                     }}
                   >
                     <span className="icon-maaaps-cross"></span>

@@ -1,9 +1,7 @@
-import { __experimentalNumberControl as UnitControl } from '@wordpress/components'
+import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function UnitMarkerSize(props) {
-  const { defaultValue, setAttributes } = props
-
+export default function UnitMarkerSize({ defaultValue, setAttributes }) {
   return (
     <UnitControl
       help={__('The displayed sizes of the marker icons', 'maaaps')}

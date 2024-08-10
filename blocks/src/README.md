@@ -17,6 +17,7 @@
     - index.jsx
     - view.js
   - block.json
+  - render.php (optionnal)
 
 ## Compilation
 

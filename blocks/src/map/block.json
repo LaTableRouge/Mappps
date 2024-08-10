@@ -89,6 +89,10 @@
     "selectedBoundsPadding": {
       "type": "number",
       "default": 70
+    },
+    "selectedActiveMarkerColor": {
+      "type": "string",
+      "default": "#AE2012"
     }
   },
   "viewScript": "file:./assets/view.js",

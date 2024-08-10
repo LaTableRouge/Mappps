@@ -1,16 +1,16 @@
 import { __experimentalNumberControl as NumberControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function InputMaxZoom({ defaultValue, setAttributes }) {
+export default function InputBoundsPadding({ defaultValue, setAttributes }) {
   return (
     <NumberControl
-      help={__('The maximum zoom level allowed for the map', 'maaaps')}
+      help={__('The padding value for the bounds of the map', 'maaaps')}
       isShiftStepEnabled={false}
-      label={__('Maximum zoom', 'maaaps')}
+      label={__('Bounds padding', 'maaaps')}
       min={0}
       value={defaultValue}
       onChange={(value) => {
-        setAttributes({ selectedMaxZoom: value })
+        setAttributes({ selectedBoundsPadding: value })
       }}
     />
   )

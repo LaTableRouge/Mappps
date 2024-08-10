@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n'
 import { useMap } from 'react-leaflet'
 
-export default function MapControls({ geolocationCoordinates, isGeolocated, setGeolocationCoordinates }) {
+export default function MapControls({ geolocationCoordinates, isGeolocated, setGeolocationCoordinates, setSelectedPost, setSelectedSearchResult }) {
   const map = useMap()
 
   return (
@@ -46,7 +46,12 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
             title={__('Reset view', 'maaaps')}
             onClick={(e) => {
               e.preventDefault()
-              // TODO: reset view fit bound
+              // Set selected post to trigger the fitbound inside the ChangeView function
+              // setSelectedPost({})
+
+              // Remove geolocation & searchMarker
+              setGeolocationCoordinates({})
+              // setSelectedSearchResult({})
             }}
           >
             <span aria-hidden="true" className="icon-maaaps-refresh"></span>
@@ -65,7 +70,6 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
                   setGeolocationCoordinates({})
                 } else {
                   map.locate().on('locationfound', function (e) {
-                    map.flyTo(e.latlng, map.getZoom())
                     setGeolocationCoordinates(e.latlng)
                   })
                 }

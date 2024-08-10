@@ -64,8 +64,8 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
           <InnerBlocks
             template={[
               ['mps/loader', {}],
-              ['mps/sidebar', {}]
-              // ['mps/map', {}]
+              ['mps/sidebar', {}],
+              ['mps/map', {}]
             ]}
           />
         </div>

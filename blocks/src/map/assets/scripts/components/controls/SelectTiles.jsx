@@ -1,13 +1,11 @@
 import { SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function SelectTiles(props) {
-  const { defaultValue, options, setAttributes } = props
-
+export default function SelectTiles({ defaultValue, options, setAttributes }) {
   return (
     <SelectControl
       defaultValue={defaultValue}
-      label={__('Map tiles style', 'maaaps')}
+      label={__('Map tiles', 'maaaps')}
       options={options}
       onChange={(value) => {
         setAttributes({
