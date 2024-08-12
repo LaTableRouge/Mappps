@@ -1,9 +1,10 @@
 import { Button, SelectControl, Spinner } from '@wordpress/components'
+import { useEffect } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import GetPosts from '../../utils/GetPosts'
 
-export default function SelectPosts({ categories, defaultValue, postType, setAttributes, taxonomies }) {
+export default function SelectPosts({ categories, defaultValue, postType, setAttributes, setQueriedPosts, taxonomies }) {
   const { posts, resolved } = GetPosts(postType, taxonomies, categories)
 
   const hasDefaultValue = defaultValue.length
@@ -18,6 +19,12 @@ export default function SelectPosts({ categories, defaultValue, postType, setAtt
       }
     })
   }
+
+  useEffect(() => {
+    if (hasDefaultValue && resolved && posts.length) {
+      setQueriedPosts(posts)
+    }
+  }, [resolved])
 
   if (resolved) {
     return (

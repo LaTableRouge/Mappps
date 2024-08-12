@@ -4,41 +4,44 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import { useEffect, useMemo, useRef, useState } from '@wordpress/element'
+import { useMemo, useRef, useState } from '@wordpress/element'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
-// import ChangeView from '../utils/ChangeView'
+import ChangeView from '../utils/ChangeView'
 import MapControls from './map/MapControls'
-// import MarkerCluster from './map/MarkerCluster'
+import MarkerCluster from './map/MarkerCluster'
 import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
+import MarkerSearch from './map/MarkerSearch'
 
-// import MarkerSearch from './map/MarkerSearch'
+// Working markercluster : https://codesandbox.io/s/react-leaflet-markercluster-state-issue-react-18-forked-r8t5d9?file=/src/App.js:253-1102
+// Working : https://codesandbox.io/s/react-leaflet-markercluster-state-issue-react-18-7voen1?file=/src/App.js:41-176
 
-const Map = ({ boundsPadding, cluster, clusterSize, isGeolocated, markerSize, maxMarkerZoom, maxZoom, queriedPosts, selectedPost, tiles }) => {
-  const [posts, setPosts] = useState(queriedPosts)
-  // const [markers, setMarkers] = useState(Markers(posts, markerSize))
+const Map = ({
+  boundsPadding,
+  cluster,
+  clusterSize,
+  isGeolocated,
+  isMobileView,
+  markerOffset = 0,
+  markerRefs,
+  markerSize,
+  maxMarkerZoom,
+  maxZoom,
+  posts,
+  selectedPost,
+  selectedSearchResult,
+  setSelectedPost,
+  setSelectedSearchResult,
+  tiles
+}) => {
+  const clusterRef = useRef(null)
 
-  useEffect(() => {
-    function handlekeydownEvent(e) {
-      const detail = e.detail
-      setPosts(detail.posts)
-      // setMarkers(Markers(posts, markerSize))
-    }
+  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost)
 
-    document.addEventListener('mps-posts-change', handlekeydownEvent)
-    return () => {
-      document.removeEventListener('mps-posts-change', handlekeydownEvent)
-    }
-  }, [])
-
-  const markers = Markers(posts, markerSize)
-
-  // const clusterRef = useRef(null)
-
-  // const markerGroup = useMemo(() => {
-  //   return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
-  // }, [markers])
+  const markerGroup = useMemo(() => {
+    return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
+  }, [markers])
 
   const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
@@ -50,54 +53,61 @@ const Map = ({ boundsPadding, cluster, clusterSize, isGeolocated, markerSize, ma
     }
   }, [geolocationCoordinates])
 
-  // const refMarkerSearch = useRef(null)
-  // const markerSearchMemo = useMemo(() => {
-  //   if (displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length) {
-  //     return MarkerSearch(selectedSearchResult, refMarkerSearch)
-  //   } else {
-  //     return null
-  //   }
-  // }, [selectedSearchResult])
+  const refMarkerSearch = useRef(null)
+  const markerSearchMemo = useMemo(() => {
+    if (Object.keys(selectedSearchResult).length) {
+      return MarkerSearch(selectedSearchResult, refMarkerSearch)
+    } else {
+      return null
+    }
+  }, [selectedSearchResult])
 
   return (
-    <MapContainer
-      center={[51.505, -0.09]}
-      doubleClickZoom={false}
-      maxZoom={maxZoom}
-      scrollWheelZoom={false}
-      style={{ width: '100%', height: '500px' }}
-      zoom={13}
-      zoomControl={false}
-      zoomSnap={0.1}
-    >
-      {/* <ChangeView
-        boundsPadding={boundsPadding}
-        markerGeolocation={markerGeolocationMemo}
-        markerOffset={markerOffset}
-        markers={markers}
-        maxMarkerZoom={maxMarkerZoom}
-        posts={posts}
-        refCluster={clusterRef}
-        refMarkerGeolocation={refMarkerGeolocation}
-      /> */}
+    <div className="maaaps__leaflet">
+      <MapContainer
+        doubleClickZoom={false}
+        maxZoom={maxZoom}
+        scrollWheelZoom={false}
+        style={{ width: '100%', height: '500px' }} // TODO: to remove
+        zoomControl={false}
+        zoomSnap={0.1}
+      >
+        <ChangeView
+          boundsPadding={boundsPadding}
+          isMobileView={isMobileView}
+          markerGeolocation={markerGeolocationMemo}
+          markerOffset={markerOffset}
+          markers={markers}
+          markerSearch={markerSearchMemo}
+          maxMarkerZoom={maxMarkerZoom}
+          posts={posts}
+          refCluster={clusterRef}
+          refMarkerGeolocation={refMarkerGeolocation}
+          refMarkerSearch={refMarkerSearch}
+          refsMarker={markerRefs}
+          selectedPost={selectedPost}
+        />
 
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        className="mapTiles"
-        url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-      />
+        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
 
-      <MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} />
+        <MapControls
+          geolocationCoordinates={geolocationCoordinates}
+          isGeolocated={isGeolocated}
+          setGeolocationCoordinates={setGeolocationCoordinates}
+          setSelectedPost={setSelectedPost}
+          setSelectedSearchResult={setSelectedSearchResult}
+        />
 
-      {/* Posts markers */}
-      {markers}
+        {/* Posts markers */}
+        {markerGroup}
 
-      {/* Geolocation marker */}
-      {markerGeolocationMemo}
+        {/* Geolocation marker */}
+        {markerGeolocationMemo}
 
-      {/* Search marker */}
-      {/* {markerSearchMemo} */}
-    </MapContainer>
+        {/* Search marker */}
+        {markerSearchMemo}
+      </MapContainer>
+    </div>
   )
 }
 

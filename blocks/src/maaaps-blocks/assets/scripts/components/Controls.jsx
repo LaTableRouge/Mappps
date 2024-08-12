@@ -38,15 +38,18 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
   return (
     <InspectorControls>
       <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
-        {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} />}
-        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} />}
-        {!!selectedTaxonomies.length && <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} taxonomies={selectedTaxonomies} />}
+        {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+        {!!selectedTaxonomies.length && (
+          <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />
+        )}
         {!!selectedCategories.length && (
           <SelectPosts
             categories={selectedCategories}
             defaultValue={selectedPosts}
             postType={selectedPostType}
             setAttributes={setAttributes}
+            setQueriedPosts={setQueriedPosts}
             taxonomies={sanitizedSelectedTaxonomies}
           />
         )}

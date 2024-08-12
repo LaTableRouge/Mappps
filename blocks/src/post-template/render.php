@@ -24,6 +24,12 @@ if (!$query->have_posts()) {
 $content = '<div class="posts-wrapper">';
 while ($query->have_posts()) {
     $query->the_post();
+    
+    $post_id = get_the_ID();
+
+    if (!in_array($post_id, $postIDs)) {
+        continue;
+    }
 
     // Get an instance of the current Post Template block.
     $block_instance = $block->parsed_block;
@@ -32,7 +38,6 @@ while ($query->have_posts()) {
     // This ensures that for the inner instances of the Post Template block, we do not render any block supports.
     $block_instance['blockName'] = 'core/null';
 
-    $post_id = get_the_ID();
     $post_type = get_post_type();
     $filter_block_context = static function ($context) use ($post_id, $post_type) {
         $context['postType'] = $post_type;

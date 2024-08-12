@@ -1,11 +1,15 @@
-import { useCallback, useState } from '@wordpress/element'
+import { createRef, useCallback, useRef, useState } from '@wordpress/element'
 
 import Map from './components/Map'
+import GlobalEventsHandler from './utils/GlobalEventsHandler'
 
-export default function Main({ attributes, queriedPosts }) {
+export default function Main({ attributes, blockId, posts }) {
   const [isMobileView, setIsMobileView] = useState(false)
 
   // ---------- Refs
+  const markerRefs = useRef([])
+  markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
+
   const wrapperRef = useCallback((node) => {
     if (!node) {
       return
@@ -21,26 +25,31 @@ export default function Main({ attributes, queriedPosts }) {
   }, [])
   // ----------
 
+  const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
+  const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
+
+  GlobalEventsHandler({ blockId, selectedPost, setSelectedPost, selectedSearchResult, setSelectedSearchResult })
+
   return (
     <div ref={wrapperRef}>
       <Map
         boundsPadding={attributes.selectedBoundsPadding}
         cluster={attributes.isClustered}
         clusterSize={attributes.selectedMarkerClusterSize}
-        // displaySearch={attributes.displaySearch}
         isGeolocated={attributes.isGeolocated}
-        // isMobileView={isMobileView}
-        // limitedSearch={attributes.limitedSearch}
+        isMobileView={isMobileView}
+        // markerOffset={popupOffset} TODO
+        markerRefs={markerRefs}
         markerSize={attributes.selectedMarkerSize}
         maxMarkerZoom={attributes.selectedMaxMarkerZoom}
         maxZoom={attributes.selectedMaxZoom}
         // mobileIsMapDisplayed={mobileIsMapDisplayed} TODO: passer par le data-attr global du parent
-        queriedPosts={queriedPosts}
-        // selectedPost={selectedPost}
-        // selectedSearchResult={selectedSearchResult}
+        posts={posts}
+        selectedPost={selectedPost}
+        selectedSearchResult={selectedSearchResult}
         // setFiltersOpen={setFiltersOpen}
-        // setSelectedPost={setSelectedPost}
-        // setSelectedSearchResult={setSelectedSearchResult}
+        setSelectedPost={setSelectedPost}
+        setSelectedSearchResult={setSelectedSearchResult}
         tiles={attributes.selectedMapTiles}
       />
     </div>

@@ -4,7 +4,7 @@ import { __ } from '@wordpress/i18n'
 
 import GetCategories from '../../utils/GetCategories'
 
-export default function SelectCategories({ defaultValue, setAttributes, taxonomies }) {
+export default function SelectCategories({ defaultValue, setAttributes, setQueriedPosts, taxonomies }) {
   const { categories, resolved } = GetCategories(taxonomies)
 
   useEffect(() => {
@@ -38,6 +38,7 @@ export default function SelectCategories({ defaultValue, setAttributes, taxonomi
             label={__('Categories', 'maaaps')}
             options={options}
             onChange={(value) => {
+              setQueriedPosts([])
               setAttributes({
                 selectedCategories: value
                 // selectedPosts: []

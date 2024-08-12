@@ -3,9 +3,11 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 
 import Controls from './components/Controls'
-import Search from './components/Search'
+import Main from './main'
 
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit({ attributes, context, setAttributes }) {
+  const blockId = context['mps/blockId']
+
   const blockProps = useBlockProps()
 
   // attributes are the states stored by Wordpress
@@ -18,7 +20,7 @@ export default function Edit({ attributes, setAttributes }) {
     <div {...blockProps}>
       <Controls limitedSearch={attributes.limitedSearch} />
 
-      <Search limitedSearch={attributes.limitedSearch} />
+      <Main attributes={attributes} blockId={blockId} />
     </div>
   )
 }

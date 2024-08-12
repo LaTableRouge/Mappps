@@ -4,6 +4,7 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
+import Loader from './components/Loader'
 import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
@@ -35,6 +36,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   // ----------States that aren't stored by Wordrpess
   // They are only usefull for the preview
   const [wrapperHeight, setWrapperHeight] = useState(0) // The height of the whole block
+  const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
   // ----------
 
   // ---------- Other variables
@@ -55,10 +57,28 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     setAttributes({ blockId: clientId })
   }, [clientId])
 
+  let posts = []
+  if (attributes.selectedPosts.length) {
+    posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
+  }
+
+  useEffect(() => {
+    if (posts.length) {
+      document.dispatchEvent(
+        new CustomEvent('mps-posts', {
+          detail: {
+            id: attributes.blockId,
+            posts
+          }
+        })
+      )
+    }
+  }, [posts])
+
   if (attributes.selectedPosts.length) {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} />
+        <Controls attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
         <div ref={wrapperRef} className="responsive-wrapper" style={{ '--wrapper-height': `${wrapperHeight}px` }}>
           <InnerBlocks
@@ -69,12 +89,13 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
             ]}
           />
         </div>
+        <Loader hasPosts={!!queriedPosts.length} isSelected={isSelected} />
       </section>
     )
   } else {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} />
+        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
       </section>
     )
   }

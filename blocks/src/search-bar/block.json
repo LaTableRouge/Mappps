@@ -9,6 +9,9 @@
   "ancestor": [
     "mps/sidebar"
   ],
+  "usesContext": [
+    "mps/blockId"
+  ],
   "supports": {
     "reusable": false,
     "html": false,

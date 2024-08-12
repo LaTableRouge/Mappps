@@ -1,8 +1,6 @@
 import L from 'leaflet'
 
 const Icon = (type, markerSize = '40px', cluster, isSelected = false) => {
-  console.log(markerSize)
-
   let html = /* html */ '<div class="marker-icon">'
   let className = ''
 

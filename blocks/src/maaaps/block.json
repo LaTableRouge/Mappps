@@ -2,7 +2,7 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mps/maaaps",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "title": "Maaaps",
   "category": "maaaps",
   "icon": "block-default",

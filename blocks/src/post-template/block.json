@@ -10,11 +10,12 @@
   "ancestor": [
     "mps/sidebar"
   ],
-  "description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more.",
+  "description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more. For better preview performances only 3 posts will be displayed here",
   "textdomain": "maaaps",
   "usesContext": [
     "mps/postIDs",
-    "mps/postType"
+    "mps/postType",
+    "mps/blockId"
   ],
   "supports": {
     "reusable": false,

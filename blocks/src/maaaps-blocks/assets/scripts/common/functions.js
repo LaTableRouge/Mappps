@@ -54,3 +54,11 @@ export const isColorLight = (hexColor = '', threshold = 128) => {
 
   return luma < threshold ? 'dark' : 'light'
 }
+
+export const sortObject = (object) =>
+  Object.keys(object)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = object[key]
+      return obj
+    }, {})

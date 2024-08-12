@@ -1,7 +1,7 @@
 import '../styles/editor.scss'
 
 import { BlockContextProvider, useBlockProps } from '@wordpress/block-editor'
-import { memo, useMemo, useState } from '@wordpress/element'
+import { memo, useEffect, useMemo, useState } from '@wordpress/element'
 
 import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
@@ -12,20 +12,35 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
 
   // attributes & context are the states stored by Wordpress
   // They are defined in the block.json
-  const postType = context['mps/postType']
-  const postIDs = context['mps/postIDs']
+  const blockId = context['mps/blockId']
 
   // States that aren't stored by Wordrpess
   // They are only usefull for the preview
   const [activeBlockContextId, setActiveBlockContextId] = useState()
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function eventSetPosts(e) {
+      await e
+      const details = e.detail
+      if (details.id === blockId) {
+        setPosts(details.posts)
+      }
+    }
+
+    document.addEventListener('mps-posts', eventSetPosts)
+    return () => {
+      document.removeEventListener('mps-posts', eventSetPosts)
+    }
+  }, [blockId])
 
   const blockContexts = useMemo(
     () =>
-      postIDs?.slice(0, 3).map((id) => ({
-        postType,
-        postId: id
+      posts.slice(0, 3).map((post) => ({
+        postType: post.type,
+        postId: post.id
       })),
-    [postIDs]
+    [posts]
   )
 
   const MemorizedPostTemplateBlockPreview = memo(PostTemplatePreview)

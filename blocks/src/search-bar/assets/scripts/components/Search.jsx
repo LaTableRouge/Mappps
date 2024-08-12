@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 import { OpenStreetMapProvider } from 'leaflet-geosearch'
 
-export default function Search({ limitedSearch }) {
+export default function Search({ limitedSearch, setMobileIsMapDisplayed, setSearchValue, setSelectedSearchResult }) {
   const [results, setResults] = useState([])
   const [showReset, setShowReset] = useState('none')
   const [showResults, setShowResults] = useState(false)
@@ -24,6 +24,8 @@ export default function Search({ limitedSearch }) {
   const provider = new OpenStreetMapProvider()
 
   const resetForm = () => {
+    setSelectedSearchResult({})
+    setSearchValue('')
     setShowReset('none')
     setResults([])
     setShowResults(false)
@@ -48,11 +50,17 @@ export default function Search({ limitedSearch }) {
             return false
           }
 
-          if (!limitedSearch) {
+          if (limitedSearch) {
+            // Search only in posts
+            setSelectedSearchResult({})
+            setSearchValue(searchInputValue)
+          } else {
             // Search worldwide
             provider.search({ query: searchInputValue }).then(function (searchResults) {
               setResults(searchResults)
               setShowResults(true)
+              setSelectedSearchResult({})
+              setSearchValue('')
             })
           }
         }}
@@ -91,6 +99,8 @@ export default function Search({ limitedSearch }) {
               <li
                 key={index}
                 onClick={() => {
+                  setSelectedSearchResult(result)
+                  setMobileIsMapDisplayed(true)
                   setShowResults(false)
                 }}
               >

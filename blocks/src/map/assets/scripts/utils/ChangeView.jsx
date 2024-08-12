@@ -5,7 +5,20 @@ import { useMap } from 'react-leaflet'
 
 import { delay } from '../common/functions'
 
-function ChangeView({ boundsPadding, markerGeolocation, markerOffset, markers, markerSearch, maxMarkerZoom, refCluster, refMarkerGeolocation }) {
+function ChangeView({
+  boundsPadding,
+  isMobileView,
+  markerGeolocation,
+  markerOffset,
+  markers,
+  markerSearch,
+  maxMarkerZoom,
+  refCluster,
+  refMarkerGeolocation,
+  refMarkerSearch,
+  refsMarker,
+  selectedPost
+}) {
   const map = useMap()
 
   async function zoomSmoothly(cluster = null, marker = null, popup) {
@@ -25,6 +38,14 @@ function ChangeView({ boundsPadding, markerGeolocation, markerOffset, markers, m
     }
   }
 
+  const addBoundsOffset = (mapElement) => {
+    if (isMobileView) {
+      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: maxMarkerZoom })
+    } else {
+      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: maxMarkerZoom })
+    }
+  }
+
   async function openPopup(marker) {
     await delay(300)
 
@@ -36,10 +57,23 @@ function ChangeView({ boundsPadding, markerGeolocation, markerOffset, markers, m
   async function zoomOntoMarker() {
     await delay(300)
 
-    markers.forEach((marker) => {
+    refsMarker.current.forEach((markerRef, i) => {
+      const marker = markerRef.current
+      const cluster = refCluster.current
       if (marker) {
         const popup = marker._popup
-        zoomSmoothly(null, null, popup)
+        if (marker.options.data.id === selectedPost.id) {
+          const parentElement = cluster.getVisibleParent(marker)
+          if (parentElement) {
+            if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
+              zoomSmoothly(cluster, marker, popup)
+            } else {
+              zoomSmoothly(null, null, popup)
+            }
+          } else {
+            zoomSmoothly(null, null, popup)
+          }
+        }
       }
     })
   }
@@ -82,6 +116,14 @@ function ChangeView({ boundsPadding, markerGeolocation, markerOffset, markers, m
       openPopup(marker)
     }
   }, [markerGeolocation])
+
+  useEffect(() => {
+    if (refMarkerSearch.current) {
+      const marker = refMarkerSearch.current
+      map.setView(marker.getLatLng(), maxMarkerZoom)
+      openPopup(marker)
+    }
+  }, [markerSearch])
 
   useEffect(() => {
     if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {

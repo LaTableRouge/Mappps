@@ -13,8 +13,7 @@
     "mps/maaaps-block"
   ],
   "usesContext": [
-    "mps/postIDs",
-    "mps/postType"
+    "mps/blockId"
   ],
   "supports": {
     "reusable": false,

@@ -1,15 +1,14 @@
 import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
-import { useEntityRecord } from '@wordpress/core-data'
+import { useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
 import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, context, isSelected, setAttributes }) {
-  const postType = context['mps/postType']
-  const postIDs = context['mps/postIDs']
+  const blockId = context['mps/blockId']
 
   // BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
   const blockProps = useBlockProps()
@@ -17,27 +16,29 @@ export default function Edit({ attributes, context, isSelected, setAttributes })
   // attributes are the states stored by Wordpress
   // They are defined in the block.json
 
-  const posts = []
-  if (postIDs.length) {
-    postIDs.slice(0, 3).forEach((id) => {
-      const { record } = useEntityRecord('postType', postType, id)
-      if (record) {
-        posts.push({
-          title: record.title.raw,
-          id: record.id,
-          meta: record.meta,
-          excerpt: record.excerpt.raw
-        })
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function eventSetPosts(e) {
+      await e
+      const details = e.detail
+      if (details.id === blockId) {
+        setPosts(details.posts)
       }
-    })
-  }
+    }
+
+    document.addEventListener('mps-posts', eventSetPosts)
+    return () => {
+      document.removeEventListener('mps-posts', eventSetPosts)
+    }
+  }, [blockId])
 
   return (
     <div {...AlterBlockProps(blockProps, attributes)}>
       {!!posts.length && (
         <>
           <Controls attributes={attributes} setAttributes={setAttributes} />
-          <Main attributes={attributes} queriedPosts={posts} />
+          <Main attributes={attributes} blockId={blockId} posts={posts} />
         </>
       )}
     </div>

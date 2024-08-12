@@ -1,7 +1,7 @@
 import { SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
-export default function SelectPostType({ defaultValue, postTypes, setAttributes }) {
+export default function SelectPostType({ defaultValue, postTypes, setAttributes, setQueriedPosts }) {
   const options = []
   postTypes.types.forEach((postType) => {
     options.push({ label: postType.name, value: postType.slug })
@@ -17,6 +17,8 @@ export default function SelectPostType({ defaultValue, postTypes, setAttributes 
         if (selectedPostType.length) {
           selectedPostType = selectedPostType[0]
         }
+
+        setQueriedPosts([])
         setAttributes({
           postType: selectedPostType.slug ?? '',
           postTypeRestBase: selectedPostType.rest_base ?? '',

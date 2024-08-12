@@ -6,7 +6,7 @@ import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
 
-export default function Wizard({ attributes, postTypes, setAttributes }) {
+export default function Wizard({ attributes, postTypes, setAttributes, setQueriedPosts }) {
   const selectedPostType = attributes.postType
   const selectedTaxonomies = attributes.selectedTaxonomies
   const taxonomies = attributes.taxonomies
@@ -34,14 +34,21 @@ export default function Wizard({ attributes, postTypes, setAttributes }) {
             instructions={__('Select the data source of the items to be displayed on the map.', 'maaaps')}
             label={__('Data source', 'maaaps')}
           >
-            <SelectPostType postTypes={postTypes} setAttributes={setAttributes} />
+            <SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
-            {!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} />}
+            {!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
 
-            {!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} taxonomies={selectedTaxonomies} />}
+            {!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />}
 
             {!!selectedCategories.length && (
-              <SelectPosts categories={selectedCategories} defaultValue={[]} postType={selectedPostType} setAttributes={setAttributes} taxonomies={sanitizedSelectedTaxonomies} />
+              <SelectPosts
+                categories={selectedCategories}
+                defaultValue={[]}
+                postType={selectedPostType}
+                setAttributes={setAttributes}
+                setQueriedPosts={setQueriedPosts}
+                taxonomies={sanitizedSelectedTaxonomies}
+              />
             )}
           </Placeholder>
                 )

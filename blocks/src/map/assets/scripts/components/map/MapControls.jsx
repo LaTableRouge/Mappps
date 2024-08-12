@@ -47,11 +47,11 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
             onClick={(e) => {
               e.preventDefault()
               // Set selected post to trigger the fitbound inside the ChangeView function
-              // setSelectedPost({})
+              setSelectedPost({})
 
               // Remove geolocation & searchMarker
               setGeolocationCoordinates({})
-              // setSelectedSearchResult({})
+              setSelectedSearchResult({})
             }}
           >
             <span aria-hidden="true" className="icon-maaaps-refresh"></span>
