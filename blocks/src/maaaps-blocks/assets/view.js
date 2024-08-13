@@ -13,10 +13,10 @@ import SearchBar from '../../search-bar/assets/scripts/main'
 window.addEventListener('DOMContentLoaded', () => {
   const blocks = document.querySelectorAll('.wp-block-mps-maaaps-blocks:not(.is-init)')
   if (blocks.length) {
-    blocks.forEach((block) => {
-      block.classList.add('is-init')
+    blocks.forEach((parentBlock) => {
+      parentBlock.classList.add('is-init')
 
-      const attributes = JSON.parse(block.dataset.attributes)
+      const attributes = JSON.parse(parentBlock.dataset.attributes)
       const blockId = attributes.blockId
       const postIDs = attributes.selectedPosts
       const restNamespace = attributes.postTypeRestNamespace
@@ -34,14 +34,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
           if (response.length) {
             // Filters rendering
-            const filtersChildBlock = block.querySelector('.wp-block-mps-filters')
+            const filtersChildBlock = parentBlock.querySelector('.wp-block-mps-filters')
             if (filtersChildBlock) {
               const root = createRoot(filtersChildBlock)
               root.render(<Filters blockId={blockId} categories={attributes.categories} queriedPosts={response} taxonomies={attributes.taxonomies} />)
             }
 
             // Map rendering
-            const mapChildBlock = block.querySelector('.wp-block-mps-map')
+            const mapChildBlock = parentBlock.querySelector('.wp-block-mps-map')
             if (mapChildBlock) {
               const attributes = JSON.parse(mapChildBlock.dataset.attributes)
 
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }
 
             // SearchBar rendering
-            const searchBarChildBlock = block.querySelector('.wp-block-mps-searchbar')
+            const searchBarChildBlock = parentBlock.querySelector('.wp-block-mps-searchbar')
             if (searchBarChildBlock) {
               const attributes = JSON.parse(searchBarChildBlock.dataset.attributes)
 
@@ -58,7 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
               root.render(<SearchBar attributes={attributes} blockId={blockId} />)
             }
 
-            const postChildBlocks = block.querySelectorAll('.wp-block-mps-post-template')
+            const postChildBlocks = parentBlock.querySelectorAll('.wp-block-mps-post-template')
             if (postChildBlocks.length) {
               document.addEventListener('mps-posts', async (e) => {
                 await e
@@ -80,11 +80,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 }
               })
 
-              postChildBlocks.forEach((block) => {
-                block.addEventListener('click', (e) => {
+              postChildBlocks.forEach((childBlock) => {
+                childBlock.addEventListener('click', (e) => {
                   e.preventDefault()
 
-                  let postID = block.dataset.wpKey
+                  let postID = childBlock.dataset.wpKey
                   if (postID.length) {
                     postID = postID.replace('post-template-item-', '')
                   }
@@ -94,18 +94,29 @@ window.addEventListener('DOMContentLoaded', () => {
                     document.dispatchEvent(
                       new CustomEvent('mps-selected-post', {
                         detail: {
-                          blockId,
+                          id: blockId,
                           selectedPost
                         }
                       })
                     )
+
+                    const associatedDetails = parentBlock.querySelector(`.wp-block-mps-post-details[data-wp-key="post-details-item-${postID}"]`)
+                    if (associatedDetails) {
+                      associatedDetails.dataset.hidden = false
+                    }
+                    const otherDetails = parentBlock.querySelectorAll(`.wp-block-mps-post-details:not([data-wp-key="post-details-item-${postID}"])`)
+                    if (otherDetails.length) {
+                      otherDetails.forEach((detail) => {
+                        detail.dataset.hidden = true
+                      })
+                    }
                   }
                 })
               })
             }
 
             // Loader rendering (!! always in last !!)
-            const loaderChildBlock = block.querySelector('.wp-block-mps-loader')
+            const loaderChildBlock = parentBlock.querySelector('.wp-block-mps-loader')
             if (loaderChildBlock) {
               loaderChildBlock.dataset.hasPosts = true
             }

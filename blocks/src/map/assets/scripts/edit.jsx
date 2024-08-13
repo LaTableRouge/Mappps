@@ -38,7 +38,7 @@ export default function Edit({ attributes, context, isSelected, setAttributes })
       {!!posts.length && (
         <>
           <Controls attributes={attributes} setAttributes={setAttributes} />
-          <Main attributes={attributes} blockId={blockId} queriedposts={posts} />
+          <Main attributes={attributes} blockId={blockId} queriedPosts={posts} />
         </>
       )}
     </div>

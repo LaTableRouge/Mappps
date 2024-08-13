@@ -6,6 +6,9 @@
   "category": "maaaps",
   "description": "Contains search bar.",
   "textdomain": "maaaps",
+  "parent": [
+    "mps/maaaps-blocks"
+  ],
   "ancestor": [
     "mps/sidebar"
   ],

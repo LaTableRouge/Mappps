@@ -74,6 +74,10 @@
     "selectedSecondaryColor": {
       "type": "string",
       "default": "#001219"
+    },
+    "sharedAttributes": {
+      "type": "object",
+      "default": {}
     }
   },
   "textdomain": "maaaps",

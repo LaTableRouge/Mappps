@@ -6,7 +6,9 @@ export default function AlterBlockProps(blockProps = {}, attributes) {
     '--color-primary': attributes.selectedPrimaryColor,
     '--color-secondary': attributes.selectedSecondaryColor,
     '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
-    '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)'
+    '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
+    '--sidebar-size': attributes.sharedAttributes?.selectedSidebarSize,
+    '--details-size': attributes.sharedAttributes?.selectedDetailsSize
   }
   if (blockProps.style.aspectRatio) {
     if (blockProps.style.aspectRatio !== 'auto') {

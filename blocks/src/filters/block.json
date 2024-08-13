@@ -6,6 +6,9 @@
   "category": "maaaps",
   "description": "Contains the filters.",
   "textdomain": "maaaps",
+  "parent": [
+    "mps/maaaps-blocks"
+  ],
   "ancestor": [
     "mps/sidebar"
   ],
@@ -20,6 +23,12 @@
     "layout": false,
     "interactivity": {
       "clientNavigation": true
+    }
+  },
+  "attributes": {
+    "selectedFiltersSize": {
+      "type": "string",
+      "default": "15cqw"
     }
   },
   "viewScript": "file:./assets/view.js",

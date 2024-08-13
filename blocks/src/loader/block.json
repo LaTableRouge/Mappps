@@ -20,11 +20,14 @@
       }
     }
   },
+  "ancestor": [
+    "mps/maaaps-blocks"
+  ],
   "parent": [
     "mps/maaaps-blocks"
   ],
   "usesContext": [
-    "mps/postIDs"
+    "mps/blockId"
   ],
   "attributes": {
     "selectedSpinnerSize": {

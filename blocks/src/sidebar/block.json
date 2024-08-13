@@ -27,9 +27,9 @@
     }
   },
   "attributes": {
-    "childValues": {
+    "selectedSidebarSize": {
       "type": "string",
-      "default": ""
+      "default": "25cqw"
     }
   },
   "viewScript": "file:./assets/view.js",

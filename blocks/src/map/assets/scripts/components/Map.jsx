@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import { useMemo, useRef, useState } from '@wordpress/element'
+import { createRef, useMemo, useRef, useState } from '@wordpress/element'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
@@ -35,8 +35,10 @@ const Map = ({
   tiles
 }) => {
   const clusterRef = useRef(null)
+  const markerRefs = useRef([])
+  markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-  const markers = Markers(posts, markerSize, selectedPost, setSelectedPost)
+  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost)
 
   const markerGroup = useMemo(() => {
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
@@ -83,6 +85,7 @@ const Map = ({
           refCluster={clusterRef}
           refMarkerGeolocation={refMarkerGeolocation}
           refMarkerSearch={refMarkerSearch}
+          refsMarker={markerRefs}
           selectedPost={selectedPost}
         />
 

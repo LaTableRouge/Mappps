@@ -5,7 +5,10 @@ import GlobalEventsHandler from './utils/GlobalEventsHandler'
 
 export default function Main({ attributes, blockId, queriedPosts }) {
   const [isMobileView, setIsMobileView] = useState(false)
+  const [popupOffset, setPopupOffset] = useState(0) // The height of the whole block
   const [posts, setPosts] = useState(false)
+  const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
+  const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
 
   // ---------- Refs
   const wrapperRef = useCallback((node) => {
@@ -17,14 +20,16 @@ export default function Main({ attributes, blockId, queriedPosts }) {
       if (ancestorBlock) {
         const isMobile = !!window.getComputedStyle(ancestorBlock).getPropertyValue('--is-mobile').length
         setIsMobileView(isMobile)
+
+        const detailsPopup = ancestorBlock.querySelector('.wp-block-mps-post-details')
+        if (detailsPopup) {
+          isMobileView ? setPopupOffset(node.clientHeight) : setPopupOffset(500)
+        }
       }
     })
     resizeObserver.observe(node)
   }, [])
   // ----------
-
-  const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
-  const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
 
   GlobalEventsHandler({ blockId, setPosts, selectedPost, setSelectedPost, selectedSearchResult, setSelectedSearchResult })
 
@@ -36,7 +41,7 @@ export default function Main({ attributes, blockId, queriedPosts }) {
         clusterSize={attributes.selectedMarkerClusterSize}
         isGeolocated={attributes.isGeolocated}
         isMobileView={isMobileView}
-        // markerOffset={popupOffset} TODO
+        markerOffset={popupOffset}
         markerSize={attributes.selectedMarkerSize}
         maxMarkerZoom={attributes.selectedMaxMarkerZoom}
         maxZoom={attributes.selectedMaxZoom}

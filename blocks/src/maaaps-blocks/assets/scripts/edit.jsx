@@ -1,6 +1,7 @@
 import '../styles/editor.scss'
 
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
+import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
@@ -10,6 +11,21 @@ import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
   // Child block change listener : https://wordpress.stackexchange.com/questions/406384/how-to-output-child-block-attributes-on-a-parent-block
+
+  const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
+
+  useEffect(() => {
+    let innerBlocksAttributes = {}
+    if (innerBlocks.length) {
+      innerBlocks.forEach(({ attributes, name }) => {
+        if (name === 'mps/sidebar' || name === 'mps/post-details') {
+          innerBlocksAttributes = { ...innerBlocksAttributes, ...attributes }
+        }
+      })
+    }
+
+    setAttributes({ sharedAttributes: innerBlocksAttributes })
+  }, [innerBlocks])
 
   // TODO:
   // Refacto en blocks séparés
@@ -62,6 +78,8 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   }
 
   useEffect(() => {
+    const listViewExpandButton = document.querySelector(`.block-editor-list-view-tree tr[data-block="${attributes.blockId}"] .block-editor-list-view__expander`)
+
     if (posts.length) {
       document.dispatchEvent(
         new CustomEvent('mps-queried-posts', {
@@ -71,6 +89,16 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
           }
         })
       )
+
+      // Enable the possibility to toggle between child blocks
+      if (listViewExpandButton) {
+        listViewExpandButton.removeAttribute('style')
+      }
+    } else {
+      // Disable the possibility to toggle between child blocks
+      if (listViewExpandButton) {
+        listViewExpandButton.style.pointerEvents = 'none'
+      }
     }
   }, [posts])
 
@@ -79,16 +107,21 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
       <section {...AlterBlockProps(blockProps, attributes)}>
         <Controls attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
-        <div ref={wrapperRef} className="responsive-wrapper" style={{ '--wrapper-height': `${wrapperHeight}px` }}>
+        <div
+          ref={wrapperRef}
+          className={`responsive-wrapper in-editor ${isSelected ? ' is-selected' : ''}`}
+          data-has-posts={!!queriedPosts.length}
+          style={{ '--wrapper-height': `${wrapperHeight}px` }}
+        >
           <InnerBlocks
             template={[
               ['mps/loader', {}],
               ['mps/sidebar', {}],
-              ['mps/map', {}]
+              ['mps/map', {}],
+              ['mps/post-details', {}]
             ]}
           />
         </div>
-        {/* <Loader hasPosts={!!queriedPosts.length} isSelected={isSelected} /> */}
       </section>
     )
   } else {

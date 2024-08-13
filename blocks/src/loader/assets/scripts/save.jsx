@@ -7,7 +7,7 @@ export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
 
   return (
-    <div {...AlterBlockProps(blockProps, attributes)} data-has-posts={false}>
+    <div {...AlterBlockProps(blockProps, attributes)}>
       <Loader />
     </div>
   )
