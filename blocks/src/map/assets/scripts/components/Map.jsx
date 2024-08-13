@@ -24,7 +24,6 @@ const Map = ({
   isGeolocated,
   isMobileView,
   markerOffset = 0,
-  markerRefs,
   markerSize,
   maxMarkerZoom,
   maxZoom,
@@ -37,7 +36,7 @@ const Map = ({
 }) => {
   const clusterRef = useRef(null)
 
-  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost)
+  const markers = Markers(posts, markerSize, selectedPost, setSelectedPost)
 
   const markerGroup = useMemo(() => {
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
@@ -84,7 +83,6 @@ const Map = ({
           refCluster={clusterRef}
           refMarkerGeolocation={refMarkerGeolocation}
           refMarkerSearch={refMarkerSearch}
-          refsMarker={markerRefs}
           selectedPost={selectedPost}
         />
 

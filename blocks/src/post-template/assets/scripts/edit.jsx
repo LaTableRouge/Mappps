@@ -28,9 +28,9 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
       }
     }
 
-    document.addEventListener('mps-posts', eventSetPosts)
+    document.addEventListener('mps-queried-posts', eventSetPosts)
     return () => {
-      document.removeEventListener('mps-posts', eventSetPosts)
+      document.removeEventListener('mps-queried-posts', eventSetPosts)
     }
   }, [blockId])
 

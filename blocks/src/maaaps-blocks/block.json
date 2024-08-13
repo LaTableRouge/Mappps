@@ -22,6 +22,8 @@
   },
   "providesContext": {
     "mps/blockId": "blockId",
+    "mps/taxonomies": "taxonomies",
+    "mps/categories": "categories",
     "mps/postIDs": "selectedPosts",
     "mps/postType": "postType"
   },

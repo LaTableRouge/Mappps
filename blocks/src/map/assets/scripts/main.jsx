@@ -1,15 +1,13 @@
-import { createRef, useCallback, useRef, useState } from '@wordpress/element'
+import { useCallback, useState } from '@wordpress/element'
 
 import Map from './components/Map'
 import GlobalEventsHandler from './utils/GlobalEventsHandler'
 
-export default function Main({ attributes, blockId, posts }) {
+export default function Main({ attributes, blockId, queriedPosts }) {
   const [isMobileView, setIsMobileView] = useState(false)
+  const [posts, setPosts] = useState(false)
 
   // ---------- Refs
-  const markerRefs = useRef([])
-  markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
-
   const wrapperRef = useCallback((node) => {
     if (!node) {
       return
@@ -28,7 +26,7 @@ export default function Main({ attributes, blockId, posts }) {
   const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
   const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
 
-  GlobalEventsHandler({ blockId, selectedPost, setSelectedPost, selectedSearchResult, setSelectedSearchResult })
+  GlobalEventsHandler({ blockId, setPosts, selectedPost, setSelectedPost, selectedSearchResult, setSelectedSearchResult })
 
   return (
     <div ref={wrapperRef}>
@@ -39,12 +37,11 @@ export default function Main({ attributes, blockId, posts }) {
         isGeolocated={attributes.isGeolocated}
         isMobileView={isMobileView}
         // markerOffset={popupOffset} TODO
-        markerRefs={markerRefs}
         markerSize={attributes.selectedMarkerSize}
         maxMarkerZoom={attributes.selectedMaxMarkerZoom}
         maxZoom={attributes.selectedMaxZoom}
         // mobileIsMapDisplayed={mobileIsMapDisplayed} TODO: passer par le data-attr global du parent
-        posts={posts}
+        posts={posts || queriedPosts}
         selectedPost={selectedPost}
         selectedSearchResult={selectedSearchResult}
         // setFiltersOpen={setFiltersOpen}

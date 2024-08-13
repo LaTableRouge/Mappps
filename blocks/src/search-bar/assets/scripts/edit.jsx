@@ -18,7 +18,7 @@ export default function Edit({ attributes, context, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <Controls limitedSearch={attributes.limitedSearch} />
+      <Controls limitedSearch={attributes.limitedSearch} setAttributes={setAttributes} />
 
       <Main attributes={attributes} blockId={blockId} />
     </div>

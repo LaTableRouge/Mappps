@@ -3,6 +3,10 @@
   margin: 0;
   overflow: auto;
 
+  &[data-hidden='true'] {
+    display: none;
+  }
+
   & > ul {
     display: grid;
     margin: 0 !important;

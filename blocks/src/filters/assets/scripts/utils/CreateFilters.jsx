@@ -1,6 +1,7 @@
 export default function CreateFilters(categories, taxonomies, posts) {
   const filtersObject = {}
 
+  // useEffect(() => {
   if (taxonomies.length && Object.keys(categories).length && posts.length) {
     // eslint-disable-next-line camelcase
     taxonomies.forEach(({ name, rest_base, slug }) => {

@@ -1,7 +1,15 @@
 import { useEffect } from '@wordpress/element'
 
-export default function GlobalEventsHandler({ blockId, posts, selectedPost, selectedSearchResult, setPosts, setSelectedPost, setSelectedSearchResult }) {
+export default function GlobalEventsHandler({ blockId, selectedPost, selectedSearchResult, setPosts, setSelectedPost, setSelectedSearchResult }) {
   useEffect(() => {
+    async function eventPosts(e) {
+      await e
+      const details = e.detail
+      if (details.id === blockId) {
+        setPosts(details.posts)
+      }
+    }
+
     async function eventSelectedPost(e) {
       await e
       const details = e.detail
@@ -18,9 +26,11 @@ export default function GlobalEventsHandler({ blockId, posts, selectedPost, sele
       }
     }
 
+    document.addEventListener('mps-posts', eventPosts)
     document.addEventListener('mps-selected-post', eventSelectedPost)
     document.addEventListener('mps-selected-search-result', eventSelectedSearchResults)
     return () => {
+      document.removeEventListener('mps-posts', eventPosts)
       document.removeEventListener('mps-selected-post', eventSelectedPost)
       document.removeEventListener('mps-selected-search-result', eventSelectedSearchResults)
     }

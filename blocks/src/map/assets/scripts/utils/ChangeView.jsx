@@ -16,7 +16,6 @@ function ChangeView({
   refCluster,
   refMarkerGeolocation,
   refMarkerSearch,
-  refsMarker,
   selectedPost
 }) {
   const map = useMap()
@@ -57,12 +56,11 @@ function ChangeView({
   async function zoomOntoMarker() {
     await delay(300)
 
-    refsMarker.current.forEach((markerRef, i) => {
-      const marker = markerRef.current
+    markers.forEach((marker, i) => {
       const cluster = refCluster.current
       if (marker) {
         const popup = marker._popup
-        if (marker.options.data.id === selectedPost.id) {
+        if (marker.props.data.id === selectedPost.id) {
           const parentElement = cluster.getVisibleParent(marker)
           if (parentElement) {
             if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
@@ -126,8 +124,8 @@ function ChangeView({
   }, [markerSearch])
 
   useEffect(() => {
-    if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {
-      let selectedMarker = refsMarker.current.find((markerRef) => markerRef.current && markerRef.current.options.data.id === selectedPost.id)
+    if (markers.length && Object.keys(selectedPost).length) {
+      let selectedMarker = markers.find((marker) => marker.props.data.id === selectedPost.id)
       if (selectedMarker.current) {
         selectedMarker = selectedMarker.current
 

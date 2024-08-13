@@ -27,9 +27,9 @@ export default function Edit({ attributes, context, isSelected, setAttributes })
       }
     }
 
-    document.addEventListener('mps-posts', eventSetPosts)
+    document.addEventListener('mps-queried-posts', eventSetPosts)
     return () => {
-      document.removeEventListener('mps-posts', eventSetPosts)
+      document.removeEventListener('mps-queried-posts', eventSetPosts)
     }
   }, [blockId])
 
@@ -38,7 +38,7 @@ export default function Edit({ attributes, context, isSelected, setAttributes })
       {!!posts.length && (
         <>
           <Controls attributes={attributes} setAttributes={setAttributes} />
-          <Main attributes={attributes} blockId={blockId} posts={posts} />
+          <Main attributes={attributes} blockId={blockId} queriedposts={posts} />
         </>
       )}
     </div>

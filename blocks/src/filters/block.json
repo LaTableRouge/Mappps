@@ -6,6 +6,14 @@
   "category": "maaaps",
   "description": "Contains the filters.",
   "textdomain": "maaaps",
+  "ancestor": [
+    "mps/sidebar"
+  ],
+  "usesContext": [
+    "mps/blockId",
+    "mps/taxonomies",
+    "mps/categories"
+  ],
   "supports": {
     "reusable": false,
     "html": false,

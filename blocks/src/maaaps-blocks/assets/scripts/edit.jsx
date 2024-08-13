@@ -4,7 +4,6 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
-import Loader from './components/Loader'
 import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
@@ -65,7 +64,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   useEffect(() => {
     if (posts.length) {
       document.dispatchEvent(
-        new CustomEvent('mps-posts', {
+        new CustomEvent('mps-queried-posts', {
           detail: {
             id: attributes.blockId,
             posts
@@ -89,7 +88,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
             ]}
           />
         </div>
-        <Loader hasPosts={!!queriedPosts.length} isSelected={isSelected} />
+        {/* <Loader hasPosts={!!queriedPosts.length} isSelected={isSelected} /> */}
       </section>
     )
   } else {
