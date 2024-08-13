@@ -21,6 +21,10 @@
     grid-area: map;
   }
 
+  & > div {
+    display: grid;
+  }
+
   @import 'components/marker';
   @import 'components/mapControls';
   @import 'components/popup';

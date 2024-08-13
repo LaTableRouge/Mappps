@@ -1,6 +1,14 @@
+@charset "UTF-8";
+// 1. Configuration and helpers
+@import '../../../maaaps-blocks/assets/styles/abstracts/functions';
+@import '../../../maaaps-blocks/assets/styles/abstracts/variables';
+@import '../../../maaaps-blocks/assets/styles/abstracts/mixins';
+@import '../../../maaaps-blocks/assets/styles/abstracts/animations';
+@import '../../../maaaps-blocks/assets/styles/abstracts/keyframes';
+@import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
+
 .wp-block-mps-post-template {
   height: 100%;
-  margin: 0;
   overflow: auto;
 
   &[data-hidden='true'] {

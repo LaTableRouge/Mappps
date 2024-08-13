@@ -13,7 +13,8 @@ if (empty($postIDs)) {
 
 $query_args = [
     'post_type' => $postType,
-    'post__in' => $postIDs
+    'post__in' => $postIDs,
+    'posts_per_page' => -1
 ];
 $query = new WP_Query($query_args);
 
@@ -30,6 +31,9 @@ while ($query->have_posts()) {
     if (!in_array($post_id, $postIDs)) {
         continue;
     }
+
+    $lat = get_post_meta($post_id, 'lat', true);
+    $lng = get_post_meta($post_id, 'lng', true);
 
     // Get an instance of the current Post Details block.
     $block_instance = $block->parsed_block;
@@ -51,12 +55,47 @@ while ($query->have_posts()) {
     // Render the inner blocks of the Post Details block with `dynamic` set to `false` to prevent calling
     // `render_callback` and ensure that no wrapper markup is included.
     $block_content = (new WP_Block($block_instance))->render(['dynamic' => false]);
-    remove_filter( 'render_block_context', $filter_block_context, 1 );
+    remove_filter('render_block_context', $filter_block_context, 1);
 
     // Wrap the render inner blocks in a `article` element with the appropriate post classes.
     $post_classes = implode(' ', get_post_class('wp-block-post'));
 
     $inner_block_directives = ' data-wp-key="post-details-item-' . $post_id . '"';
+
+    $cta_header = '<div class="header__cta-wrapper">
+                  <a
+                  class="custom-button custom-button__only-icon cta-wrapper__new-tab"
+                  href="' . get_permalink($post_id) . '"
+                  target="_blank"
+                  title="' . __('Open in new tab', 'maaaps') . '"
+                  >
+                    <span class="icon-maaaps-new-tab"></span>
+                    <span class="screen-reader-text">' . __('Open in new tab', 'maaaps') . '</span>
+                  </a>
+
+                  <a
+                    class="custom-button custom-button__only-icon cta-wrapper__map"
+                    href="https://maps.google.com/maps?daddr='. $lat . ',' . $lng . '&amp;ll="
+                    rel="noreferrer"
+                    target="_blank"
+                    title=' . __('View itinerary', 'maaaps') . '
+                  >
+                    <span class="icon-maaaps-map"></span>
+                    <span class="screen-reader-text">' . __('View itinerary', 'maaaps') . '</span>
+                  </a>
+
+                  <button
+                    aria-label="' . __('Close preview', 'maaaps') . '"
+                    class="custom-button custom-button__only-icon cta-wrapper__close"
+                    title="' . __('Close preview', 'maaaps') . '"
+                  >
+                    <span class="icon-maaaps-cross"></span>
+                    <span class="screen-reader-text">' . __('Close preview', 'maaaps') . '</span>
+                  </button>
+                </div>
+    ';
+
+    $block_content = str_replace('<article class="wp-block-mps-post-details">',  '<article class="wp-block-mps-post-details"> ' . $cta_header, $block_content);
 
     $block_html = new WP_HTML_Tag_Processor($block_content);
     if ($block_html->next_tag(['class_name' => 'wp-block-mps-post-details'])) {

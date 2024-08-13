@@ -1,6 +1,10 @@
 $icomoon-font-family: 'maaaps-icon' !default;
 $icomoon-font-path: 'fonts' !default;
 
+$icon-maaaps-list: unquote('"\\e920"');
+$icon-maaaps-shrink: unquote('"\\e91f"');
+$icon-maaaps-map: unquote('"\\e91e"');
+$icon-maaaps-enlarge: unquote('"\\e91d"');
 $icon-maaaps-refresh: unquote('"\\e91b"');
 $icon-maaaps-minus: unquote('"\\e91a"');
 $icon-maaaps-sun: unquote('"\\e90f"');
@@ -28,4 +32,5 @@ $icon-maaaps-arrow-left: unquote('"\\e90c"');
 $icon-maaaps-arrow-right-plain: unquote('"\\e90b"');
 $icon-maaaps-arrow-left-plain: unquote('"\\e900"');
 $icon-maaaps-arrow-right: unquote('"\\e903"');
+$icon-maaaps-arrow-bottom: unquote('"\\e91c"');
 $icon-maaaps-user: unquote('"\\e902"');

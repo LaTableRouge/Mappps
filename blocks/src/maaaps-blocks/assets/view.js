@@ -4,11 +4,12 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import { createRoot } from 'react-dom/client'
-
-import Filters from '../../filters/assets/scripts/main'
-import Map from '../../map/assets/scripts/main'
-import SearchBar from '../../search-bar/assets/scripts/main'
+import Filters from './scripts/components/view/filters'
+import Loader from './scripts/components/view/loader'
+import Map from './scripts/components/view/map'
+import PostDetails from './scripts/components/view/post-details'
+import PostTemplate from './scripts/components/view/post-template'
+import SearchBar from './scripts/components/view/search-bar'
 
 window.addEventListener('DOMContentLoaded', () => {
   const blocks = document.querySelectorAll('.wp-block-mps-maaaps-blocks:not(.is-init)')
@@ -33,93 +34,28 @@ window.addEventListener('DOMContentLoaded', () => {
           response = await response.json()
 
           if (response.length) {
+            const resizeObserver = new ResizeObserver(() => {
+              parentBlock.style.setProperty('--wrapper-height', `${parentBlock.clientHeight}px`)
+            })
+            resizeObserver.observe(parentBlock)
+
             // Filters rendering
-            const filtersChildBlock = parentBlock.querySelector('.wp-block-mps-filters')
-            if (filtersChildBlock) {
-              const root = createRoot(filtersChildBlock)
-              root.render(<Filters blockId={blockId} categories={attributes.categories} queriedPosts={response} taxonomies={attributes.taxonomies} />)
-            }
+            Filters(blockId, parentBlock, response, attributes)
 
             // Map rendering
-            const mapChildBlock = parentBlock.querySelector('.wp-block-mps-map')
-            if (mapChildBlock) {
-              const attributes = JSON.parse(mapChildBlock.dataset.attributes)
-
-              const root = createRoot(mapChildBlock)
-              root.render(<Map attributes={attributes} blockId={blockId} queriedPosts={response} />)
-            }
+            Map(blockId, parentBlock, response)
 
             // SearchBar rendering
-            const searchBarChildBlock = parentBlock.querySelector('.wp-block-mps-searchbar')
-            if (searchBarChildBlock) {
-              const attributes = JSON.parse(searchBarChildBlock.dataset.attributes)
+            SearchBar(blockId, parentBlock)
 
-              const root = createRoot(searchBarChildBlock)
-              root.render(<SearchBar attributes={attributes} blockId={blockId} />)
-            }
+            // Post Template rendering
+            PostTemplate(blockId, parentBlock, response)
 
-            const postChildBlocks = parentBlock.querySelectorAll('.wp-block-mps-post-template')
-            if (postChildBlocks.length) {
-              document.addEventListener('mps-posts', async (e) => {
-                await e
-                const details = e.detail
-                if (details.id === blockId) {
-                  const filteredPosts = details.posts
-                  if (filteredPosts.length) {
-                    const filteredPostsIDs = filteredPosts.map(({ id }) => id)
-
-                    postChildBlocks.forEach((block) => {
-                      let postID = block.dataset.wpKey
-                      if (postID.length) {
-                        postID = postID.replace('post-template-item-', '')
-                      }
-
-                      block.dataset.hidden = !filteredPostsIDs.includes(Number(postID))
-                    })
-                  }
-                }
-              })
-
-              postChildBlocks.forEach((childBlock) => {
-                childBlock.addEventListener('click', (e) => {
-                  e.preventDefault()
-
-                  let postID = childBlock.dataset.wpKey
-                  if (postID.length) {
-                    postID = postID.replace('post-template-item-', '')
-                  }
-
-                  const selectedPost = response.find((post) => post.id === Number(postID))
-                  if (selectedPost) {
-                    document.dispatchEvent(
-                      new CustomEvent('mps-selected-post', {
-                        detail: {
-                          id: blockId,
-                          selectedPost
-                        }
-                      })
-                    )
-
-                    const associatedDetails = parentBlock.querySelector(`.wp-block-mps-post-details[data-wp-key="post-details-item-${postID}"]`)
-                    if (associatedDetails) {
-                      associatedDetails.dataset.hidden = false
-                    }
-                    const otherDetails = parentBlock.querySelectorAll(`.wp-block-mps-post-details:not([data-wp-key="post-details-item-${postID}"])`)
-                    if (otherDetails.length) {
-                      otherDetails.forEach((detail) => {
-                        detail.dataset.hidden = true
-                      })
-                    }
-                  }
-                })
-              })
-            }
+            // Post Details rendering
+            PostDetails(blockId, parentBlock)
 
             // Loader rendering (!! always in last !!)
-            const loaderChildBlock = parentBlock.querySelector('.wp-block-mps-loader')
-            if (loaderChildBlock) {
-              loaderChildBlock.dataset.hasPosts = true
-            }
+            Loader(parentBlock)
           }
         })
       }

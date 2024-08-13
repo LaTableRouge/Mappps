@@ -5,9 +5,9 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?aqe6f3') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?aqe6f3') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?aqe6f3##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z49hsf') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z49hsf') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z49hsf##{$icomoon-font-family}') format('svg');
   font-display: block;
 }
 
@@ -25,6 +25,30 @@
   line-height: 1;
   text-transform: none;
   speak: never;
+}
+
+.icon-maaaps-list {
+  &::before {
+    content: $icon-maaaps-list;
+  }
+}
+
+.icon-maaaps-shrink {
+  &::before {
+    content: $icon-maaaps-shrink;
+  }
+}
+
+.icon-maaaps-map {
+  &::before {
+    content: $icon-maaaps-map;
+  }
+}
+
+.icon-maaaps-enlarge {
+  &::before {
+    content: $icon-maaaps-enlarge;
+  }
 }
 
 .icon-maaaps-refresh {
@@ -186,6 +210,12 @@
 .icon-maaaps-arrow-right {
   &::before {
     content: $icon-maaaps-arrow-right;
+  }
+}
+
+.icon-maaaps-arrow-bottom {
+  &::before {
+    content: $icon-maaaps-arrow-bottom;
   }
 }
 

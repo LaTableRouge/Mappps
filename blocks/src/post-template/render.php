@@ -13,7 +13,8 @@ if (empty($postIDs)) {
 
 $query_args = [
     'post_type' => $postType,
-    'post__in' => $postIDs
+    'post__in' => $postIDs,
+    'posts_per_page' => -1
 ];
 $query = new WP_Query($query_args);
 
@@ -24,7 +25,7 @@ if (!$query->have_posts()) {
 $content = '<div class="posts-wrapper">';
 while ($query->have_posts()) {
     $query->the_post();
-    
+
     $post_id = get_the_ID();
 
     if (!in_array($post_id, $postIDs)) {

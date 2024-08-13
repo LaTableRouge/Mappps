@@ -46,6 +46,11 @@
           max-height: 80svh;
           aspect-ratio: var(--ratio);
         }
+
+        [class*='wp-block-mps-'] {
+          margin-block-start: initial;
+          margin-block-end: initial;
+        }
       }
     }
   }

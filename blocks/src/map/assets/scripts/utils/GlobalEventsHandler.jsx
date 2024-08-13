@@ -37,6 +37,7 @@ export default function GlobalEventsHandler({ blockId, selectedPost, selectedSea
   }, [])
 
   useEffect(() => {
+    console.log('event fire', selectedPost)
     document.dispatchEvent(
       new CustomEvent('mps-selected-post', {
         detail: {

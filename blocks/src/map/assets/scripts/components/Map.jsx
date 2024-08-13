@@ -64,51 +64,42 @@ const Map = ({
   }, [selectedSearchResult])
 
   return (
-    <div className="maaaps__leaflet">
-      <MapContainer
-        doubleClickZoom={false}
-        maxZoom={maxZoom}
-        scrollWheelZoom={false}
-        style={{ width: '100%', height: '500px' }} // TODO: to remove
-        zoomControl={false}
-        zoomSnap={0.1}
-      >
-        <ChangeView
-          boundsPadding={boundsPadding}
-          isMobileView={isMobileView}
-          markerGeolocation={markerGeolocationMemo}
-          markerOffset={markerOffset}
-          markers={markers}
-          markerSearch={markerSearchMemo}
-          maxMarkerZoom={maxMarkerZoom}
-          posts={posts}
-          refCluster={clusterRef}
-          refMarkerGeolocation={refMarkerGeolocation}
-          refMarkerSearch={refMarkerSearch}
-          refsMarker={markerRefs}
-          selectedPost={selectedPost}
-        />
+    <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
+      <ChangeView
+        boundsPadding={boundsPadding}
+        isMobileView={isMobileView}
+        markerGeolocation={markerGeolocationMemo}
+        markerOffset={markerOffset}
+        markers={markers}
+        markerSearch={markerSearchMemo}
+        maxMarkerZoom={maxMarkerZoom}
+        posts={posts}
+        refCluster={clusterRef}
+        refMarkerGeolocation={refMarkerGeolocation}
+        refMarkerSearch={refMarkerSearch}
+        refsMarker={markerRefs}
+        selectedPost={selectedPost}
+      />
 
-        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
+      <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
 
-        <MapControls
-          geolocationCoordinates={geolocationCoordinates}
-          isGeolocated={isGeolocated}
-          setGeolocationCoordinates={setGeolocationCoordinates}
-          setSelectedPost={setSelectedPost}
-          setSelectedSearchResult={setSelectedSearchResult}
-        />
+      <MapControls
+        geolocationCoordinates={geolocationCoordinates}
+        isGeolocated={isGeolocated}
+        setGeolocationCoordinates={setGeolocationCoordinates}
+        setSelectedPost={setSelectedPost}
+        setSelectedSearchResult={setSelectedSearchResult}
+      />
 
-        {/* Posts markers */}
-        {markerGroup}
+      {/* Posts markers */}
+      {markerGroup}
 
-        {/* Geolocation marker */}
-        {markerGeolocationMemo}
+      {/* Geolocation marker */}
+      {markerGeolocationMemo}
 
-        {/* Search marker */}
-        {markerSearchMemo}
-      </MapContainer>
-    </div>
+      {/* Search marker */}
+      {markerSearchMemo}
+    </MapContainer>
   )
 }
 
