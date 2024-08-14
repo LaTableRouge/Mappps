@@ -34,7 +34,12 @@
       "type": "object",
       "default": {
         "spacing": {
-          "margin": "2rem"
+          "margin": {
+            "top": 0,
+            "bottom": "2rem",
+            "left": "2rem",
+            "right": "2rem"
+          }
         }
       }
     }

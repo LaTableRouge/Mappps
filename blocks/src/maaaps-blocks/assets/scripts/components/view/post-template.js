@@ -40,6 +40,15 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
               }
             })
           )
+
+          document.dispatchEvent(
+            new CustomEvent('mps-mobile-map-displayed', {
+              detail: {
+                id: blockId,
+                mobileIsMapDisplayed: true
+              }
+            })
+          )
         }
       })
     })

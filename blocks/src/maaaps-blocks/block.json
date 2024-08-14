@@ -11,7 +11,7 @@
     "html": false,
     "anchor": true,
     "align": true,
-    "layout": true,
+    "layout": false,
     "interactivity": true,
     "spacing": {
       "padding": true
@@ -78,6 +78,10 @@
     "sharedAttributes": {
       "type": "object",
       "default": {}
+    },
+    "putStickyFirst": {
+      "type": "boolean",
+      "default": true
     }
   },
   "textdomain": "maaaps",

@@ -7,6 +7,19 @@
 @import '../../../maaaps-blocks/assets/styles/abstracts/keyframes';
 @import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
 
+html[dir='rtl'] {
+  .wp-block-mps-maaaps {
+    .wp-block-mps-searchbar {
+      .search-wrapper .search-wrapper__form .form__button--submit {
+        border-top-left-radius: var(--radius-md);
+        border-top-right-radius: var(--radius-md);
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: var(--button-radius-bottom, var(--radius-md));
+      }
+    }
+  }
+}
+
 .wp-block-mps-searchbar {
   position: relative;
 
@@ -24,7 +37,9 @@
         &__input {
           width: 100%;
           min-height: initial;
-          padding: var(--spacing-sm) calc(var(--spacing-sm) * 3) var(--spacing-sm) 0;
+          padding: var(--spacing-sm) 0;
+          padding-inline-start: var(--spacing-sm);
+          padding-inline-end: calc(var(--spacing-sm) * 4);
           overflow: hidden;
           border: none;
           border-bottom: 1px solid var(--color-primary);
@@ -78,7 +93,7 @@
 
           &--reset {
             position: absolute;
-            right: var(--button-size);
+            inset-inline-end: var(--button-size);
             bottom: 0;
             color: var(--color-gray-700);
             font-size: 10px;

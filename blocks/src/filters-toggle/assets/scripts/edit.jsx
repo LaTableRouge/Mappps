@@ -3,7 +3,6 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useEffect, useState } from '@wordpress/element'
 
-import Controls from './components/Controls'
 import Main from './main'
 
 export default function Edit({ attributes, context, setAttributes }) {
@@ -32,7 +31,6 @@ export default function Edit({ attributes, context, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <Controls attributes={attributes} setAttributes={setAttributes} />
       <Main blockId={blockId} categories={categories} queriedPosts={posts} taxonomies={taxonomies} />
     </div>
   )

@@ -24,8 +24,7 @@
       "clientNavigation": true
     }
   },
-  "attributes": {
-  },
+  "attributes": {},
   "viewScript": "file:./assets/view.js",
   "editorScript": "file:./assets/index.jsx",
   "editorStyle": "file:./assets/index.css",

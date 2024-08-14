@@ -7,8 +7,12 @@
 @import '../../../maaaps-blocks/assets/styles/abstracts/keyframes';
 @import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
 
+.post-template__posts-wrapper {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 .wp-block-mps-post-template {
-  height: 100%;
   overflow: auto;
 
   &[data-hidden='true'] {

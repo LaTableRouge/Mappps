@@ -22,7 +22,7 @@ if (!$query->have_posts()) {
     return '';
 }
 
-$content = '<div class="posts-wrapper">';
+$content = '<div class="post-template__posts-wrapper"><div class="post-template__scroll-wrapper">';
 while ($query->have_posts()) {
     $query->the_post();
 
@@ -68,7 +68,7 @@ while ($query->have_posts()) {
     $content .= $block_html->get_updated_html();
 }
 
-$content .= '</div>';
+$content .= '</div></div>';
 
 wp_reset_postdata();
 

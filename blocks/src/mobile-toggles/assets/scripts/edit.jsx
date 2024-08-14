@@ -3,7 +3,6 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 
-import Controls from './components/Controls'
 import Main from './main'
 
 export default function Edit({ attributes, context, setAttributes }) {
@@ -22,8 +21,6 @@ export default function Edit({ attributes, context, setAttributes }) {
 
   return (
     <div {...blockProps}>
-      <Controls limitedSearch={attributes.limitedSearch} setAttributes={setAttributes} />
-
       <Main attributes={attributes} blockId={blockId} hasFilters={hasFilters} hasSidebar={hasSidebar} />
     </div>
   )

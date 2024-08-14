@@ -78,7 +78,18 @@ export default function GlobalEventsHandler({ blockId, filtersCount, filtersOpen
         }
       })
     )
-  }, [posts])
+
+    if (Object.keys(selectedPost).length) {
+      document.dispatchEvent(
+        new CustomEvent('mps-selected-post', {
+          detail: {
+            id: blockId,
+            selectedPost: {}
+          }
+        })
+      )
+    }
+  }, [filtersCount])
 
   useEffect(() => {
     document.dispatchEvent(

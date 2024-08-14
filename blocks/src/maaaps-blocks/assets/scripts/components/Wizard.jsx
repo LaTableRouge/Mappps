@@ -30,7 +30,7 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
             postTypes.types.length
               ? (
           <Placeholder
-            className="maaaps__wizard"
+            className="maaaps-blocks__wizard"
             instructions={__('Select the data source of the items to be displayed on the map.', 'maaaps')}
             label={__('Data source', 'maaaps')}
           >

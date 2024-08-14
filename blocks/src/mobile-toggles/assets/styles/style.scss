@@ -15,22 +15,35 @@
       --toggle-filters-pe: all;
     }
   }
+
+  &:not(:has(.wp-block-mps-sidebar)) {
+    &:has(.wp-block-mps-filters) {
+      .wp-block-mps-mobile-toggles {
+        .toggles__filters {
+          @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+            --toggle-display: block;
+          }
+        }
+      }
+    }
+  }
 }
 
 .wp-block-mps-mobile-toggles {
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-    display: none;
-  }
-
   position: absolute;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
 
+  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    --toggle-display: none;
+  }
+
   .toggles {
     &__map,
     &__list,
     &__filters {
+      display: var(--toggle-display, inline-grid) !important;
       position: absolute;
       width: 40px;
       height: 40px;
