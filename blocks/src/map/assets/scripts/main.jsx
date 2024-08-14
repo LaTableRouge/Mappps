@@ -5,12 +5,11 @@ import GlobalEventsHandler from './utils/GlobalEventsHandler'
 
 export default function Main({ attributes, blockId, queriedPosts }) {
   const [isMobileView, setIsMobileView] = useState(false)
-  const [popupOffset, setPopupOffset] = useState(0) // The height of the whole block
+  const [popupOffset, setPopupOffset] = useState(0)
   const [posts, setPosts] = useState(false)
-  const [selectedPost, setSelectedPost] = useState({}) // a single post selected on click marker/post template
-  const [selectedSearchResult, setSelectedSearchResult] = useState({}) // OSM selected search result (ex: Paris)
+  const [selectedPost, setSelectedPost] = useState({})
+  const [selectedSearchResult, setSelectedSearchResult] = useState({})
 
-  // ---------- Refs
   const wrapperRef = useCallback((node) => {
     if (!node) {
       return
@@ -29,9 +28,15 @@ export default function Main({ attributes, blockId, queriedPosts }) {
     })
     resizeObserver.observe(node)
   }, [])
-  // ----------
 
-  GlobalEventsHandler({ blockId, setPosts, selectedPost, setSelectedPost, selectedSearchResult, setSelectedSearchResult })
+  GlobalEventsHandler({
+    blockId,
+    setPosts,
+    selectedPost,
+    setSelectedPost,
+    selectedSearchResult,
+    setSelectedSearchResult
+  })
 
   return (
     <div ref={wrapperRef}>
@@ -49,7 +54,6 @@ export default function Main({ attributes, blockId, queriedPosts }) {
         posts={posts || queriedPosts}
         selectedPost={selectedPost}
         selectedSearchResult={selectedSearchResult}
-        // setFiltersOpen={setFiltersOpen}
         setSelectedPost={setSelectedPost}
         setSelectedSearchResult={setSelectedSearchResult}
         tiles={attributes.selectedMapTiles}

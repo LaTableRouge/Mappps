@@ -10,10 +10,15 @@ import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
-  // Child block change listener : https://wordpress.stackexchange.com/questions/406384/how-to-output-child-block-attributes-on-a-parent-block
+  const blockProps = useBlockProps()
 
+  const [wrapperHeight, setWrapperHeight] = useState(0)
+  const [queriedPosts, setQueriedPosts] = useState([])
+
+  const postTypes = GetPostTypes()
+
+  // Get usefull attributes from child blocks
   const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
-
   useEffect(() => {
     let innerBlocksAttributes = {}
     if (innerBlocks.length) {
@@ -27,35 +32,6 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     setAttributes({ sharedAttributes: innerBlocksAttributes })
   }, [innerBlocks])
 
-  // TODO:
-  // Refacto en blocks séparés
-  // -- Maaaps
-  // ---- Leaflet map
-  // ------ Popup
-  // ---- Sidebar
-  // ------ Title
-  // ------ Filters
-  // ------ Search
-  // ------ List
-  // -------- List element
-  // -------- List element detail
-
-  // ---------- attributes are the states stored by Wordpress
-  // They are defined in the block.json
-  // ----------
-
-  // ---------- BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
-  const blockProps = useBlockProps()
-  // ----------
-
-  // ----------States that aren't stored by Wordrpess
-  // They are only usefull for the preview
-  const [wrapperHeight, setWrapperHeight] = useState(0) // The height of the whole block
-  const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
-  // ----------
-
-  // ---------- Other variables
-  const postTypes = GetPostTypes()
   // Check if the wrapper is in mobile view (container query check)
   const wrapperRef = useCallback((node) => {
     if (!node) {
@@ -66,8 +42,8 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     })
     resizeObserver.observe(node)
   }, [])
-  // ----------
 
+  // Set an unique block ID
   useEffect(() => {
     setAttributes({ blockId: clientId })
   }, [clientId])
@@ -114,12 +90,8 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
           style={{ '--wrapper-height': `${wrapperHeight}px` }}
         >
           <InnerBlocks
-            template={[
-              ['mps/loader', {}],
-              ['mps/sidebar', {}],
-              ['mps/map', {}],
-              ['mps/post-details', {}]
-            ]}
+            template={[['mps/loader'], ['mps/sidebar', {}], ['mps/map', {}], ['mps/post-details', {}], ['mps/filters', {}], ['mps/mobile-toggles', {}]]}
+            templateLock="all"
           />
         </div>
       </section>

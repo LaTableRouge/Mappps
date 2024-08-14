@@ -8,33 +8,13 @@
 @import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
 
 .wp-block-mps-sidebar {
-  z-index: 999;
   width: 100%;
   height: inherit;
   transition: var(--nomotion, opacity 0.2s ease-in-out);
 
-  &:not(.is-selected):not(.has-child-selected) {
-    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
-
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    z-index: 999;
     grid-area: sidebar;
     width: var(--sidebar-size, 25cqw);
-  }
-
-  & > .block-editor-inner-blocks {
-    height: 100%;
-
-    & > .block-editor-block-list__layout {
-      display: grid;
-      position: relative;
-      grid-template-rows: auto 1fr;
-      width: 100%;
-      height: inherit;
-      background-color: var(--color-white);
-    }
   }
 }

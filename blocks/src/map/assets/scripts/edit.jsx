@@ -10,11 +10,7 @@ import AlterBlockProps from './utils/AlterBlockProps'
 export default function Edit({ attributes, context, isSelected, setAttributes }) {
   const blockId = context['mps/blockId']
 
-  // BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
   const blockProps = useBlockProps()
-
-  // attributes are the states stored by Wordpress
-  // They are defined in the block.json
 
   const [posts, setPosts] = useState([])
 

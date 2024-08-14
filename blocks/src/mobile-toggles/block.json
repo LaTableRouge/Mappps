@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/mobile-toggles",
+  "title": "Mobile toggles",
+  "category": "maaaps",
+  "description": "Contains mobile toggles buttons.",
+  "textdomain": "maaaps",
+  "parent": [
+    "mps/maaaps-blocks"
+  ],
+  "ancestor": [
+    "mps/maaaps-blocks"
+  ],
+  "usesContext": [
+    "mps/blockId"
+  ],
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "lock": false,
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "attributes": {
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}

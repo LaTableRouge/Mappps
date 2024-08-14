@@ -8,6 +8,8 @@
   "textdomain": "maaaps",
   "supports": {
     "reusable": false,
+    "multiple": false,
+    "lock": false,
     "html": false,
     "layout": false,
     "interactivity": {

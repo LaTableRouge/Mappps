@@ -37,7 +37,6 @@ export default function GlobalEventsHandler({ blockId, selectedPost, selectedSea
   }, [])
 
   useEffect(() => {
-    console.log('event fire', selectedPost)
     document.dispatchEvent(
       new CustomEvent('mps-selected-post', {
         detail: {
@@ -46,6 +45,18 @@ export default function GlobalEventsHandler({ blockId, selectedPost, selectedSea
         }
       })
     )
+
+    // Close filters if a post is selected
+    if (Object.keys(selectedPost).length) {
+      document.dispatchEvent(
+        new CustomEvent('mps-filters-open', {
+          detail: {
+            id: blockId,
+            filtersOpen: false
+          }
+        })
+      )
+    }
   }, [selectedPost])
 
   useEffect(() => {

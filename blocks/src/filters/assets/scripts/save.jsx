@@ -1,7 +1,9 @@
 import { useBlockProps } from '@wordpress/block-editor'
 
+import AlterBlockProps from './utils/AlterBlockProps'
+
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
 
-  return <div {...blockProps} data-attributes={JSON.stringify(attributes)} />
+  return <div {...AlterBlockProps(blockProps, attributes)} />
 }

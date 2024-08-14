@@ -9,14 +9,10 @@ import PostTemplatePreview from './components/PostTemplatePreview'
 import GetBlocks from './utils/GetBlocks'
 
 export default function Edit({ attributes, clientId, context, isSelected, setAttributes }) {
-  const blockProps = useBlockProps()
-
-  // attributes & context are the states stored by Wordpress
-  // They are defined in the block.json
   const blockId = context['mps/blockId']
 
-  // States that aren't stored by Wordrpess
-  // They are only usefull for the preview
+  const blockProps = useBlockProps()
+
   const [activeBlockContextId, setActiveBlockContextId] = useState()
   const [posts, setPosts] = useState([])
 

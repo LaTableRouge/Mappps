@@ -3,7 +3,9 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useEffect, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
 import Main from './main'
+import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, context, setAttributes }) {
   const blockId = context['mps/blockId']
@@ -11,12 +13,6 @@ export default function Edit({ attributes, context, setAttributes }) {
   const taxonomies = context['mps/taxonomies']
 
   const blockProps = useBlockProps()
-
-  // attributes are the states stored by Wordpress
-  // They are defined in the block.json
-
-  // States that aren't stored by Wordrpess
-  // They are only usefull for the preview
 
   const [posts, setPosts] = useState([])
 
@@ -36,7 +32,8 @@ export default function Edit({ attributes, context, setAttributes }) {
   }, [blockId])
 
   return (
-    <div {...blockProps}>
+    <div {...AlterBlockProps(blockProps, attributes)}>
+      <Controls attributes={attributes} setAttributes={setAttributes} />
       <Main blockId={blockId} categories={categories} queriedPosts={posts} taxonomies={taxonomies} />
     </div>
   )

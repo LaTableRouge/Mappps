@@ -10,7 +10,7 @@
     "mps/maaaps-blocks"
   ],
   "ancestor": [
-    "mps/sidebar"
+    "mps/maaaps-blocks"
   ],
   "usesContext": [
     "mps/blockId",
@@ -21,6 +21,10 @@
     "reusable": false,
     "html": false,
     "layout": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
     "interactivity": {
       "clientNavigation": true
     }

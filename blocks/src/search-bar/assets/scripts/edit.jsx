@@ -10,12 +10,6 @@ export default function Edit({ attributes, context, setAttributes }) {
 
   const blockProps = useBlockProps()
 
-  // attributes are the states stored by Wordpress
-  // They are defined in the block.json
-
-  // States that aren't stored by Wordrpess
-  // They are only usefull for the preview
-
   return (
     <div {...blockProps}>
       <Controls limitedSearch={attributes.limitedSearch} setAttributes={setAttributes} />

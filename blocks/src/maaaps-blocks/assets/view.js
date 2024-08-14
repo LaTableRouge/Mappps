@@ -3,10 +3,13 @@ import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
+import './styles/view.scss'
 
 import Filters from './scripts/components/view/filters'
+import FiltersToggle from './scripts/components/view/filters-toggle'
 import Loader from './scripts/components/view/loader'
 import Map from './scripts/components/view/map'
+import MobileToggles from './scripts/components/view/mobile-toggles'
 import PostDetails from './scripts/components/view/post-details'
 import PostTemplate from './scripts/components/view/post-template'
 import SearchBar from './scripts/components/view/search-bar'
@@ -39,8 +42,27 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             resizeObserver.observe(parentBlock)
 
+            document.addEventListener('mps-mobile-map-displayed', async (e) => {
+              await e
+              const details = e.detail
+              if (details.id === blockId) {
+                parentBlock.setAttribute('data-mobile-map-display', details.mobileIsMapDisplayed)
+              }
+            })
+
+            document.addEventListener('mps-filters-open', async (e) => {
+              await e
+              const details = e.detail
+              if (details.id === blockId) {
+                parentBlock.setAttribute('data-filters-open', details.filtersOpen)
+              }
+            })
+
             // Filters rendering
             Filters(blockId, parentBlock, response, attributes)
+
+            // Filters toggle rendering
+            FiltersToggle(blockId, parentBlock)
 
             // Map rendering
             Map(blockId, parentBlock, response)
@@ -54,6 +76,9 @@ window.addEventListener('DOMContentLoaded', () => {
             // Post Details rendering
             PostDetails(blockId, parentBlock)
 
+            // Post Details rendering
+            MobileToggles(blockId, parentBlock)
+
             // Loader rendering (!! always in last !!)
             Loader(parentBlock)
           }
@@ -62,10 +87,3 @@ window.addEventListener('DOMContentLoaded', () => {
     })
   }
 })
-
-// TODO:
-//  - Faire en sorte que le rendu back-office soit utilisable et rende bien avec les paramètres de personnalisation.
-//    tout n'a pas besoin d'être fonctionnel en back-office
-//  - Faire un script global dans view.js contenant l'init de la map les filtres etc...
-//  - Concernant le post-template prendre le fonctionnement de gutenberg avec le render.php
-//  - Simplifier au mieux les scripts de composants secondaires.

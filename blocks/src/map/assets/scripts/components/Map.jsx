@@ -14,9 +14,6 @@ import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
-// Working markercluster : https://codesandbox.io/s/react-leaflet-markercluster-state-issue-react-18-forked-r8t5d9?file=/src/App.js:253-1102
-// Working : https://codesandbox.io/s/react-leaflet-markercluster-state-issue-react-18-7voen1?file=/src/App.js:41-176
-
 const Map = ({
   boundsPadding,
   cluster,

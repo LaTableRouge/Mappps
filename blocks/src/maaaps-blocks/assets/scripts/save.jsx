@@ -9,11 +9,7 @@ export default function Save({ attributes, clientId }) {
   return (
     <section {...AlterBlockProps(blockProps, attributes)} data-attributes={JSON.stringify(sortObject(attributes))}>
       <div className="responsive-wrapper">
-        <div className="block-editor-inner-blocks">
-          <div className="block-editor-block-list__layout">
-            <InnerBlocks.Content />
-          </div>
-        </div>
+        <InnerBlocks.Content />
       </div>
     </section>
   )

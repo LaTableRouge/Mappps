@@ -19,6 +19,7 @@
     "reusable": false,
     "html": false,
     "layout": false,
+    "lock": false,
     "interactivity": {
       "clientNavigation": true
     }

@@ -20,11 +20,11 @@
   transform: translateX(-50%);
   transition:
     all 0.3s ease-in-out,
-    var(--popup-transition, var(--nomotion, transform 0.3s ease-in-out 0.15s), var(--nomotion, opacity 0.3s ease-in-out));
+    var(--details-transition, var(--nomotion, transform 0.3s ease-in-out 0.15s), var(--nomotion, opacity 0.3s ease-in-out));
   border-radius: var(--radius-md);
-  opacity: var(--popup-opacity, 0);
+  opacity: var(--details-opacity, 0);
   background-color: var(--color-white);
-  pointer-events: var(--popup-pe, none);
+  pointer-events: var(--details-pe, none);
 
   &[data-expanded='true'] {
     @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
@@ -41,17 +41,15 @@
     inset-inline-start: var(--sidebar-size, 25cqw);
     width: var(--details-size, max-content);
     height: var(--wrapper-height);
-    transform: translateX(var(--popup-transform, -100%));
+    transform: translateX(var(--details-transform, -100%));
     border-radius: 0;
   }
 
-  &.is-selected,
-  &.has-child-selected,
   &[data-hidden='false'] {
-    --popup-transition: var(--nomotion, transform 0.3s ease-in-out), var(--nomotion, opacity 0.3s ease-in-out 0.15s);
-    --popup-transform: 0%;
-    --popup-opacity: 1;
-    --popup-pe: all;
+    --details-transition: var(--nomotion, transform 0.3s ease-in-out), var(--nomotion, opacity 0.3s ease-in-out 0.15s);
+    --details-transform: 0%;
+    --details-opacity: 1;
+    --details-pe: all;
   }
 
   .header__cta-wrapper {

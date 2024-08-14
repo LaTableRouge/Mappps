@@ -1,6 +1,6 @@
 import { useEffect } from '@wordpress/element'
 
-export default function GlobalEventsHandler({ blockId, searchValue, selectedPost, setSearchValue, setSelectedPost }) {
+export default function GlobalEventsHandler({ blockId, filtersCount, filtersOpen, posts, searchValue, selectedPost, setFiltersOpen, setSearchValue, setSelectedPost }) {
   useEffect(() => {
     async function eventSearchValue(e) {
       await e
@@ -18,11 +18,21 @@ export default function GlobalEventsHandler({ blockId, searchValue, selectedPost
       }
     }
 
+    async function eventFiltersOpen(e) {
+      await e
+      const details = e.detail
+      if (details.id === blockId) {
+        setFiltersOpen(details.filtersOpen)
+      }
+    }
+
     document.addEventListener('mps-search-value', eventSearchValue)
     document.addEventListener('mps-selected-post', eventSelectedPost)
+    document.addEventListener('mps-filters-open', eventFiltersOpen)
     return () => {
       document.removeEventListener('mps-selected-post', eventSelectedPost)
       document.removeEventListener('mps-search-value', eventSearchValue)
+      document.removeEventListener('mps-filters-open', eventFiltersOpen)
     }
   }, [])
 
@@ -47,6 +57,39 @@ export default function GlobalEventsHandler({ blockId, searchValue, selectedPost
       })
     )
   }, [selectedPost])
+
+  useEffect(() => {
+    document.dispatchEvent(
+      new CustomEvent('mps-posts', {
+        detail: {
+          id: blockId,
+          posts
+        }
+      })
+    )
+  }, [posts])
+
+  useEffect(() => {
+    document.dispatchEvent(
+      new CustomEvent('mps-filters-count', {
+        detail: {
+          id: blockId,
+          filtersCount
+        }
+      })
+    )
+  }, [posts])
+
+  useEffect(() => {
+    document.dispatchEvent(
+      new CustomEvent('mps-filters-open', {
+        detail: {
+          id: blockId,
+          filtersOpen
+        }
+      })
+    )
+  }, [filtersOpen])
 
   return null
 }

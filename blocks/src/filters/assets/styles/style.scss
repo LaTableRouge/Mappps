@@ -8,38 +8,38 @@
 @import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
 
 .wp-block-mps-filters {
+  display: grid;
+  position: absolute !important;
+  z-index: 99999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  width: 100%;
+  padding: var(--spacing-md) var(--spacing-lg);
+  transform: translateX(var(--filter-transform, -100%));
+  transition: var(--filter-transition, var(--nomotion, transform 0.3s ease-in-out 0.15s), var(--nomotion, opacity 0.3s ease-in-out));
+  opacity: var(--filter-opacity, 0);
+  background-color: var(--color-white);
+  pointer-events: var(--filter-pe, none);
+
+  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    left: var(--sidebar-size, 25cqw);
+    width: var(--filter-size, max-content);
+    min-width: max-content;
+    border-left: 1px solid var(--color-gray-300);
+  }
+
+  &:has([data-open='true']) {
+    --filter-transition: var(--nomotion, transform 0.3s ease-in-out), var(--nomotion, opacity 0.3s ease-in-out 0.15s);
+    --filter-transform: 0;
+    --filter-opacity: 1;
+    --filter-pe: all;
+  }
+
   .filters-form {
-    display: grid;
-    position: absolute;
-    z-index: 99999;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    grid-auto-flow: row;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-    width: 100%;
-    padding: var(--spacing-md) var(--spacing-lg);
-    transform: translateX(var(--form-transform, -100%));
-    transition: var(--form-transition, var(--nomotion, transform 0.3s ease-in-out 0.15s), var(--nomotion, opacity 0.3s ease-in-out));
-    opacity: var(--form-opacity, 0);
-    background-color: var(--color-white);
-    pointer-events: var(--form-pe, none);
-
-    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-      left: var(--sidebar-size, 25cqw);
-      width: var(--filter-size, max-content);
-      min-width: max-content;
-      border-left: 1px solid var(--color-gray-300);
-    }
-
-    &[data-open='true'] {
-      --form-transition: var(--nomotion, transform 0.3s ease-in-out), var(--nomotion, opacity 0.3s ease-in-out 0.15s);
-      --form-transform: 0;
-      --form-opacity: 1;
-      --form-pe: all;
-    }
-
     ul {
       margin: 0;
       list-style: none;

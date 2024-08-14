@@ -7,14 +7,26 @@
 @import '../../../maaaps-blocks/assets/styles/abstracts/keyframes';
 @import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
 
+.wp-block-mps-maaaps-blocks {
+  &[data-mobile-map-display='true'] {
+    --map-transform: translateX(0);
+    --map-opacity: 1;
+    --map-pointer-events: auto;
+  }
+}
+
 .wp-block-mps-map {
   display: grid;
+  height: var(--wrapper-height, 100%);
 
   @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
     position: absolute !important;
     width: 100%;
-    height: 100%;
     inset: 0;
+    transform: var(--map-transform, translateX(100%));
+    transition: var(--nomotion, transform 0.3s ease-in-out), var(--nomotion, opacity 0.2s ease-in-out);
+    opacity: var(--map-opacity, 0);
+    pointer-events: var(--map-pointer-events, none);
   }
 
   @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {

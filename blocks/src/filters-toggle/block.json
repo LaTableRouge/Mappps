@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "mps/filters-toggle",
+  "title": "Filters toggle",
+  "category": "maaaps",
+  "description": "The button that'wll open/close the filters.",
+  "textdomain": "maaaps",
+  "parent": [
+    "mps/maaaps-blocks"
+  ],
+  "ancestor": [
+    "mps/sidebar"
+  ],
+  "usesContext": [
+    "mps/blockId",
+    "mps/taxonomies",
+    "mps/categories"
+  ],
+  "supports": {
+    "reusable": false,
+    "html": false,
+    "layout": false,
+    "spacing": {
+      "padding": true,
+      "margin": true
+    },
+    "interactivity": {
+      "clientNavigation": true
+    }
+  },
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "margin": "2rem"
+        }
+      }
+    }
+  },
+  "viewScript": "file:./assets/view.js",
+  "editorScript": "file:./assets/index.jsx",
+  "editorStyle": "file:./assets/index.css",
+  "style": "file:./assets/style-index.css"
+}

@@ -8,20 +8,13 @@
   // --spinner-size: 125px;
   --color: currentColor;
 
-  opacity: 0;
-  pointer-events: none;
-
-  &.wp-block {
-    &.is-selected {
-      opacity: 1;
-      pointer-events: all;
-    }
-  }
+  opacity: var(--loader-opacity, 0);
+  pointer-events: var(--loader-pe, none) !important;
 
   &:not(.wp-block) {
     &:not([data-has-posts]) {
-      opacity: 1;
-      pointer-events: all;
+      --loader-opacity: 1;
+      --loader-pe: all;
     }
   }
 

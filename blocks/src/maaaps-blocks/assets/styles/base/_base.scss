@@ -29,29 +29,10 @@
       --is-mobile: red;
     }
 
-    & > .block-editor-inner-blocks {
-      & > .block-editor-block-list__layout {
-        display: grid;
-        position: relative;
-        grid-template-columns: 1fr;
-        width: 100%;
-        height: var(--mobile-height, 80svh);
-        max-height: var(--mobile-height, 80svh);
-        overflow: hidden;
-
-        @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
-          grid-template-areas: 'sidebar map';
-          grid-template-columns: auto 1fr;
-          height: calc(100cqw / (var(--ratio)));
-          max-height: 80svh;
-          aspect-ratio: var(--ratio);
-        }
-
-        [class*='wp-block-mps-'] {
-          margin-block-start: initial;
-          margin-block-end: initial;
-        }
-      }
+    [class*='wp-block-mps-'],
+    .details-wrapper {
+      margin-block-start: initial;
+      margin-block-end: initial;
     }
   }
 }
