@@ -62,7 +62,6 @@
   },
   "dependencies": {
     "@changey/react-leaflet-markercluster": "^4.0.0-rc1",
-    "@legendapp/state": "^2.1.14",
     "leaflet": "^1.9.4",
     "leaflet-defaulticon-compatibility": "^0.1.2",
     "leaflet-fullscreen": "^1.0.2",
