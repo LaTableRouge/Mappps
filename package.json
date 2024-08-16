@@ -17,15 +17,15 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "wp-scripts start",
+    "watch": "wp-scripts start",
     "build": "wp-scripts build",
-    "watch:blocks": "wp-scripts start --webpack-src-dir=blocks/src --output-path=blocks/build",
-    "build:blocks": "wp-scripts build --webpack-src-dir=blocks/src --output-path=blocks/build",
-    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/src/**/assets/styles/**,src/styles,blocks/src/**/assets/styles}*.scss",
-    "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/src/**/assets/styles/**,src/styles,blocks/src/**/assets/styles}/*.scss",
-    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
-    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
-    "beautify:all": "npm run lint:scss && npm run lint:js && npm run prettier:scss && npm run prettier:js",
+    "watch:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
+    "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
+    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}*.scss",
+    "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
+    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
+    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
+    "beautify:all": "npm run lint:scss && npm run lint:js && npm run prettier:scss && npm run prettier:js && composer lint:php",
     "plugin-zip": "wp-scripts plugin-zip",
     "prepare": "husky install && composer install && npm run build && npm run build:blocks"
   },
@@ -80,9 +80,7 @@
     "maaaps.php",
     "lang/",
     "build/",
-    "includes/",
-    "templates/",
-    "blocks/build/"
+    "includes/"
   ],
   "lint-staged": {
     "src/**/*.scss": [
@@ -90,7 +88,7 @@
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx stylelint --allow-empty-input --fix"
     ],
-    "blocks/**/src/**/*.scss": [
+    "blocks/**/*.scss": [
       "npx stylelint --allow-empty-input --fix",
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx stylelint --allow-empty-input --fix"
@@ -99,7 +97,7 @@
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx eslint --no-error-on-unmatched-pattern --fix"
     ],
-    "blocks/**/src/**/*.{js,jsx}": [
+    "blocks/**/*.{js,jsx}": [
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx eslint --no-error-on-unmatched-pattern --fix"
     ]

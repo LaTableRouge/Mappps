@@ -36,18 +36,21 @@ Copyright 2024 Monzilla Media. All rights reserved.
 if (!function_exists('get_plugin_data')) {
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
-define('MPS_VITE_DEVELOPMENT', false);
 define('MPS_PATH', plugin_dir_path(__FILE__));
+define('MPS_URL', plugin_dir_url(__FILE__));
 define('MPS_REACT_PATH', MPS_PATH . 'blocks/build');
+define('MPS_LANG_PATH', MPS_PATH . 'lang');
 define('MPS_BASE_NAME', basename(dirname(__FILE__)));
 
 require MPS_PATH . 'includes/load-textdomain.php';
 
 /*
-* ====== Pages
-* Register pages
+* ====== Admin page
+* Register page
+* Enqueue assets
 */
 require MPS_PATH . 'includes/register-page.php';
+require MPS_PATH . 'includes/enqueue-assets.php';
 
 /*
 * ====== Blocks

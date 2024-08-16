@@ -24,12 +24,12 @@ The list of development scripts is listed below:
 | npm run prod               | compiles `maaaps` plugin files (\*.scss, \*.js) and deploys static files to the **build/** directory of the plugin.                                  |
 | npm run build              | lints, formats, and compiles `maaaps` plugin files (\*.php, \*.scss, \*.js) and deploys static files to the **build/** directory of the plugin.      |
 | npm run watch              | starts a local development server accessible directly on **local.your-host.com**, compiles and reloads static files (\*.scss, \*.js) on each change. |
-| npm run watch:blocks       | compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.                          |
-| npm run build:blocks       | lints, formats, and compiles `maaaps` blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory of the blocks.      |
+| npm run watch:blocks       | compiles blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory.                          |
+| npm run build:blocks       | lints, formats, and compiles blocks files (\*.scss, \*.js, \*.jsx) and deploys static files to the **build/** directory.      |
 
 ### Creating REACT Blocks
 
-Blocks should be created and edited in the `blocks/src/` directory ([see README](./blocks/src/README.md)).
+Blocks should be created and edited in the `blocks/` directory ([see README](./blocks/README.md)).
 
 
 ### Translation
