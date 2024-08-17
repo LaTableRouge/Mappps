@@ -13,7 +13,7 @@ function ChangeView({
   markers,
   markerSearch,
   maxMarkerZoom,
-  refCluster,
+  refCluster = null,
   refMarkerGeolocation,
   refMarkerSearch,
   refsMarker,
@@ -59,16 +59,18 @@ function ChangeView({
 
     refsMarker.current.forEach((markerRef, i) => {
       const marker = markerRef.current
-      const cluster = refCluster.current
       if (marker) {
         const popup = marker._popup
         if (marker.options.data.id === selectedPost.id) {
-          const parentElement = cluster.getVisibleParent(marker)
-          if (parentElement) {
-            if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
-              zoomSmoothly(cluster, marker, popup)
-            } else {
-              zoomSmoothly(null, null, popup)
+          if (refCluster) {
+            const cluster = refCluster.current
+            const parentElement = cluster.getVisibleParent(marker)
+            if (parentElement) {
+              if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
+                zoomSmoothly(cluster, marker, popup)
+              } else {
+                zoomSmoothly(null, null, popup)
+              }
             }
           } else {
             zoomSmoothly(null, null, popup)

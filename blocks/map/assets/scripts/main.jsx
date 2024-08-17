@@ -1,7 +1,8 @@
 import { useCallback, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
-import Map from './components/Map'
+import MapEdit from './components/MapEdit'
+import MapFront from './components/MapFront'
 
 export default function Main({ attributes, blockId, inEditor = false, queriedPosts }) {
   const [isMobileView, setIsMobileView] = useState(false)
@@ -48,25 +49,49 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
 
   return (
     <div ref={wrapperRef}>
-      <Map
-        boundsPadding={attributes.selectedBoundsPadding}
-        cluster={attributes.isClustered}
-        clusterSize={attributes.selectedMarkerClusterSize}
-        inEditor={inEditor}
-        isGeolocated={attributes.isGeolocated}
-        isMobileView={isMobileView}
-        markerOffset={popupOffset}
-        markerSize={attributes.selectedMarkerSize}
-        maxMarkerZoom={attributes.selectedMaxMarkerZoom}
-        selectedPost={selectedPost}
-        selectedSearchResult={selectedSearchResult}
-        setSelectedPost={setSelectedPost}
-        setSelectedSearchResult={setSelectedSearchResult}
-        tiles={attributes.selectedMapTiles}
-        maxZoom={attributes.selectedMaxZoom}
-        // mobileIsMapDisplayed={mobileIsMapDisplayed} TODO: passer par le data-attr global du parent
-        posts={posts || queriedPosts}
-      />
+      {
+        // Tis is a temporary fix. wp-scripts break things from leaflet marker cluster in gutenberg.
+        // ticket: https://github.com/WordPress/gutenberg/issues/64446
+        inEditor
+          ? (
+          <MapEdit
+            boundsPadding={attributes.selectedBoundsPadding}
+            cluster={attributes.isClustered}
+            clusterSize={attributes.selectedMarkerClusterSize}
+            isGeolocated={attributes.isGeolocated}
+            isMobileView={isMobileView}
+            markerOffset={popupOffset}
+            markerSize={attributes.selectedMarkerSize}
+            maxMarkerZoom={attributes.selectedMaxMarkerZoom}
+            maxZoom={attributes.selectedMaxZoom}
+            posts={posts || queriedPosts}
+            selectedPost={selectedPost}
+            selectedSearchResult={selectedSearchResult}
+            setSelectedPost={setSelectedPost}
+            setSelectedSearchResult={setSelectedSearchResult}
+            tiles={attributes.selectedMapTiles}
+          />
+            )
+          : (
+          <MapFront
+            boundsPadding={attributes.selectedBoundsPadding}
+            cluster={attributes.isClustered}
+            clusterSize={attributes.selectedMarkerClusterSize}
+            isGeolocated={attributes.isGeolocated}
+            isMobileView={isMobileView}
+            markerOffset={popupOffset}
+            markerSize={attributes.selectedMarkerSize}
+            maxMarkerZoom={attributes.selectedMaxMarkerZoom}
+            maxZoom={attributes.selectedMaxZoom}
+            posts={posts || queriedPosts}
+            selectedPost={selectedPost}
+            selectedSearchResult={selectedSearchResult}
+            setSelectedPost={setSelectedPost}
+            setSelectedSearchResult={setSelectedSearchResult}
+            tiles={attributes.selectedMapTiles}
+          />
+            )
+      }
     </div>
   )
 }
