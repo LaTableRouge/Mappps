@@ -38,7 +38,7 @@ if (!function_exists('get_plugin_data')) {
 }
 define('MPS_PATH', plugin_dir_path(__FILE__));
 define('MPS_URL', plugin_dir_url(__FILE__));
-define('MPS_REACT_PATH', MPS_PATH . 'blocks/build');
+define('MPS_REACT_PATH', MPS_PATH . 'build/blocks');
 define('MPS_LANG_PATH', MPS_PATH . 'lang');
 define('MPS_BASE_NAME', basename(dirname(__FILE__)));
 

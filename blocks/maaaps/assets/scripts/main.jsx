@@ -124,6 +124,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
               displaySearch={attributes.displaySearch}
+              inEditor={inEditor}
               isGeolocated={attributes.isGeolocated}
               isMobileView={isMobileView}
               limitedSearch={attributes.limitedSearch}

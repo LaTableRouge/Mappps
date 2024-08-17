@@ -42,7 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             resizeObserver.observe(parentBlock)
 
-            document.addEventListener('mps-mobile-map-displayed', async (e) => {
+            document.addEventListener('mps-mobileIsMapDisplayed', async (e) => {
               await e
               const details = e.detail
               if (details.id === blockId) {
@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
               }
             })
 
-            document.addEventListener('mps-filters-open', async (e) => {
+            document.addEventListener('mps-filtersOpen', async (e) => {
               await e
               const details = e.detail
               if (details.id === blockId) {

@@ -1,26 +1,17 @@
 import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-import GlobalEventsHandler from './utils/GlobalEventsHandler'
+import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
 
 export default function Main({ attributes, blockId, hasFilters, hasSidebar }) {
   const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(true)
+  GlobalStateEventsHandler(blockId, mobileIsMapDisplayed, setMobileIsMapDisplayed, 'mobileIsMapDisplayed')
   const [filtersOpen, setFiltersOpen] = useState(false)
+  GlobalStateEventsHandler(blockId, filtersOpen, setFiltersOpen, 'filtersOpen')
   const [selectedPost, setSelectedPost] = useState({})
+  GlobalStateEventsHandler(blockId, selectedPost, setSelectedPost, 'selectedPost')
   const [filtersCount, setFiltersCount] = useState(0)
-
-  // TODO: change this to a more global function
-  // ../../../../src/helpers/scripts/GlobalStateEventsHandler
-  GlobalEventsHandler({
-    blockId,
-    mobileIsMapDisplayed,
-    setMobileIsMapDisplayed,
-    filtersCount,
-    setFiltersCount,
-    selectedPost,
-    filtersOpen,
-    setFiltersOpen
-  })
+  GlobalStateEventsHandler(blockId, filtersCount, setFiltersCount, 'filtersCount')
 
   return (
     <>

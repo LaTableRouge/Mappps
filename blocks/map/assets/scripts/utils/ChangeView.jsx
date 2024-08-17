@@ -127,8 +127,10 @@ function ChangeView({
 
   useEffect(() => {
     if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {
-      let selectedMarker = refsMarker.current.find((markerRef) => markerRef.current && markerRef.current.options.data.id === selectedPost.id)
-      if (selectedMarker.current) {
+      let selectedMarker = refsMarker.current.find((markerRef) => {
+        return markerRef.current && markerRef.current.options.data.id === selectedPost.id
+      })
+      if (selectedMarker) {
         selectedMarker = selectedMarker.current
 
         addBoundsOffset(selectedMarker)

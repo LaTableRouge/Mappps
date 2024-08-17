@@ -4,12 +4,12 @@ import 'leaflet/dist/leaflet.css'
 import '@changey/react-leaflet-markercluster/dist/styles.min.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
-import { useMemo, useRef, useState } from '@wordpress/element'
+import { useEffect, useMemo, useRef, useState } from '@wordpress/element'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
 import MapControls from './map/MapControls'
-import MarkerCluster from './map/MarkerCluster'
+// import MarkerCluster from './map/MarkerCluster'
 import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
@@ -19,6 +19,7 @@ const Map = ({
   cluster,
   clusterSize,
   displaySearch,
+  inEditor,
   isGeolocated,
   isMobileView,
   limitedSearch,
@@ -41,9 +42,20 @@ const Map = ({
 
   const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen)
 
-  const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
-  }, [markers])
+  const [markerGroup, setMarkerGroup] = useState(markers)
+  useEffect(() => {
+    const importComponent = async () => {
+      const module = await import('./map/MarkerCluster')
+      const MarkerClusterGroup = module.default
+      if (inEditor) {
+        setMarkerGroup(markers)
+      } else {
+        setMarkerGroup(MarkerClusterGroup(markers, clusterSize, clusterRef))
+      }
+    }
+
+    importComponent()
+  }, [posts])
 
   const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})

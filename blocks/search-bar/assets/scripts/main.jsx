@@ -1,16 +1,15 @@
 import { useState } from '@wordpress/element'
 
+import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
 import Search from './components/Search'
-import GlobalEventsHandler from './utils/GlobalEventsHandler'
 
 export default function Main({ attributes, blockId }) {
   const [selectedSearchResult, setSelectedSearchResult] = useState({})
+  GlobalStateEventsHandler(blockId, selectedSearchResult, setSelectedSearchResult, 'selectedSearchResult')
   const [searchValue, setSearchValue] = useState('')
+  GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
   const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(true)
-
-  // TODO: change this to a more global function
-  // ../../../../src/helpers/scripts/GlobalStateEventsHandler
-  GlobalEventsHandler({ blockId, selectedSearchResult, setSelectedSearchResult, searchValue, setSearchValue, mobileIsMapDisplayed, setMobileIsMapDisplayed })
+  GlobalStateEventsHandler(blockId, mobileIsMapDisplayed, setMobileIsMapDisplayed, 'mobileIsMapDisplayed')
 
   return (
     <Search

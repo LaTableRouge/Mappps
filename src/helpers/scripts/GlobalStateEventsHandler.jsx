@@ -1,6 +1,8 @@
 import { useEffect } from '@wordpress/element'
 
-export default function GlobalStateEventsHandler(blockId = '', state, setState, stateName = '', eventName = '', additionalEvent = () => false) {
+export default function GlobalStateEventsHandler(blockId = '', state, setState, stateName = '', additionalEvent = () => false) {
+  const eventName = `mps-${stateName}`
+
   useEffect(() => {
     async function event(e) {
       await e
@@ -17,12 +19,14 @@ export default function GlobalStateEventsHandler(blockId = '', state, setState, 
   }, [])
 
   useEffect(() => {
+    const detailObject = {
+      id: blockId
+    }
+    detailObject[stateName] = state
+
     document.dispatchEvent(
       new CustomEvent(eventName, {
-        detail: {
-          id: blockId,
-          stateName: state
-        }
+        detail: detailObject
       })
     )
 

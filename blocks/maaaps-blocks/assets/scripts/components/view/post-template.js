@@ -33,7 +33,7 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
         const selectedPost = queriedPosts.find((post) => post.id === Number(postID))
         if (selectedPost) {
           document.dispatchEvent(
-            new CustomEvent('mps-selected-post', {
+            new CustomEvent('mps-selectedPost', {
               detail: {
                 id: blockId,
                 selectedPost
@@ -42,7 +42,7 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
           )
 
           document.dispatchEvent(
-            new CustomEvent('mps-mobile-map-displayed', {
+            new CustomEvent('mps-mobileIsMapDisplayed', {
               detail: {
                 id: blockId,
                 mobileIsMapDisplayed: true
