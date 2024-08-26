@@ -1,226 +1,194 @@
-@import 'variables';
+@import "variables";
 
 @font-face {
   font-family: '#{$icomoon-font-family}';
-  font-style: normal;
-  font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z49hsf') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z49hsf') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z49hsf##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?5w7fgh') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?5w7fgh') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?5w7fgh##{$icomoon-font-family}') format('svg');
+  font-weight: normal;
+  font-style: normal;
   font-display: block;
 }
 
-[class^='icon-maaaps-'],
-[class*=' icon-maaaps-'] {
+[class^="icon-mappps-"], [class*=" icon-mappps-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: normal;
-  line-height: 1;
-  text-transform: none;
-  speak: never;
 }
 
-.icon-maaaps-list {
-  &::before {
-    content: $icon-maaaps-list;
+.icon-mappps-list {
+  &:before {
+    content: $icon-mappps-list; 
+  }
+}
+.icon-mappps-shrink {
+  &:before {
+    content: $icon-mappps-shrink; 
+  }
+}
+.icon-mappps-map {
+  &:before {
+    content: $icon-mappps-map; 
+  }
+}
+.icon-mappps-enlarge {
+  &:before {
+    content: $icon-mappps-enlarge; 
+  }
+}
+.icon-mappps-refresh {
+  &:before {
+    content: $icon-mappps-refresh; 
+  }
+}
+.icon-mappps-minus {
+  &:before {
+    content: $icon-mappps-minus; 
+  }
+}
+.icon-mappps-sun {
+  &:before {
+    content: $icon-mappps-sun; 
+  }
+}
+.icon-mappps-moon {
+  &:before {
+    content: $icon-mappps-moon; 
+  }
+}
+.icon-mappps-marker {
+  &:before {
+    content: $icon-mappps-marker; 
+  }
+}
+.icon-mappps-geolocation {
+  &:before {
+    content: $icon-mappps-geolocation; 
+  }
+}
+.icon-mappps-fullscreen {
+  &:before {
+    content: $icon-mappps-fullscreen; 
+  }
+}
+.icon-mappps-fullscreen-exit {
+  &:before {
+    content: $icon-mappps-fullscreen-exit; 
+  }
+}
+.icon-mappps-new-tab {
+  &:before {
+    content: $icon-mappps-new-tab; 
+  }
+}
+.icon-mappps-exit {
+  &:before {
+    content: $icon-mappps-exit; 
+  }
+}
+.icon-mappps-download {
+  &:before {
+    content: $icon-mappps-download; 
+  }
+}
+.icon-mappps-upload {
+  &:before {
+    content: $icon-mappps-upload; 
+  }
+}
+.icon-mappps-plus {
+  &:before {
+    content: $icon-mappps-plus; 
+  }
+}
+.icon-mappps-bin {
+  &:before {
+    content: $icon-mappps-bin; 
+  }
+}
+.icon-mappps-pen {
+  &:before {
+    content: $icon-mappps-pen; 
+  }
+}
+.icon-mappps-filter {
+  &:before {
+    content: $icon-mappps-filter; 
+  }
+}
+.icon-mappps-mail {
+  &:before {
+    content: $icon-mappps-mail; 
+  }
+}
+.icon-mappps-phone {
+  &:before {
+    content: $icon-mappps-phone; 
+  }
+}
+.icon-mappps-check {
+  &:before {
+    content: $icon-mappps-check; 
+  }
+}
+.icon-mappps-eye {
+  &:before {
+    content: $icon-mappps-eye; 
+  }
+}
+.icon-mappps-cross {
+  &:before {
+    content: $icon-mappps-cross; 
+  }
+}
+.icon-mappps-information {
+  &:before {
+    content: $icon-mappps-information; 
+  }
+}
+.icon-mappps-search {
+  &:before {
+    content: $icon-mappps-search; 
+  }
+}
+.icon-mappps-arrow-left {
+  &:before {
+    content: $icon-mappps-arrow-left; 
+  }
+}
+.icon-mappps-arrow-right-plain {
+  &:before {
+    content: $icon-mappps-arrow-right-plain; 
+  }
+}
+.icon-mappps-arrow-left-plain {
+  &:before {
+    content: $icon-mappps-arrow-left-plain; 
+  }
+}
+.icon-mappps-arrow-right {
+  &:before {
+    content: $icon-mappps-arrow-right; 
+  }
+}
+.icon-mappps-arrow-bottom {
+  &:before {
+    content: $icon-mappps-arrow-bottom; 
+  }
+}
+.icon-mappps-user {
+  &:before {
+    content: $icon-mappps-user; 
   }
 }
 
-.icon-maaaps-shrink {
-  &::before {
-    content: $icon-maaaps-shrink;
-  }
-}
-
-.icon-maaaps-map {
-  &::before {
-    content: $icon-maaaps-map;
-  }
-}
-
-.icon-maaaps-enlarge {
-  &::before {
-    content: $icon-maaaps-enlarge;
-  }
-}
-
-.icon-maaaps-refresh {
-  &::before {
-    content: $icon-maaaps-refresh;
-  }
-}
-
-.icon-maaaps-minus {
-  &::before {
-    content: $icon-maaaps-minus;
-  }
-}
-
-.icon-maaaps-sun {
-  &::before {
-    content: $icon-maaaps-sun;
-  }
-}
-
-.icon-maaaps-moon {
-  &::before {
-    content: $icon-maaaps-moon;
-  }
-}
-
-.icon-maaaps-marker {
-  &::before {
-    content: $icon-maaaps-marker;
-  }
-}
-
-.icon-maaaps-geolocation {
-  &::before {
-    content: $icon-maaaps-geolocation;
-  }
-}
-
-.icon-maaaps-fullscreen {
-  &::before {
-    content: $icon-maaaps-fullscreen;
-  }
-}
-
-.icon-maaaps-fullscreen-exit {
-  &::before {
-    content: $icon-maaaps-fullscreen-exit;
-  }
-}
-
-.icon-maaaps-new-tab {
-  &::before {
-    content: $icon-maaaps-new-tab;
-  }
-}
-
-.icon-maaaps-exit {
-  &::before {
-    content: $icon-maaaps-exit;
-  }
-}
-
-.icon-maaaps-download {
-  &::before {
-    content: $icon-maaaps-download;
-  }
-}
-
-.icon-maaaps-upload {
-  &::before {
-    content: $icon-maaaps-upload;
-  }
-}
-
-.icon-maaaps-plus {
-  &::before {
-    content: $icon-maaaps-plus;
-  }
-}
-
-.icon-maaaps-bin {
-  &::before {
-    content: $icon-maaaps-bin;
-  }
-}
-
-.icon-maaaps-pen {
-  &::before {
-    content: $icon-maaaps-pen;
-  }
-}
-
-.icon-maaaps-filter {
-  &::before {
-    content: $icon-maaaps-filter;
-  }
-}
-
-.icon-maaaps-mail {
-  &::before {
-    content: $icon-maaaps-mail;
-  }
-}
-
-.icon-maaaps-phone {
-  &::before {
-    content: $icon-maaaps-phone;
-  }
-}
-
-.icon-maaaps-check {
-  &::before {
-    content: $icon-maaaps-check;
-  }
-}
-
-.icon-maaaps-eye {
-  &::before {
-    content: $icon-maaaps-eye;
-  }
-}
-
-.icon-maaaps-cross {
-  &::before {
-    content: $icon-maaaps-cross;
-  }
-}
-
-.icon-maaaps-information {
-  &::before {
-    content: $icon-maaaps-information;
-  }
-}
-
-.icon-maaaps-search {
-  &::before {
-    content: $icon-maaaps-search;
-  }
-}
-
-.icon-maaaps-arrow-left {
-  &::before {
-    content: $icon-maaaps-arrow-left;
-  }
-}
-
-.icon-maaaps-arrow-right-plain {
-  &::before {
-    content: $icon-maaaps-arrow-right-plain;
-  }
-}
-
-.icon-maaaps-arrow-left-plain {
-  &::before {
-    content: $icon-maaaps-arrow-left-plain;
-  }
-}
-
-.icon-maaaps-arrow-right {
-  &::before {
-    content: $icon-maaaps-arrow-right;
-  }
-}
-
-.icon-maaaps-arrow-bottom {
-  &::before {
-    content: $icon-maaaps-arrow-bottom;
-  }
-}
-
-.icon-maaaps-user {
-  &::before {
-    content: $icon-maaaps-user;
-  }
-}

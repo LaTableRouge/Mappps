@@ -2,25 +2,25 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Maaaps 0.0.1\n"
+"Project-Id-Version: Mappps 0.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-07-28T16:49:29+00:00\n"
+"POT-Creation-Date: 2024-08-26T14:39:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
-"X-Domain: maaaps\n"
+"X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
 #: includes/register-page.php:13
-msgid "Maaaps"
+msgid "Mappps"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://github.com/LaTableRouge/Maaaps"
+msgid "https://github.com/LaTableRouge/Mappps"
 msgstr ""
 
 #. Description of the plugin
@@ -36,7 +36,7 @@ msgid "https://mlnop.fr/"
 msgstr ""
 
 #: includes/blocks/categories-register.php:10
-msgid "Maaaps - Blocks"
+msgid "Mappps - Blocks"
 msgstr ""
 
 #: includes/register-page.php:12
@@ -347,11 +347,11 @@ msgid "See the map"
 msgstr ""
 
 #: build/index.js:1
-msgid "Getting Started with the Maaaps Plugin"
+msgid "Getting Started with the Mappps Plugin"
 msgstr ""
 
 #: build/index.js:1
-msgid "Welcome to the comprehensive guide on how to get started with our Maaaps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively."
+msgid "Welcome to the comprehensive guide on how to get started with our Mappps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively."
 msgstr ""
 
 #: build/index.js:1
@@ -447,7 +447,7 @@ msgid "Add Block:"
 msgstr ""
 
 #: build/index.js:1
-msgid "Click the \"+\" icon to add a new block and search for \"Maaaps\"."
+msgid "Click the \"+\" icon to add a new block and search for \"Mappps\"."
 msgstr ""
 
 #: build/index.js:1
@@ -503,7 +503,7 @@ msgid "The plugin support the clustering for the markers, you can disable it but
 msgstr ""
 
 #: build/index.js:1
-msgid "We hope this guide helps you get started with the Maaaps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github."
+msgid "We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github."
 msgstr ""
 
 #: build/index.js:1
@@ -512,7 +512,7 @@ msgstr ""
 
 #: blocks/build/maaaps/block.json
 msgctxt "block title"
-msgid "Maaaps"
+msgid "Mappps"
 msgstr ""
 
 #: blocks/build/maaaps/block.json
@@ -537,5 +537,5 @@ msgstr ""
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
-msgid "maaaps"
+msgid "mappps"
 msgstr ""

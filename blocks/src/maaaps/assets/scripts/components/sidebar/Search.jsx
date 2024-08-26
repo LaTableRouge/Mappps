@@ -68,7 +68,7 @@ export default function Search({ limitedSearch, setMobileIsMapDisplayed, setSear
         <input
           className="form__input"
           name="s"
-          placeholder={__('Search...', 'maaaps')}
+          placeholder={__('Search...', 'mappps')}
           type="search"
           onKeyUp={(e) => {
             e.preventDefault()
@@ -81,14 +81,14 @@ export default function Search({ limitedSearch, setMobileIsMapDisplayed, setSear
           }}
         />
 
-        <button aria-label={__('Clear', 'maaaps')} className="form__button form__button--reset" style={{ display: showReset }} title={__('Clear', 'maaaps')} type="reset">
-          <span className="icon-maaaps-cross"></span>
-          <span className="screen-reader-text">{__('Clear', 'maaaps')}</span>
+        <button aria-label={__('Clear', 'mappps')} className="form__button form__button--reset" style={{ display: showReset }} title={__('Clear', 'mappps')} type="reset">
+          <span className="icon-mappps-cross"></span>
+          <span className="screen-reader-text">{__('Clear', 'mappps')}</span>
         </button>
 
-        <button aria-label={__('Search', 'maaaps')} className="form__button form__button--submit" title={__('Search', 'maaaps')} type="submit">
-          <span className="icon-maaaps-search"></span>
-          <span className="screen-reader-text">{__('Search', 'maaaps')}</span>
+        <button aria-label={__('Search', 'mappps')} className="form__button form__button--submit" title={__('Search', 'mappps')} type="submit">
+          <span className="icon-mappps-search"></span>
+          <span className="screen-reader-text">{__('Search', 'mappps')}</span>
         </button>
       </form>
 

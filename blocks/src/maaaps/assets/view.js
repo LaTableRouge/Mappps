@@ -9,7 +9,7 @@ import { createRoot } from 'react-dom/client'
 import Main from './scripts/main'
 
 window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mps-maaaps:not(.is-init)')
+  const blocks = document.querySelectorAll('.wp-block-mps-mappps:not(.is-init)')
   if (blocks.length) {
     blocks.forEach((block) => {
       block.classList.add('is-init')

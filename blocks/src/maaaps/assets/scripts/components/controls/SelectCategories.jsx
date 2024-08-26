@@ -35,7 +35,7 @@ export default function SelectCategories({ defaultValue, setAttributes, setQueri
           <SelectControl
             multiple
             defaultValue={defaultValue}
-            label={__('Categories', 'maaaps')}
+            label={__('Categories', 'mappps')}
             options={options}
             onChange={(value) => {
               setQueriedPosts([])
@@ -46,7 +46,7 @@ export default function SelectCategories({ defaultValue, setAttributes, setQueri
             }}
           />
         ) : (
-          __('No categories could be recovered.', 'maaaps')
+          __('No categories could be recovered.', 'mappps')
         )}
       </>
     )

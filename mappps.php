@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Maaaps
- * Plugin URI: https://github.com/LaTableRouge/Maaaps
+ * Plugin Name: Mappps
+ * Plugin URI: https://github.com/LaTableRouge/Mappps
  * Description: A plugin that dsiplay maps
  * Tags: leaflet, maps, openstreetmap
  * Author: LaTableRouge
@@ -9,9 +9,9 @@
  * Requires at least: 6.2
  * Tested up to: 6.3
  * Requires PHP: 8.0
- * Version: 0.0.6
- * Stable tag: 0.0.6
- * Text Domain: maaaps
+ * Version: 0.0.7
+ * Stable tag: 0.0.7
+ * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
  */

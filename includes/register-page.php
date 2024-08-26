@@ -9,8 +9,8 @@ function mps_register_page() {
     // }
 
     add_menu_page(
-        __('Setup', 'maaaps'),
-        __('Maaaps', 'maaaps'),
+        __('Setup', 'mappps'),
+        __('Mappps', 'mappps'),
         'manage_options',
         'mps_admin',
         'mps_page_callback',
@@ -22,6 +22,6 @@ add_action('admin_menu', 'mps_register_page');
 function mps_page_callback() {
     printf(
         '<article class="wrap" id="mps_root">%s</article>',
-        esc_html__( 'Loading…', 'maaaps' )
+        esc_html__( 'Loading…', 'mappps' )
     );
 }

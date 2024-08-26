@@ -11,39 +11,39 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
         <div className="leaflet-control-zoom leaflet-bar leaflet-control">
           <a
             aria-disabled="false"
-            aria-label={__('Zoom in', 'maaaps')}
+            aria-label={__('Zoom in', 'mappps')}
             className="leaflet-control-zoom-in"
             href="#"
             role="button"
-            title={__('Zoom in', 'maaaps')}
+            title={__('Zoom in', 'mappps')}
             onClick={(e) => {
               e.preventDefault()
               map.zoomIn()
             }}
           >
-            <span aria-hidden="true" className="icon-maaaps-plus"></span>
+            <span aria-hidden="true" className="icon-mappps-plus"></span>
           </a>
           <a
             aria-disabled="false"
-            aria-label={__('Zoom out', 'maaaps')}
+            aria-label={__('Zoom out', 'mappps')}
             className="leaflet-control-zoom-out"
             href="#"
             role="button"
-            title={__('Zoom out', 'maaaps')}
+            title={__('Zoom out', 'mappps')}
             onClick={(e) => {
               e.preventDefault()
               map.zoomOut()
             }}
           >
-            <span aria-hidden="true" className="icon-maaaps-minus"></span>
+            <span aria-hidden="true" className="icon-mappps-minus"></span>
           </a>
           <a
             aria-disabled="false"
-            aria-label={__('Reset view', 'maaaps')}
+            aria-label={__('Reset view', 'mappps')}
             className="leaflet-control-reset"
             href="#"
             role="button"
-            title={__('Reset view', 'maaaps')}
+            title={__('Reset view', 'mappps')}
             onClick={(e) => {
               e.preventDefault()
               // Set selected post to trigger the fitbound inside the ChangeView function
@@ -54,16 +54,16 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
               setSelectedSearchResult({})
             }}
           >
-            <span aria-hidden="true" className="icon-maaaps-refresh"></span>
+            <span aria-hidden="true" className="icon-mappps-refresh"></span>
           </a>
           {isGeolocated && (
             <a
               aria-disabled="false"
-              aria-label={__('Find your position', 'maaaps')}
+              aria-label={__('Find your position', 'mappps')}
               className="leaflet-control-geolocation"
               href="#"
               role="button"
-              title={__('Find your position', 'maaaps')}
+              title={__('Find your position', 'mappps')}
               onClick={(e) => {
                 e.preventDefault()
                 if (Object.keys(geolocationCoordinates).length) {
@@ -75,7 +75,7 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
                 }
               }}
             >
-              <span aria-hidden="true" className="icon-maaaps-geolocation"></span>
+              <span aria-hidden="true" className="icon-mappps-geolocation"></span>
             </a>
           )}
         </div>

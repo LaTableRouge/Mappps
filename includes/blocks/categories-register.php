@@ -3,11 +3,11 @@
 function mps_category($categories, $post) {
     $category_slugs = wp_list_pluck($categories, 'slug');
 
-    return in_array('maaaps', $category_slugs, true) ? $categories : array_merge(
+    return in_array('mappps', $category_slugs, true) ? $categories : array_merge(
         [
             [
-                'slug' => 'maaaps',
-                'title' => __('Maaaps - Blocks', 'maaaps'),
+                'slug' => 'mappps',
+                'title' => __('Mappps - Blocks', 'mappps'),
                 'icon' => null, // Pour la gestion de l'icone de la catégorie voir editor.js
             ],
         ],

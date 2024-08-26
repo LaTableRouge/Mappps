@@ -1,10 +1,10 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/maaaps",
+  "name": "mps/mappps",
   "version": "0.0.1",
-  "title": "Maaaps",
-  "category": "maaaps",
+  "title": "Mappps",
+  "category": "mappps",
   "icon": "block-default",
   "description": "A bloc that display maps",
   "supports": {
@@ -173,12 +173,12 @@
       "default": 70
     }
   },
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "keywords": [
     "mps",
     "maps",
     "leaflet",
-    "maaaps"
+    "mappps"
   ],
   "viewScript": "file:./assets/view.js",
   "editorScript": "file:./assets/index.jsx",

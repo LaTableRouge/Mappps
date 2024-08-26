@@ -43,31 +43,31 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
             <div className="article__scroll-wrapper">
               <header className="article__header">
                 {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                <a href={post.link} target="_blank" title={__('Open in new tab', 'maaaps')}>
+                <a href={post.link} target="_blank" title={__('Open in new tab', 'mappps')}>
                   <Thumbnail height={180} title={thumbnailInfos.alt} url={thumbnailInfos.url} width={480} />
                 </a>
 
                 <div className="header__cta-wrapper">
                   {isMobileView && (
                     <button
-                      aria-label={isExpanded ? __('Shrink', 'maaaps') : __('Expand', 'maaaps')}
+                      aria-label={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
                       className="custom-button custom-button__only-icon cta-wrapper__expand"
-                      title={isExpanded ? __('Shrink', 'maaaps') : __('Expand', 'maaaps')}
+                      title={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
                       onClick={(e) => {
                         e.preventDefault()
 
                         setIsExpanded(!isExpanded)
                       }}
                     >
-                      <span className={isExpanded ? 'icon-maaaps-shrink' : 'icon-maaaps-enlarge'}></span>
-                      <span className="screen-reader-text">{__('Expand/Shrink', 'maaaps')}</span>
+                      <span className={isExpanded ? 'icon-mappps-shrink' : 'icon-mappps-enlarge'}></span>
+                      <span className="screen-reader-text">{__('Expand/Shrink', 'mappps')}</span>
                     </button>
                   )}
 
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                  <a className="custom-button custom-button__only-icon cta-wrapper__new-tab" href={post.link} target="_blank" title={__('Open in new tab', 'maaaps')}>
-                    <span className="icon-maaaps-new-tab"></span>
-                    <span className="screen-reader-text">{__('Open in new tab', 'maaaps')}</span>
+                  <a className="custom-button custom-button__only-icon cta-wrapper__new-tab" href={post.link} target="_blank" title={__('Open in new tab', 'mappps')}>
+                    <span className="icon-mappps-new-tab"></span>
+                    <span className="screen-reader-text">{__('Open in new tab', 'mappps')}</span>
                   </a>
 
                   <a
@@ -75,16 +75,16 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
                     href={`https://maps.google.com/maps?daddr=${lat},${lng}&amp;ll=`}
                     rel="noreferrer"
                     target="_blank"
-                    title={__('View itinerary', 'maaaps')}
+                    title={__('View itinerary', 'mappps')}
                   >
-                    <span className="icon-maaaps-map"></span>
-                    <span className="screen-reader-text">{__('View itinerary', 'maaaps')}</span>
+                    <span className="icon-mappps-map"></span>
+                    <span className="screen-reader-text">{__('View itinerary', 'mappps')}</span>
                   </a>
 
                   <button
-                    aria-label={__('Close preview', 'maaaps')}
+                    aria-label={__('Close preview', 'mappps')}
                     className="custom-button custom-button__only-icon cta-wrapper__close"
-                    title={__('Close preview', 'maaaps')}
+                    title={__('Close preview', 'mappps')}
                     onClick={(e) => {
                       e.preventDefault()
 
@@ -93,8 +93,8 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
                       setIsExpanded(false)
                     }}
                   >
-                    <span className="icon-maaaps-cross"></span>
-                    <span className="screen-reader-text">{__('Close preview', 'maaaps')}</span>
+                    <span className="icon-mappps-cross"></span>
+                    <span className="screen-reader-text">{__('Close preview', 'mappps')}</span>
                   </button>
                 </div>
               </header>

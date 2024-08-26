@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Maaaps 0.0.1\n"
+"Project-Id-Version: Mappps 0.0.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-07-28T16:49:29+00:00\n"
-"PO-Revision-Date: 2024-07-28 18:50+0200\n"
+"POT-Creation-Date: 2024-08-26T14:39:54+00:00\n"
+"PO-Revision-Date: 2024-08-26 16:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 3.4.4\n"
-"X-Domain: maaaps\n"
+"X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
 #: includes/register-page.php:13
-msgid "Maaaps"
-msgstr "Maaaps"
+msgid "Mappps"
+msgstr "Mappps"
 
 #. Plugin URI of the plugin
-msgid "https://github.com/LaTableRouge/Maaaps"
-msgstr "https://github.com/LaTableRouge/Maaaps"
+msgid "https://github.com/LaTableRouge/Mappps"
+msgstr "https://github.com/LaTableRouge/Mappps"
 
 #. Description of the plugin
 msgid "A plugin that dsiplay maps"
@@ -37,8 +37,8 @@ msgid "https://mlnop.fr/"
 msgstr "https://mlnop.fr/"
 
 #: includes/blocks/categories-register.php:10
-msgid "Maaaps - Blocks"
-msgstr "Maaaps - Blocs"
+msgid "Mappps - Blocks"
+msgstr "Mappps - Blocs"
 
 #: includes/register-page.php:12
 msgid "Setup"
@@ -335,17 +335,17 @@ msgid "See the map"
 msgstr "Voir la carte"
 
 #: build/index.js:1
-msgid "Getting Started with the Maaaps Plugin"
-msgstr "Premiers pas avec l'extension Maaaps"
+msgid "Getting Started with the Mappps Plugin"
+msgstr "Premiers pas avec l'extension Mappps"
 
 #: build/index.js:1
 msgid ""
-"Welcome to the comprehensive guide on how to get started with our Maaaps "
+"Welcome to the comprehensive guide on how to get started with our Mappps "
 "Plugin. This plugin allows you to display maps with markers based on the "
 "latitude and longitude provided in your posts. Follow the steps below to set "
 "up and utilize the plugin effectively."
 msgstr ""
-"Bienvenue dans le guide de démarrage de l'extension Maaaps. Cette extension "
+"Bienvenue dans le guide de démarrage de l'extension Mappps. Cette extension "
 "vous permet d'afficher des cartes avec des marqueurs basés sur des latitudes "
 "et longitudes fournies dans vos publications. Suivez les étapes ci-dessous "
 "pour configurer le plugin et apprendre à l'utiliser."
@@ -463,10 +463,10 @@ msgid "Add Block:"
 msgstr "Ajouter un bloc :"
 
 #: build/index.js:1
-msgid "Click the \"+\" icon to add a new block and search for \"Maaaps\"."
+msgid "Click the \"+\" icon to add a new block and search for \"Mappps\"."
 msgstr ""
 "Cliquez sur l'icône \"+\" pour ajouter un nouveau bloc et cherchez "
-"\"Maaaps\"."
+"\"Mappps\"."
 
 #: build/index.js:1
 msgid "Configure Block:"
@@ -539,12 +539,12 @@ msgstr ""
 
 #: build/index.js:1
 msgid ""
-"We hope this guide helps you get started with the Maaaps Plugin. Should you "
+"We hope this guide helps you get started with the Mappps Plugin. Should you "
 "have any questions or need further assistance, please use the issue section "
 "in the Github."
 msgstr ""
 "Nous espérons que ce guide a pu vous aider à comprendre le fonctionnement de "
-"l'extension Maaaps. Si vous avez des questions ou besoin d'aide avec cette "
+"l'extension Mappps. Si vous avez des questions ou besoin d'aide avec cette "
 "extension, merci d'utiliser la section Issue sur GitHub."
 
 #: build/index.js:1
@@ -553,8 +553,8 @@ msgstr "Envoyer un bug"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block title"
-msgid "Maaaps"
-msgstr "Maaaps"
+msgid "Mappps"
+msgstr "Mappps"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block description"
@@ -578,5 +578,5 @@ msgstr "leaflet"
 
 #: blocks/build/maaaps/block.json
 msgctxt "block keyword"
-msgid "maaaps"
-msgstr "maaaps"
+msgid "mappps"
+msgstr "mappps"

@@ -1,6 +1,6 @@
 {
-  "name": "maaaps",
-  "version": "0.0.6",
+  "name": "mappps",
+  "version": "0.0.7",
   "description": "A plugin that dsiplay maps",
   "main": "index.js",
   "keywords": [
@@ -13,7 +13,7 @@
   "author": "LaTableRouge",
   "license": "GNU GENERAL PUBLIC LICENSE",
   "repository": {
-    "url": "https://github.com/LaTableRouge/Maaaps"
+    "url": "https://github.com/LaTableRouge/Mappps"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -77,7 +77,7 @@
     "react-transition-group": "^4.4.5"
   },
   "files": [
-    "maaaps.php",
+    "mappps.php",
     "lang/",
     "build/",
     "includes/",

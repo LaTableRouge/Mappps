@@ -8,7 +8,7 @@ export default function MarkerGeolocation(coordinates, ref) {
     <Marker ref={ref} icon={Icon('geolocation')} position={coordinates}>
       <Popup>
         <div>
-          <strong>{__('You are here', 'maaaps')}</strong>
+          <strong>{__('You are here', 'mappps')}</strong>
         </div>
       </Popup>
     </Marker>

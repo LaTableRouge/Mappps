@@ -10,7 +10,7 @@ export default function SelectDisplayType({ defaultValue, setAttributes }) {
   return (
     <SelectControl
       defaultValue={defaultValue}
-      label={__('Display mode', 'maaaps')}
+      label={__('Display mode', 'mappps')}
       options={options}
       onChange={(value) => {
         setAttributes({ selectedDisplayType: value })

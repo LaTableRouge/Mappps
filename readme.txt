@@ -1,28 +1,28 @@
-=== Maaaps ===
+=== Mappps ===
 Contributors: LaTableRouge
 Requires at least: 6.2
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 0.0.6
+Stable tag: 0.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Short Description ==
 
-Maaaps, is a plugin designed to display maps with the help of Leaflet.
+Mappps, is a plugin designed to display maps with the help of Leaflet.
 It's main purpose is to quickly make store locator for Wordpress webistes.
 
 == Changelog ==
 
-= 0.0.6 =
+= 0.0.7 =
 * Released: July 29, 2024
 
-https://github.com/LaTableRouge/Maaaps/releases/tag/0.0.6
+https://github.com/LaTableRouge/Mappps/releases/tag/0.0.7
 
 == Copyright ==
 
-Maaaps WordPress plugin, (C) 2024 LaTableRouge
-Maaaps is distributed under the terms of the GNU GPL.
+Mappps WordPress plugin, (C) 2024 LaTableRouge
+Mappps is distributed under the terms of the GNU GPL.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

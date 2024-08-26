@@ -65,7 +65,7 @@ const Map = ({
   }, [selectedSearchResult])
 
   return (
-    <div className="maaaps__leaflet" data-map-shown={mobileIsMapDisplayed}>
+    <div className="mappps__leaflet" data-map-shown={mobileIsMapDisplayed}>
       <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
         <ChangeView
           boundsPadding={boundsPadding}
