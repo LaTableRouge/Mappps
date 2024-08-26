@@ -4,8 +4,8 @@ import { __ } from '@wordpress/i18n'
 export default function UnitFiltersSize({ defaultValue, setAttributes }) {
   return (
     <UnitControl
-      help={__('Desktop only, set the size for the filter popup', 'maaaps')}
-      label={__('Filters size', 'maaaps')}
+      help={__('Desktop only, set the size for the filter popup', 'mappps')}
+      label={__('Filters size', 'mappps')}
       units={[
         { value: 'px', label: 'px', default: 0 },
         { value: 'cqw', label: 'cqw', default: 0 },

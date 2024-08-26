@@ -60,7 +60,7 @@ export default function PostTemplateInnerBlocks() {
             [
               'core/post-excerpt',
               {
-                moreText: __('Read more', 'maaaps'),
+                moreText: __('Read more', 'mappps'),
                 excerptLength: 100
               }
             ]

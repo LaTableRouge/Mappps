@@ -1,5 +1,5 @@
-.maaaps__toggles-wrapper {
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+.mappps__toggles-wrapper {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     display: none;
   }
 

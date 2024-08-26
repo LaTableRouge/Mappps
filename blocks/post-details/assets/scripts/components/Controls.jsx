@@ -7,7 +7,7 @@ import UnitDetailsSize from './controls/UnitDetailsSize'
 export default function Controls({ attributes, setAttributes }) {
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
         <UnitDetailsSize defaultValue={attributes.selectedDetailsSize} setAttributes={setAttributes} />
       </PanelBody>
     </InspectorControls>

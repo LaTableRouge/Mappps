@@ -33,7 +33,7 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
       return
     }
     const resizeObserver = new ResizeObserver(() => {
-      const ancestorBlock = node.closest('.wp-block-mps-maaaps-blocks .responsive-wrapper')
+      const ancestorBlock = node.closest('.wp-block-mps-mappps-blocks .responsive-wrapper')
       if (ancestorBlock) {
         const isMobile = !!window.getComputedStyle(ancestorBlock).getPropertyValue('--is-mobile').length
         setIsMobileView(isMobile)

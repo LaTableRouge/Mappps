@@ -8,8 +8,8 @@
 @import 'abstracts/responsive';
 
 html[dir='rtl'] {
-  .wp-block-mps-maaaps {
-    .maaaps__sidebar .sidebar__heading .sidebar__search-wrapper .search-wrapper__form .form__button--submit {
+  .wp-block-mps-mappps {
+    .mappps__sidebar .sidebar__heading .sidebar__search-wrapper .search-wrapper__form .form__button--submit {
       border-top-left-radius: var(--radius-md);
       border-top-right-radius: var(--radius-md);
       border-bottom-right-radius: 0;
@@ -18,7 +18,7 @@ html[dir='rtl'] {
   }
 }
 
-.wp-block-mps-maaaps {
+.wp-block-mps-mappps {
   // 2. Vendors
   @import 'vendors/reset';
 

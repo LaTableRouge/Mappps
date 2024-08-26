@@ -72,11 +72,11 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
           }}
         >
           <div className="filters-form__header">
-            <div className="header__title">{__('Filters', 'maaaps')}</div>
+            <div className="header__title">{__('Filters', 'mappps')}</div>
             <button
-              aria-label={__('Close filters', 'maaaps')}
+              aria-label={__('Close filters', 'mappps')}
               className="custom-button custom-button__only-icon header__close"
-              title={__('Close filters', 'maaaps')}
+              title={__('Close filters', 'mappps')}
               type="button"
               onClick={(e) => {
                 e.preventDefault()
@@ -84,8 +84,8 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
                 setFiltersOpen(false)
               }}
             >
-              <span className="icon-maaaps-cross"></span>
-              <span className="screen-reader-text">{__('Close filters', 'maaaps')}</span>
+              <span className="icon-mappps-cross"></span>
+              <span className="screen-reader-text">{__('Close filters', 'mappps')}</span>
             </button>
           </div>
 
@@ -130,16 +130,16 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
           </ul>
 
           <div className="filters-form__footer">
-            <button aria-label={__('Reset', 'maaaps')} className="custom-button footer__reset" title={__('Reset', 'maaaps')} type="reset">
-              {__('Reset', 'maaaps')}
-              {/* <span className="icon-maaaps-cross"></span>
-              <span className="screen-reader-text">{__('Reset', 'maaaps')}</span> */}
+            <button aria-label={__('Reset', 'mappps')} className="custom-button footer__reset" title={__('Reset', 'mappps')} type="reset">
+              {__('Reset', 'mappps')}
+              {/* <span className="icon-mappps-cross"></span>
+              <span className="screen-reader-text">{__('Reset', 'mappps')}</span> */}
             </button>
 
-            <button aria-label={__('Filter', 'maaaps')} className="custom-button footer__submit" title={__('Filter', 'maaaps')} type="submit">
-              {__('Filter', 'maaaps')}
-              {/* <span className='icon-maaaps-filter'></span> */}
-              {/* <span className="screen-reader-text">{__('Filter', 'maaaps')}</span> */}
+            <button aria-label={__('Filter', 'mappps')} className="custom-button footer__submit" title={__('Filter', 'mappps')} type="submit">
+              {__('Filter', 'mappps')}
+              {/* <span className='icon-mappps-filter'></span> */}
+              {/* <span className="screen-reader-text">{__('Filter', 'mappps')}</span> */}
             </button>
           </div>
         </form>

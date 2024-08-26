@@ -3,15 +3,15 @@
   "apiVersion": 3,
   "name": "mps/post-details",
   "title": "Post Details",
-  "category": "maaaps",
+  "category": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
     "mps/sidebar"
   ],
   "description": "Contains the block elements used to render more details from a post, like the title, date, featured image, content or excerpt, and more.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "usesContext": [
     "mps/postIDs",
     "mps/postType",

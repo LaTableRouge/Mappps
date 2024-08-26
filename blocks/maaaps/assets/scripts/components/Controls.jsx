@@ -72,7 +72,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
 
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
         {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedTaxonomies.length && (
@@ -92,11 +92,11 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
 
       {!!selectedPosts.length && (
         <>
-          <PanelBody initialOpen={false} title={__('Render settings', 'maaaps')}>
+          <PanelBody initialOpen={false} title={__('Render settings', 'mappps')}>
             <SelectDisplayType defaultValue={selectedDisplayType} setAttributes={setAttributes} />
           </PanelBody>
 
-          <PanelBody initialOpen={false} title={__('Map settings', 'maaaps')}>
+          <PanelBody initialOpen={false} title={__('Map settings', 'mappps')}>
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
             <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
@@ -108,7 +108,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
           </PanelBody>
 
           {selectedDisplayType === 'full' && (
-            <PanelBody initialOpen={false} title={__('Sidebar settings', 'maaaps')}>
+            <PanelBody initialOpen={false} title={__('Sidebar settings', 'mappps')}>
               <ToggleFilters defaultValue={displayFilters} setAttributes={setAttributes} />
               <ToggleSearch defaultValue={displaySearch} setAttributes={setAttributes} />
               {displaySearch && <ToggleLimitedSearch defaultValue={limitedSearch} setAttributes={setAttributes} />}

@@ -10,7 +10,7 @@ export default function SelectPostType({ defaultValue, postTypes, setAttributes,
   return (
     <SelectControl
       defaultValue={defaultValue}
-      label={__('Post type', 'maaaps')}
+      label={__('Post type', 'mappps')}
       options={options}
       onChange={(value) => {
         let selectedPostType = postTypes.types.filter((postType) => postType.slug === value)

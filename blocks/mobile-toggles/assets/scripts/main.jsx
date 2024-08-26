@@ -19,40 +19,40 @@ export default function Main({ attributes, blockId, hasFilters, hasSidebar }) {
         && (mobileIsMapDisplayed
           ? (
           <button
-            aria-label={__('See the list', 'maaaps')}
+            aria-label={__('See the list', 'mappps')}
             className="custom-button custom-button__only-icon toggles__list"
-            title={__('See the list', 'maaaps')}
+            title={__('See the list', 'mappps')}
             onClick={(e) => {
               e.preventDefault()
 
               setMobileIsMapDisplayed(false)
             }}
           >
-            <span className="icon-maaaps-list"></span>
-            <span className="screen-reader-text">{__('See the list', 'maaaps')}</span>
+            <span className="icon-mappps-list"></span>
+            <span className="screen-reader-text">{__('See the list', 'mappps')}</span>
           </button>
             )
           : (
           <button
-            aria-label={__('See the map', 'maaaps')}
+            aria-label={__('See the map', 'mappps')}
             className="custom-button custom-button__only-icon toggles__map"
-            title={__('See the map', 'maaaps')}
+            title={__('See the map', 'mappps')}
             onClick={(e) => {
               e.preventDefault()
 
               setMobileIsMapDisplayed(true)
             }}
           >
-            <span className="icon-maaaps-map"></span>
-            <span className="screen-reader-text">{__('See the map', 'maaaps')}</span>
+            <span className="icon-mappps-map"></span>
+            <span className="screen-reader-text">{__('See the map', 'mappps')}</span>
           </button>
             ))}
 
       {hasFilters && (
         <button
-          aria-label={__('Open filters', 'maaaps')}
+          aria-label={__('Open filters', 'mappps')}
           className="custom-button custom-button__only-icon toggles__filters"
-          title={__('Open filters', 'maaaps')}
+          title={__('Open filters', 'mappps')}
           onClick={(e) => {
             e.preventDefault()
 
@@ -63,8 +63,8 @@ export default function Main({ attributes, blockId, hasFilters, hasSidebar }) {
             }
           }}
         >
-          <span className="icon-maaaps-filter"></span>
-          <span className="screen-reader-text">{__('Open filters', 'maaaps')}</span>
+          <span className="icon-mappps-filter"></span>
+          <span className="screen-reader-text">{__('Open filters', 'mappps')}</span>
           {!!filtersCount && <span className="counter">{filtersCount}</span>}
         </button>
       )}

@@ -15,7 +15,7 @@
   grid-template: 'main' auto;
   overflow: hidden;
   container-type: inline-size;
-  container-name: maaaps;
+  container-name: mappps;
 
   *,
   *::before,
@@ -35,11 +35,11 @@
     max-height: var(--mobile-height, 80svh);
     overflow: hidden;
 
-    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
       --is-mobile: red;
     }
 
-    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
       height: calc(100cqw / (var(--ratio)));

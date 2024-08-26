@@ -7,7 +7,7 @@ import UnitSpinnerSize from './controls/UnitSpinnerSize'
 export default function Controls({ attributes, setAttributes }) {
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Render settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Render settings', 'mappps')}>
         <UnitSpinnerSize defaultValue={attributes.selectedSpinnerSize} setAttributes={setAttributes} />
       </PanelBody>
     </InspectorControls>

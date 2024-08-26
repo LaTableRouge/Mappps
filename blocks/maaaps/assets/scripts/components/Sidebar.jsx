@@ -19,7 +19,7 @@ export default function Sidebar({
   setSelectedSearchResult
 }) {
   return (
-    <aside className="maaaps__sidebar">
+    <aside className="mappps__sidebar">
       <header className="sidebar__heading">
         {displaySearch && (
           <Search
@@ -34,9 +34,9 @@ export default function Sidebar({
           <>
             <div className="sidebar__filters-wrapper">
               <button
-                aria-label={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
+                aria-label={filtersOpen ? __('Close filters', 'mappps') : __('Open filters', 'mappps')}
                 className="custom-button custom-button__with-icon filters-wrapper__toggle"
-                title={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
+                title={filtersOpen ? __('Close filters', 'mappps') : __('Open filters', 'mappps')}
                 onClick={(e) => {
                   e.preventDefault()
 
@@ -44,9 +44,9 @@ export default function Sidebar({
                   setSelectedPost({})
                 }}
               >
-                {__('Filters', 'maaaps')}
+                {__('Filters', 'mappps')}
                 {!!selectedFiltersCounter && <span className="counter">{selectedFiltersCounter}</span>}
-                <span className="icon-maaaps-filter"></span>
+                <span className="icon-mappps-filter"></span>
               </button>
             </div>
           </>

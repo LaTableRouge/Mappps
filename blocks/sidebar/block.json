@@ -3,11 +3,11 @@
   "apiVersion": 3,
   "name": "mps/sidebar",
   "title": "Sidebar",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains the block elements used to render the sidebar, like the posts, search bar, title, and filters.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "ancestor": [
-    "mps/maaaps-block"
+    "mps/mappps-block"
   ],
   "supports": {
     "reusable": false,

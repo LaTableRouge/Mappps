@@ -4,9 +4,9 @@ import { __ } from '@wordpress/i18n'
 export default function InputBoundsPadding({ defaultValue, setAttributes }) {
   return (
     <NumberControl
-      help={__('The padding value for the bounds of the map', 'maaaps')}
+      help={__('The padding value for the bounds of the map', 'mappps')}
       isShiftStepEnabled={false}
-      label={__('Bounds padding', 'maaaps')}
+      label={__('Bounds padding', 'mappps')}
       min={0}
       value={defaultValue}
       onChange={(value) => {

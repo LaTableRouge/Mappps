@@ -2,7 +2,7 @@
 
 function mps_load_textdomain() {
     load_plugin_textdomain(
-        'maaaps',
+        'mappps',
         false,
         MPS_BASE_NAME . '/lang'
     );

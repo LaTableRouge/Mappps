@@ -3,9 +3,9 @@
   "apiVersion": 3,
   "name": "mps/loader",
   "title": "Loader",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains the global loader.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "supports": {
     "reusable": false,
     "multiple": false,
@@ -23,10 +23,10 @@
     }
   },
   "ancestor": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "usesContext": [
     "mps/blockId"

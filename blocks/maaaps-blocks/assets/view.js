@@ -15,7 +15,7 @@ import PostTemplate from './scripts/components/view/post-template'
 import SearchBar from './scripts/components/view/search-bar'
 
 window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mps-maaaps-blocks:not(.is-init)')
+  const blocks = document.querySelectorAll('.wp-block-mps-mappps-blocks:not(.is-init)')
   if (blocks.length) {
     blocks.forEach((parentBlock) => {
       parentBlock.classList.add('is-init')

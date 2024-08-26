@@ -3,11 +3,11 @@
   "apiVersion": 3,
   "name": "mps/filters-toggle",
   "title": "Filters toggle",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "The button that'wll open/close the filters.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
     "mps/sidebar"

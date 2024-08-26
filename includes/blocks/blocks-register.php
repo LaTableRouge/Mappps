@@ -44,7 +44,7 @@ function mps_register_react_blocks() {
                     foreach ($handles as $handle) {
                         wp_set_script_translations(
                             $handle,
-                            'maaaps',
+                            'mappps',
                             get_template_directory() . '/lang'
                         );
                         wp_localize_script(

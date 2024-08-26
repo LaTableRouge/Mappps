@@ -1,17 +1,17 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../maaaps-blocks/assets/styles/abstracts/functions';
-@import '../../../maaaps-blocks/assets/styles/abstracts/variables';
-@import '../../../maaaps-blocks/assets/styles/abstracts/mixins';
-@import '../../../maaaps-blocks/assets/styles/abstracts/animations';
-@import '../../../maaaps-blocks/assets/styles/abstracts/keyframes';
-@import '../../../maaaps-blocks/assets/styles/abstracts/responsive';
+@import '../../../mappps-blocks/assets/styles/abstracts/functions';
+@import '../../../mappps-blocks/assets/styles/abstracts/variables';
+@import '../../../mappps-blocks/assets/styles/abstracts/mixins';
+@import '../../../mappps-blocks/assets/styles/abstracts/animations';
+@import '../../../mappps-blocks/assets/styles/abstracts/keyframes';
+@import '../../../mappps-blocks/assets/styles/abstracts/responsive';
 
 .wp-block-mps-map {
   display: grid;
   height: var(--wrapper-height, 100%);
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     grid-area: map;
   }
 

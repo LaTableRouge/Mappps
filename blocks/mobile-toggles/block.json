@@ -3,14 +3,14 @@
   "apiVersion": 3,
   "name": "mps/mobile-toggles",
   "title": "Mobile toggles",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains mobile toggles buttons.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "usesContext": [
     "mps/blockId"

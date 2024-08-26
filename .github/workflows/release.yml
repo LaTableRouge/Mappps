@@ -9,7 +9,7 @@ jobs:
   build-zip-upload:
     runs-on: ubuntu-latest
     env:
-      RELEASE_NAME: 'maaaps'
+      RELEASE_NAME: 'mappps'
     permissions:
       contents: write
     steps:
@@ -30,7 +30,7 @@ jobs:
         with:
           type: 'zip'
           filename: '${{ env.RELEASE_NAME }}.zip'
-          path: 'maaaps.php license.txt lang/ build/ includes/ templates/'
+          path: 'mappps.php license.txt lang/ build/ includes/ templates/'
 
       # Publie la release
       - name: Publish release

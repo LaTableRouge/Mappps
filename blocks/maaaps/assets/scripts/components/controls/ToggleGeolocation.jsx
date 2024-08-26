@@ -6,8 +6,8 @@ export default function ToggleGeolocation({ defaultValue, setAttributes }) {
   return (
     <ToggleControl
       checked={defaultValue}
-      help={defaultValue ? __('Users will be able to geolocate themselves', 'maaaps') : ''}
-      label={__('Geolocation', 'maaaps')}
+      help={defaultValue ? __('Users will be able to geolocate themselves', 'mappps') : ''}
+      label={__('Geolocation', 'mappps')}
       onChange={(value) => {
         setAttributes({ isGeolocated: value })
       }}

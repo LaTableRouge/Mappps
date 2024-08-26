@@ -28,7 +28,7 @@ export default function SelectTaxonomies({ defaultValue, postType, setAttributes
           <SelectControl
             multiple
             defaultValue={defaultValue}
-            label={__('Taxonomies', 'maaaps')}
+            label={__('Taxonomies', 'mappps')}
             options={options}
             onChange={(value) => {
               setQueriedPosts([])
@@ -41,7 +41,7 @@ export default function SelectTaxonomies({ defaultValue, postType, setAttributes
             }}
           />
         ) : (
-          __('No taxonomies could be recovered.', 'maaaps')
+          __('No taxonomies could be recovered.', 'mappps')
         )}
       </>
     )

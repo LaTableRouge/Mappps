@@ -3,14 +3,14 @@
   "apiVersion": 3,
   "name": "mps/map",
   "title": "Map",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains the map.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/maaaps-block"
+    "mps/mappps-block"
   ],
   "usesContext": [
     "mps/blockId"

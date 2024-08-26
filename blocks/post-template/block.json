@@ -3,15 +3,15 @@
   "apiVersion": 3,
   "name": "mps/post-template",
   "title": "Post Template",
-  "category": "maaaps",
+  "category": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
     "mps/sidebar"
   ],
   "description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more. For better preview performances only 2 posts will be displayed here",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "usesContext": [
     "mps/postIDs",
     "mps/postType",

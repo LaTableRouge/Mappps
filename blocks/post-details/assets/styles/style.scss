@@ -28,7 +28,7 @@
   pointer-events: var(--details-pe, none);
 
   &[data-expanded='true'] {
-    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
       bottom: 0;
       width: 100%;
       max-width: initial;
@@ -36,7 +36,7 @@
     }
   }
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     top: 0;
     bottom: 0;
     inset-inline-start: var(--sidebar-size, 25cqw);
@@ -70,7 +70,7 @@
 
     .cta-wrapper {
       &__expand {
-        @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+        @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
           display: none;
         }
       }

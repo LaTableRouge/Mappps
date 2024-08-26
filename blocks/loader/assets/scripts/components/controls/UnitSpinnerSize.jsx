@@ -6,8 +6,8 @@ export default function UnitSpinnerSize(props) {
 
   return (
     <UnitControl
-      help={__("The displayed size of the loader's spinner", 'maaaps')}
-      label={__('Spinner size', 'maaaps')}
+      help={__("The displayed size of the loader's spinner", 'mappps')}
+      label={__('Spinner size', 'mappps')}
       units={[{ value: 'px', label: 'px', default: 0 }]}
       value={defaultValue}
       onChange={(value) => {

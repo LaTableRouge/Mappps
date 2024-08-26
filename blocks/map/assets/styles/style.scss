@@ -11,7 +11,7 @@
   display: grid;
   height: var(--wrapper-height, 100%);
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     grid-area: map;
   }
 

@@ -64,26 +64,26 @@ while ($query->have_posts()) {
 
     $cta_header = '<div class="header__cta-wrapper">
                     <button
-                        aria-label="' . __('Expand', 'maaaps') . '"
+                        aria-label="' . __('Expand', 'mappps') . '"
                         class="custom-button custom-button__only-icon cta-wrapper__expand"
-                        title="' . __('Expand', 'maaaps') . '"
-                        data-text-shrink="' . __('Shrink', 'maaaps') . '"
-                        data-text-expand="' . __('Expand', 'maaaps') . '"
-                        data-icon-shrink="icon-maaaps-shrink"
-                        data-icon-expand="icon-maaaps-enlarge"
+                        title="' . __('Expand', 'mappps') . '"
+                        data-text-shrink="' . __('Shrink', 'mappps') . '"
+                        data-text-expand="' . __('Expand', 'mappps') . '"
+                        data-icon-shrink="icon-mappps-shrink"
+                        data-icon-expand="icon-mappps-enlarge"
                     >
-                        <span class="icon-maaaps-enlarge"></span>
-                        <span class="screen-reader-text">' . __('Expand/Shrink', 'maaaps') . '</span>
+                        <span class="icon-mappps-enlarge"></span>
+                        <span class="screen-reader-text">' . __('Expand/Shrink', 'mappps') . '</span>
                     </button>
 
                     <a
                         class="custom-button custom-button__only-icon cta-wrapper__new-tab"
                         href="' . get_permalink($post_id) . '"
                         target="_blank"
-                        title="' . __('Open in new tab', 'maaaps') . '"
+                        title="' . __('Open in new tab', 'mappps') . '"
                     >
-                        <span class="icon-maaaps-new-tab"></span>
-                        <span class="screen-reader-text">' . __('Open in new tab', 'maaaps') . '</span>
+                        <span class="icon-mappps-new-tab"></span>
+                        <span class="screen-reader-text">' . __('Open in new tab', 'mappps') . '</span>
                     </a>
 
                     <a
@@ -91,19 +91,19 @@ while ($query->have_posts()) {
                         href="https://maps.google.com/maps?daddr=' . $lat . ',' . $lng . '&amp;ll="
                         rel="noreferrer"
                         target="_blank"
-                        title=' . __('View itinerary', 'maaaps') . '
+                        title=' . __('View itinerary', 'mappps') . '
                     >
-                        <span class="icon-maaaps-map"></span>
-                        <span class="screen-reader-text">' . __('View itinerary', 'maaaps') . '</span>
+                        <span class="icon-mappps-map"></span>
+                        <span class="screen-reader-text">' . __('View itinerary', 'mappps') . '</span>
                     </a>
 
                     <button
-                        aria-label="' . __('Close preview', 'maaaps') . '"
+                        aria-label="' . __('Close preview', 'mappps') . '"
                         class="custom-button custom-button__only-icon cta-wrapper__close"
-                        title="' . __('Close preview', 'maaaps') . '"
+                        title="' . __('Close preview', 'mappps') . '"
                     >
-                        <span class="icon-maaaps-cross"></span>
-                        <span class="screen-reader-text">' . __('Close preview', 'maaaps') . '</span>
+                        <span class="icon-mappps-cross"></span>
+                        <span class="screen-reader-text">' . __('Close preview', 'mappps') . '</span>
                     </button>
                 </div>
     ';

@@ -1,8 +1,8 @@
 const toggleExpandedStatus = (parentElement, buttonElement, stateExpand) => {
-  const icon = buttonElement.querySelector('[class^="icon-maaaps"]')
+  const icon = buttonElement.querySelector('[class^="icon-mappps"]')
   if (icon) {
     if (!stateExpand) {
-      stateExpand = icon.classList.contains('icon-maaaps-enlarge')
+      stateExpand = icon.classList.contains('icon-mappps-enlarge')
     }
     const state = stateExpand ? 'Shrink' : 'Expand'
 

@@ -37,7 +37,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
 
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
         {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
         {!!selectedTaxonomies.length && (

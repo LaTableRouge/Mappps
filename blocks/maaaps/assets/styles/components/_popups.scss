@@ -18,7 +18,7 @@
   background-color: var(--color-white);
   pointer-events: var(--popup-pe, none);
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     --article-picture-ratio: 16 / 9;
 
     top: 0;
@@ -31,7 +31,7 @@
   }
 
   &[data-expanded='true'] {
-    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
       bottom: 0;
       width: 100%;
       max-width: initial;
@@ -54,7 +54,7 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
       border-left: 1px solid var(--color-gray-300);
     }
 

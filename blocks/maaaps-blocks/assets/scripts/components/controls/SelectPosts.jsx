@@ -42,15 +42,15 @@ export default function SelectPosts({ categories, defaultValue, postType, setAtt
               })
             }}
           >
-            <SelectControl multiple defaultValue={defaultValue} label={__('Posts', 'maaaps')} name="posts" options={options} />
+            <SelectControl multiple defaultValue={defaultValue} label={__('Posts', 'mappps')} name="posts" options={options} />
 
             <Button type="submit" variant="primary">
-              {__('Confirm selection', 'maaaps')}
+              {__('Confirm selection', 'mappps')}
             </Button>
           </form>
             )
           : (
-              __('No posts could be recovered.', 'maaaps')
+              __('No posts could be recovered.', 'mappps')
             )}
       </>
     )

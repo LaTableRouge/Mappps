@@ -30,9 +30,9 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
             postTypes.types.length
               ? (
           <Placeholder
-            className="maaaps-blocks__wizard"
-            instructions={__('Select the data source of the items to be displayed on the map.', 'maaaps')}
-            label={__('Data source', 'maaaps')}
+            className="mappps-blocks__wizard"
+            instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')}
+            label={__('Data source', 'mappps')}
           >
             <SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
@@ -53,7 +53,7 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
           </Placeholder>
                 )
               : (
-                  __('No post types could be recovered.', 'maaaps')
+                  __('No post types could be recovered.', 'mappps')
                 )
           )
         : (

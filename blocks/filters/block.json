@@ -3,14 +3,14 @@
   "apiVersion": 3,
   "name": "mps/filters",
   "title": "Filters",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains the filters.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "usesContext": [
     "mps/blockId",

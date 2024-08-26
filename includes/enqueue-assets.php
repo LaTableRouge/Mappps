@@ -46,7 +46,7 @@ function mps_enqueue_assets($admin_page) {
 
     wp_set_script_translations(
         $scripts_handle,
-        'maaaps',
+        'mappps',
         MPS_LANG_PATH
     );
 }

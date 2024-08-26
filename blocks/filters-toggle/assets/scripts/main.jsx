@@ -14,9 +14,9 @@ export default function Main({ blockId }) {
   return (
     <>
       <button
-        aria-label={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
+        aria-label={filtersOpen ? __('Close filters', 'mappps') : __('Open filters', 'mappps')}
         className="custom-button custom-button__with-icon filters-wrapper__toggle"
-        title={filtersOpen ? __('Close filters', 'maaaps') : __('Open filters', 'maaaps')}
+        title={filtersOpen ? __('Close filters', 'mappps') : __('Open filters', 'mappps')}
         onClick={(e) => {
           e.preventDefault()
 
@@ -27,9 +27,9 @@ export default function Main({ blockId }) {
           }
         }}
       >
-        {__('Filters', 'maaaps')}
+        {__('Filters', 'mappps')}
         {!!filtersCount && <span className="counter">{filtersCount}</span>}
-        <span className="icon-maaaps-filter"></span>
+        <span className="icon-mappps-filter"></span>
       </button>
     </>
   )

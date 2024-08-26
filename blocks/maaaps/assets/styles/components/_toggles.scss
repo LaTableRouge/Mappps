@@ -1,6 +1,6 @@
 .responsive-wrapper {
   &[data-mobile-map-display='true'][data-filters-open='false'] {
-    .maaaps__toggles-wrapper {
+    .mappps__toggles-wrapper {
       --toggle-filters-opacity: 1;
       --toggle-filters-transition: var(--nomotion, opacity 0.2s ease-in-out 0.2s);
       --toggle-filters-pe: all;
@@ -8,8 +8,8 @@
   }
 }
 
-.maaaps__toggles-wrapper {
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+.mappps__toggles-wrapper {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     display: none;
   }
 

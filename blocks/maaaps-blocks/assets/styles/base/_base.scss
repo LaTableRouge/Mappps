@@ -14,7 +14,7 @@
   box-sizing: border-box;
   overflow: hidden;
   container-type: inline-size;
-  container-name: maaaps;
+  container-name: mappps;
 
   *,
   *::before,
@@ -25,7 +25,7 @@
   --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
 
   .responsive-wrapper {
-    @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
       --is-mobile: red;
     }
 

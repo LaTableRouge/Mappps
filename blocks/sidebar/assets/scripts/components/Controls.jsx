@@ -7,7 +7,7 @@ import UnitSidebarSize from './controls/UnitSidebarSize'
 export default function Controls({ attributes, setAttributes }) {
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
         <UnitSidebarSize defaultValue={attributes.selectedSidebarSize} setAttributes={setAttributes} />
       </PanelBody>
     </InspectorControls>

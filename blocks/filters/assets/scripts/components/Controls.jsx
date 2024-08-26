@@ -7,7 +7,7 @@ import UnitFiltersSize from './controls/UnitFiltersSize'
 export default function Controls({ attributes, setAttributes }) {
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'maaaps')}>
+      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
         <UnitFiltersSize defaultValue={attributes.selectedFiltersSize} setAttributes={setAttributes} />
       </PanelBody>
     </InspectorControls>

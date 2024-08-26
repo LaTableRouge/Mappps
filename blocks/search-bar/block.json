@@ -3,11 +3,11 @@
   "apiVersion": 3,
   "name": "mps/searchbar",
   "title": "Search bar",
-  "category": "maaaps",
+  "category": "mappps",
   "description": "Contains search bar.",
-  "textdomain": "maaaps",
+  "textdomain": "mappps",
   "parent": [
-    "mps/maaaps-blocks"
+    "mps/mappps-blocks"
   ],
   "ancestor": [
     "mps/sidebar"

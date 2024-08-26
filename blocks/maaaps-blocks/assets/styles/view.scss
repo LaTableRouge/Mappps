@@ -5,7 +5,7 @@
 @import '../../../../src/helpers/styles/abstracts/mixins';
 @import '../../../../src/helpers/styles/abstracts/responsive';
 
-.wp-block-mps-maaaps-blocks {
+.wp-block-mps-mappps-blocks {
   .responsive-wrapper {
     display: grid;
     position: relative;
@@ -15,7 +15,7 @@
     max-height: var(--mobile-height, 80svh);
     overflow: hidden;
 
-    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
       height: calc(100cqw / (var(--ratio)));

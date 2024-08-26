@@ -5,7 +5,7 @@
 @import '../../../../src/helpers/styles/abstracts/mixins';
 @import '../../../../src/helpers/styles/abstracts/responsive';
 
-.wp-block-mps-maaaps-blocks {
+.wp-block-mps-mappps-blocks {
   &[data-mobile-map-display='false'] {
     --sidebar-transform: translateX(0);
     --sidebar-opacity: 1;
@@ -22,7 +22,7 @@
   max-height: var(--wrapper-height);
   transition: var(--nomotion, opacity 0.2s ease-in-out);
 
-  @include container-breakpoint-down(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
     position: absolute !important;
     width: 100%;
     inset: 0;
@@ -32,7 +32,7 @@
     pointer-events: var(--sidebar-pointer-events, none);
   }
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     grid-area: sidebar;
     width: var(--sidebar-size, 25cqw);
   }

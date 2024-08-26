@@ -1,10 +1,10 @@
-.maaaps__wizard {
+.mappps__wizard {
   .components-placeholder__fieldset {
     gap: var(--spacing-md);
     display: grid;
     grid-template-columns: 1fr;
 
-    @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
       display: flex;
     }
 

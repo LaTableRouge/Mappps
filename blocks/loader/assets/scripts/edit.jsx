@@ -15,14 +15,14 @@ export default function Edit({ attributes, context, isSelected, setAttributes })
       <Controls attributes={attributes} setAttributes={setAttributes} />
 
       <div className="loader__helper-text" data-status="loading">
-        {__('Waiting for data to be loaded', 'maaaps')}
+        {__('Waiting for data to be loaded', 'mappps')}
         <span className="helper-text__animate">.</span>
         <span className="helper-text__animate">.</span>
         <span className="helper-text__animate">.</span>
       </div>
 
       <div className="loader__helper-text" data-status="idle">
-        {__('Click me to load the block', 'maaaps')}
+        {__('Click me to load the block', 'mappps')}
       </div>
 
       <Loader />

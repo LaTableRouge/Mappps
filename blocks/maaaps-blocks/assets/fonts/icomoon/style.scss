@@ -5,14 +5,14 @@
   font-style: normal;
   font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z49hsf') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z49hsf') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z49hsf##{$icomoon-font-family}') format('svg');
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?5w7fgh') format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?5w7fgh') format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?5w7fgh##{$icomoon-font-family}') format('svg');
   font-display: block;
 }
 
-[class^='icon-maaaps-'],
-[class*=' icon-maaaps-'] {
+[class^='icon-mappps-'],
+[class*=' icon-mappps-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: '#{$icomoon-font-family}' !important;
 
@@ -27,200 +27,200 @@
   speak: never;
 }
 
-.icon-maaaps-list {
+.icon-mappps-list {
   &::before {
-    content: $icon-maaaps-list;
+    content: $icon-mappps-list;
   }
 }
 
-.icon-maaaps-shrink {
+.icon-mappps-shrink {
   &::before {
-    content: $icon-maaaps-shrink;
+    content: $icon-mappps-shrink;
   }
 }
 
-.icon-maaaps-map {
+.icon-mappps-map {
   &::before {
-    content: $icon-maaaps-map;
+    content: $icon-mappps-map;
   }
 }
 
-.icon-maaaps-enlarge {
+.icon-mappps-enlarge {
   &::before {
-    content: $icon-maaaps-enlarge;
+    content: $icon-mappps-enlarge;
   }
 }
 
-.icon-maaaps-refresh {
+.icon-mappps-refresh {
   &::before {
-    content: $icon-maaaps-refresh;
+    content: $icon-mappps-refresh;
   }
 }
 
-.icon-maaaps-minus {
+.icon-mappps-minus {
   &::before {
-    content: $icon-maaaps-minus;
+    content: $icon-mappps-minus;
   }
 }
 
-.icon-maaaps-sun {
+.icon-mappps-sun {
   &::before {
-    content: $icon-maaaps-sun;
+    content: $icon-mappps-sun;
   }
 }
 
-.icon-maaaps-moon {
+.icon-mappps-moon {
   &::before {
-    content: $icon-maaaps-moon;
+    content: $icon-mappps-moon;
   }
 }
 
-.icon-maaaps-marker {
+.icon-mappps-marker {
   &::before {
-    content: $icon-maaaps-marker;
+    content: $icon-mappps-marker;
   }
 }
 
-.icon-maaaps-geolocation {
+.icon-mappps-geolocation {
   &::before {
-    content: $icon-maaaps-geolocation;
+    content: $icon-mappps-geolocation;
   }
 }
 
-.icon-maaaps-fullscreen {
+.icon-mappps-fullscreen {
   &::before {
-    content: $icon-maaaps-fullscreen;
+    content: $icon-mappps-fullscreen;
   }
 }
 
-.icon-maaaps-fullscreen-exit {
+.icon-mappps-fullscreen-exit {
   &::before {
-    content: $icon-maaaps-fullscreen-exit;
+    content: $icon-mappps-fullscreen-exit;
   }
 }
 
-.icon-maaaps-new-tab {
+.icon-mappps-new-tab {
   &::before {
-    content: $icon-maaaps-new-tab;
+    content: $icon-mappps-new-tab;
   }
 }
 
-.icon-maaaps-exit {
+.icon-mappps-exit {
   &::before {
-    content: $icon-maaaps-exit;
+    content: $icon-mappps-exit;
   }
 }
 
-.icon-maaaps-download {
+.icon-mappps-download {
   &::before {
-    content: $icon-maaaps-download;
+    content: $icon-mappps-download;
   }
 }
 
-.icon-maaaps-upload {
+.icon-mappps-upload {
   &::before {
-    content: $icon-maaaps-upload;
+    content: $icon-mappps-upload;
   }
 }
 
-.icon-maaaps-plus {
+.icon-mappps-plus {
   &::before {
-    content: $icon-maaaps-plus;
+    content: $icon-mappps-plus;
   }
 }
 
-.icon-maaaps-bin {
+.icon-mappps-bin {
   &::before {
-    content: $icon-maaaps-bin;
+    content: $icon-mappps-bin;
   }
 }
 
-.icon-maaaps-pen {
+.icon-mappps-pen {
   &::before {
-    content: $icon-maaaps-pen;
+    content: $icon-mappps-pen;
   }
 }
 
-.icon-maaaps-filter {
+.icon-mappps-filter {
   &::before {
-    content: $icon-maaaps-filter;
+    content: $icon-mappps-filter;
   }
 }
 
-.icon-maaaps-mail {
+.icon-mappps-mail {
   &::before {
-    content: $icon-maaaps-mail;
+    content: $icon-mappps-mail;
   }
 }
 
-.icon-maaaps-phone {
+.icon-mappps-phone {
   &::before {
-    content: $icon-maaaps-phone;
+    content: $icon-mappps-phone;
   }
 }
 
-.icon-maaaps-check {
+.icon-mappps-check {
   &::before {
-    content: $icon-maaaps-check;
+    content: $icon-mappps-check;
   }
 }
 
-.icon-maaaps-eye {
+.icon-mappps-eye {
   &::before {
-    content: $icon-maaaps-eye;
+    content: $icon-mappps-eye;
   }
 }
 
-.icon-maaaps-cross {
+.icon-mappps-cross {
   &::before {
-    content: $icon-maaaps-cross;
+    content: $icon-mappps-cross;
   }
 }
 
-.icon-maaaps-information {
+.icon-mappps-information {
   &::before {
-    content: $icon-maaaps-information;
+    content: $icon-mappps-information;
   }
 }
 
-.icon-maaaps-search {
+.icon-mappps-search {
   &::before {
-    content: $icon-maaaps-search;
+    content: $icon-mappps-search;
   }
 }
 
-.icon-maaaps-arrow-left {
+.icon-mappps-arrow-left {
   &::before {
-    content: $icon-maaaps-arrow-left;
+    content: $icon-mappps-arrow-left;
   }
 }
 
-.icon-maaaps-arrow-right-plain {
+.icon-mappps-arrow-right-plain {
   &::before {
-    content: $icon-maaaps-arrow-right-plain;
+    content: $icon-mappps-arrow-right-plain;
   }
 }
 
-.icon-maaaps-arrow-left-plain {
+.icon-mappps-arrow-left-plain {
   &::before {
-    content: $icon-maaaps-arrow-left-plain;
+    content: $icon-mappps-arrow-left-plain;
   }
 }
 
-.icon-maaaps-arrow-right {
+.icon-mappps-arrow-right {
   &::before {
-    content: $icon-maaaps-arrow-right;
+    content: $icon-mappps-arrow-right;
   }
 }
 
-.icon-maaaps-arrow-bottom {
+.icon-mappps-arrow-bottom {
   &::before {
-    content: $icon-maaaps-arrow-bottom;
+    content: $icon-mappps-arrow-bottom;
   }
 }
 
-.icon-maaaps-user {
+.icon-mappps-user {
   &::before {
-    content: $icon-maaaps-user;
+    content: $icon-mappps-user;
   }
 }

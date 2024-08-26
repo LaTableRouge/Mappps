@@ -5,7 +5,7 @@
 @import '../../../../src/helpers/styles/abstracts/mixins';
 @import '../../../../src/helpers/styles/abstracts/responsive';
 
-.wp-block-mps-maaaps-blocks {
+.wp-block-mps-mappps-blocks {
   &[data-mobile-map-display='true'][data-filters-open='false'] {
     .wp-block-mps-mobile-toggles {
       --toggle-filters-opacity: 1;
@@ -18,7 +18,7 @@
     &:has(.wp-block-mps-filters) {
       .wp-block-mps-mobile-toggles {
         .toggles__filters {
-          @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+          @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
             --toggle-display: block;
           }
         }
@@ -33,7 +33,7 @@
   z-index: 9999;
   pointer-events: none;
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     --toggle-display: none;
   }
 

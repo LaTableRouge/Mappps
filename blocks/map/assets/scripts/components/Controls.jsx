@@ -30,7 +30,7 @@ export default function Controls({ attributes, setAttributes }) {
 
   return (
     <InspectorControls>
-      <PanelBody title={__('Render settings', 'maaaps')}>
+      <PanelBody title={__('Render settings', 'mappps')}>
         <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
         <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
         <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />

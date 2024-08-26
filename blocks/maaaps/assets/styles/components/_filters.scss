@@ -16,7 +16,7 @@
   background-color: var(--color-white);
   pointer-events: var(--form-pe, none);
 
-  @include container-breakpoint-up(maaaps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     left: var(--sidebar-size, 25cqw);
     width: var(--filter-size, max-content);
     min-width: max-content;
