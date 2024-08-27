@@ -1,9 +1,13 @@
 @charset "UTF-8";
+
 // 1. Configuration and helpers
 @import '../helpers/styles/abstracts/functions';
 @import '../helpers/styles/abstracts/variables';
 @import '../helpers/styles/abstracts/mixins';
 @import '../helpers/styles/abstracts/responsive';
+
+// 2. Vendors
+@import '../helpers/styles/vendors/reset';
 
 .mps-admin-wrap {
   h3 {

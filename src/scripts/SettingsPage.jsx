@@ -66,7 +66,7 @@ export default function SettingsPage() {
           <strong>{__('Edit Page/Post:', 'mappps')}</strong> {__('Open the page or post where you want to add the map.', 'mappps')}
         </li>
         <li>
-          <strong>{__('Add Block:', 'mappps')}</strong> {__('Click the "+" icon to add a new block and search for "Mappps".', 'mappps')}
+          <strong>{__('Add Block:', 'mappps')}</strong> {__('Click the "+" icon to add a new block and search for "Mappps" or "Mappps (blocks)".', 'mappps')}
         </li>
         <li>
           <strong>{__('Configure Block:', 'mappps')}</strong> {__('Select the block and configure any additional settings if necessary.', 'mappps')}
@@ -85,15 +85,29 @@ export default function SettingsPage() {
         <li>
           <strong>{__('Block:', 'mappps')}</strong> {__('Verify that the block is correctly added to your page or post.', 'mappps')}
         </li>
+        <li>
+          <strong>{__('Multiple blocks:', 'mappps')}</strong> {__('"Mappps" and "Mappps (blocks)" cannot cohexist on the same page. Consider choosing one or the other.', 'mappps')}
+        </li>
       </ul>
 
       <h2 id="faqs">{__('FAQs', 'mappps')}</h2>
       <h3>{__('Can I customize the markers on the map?', 'mappps')}</h3>
-
       <p>{__('Yes, you can customize the marker color and size inside the "Block settings" > "Render settings".', 'mappps')}</p>
 
       <h3>{__('What if I have multiple posts with the same location?', 'mappps')}</h3>
       <p>{__('The plugin support the clustering for the markers, you can disable it but then the map will display overlapping markers.', 'mappps')}</p>
+
+      <h3>{__('Can I put multiple "Mappps" blocks in the same page?', 'mappps')}</h3>
+      <p>{__('Yes.', 'mappps')}</p>
+
+      <h3>{__('Can I put "Mappps" and "Mappps (blocks)" blocks in the same page?', 'mappps')}</h3>
+      <p>{__('Nope.', 'mappps')}</p>
+
+      <h3>{__("Why can't I see the clustering of markers in Gutenberg?", 'mappps')}</h3>
+      <p>{__('The clustering is kinda broken in back-office, even so It works well in front-office.', 'mappps')}</p>
+      <p>
+        {__("I believe it's because of the block compilation.", 'mappps')} <a href="https://github.com/WordPress/gutenberg/issues/64446">{__('Check the issue.', 'mappps')}</a>
+      </p>
 
       <p>
         {__(

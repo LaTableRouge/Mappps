@@ -1,11 +1,12 @@
 @charset "UTF-8";
+
 // 1. Configuration and helpers
-@import 'abstracts/functions';
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/animations';
+@import '../../../../src/helpers/styles/abstracts/functions';
+@import '../../../../src/helpers/styles/abstracts/variables';
+@import '../../../../src/helpers/styles/abstracts/mixins';
+@import '../../../../src/helpers/styles/abstracts/responsive';
+@import '../../../../src/helpers/styles/abstracts/keyframes';
 @import 'abstracts/keyframes';
-@import 'abstracts/responsive';
 
 html[dir='rtl'] {
   .wp-block-mps-mappps {
@@ -20,7 +21,7 @@ html[dir='rtl'] {
 
 .wp-block-mps-mappps {
   // 2. Vendors
-  @import 'vendors/reset';
+  @import '../../../../src/helpers/styles/vendors/reset';
 
   // 3. Base stuff
   @import 'base/fonts';

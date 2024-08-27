@@ -8,6 +8,7 @@
   "icon": "block-default",
   "description": "A bloc that display maps",
   "supports": {
+    "multiple": false,
     "html": false,
     "anchor": true,
     "align": true,

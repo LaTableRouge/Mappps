@@ -1,6 +1,10 @@
 <?php
 
-function mps_category($categories, $post) {
+if (!defined('ABSPATH')) {
+    exit;
+} // Exit if accessed directly
+
+function mppps_category($categories, $post) {
     $category_slugs = wp_list_pluck($categories, 'slug');
 
     return in_array('mappps', $category_slugs, true) ? $categories : array_merge(
@@ -14,4 +18,4 @@ function mps_category($categories, $post) {
         $categories
     );
 }
-add_filter('block_categories_all', 'mps_category', 10, 2);
+add_filter('block_categories_all', 'mppps_category', 10, 2);

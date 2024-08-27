@@ -1,10 +1,14 @@
 <?php
 
-function mps_load_textdomain() {
+if (!defined('ABSPATH')) {
+    exit;
+} // Exit if accessed directly
+
+function mppps_load_textdomain() {
     load_plugin_textdomain(
         'mappps',
         false,
-        MPS_BASE_NAME . '/lang'
+        MPPPS_BASE_NAME . '/lang'
     );
 }
-add_action('init', 'mps_load_textdomain');
+add_action('init', 'mppps_load_textdomain');

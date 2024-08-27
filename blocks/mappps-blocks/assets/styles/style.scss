@@ -7,7 +7,7 @@
 
 .wp-block-mps-mappps-blocks {
   // 2. Vendors
-  @import 'vendors/reset';
+  @import '../../../../src/helpers/styles/vendors/reset';
 
   // 3. Base stuff
   @import 'base/fonts';
