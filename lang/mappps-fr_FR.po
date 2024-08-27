@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 0.0.7\n"
+"Project-Id-Version: Mappps 0.0.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
 "POT-Creation-Date: 2024-08-26T14:39:54+00:00\n"
 "PO-Revision-Date: 2024-08-26 16:40+0200\n"
