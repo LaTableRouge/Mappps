@@ -1,6 +1,10 @@
 <?php
 
-function mps_register_coordinates_field() {
+if (!defined('ABSPATH')) {
+    exit;
+} // Exit if accessed directly
+
+function mppps_register_coordinates_field() {
     $post_types = get_post_types(['show_in_rest' => true]);
     foreach ($post_types as $post_type) {
         // Only register the meta field if the post type supports the editor, custom fields, and revisions.
@@ -33,4 +37,4 @@ function mps_register_coordinates_field() {
     }
 
 }
-add_action('init', 'mps_register_coordinates_field');
+add_action('init', 'mppps_register_coordinates_field');

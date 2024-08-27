@@ -1,4 +1,9 @@
 <?php
+
+if (!defined('ABSPATH')) {
+    exit;
+} // Exit if accessed directly
+
 /**
  * Plugin Name: Mappps
  * Plugin URI: https://github.com/LaTableRouge/Mappps
@@ -36,25 +41,25 @@ Copyright 2024 Monzilla Media. All rights reserved.
 if (!function_exists('get_plugin_data')) {
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
-define('MPS_PATH', plugin_dir_path(__FILE__));
-define('MPS_URL', plugin_dir_url(__FILE__));
-define('MPS_REACT_PATH', MPS_PATH . 'blocks/build');
-define('MPS_LANG_PATH', MPS_PATH . 'lang');
-define('MPS_BASE_NAME', basename(dirname(__FILE__)));
+define('MPPPS_PATH', plugin_dir_path(__FILE__));
+define('MPPPS_URL', plugin_dir_url(__FILE__));
+define('MPPPS_REACT_PATH', MPPPS_PATH . 'blocks/build');
+define('MPPPS_LANG_PATH', MPPPS_PATH . 'lang');
+define('MPPPS_BASE_NAME', basename(dirname(__FILE__)));
 
 /*
 * ====== Admin page
 * Register page
 * Enqueue assets
 */
-require MPS_PATH . 'includes/register-page.php';
-require MPS_PATH . 'includes/enqueue-assets.php';
+require MPPPS_PATH . 'includes/register-page.php';
+require MPPPS_PATH . 'includes/enqueue-assets.php';
 
 /*
 * ====== Blocks
 * Register a new block category
 * Enqueue react blocks
 */
-require MPS_PATH . 'includes/custom-fields/coordinates.php';
-require MPS_PATH . 'includes/blocks/categories-register.php';
-require MPS_PATH . 'includes/blocks/blocks-register.php';
+require MPPPS_PATH . 'includes/custom-fields/coordinates.php';
+require MPPPS_PATH . 'includes/blocks/categories-register.php';
+require MPPPS_PATH . 'includes/blocks/blocks-register.php';

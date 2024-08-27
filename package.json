@@ -25,7 +25,7 @@
     "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/src/**/assets/styles/**,src/styles,blocks/src/**/assets/styles}/*.scss",
     "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
     "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/src/**/assets/scripts/**,src,src/scripts,blocks/src/**/assets/scripts}/*.{js,jsx}",
-    "beautify:all": "npm run lint:scss && npm run lint:js && npm run prettier:scss && npm run prettier:js",
+    "beautify:all": "npm run prettier:scss && npm run lint:scss && npm run prettier:js && npm run lint:js && composer lint:php",
     "plugin-zip": "wp-scripts plugin-zip",
     "prepare": "husky install && composer install && npm run build && npm run build:blocks"
   },

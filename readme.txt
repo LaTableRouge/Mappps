@@ -6,6 +6,7 @@ Requires PHP: 7.4
 Stable tag: 0.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Repository: https://github.com/LaTableRouge/Mappps
 
 == Short Description ==
 
@@ -14,10 +15,24 @@ It's main purpose is to quickly make store locator for Wordpress webistes.
 
 == Changelog ==
 
+= 0.0.8 =
+* Released: August 27, 2024
+
+https://github.com/LaTableRouge/Mappps/releases/tag/0.0.8
+
+Guidelines review
+
 = 0.0.7 =
-* Released: July 29, 2024
+* Released: August 26, 2024
 
 https://github.com/LaTableRouge/Mappps/releases/tag/0.0.7
+
+Name change
+
+= 0.0.6 =
+* Released: July 29, 2024
+
+https://github.com/LaTableRouge/Mappps/releases/tag/0.0.6
 
 == Copyright ==
 
