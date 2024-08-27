@@ -47,7 +47,7 @@ wp i18n make-json lang/ --no-purge
 
 ## Roadmap
 
-- [ ] Translation (English/French)
+- [x] Translation (English/French)
 - [x] Edit part
 - [x] Save part
 - [x] Style desktop

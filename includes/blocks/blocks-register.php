@@ -13,7 +13,7 @@ function mppps_register_react_blocks() {
      * @see https://developer.wordpress.org/reference/functions/register_block_type/
      */
     $blocks = [];
-    $blocks = glob(MPPPS_REACT_PATH . '/**/block.json');
+    $blocks = glob(MPPPS_BLOCKS_PATH . '/**/block.json');
 
     if (!empty($blocks)) {
         foreach ($blocks as $block) {
@@ -49,7 +49,7 @@ function mppps_register_react_blocks() {
                         wp_set_script_translations(
                             $handle,
                             'mappps',
-                            get_template_directory() . '/lang'
+                            MPPPS_PATH . 'lang'
                         );
                         wp_localize_script(
                             $handle,

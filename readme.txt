@@ -1,9 +1,9 @@
 === Mappps ===
 Contributors: LaTableRouge
 Requires at least: 6.2
-Tested up to: 6.6
+Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 0.0.7
+Stable tag: 0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps

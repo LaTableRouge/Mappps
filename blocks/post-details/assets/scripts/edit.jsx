@@ -4,6 +4,7 @@ import { BlockContextProvider, useBlockProps } from '@wordpress/block-editor'
 import { memo, useEffect, useMemo, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
+import Header from './components/post/Header'
 import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
 import GetBlocks from './utils/GetBlocks'
@@ -51,6 +52,8 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
       {blockContexts
         && blockContexts.map((blockContext) => (
           <BlockContextProvider key={blockContext.postId} value={blockContext}>
+            <Header />
+
             {/* Editable block */}
             {blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId) ? <PostTemplateInnerBlocks /> : null}
             {/* Other blocks just for the preview */}

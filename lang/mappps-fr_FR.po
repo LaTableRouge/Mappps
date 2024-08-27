@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-08-27T10:03:21+00:00\n"
-"PO-Revision-Date: 2024-08-27 12:04+0200\n"
+"POT-Creation-Date: 2024-08-27T15:18:20+00:00\n"
+"PO-Revision-Date: 2024-08-27 17:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -141,16 +141,12 @@ msgid "Filter"
 msgstr "Filtrer"
 
 #: build/blocks/loader/assets/index.js:1
-#, fuzzy
-#| msgid "The displayed sizes of the marker icons"
 msgid "The displayed size of the loader's spinner"
-msgstr "Taille affichée des icônes de marqueurs"
+msgstr "Taille affichée de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1
-#, fuzzy
-#| msgid "Sidebar size"
 msgid "Spinner size"
-msgstr "Taille de la colonne latérale"
+msgstr "Taille de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1 build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
@@ -208,6 +204,8 @@ msgstr "Géolocalisation"
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Markers will be clustered (The clustering cannot be seen in gutenberg)"
 msgstr ""
+"Les marqueurs seront agrégés (l'agrégation ne sera pas visible dans "
+"Gutenberg)."
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Markers will not be clustered"
@@ -420,7 +418,7 @@ msgstr "Réglages de la barre latérale"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "Read more"
-msgstr ""
+msgstr "En savoir plus"
 
 #: build/index.js:1
 msgid "Getting Started with the Mappps Plugin"
@@ -551,14 +549,12 @@ msgid "Add Block:"
 msgstr "Ajouter un bloc :"
 
 #: build/index.js:1
-#, fuzzy
-#| msgid "Click the \"+\" icon to add a new block and search for \"Mappps\"."
 msgid ""
 "Click the \"+\" icon to add a new block and search for \"Mappps\" or "
 "\"Mappps (blocks)\"."
 msgstr ""
 "Cliquez sur l'icône \"+\" pour ajouter un nouveau bloc et cherchez "
-"\"Mappps\"."
+"\"Mappps\" ou \"Mappps (blocs)\"."
 
 #: build/index.js:1
 msgid "Configure Block:"
@@ -607,13 +603,15 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Multiple blocks:"
-msgstr ""
+msgstr "Blocs multiples :"
 
 #: build/index.js:1
 msgid ""
 "\"Mappps\" and \"Mappps (blocks)\" cannot cohexist on the same page. "
 "Consider choosing one or the other."
 msgstr ""
+"\"Mappps\" et \"Mappps (version blocs)\" ne peuvent coexister sur la même "
+"page. Veuillez choisir l'un ou l'autre."
 
 #: build/index.js:1
 msgid "Can I customize the markers on the map?"
@@ -642,36 +640,42 @@ msgstr ""
 #: build/index.js:1
 msgid "Can I put multiple \"Mappps\" blocks in the same page?"
 msgstr ""
+"Est-ce que je peux utiliser plusieurs blocs \"Mappps\" dans la même page ?"
 
 #: build/index.js:1
 msgid "Yes."
-msgstr ""
+msgstr "Oui."
 
 #: build/index.js:1
 msgid "Can I put \"Mappps\" and \"Mappps (blocks)\" blocks in the same page?"
 msgstr ""
+"Est-ce que je peux utiliser un bloc de carte \"Mappps\" et un bloc de carte "
+"\"Mappps (version blocs)\" dans la même page ?"
 
 #: build/index.js:1
 msgid "Nope."
-msgstr ""
+msgstr "Non."
 
 #: build/index.js:1
 msgid "Why can't I see the clustering of markers in Gutenberg?"
 msgstr ""
+"Pourquoi je ne peux pas voir l'agrégation de marqueurs dans Gutenberg ?"
 
 #: build/index.js:1
 msgid ""
 "The clustering is kinda broken in back-office, even so It works well in "
 "front-office."
 msgstr ""
+"L'affichage de l'agrégation dans l'interface d’administration est "
+"dysfonctionnelle, mais elle fonctionne correctement sur l'interface publique."
 
 #: build/index.js:1
 msgid "I believe it's because of the block compilation."
-msgstr ""
+msgstr "Je suppose que c'est dû à la compilation du bloc."
 
 #: build/index.js:1
 msgid "Check the issue."
-msgstr ""
+msgstr "Consulter le problème."
 
 #: build/index.js:1
 msgid ""
@@ -688,63 +692,49 @@ msgid "Submit an issue"
 msgstr "Envoyer un bug"
 
 #: build/blocks/filters-toggle/block.json
-#, fuzzy
-#| msgid "Filters size"
 msgctxt "block title"
 msgid "Filters toggle"
-msgstr "Taille des filtres"
+msgstr "Permutateur des filtres"
 
 #: build/blocks/filters-toggle/block.json
 msgctxt "block description"
 msgid "The button that'wll open/close the filters."
-msgstr ""
+msgstr "Le bouton qui ouvrira/fermera les filtres."
 
 #: build/blocks/filters/block.json
-#, fuzzy
-#| msgid "Filters"
 msgctxt "block title"
 msgid "Filters"
 msgstr "Filtres"
 
 #: build/blocks/filters/block.json
-#, fuzzy
-#| msgid "Close filters"
 msgctxt "block description"
 msgid "Contains the filters."
-msgstr "Fermer les filtres"
+msgstr "Contient les filtres."
 
 #: build/blocks/loader/block.json
 msgctxt "block title"
 msgid "Loader"
-msgstr ""
+msgstr "Icône de chargement"
 
 #: build/blocks/loader/block.json
-#, fuzzy
-#| msgid "Close filters"
 msgctxt "block description"
 msgid "Contains the global loader."
-msgstr "Fermer les filtres"
+msgstr "Contient l'icône de chargement principale."
 
 #: build/blocks/map/block.json
-#, fuzzy
-#| msgid "Mappps"
 msgctxt "block title"
 msgid "Map"
-msgstr "Mappps"
+msgstr "Carte"
 
 #: build/blocks/map/block.json
-#, fuzzy
-#| msgid "Close filters"
 msgctxt "block description"
 msgid "Contains the map."
-msgstr "Fermer les filtres"
+msgstr "Contient la carte."
 
 #: build/blocks/mappps-blocks/block.json
-#, fuzzy
-#| msgid "Mappps - Blocks"
 msgctxt "block title"
 msgid "Mappps (blocks)"
-msgstr "Mappps - Blocs"
+msgstr "Mappps - (version blocs)"
 
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block description"
@@ -777,23 +767,19 @@ msgid "Mappps"
 msgstr "Mappps"
 
 #: build/blocks/mobile-toggles/block.json
-#, fuzzy
-#| msgid "Filters size"
 msgctxt "block title"
 msgid "Mobile toggles"
-msgstr "Taille des filtres"
+msgstr "Permutateurs pour mobile"
 
 #: build/blocks/mobile-toggles/block.json
 msgctxt "block description"
 msgid "Contains mobile toggles buttons."
-msgstr ""
+msgstr "Contient les boutons de permutations pour mobile."
 
 #: build/blocks/post-details/block.json
-#, fuzzy
-#| msgid "Enter Post Details:"
 msgctxt "block title"
 msgid "Post Details"
-msgstr "Saisissez les informations de la publication :"
+msgstr "Informations de la publication"
 
 #: build/blocks/post-details/block.json
 msgctxt "block description"
@@ -801,13 +787,14 @@ msgid ""
 "Contains the block elements used to render more details from a post, like "
 "the title, date, featured image, content or excerpt, and more."
 msgstr ""
+"Contient les éléments du bloc utilisés pour afficher les informations de la "
+"publication, comme le titre, la date, l'image mise en avant, le contenu ou "
+"l'extrait de la publication etc."
 
 #: build/blocks/post-template/block.json
-#, fuzzy
-#| msgid "Post type"
 msgctxt "block title"
 msgid "Post Template"
-msgstr "Type de publication"
+msgstr "Modèle de publication"
 
 #: build/blocks/post-template/block.json
 msgctxt "block description"
@@ -816,27 +803,25 @@ msgid ""
 "featured image, content or excerpt, and more. For better preview "
 "performances only 2 posts will be displayed here"
 msgstr ""
+"Contient les éléments du bloc utilisés pour afficher les informations de la "
+"publication, comme le titre, la date, l'image mise en avant, le contenu ou "
+"l'extrait de la publication etc. Pour de meilleures performances de "
+"prévisualisation, 2 publications seulement seront affichées ici"
 
 #: build/blocks/search-bar/block.json
-#, fuzzy
-#| msgid "Search"
 msgctxt "block title"
 msgid "Search bar"
-msgstr "Rechercher"
+msgstr "Barre de recherche"
 
 #: build/blocks/search-bar/block.json
-#, fuzzy
-#| msgid "Display search bar?"
 msgctxt "block description"
 msgid "Contains search bar."
-msgstr "Afficher la barre de recherche ?"
+msgstr "Contient la barre de recherche."
 
 #: build/blocks/sidebar/block.json
-#, fuzzy
-#| msgid "Sidebar size"
 msgctxt "block title"
 msgid "Sidebar"
-msgstr "Taille de la colonne latérale"
+msgstr "Colonne latérale"
 
 #: build/blocks/sidebar/block.json
 msgctxt "block description"
@@ -844,6 +829,8 @@ msgid ""
 "Contains the block elements used to render the sidebar, like the posts, "
 "search bar, title, and filters."
 msgstr ""
+"Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
+"comme les publications, la barre de recherche, le titre et les filtres."
 
 #~ msgid "Markers will be clustered"
 #~ msgstr "Les marqueurs seront agrégés"

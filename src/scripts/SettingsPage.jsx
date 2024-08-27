@@ -104,16 +104,18 @@ export default function SettingsPage() {
       <p>{__('Nope.', 'mappps')}</p>
 
       <h3>{__("Why can't I see the clustering of markers in Gutenberg?", 'mappps')}</h3>
-      <p>{__('The clustering is kinda broken in back-office, even so It works well in front-office.', 'mappps')}</p>
       <p>
-        {__("I believe it's because of the block compilation.", 'mappps')} <a href="https://github.com/WordPress/gutenberg/issues/64446">{__('Check the issue.', 'mappps')}</a>
+        {__('The clustering is kinda broken in back-office, even so It works well in front-office.', 'mappps')} {__("I believe it's because of the block compilation.", 'mappps')}{' '}
+        <a href="https://github.com/WordPress/gutenberg/issues/64446">{__('Check the issue.', 'mappps')}</a>
       </p>
+
+      <br />
 
       <p>
         {__(
           'We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github.',
           'mappps'
-        )}
+        )}{' '}
         <a href="https://github.com/LaTableRouge/Mappps/issues">{__('Submit an issue', 'mappps')}</a>
       </p>
     </>
