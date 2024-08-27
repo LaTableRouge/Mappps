@@ -30,7 +30,7 @@ jobs:
         with:
           type: 'zip'
           filename: '${{ env.RELEASE_NAME }}.zip'
-          path: 'mappps.php license.txt lang/ build/ includes/ templates/'
+          path: 'mappps.php license.txt readme.txt lang/ build/ includes/'
 
       # Publie la release
       - name: Publish release
