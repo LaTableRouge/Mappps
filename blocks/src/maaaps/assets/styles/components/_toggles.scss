@@ -44,7 +44,7 @@
     &__filters {
       position: absolute;
       top: var(--spacing-lg);
-      left: var(--spacing-lg);
+      inset-inline-start: var(--spacing-lg);
       width: 40px;
       height: 40px;
       transition: var(--toggle-filters-transition, var(--nomotion, opacity 0.1s ease-in-out));
@@ -54,7 +54,7 @@
       .counter {
         display: grid;
         position: absolute;
-        right: 0;
+        inset-inline-end: 0;
         bottom: 0;
         min-width: 16px;
         height: 16px;
