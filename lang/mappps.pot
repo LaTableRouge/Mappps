@@ -2,20 +2,20 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 0.0.8\n"
+"Project-Id-Version: Mappps 0.0.9\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-26T14:39:54+00:00\n"
+"POT-Creation-Date: 2024-08-28T07:37:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
-#: includes/register-page.php:13
+#: includes/register-page.php:17
 msgid "Mappps"
 msgstr ""
 
@@ -35,15 +35,15 @@ msgstr ""
 msgid "https://mlnop.fr/"
 msgstr ""
 
-#: includes/blocks/categories-register.php:10
+#: includes/blocks/categories-register.php:14
 msgid "Mappps - Blocks"
 msgstr ""
 
-#: includes/register-page.php:12
+#: includes/register-page.php:16
 msgid "Setup"
 msgstr ""
 
-#: includes/register-page.php:25
+#: includes/register-page.php:29
 msgid "Loading…"
 msgstr ""
 
