@@ -30,7 +30,7 @@
 .wp-block-mps-mobile-toggles {
   position: absolute;
   inset: 0;
-  z-index: 9999;
+  z-index: 1000;
   pointer-events: none;
 
   @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {

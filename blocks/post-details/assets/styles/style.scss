@@ -7,7 +7,7 @@
 
 .wp-block-mps-post-details {
   position: absolute !important;
-  z-index: 99999;
+  z-index: 10001;
   bottom: var(--spacing-lg);
   inset-inline-start: 50%;
   grid-template: 'popup' auto;
