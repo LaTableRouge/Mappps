@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-28T06:29:41+00:00\n"
+"POT-Creation-Date: 2024-08-28T07:44:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mappps\n"
@@ -41,6 +41,10 @@ msgstr ""
 #: build/blocks/post-details/render.php:67
 #: build/blocks/post-details/render.php:69
 #: build/blocks/post-details/render.php:71
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -49,6 +53,10 @@ msgstr ""
 
 #: blocks/post-details/render.php:70
 #: build/blocks/post-details/render.php:70
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -57,6 +65,10 @@ msgstr ""
 
 #: blocks/post-details/render.php:76
 #: build/blocks/post-details/render.php:76
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -67,6 +79,10 @@ msgstr ""
 #: blocks/post-details/render.php:86
 #: build/blocks/post-details/render.php:83
 #: build/blocks/post-details/render.php:86
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -77,6 +93,10 @@ msgstr ""
 #: blocks/post-details/render.php:97
 #: build/blocks/post-details/render.php:94
 #: build/blocks/post-details/render.php:97
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -89,6 +109,10 @@ msgstr ""
 #: build/blocks/post-details/render.php:101
 #: build/blocks/post-details/render.php:103
 #: build/blocks/post-details/render.php:106
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -107,40 +131,268 @@ msgstr ""
 msgid "Loading…"
 msgstr ""
 
-#: build/blocks/filters-toggle/assets/index.js:1
-#: build/blocks/filters/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Close filters"
+msgid "The padding value for the bounds of the map"
 msgstr ""
 
-#: build/blocks/filters-toggle/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/mobile-toggles/assets/index.js:1
-msgid "Open filters"
+msgid "Bounds padding"
 msgstr ""
 
-#: build/blocks/filters-toggle/assets/index.js:1
-#: build/blocks/filters/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Filters"
+msgid "The maximum zoom level allowed for the map when a marker is selected"
 msgstr ""
 
-#: build/blocks/filters/assets/index.js:1
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "Desktop only, set the maximum size for the filter popup"
+msgid "Maximum marker zoom"
 msgstr ""
 
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "The maximum zoom level allowed for the map"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Maximum zoom"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Categories"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "No categories could be recovered."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Display mode"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Posts"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Confirm selection"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "No posts could be recovered."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Post type"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Taxonomies"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "No taxonomies could be recovered."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map tiles"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "A filter dropdown will be displayed"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Display filters?"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Users will be able to geolocate themselves"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Geolocation"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/search-bar/assets/index.js:1
+msgid "Search results will be limited to the selected posts"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/search-bar/assets/index.js:1
+msgid "Limit search results?"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+msgid "Markers will be clustered"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Markers will not be clustered"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Marker clustering"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "A search bar will be displayed"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Display search bar?"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Sticky posts will be displayed first in the sidebar"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Sticky first"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+msgid "Desktop only, set the size for the filter popup"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
 msgid "Filters size"
 msgstr ""
 
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "The displayed sizes of the cluster icons"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Cluster icon size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "The displayed sizes of the marker icons"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Marker icon size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+msgid "Desktop only, set the size for the details popup"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/post-details/assets/index.js:1
+msgid "Popups size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/sidebar/assets/index.js:1
+msgid "Desktop only"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/sidebar/assets/index.js:1
+msgid "Sidebar size"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
@@ -150,6 +402,75 @@ msgstr ""
 msgid "Data settings"
 msgstr ""
 
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/loader/assets/index.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Render settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Sidebar settings"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Select the data source of the items to be displayed on the map."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Data source"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "No post types could be recovered."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/filters-toggle/assets/index.js:1
+#: build/blocks/filters/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Filters"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/filters-toggle/assets/index.js:1
+#: build/blocks/filters/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Close filters"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps-blocks/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
@@ -157,11 +478,162 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps-blocks/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 msgid "Filter"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/loader/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Waiting for data to be loaded"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/loader/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Click me to load the block"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Zoom in"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Zoom out"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Reset view"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "Find your position"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/map/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+msgid "You are here"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/search-bar/assets/index.js:1
+msgid "Search..."
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/search-bar/assets/index.js:1
+msgid "Clear"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/search-bar/assets/index.js:1
+msgid "Search"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/filters-toggle/assets/index.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/mobile-toggles/assets/index.js:1
+msgid "Open filters"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/mobile-toggles/assets/index.js:1
+msgid "See the list"
+msgstr ""
+
+#: blocks/build/maaaps/assets/index.js:1
+#: blocks/build/maaaps/assets/view.js:1
+#: build/blocks/build/maaaps/assets/index.js:1
+#: build/blocks/build/maaaps/assets/view.js:1
+#: build/blocks/mappps-blocks/assets/view.js:1
+#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/view.js:1
+#: build/blocks/mobile-toggles/assets/index.js:1
+msgid "See the map"
+msgstr ""
+
+#: build/blocks/filters/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Desktop only, set the maximum size for the filter popup"
 msgstr ""
 
 #: build/blocks/loader/assets/index.js:1
@@ -172,293 +644,14 @@ msgstr ""
 msgid "Spinner size"
 msgstr ""
 
-#: build/blocks/loader/assets/index.js:1
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Render settings"
-msgstr ""
-
-#: build/blocks/loader/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Waiting for data to be loaded"
-msgstr ""
-
-#: build/blocks/loader/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Click me to load the block"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "The padding value for the bounds of the map"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Bounds padding"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "The maximum zoom level allowed for the map when a marker is selected"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Maximum marker zoom"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "The maximum zoom level allowed for the map"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Maximum zoom"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Map tiles"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Users will be able to geolocate themselves"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Geolocation"
-msgstr ""
-
 #: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
 msgid "Markers will be clustered (The clustering cannot be seen in gutenberg)"
 msgstr ""
 
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Markers will not be clustered"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Marker clustering"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "The displayed sizes of the cluster icons"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Cluster icon size"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "The displayed sizes of the marker icons"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Marker icon size"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Zoom in"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Zoom out"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Reset view"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "Find your position"
-msgstr ""
-
-#: build/blocks/map/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-msgid "You are here"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Categories"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No categories could be recovered."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Posts"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Confirm selection"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No posts could be recovered."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Post type"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Taxonomies"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No taxonomies could be recovered."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Select the data source of the items to be displayed on the map."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Data source"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No post types could be recovered."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/mobile-toggles/assets/index.js:1
-msgid "See the list"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/mobile-toggles/assets/index.js:1
-msgid "See the map"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/search-bar/assets/index.js:1
-msgid "Search..."
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/search-bar/assets/index.js:1
-msgid "Clear"
-msgstr ""
-
-#: build/blocks/mappps-blocks/assets/view.js:1
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/mappps/assets/view.js:1
-#: build/blocks/search-bar/assets/index.js:1
-msgid "Search"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Display mode"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "A filter dropdown will be displayed"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Display filters?"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/search-bar/assets/index.js:1
-msgid "Search results will be limited to the selected posts"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/search-bar/assets/index.js:1
-msgid "Limit search results?"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "A search bar will be displayed"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Display search bar?"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Sticky posts will be displayed first in the sidebar"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Sticky first"
-msgstr ""
-
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Desktop only, set the maximum size for the details popup"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/post-details/assets/index.js:1
-msgid "Popups size"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/sidebar/assets/index.js:1
-msgid "Desktop only"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-#: build/blocks/sidebar/assets/index.js:1
-msgid "Sidebar size"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Map settings"
-msgstr ""
-
-#: build/blocks/mappps/assets/index.js:1
-msgid "Sidebar settings"
 msgstr ""
 
 #: build/blocks/post-details/assets/index.js:1
@@ -669,6 +862,53 @@ msgstr ""
 msgid "Submit an issue"
 msgstr ""
 
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block title"
+msgid "Mappps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block description"
+msgid "A bloc that display maps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "mps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "maps"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "leaflet"
+msgstr ""
+
+#: blocks/build/maaaps/block.json
+#: build/blocks/build/maaaps/block.json
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "mappps"
+msgstr ""
+
 #: build/blocks/filters-toggle/block.json
 msgctxt "block title"
 msgid "Filters toggle"
@@ -712,41 +952,6 @@ msgstr ""
 #: build/blocks/mappps-blocks/block.json
 msgctxt "block title"
 msgid "Mappps (blocks)"
-msgstr ""
-
-#: build/blocks/mappps-blocks/block.json
-#: build/blocks/mappps/block.json
-msgctxt "block description"
-msgid "A bloc that display maps"
-msgstr ""
-
-#: build/blocks/mappps-blocks/block.json
-#: build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "mps"
-msgstr ""
-
-#: build/blocks/mappps-blocks/block.json
-#: build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "maps"
-msgstr ""
-
-#: build/blocks/mappps-blocks/block.json
-#: build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "leaflet"
-msgstr ""
-
-#: build/blocks/mappps-blocks/block.json
-#: build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "mappps"
-msgstr ""
-
-#: build/blocks/mappps/block.json
-msgctxt "block title"
-msgid "Mappps"
 msgstr ""
 
 #: build/blocks/mobile-toggles/block.json

@@ -43,7 +43,7 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
           const dir = window.getComputedStyle(detailsPopup, null).getPropertyValue('direction')
 
           if (isMobileView) {
-            setPopupOffset(detailsPopup.clientHeight)
+            setPopupOffset(detailsPopup.clientHeight * -1)
           } else {
             if (dir === 'rtl') {
               setPopupOffset(detailsPopup.clientWidth * -1)

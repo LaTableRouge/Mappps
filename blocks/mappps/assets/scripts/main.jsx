@@ -86,7 +86,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
       const dir = window.getComputedStyle(node, null).getPropertyValue('direction')
 
       if (isMobileView) {
-        setPopupOffset(node.clientHeight)
+        setPopupOffset(node.clientHeight * -1)
       } else {
         if (dir === 'rtl') {
           setPopupOffset(node.clientWidth * -1)
