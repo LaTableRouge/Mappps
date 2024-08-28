@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-08-27T15:18:20+00:00\n"
+"POT-Creation-Date: 2024-08-28T06:29:41+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mappps\n"
@@ -43,6 +43,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:71
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Expand"
 msgstr ""
 
@@ -50,6 +51,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:70
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Shrink"
 msgstr ""
 
@@ -57,6 +59,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:76
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Expand/Shrink"
 msgstr ""
 
@@ -66,6 +69,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:86
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Open in new tab"
 msgstr ""
 
@@ -75,6 +79,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:97
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "View itinerary"
 msgstr ""
 
@@ -86,6 +91,7 @@ msgstr ""
 #: build/blocks/post-details/render.php:106
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Close preview"
 msgstr ""
 
@@ -127,7 +133,7 @@ msgstr ""
 
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "Desktop only, set the size for the filter popup"
+msgid "Desktop only, set the maximum size for the filter popup"
 msgstr ""
 
 #: build/blocks/filters/assets/index.js:1
@@ -429,7 +435,7 @@ msgstr ""
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
-msgid "Desktop only, set the size for the details popup"
+msgid "Desktop only, set the maximum size for the details popup"
 msgstr ""
 
 #: build/blocks/mappps/assets/index.js:1

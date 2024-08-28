@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-08-27T15:18:20+00:00\n"
-"PO-Revision-Date: 2024-08-27 17:18+0200\n"
+"POT-Creation-Date: 2024-08-28T06:29:41+00:00\n"
+"PO-Revision-Date: 2024-08-28 08:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -41,16 +41,19 @@ msgstr "https://mlnop.fr/"
 #: build/blocks/post-details/render.php:69
 #: build/blocks/post-details/render.php:71
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Expand"
 msgstr "Déplier"
 
 #: blocks/post-details/render.php:70 build/blocks/post-details/render.php:70
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Shrink"
 msgstr "Réduire"
 
 #: blocks/post-details/render.php:76 build/blocks/post-details/render.php:76
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Expand/Shrink"
 msgstr "Déplier/Réduire"
 
@@ -58,6 +61,7 @@ msgstr "Déplier/Réduire"
 #: build/blocks/post-details/render.php:83
 #: build/blocks/post-details/render.php:86
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Open in new tab"
 msgstr "Ouvrir dans un nouvel onglet"
 
@@ -65,6 +69,7 @@ msgstr "Ouvrir dans un nouvel onglet"
 #: build/blocks/post-details/render.php:94
 #: build/blocks/post-details/render.php:97
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "View itinerary"
 msgstr "Voir l'itinéraire"
 
@@ -73,6 +78,7 @@ msgstr "Voir l'itinéraire"
 #: build/blocks/post-details/render.php:103
 #: build/blocks/post-details/render.php:106
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Close preview"
 msgstr "Fermer la prévisualisation"
 
@@ -110,10 +116,10 @@ msgid "Filters"
 msgstr "Filtres"
 
 #: build/blocks/filters/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Desktop only, set the size for the filter popup"
+msgid "Desktop only, set the maximum size for the filter popup"
 msgstr ""
-"Réglage pour ordinateur seulement, définissez la taille de la fenêtre "
-"surgissante des filtres"
+"Réglage pour ordinateur seulement, définissez la taille maximum de la "
+"fenêtre surgissante des filtres"
 
 #: build/blocks/filters/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Filters size"
@@ -390,10 +396,10 @@ msgstr "Publications épinglées en premier"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
-msgid "Desktop only, set the size for the details popup"
+msgid "Desktop only, set the maximum size for the details popup"
 msgstr ""
-"Réglage pour ordinateur seulement, définissez la taille de la fenêtre "
-"surgissante des informations"
+"Réglage pour ordinateur seulement, définissez la taille maximum de la "
+"fenêtre surgissante des informations"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -831,6 +837,11 @@ msgid ""
 msgstr ""
 "Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
 "comme les publications, la barre de recherche, le titre et les filtres."
+
+#~ msgid "Desktop only, set the size for the filter popup"
+#~ msgstr ""
+#~ "Réglage pour ordinateur seulement, définissez la taille de la fenêtre "
+#~ "surgissante des filtres"
 
 #~ msgid "Markers will be clustered"
 #~ msgstr "Les marqueurs seront agrégés"

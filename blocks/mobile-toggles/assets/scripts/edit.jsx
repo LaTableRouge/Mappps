@@ -16,7 +16,13 @@ export default function Edit({ attributes, context, setAttributes }) {
   const parentBlock = useSelect((select) => select('core/block-editor').getBlock(blockId))
   if (parentBlock && Object.keys(parentBlock).length) {
     hasSidebar = parentBlock.innerBlocks.find((block) => block.name === 'mps/sidebar')
+    if (hasSidebar) {
+      hasSidebar = Object.keys(hasSidebar).length
+    }
     hasFilters = parentBlock.innerBlocks.find((block) => block.name === 'mps/filters')
+    if (hasFilters) {
+      hasFilters = Object.keys(hasFilters).length
+    }
   }
 
   return (

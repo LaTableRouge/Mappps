@@ -27,12 +27,28 @@
     },
     "interactivity": {
       "clientNavigation": true
+    },
+    "color": {
+      "gradients": true,
+      "link": true,
+      "__experimentalDefaultControls": {
+        "background": true,
+        "text": true
+      }
     }
   },
   "attributes": {
     "selectedFiltersSize": {
       "type": "string",
       "default": "15cqw"
+    },
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": "1rem"
+        }
+      }
     }
   },
   "viewScript": "file:./assets/view.js",

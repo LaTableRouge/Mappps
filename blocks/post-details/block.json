@@ -46,9 +46,6 @@
       "blockGap": true,
       "padding": true,
       "margin": true
-    },
-    "interactivity": {
-      "clientNavigation": true
     }
   },
   "attributes": {

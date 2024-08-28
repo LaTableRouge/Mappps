@@ -15,7 +15,7 @@ export default function Main({ attributes, blockId, hasFilters, hasSidebar }) {
 
   return (
     <>
-      {hasSidebar
+      {!!hasSidebar
         && (mobileIsMapDisplayed
           ? (
           <button
@@ -48,7 +48,7 @@ export default function Main({ attributes, blockId, hasFilters, hasSidebar }) {
           </button>
             ))}
 
-      {hasFilters && (
+      {!!hasFilters && (
         <button
           aria-label={__('Open filters', 'mappps')}
           className="custom-button custom-button__only-icon toggles__filters"

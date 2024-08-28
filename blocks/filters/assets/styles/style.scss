@@ -12,9 +12,6 @@
   top: 0;
   bottom: 0;
   left: 0;
-  grid-auto-flow: row;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto;
   width: 100%;
   padding: var(--spacing-md) var(--spacing-lg);
   transform: translateX(var(--filter-transform, -100%));
@@ -26,7 +23,6 @@
   @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     left: var(--sidebar-size, 25cqw);
     width: var(--filter-size, max-content);
-    min-width: max-content;
     border-left: 1px solid var(--color-gray-300);
   }
 
@@ -38,6 +34,12 @@
   }
 
   .filters-form {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+
     ul {
       margin: 0;
       list-style: none;
@@ -45,9 +47,8 @@
 
     .filters-form {
       &__header {
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
+        position: relative;
+        padding-right: 28px;
 
         .header {
           &__title {
@@ -56,6 +57,10 @@
           }
 
           &__close {
+            position: absolute;
+            top: 0;
+            right: 0;
+
             --bg-color: var(--color-secondary);
             --color: var(--color-button-secondary);
           }
@@ -64,7 +69,6 @@
 
       &__list {
         grid-column: span 2;
-        max-height: 36cqh;
         margin: var(--spacing-md) 0;
         padding: 0;
         overflow: auto;

@@ -1,10 +1,18 @@
 import { __ } from '@wordpress/i18n'
-
-export default function Header() {
+export default function Header({ isExpanded, setIsExpanded }) {
   return (
     <div className="header__cta-wrapper">
-      <button aria-label={__('Expand', 'mappps')} className="custom-button custom-button__only-icon cta-wrapper__expand" title={__('Expand', 'mappps')}>
-        <span className={'icon-mappps-enlarge'}></span>
+      <button
+        aria-label={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
+        className="custom-button custom-button__only-icon cta-wrapper__expand"
+        title={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
+        onClick={(e) => {
+          e.preventDefault()
+
+          setIsExpanded(!isExpanded)
+        }}
+      >
+        <span className={isExpanded ? 'icon-mappps-shrink' : 'icon-mappps-enlarge'}></span>
         <span className="screen-reader-text">{__('Expand/Shrink', 'mappps')}</span>
       </button>
 

@@ -16,6 +16,7 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
 
   const [activeBlockContextId, setActiveBlockContextId] = useState()
   const [posts, setPosts] = useState([])
+  const [isExpanded, setIsExpanded] = useState(false)
 
   useEffect(() => {
     async function eventSetPosts(e) {
@@ -45,14 +46,20 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
 
   const blocks = GetBlocks(clientId)
 
+  useEffect(() => {
+    if (!isSelected) {
+      setIsExpanded(false)
+    }
+  }, [isSelected])
+
   return (
-    <div {...blockProps}>
+    <div {...blockProps} data-expanded={isExpanded}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
 
       {blockContexts
         && blockContexts.map((blockContext) => (
           <BlockContextProvider key={blockContext.postId} value={blockContext}>
-            <Header />
+            <Header isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
 
             {/* Editable block */}
             {blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId) ? <PostTemplateInnerBlocks /> : null}
