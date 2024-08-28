@@ -1,9 +1,9 @@
 === Mappps ===
 Contributors: LaTableRouge
 Requires at least: 6.2
-Tested up to: 6.6
+Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 0.0.8
+Stable tag: 0.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -14,6 +14,13 @@ Mappps, is a plugin designed to display maps with the help of Leaflet.
 It's main purpose is to quickly make store locator for Wordpress webistes.
 
 == Changelog ==
+
+= 0.0.9 =
+* Released: August 27, 2024
+
+https://github.com/LaTableRouge/Mappps/releases/tag/0.0.9
+
+RTL styles fix
 
 = 0.0.8 =
 * Released: August 27, 2024

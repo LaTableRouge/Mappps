@@ -12,10 +12,10 @@ if (!defined('ABSPATH')) {
  * Author: LaTableRouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
- * Tested up to: 6.3
+ * Tested up to: 6.6.1
  * Requires PHP: 8.0
- * Version: 0.0.8
- * Stable tag: 0.0.8
+ * Version: 0.0.9
+ * Stable tag: 0.0.9
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
