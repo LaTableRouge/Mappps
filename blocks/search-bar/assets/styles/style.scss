@@ -6,9 +6,9 @@
 @import '../../../../src//helpers/styles/abstracts/responsive';
 
 html[dir='rtl'] {
-  .wp-block-mps-mappps {
+  .wp-block-mps-mappps-blocks {
     .wp-block-mps-searchbar {
-      .search-wrapper .search-wrapper__form .form__button--submit {
+      .search-wrapper__form .form__button--submit {
         border-top-left-radius: var(--radius-md);
         border-top-right-radius: var(--radius-md);
         border-bottom-right-radius: 0;

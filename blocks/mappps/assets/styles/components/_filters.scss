@@ -17,10 +17,10 @@
   pointer-events: var(--form-pe, none);
 
   @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
-    left: var(--sidebar-size, 25cqw);
+    inset-inline-start: var(--sidebar-size, 25cqw);
     width: var(--filter-size, max-content);
     min-width: max-content;
-    border-left: 1px solid var(--color-gray-300);
+    border-inline-start: 1px solid var(--color-gray-300);
   }
 
   &[data-open='true'] {
@@ -92,7 +92,7 @@
 
       .list__sublist {
         margin-top: var(--spacing-sm);
-        padding-left: var(--spacing-md);
+        padding-inline-start: var(--spacing-md);
       }
     }
 

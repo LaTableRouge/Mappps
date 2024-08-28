@@ -40,7 +40,7 @@
   "attributes": {
     "selectedFiltersSize": {
       "type": "string",
-      "default": "15cqw"
+      "default": "18cqw"
     },
     "style": {
       "type": "object",

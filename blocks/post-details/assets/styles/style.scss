@@ -9,7 +9,7 @@
   position: absolute !important;
   z-index: 10001;
   bottom: var(--spacing-lg);
-  inset-inline-start: 50%;
+  left: 50%;
   grid-template: 'popup' auto;
   width: 340px;
   max-width: calc(100% - (var(--spacing-md) * 2));
@@ -39,11 +39,13 @@
   @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     top: 0;
     bottom: 0;
+    left: initial;
     inset-inline-start: var(--sidebar-size, 25cqw);
     width: var(--details-size, max-content);
     height: var(--wrapper-height);
     transform: translateX(var(--details-transform, -100%));
     border-radius: 0;
+    border-inline-start: 1px solid var(--color-gray-300);
   }
 
   &[data-hidden='false'] {

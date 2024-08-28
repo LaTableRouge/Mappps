@@ -83,7 +83,17 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
       return
     }
     const resizeObserver = new ResizeObserver(() => {
-      isMobileView ? setPopupOffset(node.clientHeight) : setPopupOffset(node.clientWidth)
+      const dir = window.getComputedStyle(node, null).getPropertyValue('direction')
+
+      if (isMobileView) {
+        setPopupOffset(node.clientHeight)
+      } else {
+        if (dir === 'rtl') {
+          setPopupOffset(node.clientWidth * -1)
+        } else {
+          setPopupOffset(node.clientWidth)
+        }
+      }
     })
     resizeObserver.observe(node)
   }, [])

@@ -40,7 +40,17 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
 
         const detailsPopup = ancestorBlock.querySelector('.wp-block-mps-post-details')
         if (detailsPopup) {
-          isMobileView ? setPopupOffset(node.clientHeight) : setPopupOffset(500)
+          const dir = window.getComputedStyle(detailsPopup, null).getPropertyValue('direction')
+
+          if (isMobileView) {
+            setPopupOffset(detailsPopup.clientHeight)
+          } else {
+            if (dir === 'rtl') {
+              setPopupOffset(detailsPopup.clientWidth * -1)
+            } else {
+              setPopupOffset(detailsPopup.clientWidth)
+            }
+          }
         }
       }
     })
