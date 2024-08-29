@@ -16,7 +16,12 @@ export default function PostTemplateInnerBlocks() {
         [
           'core/post-featured-image',
           {
-            aspectRatio: '16/9'
+            aspectRatio: '16/9',
+            style: {
+              border: {
+                radius: '0px'
+              }
+            }
           }
         ],
         [

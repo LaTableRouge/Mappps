@@ -12,9 +12,15 @@
 
 .wp-block-mps-post-template {
   overflow: auto;
+  transition: var(--nomotion, background-color 0.3s ease);
 
   &[data-hidden='true'] {
     display: none;
+  }
+
+  &:hover,
+  &[data-selected='true'] {
+    background-color: var(--color-gray-100);
   }
 
   & > ul {

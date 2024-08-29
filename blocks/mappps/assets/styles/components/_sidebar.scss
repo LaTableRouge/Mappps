@@ -4,6 +4,7 @@
   grid-template-rows: auto 1fr;
   width: 100%;
   height: inherit;
+  max-height: inherit;
   background-color: var(--color-white);
 
   @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {

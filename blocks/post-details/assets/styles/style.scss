@@ -67,6 +67,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     max-width: 100%;
+    margin-top: calc(60px * -1); // TODO: find a way to get the height dynamically
     padding: var(--spacing-md);
     gap: var(--spacing-xs);
 

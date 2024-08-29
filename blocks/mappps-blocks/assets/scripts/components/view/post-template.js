@@ -21,6 +21,33 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
       }
     })
 
+    document.addEventListener('mps-selectedPost', async (e) => {
+      await e
+      const details = e.detail
+      if (details.id === blockId) {
+        const target = [...postChildBlocks].find((post) => {
+          let postID = post.dataset.wpKey
+          if (postID.length) {
+            postID = postID.replace('post-template-item-', '')
+          }
+          return Number(postID) === details.selectedPost.id
+        })
+
+        if (target) {
+          postChildBlocks.forEach((target) => {
+            delete target.dataset.selected
+          })
+          target.dataset.selected = true
+
+          // Scroll to the target
+          const wrapper = target.closest('.post-template__posts-wrapper')
+          if (wrapper) {
+            wrapper.scroll({ top: target.offsetTop - wrapper.offsetTop, behavior: 'smooth' })
+          }
+        }
+      }
+    })
+
     postChildBlocks.forEach((childBlock) => {
       childBlock.addEventListener('click', (e) => {
         e.preventDefault()

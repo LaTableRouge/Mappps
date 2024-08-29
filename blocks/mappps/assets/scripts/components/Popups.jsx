@@ -6,7 +6,7 @@ import Terms from './sidebar/article/Terms'
 import Thumbnail from './sidebar/article/Thumbnail'
 import Title from './sidebar/article/Title'
 
-export default function Popups({ isMobileView, popupRef, postRefs, posts, selectedPost, selectedPostTerms, setSelectedPost }) {
+export default function Popups({ isMobileView, popupRef, posts, selectedPost, selectedPostTerms, setSelectedPost }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   return (
@@ -39,7 +39,7 @@ export default function Popups({ isMobileView, popupRef, postRefs, posts, select
         }
 
         return (
-          <article key={id} ref={postRefs.current[index]} className="popups-wrapper__article" data-selected={post === selectedPost} data-sticky={sticky}>
+          <article key={id} className="popups-wrapper__article" data-selected={post === selectedPost} data-sticky={sticky}>
             <div className="article__scroll-wrapper">
               <header className="article__header">
                 {/* eslint-disable-next-line react/jsx-no-target-blank */}
