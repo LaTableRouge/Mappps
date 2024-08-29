@@ -194,7 +194,6 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               <Popups
                 isMobileView={isMobileView}
                 popupRef={popupRef}
-                postRefs={postRefs}
                 posts={posts}
                 selectedPost={selectedPost}
                 selectedPostTerms={selectedPostTerms}
