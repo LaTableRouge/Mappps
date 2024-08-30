@@ -3,7 +3,7 @@ Contributors: LaTableRouge
 Requires at least: 6.2
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 0.0.9
+Stable tag: 0.0.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -74,6 +74,11 @@ The plugin support the clustering for the markers, you can disable it but then t
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 0.0.10 =
+* Released: August 30, 2024
+* https://github.com/LaTableRouge/Mappps/releases/tag/0.0.10
+* fix loader height
 
 = 0.0.9 =
 * Released: August 27, 2024
