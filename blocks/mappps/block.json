@@ -2,7 +2,6 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "mps/mappps",
-  "version": "1.0.0",
   "title": "Mappps",
   "category": "mappps",
   "icon": "block-default",
