@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
  * Tested up to: 6.6.1
  * Requires PHP: 8.0
  * Version: 1.0.0
- * Stable tag: 0.0.9
+ * Stable tag: 0.0.10
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
