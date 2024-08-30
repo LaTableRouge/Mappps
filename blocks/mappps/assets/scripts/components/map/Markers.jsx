@@ -24,7 +24,6 @@ export default function Markers(posts, size, markerRefs, postRefs, setSelectedPo
               if (associatedPost.current) {
                 const target = associatedPost.current
                 const parent = associatedPost.current.parentNode
-                console.log(parent)
                 parent.scroll({ top: target.offsetTop - parent.offsetTop, behavior: 'smooth' })
               }
             }

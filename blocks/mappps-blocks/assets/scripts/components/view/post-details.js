@@ -1,20 +1,3 @@
-const toggleExpandedStatus = (parentElement, buttonElement, stateExpand) => {
-  const icon = buttonElement.querySelector('[class^="icon-mappps"]')
-  if (icon) {
-    if (!stateExpand) {
-      stateExpand = icon.classList.contains('icon-mappps-enlarge')
-    }
-    const state = stateExpand ? 'Shrink' : 'Expand'
-
-    buttonElement.setAttribute('aria-label', buttonElement.dataset[`text${state}`])
-    buttonElement.setAttribute('title', buttonElement.dataset[`text${state}`])
-
-    icon.className = buttonElement.dataset[`icon${state}`]
-
-    parentElement.dataset.expanded = stateExpand
-  }
-}
-
 export default function renderPostDetails(blockId, parent) {
   const postChildBlocks = parent.querySelectorAll('.wp-block-mps-post-details')
   if (postChildBlocks.length) {
@@ -53,7 +36,18 @@ export default function renderPostDetails(blockId, parent) {
             })
           )
 
-          toggleExpandedStatus(block, expandShrinkButton, false)
+          const expandShrinkButton = block.querySelector('.cta-wrapper__expand')
+          if (expandShrinkButton) {
+            const icon = block.querySelector('[class^="icon-mappps"]')
+            if (icon) {
+              expandShrinkButton.setAttribute('aria-label', expandShrinkButton.dataset.textExpand)
+              expandShrinkButton.setAttribute('title', expandShrinkButton.dataset.textExpand)
+
+              icon.className = expandShrinkButton.dataset.iconExpand
+
+              block.dataset.expanded = false
+            }
+          }
         })
       }
 
@@ -62,7 +56,21 @@ export default function renderPostDetails(blockId, parent) {
         expandShrinkButton.addEventListener('click', (e) => {
           e.preventDefault()
 
-          toggleExpandedStatus(block, expandShrinkButton)
+          const icon = expandShrinkButton.querySelector('[class^="icon-mappps"]')
+          if (icon) {
+            const stateExpand = icon.classList.contains('icon-mappps-enlarge')
+            const state = stateExpand ? 'Shrink' : 'Expand'
+
+            expandShrinkButton.setAttribute('aria-label', expandShrinkButton.dataset[`text${state}`])
+            expandShrinkButton.setAttribute('title', expandShrinkButton.dataset[`text${state}`])
+
+            icon.className = expandShrinkButton.dataset[`icon${state}`]
+
+            const parentElement = expandShrinkButton.closest('.wp-block-mps-post-details')
+            if (parentElement) {
+              parentElement.dataset.expanded = stateExpand
+            }
+          }
         })
       }
     })

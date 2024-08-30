@@ -3,8 +3,10 @@ import '../styles/editor.scss'
 import { BlockContextProvider, useBlockProps } from '@wordpress/block-editor'
 import { memo, useEffect, useMemo, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
 import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
+import AlterBlockProps from './utils/AlterBlockProps'
 import GetBlocks from './utils/GetBlocks'
 
 export default function Edit({ attributes, clientId, context, isSelected, setAttributes }) {
@@ -44,7 +46,9 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
   const blocks = GetBlocks(clientId)
 
   return (
-    <nav {...blockProps}>
+    <nav {...AlterBlockProps(blockProps, attributes)}>
+      <Controls attributes={attributes} setAttributes={setAttributes} />
+
       <ul>
         {blockContexts
           && blockContexts.map((blockContext) => (

@@ -2,8 +2,8 @@
   z-index: 9999;
   grid-area: main;
   width: 100%;
-  height: var(--mobile-height, 100svh);
-  max-height: var(--mobile-height, 100svh);
+  height: var(--mobile-height, 80svh);
+  max-height: var(--mobile-height, 80svh);
   transition: var(--nomotion, opacity 0.2s ease-in-out);
   border: 2px solid var(--color-gray-400);
   background-color: var(--color-white);

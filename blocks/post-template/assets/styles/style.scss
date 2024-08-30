@@ -18,9 +18,11 @@
     display: none;
   }
 
-  &:hover,
-  &[data-selected='true'] {
-    background-color: var(--color-gray-100);
+  &:not(.wp-block) {
+    &:hover,
+    &[data-selected='true'] {
+      background-color: var(--bg-hover-color, var(--color-gray-100));
+    }
   }
 
   & > ul {

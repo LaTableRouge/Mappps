@@ -51,6 +51,12 @@
       "clientNavigation": true
     }
   },
+  "attributes": {
+    "bgHoverColor": {
+      "type": "string",
+      "default": "var(--color-gray-100)"
+    }
+  },
   "viewScript": "file:./assets/view.js",
   "editorScript": "file:./assets/index.jsx",
   "editorStyle": "file:./assets/index.css",
