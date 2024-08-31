@@ -8,14 +8,14 @@ if (!defined('ABSPATH')) {
  * Plugin Name: Mappps
  * Plugin URI: https://github.com/LaTableRouge/Mappps
  * Description: A plugin that dsiplay maps
- * Tags: leaflet, block, openstreetmap, map, maps, map block
+ * Tags: leaflet, block, openstreetmap, map, maps, map block, store locator
  * Author: LaTableRouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
  * Tested up to: 6.6.1
  * Requires PHP: 8.0
  * Version: 1.1.0
- * Stable tag: 0.0.10
+ * Stable tag: 1.1.0
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later

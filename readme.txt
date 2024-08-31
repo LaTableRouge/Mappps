@@ -3,7 +3,7 @@ Contributors: LaTableRouge
 Requires at least: 6.2
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 0.0.10
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -13,7 +13,7 @@ It's main purpose is to quickly make store locator for Wordpress websites.
 
 == Description ==
 
-Effortlessly add custom maps or store locators to your WordPress posts and pages with our intuitive plugin. Ideal for contact pages, showcasing business locations, event venues, and more!
+A simple way to add custom maps or store locators to your WordPress posts and pages with our intuitive plugin. Ideal for contact pages, showcasing business locations, event venues, and more!
 
 ## Block Features
 
@@ -29,6 +29,20 @@ Effortlessly add custom maps or store locators to your WordPress posts and pages
 - **No Database Overhead**: Works without additional database queries or tables, maintaining site efficiency.
 - **Zoom Control**: Adjust the zoom level of your map to fit your display requirements.
 - **Localization Support**: Fully supports localization to cater to a global audience.
+- **Full site editing**: You can edit the posts render directly inside the block.
+
+## Two Block Options
+
+This plugin includes two distinct blocks to cater to different user needs:
+
+1. **Simple Block**:
+   - Designed for ease of use with minimal customization options.
+   - Ideal for users who want a quick and straightforward way to add a map or store locator to their site.
+
+2. **Complex Block**:
+   - Offers multiple inner blocks for advanced customization.
+   - Allows for detailed personalization, including custom markers, advanced filtering, and more.
+   - Best suited for users who require a highly tailored map experience.
 
 ## References
 
@@ -47,26 +61,33 @@ Yes, you can customize the marker color and size inside the "Block settings" > "
 = What if I have multiple posts with the same location? =
 The plugin support the clustering for the markers, you can disable it but then the map will display overlapping markers.
 
+= Can I put multiple "Mappps" blocks in the same page? =
+Yes.
+
+= Can I put "Mappps" and "Mappps (blocks)" blocks in the same page? =
+Nope.
+
+= Why can't I see the clustering of markers in Gutenberg? =
+The clustering is kinda broken in back-office, even so It works well in front-office. I believe it's because of the block compilation.
+[Check the issue.](https://github.com/WordPress/gutenberg/issues/64446)
+
 == Screenshots ==
 
 1. This is a desktop view of the plugin in front-end
 2. This is a desktop view of the plugin in front-end, with a location searched
-3. This is a desktop view of the plugin in front-end, with the filters opened
-4. This is a desktop view of the plugin in front-end, with a post selected
-5. This is a desktop RTL view of the plugin in front-end
-6. This the loader of the plugin
-7. This is a mobile view of the plugin in front-end
-8. This is a mobile view of the plugin in front-end, with the filters opened
-9. This is a mobile view of the plugin in front-end, with the posts list opened
-10. This is a mobile view of the plugin in front-end, with a post selected
-11. This is a mobile view of the plugin in front-end, with the post details popup expanded
-12. This is a mobile RTL view of the plugin in front-end, with a post selected
-13. This is a view of a post with the lat & lng filled in custom fields
-14. This is a view of the gutenberg block's data settings
-15. This is a view of the gutenberg block's render settings
-16. This is a view of the gutenberg block's map settings
-17. This is a view of the gutenberg block's sidebar settings
-18. This is a view of the gutenberg block's color settings
+3. This is a desktop view of the plugin in front-end, with a searched location displayed
+4. This is a desktop view of the plugin in front-end, with the filters opened
+5. This is a desktop view of the plugin in front-end, with a post selected
+6. This is a desktop RTL view of the plugin in front-end
+7. This the loader of the plugin
+8. This is a mobile view of the plugin in front-end
+9. This is a mobile view of the plugin in front-end, with the filters opened
+10. This is a mobile view of the plugin in front-end, with the posts list opened
+11. This is a mobile view of the plugin in front-end, with a post selected
+12. This is a mobile view of the plugin in front-end, with the post details popup expanded
+13. This is a mobile RTL view of the plugin in front-end, with a post selected
+14. This is a view of a post with the lat & lng filled in custom fields
+15. This is a view of the gutenberg block with all inner blocks
 
 == Upgrade Notice ==
 
