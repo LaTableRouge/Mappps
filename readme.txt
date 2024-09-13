@@ -3,7 +3,7 @@ Contributors: LaTableRouge
 Requires at least: 6.2
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -95,6 +95,11 @@ The clustering is kinda broken in back-office, even so It works well in front-of
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.1.1 =
+* Released: September 13, 2024
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.1.1
+* Adding icons
 
 = 1.1.0 =
 * Released: August 30, 2024
