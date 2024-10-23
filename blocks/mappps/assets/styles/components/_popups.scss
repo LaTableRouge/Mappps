@@ -1,3 +1,6 @@
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 .popups-wrapper {
   display: grid;
   position: absolute;
@@ -18,7 +21,7 @@
   background-color: var(--color-white);
   pointer-events: var(--popup-pe, none);
 
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
     --article-picture-ratio: 16 / 9;
 
     top: 0;
@@ -32,13 +35,13 @@
   }
 
   &[data-expanded='true'] {
-    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
+      --article-picture-ratio: 16 / 9;
+
       bottom: 0;
       width: 100%;
       max-width: initial;
       height: 100%;
-
-      --article-picture-ratio: 16 / 9;
     }
   }
 
@@ -55,7 +58,7 @@
     overflow-y: auto;
     overscroll-behavior: contain;
 
-    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
       border-inline-start: 1px solid var(--color-gray-300);
     }
 
@@ -101,10 +104,10 @@
         gap: var(--spacing-xs);
 
         .cta-wrapper__close {
-          margin-left: var(--spacing-xs);
-
           --bg-color: var(--color-secondary);
           --color: var(--color-button-secondary);
+
+          margin-left: var(--spacing-xs);
         }
       }
     }

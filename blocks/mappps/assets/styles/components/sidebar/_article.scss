@@ -1,4 +1,6 @@
 .articles-wrapper__article {
+  --thumbnail-size: 60px;
+
   display: grid;
   grid-template-areas: var(--areas, 'title' 'excerpt' 'excerpt');
   grid-template-columns: var(--template-columns, initial);
@@ -21,8 +23,6 @@
   &[data-selected='true'] {
     background-color: var(--color-gray-100);
   }
-
-  --thumbnail-size: 60px;
 
   .article {
     &__picture-wrapper {

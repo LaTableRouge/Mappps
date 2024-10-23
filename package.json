@@ -21,7 +21,7 @@
     "build": "wp-scripts build",
     "watch:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
     "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
-    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}*.scss",
+    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
     "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
     "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
     "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
@@ -30,10 +30,10 @@
     "prepare": "husky install && composer install && npm run build && npm run build:blocks"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.1",
-    "@commitlint/config-conventional": "^19.4.1",
-    "@wordpress/scripts": "^28.6.0",
-    "browserslist": "^4.23.3",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@wordpress/scripts": "^30.3.0",
+    "browserslist": "^4.24.2",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
@@ -47,11 +47,11 @@
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "git-precommit-checks": "^3.1.0",
-    "husky": "^9.1.5",
-    "lint-staged": "^15.2.9",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "sass": "^1.77.8",
-    "sass-loader": "^16.0.1",
+    "sass": "^1.80.3",
+    "sass-loader": "^16.0.2",
     "stylelint": "^15.11.0",
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
@@ -82,21 +82,15 @@
     "includes/"
   ],
   "lint-staged": {
-    "src/**/*.scss": [
+    "**/*.php": [
+      "composer lint-staged:php"
+    ],
+    "{blocks/**/*.scss,src/**/*.scss}": [
       "npx stylelint --allow-empty-input --fix",
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx stylelint --allow-empty-input --fix"
     ],
-    "blocks/**/*.scss": [
-      "npx stylelint --allow-empty-input --fix",
-      "npx prettier --no-error-on-unmatched-pattern --write",
-      "npx stylelint --allow-empty-input --fix"
-    ],
-    "src/**/*.{js,jsx}": [
-      "npx prettier --no-error-on-unmatched-pattern --write",
-      "npx eslint --no-error-on-unmatched-pattern --fix"
-    ],
-    "blocks/**/*.{js,jsx}": [
+    "{src/**/*.{js,jsx},blocks/**/*.{js,jsx}}": [
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx eslint --no-error-on-unmatched-pattern --fix"
     ]
@@ -236,6 +230,13 @@
       "declaration-property-value-disallowed-list": null,
       "max-nesting-depth": null,
       "order/properties-alphabetical-order": null,
+      "order/order": [
+        "dollar-variables",
+        "custom-properties",
+        "declarations",
+        "at-rules",
+        "rules"
+      ],
       "property-no-unknown": null,
       "property-no-vendor-prefix": null,
       "rule-empty-line-before": [
@@ -269,10 +270,15 @@
       "selector-no-qualifying-type": null,
       "shorthand-property-no-redundant-values": null,
       "value-no-vendor-prefix": null
-    }
+    },
+    "ignoreFiles": [
+      "src/**/abstracts/**/*.scss",
+      "assets/**/abstracts/**/*.scss"
+    ]
   },
   "stylelintIgnore": [
-    "assets/scss/abstract/**/*.scss"
+    "src/**/abstracts/**/*.scss",
+    "assets/**/abstracts/**/*.scss"
   ],
   "eslintConfig": {
     "env": {

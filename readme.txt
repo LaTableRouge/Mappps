@@ -68,8 +68,7 @@ Yes.
 Nope.
 
 = Why can't I see the clustering of markers in Gutenberg? =
-The clustering is kinda broken in back-office, even so It works well in front-office. I believe it's because of the block compilation.
-[Check the issue.](https://github.com/WordPress/gutenberg/issues/64446)
+The clustering is kinda broken in back-office, even so It works well in front-office. It's because of one of library I use.
 
 == Screenshots ==
 

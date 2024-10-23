@@ -1,3 +1,6 @@
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 // -----------------------------------------------------------------------------
 // This file contains very basic styles.
 // -----------------------------------------------------------------------------
@@ -9,7 +12,9 @@
 // See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 //
 
-& {
+.wp-block-mps-mappps {
+  --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
+
   display: grid;
   box-sizing: border-box;
   grid-template: 'main' auto;
@@ -23,8 +28,6 @@
     box-sizing: inherit;
   }
 
-  --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
-
   .responsive-wrapper {
     display: grid;
     position: relative;
@@ -35,11 +38,11 @@
     max-height: var(--mobile-height, 80svh);
     overflow: hidden;
 
-    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
       --is-mobile: red;
     }
 
-    @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+    @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
       grid-template-areas: 'sidebar map';
       grid-template-columns: auto 1fr;
       height: calc(100cqw / (var(--ratio)));

@@ -1,4 +1,10 @@
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 .mappps__loader {
+  --spinner-size: 125px;
+  --color: var(--color-gray-400);
+
   z-index: 9999;
   grid-area: main;
   width: 100%;
@@ -9,14 +15,11 @@
   background-color: var(--color-white);
   user-select: none;
 
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
     height: calc(100cqw / (var(--ratio)));
     max-height: 80svh;
     aspect-ratio: var(--ratio);
   }
-
-  --spinner-size: 125px;
-  --color: var(--color-gray-400);
 
   &[data-has-posts='true'] {
     opacity: 0;

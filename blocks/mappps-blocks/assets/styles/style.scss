@@ -1,24 +1,25 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../../src/helpers/styles/abstracts/functions';
-@import '../../../../src/helpers/styles/abstracts/variables';
-@import '../../../../src/helpers/styles/abstracts/mixins';
-@import '../../../../src/helpers/styles/abstracts/responsive';
+@use 'sass:meta';
+@use '/src/helpers/styles/abstracts/functions';
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/mixins';
+@use '/src/helpers/styles/abstracts/responsive';
 
 .wp-block-mps-mappps-blocks {
   // 2. Vendors
-  @import '../../../../src/helpers/styles/vendors/reset';
+  @include meta.load-css('/src/helpers/styles/vendors/reset');
 
   // 3. Base stuff
-  @import 'base/fonts';
-  @import 'base/root';
-  @import 'base/base';
-  @import 'base/typography';
-  @import 'base/helpers';
+  @include meta.load-css('base/fonts');
+  @include meta.load-css('base/root');
+  @include meta.load-css('base/base');
+  @include meta.load-css('base/typography');
+  @include meta.load-css('base/helpers');
 
   // 4. Components
-  @import 'components/loader';
-  @import 'components/wizard';
-  @import 'components/html-components/checkbox';
-  @import 'components/html-components/button';
+  @include meta.load-css('components/loader');
+  @include meta.load-css('components/wizard');
+  @include meta.load-css('components/html-components/checkbox');
+  @include meta.load-css('components/html-components/button');
 }

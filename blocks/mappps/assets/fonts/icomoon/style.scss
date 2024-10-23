@@ -1,20 +1,20 @@
-@import 'variables';
+@use 'variables';
 
 @font-face {
-  font-family: '#{$icomoon-font-family}';
+  font-family: '#{variables.$icomoon-font-family}';
   font-style: normal;
   font-weight: normal;
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ywyrld') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ywyrld') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ywyrld##{$icomoon-font-family}') format('svg');
+    url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.ttf?ywyrld') format('truetype'),
+    url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.woff?ywyrld') format('woff'),
+    url('#{variables.$icomoon-font-path}/#{variables.$icomoon-font-family}.svg?ywyrld##{variables.$icomoon-font-family}') format('svg');
   font-display: block;
 }
 
 [class^='icon-mappps-'],
 [class*=' icon-mappps-'] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: '#{$icomoon-font-family}' !important;
+  font-family: '#{variables.$icomoon-font-family}' !important;
 
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
@@ -29,198 +29,198 @@
 
 .icon-mappps-list {
   &::before {
-    content: $icon-mappps-list;
+    content: variables.$icon-mappps-list;
   }
 }
 
 .icon-mappps-shrink {
   &::before {
-    content: $icon-mappps-shrink;
+    content: variables.$icon-mappps-shrink;
   }
 }
 
 .icon-mappps-map {
   &::before {
-    content: $icon-mappps-map;
+    content: variables.$icon-mappps-map;
   }
 }
 
 .icon-mappps-enlarge {
   &::before {
-    content: $icon-mappps-enlarge;
+    content: variables.$icon-mappps-enlarge;
   }
 }
 
 .icon-mappps-refresh {
   &::before {
-    content: $icon-mappps-refresh;
+    content: variables.$icon-mappps-refresh;
   }
 }
 
 .icon-mappps-minus {
   &::before {
-    content: $icon-mappps-minus;
+    content: variables.$icon-mappps-minus;
   }
 }
 
 .icon-mappps-sun {
   &::before {
-    content: $icon-mappps-sun;
+    content: variables.$icon-mappps-sun;
   }
 }
 
 .icon-mappps-moon {
   &::before {
-    content: $icon-mappps-moon;
+    content: variables.$icon-mappps-moon;
   }
 }
 
 .icon-mappps-marker {
   &::before {
-    content: $icon-mappps-marker;
+    content: variables.$icon-mappps-marker;
   }
 }
 
 .icon-mappps-geolocation {
   &::before {
-    content: $icon-mappps-geolocation;
+    content: variables.$icon-mappps-geolocation;
   }
 }
 
 .icon-mappps-fullscreen {
   &::before {
-    content: $icon-mappps-fullscreen;
+    content: variables.$icon-mappps-fullscreen;
   }
 }
 
 .icon-mappps-fullscreen-exit {
   &::before {
-    content: $icon-mappps-fullscreen-exit;
+    content: variables.$icon-mappps-fullscreen-exit;
   }
 }
 
 .icon-mappps-new-tab {
   &::before {
-    content: $icon-mappps-new-tab;
+    content: variables.$icon-mappps-new-tab;
   }
 }
 
 .icon-mappps-exit {
   &::before {
-    content: $icon-mappps-exit;
+    content: variables.$icon-mappps-exit;
   }
 }
 
 .icon-mappps-download {
   &::before {
-    content: $icon-mappps-download;
+    content: variables.$icon-mappps-download;
   }
 }
 
 .icon-mappps-upload {
   &::before {
-    content: $icon-mappps-upload;
+    content: variables.$icon-mappps-upload;
   }
 }
 
 .icon-mappps-plus {
   &::before {
-    content: $icon-mappps-plus;
+    content: variables.$icon-mappps-plus;
   }
 }
 
 .icon-mappps-bin {
   &::before {
-    content: $icon-mappps-bin;
+    content: variables.$icon-mappps-bin;
   }
 }
 
 .icon-mappps-pen {
   &::before {
-    content: $icon-mappps-pen;
+    content: variables.$icon-mappps-pen;
   }
 }
 
 .icon-mappps-filter {
   &::before {
-    content: $icon-mappps-filter;
+    content: variables.$icon-mappps-filter;
   }
 }
 
 .icon-mappps-mail {
   &::before {
-    content: $icon-mappps-mail;
+    content: variables.$icon-mappps-mail;
   }
 }
 
 .icon-mappps-phone {
   &::before {
-    content: $icon-mappps-phone;
+    content: variables.$icon-mappps-phone;
   }
 }
 
 .icon-mappps-check {
   &::before {
-    content: $icon-mappps-check;
+    content: variables.$icon-mappps-check;
   }
 }
 
 .icon-mappps-eye {
   &::before {
-    content: $icon-mappps-eye;
+    content: variables.$icon-mappps-eye;
   }
 }
 
 .icon-mappps-cross {
   &::before {
-    content: $icon-mappps-cross;
+    content: variables.$icon-mappps-cross;
   }
 }
 
 .icon-mappps-information {
   &::before {
-    content: $icon-mappps-information;
+    content: variables.$icon-mappps-information;
   }
 }
 
 .icon-mappps-search {
   &::before {
-    content: $icon-mappps-search;
+    content: variables.$icon-mappps-search;
   }
 }
 
 .icon-mappps-arrow-left {
   &::before {
-    content: $icon-mappps-arrow-left;
+    content: variables.$icon-mappps-arrow-left;
   }
 }
 
 .icon-mappps-arrow-right-plain {
   &::before {
-    content: $icon-mappps-arrow-right-plain;
+    content: variables.$icon-mappps-arrow-right-plain;
   }
 }
 
 .icon-mappps-arrow-left-plain {
   &::before {
-    content: $icon-mappps-arrow-left-plain;
+    content: variables.$icon-mappps-arrow-left-plain;
   }
 }
 
 .icon-mappps-arrow-right {
   &::before {
-    content: $icon-mappps-arrow-right;
+    content: variables.$icon-mappps-arrow-right;
   }
 }
 
 .icon-mappps-arrow-bottom {
   &::before {
-    content: $icon-mappps-arrow-bottom;
+    content: variables.$icon-mappps-arrow-bottom;
   }
 }
 
 .icon-mappps-user {
   &::before {
-    content: $icon-mappps-user;
+    content: variables.$icon-mappps-user;
   }
 }
