@@ -24,7 +24,7 @@ msgid "https://github.com/LaTableRouge/Mappps"
 msgstr ""
 
 #. Description of the plugin
-msgid "A plugin that dsiplay maps"
+msgid "A plugin that display maps"
 msgstr ""
 
 #. Author of the plugin

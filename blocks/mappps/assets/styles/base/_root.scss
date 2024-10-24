@@ -64,6 +64,24 @@
     }
   }
 
+  @each $icon, $value in variables.$icons {
+    @if (meta.type-of($value) == 'map') {
+      $dirs: $value;
+
+      @each $dir, $value in $dirs {
+        @if ($dir == 'rtl') {
+          &[dir='rtl'] {
+            --icon-#{$icon}: '#{$value}';
+          }
+        } @else {
+          --icon-#{$icon}: '#{$value}';
+        }
+      }
+    } @else {
+      --icon-#{$icon}: '#{$value}';
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     --nomotion: none;
   }

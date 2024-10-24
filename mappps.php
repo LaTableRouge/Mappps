@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin Name: Mappps
  * Plugin URI: https://github.com/LaTableRouge/Mappps
- * Description: A plugin that dsiplay maps
+ * Description: A plugin that display maps
  * Tags: leaflet, block, openstreetmap, map, maps, map block, store locator
  * Author: LaTableRouge
  * Author URI: https://mlnop.fr/
