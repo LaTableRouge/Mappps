@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use 'sass:meta';
-@use '/src/helpers/styles/abstracts/responsive';
+@use '/src/helpers/styles/abstracts/responsive' as *;
 @use '/src/helpers/styles/abstracts/variables';
 
 // -----------------------------------------------------------------------------
@@ -55,12 +55,30 @@
       $breakpoints: $value;
 
       @each $breakpoint, $value in $breakpoints {
-        @include responsive.media-breakpoint-up($breakpoint) {
+        @include media-breakpoint-up($breakpoint) {
           --#{$custom}: #{$value};
         }
       }
     } @else {
       --#{$custom}: #{$value};
+    }
+  }
+
+  @each $icon, $value in variables.$icons {
+    @if (meta.type-of($value) == 'map') {
+      $dirs: $value;
+
+      @each $dir, $value in $dirs {
+        @if ($dir == 'rtl') {
+          &[dir='rtl'] {
+            --icon-#{$icon}: '#{$value}';
+          }
+        } @else {
+          --icon-#{$icon}: '#{$value}';
+        }
+      }
+    } @else {
+      --icon-#{$icon}: '#{$value}';
     }
   }
 

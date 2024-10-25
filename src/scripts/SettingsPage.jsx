@@ -105,8 +105,16 @@ export default function SettingsPage() {
 
       <h3>{__("Why can't I see the clustering of markers in Gutenberg?", 'mappps')}</h3>
       <p>
-        {__('The clustering is kinda broken in back-office, even so It works well in front-office.', 'mappps')} {__("I believe it's because of the block compilation.", 'mappps')}{' '}
-        <a href="https://github.com/WordPress/gutenberg/issues/64446">{__('Check the issue.', 'mappps')}</a>
+        {__(
+          "The clustering is kinda broken in back-office, even so It works well in front-office. It's because of the compatibility between Leaflet markerCluster and Wordpress.",
+          'mappps'
+        )}
+      </p>
+
+      <h3>{__('Known bug', 'mappps')}</h3>
+      <p>
+        {__('Leaflet is not compatible with Gridjs somehow Gridjs and Leaflet both uses the property "window.L".', 'mappps')}
+        {__("Depending on which library is called first, the other takes priority and the first one don't work.", 'mappps')}
       </p>
 
       <br />

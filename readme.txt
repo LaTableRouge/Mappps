@@ -3,7 +3,7 @@ Contributors: LaTableRouge
 Requires at least: 6.2
 Tested up to: 6.6.1
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -68,7 +68,11 @@ Yes.
 Nope.
 
 = Why can't I see the clustering of markers in Gutenberg? =
-The clustering is kinda broken in back-office, even so It works well in front-office. It's because of one of library I use.
+The clustering is kinda broken in back-office, even so It works well in front-office. It's because of the compatibility between Leaflet markerCluster and Wordpress.
+
+= Known bug =
+Leaflet is not compatible with [Gridjs](https://github.com/grid-js/gridjs) somehow Gridjs and Leaflet both uses the property "window.L".
+Depending on which library is called first, the other takes priority and the first one don't work.
 
 == Screenshots ==
 
@@ -94,6 +98,13 @@ The clustering is kinda broken in back-office, even so It works well in front-of
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.1.2 =
+* Released: September 13, 2024
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.1.2
+* Removing @changey/react-leaflet-markercluster dependency and other useless dependencies
+* CSS compatibility following the deprecation of the @import rule in Dart Sass
+* Better icon handling
 
 = 1.1.1 =
 * Released: September 13, 2024

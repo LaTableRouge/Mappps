@@ -6,15 +6,15 @@
 @use '/src/helpers/styles/abstracts/mixins';
 @use '/src/helpers/styles/abstracts/responsive';
 
+@include meta.load-css('base/root');
+@include meta.load-css('base/base');
+
 .wp-block-mps-mappps-blocks {
   // 2. Vendors
   @include meta.load-css('/src/helpers/styles/vendors/reset');
 
   // 3. Base stuff
-  @include meta.load-css('base/fonts');
-  @include meta.load-css('base/root');
-  @include meta.load-css('base/base');
-  @include meta.load-css('base/typography');
+  @include meta.load-css('/src/helpers/styles/abstracts/fonts');
   @include meta.load-css('base/helpers');
 
   // 4. Components
