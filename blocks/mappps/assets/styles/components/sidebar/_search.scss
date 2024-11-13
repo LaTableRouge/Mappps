@@ -44,6 +44,8 @@
         }
 
         &__button {
+          --button-size: 32px;
+
           width: var(--button-size);
           height: calc(var(--button-size) + 2px);
           padding: 0;
@@ -51,8 +53,6 @@
           border: none;
           background: none;
           cursor: pointer;
-
-          --button-size: 32px;
 
           &:hover {
             opacity: 0.8;

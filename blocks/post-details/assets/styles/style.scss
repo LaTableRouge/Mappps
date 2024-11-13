@@ -1,9 +1,9 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../../src/helpers/styles/abstracts/functions';
-@import '../../../../src/helpers/styles/abstracts/variables';
-@import '../../../../src/helpers/styles/abstracts/mixins';
-@import '../../../../src/helpers/styles/abstracts/responsive';
+@use '/src/helpers/styles/abstracts/functions';
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/mixins';
+@use '/src/helpers/styles/abstracts/responsive' as *;
 
 .wp-block-mps-post-details {
   position: absolute !important;
@@ -28,16 +28,9 @@
   pointer-events: var(--details-pe, none);
   overscroll-behavior: contain;
 
-  &[data-expanded='true'] {
-    @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
-      bottom: 0;
-      width: 100%;
-      max-width: initial;
-      height: 100%;
-    }
-  }
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
+    --details-shadow: none;
 
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
     top: 0;
     bottom: 0;
     left: initial;
@@ -47,8 +40,15 @@
     transform: translateX(var(--details-transform, -100%));
     border-radius: 0;
     border-inline-start: 1px solid var(--color-gray-300);
+  }
 
-    --details-shadow: none;
+  &[data-expanded='true'] {
+    @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
+      bottom: 0;
+      width: 100%;
+      max-width: initial;
+      height: 100%;
+    }
   }
 
   &[data-hidden='false'] {
@@ -76,16 +76,16 @@
 
     .cta-wrapper {
       &__expand {
-        @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+        @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
           display: none;
         }
       }
 
       &__close {
-        margin-left: var(--spacing-xs);
-
         --bg-color: var(--color-secondary);
         --color: var(--color-button-secondary);
+
+        margin-left: var(--spacing-xs);
       }
     }
   }

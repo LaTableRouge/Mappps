@@ -1,13 +1,11 @@
+@use 'sass:meta';
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 .mappps__leaflet {
   display: grid;
 
-  &[data-map-shown='true'] {
-    --map-transform: translateX(0);
-    --map-opacity: 1;
-    --map-pointer-events: auto;
-  }
-
-  @include container-breakpoint-down(mappps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -18,12 +16,18 @@
     inset: 0;
   }
 
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
     grid-area: map;
   }
 
-  @import 'map/marker';
-  @import 'map/popup';
+  @include meta.load-css('map/marker');
+  @include meta.load-css('map/popup');
   // @import 'map/rectangle';
-  @import 'map/mapControls';
+  @include meta.load-css('map/mapControls');
+
+  &[data-map-shown='true'] {
+    --map-transform: translateX(0);
+    --map-opacity: 1;
+    --map-pointer-events: auto;
+  }
 }

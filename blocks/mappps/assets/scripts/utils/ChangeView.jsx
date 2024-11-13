@@ -1,5 +1,4 @@
 import { latLngBounds } from 'leaflet'
-import { GestureHandling } from 'leaflet-gesture-handling'
 import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 
@@ -93,8 +92,8 @@ function ChangeView({
   })
 
   useEffect(() => {
-    map.addHandler('gestureHandling', GestureHandling)
-    map.gestureHandling.enable()
+    // map.addHandler('gestureHandling', GestureHandling)
+    // map.gestureHandling.enable()
     map.invalidateSize()
   }, [map])
 

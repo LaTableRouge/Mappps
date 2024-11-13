@@ -1,3 +1,6 @@
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 .responsive-wrapper {
   &[data-mobile-map-display='true'][data-filters-open='false'] {
     .mappps__toggles-wrapper {
@@ -9,28 +12,28 @@
 }
 
 .mappps__toggles-wrapper {
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
-    display: none;
-  }
-
   position: absolute;
   inset: 0;
   z-index: 9999;
   pointer-events: none;
 
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
+    display: none;
+  }
+
   .toggles-wrapper {
     &__map,
     &__list,
     &__filters {
+      --font-size: var(--font-level-md);
+      --bg-color: var(--color-primary);
+      --color: var(--color-button-primary);
+
       position: absolute;
       width: 40px;
       height: 40px;
       box-shadow: var(--shadow-button);
       pointer-events: all;
-
-      --font-size: var(--font-level-md);
-      --bg-color: var(--color-primary);
-      --color: var(--color-button-primary);
     }
 
     &__map,

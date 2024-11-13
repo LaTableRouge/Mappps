@@ -1,15 +1,15 @@
-@import 'variables';
+@use 'variables' as *;
 
-@font-face {
-  font-family: '#{$icomoon-font-family}';
-  font-style: normal;
-  font-weight: normal;
-  src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?z92r0p') format('truetype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?z92r0p') format('woff'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?z92r0p##{$icomoon-font-family}') format('svg');
-  font-display: block;
-}
+// @font-face {
+//   font-family: '#{$icomoon-font-family}';
+//   src:
+//     url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?e34mkb') format('truetype'),
+//     url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?e34mkb') format('woff'),
+//     url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?e34mkb##{$icomoon-font-family}') format('svg');
+//   font-weight: normal;
+//   font-style: normal;
+//   font-display: block;
+// }
 
 [class^='icon-mappps-'],
 [class*=' icon-mappps-'] {
@@ -27,6 +27,12 @@
   speak: never;
 }
 
+.icon-mappps-map {
+  &::before {
+    content: $icon-mappps-map;
+  }
+}
+
 .icon-mappps-list {
   &::before {
     content: $icon-mappps-list;
@@ -39,9 +45,9 @@
   }
 }
 
-.icon-mappps-map {
+.icon-mappps-logo {
   &::before {
-    content: $icon-mappps-map;
+    content: $icon-mappps-logo;
   }
 }
 

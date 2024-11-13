@@ -1,9 +1,9 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../../src//helpers/styles/abstracts/functions';
-@import '../../../../src//helpers/styles/abstracts/variables';
-@import '../../../../src//helpers/styles/abstracts/mixins';
-@import '../../../../src//helpers/styles/abstracts/responsive';
+@use '/src//helpers/styles/abstracts/functions';
+@use '/src//helpers/styles/abstracts/variables';
+@use '/src//helpers/styles/abstracts/mixins';
+@use '/src//helpers/styles/abstracts/responsive';
 
 html[dir='rtl'] {
   .wp-block-mps-mappps-blocks {
@@ -64,15 +64,16 @@ html[dir='rtl'] {
         }
 
         &__button {
+          --button-size: 32px;
+
           width: var(--button-size);
           height: calc(var(--button-size) + 2px);
           padding: 0;
           transition: var(--nomotion, opacity 0.2s ease-in-out);
           border: none;
           background: none;
+          font-size: 1rem;
           cursor: pointer;
-
-          --button-size: 32px;
 
           &:hover {
             opacity: 0.8;

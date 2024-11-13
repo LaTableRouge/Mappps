@@ -1,23 +1,28 @@
+@use 'sass:map';
+@use 'sass:meta';
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass root properties.
 // -----------------------------------------------------------------------------
 
-& {
+.wp-block-mps-mappps-blocks {
   color-scheme: light; // not sure if it's good but prevent devices to mess up colors
 
-  @each $state-color, $value in $state-colors {
+  @each $state-color, $value in variables.$state-colors {
     --color-#{$state-color}: #{$value};
     --color-rgb-#{$state-color}: #{hex-to-rgb($value)};
   }
 
-  @each $color, $value in $colors {
+  @each $color, $value in variables.$colors {
     --color-#{$color}: #{$value};
     --color-rgb-#{$color}: #{hex-to-rgb($value)};
   }
 
-  @each $font-title, $font-info in $fonts {
-    $font-name: map-get($font-info, 'name');
-    $font-serif: map-get($font-info, 'serif');
+  @each $font-title, $font-info in variables.$fonts {
+    $font-name: map.get($font-info, 'name');
+    $font-serif: map.get($font-info, 'serif');
     @if $font-serif {
       --font-#{$font-title}: #{$font-name}, #{$font-serif};
     } @else {
@@ -25,28 +30,28 @@
     }
   }
 
-  @each $size, $value in $font-sizes {
+  @each $size, $value in variables.$font-sizes {
     --font-level-#{$size}: #{$value};
   }
 
-  @each $radius, $value in $radiuses {
+  @each $radius, $value in variables.$radiuses {
     --radius-#{$radius}: #{$value};
   }
 
-  @each $bp, $value in $grid-breakpoints {
+  @each $bp, $value in variables.$grid-breakpoints {
     --breakpoint-#{$bp}: #{$value};
   }
 
-  @each $spacing, $value in $spacings {
+  @each $spacing, $value in variables.$spacings {
     --spacing-#{$spacing}: #{$value};
   }
 
-  @each $shadow, $value in $shadows {
+  @each $shadow, $value in variables.$shadows {
     --shadow-#{$shadow}: #{$value};
   }
 
-  @each $custom, $value in $customs {
-    @if (type-of($value) == 'map') {
+  @each $custom, $value in variables.$customs {
+    @if (meta.type-of($value) == 'map') {
       $breakpoints: $value;
 
       @each $breakpoint, $value in $breakpoints {
@@ -56,6 +61,24 @@
       }
     } @else {
       --#{$custom}: #{$value};
+    }
+  }
+
+  @each $icon, $value in variables.$icons {
+    @if (meta.type-of($value) == 'map') {
+      $dirs: $value;
+
+      @each $dir, $value in $dirs {
+        @if ($dir == 'rtl') {
+          &[dir='rtl'] {
+            --icon-#{$icon}: '#{$value}';
+          }
+        } @else {
+          --icon-#{$icon}: '#{$value}';
+        }
+      }
+    } @else {
+      --icon-#{$icon}: '#{$value}';
     }
   }
 

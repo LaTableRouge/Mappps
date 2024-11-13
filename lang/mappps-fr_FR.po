@@ -2,17 +2,17 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.1.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-09-13T09:31:46+00:00\n"
-"PO-Revision-Date: 2024-09-13 11:32+0200\n"
+"Project-Id-Version: Mappps 1.1.2\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
+"POT-Creation-Date: 2024-11-13T09:27:00+00:00\n"
+"PO-Revision-Date: 2024-11-13 10:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.5\n"
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
@@ -25,7 +25,7 @@ msgid "https://github.com/LaTableRouge/Mappps"
 msgstr "https://github.com/LaTableRouge/Mappps"
 
 #. Description of the plugin
-msgid "A plugin that dsiplay maps"
+msgid "A plugin that display maps"
 msgstr "Une extension pour afficher des cartes"
 
 #. Author of the plugin
@@ -670,18 +670,33 @@ msgstr ""
 #: build/index.js:1
 msgid ""
 "The clustering is kinda broken in back-office, even so It works well in "
-"front-office."
+"front-office. It's because of the compatibility between Leaflet "
+"markerCluster and Wordpress."
 msgstr ""
 "L'affichage de l'agrégation dans l'interface d’administration est "
-"dysfonctionnelle, mais elle fonctionne correctement sur l'interface publique."
+"dysfonctionnelle, mais elle fonctionne correctement sur l'interface "
+"publique. C'est à cause de la compatibilité entre Leaflet markerCluster et "
+"Wordpress."
 
 #: build/index.js:1
-msgid "I believe it's because of the block compilation."
-msgstr "Je suppose que c'est dû à la compilation du bloc."
+msgid "Known bug"
+msgstr "Bug connu"
 
 #: build/index.js:1
-msgid "Check the issue."
-msgstr "Consulter le problème."
+msgid ""
+"Leaflet is not compatible with Gridjs somehow Gridjs and Leaflet both uses "
+"the property \"window.L\"."
+msgstr ""
+"Leaflet n'est pas compatible avec Gridjs d'une manière ou d'une autre. "
+"Gridjs et Leaflet utilisent tous deux la propriété « window.L »."
+
+#: build/index.js:1
+msgid ""
+"Depending on which library is called first, the other takes priority and the "
+"first one don't work."
+msgstr ""
+"Selon la bibliothèque appelée en premier, l'autre est prioritaire et la "
+"première ne fonctionne pas."
 
 #: build/index.js:1
 msgid ""
@@ -745,7 +760,7 @@ msgstr "Mappps - (version blocs)"
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block description"
 msgid "A bloc that display maps"
-msgstr "Une extension pour afficher des cartes"
+msgstr "Un bloc pour afficher des cartes"
 
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block keyword"
@@ -837,6 +852,12 @@ msgid ""
 msgstr ""
 "Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
 "comme les publications, la barre de recherche, le titre et les filtres."
+
+#~ msgid "I believe it's because of the block compilation."
+#~ msgstr "Je suppose que c'est dû à la compilation du bloc."
+
+#~ msgid "Check the issue."
+#~ msgstr "Consulter le problème."
 
 #~ msgid "Markers will be clustered"
 #~ msgstr "Les marqueurs seront agrégés"

@@ -1,8 +1,4 @@
 .mappps__toggles-wrapper {
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
-    display: none;
-  }
-
   display: flex;
   position: absolute;
   z-index: 9999;
@@ -10,6 +6,10 @@
   bottom: var(--spacing-lg);
   left: 0;
   justify-content: center;
+
+  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+    display: none;
+  }
 
   .toggles-wrapper__button {
     padding: var(--spacing-sm) var(--spacing-md);

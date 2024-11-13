@@ -1,3 +1,7 @@
+@use 'sass:meta';
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/variables';
+
 .mappps__sidebar {
   display: grid;
   position: relative;
@@ -7,7 +11,7 @@
   max-height: inherit;
   background-color: var(--color-white);
 
-  @include container-breakpoint-up(mappps, #{$mobile-breakpoint}) {
+  @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
     z-index: 999;
     grid-area: sidebar;
     width: var(--sidebar-size, 25cqw);
@@ -19,11 +23,11 @@
     border-top: 1px solid var(--color-gray-300);
     overscroll-behavior: contain;
 
-    @import 'sidebar/article';
+    @include meta.load-css('sidebar/article');
   }
 
   .sidebar__heading {
-    @import 'sidebar/search';
-    @import 'sidebar/filters';
+    @include meta.load-css('sidebar/search');
+    @include meta.load-css('sidebar/filters');
   }
 }

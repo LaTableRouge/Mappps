@@ -1,9 +1,9 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../../src/helpers/styles/abstracts/functions';
-@import '../../../../src/helpers/styles/abstracts/variables';
-@import '../../../../src/helpers/styles/abstracts/mixins';
-@import '../../../../src/helpers/styles/abstracts/responsive';
+@use '/src/helpers/styles/abstracts/functions';
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/mixins';
+@use '/src/helpers/styles/abstracts/responsive';
 
 .post-template__posts-wrapper {
   overflow-y: auto;

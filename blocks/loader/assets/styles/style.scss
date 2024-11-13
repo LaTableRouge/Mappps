@@ -1,22 +1,21 @@
 @charset "UTF-8";
 // 1. Configuration and helpers
-@import '../../../../src/helpers/styles/abstracts/functions';
-@import '../../../../src/helpers/styles/abstracts/variables';
-@import '../../../../src/helpers/styles/abstracts/mixins';
-@import '../../../../src/helpers/styles/abstracts/responsive';
-@import '../../../../src/helpers/styles/abstracts/keyframes';
-@import './abstracts/keyframes';
+@use '/src/helpers/styles/abstracts/functions';
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/mixins';
+@use '/src/helpers/styles/abstracts/responsive' as *;
+@use '/src/helpers/styles/abstracts/keyframes';
+@use 'abstracts/keyframes' as keyframes2;
 
 .wp-block-mps-loader {
+  // --spinner-size: 125px;
+  --color: currentColor;
+
   position: absolute !important;
   z-index: 99999;
   transition: var(--nomotion, opacity 0.2s ease-in-out);
   // background-color: var(--wp--preset--color--base);
   inset: 0;
-
-  // --spinner-size: 125px;
-  --color: currentColor;
-
   opacity: var(--loader-opacity, 0);
   pointer-events: var(--loader-pe, none) !important;
 
