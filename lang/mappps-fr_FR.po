@@ -3,9 +3,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.1.2\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Maaaps\n"
-"POT-Creation-Date: 2024-10-25T11:42:13+00:00\n"
-"PO-Revision-Date: 2024-10-25 13:44+0200\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
+"POT-Creation-Date: 2024-11-13T09:27:00+00:00\n"
+"PO-Revision-Date: 2024-11-13 10:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -760,7 +760,7 @@ msgstr "Mappps - (version blocs)"
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block description"
 msgid "A bloc that display maps"
-msgstr "Une extension pour afficher des cartes"
+msgstr "Un bloc pour afficher des cartes"
 
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block keyword"

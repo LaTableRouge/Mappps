@@ -5,6 +5,7 @@
   --spinner-size: 125px;
   --color: var(--color-gray-400);
 
+  position: relative;
   z-index: 9999;
   grid-area: main;
   width: 100%;

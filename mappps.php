@@ -12,7 +12,7 @@ if (!defined('ABSPATH')) {
  * Author: LaTableRouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
- * Tested up to: 6.6.1
+ * Tested up to: 6.7
  * Requires PHP: 8.0
  * Version: 1.1.2
  * Stable tag: 1.1.2

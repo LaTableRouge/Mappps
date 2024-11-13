@@ -1,7 +1,7 @@
 === Mappps ===
 Contributors: LaTableRouge
 Requires at least: 6.2
-Tested up to: 6.6.1
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 1.1.2
 License: GPLv2 or later
@@ -100,7 +100,7 @@ Depending on which library is called first, the other takes priority and the fir
 == Changelog ==
 
 = 1.1.2 =
-* Released: September 13, 2024
+* Released: November 13, 2024
 * https://github.com/LaTableRouge/Mappps/releases/tag/1.1.2
 * Removing @changey/react-leaflet-markercluster dependency and other useless dependencies
 * CSS compatibility following the deprecation of the @import rule in Dart Sass
