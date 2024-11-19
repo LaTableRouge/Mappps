@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
  * Plugin URI: https://github.com/LaTableRouge/Mappps
  * Description: A plugin that display maps
  * Tags: leaflet, block, openstreetmap, map, maps, map block, store locator
- * Author: LaTableRouge
+ * Author: latablerouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
  * Tested up to: 6.7

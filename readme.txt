@@ -1,5 +1,5 @@
 === Mappps ===
-Contributors: LaTableRouge
+Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 7.4
