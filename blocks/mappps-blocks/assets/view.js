@@ -38,6 +38,18 @@ window.addEventListener('DOMContentLoaded', () => {
           response = await response.json()
 
           if (response.length) {
+            // Put ACF/SCF coordinates fields in the corresponding meta fields
+            const records = response.map((record) => {
+              if ('acf' in record) {
+                if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
+                  record.meta.lat = Number(record.acf.mappps_lat)
+                  record.meta.lng = Number(record.acf.mappps_lng)
+                }
+              }
+
+              return record
+            })
+
             const resizeObserver = new ResizeObserver(() => {
               parentBlock.style.setProperty('--wrapper-height', `${parentBlock.clientHeight}px`)
             })
@@ -60,19 +72,19 @@ window.addEventListener('DOMContentLoaded', () => {
             })
 
             // Filters rendering
-            Filters(blockId, parentBlock, response, attributes)
+            Filters(blockId, parentBlock, records, attributes)
 
             // Filters toggle rendering
             FiltersToggle(blockId, parentBlock)
 
             // Map rendering
-            Map(blockId, parentBlock, response)
+            Map(blockId, parentBlock, records)
 
             // SearchBar rendering
             SearchBar(blockId, parentBlock)
 
             // Post Template rendering
-            PostTemplate(blockId, parentBlock, response)
+            PostTemplate(blockId, parentBlock, records)
 
             // Post Details rendering
             PostDetails(blockId, parentBlock)

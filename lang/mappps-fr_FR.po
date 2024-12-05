@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.1.2\n"
+"Project-Id-Version: Mappps 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2024-11-13T09:27:00+00:00\n"
-"PO-Revision-Date: 2024-11-13 10:29+0100\n"
+"POT-Creation-Date: 2024-12-05T13:42:03+00:00\n"
+"PO-Revision-Date: 2024-12-05 14:47+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -29,8 +29,8 @@ msgid "A plugin that display maps"
 msgstr "Une extension pour afficher des cartes"
 
 #. Author of the plugin
-msgid "LaTableRouge"
-msgstr "LaTableRouge"
+msgid "latablerouge"
+msgstr "latablerouge"
 
 #. Author URI of the plugin
 msgid "https://mlnop.fr/"
@@ -618,6 +618,34 @@ msgid ""
 msgstr ""
 "\"Mappps\" et \"Mappps (version blocs)\" ne peuvent coexister sur la même "
 "page. Veuillez choisir l'un ou l'autre."
+
+#: build/index.js:1
+msgid "Advanced Custom Field (ACF/SCF) compatibility"
+msgstr "Compatibilité avec Advanced Custom Field (ACF/SCF)"
+
+#: build/index.js:1
+msgid ""
+"In order to make the plugin work with ACF (or SCF), you'll need to create "
+"new fields for your desired post types."
+msgstr ""
+"Afin de faire fonctionner le plugin avec ACF (ou SCF), vous devrez créer un "
+"nouveau champ pour les types de publications souhaitées."
+
+#: build/index.js:1
+msgid "Go to \"Field groups\" and add a new one:"
+msgstr "Allez dans \"Groupe de champs\" et créez en un nouveau :"
+
+#: build/index.js:1
+msgid ""
+"Then add a new \"Field\" with the type \"Text\" and use \"mappps_lat\" as "
+"field name."
+msgstr ""
+"Puis ajoutez un nouveau \"Champ\" avec le type \"Texte\" et donnez lui le "
+"nom de champs \"mappps_lat\"."
+
+#: build/index.js:1
+msgid "Add another one and name it \"mappps_lng\"."
+msgstr "Ajoutez en un autre et nommez le \"mappps_lng\"."
 
 #: build/index.js:1
 msgid "Can I customize the markers on the map?"

@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -30,6 +30,7 @@ A simple way to add custom maps or store locators to your WordPress posts and pa
 - **Zoom Control**: Adjust the zoom level of your map to fit your display requirements.
 - **Localization Support**: Fully supports localization to cater to a global audience.
 - **Full site editing**: You can edit the posts render directly inside the block.
+- **Advanced Custom Fields compatibility**: You can use ACF/SCF fields instead of native custom fields if needed.
 
 ## Two Block Options
 
@@ -54,6 +55,12 @@ We leverage several high-quality libraries and third-party service providers to 
 - **[React leaflet markercluster](https://www.npmjs.com/package/@changey/react-leaflet-markercluster)**: A powerful plugin for clustering markers on a Leaflet map when using React Leaflet, boosting map performance and enhancing user experience with clustered markers.
 
 == Frequently Asked Questions ==
+
+= Advanced Custom Field (ACF/SCF) compatibility =
+In order to make the plugin work with ACF (or SCF), you'll need to create new fields for your desired post types.
+Go to **Field groups** and add a new one:
+Then add a new **Field** with the type **Text** and use **mappps_lat** as field name.
+Add another one and name it **mappps_lng**.
 
 = Can I customize the markers on the map? =
 Yes, you can customize the marker color and size inside the "Block settings" > "Render settings".
@@ -98,6 +105,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.2.0 =
+* Released: December 5, 2024
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.2.0
+* Adding ACF/SCF compatibility.
 
 = 1.1.2 =
 * Released: November 13, 2024

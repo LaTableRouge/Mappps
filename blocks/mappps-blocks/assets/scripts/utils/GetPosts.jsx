@@ -20,7 +20,19 @@ export default function GetPosts(postType = '', taxonomies = [], categories = []
       resolvedCounter++
       let filteredRecords = []
       if (records.length) {
-        filteredRecords = records.filter((record) => !!record.meta.lat && !!record.meta.lng)
+        // Put ACF/SCF coordinates fields in the corresponding meta fields
+        filteredRecords = records.map((record) => {
+          if ('acf' in record) {
+            if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
+              record.meta.lat = Number(record.acf.mappps_lat)
+              record.meta.lng = Number(record.acf.mappps_lng)
+            }
+          }
+
+          return record
+        })
+
+        filteredRecords = filteredRecords.filter((record) => !!record.meta.lat && !!record.meta.lng)
       }
       globRecords.push(...filteredRecords)
     }

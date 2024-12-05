@@ -91,6 +91,17 @@ export default function SettingsPage() {
       </ul>
 
       <h2 id="faqs">{__('FAQs', 'mappps')}</h2>
+      <h3>{__('Advanced Custom Field (ACF/SCF) compatibility', 'mappps')}</h3>
+      <p>
+        {__("In order to make the plugin work with ACF (or SCF), you'll need to create new fields for your desired post types.", 'mappps')}
+        <br />
+        {__('Go to "Field groups" and add a new one:', 'mappps')}
+        <br />
+        {__('Then add a new "Field" with the type "Text" and use "mappps_lat" as field name.', 'mappps')}
+        <br />
+        {__('Add another one and name it "mappps_lng".', 'mappps')}
+      </p>
+
       <h3>{__('Can I customize the markers on the map?', 'mappps')}</h3>
       <p>{__('Yes, you can customize the marker color and size inside the "Block settings" > "Render settings".', 'mappps')}</p>
 

@@ -35,7 +35,19 @@ window.addEventListener('DOMContentLoaded', () => {
           response = await response.json()
 
           if (response.length) {
-            root.render(<Main attributes={attributes} queriedPosts={response} />)
+            // Put ACF/SCF coordinates fields in the corresponding meta fields
+            const records = response.map((record) => {
+              if ('acf' in record) {
+                if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
+                  record.meta.lat = Number(record.acf.mappps_lat)
+                  record.meta.lng = Number(record.acf.mappps_lng)
+                }
+              }
+
+              return record
+            })
+
+            root.render(<Main attributes={attributes} queriedPosts={records} />)
           }
         })
       }
