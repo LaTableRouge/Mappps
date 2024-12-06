@@ -61,6 +61,7 @@ In order to make the plugin work with ACF (or SCF), you'll need to create new fi
 Go to **Field groups** and add a new one:
 Then add a new **Field** with the type **Text** and use **mappps_lat** as field name.
 Add another one and name it **mappps_lng**.
+In the **Settings** below, go to the **Group Settings** tab and check **Show in REST API**.
 
 = Can I customize the markers on the map? =
 Yes, you can customize the marker color and size inside the "Block settings" > "Render settings".

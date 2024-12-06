@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2024-12-05T13:42:03+00:00\n"
-"PO-Revision-Date: 2024-12-05 14:47+0100\n"
+"POT-Creation-Date: 2024-12-06T07:06:33+00:00\n"
+"PO-Revision-Date: 2024-12-06 08:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -646,6 +646,14 @@ msgstr ""
 #: build/index.js:1
 msgid "Add another one and name it \"mappps_lng\"."
 msgstr "Ajoutez en un autre et nommez le \"mappps_lng\"."
+
+#: build/index.js:1
+msgid ""
+"In the \"Settings\" below, go to the \"Group Settings\" tab and check \"Show "
+"in REST API\"."
+msgstr ""
+"Dans les \"Réglages\" ci-dessous, allez dans l'onglet \"Réglages du groupe\" "
+"et cochez \"Afficher dans l'API REST\"."
 
 #: build/index.js:1
 msgid "Can I customize the markers on the map?"

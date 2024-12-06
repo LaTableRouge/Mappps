@@ -100,6 +100,8 @@ export default function SettingsPage() {
         {__('Then add a new "Field" with the type "Text" and use "mappps_lat" as field name.', 'mappps')}
         <br />
         {__('Add another one and name it "mappps_lng".', 'mappps')}
+        <br />
+        {__('In the "Settings" below, go to the "Group Settings" tab and check "Show in REST API".', 'mappps')}
       </p>
 
       <h3>{__('Can I customize the markers on the map?', 'mappps')}</h3>
