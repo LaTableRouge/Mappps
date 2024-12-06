@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-05T13:42:03+00:00\n"
+"POT-Creation-Date: 2024-12-06T07:06:33+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.9.0\n"
 "X-Domain: mappps\n"
@@ -631,6 +631,10 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Add another one and name it \"mappps_lng\"."
+msgstr ""
+
+#: build/index.js:1
+msgid "In the \"Settings\" below, go to the \"Group Settings\" tab and check \"Show in REST API\"."
 msgstr ""
 
 #: build/index.js:1
