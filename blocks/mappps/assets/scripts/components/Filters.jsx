@@ -54,7 +54,7 @@ export default function Filters({ filtersOpen, setFilters, setFiltersOpen, tempF
         <form
           className="filters-form"
           data-open={filtersOpen}
-          onReset={(e) => {
+          onReset={() => {
             resetFilters()
           }}
           onSubmit={(e) => {

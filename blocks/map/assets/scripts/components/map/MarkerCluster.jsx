@@ -2,8 +2,10 @@ import MarkerClusterGroup from '../../../../../../src/helpers/scripts/MarkerClus
 import Icon from './Icon'
 
 export default function MarkerCluster(markers, size, clusterRef) {
+  const clusterIcon = (cluster) => Icon('cluster', size, cluster, false)
+
   return (
-    <MarkerClusterGroup key={Date.now()} ref={clusterRef} iconCreateFunction={(cluster) => Icon('cluster', size, cluster, false)}>
+    <MarkerClusterGroup key={Date.now()} ref={clusterRef} iconCreateFunction={clusterIcon}>
       {markers}
     </MarkerClusterGroup>
   )

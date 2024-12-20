@@ -1,7 +1,7 @@
 import '../styles/editor.scss'
 
 import { BlockContextProvider, useBlockProps } from '@wordpress/block-editor'
-import { memo, useEffect, useMemo, useState } from '@wordpress/element'
+import { memo, useCallback, useEffect, useMemo, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
 import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
@@ -9,28 +9,32 @@ import PostTemplatePreview from './components/PostTemplatePreview'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetBlocks from './utils/GetBlocks'
 
-export default function Edit({ attributes, clientId, context, isSelected, setAttributes }) {
-  const blockId = context['mps/blockId']
+const MemorizedPostTemplateBlockPreview = memo(PostTemplatePreview)
 
+export default function Edit({ attributes, clientId, context, setAttributes }) {
+  const blockId = context['mppps/blockId']
   const blockProps = useBlockProps()
+  const blocks = GetBlocks(clientId)
 
   const [activeBlockContextId, setActiveBlockContextId] = useState()
   const [posts, setPosts] = useState([])
 
-  useEffect(() => {
-    async function eventSetPosts(e) {
-      await e
+  const handlePostsEvent = useCallback(
+    async (e) => {
       const details = e.detail
       if (details.id === blockId) {
         setPosts(details.posts)
       }
-    }
+    },
+    [blockId]
+  )
 
-    document.addEventListener('mps-queried-posts', eventSetPosts)
+  useEffect(() => {
+    document.addEventListener('mppps-queried-posts', handlePostsEvent)
     return () => {
-      document.removeEventListener('mps-queried-posts', eventSetPosts)
+      document.removeEventListener('mppps-queried-posts', handlePostsEvent)
     }
-  }, [blockId])
+  }, [handlePostsEvent])
 
   const blockContexts = useMemo(
     () =>
@@ -41,29 +45,24 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
     [posts]
   )
 
-  const MemorizedPostTemplateBlockPreview = memo(PostTemplatePreview)
-
-  const blocks = GetBlocks(clientId)
+  const activePostId = activeBlockContextId || blockContexts[0]?.postId
 
   return (
     <nav {...AlterBlockProps(blockProps, attributes)}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
 
       <ul>
-        {blockContexts
-          && blockContexts.map((blockContext) => (
-            <BlockContextProvider key={blockContext.postId} value={blockContext}>
-              {/* Editable block */}
-              {blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId) ? <PostTemplateInnerBlocks /> : null}
-              {/* Other blocks just for the preview */}
-              <MemorizedPostTemplateBlockPreview
-                blockContextId={blockContext.postId}
-                blocks={blocks}
-                isHidden={blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId)}
-                setActiveBlockContextId={setActiveBlockContextId}
-              />
-            </BlockContextProvider>
-          ))}
+        {blockContexts?.map((blockContext) => (
+          <BlockContextProvider key={blockContext.postId} value={blockContext}>
+            {blockContext.postId === activePostId && <PostTemplateInnerBlocks />}
+            <MemorizedPostTemplateBlockPreview
+              blockContextId={blockContext.postId}
+              blocks={blocks}
+              isHidden={blockContext.postId === activePostId}
+              setActiveBlockContextId={setActiveBlockContextId}
+            />
+          </BlockContextProvider>
+        ))}
       </ul>
     </nav>
   )

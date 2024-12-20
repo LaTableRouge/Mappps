@@ -1,9 +1,8 @@
 import { PanelColorSettings } from '@wordpress/block-editor'
+import { memo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-export default function ColorMap(props) {
-  const { defaultValues, setAttributes } = props
-
+function ColorMap({ defaultValues, setAttributes }) {
   return (
     <PanelColorSettings
       colorSettings={[
@@ -26,3 +25,5 @@ export default function ColorMap(props) {
     />
   )
 }
+
+export default memo(ColorMap)

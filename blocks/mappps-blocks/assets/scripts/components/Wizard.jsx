@@ -1,4 +1,5 @@
 import { Placeholder, Spinner } from '@wordpress/components'
+import { memo, useMemo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import SelectCategories from './controls/SelectCategories'
@@ -6,59 +7,48 @@ import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
 
-export default function Wizard({ attributes, postTypes, setAttributes, setQueriedPosts }) {
-  const selectedPostType = attributes.postType
-  const selectedTaxonomies = attributes.selectedTaxonomies
-  const taxonomies = attributes.taxonomies
-  const selectedCategories = attributes.selectedCategories
-
-  // Convert taxonomy slug into rest_base
-  const sanitizedSelectedTaxonomies = []
-  if (selectedTaxonomies.length && taxonomies.length) {
-    selectedTaxonomies.forEach((slug) => {
-      const foundTaxonomy = taxonomies.find((o) => o.slug === slug)
-      if (foundTaxonomy) {
-        sanitizedSelectedTaxonomies.push(foundTaxonomy.rest_base)
-      }
-    })
+function Wizard({ attributes, postTypes, setAttributes, setQueriedPosts }) {
+  if (!postTypes.resolved) {
+    return <Spinner />
   }
 
+  if (!postTypes.types.length) {
+    return __('No post types could be recovered.', 'mappps')
+  }
+
+  const { postType: selectedPostType, selectedCategories, selectedTaxonomies, taxonomies } = attributes
+
+  const sanitizedSelectedTaxonomies = useMemo(() => {
+    if (!selectedTaxonomies.length || !taxonomies.length) return []
+
+    return selectedTaxonomies
+      .map((slug) => {
+        const foundTaxonomy = taxonomies.find((o) => o.slug === slug)
+        return foundTaxonomy?.rest_base
+      })
+      .filter(Boolean)
+  }, [selectedTaxonomies, taxonomies])
+
   return (
-    <>
-      {postTypes.resolved
-        ? (
-            postTypes.types.length
-              ? (
-          <Placeholder
-            className="mappps-blocks__wizard"
-            instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')}
-            label={__('Data source', 'mappps')}
-          >
-            <SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+    <Placeholder instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')} label={__('Data source', 'mappps')}>
+      <SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
-            {!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+      {selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
 
-            {!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />}
+      {selectedTaxonomies.length > 0 && <SelectCategories setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />}
 
-            {!!selectedCategories.length && (
-              <SelectPosts
-                categories={selectedCategories}
-                defaultValue={[]}
-                postType={selectedPostType}
-                setAttributes={setAttributes}
-                setQueriedPosts={setQueriedPosts}
-                taxonomies={sanitizedSelectedTaxonomies}
-              />
-            )}
-          </Placeholder>
-                )
-              : (
-                  __('No post types could be recovered.', 'mappps')
-                )
-          )
-        : (
-        <Spinner />
-          )}
-    </>
+      {selectedCategories.length > 0 && (
+        <SelectPosts
+          categories={selectedCategories}
+          defaultValue={[]}
+          postType={selectedPostType}
+          setAttributes={setAttributes}
+          setQueriedPosts={setQueriedPosts}
+          taxonomies={sanitizedSelectedTaxonomies}
+        />
+      )}
+    </Placeholder>
   )
 }
+
+export default memo(Wizard)

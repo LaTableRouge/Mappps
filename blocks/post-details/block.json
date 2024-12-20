@@ -1,21 +1,21 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/post-details",
+  "name": "mppps/post-details",
   "title": "Post Details",
   "category": "mappps",
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/sidebar"
+    "mppps/sidebar"
   ],
   "description": "Contains the block elements used to render more details from a post, like the title, date, featured image, content or excerpt, and more.",
   "textdomain": "mappps",
   "usesContext": [
-    "mps/postIDs",
-    "mps/postType",
-    "mps/blockId"
+    "mppps/postIDs",
+    "mppps/postType",
+    "mppps/blockId"
   ],
   "supports": {
     "reusable": false,

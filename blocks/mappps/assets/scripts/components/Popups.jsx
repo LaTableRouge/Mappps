@@ -11,7 +11,7 @@ export default function Popups({ isMobileView, popupRef, posts, selectedPost, se
 
   return (
     <div ref={popupRef} className="popups-wrapper" data-expanded={isExpanded}>
-      {posts.map((post, index) => {
+      {posts.map((post) => {
         const title = post.title.rendered
         const excerpt = post.excerpt.rendered
         const sticky = post.sticky

@@ -8,31 +8,28 @@ import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, context, setAttributes }) {
-  const blockId = context['mps/blockId']
-  const categories = context['mps/categories']
-  const taxonomies = context['mps/taxonomies']
+  const { 'mppps/blockId': blockId, 'mppps/categories': categories, 'mppps/taxonomies': taxonomies } = context
 
   const blockProps = useBlockProps()
-
+  const alteredProps = AlterBlockProps(blockProps, attributes)
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    async function eventSetPosts(e) {
-      await e
-      const details = e.detail
-      if (details.id === blockId) {
-        setPosts(details.posts)
+    const handleQueriedPosts = async (e) => {
+      const { id, posts } = e.detail
+      if (id === blockId) {
+        setPosts(posts)
       }
     }
 
-    document.addEventListener('mps-queried-posts', eventSetPosts)
+    document.addEventListener('mppps-queried-posts', handleQueriedPosts)
     return () => {
-      document.removeEventListener('mps-queried-posts', eventSetPosts)
+      document.removeEventListener('mppps-queried-posts', handleQueriedPosts)
     }
   }, [blockId])
 
   return (
-    <div {...AlterBlockProps(blockProps, attributes)}>
+    <div {...alteredProps}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
       <Main blockId={blockId} categories={categories} queriedPosts={posts} taxonomies={taxonomies} />
     </div>

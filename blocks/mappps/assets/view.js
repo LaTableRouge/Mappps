@@ -10,7 +10,7 @@ import { createRoot } from '@wordpress/element'
 import Main from './scripts/main'
 
 window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mps-mappps:not(.is-init)')
+  const blocks = document.querySelectorAll('.wp-block-mppps-mappps:not(.is-init)')
   if (blocks.length) {
     blocks.forEach((block) => {
       block.classList.add('is-init')

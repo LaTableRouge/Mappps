@@ -1,7 +1,7 @@
 export default function renderPostDetails(blockId, parent) {
-  const postChildBlocks = parent.querySelectorAll('.wp-block-mps-post-details')
+  const postChildBlocks = parent.querySelectorAll('.wp-block-mppps-post-details')
   if (postChildBlocks.length) {
-    document.addEventListener('mps-selectedPost', async (e) => {
+    document.addEventListener('mppps-selectedPost', async (e) => {
       await e
       const details = e.detail
       if (details.id === blockId) {
@@ -28,7 +28,7 @@ export default function renderPostDetails(blockId, parent) {
           e.preventDefault()
 
           document.dispatchEvent(
-            new CustomEvent('mps-selectedPost', {
+            new CustomEvent('mppps-selectedPost', {
               detail: {
                 id: blockId,
                 selectedPost: {}
@@ -66,7 +66,7 @@ export default function renderPostDetails(blockId, parent) {
 
             icon.className = expandShrinkButton.dataset[`icon${state}`]
 
-            const parentElement = expandShrinkButton.closest('.wp-block-mps-post-details')
+            const parentElement = expandShrinkButton.closest('.wp-block-mppps-post-details')
             if (parentElement) {
               parentElement.dataset.expanded = stateExpand
             }

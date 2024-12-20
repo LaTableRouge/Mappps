@@ -23,17 +23,23 @@
     "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
     "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
     "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
-    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
-    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx}",
+    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
+    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
     "beautify:all": "npm run prettier:scss && npm run lint:scss && npm run prettier:js && npm run lint:js && composer lint:php",
     "plugin-zip": "wp-scripts plugin-zip",
     "prepare": "husky install && composer install && npm run build && npm run build:blocks"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.5.0",
-    "@commitlint/config-conventional": "^19.5.0",
-    "@wordpress/scripts": "^30.4.0",
-    "browserslist": "^4.24.2",
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@types/wordpress__block-editor": "^11.5.16",
+    "@types/wordpress__blocks": "^12.5.16",
+    "@types/wordpress__components": "^23.8.0",
+    "@types/wordpress__data": "^7.0.0",
+    "@types/wordpress__element": "^2.14.1",
+    "@types/wordpress__i18n": "^3.11.0",
+    "@wordpress/scripts": "^30.7.0",
+    "browserslist": "^4.24.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-config-standard": "^17.1.0",
@@ -47,16 +53,17 @@
     "eslint-plugin-sort-destructure-keys": "^2.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "git-precommit-checks": "^3.1.0",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3",
-    "sass": "^1.80.3",
-    "sass-loader": "^16.0.2",
-    "stylelint": "^15.11.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
+    "prettier": "^3.4.2",
+    "sass": "^1.83.0",
+    "sass-loader": "^16.0.4",
+    "stylelint": "^16.12.0",
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
-    "stylelint-config-sass-guidelines": "^10.0.0",
-    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-sass-guidelines": "^12.1.0",
+    "stylelint-config-standard": "^36.0.1",
     "stylelint-order": "^6.0.4",
+    "typescript": "^5.7.2",
     "validate-branch-name": "^1.3.1"
   },
   "dependencies": {
@@ -84,7 +91,7 @@
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx stylelint --allow-empty-input --fix"
     ],
-    "{src/**/*.{js,jsx},blocks/**/*.{js,jsx}}": [
+    "{src/**/*.{js,jsx,ts,tsx},blocks/**/*.{js,jsx,ts,tsx}}": [
       "npx prettier --no-error-on-unmatched-pattern --write",
       "npx eslint --no-error-on-unmatched-pattern --fix"
     ]
@@ -274,6 +281,36 @@
     "src/**/abstracts/**/*.scss",
     "assets/**/abstracts/**/*.scss"
   ],
+  "tsconfig": {
+    "compilerOptions": {
+      "target": "ES2015",
+      "module": "ESNext",
+      "moduleResolution": "node",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "types": [
+        "react",
+        "react-dom"
+      ],
+      "baseUrl": ".",
+      "paths": {
+        "@/*": [
+          "src/*",
+          "blocks/*"
+        ]
+      }
+    },
+    "include": [
+      "**/*.ts",
+      "**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  },
   "eslintConfig": {
     "env": {
       "browser": true,
@@ -282,7 +319,9 @@
     "extends": [
       "standard",
       "eslint:recommended",
-      "plugin:react/recommended"
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/eslint-recommended",
+      "plugin:@typescript-eslint/recommended"
     ],
     "settings": {
       "react": {
@@ -291,7 +330,9 @@
     },
     "parserOptions": {
       "ecmaFeatures": {
-        "jsx": true
+        "jsx": true,
+        "ts": true,
+        "tsx": true
       },
       "sourceType": "module"
     },
@@ -306,7 +347,8 @@
       "react",
       "unused-imports",
       "simple-import-sort",
-      "sort-destructure-keys"
+      "sort-destructure-keys",
+      "@typescript-eslint"
     ],
     "rules": {
       "object-shorthand": 0,

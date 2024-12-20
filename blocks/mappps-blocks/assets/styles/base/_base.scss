@@ -12,7 +12,7 @@
 // See: https://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
 //
 
-.wp-block-mps-mappps-blocks {
+.wp-block-mppps-mappps-blocks {
   --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
 
   display: grid;
@@ -32,7 +32,7 @@
       --is-mobile: red;
     }
 
-    [class*='wp-block-mps-'],
+    [class*='wp-block-mppps-'],
     .details-wrapper {
       margin-block-start: initial;
       margin-block-end: initial;

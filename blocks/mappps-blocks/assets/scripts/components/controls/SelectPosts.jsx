@@ -26,35 +26,24 @@ export default function SelectPosts({ categories, defaultValue, postType, setAtt
     }
   }, [resolved])
 
-  if (resolved) {
-    return (
-      <>
-        {posts.length
-          ? (
-          <form
-            role="form"
-            onSubmit={(e) => {
-              e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const selectedPosts = Array.from(e.target.posts.selectedOptions, (option) => option.value)
+    setAttributes({ selectedPosts })
+  }
 
-              const selectedPosts = Array.from(e.target.posts.selectedOptions, (option) => option.value)
-              setAttributes({
-                selectedPosts
-              })
-            }}
-          >
-            <SelectControl multiple defaultValue={defaultValue} label={__('Posts', 'mappps')} name="posts" options={options} />
-
-            <Button type="submit" variant="primary">
-              {__('Confirm selection', 'mappps')}
-            </Button>
-          </form>
-            )
-          : (
-              __('No posts could be recovered.', 'mappps')
-            )}
-      </>
-    )
-  } else {
+  if (!resolved) {
     return <Spinner />
   }
+  if (!posts.length) {
+    return __('No posts could be recovered.', 'mappps')
+  }
+  return (
+    <form role="form" onSubmit={handleSubmit}>
+      <SelectControl multiple defaultValue={defaultValue} label={__('Posts', 'mappps')} name="posts" options={options} />
+      <Button type="submit" variant="primary">
+        {__('Confirm selection', 'mappps')}
+      </Button>
+    </form>
+  )
 }

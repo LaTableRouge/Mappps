@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/mappps",
+  "name": "mppps/mappps",
   "title": "Mappps",
   "category": "mappps",
   "icon": "block-default",
@@ -174,7 +174,7 @@
   },
   "textdomain": "mappps",
   "keywords": [
-    "mps",
+    "mppps",
     "maps",
     "leaflet",
     "mappps"

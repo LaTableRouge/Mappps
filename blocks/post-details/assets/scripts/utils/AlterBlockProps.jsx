@@ -1,7 +1,13 @@
 export default function AlterBlockProps(blockProps = {}, attributes) {
-  blockProps.style = {
-    ...blockProps.style,
-    '--details-size': attributes.selectedDetailsSize
+  if (!attributes?.selectedDetailsSize) {
+    return blockProps
   }
-  return blockProps
+
+  return {
+    ...blockProps,
+    style: {
+      ...blockProps.style,
+      '--details-size': attributes.selectedDetailsSize
+    }
+  }
 }

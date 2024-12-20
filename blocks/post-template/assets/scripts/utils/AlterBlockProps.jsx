@@ -1,7 +1,13 @@
 export default function AlterBlockProps(blockProps = {}, attributes) {
-  blockProps.style = {
-    ...blockProps.style,
-    '--bg-hover-color': attributes.bgHoverColor
+  if (!attributes?.bgHoverColor) {
+    return blockProps
   }
-  return blockProps
+
+  return {
+    ...blockProps,
+    style: {
+      ...blockProps.style,
+      '--bg-hover-color': attributes.bgHoverColor
+    }
+  }
 }

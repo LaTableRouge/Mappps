@@ -23,7 +23,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     let innerBlocksAttributes = {}
     if (innerBlocks.length) {
       innerBlocks.forEach(({ attributes, name }) => {
-        if (name === 'mps/sidebar' || name === 'mps/post-details') {
+        if (name === 'mppps/sidebar' || name === 'mppps/post-details') {
           innerBlocksAttributes = { ...innerBlocksAttributes, ...attributes }
         }
       })
@@ -58,7 +58,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 
     if (posts.length) {
       document.dispatchEvent(
-        new CustomEvent('mps-queried-posts', {
+        new CustomEvent('mppps-queried-posts', {
           detail: {
             id: attributes.blockId,
             posts
@@ -90,7 +90,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
           style={{ '--wrapper-height': `${wrapperHeight}px` }}
         >
           <InnerBlocks
-            template={[['mps/loader'], ['mps/sidebar', {}], ['mps/map', {}], ['mps/post-details', {}], ['mps/filters', {}], ['mps/mobile-toggles', {}]]}
+            template={[['mppps/loader'], ['mppps/sidebar', {}], ['mppps/map', {}], ['mppps/post-details', {}], ['mppps/filters', {}], ['mppps/mobile-toggles', {}]]}
             templateLock="all"
           />
         </div>

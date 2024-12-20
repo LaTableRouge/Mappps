@@ -1,19 +1,19 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/mobile-toggles",
+  "name": "mppps/mobile-toggles",
   "title": "Mobile toggles",
   "category": "mappps",
   "description": "Contains mobile toggles buttons.",
   "textdomain": "mappps",
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "usesContext": [
-    "mps/blockId"
+    "mppps/blockId"
   ],
   "supports": {
     "reusable": false,

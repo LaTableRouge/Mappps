@@ -4,146 +4,123 @@ import FilterPosts from '../utils/FilterPosts'
 import GetFilterCount from '../utils/GetFiltersCount'
 
 export default function Filters({ filtersOpen, posts, queriedPosts, searchValue, setFilters, setFiltersCount, setFiltersOpen, setPosts, tempFilters }) {
-  const handleChange = (e, filtersList) => {
-    const tempFilters = { ...filtersList } // reconstruct a new object to not alter the one passed by the parameters
+  const handleTaxonomyChange = (e, taxonomy) => {
+    const updatedFilters = { ...tempFilters }
     const isChecked = e.checked
 
-    const searchedInfos = e.id.split('---')
-    const searchedTaxonomy = searchedInfos[0]
-    const searchedCategory = searchedInfos[1]
-    if (searchedCategory) {
-      const categoryIndex = tempFilters[searchedTaxonomy].categories.findIndex((category) => category.id === Number(searchedCategory))
+    updatedFilters[taxonomy].categories = updatedFilters[taxonomy].categories.map((category) => ({
+      ...category,
+      checked: isChecked
+    }))
 
-      tempFilters[searchedTaxonomy].categories[categoryIndex].checked = isChecked
-    } else {
-      const categories = tempFilters[searchedTaxonomy].categories
-
-      tempFilters[searchedTaxonomy].categories = categories.map((category) => {
-        category.checked = isChecked
-        return category
-      })
-    }
-
-    setFilters(tempFilters)
-
-    setPosts(FilterPosts(posts, tempFilters, searchValue))
-    setFiltersCount(GetFilterCount(tempFilters))
+    updateFilters(updatedFilters)
   }
 
-  const resetFilters = () => {
-    for (const key in tempFilters) {
-      if (Object.hasOwnProperty.call(tempFilters, key)) {
-        const taxonomy = tempFilters[key]
-        taxonomy.checked = false
+  const handleCategoryChange = (e, taxonomy, categoryId) => {
+    const updatedFilters = { ...tempFilters }
+    const categoryIndex = updatedFilters[taxonomy].categories.findIndex((category) => category.id === Number(categoryId))
 
-        let categories = taxonomy.categories
-        categories = categories.map((category) => {
-          if (category.checked) {
-            category.checked = false
-          }
-          return category
-        })
-      }
+    if (categoryIndex !== -1) {
+      updatedFilters[taxonomy].categories[categoryIndex].checked = e.checked
+      updateFilters(updatedFilters)
     }
+  }
 
-    setFilters(tempFilters)
+  const updateFilters = (filters) => {
+    setFilters(filters)
+    setPosts(FilterPosts(posts, filters, searchValue))
+    setFiltersCount(GetFilterCount(filters))
+  }
+
+  const handleReset = () => {
+    const resetFilters = Object.entries(tempFilters).reduce((acc, [key, taxonomy]) => {
+      acc[key] = {
+        ...taxonomy,
+        checked: false,
+        categories: taxonomy.categories.map((category) => ({
+          ...category,
+          checked: false
+        }))
+      }
+      return acc
+    }, {})
+
+    setFilters(resetFilters)
     setFiltersCount(0)
-    setPosts(FilterPosts(queriedPosts, tempFilters, searchValue))
+    setPosts(FilterPosts(queriedPosts, resetFilters, searchValue))
+  }
+
+  const handleClose = (e) => {
+    e.preventDefault()
+    setFiltersOpen(false)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setFiltersOpen(false)
+  }
+
+  if (!Object.keys(tempFilters).length) {
+    return null
   }
 
   const isTaxonomyChecked = (taxonomy) => {
-    const checkedCategories = taxonomy.categories.filter((e) => e.checked)
-    return checkedCategories.length === taxonomy.categories.length
+    return taxonomy.categories.every((category) => category.checked)
   }
 
   return (
-    <>
-      {!!Object.keys(tempFilters).length && (
-        <form
-          className="filters-form"
-          data-open={filtersOpen}
-          onReset={(e) => {
-            resetFilters()
-          }}
-          onSubmit={(e) => {
-            e.preventDefault()
-
-            setFiltersOpen(false)
-          }}
+    <form className="filters-form" data-open={filtersOpen} onReset={handleReset} onSubmit={handleSubmit}>
+      <div className="filters-form__header">
+        <div className="header__title">{__('Filters', 'mappps')}</div>
+        <button
+          aria-label={__('Close filters', 'mappps')}
+          className="custom-button custom-button__only-icon header__close"
+          title={__('Close filters', 'mappps')}
+          type="button"
+          onClick={handleClose}
         >
-          <div className="filters-form__header">
-            <div className="header__title">{__('Filters', 'mappps')}</div>
-            <button
-              aria-label={__('Close filters', 'mappps')}
-              className="custom-button custom-button__only-icon header__close"
-              title={__('Close filters', 'mappps')}
-              type="button"
-              onClick={(e) => {
-                e.preventDefault()
+          <span className="icon-mappps-cross" />
+          <span className="screen-reader-text">{__('Close filters', 'mappps')}</span>
+        </button>
+      </div>
 
-                setFiltersOpen(false)
-              }}
-            >
-              <span className="icon-mappps-cross"></span>
-              <span className="screen-reader-text">{__('Close filters', 'mappps')}</span>
-            </button>
-          </div>
+      <ul className="filters-form__list">
+        {Object.entries(tempFilters).map(([taxonomy, data], index) => (
+          <li key={index} className="list__element">
+            <label htmlFor={taxonomy}>
+              <input checked={isTaxonomyChecked(data)} id={taxonomy} name={taxonomy} type="checkbox" onChange={(e) => handleTaxonomyChange(e.target, taxonomy)} />
+              <span>{data.name}</span>
+            </label>
 
-          <ul className="filters-form__list">
-            {Object.entries(tempFilters).map(([key, taxonomy], i) => (
-              <li key={i} className="list__element">
-                <label htmlFor={key}>
-                  <input
-                    checked={isTaxonomyChecked(taxonomy)}
-                    id={key}
-                    name={key}
-                    type="checkbox"
-                    onChange={(e) => {
-                      handleChange(e.target, tempFilters)
-                      // e.preventDefault()
-                    }}
-                  />
-                  <span>{taxonomy.name}</span>
-                </label>
+            <ul className="list__sublist">
+              {data.categories.map((category, catIndex) => (
+                <li key={catIndex} className="list__element">
+                  <label htmlFor={`${taxonomy}---${category.id}`}>
+                    <input
+                      checked={category.checked ?? false}
+                      id={`${taxonomy}---${category.id}`}
+                      name={`${taxonomy}---${category.id}`}
+                      type="checkbox"
+                      onChange={(e) => handleCategoryChange(e.target, taxonomy, category.id)}
+                    />
+                    <span>{category.name}</span>
+                  </label>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
 
-                <ul className="list__sublist">
-                  {taxonomy.categories.map((category, i) => (
-                    <li key={i} className="list__element">
-                      <label htmlFor={`${key}---${category.id}`}>
-                        <input
-                          checked={category.checked ?? false}
-                          id={`${key}---${category.id}`}
-                          name={`${key}---${category.id}`}
-                          type="checkbox"
-                          onChange={(e) => {
-                            handleChange(e.target, tempFilters)
-                            // e.preventDefault()
-                          }}
-                        />
-                        <span>{category.name}</span>
-                      </label>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ul>
+      <div className="filters-form__footer">
+        <button aria-label={__('Reset', 'mappps')} className="custom-button footer__reset" title={__('Reset', 'mappps')} type="reset">
+          {__('Reset', 'mappps')}
+        </button>
 
-          <div className="filters-form__footer">
-            <button aria-label={__('Reset', 'mappps')} className="custom-button footer__reset" title={__('Reset', 'mappps')} type="reset">
-              {__('Reset', 'mappps')}
-              {/* <span className="icon-mappps-cross"></span>
-              <span className="screen-reader-text">{__('Reset', 'mappps')}</span> */}
-            </button>
-
-            <button aria-label={__('Filter', 'mappps')} className="custom-button footer__submit" title={__('Filter', 'mappps')} type="submit">
-              {__('Filter', 'mappps')}
-              {/* <span className='icon-mappps-filter'></span> */}
-              {/* <span className="screen-reader-text">{__('Filter', 'mappps')}</span> */}
-            </button>
-          </div>
-        </form>
-      )}
-    </>
+        <button aria-label={__('Filter', 'mappps')} className="custom-button footer__submit" title={__('Filter', 'mappps')} type="submit">
+          {__('Filter', 'mappps')}
+        </button>
+      </div>
+    </form>
   )
 }

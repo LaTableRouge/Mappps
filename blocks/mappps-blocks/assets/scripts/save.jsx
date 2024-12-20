@@ -3,7 +3,7 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { sortObject } from '../../../../src/helpers/scripts/functions'
 import AlterBlockProps from './utils/AlterBlockProps'
 
-export default function Save({ attributes, clientId }) {
+export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
 
   return (

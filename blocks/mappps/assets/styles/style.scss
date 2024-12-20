@@ -10,7 +10,7 @@
 @use 'abstracts/keyframes' as keyframes2;
 
 html[dir='rtl'] {
-  .wp-block-mps-mappps {
+  .wp-block-mppps-mappps {
     .mappps__sidebar .sidebar__heading .sidebar__search-wrapper .search-wrapper__form .form__button--submit {
       border-top-left-radius: var(--radius-md);
       border-top-right-radius: var(--radius-md);
@@ -24,7 +24,7 @@ html[dir='rtl'] {
 @include meta.load-css('base/base');
 @include meta.load-css('base/typography');
 
-.wp-block-mps-mappps {
+.wp-block-mppps-mappps {
   // 2. Vendors
   @include meta.load-css('/src/helpers/styles/vendors/reset');
 

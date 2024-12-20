@@ -1,5 +1,6 @@
 import { InspectorControls } from '@wordpress/block-editor'
 import { PanelBody } from '@wordpress/components'
+import { memo, useMemo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 import ColorMap from './controls/ColorMap'
@@ -8,42 +9,47 @@ import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
 
-export default function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
-  const selectedPostType = attributes.postType
-  const selectedPosts = attributes.selectedPosts
-  const selectedTaxonomies = attributes.selectedTaxonomies
-  const taxonomies = attributes.taxonomies
-  const selectedCategories = attributes.selectedCategories
-  const isClustered = attributes.isClustered
-  const selectedPrimaryColor = attributes.selectedPrimaryColor
-  const selectedSecondaryColor = attributes.selectedSecondaryColor
-  const displaySearch = attributes.displaySearch
-  const limitedSearch = attributes.limitedSearch
-
-  // Convert taxonomy slug into rest_base
-  const sanitizedSelectedTaxonomies = []
-  if (selectedTaxonomies.length && taxonomies.length) {
-    selectedTaxonomies.forEach((slug) => {
-      const foundTaxonomy = taxonomies.find((o) => o.slug === slug)
-      if (foundTaxonomy) {
-        sanitizedSelectedTaxonomies.push(foundTaxonomy.rest_base)
-      }
-    })
-  }
-
+function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
   if (!postTypes.resolved) {
     return false
   }
 
+  const {
+    displaySearch,
+    isClustered,
+    limitedSearch,
+    postType: selectedPostType,
+    selectedCategories,
+    selectedPosts,
+    selectedPrimaryColor,
+    selectedSecondaryColor,
+    selectedTaxonomies,
+    taxonomies
+  } = attributes
+
+  const sanitizedSelectedTaxonomies = useMemo(() => {
+    if (!selectedTaxonomies.length || !taxonomies.length) return []
+
+    return selectedTaxonomies
+      .map((slug) => {
+        const foundTaxonomy = taxonomies.find((o) => o.slug === slug)
+        return foundTaxonomy?.rest_base
+      })
+      .filter(Boolean)
+  }, [selectedTaxonomies, taxonomies])
+
   return (
     <InspectorControls>
-      <PanelBody initialOpen={true} title={__('Data settings', 'mappps')}>
-        {!!postTypes.types.length && <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
-        {!!selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
-        {!!selectedTaxonomies.length && (
+      <PanelBody initialOpen title={__('Data source', 'mappps')}>
+        <SelectPostType defaultValue={selectedPostType} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+
+        {selectedPostType && <SelectTaxonomies defaultValue={selectedTaxonomies} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
+
+        {selectedTaxonomies.length > 0 && (
           <SelectCategories defaultValue={selectedCategories} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />
         )}
-        {!!selectedCategories.length && (
+
+        {selectedCategories.length > 0 && (
           <SelectPosts
             categories={selectedCategories}
             defaultValue={selectedPosts}
@@ -55,19 +61,19 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
         )}
       </PanelBody>
 
-      {!!selectedPosts.length && (
-        <>
-          <ColorMap
-            defaultValues={{
-              primary: selectedPrimaryColor,
-              secondary: selectedSecondaryColor
-            }}
-            hasSearchColor={displaySearch && !limitedSearch}
-            isClustered={isClustered}
-            setAttributes={setAttributes}
-          />
-        </>
+      {selectedPosts.length > 0 && (
+        <ColorMap
+          defaultValues={{
+            primary: selectedPrimaryColor,
+            secondary: selectedSecondaryColor
+          }}
+          hasSearchColor={displaySearch && !limitedSearch}
+          isClustered={isClustered}
+          setAttributes={setAttributes}
+        />
       )}
     </InspectorControls>
   )
 }
+
+export default memo(Controls)

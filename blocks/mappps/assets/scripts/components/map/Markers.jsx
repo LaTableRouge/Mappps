@@ -12,7 +12,7 @@ export default function Markers(posts, size, markerRefs, postRefs, setSelectedPo
         ref={markerRefs.current[index]}
         data={post}
         eventHandlers={{
-          click: (e) => {
+          click: () => {
             if (post !== selectedPost) {
               // Close the filters
               setFiltersOpen(false)

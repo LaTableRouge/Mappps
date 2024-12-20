@@ -1,7 +1,7 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/loader",
+  "name": "mppps/loader",
   "title": "Loader",
   "category": "mappps",
   "description": "Contains the global loader.",
@@ -23,13 +23,13 @@
     }
   },
   "ancestor": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "usesContext": [
-    "mps/blockId"
+    "mppps/blockId"
   ],
   "attributes": {
     "selectedSpinnerSize": {

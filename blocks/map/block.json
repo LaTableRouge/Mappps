@@ -1,19 +1,19 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/map",
+  "name": "mppps/map",
   "title": "Map",
   "category": "mappps",
   "description": "Contains the map.",
   "textdomain": "mappps",
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/mappps-block"
+    "mppps/mappps-block"
   ],
   "usesContext": [
-    "mps/blockId"
+    "mppps/blockId"
   ],
   "supports": {
     "reusable": false,

@@ -12,7 +12,14 @@ import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
-const Map = ({
+const MAP_DEFAULTS = {
+  doubleClickZoom: false,
+  scrollWheelZoom: false,
+  zoomControl: false,
+  zoomSnap: 0.1
+}
+
+export default function MapEdit({
   boundsPadding,
   isGeolocated,
   isMobileView,
@@ -26,7 +33,7 @@ const Map = ({
   setSelectedPost,
   setSelectedSearchResult,
   tiles
-}) => {
+}) {
   const markerRefs = useRef([])
   markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
@@ -37,22 +44,20 @@ const Map = ({
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
       return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation)
-    } else {
-      return null
     }
-  }, [geolocationCoordinates])
+    return null
+  }, [geolocationCoordinates, isGeolocated])
 
   const refMarkerSearch = useRef(null)
   const markerSearchMemo = useMemo(() => {
     if (Object.keys(selectedSearchResult).length) {
       return MarkerSearch(selectedSearchResult, refMarkerSearch)
-    } else {
-      return null
     }
+    return null
   }, [selectedSearchResult])
 
   return (
-    <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
+    <MapContainer {...MAP_DEFAULTS} maxZoom={maxZoom}>
       <ChangeView
         boundsPadding={boundsPadding}
         isMobileView={isMobileView}
@@ -78,16 +83,9 @@ const Map = ({
         setSelectedSearchResult={setSelectedSearchResult}
       />
 
-      {/* Posts markers */}
       {markers}
-
-      {/* Geolocation marker */}
       {markerGeolocationMemo}
-
-      {/* Search marker */}
       {markerSearchMemo}
     </MapContainer>
   )
 }
-
-export default Map

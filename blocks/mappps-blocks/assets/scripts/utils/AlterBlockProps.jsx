@@ -1,21 +1,29 @@
 import { isColorLight } from '../../../../../src/helpers/scripts/functions'
 
 export default function AlterBlockProps(blockProps = {}, attributes) {
-  blockProps.style = {
-    ...blockProps.style,
-    '--color-primary': attributes.selectedPrimaryColor,
-    '--color-secondary': attributes.selectedSecondaryColor,
-    '--color-button-primary': isColorLight(attributes.selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
-    '--color-button-secondary': isColorLight(attributes.selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
-    '--sidebar-size': attributes.sharedAttributes?.selectedSidebarSize,
-    '--details-size': attributes.sharedAttributes?.selectedDetailsSize
-  }
-  if (blockProps.style.aspectRatio) {
-    if (blockProps.style.aspectRatio !== 'auto') {
-      blockProps.style['--aspect-ratio'] = blockProps.style.aspectRatio
-    }
-    delete blockProps.style.aspectRatio
+  if (!attributes) {
+    return blockProps
   }
 
-  return blockProps
+  const { selectedPrimaryColor, selectedSecondaryColor, sharedAttributes } = attributes
+
+  const style = {
+    ...blockProps.style,
+    '--color-primary': selectedPrimaryColor,
+    '--color-secondary': selectedSecondaryColor,
+    '--color-button-primary': isColorLight(selectedPrimaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
+    '--color-button-secondary': isColorLight(selectedSecondaryColor, 170) === 'light' ? 'var(--color-gray-700)' : 'var(--color-white)',
+    '--sidebar-size': sharedAttributes?.selectedSidebarSize,
+    '--details-size': sharedAttributes?.selectedDetailsSize
+  }
+
+  // Handle aspect ratio
+  if (blockProps.style?.aspectRatio && blockProps.style.aspectRatio !== 'auto') {
+    style['--aspect-ratio'] = blockProps.style.aspectRatio
+  }
+
+  return {
+    ...blockProps,
+    style
+  }
 }

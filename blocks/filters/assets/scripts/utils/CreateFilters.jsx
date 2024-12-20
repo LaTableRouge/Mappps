@@ -1,43 +1,34 @@
+/* eslint-disable camelcase */
 export default function CreateFilters(categories, taxonomies, posts) {
-  const filtersObject = {}
+  if (!taxonomies?.length || !Object.keys(categories)?.length || !posts?.length) {
+    return {}
+  }
 
-  if (taxonomies.length && Object.keys(categories).length && posts.length) {
-    // eslint-disable-next-line camelcase
-    taxonomies.forEach(({ name, rest_base, slug }) => {
-      const associatedCategories = categories[slug]
+  return taxonomies.reduce((filtersObject, { name, rest_base, slug }) => {
+    const associatedCategories = categories[slug]
+    if (!associatedCategories?.length) return filtersObject
 
-      posts.forEach((post) => {
-        // eslint-disable-next-line camelcase
-        const postAssociatedCategories = post[rest_base]
-        if (postAssociatedCategories.length && associatedCategories && associatedCategories.length) {
-          associatedCategories.forEach((category) => {
-            if (postAssociatedCategories.includes(category.id)) {
-              // eslint-disable-next-line camelcase
-              if (!filtersObject[rest_base]) {
-                // eslint-disable-next-line camelcase
-                filtersObject[rest_base] = {
-                  name,
-                  slug
-                }
-              }
+    posts.forEach((post) => {
+      const postCategories = post[rest_base]
+      if (!postCategories?.length) return
 
-              // eslint-disable-next-line camelcase
-              if (!filtersObject[rest_base].categories) {
-                // eslint-disable-next-line camelcase
-                filtersObject[rest_base].categories = []
-              }
+      associatedCategories.forEach((category) => {
+        if (!postCategories.includes(category.id)) return
 
-              // eslint-disable-next-line camelcase
-              if (!filtersObject[rest_base].categories.includes(category)) {
-                // eslint-disable-next-line camelcase
-                filtersObject[rest_base].categories.push(category)
-              }
-            }
-          })
+        if (!filtersObject[rest_base]) {
+          filtersObject[rest_base] = {
+            name,
+            slug,
+            categories: []
+          }
+        }
+
+        if (!filtersObject[rest_base].categories.includes(category)) {
+          filtersObject[rest_base].categories.push(category)
         }
       })
     })
-  }
 
-  return filtersObject
+    return filtersObject
+  }, {})
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-function mppps_register_coordinates_field() {
+function mppps_register_coordinates_field(): void {
     $post_types = get_post_types(['show_in_rest' => true]);
     foreach ($post_types as $post_type) {
         // Only register the meta field if the post type supports the editor, custom fields, and revisions.

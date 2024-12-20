@@ -36,7 +36,7 @@ export default function Search({ limitedSearch, setMobileIsMapDisplayed, setSear
       <form
         className="search-wrapper__form"
         role="search"
-        onReset={(e) => {
+        onReset={() => {
           // e.preventDefault()
 
           resetForm()

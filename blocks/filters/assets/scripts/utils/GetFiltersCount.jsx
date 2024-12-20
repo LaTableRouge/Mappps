@@ -1,9 +1,3 @@
-export default function GetFilterCount(tempFilters = []) {
-  tempFilters = Object.entries(tempFilters)
-
-  return tempFilters
-    .map(([key, taxonomy]) => {
-      return taxonomy.categories.filter((e) => e.checked)
-    })
-    .flat().length
+export default function GetFilterCount(filters = {}) {
+  return Object.values(filters).reduce((count, { categories }) => count + categories.filter((category) => category.checked).length, 0)
 }

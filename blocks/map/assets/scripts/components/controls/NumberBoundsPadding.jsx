@@ -2,6 +2,10 @@ import { __experimentalNumberControl as NumberControl } from '@wordpress/compone
 import { __ } from '@wordpress/i18n'
 
 export default function InputBoundsPadding({ defaultValue, setAttributes }) {
+  const handleChange = (value) => {
+    setAttributes({ selectedBoundsPadding: value })
+  }
+
   return (
     <NumberControl
       help={__('The padding value for the bounds of the map', 'mappps')}
@@ -9,9 +13,7 @@ export default function InputBoundsPadding({ defaultValue, setAttributes }) {
       label={__('Bounds padding', 'mappps')}
       min={0}
       value={defaultValue}
-      onChange={(value) => {
-        setAttributes({ selectedBoundsPadding: value })
-      }}
+      onChange={handleChange}
     />
   )
 }

@@ -1,25 +1,28 @@
 import { useSelect } from '@wordpress/data'
+import { useMemo } from '@wordpress/element'
 
-// Get all the taxonomies by post types
 export default function GetTaxonomies(postType = '') {
-  let fetchedTaxonomies = useSelect(
-    (select) => {
-      const { getTaxonomies } = select('core')
-      return getTaxonomies({ type: postType })
-    },
-    [postType]
-  )
+  const fetchedTaxonomies = useSelect((select) => select('core').getTaxonomies({ type: postType }), [postType])
 
-  let resolved = false
+  const result = useMemo(() => {
+    if (!fetchedTaxonomies) {
+      return {
+        taxonomies: null,
+        resolved: false
+      }
+    }
 
-  if (fetchedTaxonomies !== null) {
-    resolved = true
-  }
+    /* eslint-disable camelcase */
+    return {
+      taxonomies: fetchedTaxonomies.map(({ name, rest_base, slug }) => ({
+        slug,
+        name,
+        rest_base
+      })),
+      resolved: true
+    }
+    /* eslint-enable camelcase */
+  }, [fetchedTaxonomies])
 
-  if (fetchedTaxonomies && fetchedTaxonomies.length) {
-    // eslint-disable-next-line camelcase
-    fetchedTaxonomies = fetchedTaxonomies.map(({ name, rest_base, slug }) => ({ slug, name, rest_base }))
-  }
-
-  return { taxonomies: fetchedTaxonomies, resolved }
+  return result
 }

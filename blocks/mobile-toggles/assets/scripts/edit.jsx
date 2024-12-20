@@ -5,25 +5,28 @@ import { useSelect } from '@wordpress/data'
 
 import Main from './main'
 
-export default function Edit({ attributes, context, setAttributes }) {
-  const blockId = context['mps/blockId']
-
+export default function Edit({ attributes, context }) {
+  const blockId = context['mppps/blockId']
   const blockProps = useBlockProps()
 
-  let hasSidebar = false
-  let hasFilters = false
+  const { hasFilters, hasSidebar } = useSelect(
+    (select) => {
+      const parentBlock = select('core/block-editor').getBlock(blockId)
 
-  const parentBlock = useSelect((select) => select('core/block-editor').getBlock(blockId))
-  if (parentBlock && Object.keys(parentBlock).length) {
-    hasSidebar = parentBlock.innerBlocks.find((block) => block.name === 'mps/sidebar')
-    if (hasSidebar) {
-      hasSidebar = Object.keys(hasSidebar).length
-    }
-    hasFilters = parentBlock.innerBlocks.find((block) => block.name === 'mps/filters')
-    if (hasFilters) {
-      hasFilters = Object.keys(hasFilters).length
-    }
-  }
+      if (!parentBlock || !Object.keys(parentBlock).length) {
+        return { hasSidebar: false, hasFilters: false }
+      }
+
+      const sidebarBlock = parentBlock.innerBlocks.find((block) => block.name === 'mppps/sidebar')
+      const filtersBlock = parentBlock.innerBlocks.find((block) => block.name === 'mppps/filters')
+
+      return {
+        hasSidebar: sidebarBlock && Object.keys(sidebarBlock).length,
+        hasFilters: filtersBlock && Object.keys(filtersBlock).length
+      }
+    },
+    [blockId]
+  )
 
   return (
     <div {...blockProps}>

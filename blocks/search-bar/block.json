@@ -1,19 +1,19 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/searchbar",
+  "name": "mppps/searchbar",
   "title": "Search bar",
   "category": "mappps",
   "description": "Contains search bar.",
   "textdomain": "mappps",
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/sidebar"
+    "mppps/sidebar"
   ],
   "usesContext": [
-    "mps/blockId"
+    "mppps/blockId"
   ],
   "supports": {
     "reusable": false,

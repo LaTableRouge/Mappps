@@ -6,8 +6,8 @@
 @use '/src//helpers/styles/abstracts/responsive';
 
 html[dir='rtl'] {
-  .wp-block-mps-mappps-blocks {
-    .wp-block-mps-searchbar {
+  .wp-block-mppps-mappps-blocks {
+    .wp-block-mppps-searchbar {
       .search-wrapper__form .form__button--submit {
         border-top-left-radius: var(--radius-md);
         border-top-right-radius: var(--radius-md);
@@ -18,7 +18,7 @@ html[dir='rtl'] {
   }
 }
 
-.wp-block-mps-searchbar {
+.wp-block-mppps-searchbar {
   position: relative;
 
   &:has(.search-wrapper__results) {

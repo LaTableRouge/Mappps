@@ -1,13 +1,13 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/sidebar",
+  "name": "mppps/sidebar",
   "title": "Sidebar",
   "category": "mappps",
   "description": "Contains the block elements used to render the sidebar, like the posts, search bar, title, and filters.",
   "textdomain": "mappps",
   "ancestor": [
-    "mps/mappps-block"
+    "mppps/mappps-block"
   ],
   "supports": {
     "reusable": false,

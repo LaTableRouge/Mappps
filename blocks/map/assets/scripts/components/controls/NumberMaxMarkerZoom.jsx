@@ -2,6 +2,10 @@ import { __experimentalNumberControl as NumberControl } from '@wordpress/compone
 import { __ } from '@wordpress/i18n'
 
 export default function InputMaxMarkerZoom({ defaultValue, max, setAttributes }) {
+  const handleChange = (value) => {
+    setAttributes({ selectedMaxMarkerZoom: value })
+  }
+
   return (
     <NumberControl
       help={__('The maximum zoom level allowed for the map when a marker is selected', 'mappps')}
@@ -10,9 +14,7 @@ export default function InputMaxMarkerZoom({ defaultValue, max, setAttributes })
       max={max}
       min={0}
       value={defaultValue}
-      onChange={(value) => {
-        setAttributes({ selectedMaxMarkerZoom: value })
-      }}
+      onChange={handleChange}
     />
   )
 }
