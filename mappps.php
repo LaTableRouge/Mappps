@@ -14,8 +14,8 @@ if (!defined('ABSPATH')) {
  * Requires at least: 6.2
  * Tested up to: 6.7
  * Requires PHP: 8.0
- * Version: 1.2.0
- * Stable tag: 1.2.0
+ * Version: 1.2.1
+ * Stable tag: 1.2.1
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
@@ -35,7 +35,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 with this program. If not, visit: https://www.gnu.org/licenses/
 
-Copyright 2024 Monzilla Media. All rights reserved.
+Copyright 2025 Monzilla Media. All rights reserved.
 */
 
 if (!function_exists('get_plugin_data')) {

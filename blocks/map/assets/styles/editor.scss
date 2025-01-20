@@ -1,0 +1,8 @@
+.wp-block-mppps-map {
+  .leaflet-container {
+    &,
+    * {
+      pointer-events: none !important;
+    }
+  }
+}

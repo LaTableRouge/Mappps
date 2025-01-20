@@ -1,11 +1,11 @@
-# Copyright (C) 2024 LaTableRouge
+# Copyright (C) 2025 LaTableRouge
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.2.0\n"
+"Project-Id-Version: Mappps 1.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2024-12-20T10:13:48+00:00\n"
-"PO-Revision-Date: 2024-12-20 11:14+0100\n"
+"POT-Creation-Date: 2025-01-13T08:57:44+00:00\n"
+"PO-Revision-Date: 2025-01-13 09:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
