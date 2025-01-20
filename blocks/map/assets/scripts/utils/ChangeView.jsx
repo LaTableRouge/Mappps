@@ -23,7 +23,7 @@ function ChangeView({
 
   async function zoomSmoothly(cluster = null, marker = null, popup) {
     if (cluster && marker) {
-      await cluster.zoomToShowLayer(marker, (e) => {
+      await cluster.zoomToShowLayer(marker, () => {
         // Fix the cluster offset, but it's a bit clunky
         // const cluster = e.cluster
         // if (cluster) {
@@ -57,7 +57,7 @@ function ChangeView({
   async function zoomOntoMarker() {
     await delay(300)
 
-    refsMarker.current.forEach((markerRef, i) => {
+    refsMarker.current.forEach((markerRef) => {
       const marker = markerRef.current
       if (marker) {
         const popup = marker._popup

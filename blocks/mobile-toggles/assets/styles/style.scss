@@ -5,18 +5,18 @@
 @use '/src/helpers/styles/abstracts/mixins';
 @use '/src/helpers/styles/abstracts/responsive' as *;
 
-.wp-block-mps-mappps-blocks {
+.wp-block-mppps-mappps-blocks {
   &[data-mobile-map-display='true'][data-filters-open='false'] {
-    .wp-block-mps-mobile-toggles {
+    .wp-block-mppps-mobile-toggles {
       --toggle-filters-opacity: 1;
       --toggle-filters-transition: var(--nomotion, opacity 0.2s ease-in-out 0.2s);
       --toggle-filters-pe: all;
     }
   }
 
-  &:not(:has(.wp-block-mps-sidebar)) {
-    &:has(.wp-block-mps-filters) {
-      .wp-block-mps-mobile-toggles {
+  &:not(:has(.wp-block-mppps-sidebar)) {
+    &:has(.wp-block-mppps-filters) {
+      .wp-block-mppps-mobile-toggles {
         .toggles__filters {
           @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
             --toggle-display: block;
@@ -27,7 +27,7 @@
   }
 }
 
-.wp-block-mps-mobile-toggles {
+.wp-block-mppps-mobile-toggles {
   position: absolute;
   inset: 0;
   z-index: 1000;

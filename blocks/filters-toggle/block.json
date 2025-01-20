@@ -1,21 +1,21 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "mps/filters-toggle",
+  "name": "mppps/filters-toggle",
   "title": "Filters toggle",
   "category": "mappps",
   "description": "The button that'wll open/close the filters.",
   "textdomain": "mappps",
   "parent": [
-    "mps/mappps-blocks"
+    "mppps/mappps-blocks"
   ],
   "ancestor": [
-    "mps/sidebar"
+    "mppps/sidebar"
   ],
   "usesContext": [
-    "mps/blockId",
-    "mps/taxonomies",
-    "mps/categories"
+    "mppps/blockId",
+    "mppps/taxonomies",
+    "mppps/categories"
   ],
   "supports": {
     "reusable": false,

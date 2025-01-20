@@ -9,7 +9,7 @@
 @include meta.load-css('base/root');
 @include meta.load-css('base/base');
 
-.wp-block-mps-mappps-blocks {
+.wp-block-mppps-mappps-blocks {
   // 2. Vendors
   @include meta.load-css('/src/helpers/styles/vendors/reset');
 

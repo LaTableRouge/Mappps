@@ -1,21 +1,41 @@
 <?php
+/**
+ * Register block categories
+ *
+ * @package Mappps
+ * @subpackage Blocks
+ */
 
+declare(strict_types=1);
+
+// Exit if accessed directly.
 if (!defined('ABSPATH')) {
     exit;
-} // Exit if accessed directly
+}
 
-function mppps_category($categories, $post) {
+/**
+ * Register custom block category
+ *
+ * @since 1.0.0
+ * @param array    $categories Array of block categories
+ * @return array Modified block categories
+ */
+function mppps_register_block_category(array $categories): array {
     $category_slugs = wp_list_pluck($categories, 'slug');
 
-    return in_array('mappps', $category_slugs, true) ? $categories : array_merge(
+    if (in_array('mappps', $category_slugs, true)) {
+        return $categories;
+    }
+
+    return array_merge(
         [
             [
                 'slug' => 'mappps',
                 'title' => __('Mappps - Blocks', 'mappps'),
-                'icon' => null, // Pour la gestion de l'icone de la catégorie voir editor.js
+                'icon' => null,
             ],
         ],
         $categories
     );
 }
-add_filter('block_categories_all', 'mppps_category', 10, 2);
+add_filter('block_categories_all', 'mppps_register_block_category', 10, 2);

@@ -1,16 +1,20 @@
 import { __experimentalUnitControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
+const UNITS = [{ value: 'px', label: 'px', default: 0 }]
+
 export default function UnitMarkerSize({ defaultValue, setAttributes }) {
+  const handleChange = (value) => {
+    setAttributes({ selectedMarkerSize: value })
+  }
+
   return (
     <UnitControl
       help={__('The displayed sizes of the marker icons', 'mappps')}
       label={__('Marker icon size', 'mappps')}
-      units={[{ value: 'px', label: 'px', default: 0 }]}
+      units={UNITS}
       value={defaultValue}
-      onChange={(value) => {
-        setAttributes({ selectedMarkerSize: value })
-      }}
+      onChange={handleChange}
     />
   )
 }

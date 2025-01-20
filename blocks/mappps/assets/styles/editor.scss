@@ -1,3 +1,10 @@
-.wp-block-mps-mappps {
+.wp-block-mppps-mappps {
   --mobile-height: 750px;
+
+  .leaflet-container {
+    &,
+    * {
+      pointer-events: none !important;
+    }
+  }
 }

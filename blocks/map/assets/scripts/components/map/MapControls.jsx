@@ -4,9 +4,40 @@ import { useMap } from 'react-leaflet'
 export default function MapControls({ geolocationCoordinates, isGeolocated, setGeolocationCoordinates, setSelectedPost, setSelectedSearchResult }) {
   const map = useMap()
 
+  const handleZoomIn = (e) => {
+    e.preventDefault()
+    map.zoomIn()
+  }
+
+  const handleZoomOut = (e) => {
+    e.preventDefault()
+    map.zoomOut()
+  }
+
+  const handleReset = (e) => {
+    e.preventDefault()
+    // Set selected post to trigger the fitbound inside the ChangeView function
+    setSelectedPost({})
+
+    // Remove geolocation & searchMarker
+    setGeolocationCoordinates({})
+    setSelectedSearchResult({})
+  }
+
+  const handleGeolocation = (e) => {
+    e.preventDefault()
+    if (Object.keys(geolocationCoordinates).length) {
+      setGeolocationCoordinates({})
+    } else {
+      map.locate().on('locationfound', (e) => {
+        setGeolocationCoordinates(e.latlng)
+      })
+    }
+  }
+
   return (
     <div className="leaflet-control-container">
-      <div className="leaflet-top leaflet-left"></div>
+      <div className="leaflet-top leaflet-left" />
       <div className="leaflet-top leaflet-right">
         <div className="leaflet-control-zoom leaflet-bar leaflet-control">
           <a
@@ -16,12 +47,9 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
             href="#"
             role="button"
             title={__('Zoom in', 'mappps')}
-            onClick={(e) => {
-              e.preventDefault()
-              map.zoomIn()
-            }}
+            onClick={handleZoomIn}
           >
-            <span aria-hidden="true" className="icon-mappps-plus"></span>
+            <span aria-hidden="true" className="icon-mappps-plus" />
           </a>
           <a
             aria-disabled="false"
@@ -30,12 +58,9 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
             href="#"
             role="button"
             title={__('Zoom out', 'mappps')}
-            onClick={(e) => {
-              e.preventDefault()
-              map.zoomOut()
-            }}
+            onClick={handleZoomOut}
           >
-            <span aria-hidden="true" className="icon-mappps-minus"></span>
+            <span aria-hidden="true" className="icon-mappps-minus" />
           </a>
           <a
             aria-disabled="false"
@@ -44,17 +69,9 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
             href="#"
             role="button"
             title={__('Reset view', 'mappps')}
-            onClick={(e) => {
-              e.preventDefault()
-              // Set selected post to trigger the fitbound inside the ChangeView function
-              setSelectedPost({})
-
-              // Remove geolocation & searchMarker
-              setGeolocationCoordinates({})
-              setSelectedSearchResult({})
-            }}
+            onClick={handleReset}
           >
-            <span aria-hidden="true" className="icon-mappps-refresh"></span>
+            <span aria-hidden="true" className="icon-mappps-refresh" />
           </a>
           {isGeolocated && (
             <a
@@ -64,24 +81,15 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
               href="#"
               role="button"
               title={__('Find your position', 'mappps')}
-              onClick={(e) => {
-                e.preventDefault()
-                if (Object.keys(geolocationCoordinates).length) {
-                  setGeolocationCoordinates({})
-                } else {
-                  map.locate().on('locationfound', function (e) {
-                    setGeolocationCoordinates(e.latlng)
-                  })
-                }
-              }}
+              onClick={handleGeolocation}
             >
-              <span aria-hidden="true" className="icon-mappps-geolocation"></span>
+              <span aria-hidden="true" className="icon-mappps-geolocation" />
             </a>
           )}
         </div>
       </div>
-      <div className="leaflet-bottom leaflet-left"></div>
-      <div className="leaflet-bottom leaflet-right"></div>
+      <div className="leaflet-bottom leaflet-left" />
+      <div className="leaflet-bottom leaflet-right" />
     </div>
   )
 }

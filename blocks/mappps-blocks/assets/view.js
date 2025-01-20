@@ -16,7 +16,7 @@ import PostTemplate from './scripts/components/view/post-template'
 import SearchBar from './scripts/components/view/search-bar'
 
 window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mps-mappps-blocks:not(.is-init)')
+  const blocks = document.querySelectorAll('.wp-block-mppps-mappps-blocks:not(.is-init)')
   if (blocks.length) {
     blocks.forEach((parentBlock) => {
       parentBlock.classList.add('is-init')
@@ -55,7 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
             })
             resizeObserver.observe(parentBlock)
 
-            document.addEventListener('mps-mobileIsMapDisplayed', async (e) => {
+            document.addEventListener('mppps-mobileIsMapDisplayed', async (e) => {
               await e
               const details = e.detail
               if (details.id === blockId) {
@@ -63,7 +63,7 @@ window.addEventListener('DOMContentLoaded', () => {
               }
             })
 
-            document.addEventListener('mps-filtersOpen', async (e) => {
+            document.addEventListener('mppps-filtersOpen', async (e) => {
               await e
               const details = e.detail
               if (details.id === blockId) {

@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import Map from '../../../../../map/assets/scripts/main'
 
 export default function renderMap(blockId, parent, queriedPosts) {
-  const mapChildBlock = parent.querySelector('.wp-block-mps-map')
+  const mapChildBlock = parent.querySelector('.wp-block-mppps-map')
   if (mapChildBlock) {
     const attributes = JSON.parse(mapChildBlock.dataset.attributes)
 

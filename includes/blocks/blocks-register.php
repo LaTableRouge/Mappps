@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-function mppps_register_react_blocks() {
+function mppps_register_react_blocks(): void {
     /**
      * Registers the blocks using the metadata loaded from the `block.json` files.
      * Behind the scenes, it registers also all assets so they can be enqueued

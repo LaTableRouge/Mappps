@@ -13,20 +13,30 @@ import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
 import UnitMarkerSize from './controls/UnitMarkerSize'
 
 export default function Controls({ attributes, setAttributes }) {
-  const mapTiles = attributes.mapTiles
-  const selectedMapTiles = attributes.selectedMapTiles
-  const isClustered = attributes.isClustered
-  const isGeolocated = attributes.isGeolocated
-  const selectedMarkerColor = attributes.selectedMarkerColor
-  const selectedActiveMarkerColor = attributes.selectedActiveMarkerColor
-  const selectedClusterColor = attributes.selectedClusterColor
-  const selectedSearchColor = attributes.selectedSearchColor
-  const selectedGeolocationColor = attributes.selectedGeolocationColor
-  const selectedBoundsPadding = attributes.selectedBoundsPadding
-  const selectedMaxZoom = attributes.selectedMaxZoom
-  const selectedMaxMarkerZoom = attributes.selectedMaxMarkerZoom
-  const selectedMarkerSize = attributes.selectedMarkerSize
-  const selectedMarkerClusterSize = attributes.selectedMarkerClusterSize
+  const {
+    isClustered,
+    isGeolocated,
+    mapTiles,
+    selectedActiveMarkerColor,
+    selectedBoundsPadding,
+    selectedClusterColor,
+    selectedGeolocationColor,
+    selectedMapTiles,
+    selectedMarkerClusterSize,
+    selectedMarkerColor,
+    selectedMarkerSize,
+    selectedMaxMarkerZoom,
+    selectedMaxZoom,
+    selectedSearchColor
+  } = attributes
+
+  const colorValues = {
+    marker: selectedMarkerColor,
+    markerActive: selectedActiveMarkerColor,
+    cluster: selectedClusterColor,
+    search: selectedSearchColor,
+    geolocation: selectedGeolocationColor
+  }
 
   return (
     <InspectorControls>
@@ -40,18 +50,7 @@ export default function Controls({ attributes, setAttributes }) {
         <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
         <UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
       </PanelBody>
-      <ColorMap
-        defaultValues={{
-          marker: selectedMarkerColor,
-          markerActive: selectedActiveMarkerColor,
-          cluster: selectedClusterColor,
-          search: selectedSearchColor,
-          geolocation: selectedGeolocationColor
-        }}
-        isClustered={isClustered}
-        isGeolocated={isGeolocated}
-        setAttributes={setAttributes}
-      />
+      <ColorMap defaultValues={colorValues} isClustered={isClustered} isGeolocated={isGeolocated} setAttributes={setAttributes} />
     </InspectorControls>
   )
 }

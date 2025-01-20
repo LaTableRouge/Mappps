@@ -15,7 +15,14 @@ import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
-const Map = ({
+const MAP_DEFAULTS = {
+  doubleClickZoom: false,
+  scrollWheelZoom: false,
+  zoomControl: false,
+  zoomSnap: 0.1
+}
+
+export default function MapFront({
   boundsPadding,
   cluster,
   clusterSize,
@@ -31,38 +38,35 @@ const Map = ({
   setSelectedPost,
   setSelectedSearchResult,
   tiles
-}) => {
+}) {
   const clusterRef = useRef(null)
   const markerRefs = useRef([])
   markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
   const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost)
-
   const markerGroup = useMemo(() => {
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
-  }, [markers])
+  }, [cluster, clusterSize, markers])
 
   const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
       return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation)
-    } else {
-      return null
     }
-  }, [geolocationCoordinates])
+    return null
+  }, [geolocationCoordinates, isGeolocated])
 
   const refMarkerSearch = useRef(null)
   const markerSearchMemo = useMemo(() => {
     if (Object.keys(selectedSearchResult).length) {
       return MarkerSearch(selectedSearchResult, refMarkerSearch)
-    } else {
-      return null
     }
+    return null
   }, [selectedSearchResult])
 
   return (
-    <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
+    <MapContainer {...MAP_DEFAULTS} maxZoom={maxZoom}>
       <ChangeView
         boundsPadding={boundsPadding}
         isMobileView={isMobileView}
@@ -89,16 +93,9 @@ const Map = ({
         setSelectedSearchResult={setSelectedSearchResult}
       />
 
-      {/* Posts markers */}
       {markerGroup}
-
-      {/* Geolocation marker */}
       {markerGeolocationMemo}
-
-      {/* Search marker */}
       {markerSearchMemo}
     </MapContainer>
   )
 }
-
-export default Map

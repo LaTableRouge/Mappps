@@ -7,11 +7,12 @@ import Controls from './components/Controls'
 import Loader from './components/Loader'
 import AlterBlockProps from './utils/AlterBlockProps'
 
-export default function Edit({ attributes, context, isSelected, setAttributes }) {
+export default function Edit({ attributes, setAttributes }) {
   const blockProps = useBlockProps()
+  const alteredProps = AlterBlockProps(blockProps, attributes)
 
   return (
-    <div {...AlterBlockProps(blockProps, attributes)}>
+    <div {...alteredProps}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
 
       <div className="loader__helper-text" data-status="loading">

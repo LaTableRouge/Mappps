@@ -5,9 +5,10 @@ import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
+  const alteredProps = AlterBlockProps(blockProps, attributes)
 
   return (
-    <div {...AlterBlockProps(blockProps, attributes)}>
+    <div {...alteredProps}>
       <Loader />
     </div>
   )

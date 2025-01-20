@@ -1,7 +1,7 @@
 import { useEffect } from '@wordpress/element'
 
 export default function GlobalStateEventsHandler(blockId = '', state, setState, stateName = '', additionalEvent = () => false) {
-  const eventName = `mps-${stateName}`
+  const eventName = `mppps-${stateName}`
 
   useEffect(() => {
     async function event(e) {

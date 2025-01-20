@@ -1,4 +1,6 @@
 import { __experimentalUseBlockPreview as useBlockPreview } from '@wordpress/block-editor'
+import { useCallback } from '@wordpress/element'
+
 export default function PostTemplatePreview({ blockContextId, blocks, isHidden, setActiveBlockContextId }) {
   const blockPreviewProps = useBlockPreview({
     blocks,
@@ -7,13 +9,9 @@ export default function PostTemplatePreview({ blockContextId, blocks, isHidden, 
     }
   })
 
-  const handleOnClick = () => {
+  const handleClick = useCallback(() => {
     setActiveBlockContextId(blockContextId)
-  }
+  }, [blockContextId, setActiveBlockContextId])
 
-  const style = {
-    display: isHidden ? 'none' : undefined
-  }
-
-  return <div {...blockPreviewProps} role="button" style={style} tabIndex={0} onClick={handleOnClick} onKeyPress={handleOnClick} />
+  return <div {...blockPreviewProps} role="button" style={{ display: isHidden ? 'none' : undefined }} tabIndex={0} onClick={handleClick} onKeyPress={handleClick} />
 }

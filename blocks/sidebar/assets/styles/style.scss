@@ -5,7 +5,7 @@
 @use '/src/helpers/styles/abstracts/mixins';
 @use '/src/helpers/styles/abstracts/responsive' as *;
 
-.wp-block-mps-mappps-blocks {
+.wp-block-mppps-mappps-blocks {
   &[data-mobile-map-display='false'] {
     --sidebar-transform: translateX(0);
     --sidebar-opacity: 1;
@@ -13,9 +13,9 @@
   }
 }
 
-.wp-block-mps-sidebar {
+.wp-block-mppps-sidebar {
   display: flex;
-  z-index: 1001;
+  z-index: 1000;
   flex-direction: column;
   width: 100%;
   height: inherit;

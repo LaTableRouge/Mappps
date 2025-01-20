@@ -7,10 +7,11 @@ import Controls from './components/Controls'
 import Header from './components/post/Header'
 import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
+import AlterBlockProps from './utils/AlterBlockProps'
 import GetBlocks from './utils/GetBlocks'
 
 export default function Edit({ attributes, clientId, context, isSelected, setAttributes }) {
-  const blockId = context['mps/blockId']
+  const blockId = context['mppps/blockId']
 
   const blockProps = useBlockProps()
 
@@ -27,9 +28,9 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
       }
     }
 
-    document.addEventListener('mps-queried-posts', eventSetPosts)
+    document.addEventListener('mppps-queried-posts', eventSetPosts)
     return () => {
-      document.removeEventListener('mps-queried-posts', eventSetPosts)
+      document.removeEventListener('mppps-queried-posts', eventSetPosts)
     }
   }, [blockId])
 
@@ -53,7 +54,7 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
   }, [isSelected])
 
   return (
-    <div {...blockProps} data-expanded={isExpanded}>
+    <div {...AlterBlockProps(blockProps, attributes)} data-expanded={isExpanded}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
 
       {blockContexts

@@ -13,44 +13,28 @@ export default function SelectCategories({ defaultValue, setAttributes, setQueri
     }
   }, [resolved])
 
-  const options = []
-  if (Object.keys(categories).length) {
-    for (const key in categories) {
-      if (Object.hasOwnProperty.call(categories, key)) {
-        const elements = categories[key]
-        if (elements.length) {
-          elements.forEach((element) => {
-            options.push({ label: element.name, value: element.id })
-          })
-        }
-      }
+  const options = Object.entries(categories).reduce((acc, [, elements]) => {
+    if (elements.length) {
+      elements.forEach((element) => {
+        acc.push({ label: element.name, value: element.id })
+      })
     }
+    return acc
+  }, [])
+
+  const handleChange = (value) => {
+    setQueriedPosts([])
+    setAttributes({
+      selectedCategories: value
+    })
   }
 
-  if (resolved) {
-    return (
-      <>
-        {/* eslint-disable-next-line multiline-ternary */}
-        {Object.keys(categories).length ? (
-          <SelectControl
-            multiple
-            defaultValue={defaultValue}
-            label={__('Categories', 'mappps')}
-            options={options}
-            onChange={(value) => {
-              setQueriedPosts([])
-              setAttributes({
-                selectedCategories: value
-                // selectedPosts: []
-              })
-            }}
-          />
-        ) : (
-          __('No categories could be recovered.', 'mappps')
-        )}
-      </>
-    )
-  } else {
+  if (!resolved) {
     return <Spinner />
   }
+  if (!Object.keys(categories).length) {
+    return __('No categories could be recovered.', 'mappps')
+  }
+
+  return <SelectControl multiple defaultValue={defaultValue} label={__('Categories', 'mappps')} options={options} onChange={handleChange} />
 }

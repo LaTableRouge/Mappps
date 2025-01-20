@@ -1,11 +1,11 @@
-# Copyright (C) 2024 LaTableRouge
+# Copyright (C) 2025 LaTableRouge
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.2.0\n"
+"Project-Id-Version: Mappps 1.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2024-12-06T07:06:33+00:00\n"
-"PO-Revision-Date: 2024-12-06 08:08+0100\n"
+"POT-Creation-Date: 2025-01-13T08:57:44+00:00\n"
+"PO-Revision-Date: 2025-01-13 09:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
-#: includes/register-page.php:17
+#: includes/register-page.php:32
 msgid "Mappps"
 msgstr "Mappps"
 
@@ -36,61 +36,61 @@ msgstr "latablerouge"
 msgid "https://mlnop.fr/"
 msgstr "https://mlnop.fr/"
 
-#: blocks/post-details/render.php:67 blocks/post-details/render.php:69
-#: blocks/post-details/render.php:71 build/blocks/post-details/render.php:67
-#: build/blocks/post-details/render.php:69
-#: build/blocks/post-details/render.php:71
+#: blocks/post-details/render.php:71 blocks/post-details/render.php:73
+#: blocks/post-details/render.php:75 build/blocks/post-details/render.php:71
+#: build/blocks/post-details/render.php:73
+#: build/blocks/post-details/render.php:75
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand"
 msgstr "Déplier"
 
-#: blocks/post-details/render.php:70 build/blocks/post-details/render.php:70
+#: blocks/post-details/render.php:74 build/blocks/post-details/render.php:74
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Shrink"
 msgstr "Réduire"
 
-#: blocks/post-details/render.php:76 build/blocks/post-details/render.php:76
+#: blocks/post-details/render.php:80 build/blocks/post-details/render.php:80
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand/Shrink"
 msgstr "Déplier/Réduire"
 
-#: blocks/post-details/render.php:83 blocks/post-details/render.php:86
-#: build/blocks/post-details/render.php:83
-#: build/blocks/post-details/render.php:86
+#: blocks/post-details/render.php:87 blocks/post-details/render.php:90
+#: build/blocks/post-details/render.php:87
+#: build/blocks/post-details/render.php:90
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Open in new tab"
 msgstr "Ouvrir dans un nouvel onglet"
 
-#: blocks/post-details/render.php:94 blocks/post-details/render.php:97
-#: build/blocks/post-details/render.php:94
-#: build/blocks/post-details/render.php:97
+#: blocks/post-details/render.php:98 blocks/post-details/render.php:101
+#: build/blocks/post-details/render.php:98
+#: build/blocks/post-details/render.php:101
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "View itinerary"
 msgstr "Voir l'itinéraire"
 
-#: blocks/post-details/render.php:101 blocks/post-details/render.php:103
-#: blocks/post-details/render.php:106 build/blocks/post-details/render.php:101
-#: build/blocks/post-details/render.php:103
-#: build/blocks/post-details/render.php:106
+#: blocks/post-details/render.php:105 blocks/post-details/render.php:107
+#: blocks/post-details/render.php:110 build/blocks/post-details/render.php:105
+#: build/blocks/post-details/render.php:107
+#: build/blocks/post-details/render.php:110
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Close preview"
 msgstr "Fermer la prévisualisation"
 
-#: includes/blocks/categories-register.php:14
+#: includes/blocks/categories-register.php:34
 msgid "Mappps - Blocks"
 msgstr "Mappps - Blocs"
 
-#: includes/register-page.php:16
+#: includes/register-page.php:31
 msgid "Setup"
 msgstr "Configuration"
 
-#: includes/register-page.php:29
+#: includes/register-page.php:50
 msgid "Loading…"
 msgstr "Chargement..."
 
@@ -125,9 +125,7 @@ msgstr ""
 msgid "Filters size"
 msgstr "Taille des filtres"
 
-#: build/blocks/filters/assets/index.js:1
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/filters/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
 #: build/blocks/search-bar/assets/index.js:1
 #: build/blocks/sidebar/assets/index.js:1
@@ -309,12 +307,6 @@ msgstr "Aucunes taxonomies n'a pu être récupérée."
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "Select the data source of the items to be displayed on the map."
-msgstr ""
-"Sélectionnez la source de données des éléments à afficher sur la carte."
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
 msgid "Data source"
 msgstr "Source de données"
 
@@ -322,6 +314,12 @@ msgstr "Source de données"
 #: build/blocks/mappps/assets/index.js:1
 msgid "No post types could be recovered."
 msgstr "Aucun type de publication n'a pu être récupéré."
+
+#: build/blocks/mappps-blocks/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
+msgid "Select the data source of the items to be displayed on the map."
+msgstr ""
+"Sélectionnez la source de données des éléments à afficher sur la carte."
 
 #: build/blocks/mappps-blocks/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
@@ -800,8 +798,8 @@ msgstr "Un bloc pour afficher des cartes"
 
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block keyword"
-msgid "mps"
-msgstr "mps"
+msgid "mppps"
+msgstr "mppps"
 
 #: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
 msgctxt "block keyword"

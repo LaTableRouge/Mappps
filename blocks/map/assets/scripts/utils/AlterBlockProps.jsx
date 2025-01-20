@@ -1,13 +1,18 @@
 export default function AlterBlockProps(blockProps = {}, attributes) {
-  blockProps.style = {
-    ...blockProps.style,
-    '--marker-size': attributes.selectedMarkerSize,
-    '--cluster-size': attributes.selectedMarkerClusterSize,
-    '--color-marker': attributes.selectedMarkerColor,
-    '--color-marker-active': attributes.selectedActiveMarkerColor,
-    '--color-cluster': attributes.selectedClusterColor,
-    '--color-marker-search': attributes.selectedSearchColor,
-    '--color-marker-geolocation': attributes.selectedGeolocationColor
+  const { selectedActiveMarkerColor, selectedClusterColor, selectedGeolocationColor, selectedMarkerClusterSize, selectedMarkerColor, selectedMarkerSize, selectedSearchColor }
+    = attributes
+
+  return {
+    ...blockProps,
+    style: {
+      ...blockProps.style,
+      '--marker-size': selectedMarkerSize,
+      '--cluster-size': selectedMarkerClusterSize,
+      '--color-marker': selectedMarkerColor,
+      '--color-marker-active': selectedActiveMarkerColor,
+      '--color-cluster': selectedClusterColor,
+      '--color-marker-search': selectedSearchColor,
+      '--color-marker-geolocation': selectedGeolocationColor
+    }
   }
-  return blockProps
 }

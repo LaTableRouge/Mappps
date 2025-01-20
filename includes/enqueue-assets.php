@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
 // See: https://developer.wordpress.org/news/2024/03/26/how-to-use-wordpress-react-components-for-plugin-pages/
 
-function mppps_enqueue_assets($admin_page) {
+function mppps_enqueue_assets(string $admin_page): void {
     if ($admin_page !== 'toplevel_page_mppps_admin') {
         return;
     }

@@ -1,26 +1,35 @@
 import { useSelect } from '@wordpress/data'
+import { useMemo } from '@wordpress/element'
 
-// Get all post types and filter them with an array of unwanted ones
+const POST_TYPES_TO_EXCLUDE = [
+  'page',
+  'attachment',
+  'nav_menu_item',
+  'wp_block',
+  'wp_template',
+  'wp_template_part',
+  'wp_navigation',
+  'wp_global_styles',
+  'wp_font_family',
+  'wp_font_face'
+]
+
 export default function GetPostTypes() {
-  let postTypes = useSelect((select) => {
-    const { getPostTypes } = select('core')
-    return getPostTypes({ per_page: -1 })
-  })
+  const postTypes = useSelect((select) => select('core').getPostTypes({ per_page: -1 }), [])
 
-  let resolved = false
+  const result = useMemo(() => {
+    if (!postTypes) {
+      return {
+        types: null,
+        resolved: false
+      }
+    }
 
-  const postTypesToExclude = ['page', 'attachment', 'nav_menu_item', 'wp_block', 'wp_template', 'wp_template_part', 'wp_navigation', 'wp_font_family', 'wp_font_face']
+    return {
+      types: postTypes.filter((postType) => !POST_TYPES_TO_EXCLUDE.includes(postType.slug)),
+      resolved: true
+    }
+  }, [postTypes])
 
-  if (postTypes !== null) {
-    resolved = true
-  }
-
-  if (postTypes && postTypes.length) {
-    postTypes = postTypes.filter((postType) => !postTypesToExclude.includes(postType.slug))
-  }
-
-  return {
-    types: postTypes,
-    resolved
-  }
+  return result
 }

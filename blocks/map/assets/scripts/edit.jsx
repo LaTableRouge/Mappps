@@ -7,36 +7,33 @@ import Controls from './components/Controls'
 import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
-export default function Edit({ attributes, context, isSelected, setAttributes }) {
-  const blockId = context['mps/blockId']
-
+export default function Edit({ attributes, context, setAttributes }) {
+  const blockId = context['mppps/blockId']
   const blockProps = useBlockProps()
-
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
-    async function eventSetPosts(e) {
-      await e
-      const details = e.detail
-      if (details.id === blockId) {
-        setPosts(details.posts)
+    const handlePosts = async (e) => {
+      const { id, posts } = e.detail
+      if (id === blockId) {
+        setPosts(posts)
       }
     }
 
-    document.addEventListener('mps-queried-posts', eventSetPosts)
+    document.addEventListener('mppps-queried-posts', handlePosts)
     return () => {
-      document.removeEventListener('mps-queried-posts', eventSetPosts)
+      document.removeEventListener('mppps-queried-posts', handlePosts)
     }
   }, [blockId])
 
+  if (!posts.length) {
+    return null
+  }
+
   return (
     <div {...AlterBlockProps(blockProps, attributes)}>
-      {!!posts.length && (
-        <>
-          <Controls attributes={attributes} setAttributes={setAttributes} />
-          <Main attributes={attributes} blockId={blockId} inEditor={true} queriedPosts={posts} />
-        </>
-      )}
+      <Controls attributes={attributes} setAttributes={setAttributes} />
+      <Main attributes={attributes} blockId={blockId} inEditor={true} queriedPosts={posts} />
     </div>
   )
 }

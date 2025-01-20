@@ -6,21 +6,24 @@ import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
 
 export default function Main({ blockId, categories, queriedPosts, taxonomies }) {
+  // State management
   const [filters, setFilters] = useState({})
   const [filtersOpen, setFiltersOpen] = useState(false)
-  GlobalStateEventsHandler(blockId, filtersOpen, setFiltersOpen, 'filtersOpen')
   const [searchValue, setSearchValue] = useState('')
-  GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
   const [selectedPost, setSelectedPost] = useState({})
-  GlobalStateEventsHandler(blockId, selectedPost, setSelectedPost, 'selectedPost')
   const [posts, setPosts] = useState([])
-  GlobalStateEventsHandler(blockId, posts, setPosts, 'posts')
   const [filtersCount, setFiltersCount] = useState(0)
+
+  // Global state handlers
+  GlobalStateEventsHandler(blockId, filtersOpen, setFiltersOpen, 'filtersOpen')
+  GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
+  GlobalStateEventsHandler(blockId, selectedPost, setSelectedPost, 'selectedPost')
+  GlobalStateEventsHandler(blockId, posts, setPosts, 'posts')
   GlobalStateEventsHandler(blockId, filtersCount, setFiltersCount, 'filtersCount', () => {
     // Remove selectedPost if a filter is selected
     if (Object.keys(selectedPost).length) {
       document.dispatchEvent(
-        new CustomEvent('mps-selectedPost', {
+        new CustomEvent('mppps-selectedPost', {
           detail: {
             id: blockId,
             selectedPost: {}
@@ -28,14 +31,10 @@ export default function Main({ blockId, categories, queriedPosts, taxonomies }) 
         })
       )
     }
-
     return false
   })
 
-  let filtersList = {}
-
-  filtersList = CreateFilters(categories, taxonomies, queriedPosts)
-
+  const filtersList = CreateFilters(categories, taxonomies, queriedPosts)
   const tempFilters = Object.keys(filters).length ? filters : filtersList
 
   useEffect(() => {
@@ -43,18 +42,16 @@ export default function Main({ blockId, categories, queriedPosts, taxonomies }) 
   }, [searchValue])
 
   return (
-    <>
-      <Filters
-        filtersOpen={filtersOpen}
-        posts={queriedPosts}
-        queriedPosts={queriedPosts}
-        searchValue={searchValue}
-        setFilters={setFilters}
-        setFiltersCount={setFiltersCount}
-        setFiltersOpen={setFiltersOpen}
-        setPosts={setPosts}
-        tempFilters={tempFilters}
-      />
-    </>
+    <Filters
+      filtersOpen={filtersOpen}
+      posts={queriedPosts}
+      queriedPosts={queriedPosts}
+      searchValue={searchValue}
+      setFilters={setFilters}
+      setFiltersCount={setFiltersCount}
+      setFiltersOpen={setFiltersOpen}
+      setPosts={setPosts}
+      tempFilters={tempFilters}
+    />
   )
 }

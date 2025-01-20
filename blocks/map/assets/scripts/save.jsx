@@ -5,6 +5,7 @@ import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Save({ attributes }) {
   const blockProps = useBlockProps.save()
+  const sortedAttributes = sortObject(attributes)
 
-  return <div {...AlterBlockProps(blockProps, attributes)} data-attributes={JSON.stringify(sortObject(attributes))} />
+  return <div {...AlterBlockProps(blockProps, attributes)} data-attributes={JSON.stringify(sortedAttributes)} />
 }

@@ -1,7 +1,11 @@
 export default function AlterBlockProps(blockProps = {}, attributes) {
-  blockProps.style = {
-    ...blockProps.style,
-    '--filter-size': attributes.selectedFiltersSize
+  const { selectedFiltersSize } = attributes
+
+  return {
+    ...blockProps,
+    style: {
+      ...blockProps.style,
+      '--filter-size': selectedFiltersSize
+    }
   }
-  return blockProps
 }

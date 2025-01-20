@@ -1,7 +1,7 @@
 export default function renderPostTemplate(blockId, parent, queriedPosts) {
-  const postChildBlocks = parent.querySelectorAll('.wp-block-mps-post-template')
+  const postChildBlocks = parent.querySelectorAll('.wp-block-mppps-post-template')
   if (postChildBlocks.length) {
-    document.addEventListener('mps-posts', async (e) => {
+    document.addEventListener('mppps-posts', async (e) => {
       await e
       const details = e.detail
       if (details.id === blockId) {
@@ -21,10 +21,18 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
       }
     })
 
-    document.addEventListener('mps-selectedPost', async (e) => {
+    document.addEventListener('mppps-selectedPost', async (e) => {
       await e
       const details = e.detail
       if (details.id === blockId) {
+        if (!Object.keys(details.selectedPost).length) {
+          postChildBlocks.forEach((target) => {
+            delete target.dataset.selected
+          })
+
+          return
+        }
+
         const target = [...postChildBlocks].find((post) => {
           let postID = post.dataset.wpKey
           if (postID.length) {
@@ -60,7 +68,7 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
         const selectedPost = queriedPosts.find((post) => post.id === Number(postID))
         if (selectedPost) {
           document.dispatchEvent(
-            new CustomEvent('mps-selectedPost', {
+            new CustomEvent('mppps-selectedPost', {
               detail: {
                 id: blockId,
                 selectedPost
@@ -69,7 +77,7 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
           )
 
           document.dispatchEvent(
-            new CustomEvent('mps-mobileIsMapDisplayed', {
+            new CustomEvent('mppps-mobileIsMapDisplayed', {
               detail: {
                 id: blockId,
                 mobileIsMapDisplayed: true
