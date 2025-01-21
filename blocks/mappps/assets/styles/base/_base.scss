@@ -21,6 +21,8 @@
   overflow: hidden;
   container-type: inline-size;
   container-name: mappps;
+  position: relative;
+  z-index: 0;
 
   *,
   *::before,

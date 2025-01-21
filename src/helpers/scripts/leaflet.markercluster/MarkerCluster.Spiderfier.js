@@ -1,18 +1,21 @@
+import L from 'leaflet';
+
+import { MarkerCluster } from './MarkerCluster';
+
 //This code is 100% based on https://github.com/jawj/OverlappingMarkerSpiderfier-Leaflet
 //Huge thanks to jawj for implementing it first to make my job easy :-)
 
-L.MarkerCluster.include({
-
+MarkerCluster.include({
 	_2PI: Math.PI * 2,
 	_circleFootSeparation: 25, //related to circumference of circle
 	_circleStartAngle: 0,
 
-	_spiralFootSeparation:  28, //related to size of spiral (experiment!)
+	_spiralFootSeparation: 28, //related to size of spiral (experiment!)
 	_spiralLengthStart: 11,
 	_spiralLengthFactor: 5,
 
 	_circleSpiralSwitchover: 9, //show spiral instead of circle from this marker count upwards.
-								// 0 -> always spiral; Infinity -> always circle
+	// 0 -> always spiral; Infinity -> always circle
 
 	spiderfy: function () {
 		if (this._group._spiderfied === this || this._group._inZoomAnimation) {
@@ -179,7 +182,7 @@ L.MarkerClusterNonAnimated = L.MarkerCluster.extend({
 });
 
 //Animated versions here
-L.MarkerCluster.include({
+MarkerCluster.include({
 
 	_animationSpiderfy: function (childMarkers, positions) {
 		var me = this,
@@ -239,7 +242,7 @@ L.MarkerCluster.include({
 			if (m.clusterHide) {
 				m.clusterHide();
 			}
-			
+
 			// Vectors just get immediately added
 			fg.addLayer(m);
 
@@ -259,7 +262,7 @@ L.MarkerCluster.include({
 			//Move marker to new position
 			m._preSpiderfyLatlng = m._latlng;
 			m.setLatLng(newPos);
-			
+
 			if (m.clusterShow) {
 				m.clusterShow();
 			}
@@ -270,7 +273,7 @@ L.MarkerCluster.include({
 				legPath = leg._path;
 				legPath.style.strokeDashoffset = 0;
 				//legPath.style.strokeOpacity = finalLegOpacity;
-				leg.setStyle({opacity: finalLegOpacity});
+				leg.setStyle({ opacity: finalLegOpacity });
 			}
 		}
 		this.setOpacity(0.3);
@@ -336,7 +339,7 @@ L.MarkerCluster.include({
 				legPath = leg._path;
 				legLength = legPath.getTotalLength() + 0.1;
 				legPath.style.strokeDashoffset = legLength;
-				leg.setStyle({opacity: 0});
+				leg.setStyle({ opacity: 0 });
 			}
 		}
 
@@ -465,7 +468,7 @@ L.MarkerClusterGroup.include({
 			if (layer.clusterShow) {
 				layer.clusterShow();
 			}
-				//Position will be fixed up immediately in _animationUnspiderfy
+			//Position will be fixed up immediately in _animationUnspiderfy
 			if (layer.setZIndexOffset) {
 				layer.setZIndexOffset(0);
 			}
