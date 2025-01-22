@@ -14,6 +14,7 @@ import MarkerCluster from './map/MarkerCluster'
 import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
+import RoutingControl from './map/RoutingControl'
 
 const Map = ({
   boundsPadding,
@@ -38,6 +39,7 @@ const Map = ({
   setSelectedSearchResult,
   tiles
 }) => {
+  // https://javascript.plainenglish.io/how-to-create-a-react-leaflet-control-component-with-leaflet-routing-machine-8eef98259f20
   const clusterRef = useRef(null)
 
   const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen)
@@ -102,6 +104,13 @@ const Map = ({
 
         {/* Search marker */}
         {markerSearchMemo}
+
+        {posts.map((post, index) => {
+          if (post.meta.routing_coordinates) {
+            return <RoutingControl key={index} color="#0f53ff" position="bottomright" vehicle="foot" waypoints={post.meta.routing_coordinates} />
+          }
+          return null
+        })}
       </MapContainer>
     </div>
   )

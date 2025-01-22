@@ -32,6 +32,8 @@ export default function GetPosts(postType = '', taxonomies = [], categories = []
           return record
         })
 
+        console.log(filteredRecords)
+
         filteredRecords = filteredRecords.filter((record) => !!record.meta.lat && !!record.meta.lng)
       }
       globRecords.push(...filteredRecords)

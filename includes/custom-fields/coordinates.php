@@ -35,6 +35,30 @@ function mppps_register_coordinates_field(): void {
                     'sanitize_callback' => 'wp_strip_all_tags'
                 ]
             );
+
+            register_meta(
+                $post_type,
+                'routing_coordinates',
+                [
+                    'show_in_rest' => true,
+                    'single' => true,
+                    'type' => 'array',
+                    'show_in_rest' => [
+                        'schema' => [
+                            'type' => 'array',
+                            'items' => [
+                                'type' => 'array',
+                                'items' => [
+                                    'type' => 'number',
+                                ],
+                            ],
+                        ],
+                        'prepare_callback' => function ( $value ) {
+                            return !empty($value) ? json_decode($value, true) : null;
+                        },
+                    ],
+                ]
+            );
         }
     }
 

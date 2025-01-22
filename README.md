@@ -61,3 +61,5 @@ Resources:
 - [Leaflet GeoSearch](https://smeijer.github.io/leaflet-geosearch/)
 - [React Leaflet](https://react-leaflet.js.org/)
 - [React leaflet markercluster](https://www.npmjs.com/package/@changey/react-leaflet-markercluster)
+- [Leaflet Routing Machine](https://www.npmjs.com/package/leaflet-routing-machine)
+- [Leaflet Providers](https://leaflet-extras.github.io/leaflet-providers/preview/)
