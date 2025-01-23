@@ -114,15 +114,7 @@ export default function SettingsPage() {
       <p>{__('Yes.', 'mappps')}</p>
 
       <h3>{__('Can I put "Mappps" and "Mappps (blocks)" blocks in the same page?', 'mappps')}</h3>
-      <p>{__('Nope.', 'mappps')}</p>
-
-      <h3>{__("Why can't I see the clustering of markers in Gutenberg?", 'mappps')}</h3>
-      <p>
-        {__(
-          "The clustering is kinda broken in back-office, even so It works well in front-office. It's because of the compatibility between Leaflet markerCluster and Wordpress.",
-          'mappps'
-        )}
-      </p>
+      <p>{__('Yes.', 'mappps')}</p>
 
       <h3>{__('Known bug', 'mappps')}</h3>
       <p>

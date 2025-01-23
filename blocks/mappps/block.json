@@ -62,20 +62,34 @@
       "type": "array",
       "default": [
         {
+          "label": "OSM",
+          "value": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+          "maxZoom": 18
+        },
+        {
+          "label": "World Imagery",
+          "value": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+          "maxZoom": 18
+        },
+        {
           "label": "CartoDB Voyager",
-          "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+          "maxZoom": 18
         },
         {
           "label": "CartoDB Positron",
-          "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          "maxZoom": 18
         },
         {
           "label": "OSM Mapnik",
-          "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png"
+          "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png",
+          "maxZoom": 18
         },
         {
           "label": "Open Topo Map",
-          "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}{r}.png"
+          "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+          "maxZoom": 17
         }
       ]
     },

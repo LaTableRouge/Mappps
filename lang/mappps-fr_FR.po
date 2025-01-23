@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2025-01-13T08:57:44+00:00\n"
-"PO-Revision-Date: 2025-01-13 09:58+0100\n"
+"POT-Creation-Date: 2025-01-23T09:45:12+00:00\n"
+"PO-Revision-Date: 2025-01-23 10:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -693,26 +693,6 @@ msgstr ""
 "\"Mappps (version blocs)\" dans la même page ?"
 
 #: build/index.js:1
-msgid "Nope."
-msgstr "Non."
-
-#: build/index.js:1
-msgid "Why can't I see the clustering of markers in Gutenberg?"
-msgstr ""
-"Pourquoi je ne peux pas voir l'agrégation de marqueurs dans Gutenberg ?"
-
-#: build/index.js:1
-msgid ""
-"The clustering is kinda broken in back-office, even so It works well in "
-"front-office. It's because of the compatibility between Leaflet "
-"markerCluster and Wordpress."
-msgstr ""
-"L'affichage de l'agrégation dans l'interface d’administration est "
-"dysfonctionnelle, mais elle fonctionne correctement sur l'interface "
-"publique. C'est à cause de la compatibilité entre Leaflet markerCluster et "
-"Wordpress."
-
-#: build/index.js:1
 msgid "Known bug"
 msgstr "Bug connu"
 
@@ -886,6 +866,23 @@ msgid ""
 msgstr ""
 "Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
 "comme les publications, la barre de recherche, le titre et les filtres."
+
+#~ msgid "Nope."
+#~ msgstr "Non."
+
+#~ msgid "Why can't I see the clustering of markers in Gutenberg?"
+#~ msgstr ""
+#~ "Pourquoi je ne peux pas voir l'agrégation de marqueurs dans Gutenberg ?"
+
+#~ msgid ""
+#~ "The clustering is kinda broken in back-office, even so It works well in "
+#~ "front-office. It's because of the compatibility between Leaflet "
+#~ "markerCluster and Wordpress."
+#~ msgstr ""
+#~ "L'affichage de l'agrégation dans l'interface d’administration est "
+#~ "dysfonctionnelle, mais elle fonctionne correctement sur l'interface "
+#~ "publique. C'est à cause de la compatibilité entre Leaflet markerCluster "
+#~ "et Wordpress."
 
 #~ msgid "I believe it's because of the block compilation."
 #~ msgstr "Je suppose que c'est dû à la compilation du bloc."

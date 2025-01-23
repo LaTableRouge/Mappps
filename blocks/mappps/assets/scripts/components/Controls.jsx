@@ -100,7 +100,7 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
             <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
-            <InputMaxZoom defaultValue={selectedMaxZoom} setAttributes={setAttributes} />
+            <InputMaxZoom defaultValue={selectedMaxZoom} max={mapTiles.find(({ value }) => value === selectedMapTiles).maxZoom} setAttributes={setAttributes} />
             <InputMaxMarkerZoom defaultValue={selectedMaxMarkerZoom} max={selectedMaxZoom} setAttributes={setAttributes} />
             <InputBoundsPadding defaultValue={selectedBoundsPadding} max={selectedMaxZoom} setAttributes={setAttributes} />
             <UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
