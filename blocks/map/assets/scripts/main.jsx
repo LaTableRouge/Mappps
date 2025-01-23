@@ -1,10 +1,9 @@
 import { useCallback, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
-import MapEdit from './components/MapEdit'
-import MapFront from './components/MapFront'
+import Map from './components/Map'
 
-export default function Main({ attributes, blockId, inEditor = false, queriedPosts }) {
+export default function Main({ attributes, blockId, queriedPosts }) {
   // State management
   const [isMobileView, setIsMobileView] = useState(false)
   const [popupOffset, setPopupOffset] = useState(0)
@@ -58,31 +57,25 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
     resizeObserver.observe(node)
   }, [])
 
-  const mapProps = {
-    boundsPadding: attributes.selectedBoundsPadding,
-    cluster: attributes.isClustered,
-    clusterSize: attributes.selectedMarkerClusterSize,
-    isGeolocated: attributes.isGeolocated,
-    isMobileView,
-    markerOffset: popupOffset,
-    markerSize: attributes.selectedMarkerSize,
-    maxMarkerZoom: attributes.selectedMaxMarkerZoom,
-    maxZoom: attributes.selectedMaxZoom,
-    posts: posts || queriedPosts,
-    selectedPost,
-    selectedSearchResult,
-    setSelectedPost,
-    setSelectedSearchResult,
-    tiles: attributes.selectedMapTiles
-  }
-
   return (
     <div ref={handleResize}>
-      {
-        // This is a temporary fix. wp-scripts break things from leaflet marker cluster in gutenberg.
-        // ticket: https://github.com/WordPress/gutenberg/issues/64446
-      }
-      {inEditor ? <MapEdit {...mapProps} /> : <MapFront {...mapProps} />}
+      <Map
+        boundsPadding={attributes.selectedBoundsPadding}
+        cluster={attributes.isClustered}
+        clusterSize={attributes.selectedMarkerClusterSize}
+        isGeolocated={attributes.isGeolocated}
+        isMobileView={isMobileView}
+        markerOffset={popupOffset}
+        markerSize={attributes.selectedMarkerSize}
+        maxMarkerZoom={attributes.selectedMaxMarkerZoom}
+        maxZoom={attributes.selectedMaxZoom}
+        posts={posts || queriedPosts}
+        selectedPost={selectedPost}
+        selectedSearchResult={selectedSearchResult}
+        setSelectedPost={setSelectedPost}
+        setSelectedSearchResult={setSelectedSearchResult}
+        tiles={attributes.selectedMapTiles}
+      />
     </div>
   )
 }
