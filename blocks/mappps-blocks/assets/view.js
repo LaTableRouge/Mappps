@@ -1,9 +1,9 @@
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css'
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
+import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
+import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 import './styles/view.scss'
 
 import Filters from './scripts/components/view/filters'
