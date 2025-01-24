@@ -1,6 +1,3 @@
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css'
-import 'leaflet.markercluster/dist/MarkerCluster.css'
-
 import { createPathComponent } from '@react-leaflet/core'
 
 import { MarkerClusterGroup } from './leaflet.markercluster'
