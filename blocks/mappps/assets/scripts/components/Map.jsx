@@ -6,7 +6,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 
 import { useMemo, useRef, useState } from '@wordpress/element'
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { LayersControl, MapContainer, TileLayer } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
 import MapControls from './map/MapControls'
@@ -20,9 +20,11 @@ const Map = ({
   cluster,
   clusterSize,
   displaySearch,
+  inEditor,
   isGeolocated,
   isMobileView,
   limitedSearch,
+  mapTiles,
   markerOffset,
   markerRefs,
   markerSize,
@@ -33,10 +35,10 @@ const Map = ({
   posts,
   selectedPost,
   selectedSearchResult,
+  selectedTiles,
   setFiltersOpen,
   setSelectedPost,
-  setSelectedSearchResult,
-  tiles
+  setSelectedSearchResult
 }) => {
   const clusterRef = useRef(null)
 
@@ -84,7 +86,17 @@ const Map = ({
           selectedPost={selectedPost}
         />
 
-        <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={tiles} />
+        {!inEditor && <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedTiles} />}
+
+        {inEditor && (
+          <LayersControl position="topright">
+            {mapTiles.map(({ label, value }, index) => (
+              <LayersControl.Overlay key={index} checked={selectedTiles === value} name={label}>
+                <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={value} />
+              </LayersControl.Overlay>
+            ))}
+          </LayersControl>
+        )}
 
         <MapControls
           geolocationCoordinates={geolocationCoordinates}

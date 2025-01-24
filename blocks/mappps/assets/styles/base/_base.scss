@@ -16,6 +16,8 @@
   --ratio: var(--aspect-ratio, var(--base-aspect-ratio));
 
   display: grid;
+  position: relative;
+  z-index: 0;
   box-sizing: border-box;
   grid-template: 'main' auto;
   overflow: hidden;

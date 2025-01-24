@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -73,10 +73,7 @@ The plugin support the clustering for the markers, you can disable it but then t
 Yes.
 
 = Can I put "Mappps" and "Mappps (blocks)" blocks in the same page? =
-Nope.
-
-= Why can't I see the clustering of markers in Gutenberg? =
-The clustering is kinda broken in back-office, even so It works well in front-office. It's because of the compatibility between Leaflet markerCluster and Wordpress.
+Yes.
 
 = Known bug =
 Leaflet is not compatible with [Gridjs](https://github.com/grid-js/gridjs) somehow Gridjs and Leaflet both uses the property "window.L".
@@ -106,6 +103,13 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.3.0 =
+* Released: January 23, 2025
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.3.0
+* Fixing marker clustering in Gutenberg
+* Fixing having multiple maps in the same page
+* Fixing tileLayer change in gutenberg editor
 
 = 1.2.1 =
 * Released: January 13, 2025

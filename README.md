@@ -52,8 +52,25 @@ wp i18n make-json lang/ --no-purge
 - [x] Save part
 - [x] Style desktop
 - [x] Style mobile
+- [ ] React 19 optimization update (waiting for @wordpress/scripts package dependencies to be updated)
+    - https://aleks-elkin.github.io/posts/2024-12-06-react-19/
+    - https://dev.to/manojspace/react-19-automatic-optimization-goodbye-memo-usememo-and-usecallback-555h
+    - https://dev.to/manojspace/react-19-vs-react-18-performance-improvements-and-migration-guide-5h85
+    
+- [ ] all blocks typescript conversion
+    - [ ] filters
+    - [ ] filters-toggle
+    - [ ] loader
+    - [ ] map
+    - [ ] mappps
+    - [ ] mappps-blocks
+    - [ ] mobile-toggles
+    - [ ] post-details
+    - [ ] post-template
+    - [ ] search-bar
+    - [ ] sidebar 
 
-### Documentation
+ ### Documentation
 
 Resources:
 
@@ -61,3 +78,4 @@ Resources:
 - [Leaflet GeoSearch](https://smeijer.github.io/leaflet-geosearch/)
 - [React Leaflet](https://react-leaflet.js.org/)
 - [React leaflet markercluster](https://www.npmjs.com/package/@changey/react-leaflet-markercluster)
+- [Leaflet Providers](https://leaflet-extras.github.io/leaflet-providers/preview/)
