@@ -3,7 +3,7 @@ import { useCallback, useState } from '@wordpress/element'
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
 import Map from './components/Map'
 
-export default function Main({ attributes, blockId, queriedPosts }) {
+export default function Main({ attributes, blockId, inEditor = false, queriedPosts }) {
   // State management
   const [isMobileView, setIsMobileView] = useState(false)
   const [popupOffset, setPopupOffset] = useState(0)
@@ -63,8 +63,10 @@ export default function Main({ attributes, blockId, queriedPosts }) {
         boundsPadding={attributes.selectedBoundsPadding}
         cluster={attributes.isClustered}
         clusterSize={attributes.selectedMarkerClusterSize}
+        inEditor={inEditor}
         isGeolocated={attributes.isGeolocated}
         isMobileView={isMobileView}
+        mapTiles={attributes.mapTiles}
         markerOffset={popupOffset}
         markerSize={attributes.selectedMarkerSize}
         maxMarkerZoom={attributes.selectedMaxMarkerZoom}
@@ -72,9 +74,9 @@ export default function Main({ attributes, blockId, queriedPosts }) {
         posts={posts || queriedPosts}
         selectedPost={selectedPost}
         selectedSearchResult={selectedSearchResult}
+        selectedTiles={attributes.selectedMapTiles}
         setSelectedPost={setSelectedPost}
         setSelectedSearchResult={setSelectedSearchResult}
-        tiles={attributes.selectedMapTiles}
       />
     </div>
   )

@@ -134,9 +134,11 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
               displaySearch={attributes.displaySearch}
+              inEditor={inEditor}
               isGeolocated={attributes.isGeolocated}
               isMobileView={isMobileView}
               limitedSearch={attributes.limitedSearch}
+              mapTiles={attributes.mapTiles}
               markerOffset={popupOffset}
               markerRefs={markerRefs}
               markerSize={attributes.selectedMarkerSize}
@@ -147,10 +149,10 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               posts={posts}
               selectedPost={selectedPost}
               selectedSearchResult={selectedSearchResult}
+              selectedTiles={attributes.selectedMapTiles}
               setFiltersOpen={setFiltersOpen}
               setSelectedPost={setSelectedPost}
               setSelectedSearchResult={setSelectedSearchResult}
-              tiles={attributes.selectedMapTiles}
             />
 
             {attributes.selectedDisplayType === 'full' && attributes.displayFilters && (

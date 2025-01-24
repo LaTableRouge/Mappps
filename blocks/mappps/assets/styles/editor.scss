@@ -6,5 +6,9 @@
     * {
       pointer-events: none !important;
     }
+
+    .leaflet-control-layers {
+      display: none;
+    }
   }
 }
