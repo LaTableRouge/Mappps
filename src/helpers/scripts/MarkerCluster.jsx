@@ -1,6 +1,5 @@
 import { createPathComponent } from '@react-leaflet/core'
-
-import { MarkerClusterGroup } from './leaflet.markercluster'
+import { MarkerClusterGroup } from 'leaflet.markercluster'
 
 function createMarkerCluster({ ...props }, context) {
   const clusterProps = {}
@@ -9,6 +8,7 @@ function createMarkerCluster({ ...props }, context) {
   // Splitting props and events to different objects
   Object.entries(props).forEach(([propName, prop]) => (propName.startsWith('on') ? (clusterEvents[propName] = prop) : (clusterProps[propName] = prop)))
 
+  console.log(MarkerClusterGroup)
   // Create a new instance for each component
   const instance = new MarkerClusterGroup(clusterProps)
 

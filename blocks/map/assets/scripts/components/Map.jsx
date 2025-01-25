@@ -2,8 +2,7 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
-import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
-import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
+import 'leaflet.markercluster/styles/MarkerCluster.css'
 
 import { createRef, useMemo, useRef, useState } from '@wordpress/element'
 import { LayersControl, MapContainer, TileLayer } from 'react-leaflet'
