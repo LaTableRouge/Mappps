@@ -23,8 +23,8 @@
     "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
     "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
     "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
-    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
-    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
+    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
+    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
     "beautify:all": "npm run prettier:scss && npm run lint:scss && npm run prettier:js && npm run lint:js && composer lint:php",
     "plugin-zip": "wp-scripts plugin-zip",
     "prepare": "husky install && composer install && npm run build && npm run build:blocks"

@@ -3,7 +3,6 @@ import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
-import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
 
 import { createRoot } from '@wordpress/element'
 

@@ -9,12 +9,12 @@ L.DistanceGrid = function (cellSize) {
 
 L.DistanceGrid.prototype = {
   addObject: function (obj, point) {
-    var x = this._getCoord(point.x),
-      y = this._getCoord(point.y),
-      grid = this._grid,
-      row = (grid[y] = grid[y] || {}),
-      cell = (row[x] = row[x] || []),
-      stamp = L.Util.stamp(obj)
+    const x = this._getCoord(point.x)
+    const y = this._getCoord(point.y)
+    const grid = this._grid
+    const row = (grid[y] = grid[y] || {})
+    const cell = (row[x] = row[x] || [])
+    const stamp = L.Util.stamp(obj)
 
     this._objectPoint[stamp] = point
 
@@ -28,13 +28,13 @@ L.DistanceGrid.prototype = {
 
   // Returns true if the object was found
   removeObject: function (obj, point) {
-    var x = this._getCoord(point.x),
-      y = this._getCoord(point.y),
-      grid = this._grid,
-      row = (grid[y] = grid[y] || {}),
-      cell = (row[x] = row[x] || []),
-      i,
-      len
+    const x = this._getCoord(point.x)
+    const y = this._getCoord(point.y)
+    const grid = this._grid
+    const row = (grid[y] = grid[y] || {})
+    const cell = (row[x] = row[x] || [])
+    let i
+    let len
 
     delete this._objectPoint[L.Util.stamp(obj)]
 
@@ -52,14 +52,14 @@ L.DistanceGrid.prototype = {
   },
 
   eachObject: function (fn, context) {
-    var i,
-      j,
-      k,
-      len,
-      row,
-      cell,
-      removed,
-      grid = this._grid
+    let i
+    let j
+    let k
+    let len
+    let row
+    let cell
+    let removed
+    const grid = this._grid
 
     for (i in grid) {
       row = grid[i]
@@ -79,19 +79,19 @@ L.DistanceGrid.prototype = {
   },
 
   getNearObject: function (point) {
-    var x = this._getCoord(point.x),
-      y = this._getCoord(point.y),
-      i,
-      j,
-      k,
-      row,
-      cell,
-      len,
-      obj,
-      dist,
-      objectPoint = this._objectPoint,
-      closestDistSq = this._sqCellSize,
-      closest = null
+    const x = this._getCoord(point.x)
+    const y = this._getCoord(point.y)
+    let i
+    let j
+    let k
+    let row
+    let cell
+    let len
+    let obj
+    let dist
+    const objectPoint = this._objectPoint
+    let closestDistSq = this._sqCellSize
+    let closest = null
 
     for (i = y - 1; i <= y + 1; i++) {
       row = this._grid[i]
@@ -115,13 +115,13 @@ L.DistanceGrid.prototype = {
   },
 
   _getCoord: function (x) {
-    var coord = Math.floor(x / this._cellSize)
+    const coord = Math.floor(x / this._cellSize)
     return isFinite(coord) ? coord : x
   },
 
   _sqDist: function (p, p2) {
-    var dx = p2.x - p.x,
-      dy = p2.y - p.y
+    const dx = p2.x - p.x
+    const dy = p2.y - p.y
     return dx * dx + dy * dy
   }
 }

@@ -7,6 +7,7 @@ import { delay } from '../../../../../src/helpers/scripts/functions'
 
 function ChangeView({
   boundsPadding,
+  canZoomToMarker,
   isMobileView,
   markerGeolocation,
   markerOffset,
@@ -39,10 +40,12 @@ function ChangeView({
   }
 
   const addBoundsOffset = (mapElement) => {
+    const zoomLevel = canZoomToMarker ? maxMarkerZoom : map.getZoom()
+
     if (isMobileView) {
-      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: maxMarkerZoom })
+      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: zoomLevel })
     } else {
-      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: maxMarkerZoom })
+      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: zoomLevel })
     }
   }
 
