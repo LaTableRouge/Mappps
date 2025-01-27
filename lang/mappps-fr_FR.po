@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.2.1\n"
+"Project-Id-Version: Mappps 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2025-01-23T09:45:12+00:00\n"
-"PO-Revision-Date: 2025-01-23 10:45+0100\n"
+"POT-Creation-Date: 2025-01-27T13:35:52+00:00\n"
+"PO-Revision-Date: 2025-01-27 15:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -153,7 +153,7 @@ msgid "Spinner size"
 msgstr "Taille de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1 build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
 msgid "Render settings"
 msgstr "Réglages d'affichage"
 
@@ -205,35 +205,13 @@ msgstr "Les utilisateurs pourront se géolocaliser"
 msgid "Geolocation"
 msgstr "Géolocalisation"
 
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Markers will be clustered (The clustering cannot be seen in gutenberg)"
-msgstr ""
-"Les marqueurs seront agrégés (l'agrégation ne sera pas visible dans "
-"Gutenberg)."
+#: build/blocks/map/assets/index.js:1
+msgid "The map will zoom to the marker when clicked"
+msgstr "La carte est zoomée sur le marqueur lorsque l'on clique dessus."
 
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Markers will not be clustered"
-msgstr "Les marqueurs ne seront pas agrégés"
-
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Marker clustering"
-msgstr "Agrégation de marqueurs"
-
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "The displayed sizes of the cluster icons"
-msgstr "Taille affichée des icônes agrégées"
-
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Cluster icon size"
-msgstr "Taille d'icône agrégée"
-
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "The displayed sizes of the marker icons"
-msgstr "Taille affichée des icônes de marqueurs"
-
-#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
-msgid "Marker icon size"
-msgstr "Taille de l'icône de marqueur"
+#: build/blocks/map/assets/index.js:1
+msgid "Zoom to marker"
+msgstr "Zoomer sur le marqueur"
 
 #: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps-blocks/assets/view.js:1
@@ -375,6 +353,20 @@ msgid "Limit search results?"
 msgstr "Limiter les résultats de la recherche ?"
 
 #: build/blocks/mappps/assets/index.js:1
+msgid "Markers will be clustered (The clustering cannot be seen in gutenberg)"
+msgstr ""
+"Les marqueurs seront agrégés (l'agrégation ne sera pas visible dans "
+"Gutenberg)."
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Markers will not be clustered"
+msgstr "Les marqueurs ne seront pas agrégés"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Marker clustering"
+msgstr "Agrégation de marqueurs"
+
+#: build/blocks/mappps/assets/index.js:1
 msgid "A search bar will be displayed"
 msgstr "Une barre de recherche sera affichée"
 
@@ -391,6 +383,22 @@ msgstr ""
 #: build/blocks/mappps/assets/index.js:1
 msgid "Sticky first"
 msgstr "Publications épinglées en premier"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "The displayed sizes of the cluster icons"
+msgstr "Taille affichée des icônes agrégées"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Cluster icon size"
+msgstr "Taille d'icône agrégée"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "The displayed sizes of the marker icons"
+msgstr "Taille affichée des icônes de marqueurs"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Marker icon size"
+msgstr "Taille de l'icône de marqueur"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -419,6 +427,38 @@ msgstr "Réglages de la carte"
 #: build/blocks/mappps/assets/index.js:1
 msgid "Sidebar settings"
 msgstr "Réglages de la barre latérale"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker"
+msgstr "Marqueur"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Selected marker"
+msgstr "Marqueur sélectionné"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker cluster"
+msgstr "Agrégation de marqueurs"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Search marker"
+msgstr "Marqueur de recherche"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Geolocation marker"
+msgstr "Marqueur de géolocalisation"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Markers will be clustered"
+msgstr "Les marqueurs seront agrégés"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Markers will have a shadow beneath them"
+msgstr "Les marqueurs auront une ombre en dessous d'eux"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker shadow"
+msgstr "Ombre du marqueur"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "Read more"
@@ -801,6 +841,16 @@ msgctxt "block title"
 msgid "Mappps"
 msgstr "Mappps"
 
+#: build/blocks/markers/block.json
+msgctxt "block title"
+msgid "Markers"
+msgstr "Marqueurs"
+
+#: build/blocks/markers/block.json
+msgctxt "block description"
+msgid "Customize the map's markers."
+msgstr "Personnaliser les marqueurs de la carte."
+
 #: build/blocks/mobile-toggles/block.json
 msgctxt "block title"
 msgid "Mobile toggles"
@@ -889,9 +939,6 @@ msgstr ""
 
 #~ msgid "Check the issue."
 #~ msgstr "Consulter le problème."
-
-#~ msgid "Markers will be clustered"
-#~ msgstr "Les marqueurs seront agrégés"
 
 #~ msgid "Desktop only, set the size for the filter popup"
 #~ msgstr ""

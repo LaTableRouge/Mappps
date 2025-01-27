@@ -24,15 +24,20 @@ function ChangeView({
 
   async function zoomSmoothly(cluster = null, marker = null, popup) {
     if (cluster && marker) {
-      await cluster.zoomToShowLayer(marker, () => {
-        // Fix the cluster offset, but it's a bit clunky
-        // const cluster = e.cluster
-        // if (cluster) {
-        //   addBoundsOffset(cluster)
-        // }
-      })
+      if (canZoomToMarker) {
+        await cluster.zoomToShowLayer(marker, () => {
+          // Fix the cluster offset, but it's a bit clunky
+          // const cluster = e.cluster
+          // if (cluster) {
+          //   addBoundsOffset(cluster)
+          // }
+        })
 
-      await delay(300)
+        await delay(300)
+      } else {
+        const parentElement = cluster.getVisibleParent(marker)
+        parentElement.spiderfy()
+      }
     }
     if (popup) {
       map.openPopup(popup)
@@ -65,7 +70,7 @@ function ChangeView({
       if (marker) {
         const popup = marker._popup
         if (marker.options.data.id === selectedPost.id) {
-          if (refCluster) {
+          if (refCluster && refCluster.current) {
             const cluster = refCluster.current
             const parentElement = cluster.getVisibleParent(marker)
             if (parentElement) {

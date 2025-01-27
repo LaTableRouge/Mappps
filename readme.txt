@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.3.0
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -103,6 +103,14 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.4.0 =
+* Released: January 27, 2025
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.4.0
+* Adding icons for blocks
+* Adding a "Marker" block component
+* Adding zoom to marker toggle
+* Adding a marker shadow toggle
 
 = 1.3.0 =
 * Released: January 23, 2025
