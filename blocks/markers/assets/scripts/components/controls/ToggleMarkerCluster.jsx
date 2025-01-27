@@ -6,7 +6,7 @@ export default function ToggleMarkerCluster({ defaultValue, setAttributes }) {
     setAttributes({ isClustered: value })
   }
 
-  const helpText = defaultValue ? __('Markers will be clustered (The clustering cannot be seen in gutenberg)', 'mappps') : __('Markers will not be clustered', 'mappps')
+  const helpText = defaultValue ? __('Markers will be clustered', 'mappps') : __('Markers will not be clustered', 'mappps')
 
   return <ToggleControl checked={defaultValue} help={helpText} label={__('Marker clustering', 'mappps')} onChange={handleChange} />
 }

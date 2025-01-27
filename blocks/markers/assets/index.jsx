@@ -6,8 +6,6 @@
  * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
  */
 
-import './styles/style.scss'
-
 import { registerBlockType } from '@wordpress/blocks'
 
 import metadata from '../block.json'
@@ -32,8 +30,8 @@ import Save from './scripts/save'
 registerBlockType(metadata.name, {
   icon: {
     src: (
-      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M19 3H5c-.6 0-1 .4-1 1v7c0 .5.4 1 1 1h14c.5 0 1-.4 1-1V4c0-.6-.4-1-1-1zM5.5 10.5v-.4l1.8-1.3 1.3.8c.3.2.7.2.9-.1L11 8.1l2.4 2.4H5.5zm13 0h-2.9l-4-4c-.3-.3-.8-.3-1.1 0L8.9 8l-1.2-.8c-.3-.2-.6-.2-.9 0l-1.3 1V4.5h13v6zM4 20h9v-1.5H4V20zm0-4h16v-1.5H4V16z"></path>
+      <svg height="1024" version="1.1" viewBox="0 0 1024 1024" width="1024" xmlns="http://www.w3.org/2000/svg">
+        <path d="M511.999 128.022c-158.714 0-291.83 127.996-291.83 291.83 0 66.559 46.078 163.837 133.117 286.712 66.559 87.037 133.117 158.714 133.117 163.837l25.596 25.596 25.596-25.596c5.122-5.122 66.559-71.677 133.117-163.837 92.155-122.874 133.117-220.152 133.117-286.712 0-163.837-133.117-291.83-291.83-291.83zM511.999 522.248c-56.317 0-107.515-46.078-107.515-107.515s46.078-107.515 107.515-107.515 107.515 46.078 107.515 107.515-51.199 107.515-107.515 107.515z"></path>
       </svg>
     )
   },
