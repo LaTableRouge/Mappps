@@ -3,9 +3,9 @@ import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function MarkerGeolocation(coordinates, ref) {
+export default function MarkerGeolocation(coordinates, ref, haveShadow) {
   return (
-    <Marker ref={ref} icon={Icon('geolocation')} position={coordinates}>
+    <Marker ref={ref} icon={Icon('geolocation', haveShadow)} position={coordinates}>
       <Popup>
         <div>
           <strong>{__('You are here', 'mappps')}</strong>

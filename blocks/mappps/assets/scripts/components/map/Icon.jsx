@@ -1,6 +1,6 @@
 import L from 'leaflet'
 
-const Icon = (type, markerSize = '40px', cluster, isSelected = false) => {
+const Icon = (type, haveShadow, markerSize = '40px', cluster, isSelected = false) => {
   let html = /* html */ '<div class="marker-icon">'
   let className = ''
 
@@ -43,7 +43,7 @@ const Icon = (type, markerSize = '40px', cluster, isSelected = false) => {
       />
     </svg>
     <div class="marker-icon__child-count">${cluster.getChildCount()}</div>
-    <div class="marker-icon__pulse"></div>
+    ${haveShadow ? '<div class="marker-icon__pulse"></div>' : ''}
     `
     className = 'custom-marker custom-marker--cluster'
   } else {
@@ -65,7 +65,7 @@ const Icon = (type, markerSize = '40px', cluster, isSelected = false) => {
           d="M20,2.6c-7.2,0-13.3,5.8-13.3,13.3c0,3,2.1,7.4,6,13c3,4,6,7.2,6,7.4l1.2,1.2l1.2-1.2c0.2-0.2,3-3.3,6-7.4 c4.2-5.6,6-10,6-13C33.3,8.4,27.2,2.6,20,2.6z M20,20.5c-2.6,0-4.9-2.1-4.9-4.9s2.1-4.9,4.9-4.9s4.9,2.1,4.9,4.9S22.6,20.5,20,20.5z"
         />
       </svg>
-      <div class="marker-icon__pulse"></div>
+      ${haveShadow ? '<div class="marker-icon__pulse"></div>' : ''}
     `
     className = `custom-marker ${type && `custom-marker--${type}`}`
   }

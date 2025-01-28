@@ -2,9 +2,9 @@ import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function MarkerSearch(data, ref) {
+export default function MarkerSearch(data, ref, haveShadow) {
   return (
-    <Marker ref={ref} icon={Icon('search')} position={[data.y, data.x]}>
+    <Marker ref={ref} icon={Icon('search', haveShadow)} position={[data.y, data.x]}>
       <Popup>
         <div>
           <strong>{data.label}</strong>

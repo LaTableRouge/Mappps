@@ -131,6 +131,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
           <>
             <Map
               boundsPadding={attributes.selectedBoundsPadding}
+              canZoomToMarker={attributes.canZoomToMarker}
               cluster={attributes.isClustered}
               clusterSize={attributes.selectedMarkerClusterSize}
               displaySearch={attributes.displaySearch}
@@ -141,6 +142,7 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
               mapTiles={attributes.mapTiles}
               markerOffset={popupOffset}
               markerRefs={markerRefs}
+              markerShadow={attributes.haveShadow}
               markerSize={attributes.selectedMarkerSize}
               maxMarkerZoom={attributes.selectedMaxMarkerZoom}
               maxZoom={attributes.selectedMaxZoom}

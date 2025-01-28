@@ -16,6 +16,8 @@ import ToggleFilters from './controls/ToggleFilters'
 import ToggleGeolocation from './controls/ToggleGeolocation'
 import ToggleLimitedSearch from './controls/ToggleLimitedSearch'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
+import ToggleMarkerShadow from './controls/ToggleMarkerShadow'
+import ToggleMarkerZoom from './controls/ToggleMarkerZoom'
 import ToggleSearch from './controls/ToggleSearch'
 import ToggleStickyFirst from './controls/ToggleStickyFirst'
 import UnitFiltersSize from './controls/UnitFiltersSize'
@@ -54,6 +56,8 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
   const selectedMaxMarkerZoom = attributes.selectedMaxMarkerZoom
   const selectedMarkerSize = attributes.selectedMarkerSize
   const selectedMarkerClusterSize = attributes.selectedMarkerClusterSize
+  const haveShadow = attributes.haveShadow
+  const canZoomToMarker = attributes.canZoomToMarker
 
   // Convert taxonomy slug into rest_base
   const sanitizedSelectedTaxonomies = []
@@ -99,6 +103,8 @@ export default function Controls({ attributes, postTypes, setAttributes, setQuer
           <PanelBody initialOpen={false} title={__('Map settings', 'mappps')}>
             <SelectTiles defaultValue={selectedMapTiles} options={mapTiles} setAttributes={setAttributes} />
             <ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
+            <ToggleMarkerZoom defaultValue={canZoomToMarker} setAttributes={setAttributes} />
+            <ToggleMarkerShadow defaultValue={haveShadow} setAttributes={setAttributes} />
             <ToggleGeolocation defaultValue={isGeolocated} setAttributes={setAttributes} />
             <InputMaxZoom defaultValue={selectedMaxZoom} max={mapTiles.find(({ value }) => value === selectedMapTiles).maxZoom} setAttributes={setAttributes} />
             <InputMaxMarkerZoom defaultValue={selectedMaxMarkerZoom} max={selectedMaxZoom} setAttributes={setAttributes} />

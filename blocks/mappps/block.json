@@ -169,6 +169,14 @@
       "type": "number",
       "default": 13
     },
+    "haveShadow": {
+      "type": "boolean",
+      "default": true
+    },
+    "canZoomToMarker": {
+      "type": "boolean",
+      "default": true
+    },
     "selectedSidebarSize": {
       "type": "string",
       "default": "25cqw"

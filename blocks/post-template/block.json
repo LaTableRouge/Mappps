@@ -15,7 +15,8 @@
   "usesContext": [
     "mppps/postIDs",
     "mppps/postType",
-    "mppps/blockId"
+    "mppps/blockId",
+    "mppps/putStickyFirst"
   ],
   "supports": {
     "reusable": false,

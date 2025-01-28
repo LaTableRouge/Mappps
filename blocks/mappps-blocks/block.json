@@ -24,7 +24,8 @@
     "mppps/taxonomies": "taxonomies",
     "mppps/categories": "categories",
     "mppps/postIDs": "selectedPosts",
-    "mppps/postType": "postType"
+    "mppps/postType": "postType",
+    "mppps/putStickyFirst": "putStickyFirst"
   },
   "attributes": {
     "blockId": {
