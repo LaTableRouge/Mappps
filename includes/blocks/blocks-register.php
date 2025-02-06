@@ -2,11 +2,13 @@
 
 declare(strict_types=1);
 
+namespace Mappps\Blocks;
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
-function mppps_register_react_blocks(): void {
+function register_react_blocks(): void {
     /**
      * Registers the blocks using the metadata loaded from the `block.json` files.
      * Behind the scenes, it registers also all assets so they can be enqueued
@@ -67,4 +69,4 @@ function mppps_register_react_blocks(): void {
         }
     }
 }
-add_action('init', 'mppps_register_react_blocks');
+add_action('init', __NAMESPACE__ . '\register_react_blocks');

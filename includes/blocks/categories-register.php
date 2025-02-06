@@ -8,6 +8,8 @@
 
 declare(strict_types=1);
 
+namespace Mappps\Blocks;
+
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
     exit;
@@ -20,7 +22,7 @@ if (!defined('ABSPATH')) {
  * @param array    $categories Array of block categories
  * @return array Modified block categories
  */
-function mppps_register_block_category(array $categories): array {
+function register_block_category(array $categories): array {
     $category_slugs = wp_list_pluck($categories, 'slug');
 
     if (in_array('mappps', $category_slugs, true)) {
@@ -38,4 +40,4 @@ function mppps_register_block_category(array $categories): array {
         $categories
     );
 }
-add_filter('block_categories_all', 'mppps_register_block_category', 10, 2);
+add_filter('block_categories_all', __NAMESPACE__ . '\register_block_category', 10, 2);

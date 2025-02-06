@@ -1,5 +1,7 @@
 <?php
 
+namespace Mappps;
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
@@ -7,7 +9,7 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin Name: Mappps
  * Plugin URI: https://github.com/LaTableRouge/Mappps
- * Description: A plugin that display maps
+ * Description: A plugin that displays maps
  * Tags: leaflet, block, openstreetmap, map, maps, map block, store locator
  * Author: latablerouge
  * Author URI: https://mlnop.fr/

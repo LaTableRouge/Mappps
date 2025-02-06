@@ -2,13 +2,15 @@
 
 declare(strict_types=1);
 
+namespace Mappps;
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
 
 // See: https://developer.wordpress.org/news/2024/03/26/how-to-use-wordpress-react-components-for-plugin-pages/
 
-function mppps_enqueue_assets(string $admin_page): void {
+function enqueue_assets(string $admin_page): void {
     if ($admin_page !== 'toplevel_page_mppps_admin') {
         return;
     }
@@ -56,4 +58,4 @@ function mppps_enqueue_assets(string $admin_page): void {
         MPPPS_LANG_PATH
     );
 }
-add_action('admin_enqueue_scripts', 'mppps_enqueue_assets');
+add_action('admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets');
