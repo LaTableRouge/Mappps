@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Register admin pages for the plugin
  *

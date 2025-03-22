@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Register block categories
  *
@@ -40,4 +41,4 @@ function register_block_category(array $categories): array {
         $categories
     );
 }
-add_filter('block_categories_all', __NAMESPACE__ . '\register_block_category', 10, 2);
+add_filter('block_categories_all', __NAMESPACE__ . '\register_block_category', 10);

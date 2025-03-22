@@ -1,7 +1,11 @@
 <?php
+
 /**
  * Server-side rendering of the `mppps/post-details` block.
  */
+if (!isset($block) || !isset($attributes)) {
+    return '';
+}
 
 $context = $block->context;
 $postIDs = $context['mppps/postIDs'];

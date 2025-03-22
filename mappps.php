@@ -41,6 +41,7 @@ Copyright 2025 Monzilla Media. All rights reserved.
 */
 
 if (!function_exists('get_plugin_data')) {
+    // @phpstan-ignore requireOnce.fileNotFound
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 define('MPPPS_PATH', plugin_dir_path(__FILE__));

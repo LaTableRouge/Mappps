@@ -37,14 +37,10 @@ function register_react_blocks(): void {
                 $scriptEditorHandle = generate_block_asset_handle($metadata['name'], 'editorScript');
                 $scriptHandle = generate_block_asset_handle($metadata['name'], 'viewScript');
                 $handles = [];
-                if (is_array($scriptEditorHandle)) {
-                    array_merge($handles, $scriptEditorHandle);
-                } else {
+                if (!empty($scriptEditorHandle)) {
                     $handles[] = $scriptEditorHandle;
                 }
-                if (is_array($scriptHandle)) {
-                    array_merge($handles, $scriptHandle);
-                } else {
+                if (!empty($scriptHandle)) {
                     $handles[] = $scriptHandle;
                 }
 

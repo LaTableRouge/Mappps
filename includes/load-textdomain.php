@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handle plugin translations
  *

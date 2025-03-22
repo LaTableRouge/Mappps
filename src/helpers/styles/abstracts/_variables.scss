@@ -1,12 +1,10 @@
-@use '/src/fonts/icomoon/variables' as icomoon;
 @use 'functions' as *;
 
 // Img
-$pictures-path: '../img';
+$pictures-path: '../../../../src/img';
 
 //Fonts
-$fonts-path: '../fonts';
-$icomoon-font-path: '#{$fonts-path}/icomoon/fonts';
+$fonts-path: '../../../../src/fonts';
 $fonts: (
   'title': (
     'name': 'Arial',
@@ -17,45 +15,8 @@ $fonts: (
     'serif': sans-serif
   ),
   'icons': (
-    'name': icomoon.$icomoon-font-family
+    'name': 'mappps-icon'
   )
-);
-
-$icons: (
-  'list': icomoon.$icon-mappps-list,
-  'shrink': icomoon.$icon-mappps-shrink,
-  'map': icomoon.$icon-mappps-map,
-  'logo': icomoon.$icon-mappps-logo,
-  'enlarge': icomoon.$icon-mappps-enlarge,
-  'refresh': icomoon.$icon-mappps-refresh,
-  'minus': icomoon.$icon-mappps-minus,
-  'sun': icomoon.$icon-mappps-sun,
-  'moon': icomoon.$icon-mappps-moon,
-  'marker': icomoon.$icon-mappps-marker,
-  'geolocation': icomoon.$icon-mappps-geolocation,
-  'fullscreen': icomoon.$icon-mappps-fullscreen,
-  'fullscreen-exit': icomoon.$icon-mappps-fullscreen-exit,
-  'new-tab': icomoon.$icon-mappps-new-tab,
-  'exit': icomoon.$icon-mappps-exit,
-  'download': icomoon.$icon-mappps-download,
-  'upload': icomoon.$icon-mappps-upload,
-  'plus': icomoon.$icon-mappps-plus,
-  'bin': icomoon.$icon-mappps-bin,
-  'pen': icomoon.$icon-mappps-pen,
-  'filter': icomoon.$icon-mappps-filter,
-  'mail': icomoon.$icon-mappps-mail,
-  'phone': icomoon.$icon-mappps-phone,
-  'check': icomoon.$icon-mappps-check,
-  'eye': icomoon.$icon-mappps-eye,
-  'cross': icomoon.$icon-mappps-cross,
-  'information': icomoon.$icon-mappps-information,
-  'search': icomoon.$icon-mappps-search,
-  'arrow-left': icomoon.$icon-mappps-arrow-left,
-  'arrow-right-plain': icomoon.$icon-mappps-arrow-right-plain,
-  'arrow-left-plain': icomoon.$icon-mappps-arrow-left-plain,
-  'arrow-right': icomoon.$icon-mappps-arrow-right,
-  'arrow-bottom': icomoon.$icon-mappps-arrow-bottom,
-  'user': icomoon.$icon-mappps-user
 );
 
 // Font-sizes must be converted to rem, use function calculateRem or min-max-interpolation
