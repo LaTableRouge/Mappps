@@ -99,18 +99,22 @@ Depending on which library is called first, the other takes priority and the fir
 
 == Upgrade Notice ==
 
+= 1.4.0 =
+* Maybe you'll need to delete and recreate the block in your gutenberg editor.
+
 = 0.0.9 =
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
 
 = 1.4.0 =
-* Released: January 27, 2025
+* Released: March 22, 2025
 * https://github.com/LaTableRouge/Mappps/releases/tag/1.4.0
 * Adding icons for blocks
 * Adding a "Marker" block component
 * Adding zoom to marker toggle
 * Adding a marker shadow toggle
+* Code improvement to match global standard
 
 = 1.3.0 =
 * Released: January 23, 2025
