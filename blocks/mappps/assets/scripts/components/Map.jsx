@@ -3,7 +3,6 @@ import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
-import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
 
 import { useMemo, useRef, useState } from '@wordpress/element'
 import { LayersControl, MapContainer, TileLayer } from 'react-leaflet'
@@ -17,6 +16,7 @@ import MarkerSearch from './map/MarkerSearch'
 
 const Map = ({
   boundsPadding,
+  canZoomToMarker,
   cluster,
   clusterSize,
   displaySearch,
@@ -27,6 +27,7 @@ const Map = ({
   mapTiles,
   markerOffset,
   markerRefs,
+  markerShadow,
   markerSize,
   maxMarkerZoom,
   maxZoom,
@@ -42,17 +43,17 @@ const Map = ({
 }) => {
   const clusterRef = useRef(null)
 
-  const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen)
+  const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen, markerShadow)
 
   const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
+    return cluster ? MarkerCluster(markers, clusterSize, clusterRef, markerShadow, canZoomToMarker) : markers
   }, [markers])
 
   const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
-      return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation)
+      return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation, markerShadow)
     } else {
       return null
     }
@@ -61,7 +62,7 @@ const Map = ({
   const refMarkerSearch = useRef(null)
   const markerSearchMemo = useMemo(() => {
     if (displaySearch && !limitedSearch && Object.keys(selectedSearchResult).length) {
-      return MarkerSearch(selectedSearchResult, refMarkerSearch)
+      return MarkerSearch(selectedSearchResult, refMarkerSearch, markerShadow)
     } else {
       return null
     }
@@ -72,6 +73,7 @@ const Map = ({
       <MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
         <ChangeView
           boundsPadding={boundsPadding}
+          canZoomToMarker={canZoomToMarker}
           isMobileView={isMobileView}
           markerGeolocation={markerGeolocationMemo}
           markerOffset={markerOffset}

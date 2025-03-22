@@ -8,6 +8,7 @@ import SelectCategories from './controls/SelectCategories'
 import SelectPosts from './controls/SelectPosts'
 import SelectPostType from './controls/SelectPostType'
 import SelectTaxonomies from './controls/SelectTaxonomies'
+import ToggleStickyFirst from './controls/ToggleStickyFirst'
 
 function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
   if (!postTypes.resolved) {
@@ -19,6 +20,7 @@ function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
     isClustered,
     limitedSearch,
     postType: selectedPostType,
+    putStickyFirst,
     selectedCategories,
     selectedPosts,
     selectedPrimaryColor,
@@ -59,6 +61,7 @@ function Controls({ attributes, postTypes, setAttributes, setQueriedPosts }) {
             taxonomies={sanitizedSelectedTaxonomies}
           />
         )}
+        {selectedPosts.length > 0 && <ToggleStickyFirst defaultValue={putStickyFirst} setAttributes={setAttributes} />}
       </PanelBody>
 
       {selectedPosts.length > 0 && (

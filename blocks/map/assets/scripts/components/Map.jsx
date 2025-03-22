@@ -2,11 +2,10 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
-import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
 import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 
 import { createRef, useMemo, useRef, useState } from '@wordpress/element'
-import { LayersControl, MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
 import MapControls from './map/MapControls'
@@ -14,6 +13,7 @@ import MarkerCluster from './map/MarkerCluster'
 import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
+import Tiles from './map/Tiles'
 
 const MAP_DEFAULTS = {
   doubleClickZoom: false,
@@ -24,6 +24,7 @@ const MAP_DEFAULTS = {
 
 export default function Map({
   boundsPadding,
+  canZoomToMarker,
   cluster,
   clusterSize,
   inEditor,
@@ -31,6 +32,7 @@ export default function Map({
   isMobileView,
   mapTiles,
   markerOffset = 0,
+  markerShadow,
   markerSize,
   maxMarkerZoom,
   maxZoom,
@@ -45,16 +47,16 @@ export default function Map({
   const markerRefs = useRef([])
   markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost)
+  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost, markerShadow)
   const markerGroup = useMemo(() => {
-    return cluster ? MarkerCluster(markers, clusterSize, clusterRef) : markers
+    return cluster ? MarkerCluster(markers, clusterSize, clusterRef, markerShadow, canZoomToMarker) : markers
   }, [cluster, clusterSize, markers])
 
   const refMarkerGeolocation = useRef(null)
   const [geolocationCoordinates, setGeolocationCoordinates] = useState({})
   const markerGeolocationMemo = useMemo(() => {
     if (isGeolocated && Object.keys(geolocationCoordinates).length) {
-      return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation)
+      return MarkerGeolocation(geolocationCoordinates, refMarkerGeolocation, markerShadow)
     }
     return null
   }, [geolocationCoordinates, isGeolocated])
@@ -62,7 +64,7 @@ export default function Map({
   const refMarkerSearch = useRef(null)
   const markerSearchMemo = useMemo(() => {
     if (Object.keys(selectedSearchResult).length) {
-      return MarkerSearch(selectedSearchResult, refMarkerSearch)
+      return MarkerSearch(selectedSearchResult, refMarkerSearch, markerShadow)
     }
     return null
   }, [selectedSearchResult])
@@ -71,6 +73,7 @@ export default function Map({
     <MapContainer {...MAP_DEFAULTS} maxZoom={maxZoom}>
       <ChangeView
         boundsPadding={boundsPadding}
+        canZoomToMarker={canZoomToMarker}
         isMobileView={isMobileView}
         markerGeolocation={markerGeolocationMemo}
         markerOffset={markerOffset}
@@ -85,17 +88,7 @@ export default function Map({
         selectedPost={selectedPost}
       />
 
-      {!inEditor && <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedTiles} />}
-
-      {inEditor && (
-        <LayersControl position="topright">
-          {mapTiles.map(({ label, value }, index) => (
-            <LayersControl.Overlay key={index} checked={selectedTiles === value} name={label}>
-              <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={value} />
-            </LayersControl.Overlay>
-          ))}
-        </LayersControl>
-      )}
+      <Tiles inEditor={inEditor} mapTiles={mapTiles} selectedTiles={selectedTiles} />
 
       <MapControls
         geolocationCoordinates={geolocationCoordinates}

@@ -4,17 +4,48 @@
 // If you import with url, replace ';' by '%3b';
 // -----------------------------------------------------------------------------
 
-@use '/src/fonts/icomoon/style';
-@use '/src/fonts/icomoon/variables' as icomoon;
-@use './variables' as variables;
+@use 'sass:map';
 
-@font-face {
-  font-family: '#{icomoon.$icomoon-font-family}';
-  font-style: normal;
-  font-weight: normal;
-  src:
-    url('../../../../src/fonts/icomoon/fonts/#{icomoon.$icomoon-font-family}.ttf?2z4419') format('truetype'),
-    url('../../../../src/fonts/icomoon/fonts/#{icomoon.$icomoon-font-family}.woff?2z4419') format('woff'),
-    url('../../../../src/fonts/icomoon/fonts/#{icomoon.$icomoon-font-family}.svg?2z4419##{icomoon.$icomoon-font-family}') format('svg');
-  font-display: block;
-}
+@use './variables' as *;
+@use '/src/fonts/icomoon/variables' with (
+  $icomoon-font-path: '#{$fonts-path}/icomoon/fonts',
+  $icomoon-font-family: map.get($fonts, 'icons', 'name')
+);
+@use '/src/fonts/icomoon/style';
+
+$icons: (
+  'list': variables.$icon-mappps-list,
+  'shrink': variables.$icon-mappps-shrink,
+  'map': variables.$icon-mappps-map,
+  'logo': variables.$icon-mappps-logo,
+  'enlarge': variables.$icon-mappps-enlarge,
+  'refresh': variables.$icon-mappps-refresh,
+  'minus': variables.$icon-mappps-minus,
+  'sun': variables.$icon-mappps-sun,
+  'moon': variables.$icon-mappps-moon,
+  'marker': variables.$icon-mappps-marker,
+  'geolocation': variables.$icon-mappps-geolocation,
+  'fullscreen': variables.$icon-mappps-fullscreen,
+  'fullscreen-exit': variables.$icon-mappps-fullscreen-exit,
+  'new-tab': variables.$icon-mappps-new-tab,
+  'exit': variables.$icon-mappps-exit,
+  'download': variables.$icon-mappps-download,
+  'upload': variables.$icon-mappps-upload,
+  'plus': variables.$icon-mappps-plus,
+  'bin': variables.$icon-mappps-bin,
+  'pen': variables.$icon-mappps-pen,
+  'filter': variables.$icon-mappps-filter,
+  'mail': variables.$icon-mappps-mail,
+  'phone': variables.$icon-mappps-phone,
+  'check': variables.$icon-mappps-check,
+  'eye': variables.$icon-mappps-eye,
+  'cross': variables.$icon-mappps-cross,
+  'information': variables.$icon-mappps-information,
+  'search': variables.$icon-mappps-search,
+  'arrow-left': variables.$icon-mappps-arrow-left,
+  'arrow-right-plain': variables.$icon-mappps-arrow-right-plain,
+  'arrow-left-plain': variables.$icon-mappps-arrow-left-plain,
+  'arrow-right': variables.$icon-mappps-arrow-right,
+  'arrow-bottom': variables.$icon-mappps-arrow-bottom,
+  'user': variables.$icon-mappps-user
+);

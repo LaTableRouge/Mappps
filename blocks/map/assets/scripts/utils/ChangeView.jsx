@@ -7,6 +7,7 @@ import { delay } from '../../../../../src/helpers/scripts/functions'
 
 function ChangeView({
   boundsPadding,
+  canZoomToMarker,
   isMobileView,
   markerGeolocation,
   markerOffset,
@@ -23,15 +24,20 @@ function ChangeView({
 
   async function zoomSmoothly(cluster = null, marker = null, popup) {
     if (cluster && marker) {
-      await cluster.zoomToShowLayer(marker, () => {
-        // Fix the cluster offset, but it's a bit clunky
-        // const cluster = e.cluster
-        // if (cluster) {
-        //   addBoundsOffset(cluster)
-        // }
-      })
+      if (canZoomToMarker) {
+        await cluster.zoomToShowLayer(marker, () => {
+          // Fix the cluster offset, but it's a bit clunky
+          // const cluster = e.cluster
+          // if (cluster) {
+          //   addBoundsOffset(cluster)
+          // }
+        })
 
-      await delay(300)
+        await delay(300)
+      } else {
+        const parentElement = cluster.getVisibleParent(marker)
+        parentElement.spiderfy()
+      }
     }
     if (popup) {
       map.openPopup(popup)
@@ -39,10 +45,12 @@ function ChangeView({
   }
 
   const addBoundsOffset = (mapElement) => {
+    const zoomLevel = canZoomToMarker ? maxMarkerZoom : map.getZoom()
+
     if (isMobileView) {
-      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: maxMarkerZoom })
+      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: zoomLevel })
     } else {
-      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: maxMarkerZoom })
+      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: zoomLevel })
     }
   }
 
@@ -62,7 +70,7 @@ function ChangeView({
       if (marker) {
         const popup = marker._popup
         if (marker.options.data.id === selectedPost.id) {
-          if (refCluster) {
+          if (refCluster && refCluster.current) {
             const cluster = refCluster.current
             const parentElement = cluster.getVisibleParent(marker)
             if (parentElement) {

@@ -44,7 +44,7 @@ L.MarkerClusterGroup.include({
    * @private
    */
   _flagParentsIconsNeedUpdate: function (layers) {
-    var id, parent
+    let id, parent
 
     //  Assumes layers is an Array or an Object whose prototype is non-enumerable.
     for (id in layers) {
@@ -68,7 +68,7 @@ L.MarkerClusterGroup.include({
    * @private
    */
   _refreshSingleMarkerModeMarkers: function (layers) {
-    var id, layer
+    let id, layer
 
     for (id in layers) {
       layer = layers[id]
@@ -91,7 +91,7 @@ L.Marker.include({
    * @returns {L.Marker}
    */
   refreshIconOptions: function (options, directlyRefreshClusters) {
-    var icon = this.options.icon
+    const icon = this.options.icon
 
     L.setOptions(icon, options)
 

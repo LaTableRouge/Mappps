@@ -1,5 +1,7 @@
 <?php
 
+namespace Mappps;
+
 if (!defined('ABSPATH')) {
     exit;
 } // Exit if accessed directly
@@ -7,15 +9,15 @@ if (!defined('ABSPATH')) {
 /**
  * Plugin Name: Mappps
  * Plugin URI: https://github.com/LaTableRouge/Mappps
- * Description: A plugin that display maps
+ * Description: A plugin that displays maps
  * Tags: leaflet, block, openstreetmap, map, maps, map block, store locator
  * Author: latablerouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
  * Tested up to: 6.7
  * Requires PHP: 8.0
- * Version: 1.3.0
- * Stable tag: 1.3.0
+ * Version: 1.4.0
+ * Stable tag: 1.4.0
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
@@ -39,6 +41,7 @@ Copyright 2025 Monzilla Media. All rights reserved.
 */
 
 if (!function_exists('get_plugin_data')) {
+    // @phpstan-ignore requireOnce.fileNotFound
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 define('MPPPS_PATH', plugin_dir_path(__FILE__));

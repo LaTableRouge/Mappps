@@ -10,7 +10,7 @@ import L from 'leaflet'
 
 L.Marker.include({
   clusterHide: function () {
-    var backup = this.options.opacity
+    const backup = this.options.opacity
     this.setOpacity(0)
     this.options.opacity = backup
     return this

@@ -1,11 +1,16 @@
 <?php
+
 /**
  * Server-side rendering of the `mppps/post-template` block.
  */
+if (!isset($block) || !isset($attributes)) {
+    return '';
+}
 
 $context = $block->context;
 $postIDs = $context['mppps/postIDs'] ?? [];
 $postType = $context['mppps/postType'] ?? '';
+$putStickyFirst = $context['mppps/putStickyFirst'];
 
 if (empty($postIDs)) {
     return '';
@@ -14,7 +19,8 @@ if (empty($postIDs)) {
 $query = new WP_Query([
     'post_type' => $postType,
     'post__in' => $postIDs,
-    'posts_per_page' => -1
+    'posts_per_page' => -1,
+    'ignore_sticky_posts' => $putStickyFirst ? 0 : 1
 ]);
 
 if (!$query->have_posts()) {

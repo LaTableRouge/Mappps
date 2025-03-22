@@ -61,6 +61,7 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
     <div ref={handleResize}>
       <Map
         boundsPadding={attributes.selectedBoundsPadding}
+        canZoomToMarker={attributes.canZoomToMarker}
         cluster={attributes.isClustered}
         clusterSize={attributes.selectedMarkerClusterSize}
         inEditor={inEditor}
@@ -68,6 +69,7 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
         isMobileView={isMobileView}
         mapTiles={attributes.mapTiles}
         markerOffset={popupOffset}
+        markerShadow={attributes.haveShadow}
         markerSize={attributes.selectedMarkerSize}
         maxMarkerZoom={attributes.selectedMaxMarkerZoom}
         maxZoom={attributes.selectedMaxZoom}

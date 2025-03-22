@@ -29,11 +29,11 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
   getAllChildMarkers: function (storageArray, ignoreDraggedMarker) {
     storageArray = storageArray || []
 
-    for (var i = this._childClusters.length - 1; i >= 0; i--) {
+    for (let i = this._childClusters.length - 1; i >= 0; i--) {
       this._childClusters[i].getAllChildMarkers(storageArray, ignoreDraggedMarker)
     }
 
-    for (var j = this._markers.length - 1; j >= 0; j--) {
+    for (let j = this._markers.length - 1; j >= 0; j--) {
       if (ignoreDraggedMarker && this._markers[j].__dragStart) {
         continue
       }
@@ -50,17 +50,17 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
 
   // Zoom to the minimum of showing all of the child markers, or the extents of this cluster
   zoomToBounds: function (fitBoundsOptions) {
-    var childClusters = this._childClusters.slice(),
-      map = this._group._map,
-      boundsZoom = map.getBoundsZoom(this._bounds),
-      zoom = this._zoom + 1,
-      mapZoom = map.getZoom(),
-      i
+    let childClusters = this._childClusters.slice()
+    const map = this._group._map
+    const boundsZoom = map.getBoundsZoom(this._bounds)
+    let zoom = this._zoom + 1
+    const mapZoom = map.getZoom()
+    let i
 
     // calculate how far we need to zoom down to see all of the markers
     while (childClusters.length > 0 && boundsZoom > zoom) {
       zoom++
-      var newClusters = []
+      let newClusters = []
       for (i = 0; i < childClusters.length; i++) {
         newClusters = newClusters.concat(childClusters[i]._childClusters)
       }
@@ -78,7 +78,7 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
   },
 
   getBounds: function () {
-    var bounds = new L.LatLngBounds()
+    const bounds = new L.LatLngBounds()
     bounds.extend(this._bounds)
     return bounds
   },
@@ -145,7 +145,7 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
    * @private
    */
   _resetBounds: function () {
-    var bounds = this._bounds
+    const bounds = this._bounds
 
     if (bounds._southWest) {
       bounds._southWest.lat = Infinity
@@ -158,15 +158,15 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
   },
 
   _recalculateBounds: function () {
-    var markers = this._markers,
-      childClusters = this._childClusters,
-      latSum = 0,
-      lngSum = 0,
-      totalCount = this._childCount,
-      i,
-      child,
-      childLatLng,
-      childCount
+    const markers = this._markers
+    const childClusters = this._childClusters
+    let latSum = 0
+    let lngSum = 0
+    const totalCount = this._childCount
+    let i
+    let child
+    let childLatLng
+    let childCount
 
     //  Case where all markers are removed from the map and we are left with just an empty _topClusterLevel.
     if (totalCount === 0) {
@@ -225,9 +225,9 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
       this._group._map.getMinZoom(),
       maxZoom - 1,
       function (c) {
-        var markers = c._markers,
-          i,
-          m
+        const markers = c._markers
+        let i
+        let m
         for (i = markers.length - 1; i >= 0; i--) {
           m = markers[i]
 
@@ -239,9 +239,9 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
         }
       },
       function (c) {
-        var childClusters = c._childClusters,
-          j,
-          cm
+        const childClusters = c._childClusters
+        let j
+        let cm
         for (j = childClusters.length - 1; j >= 0; j--) {
           cm = childClusters[j]
           if (cm._icon) {
@@ -287,8 +287,8 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
         }
 
         // Add our child markers at startPos (so they can be animated out)
-        for (var i = c._markers.length - 1; i >= 0; i--) {
-          var nm = c._markers[i]
+        for (let i = c._markers.length - 1; i >= 0; i--) {
+          const nm = c._markers[i]
 
           if (!bounds.contains(nm._latlng)) {
             continue
@@ -314,8 +314,8 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
 
   _recursivelyRestoreChildPositions: function (zoomLevel) {
     // Fix positions of child markers
-    for (var i = this._markers.length - 1; i >= 0; i--) {
-      var nm = this._markers[i]
+    for (let i = this._markers.length - 1; i >= 0; i--) {
+      const nm = this._markers[i]
       if (nm._backupLatlng) {
         nm.setLatLng(nm._backupLatlng)
         delete nm._backupLatlng
@@ -324,11 +324,11 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
 
     if (zoomLevel - 1 === this._zoom) {
       // Reposition child clusters
-      for (var j = this._childClusters.length - 1; j >= 0; j--) {
+      for (let j = this._childClusters.length - 1; j >= 0; j--) {
         this._childClusters[j]._restorePosition()
       }
     } else {
-      for (var k = this._childClusters.length - 1; k >= 0; k--) {
+      for (let k = this._childClusters.length - 1; k >= 0; k--) {
         this._childClusters[k]._recursivelyRestoreChildPositions(zoomLevel)
       }
     }
@@ -343,7 +343,7 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
 
   // exceptBounds: If set, don't remove any markers/clusters in it
   _recursivelyRemoveChildrenFromMap: function (previousBounds, mapMinZoom, zoomLevel, exceptBounds) {
-    var m, i
+    let m, i
     this._recursively(
       previousBounds,
       mapMinZoom - 1,
@@ -382,10 +382,10 @@ export const MarkerCluster = (L.MarkerCluster = L.Marker.extend({
   //  runAtEveryLevel: function that takes an L.MarkerCluster as an argument that should be applied on every level
   //  runAtBottomLevel: function that takes an L.MarkerCluster as an argument that should be applied at only the bottom level
   _recursively: function (boundsToApplyTo, zoomLevelToStart, zoomLevelToStop, runAtEveryLevel, runAtBottomLevel) {
-    var childClusters = this._childClusters,
-      zoom = this._zoom,
-      i,
-      c
+    const childClusters = this._childClusters
+    const zoom = this._zoom
+    let i
+    let c
 
     if (zoomLevelToStart <= zoom) {
       if (runAtEveryLevel) {

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Handle plugin translations
  *
@@ -6,6 +7,8 @@
  */
 
 declare(strict_types=1);
+
+namespace Mappps;
 
 // Exit if accessed directly.
 if (!defined('ABSPATH')) {
@@ -18,11 +21,11 @@ if (!defined('ABSPATH')) {
  * @since 1.0.0
  * @return void
  */
-function mppps_load_textdomain(): void {
+function load_textdomain(): void {
     load_plugin_textdomain(
         'mappps',
         false,
         MPPPS_BASE_NAME . '/lang'
     );
 }
-add_action('init', 'mppps_load_textdomain');
+add_action('init', __NAMESPACE__ . '\load_textdomain');

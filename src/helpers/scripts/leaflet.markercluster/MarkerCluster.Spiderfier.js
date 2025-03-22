@@ -19,11 +19,11 @@ L.MarkerCluster.include({
       return
     }
 
-    var childMarkers = this.getAllChildMarkers(null, true),
-      group = this._group,
-      map = group._map,
-      center = map.latLngToLayerPoint(this._latlng),
-      positions
+    const childMarkers = this.getAllChildMarkers(null, true)
+    const group = this._group
+    const map = group._map
+    const center = map.latLngToLayerPoint(this._latlng)
+    let positions
 
     this._group._unspiderfy()
     this._group._spiderfied = this
@@ -53,12 +53,12 @@ L.MarkerCluster.include({
   },
 
   _generatePointsCircle: function (count, centerPt) {
-    var circumference = this._group.options.spiderfyDistanceMultiplier * this._circleFootSeparation * (2 + count),
-      legLength = circumference / this._2PI, // radius from circumference
-      angleStep = this._2PI / count,
-      res = [],
-      i,
-      angle
+    const circumference = this._group.options.spiderfyDistanceMultiplier * this._circleFootSeparation * (2 + count)
+    let legLength = circumference / this._2PI // radius from circumference
+    const angleStep = this._2PI / count
+    const res = []
+    let i
+    let angle
 
     legLength = Math.max(legLength, 35) //  Minimum distance to get outside the cluster icon.
 
@@ -74,13 +74,13 @@ L.MarkerCluster.include({
   },
 
   _generatePointsSpiral: function (count, centerPt) {
-    var spiderfyDistanceMultiplier = this._group.options.spiderfyDistanceMultiplier,
-      legLength = spiderfyDistanceMultiplier * this._spiralLengthStart,
-      separation = spiderfyDistanceMultiplier * this._spiralFootSeparation,
-      lengthFactor = spiderfyDistanceMultiplier * this._spiralLengthFactor * this._2PI,
-      angle = 0,
-      res = [],
-      i
+    const spiderfyDistanceMultiplier = this._group.options.spiderfyDistanceMultiplier
+    let legLength = spiderfyDistanceMultiplier * this._spiralLengthStart
+    const separation = spiderfyDistanceMultiplier * this._spiralFootSeparation
+    const lengthFactor = spiderfyDistanceMultiplier * this._spiralLengthFactor * this._2PI
+    let angle = 0
+    const res = []
+    let i
 
     res.length = count
 
@@ -98,12 +98,12 @@ L.MarkerCluster.include({
   },
 
   _noanimationUnspiderfy: function () {
-    var group = this._group,
-      map = group._map,
-      fg = group._featureGroup,
-      childMarkers = this.getAllChildMarkers(null, true),
-      m,
-      i
+    const group = this._group
+    const map = group._map
+    const fg = group._featureGroup
+    const childMarkers = this.getAllChildMarkers(null, true)
+    let m
+    let i
 
     group._ignoreMove = true
 
@@ -139,14 +139,14 @@ L.MarkerCluster.include({
 // Non Animated versions of everything
 L.MarkerClusterNonAnimated = L.MarkerCluster.extend({
   _animationSpiderfy: function (childMarkers, positions) {
-    var group = this._group,
-      map = group._map,
-      fg = group._featureGroup,
-      legOptions = this._group.options.spiderLegPolylineOptions,
-      i,
-      m,
-      leg,
-      newPos
+    const group = this._group
+    const map = group._map
+    const fg = group._featureGroup
+    const legOptions = this._group.options.spiderLegPolylineOptions
+    let i
+    let m
+    let leg
+    let newPos
 
     group._ignoreMove = true
 
@@ -187,21 +187,22 @@ L.MarkerClusterNonAnimated = L.MarkerCluster.extend({
 // Animated versions here
 L.MarkerCluster.include({
   _animationSpiderfy: function (childMarkers, positions) {
-    var me = this,
-      group = this._group,
-      map = group._map,
-      fg = group._featureGroup,
-      thisLayerLatLng = this._latlng,
-      thisLayerPos = map.latLngToLayerPoint(thisLayerLatLng),
-      svg = L.Path.SVG,
-      legOptions = L.extend({}, this._group.options.spiderLegPolylineOptions), //  Copy the options so that we can modify them for animation.
-      finalLegOpacity = legOptions.opacity,
-      i,
-      m,
-      leg,
-      legPath,
-      legLength,
-      newPos
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const me = this
+    const group = this._group
+    const map = group._map
+    const fg = group._featureGroup
+    const thisLayerLatLng = this._latlng
+    const thisLayerPos = map.latLngToLayerPoint(thisLayerLatLng)
+    const svg = L.Path.SVG
+    const legOptions = L.extend({}, this._group.options.spiderLegPolylineOptions) //  Copy the options so that we can modify them for animation.
+    let finalLegOpacity = legOptions.opacity
+    let i
+    let m
+    let leg
+    let legPath
+    let legLength
+    let newPos
 
     if (finalLegOpacity === undefined) {
       finalLegOpacity = L.MarkerClusterGroup.prototype.options.spiderLegPolylineOptions.opacity
@@ -297,19 +298,20 @@ L.MarkerCluster.include({
   },
 
   _animationUnspiderfy: function (zoomDetails) {
-    var me = this,
-      group = this._group,
-      map = group._map,
-      fg = group._featureGroup,
-      thisLayerPos = zoomDetails ? map._latLngToNewLayerPoint(this._latlng, zoomDetails.zoom, zoomDetails.center) : map.latLngToLayerPoint(this._latlng),
-      childMarkers = this.getAllChildMarkers(null, true),
-      svg = L.Path.SVG,
-      m,
-      i,
-      leg,
-      legPath,
-      legLength,
-      nonAnimatable
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const me = this
+    const group = this._group
+    const map = group._map
+    const fg = group._featureGroup
+    const thisLayerPos = zoomDetails ? map._latLngToNewLayerPoint(this._latlng, zoomDetails.zoom, zoomDetails.center) : map.latLngToLayerPoint(this._latlng)
+    const childMarkers = this.getAllChildMarkers(null, true)
+    const svg = L.Path.SVG
+    let m
+    let i
+    let leg
+    let legPath
+    let legLength
+    let nonAnimatable
 
     group._ignoreMove = true
     group._animationStart()
@@ -359,7 +361,7 @@ L.MarkerCluster.include({
 
     setTimeout(function () {
       // If we have only <= one child left then that marker will be shown on the map so don't remove it!
-      var stillThereChildCount = 0
+      let stillThereChildCount = 0
       for (i = childMarkers.length - 1; i >= 0; i--) {
         m = childMarkers[i]
         if (m._spiderLeg) {

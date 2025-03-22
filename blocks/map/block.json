@@ -49,6 +49,14 @@
       "type": "boolean",
       "default": true
     },
+    "haveShadow": {
+      "type": "boolean",
+      "default": true
+    },
+    "canZoomToMarker": {
+      "type": "boolean",
+      "default": true
+    },
     "mapTiles": {
       "type": "array",
       "default": [

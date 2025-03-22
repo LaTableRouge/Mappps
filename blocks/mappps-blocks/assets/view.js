@@ -2,10 +2,10 @@ import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import 'leaflet-defaulticon-compatibility'
 import 'leaflet/dist/leaflet.css'
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
-import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.Default.css'
 import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 import './styles/view.scss'
 
+import { sortStickyPosts } from '../../../src/helpers/scripts/functions'
 import Filters from './scripts/components/view/filters'
 import FiltersToggle from './scripts/components/view/filters-toggle'
 import Loader from './scripts/components/view/loader'
@@ -26,6 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
       const postIDs = attributes.selectedPosts
       const restNamespace = attributes.postTypeRestNamespace
       const restBase = attributes.postTypeRestBase
+      const putStickyFirst = attributes.putStickyFirst
 
       if (postIDs.length && restBase && restNamespace) {
         const args = {
@@ -39,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
           if (response.length) {
             // Put ACF/SCF coordinates fields in the corresponding meta fields
-            const records = response.map((record) => {
+            let records = response.map((record) => {
               if ('acf' in record) {
                 if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
                   record.meta.lat = Number(record.acf.mappps_lat)
@@ -49,6 +50,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
               return record
             })
+
+            if (putStickyFirst) {
+              records = sortStickyPosts(records)
+            }
 
             const resizeObserver = new ResizeObserver(() => {
               parentBlock.style.setProperty('--wrapper-height', `${parentBlock.clientHeight}px`)

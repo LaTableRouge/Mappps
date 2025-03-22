@@ -43,7 +43,7 @@ const createClusterSvg = (markerSize) => `
   </svg>
 `
 
-export default function Icon(type, markerSize = '40px', cluster, isSelected = false) {
+export default function Icon(type, haveShadow, markerSize = '40px', cluster, isSelected = false) {
   // let isInCluster = false
   // const clusterChildMarkers = cluster.getAllChildMarkers()
   // if (isSelected) {
@@ -61,7 +61,7 @@ export default function Icon(type, markerSize = '40px', cluster, isSelected = fa
     <div class="marker-icon">
       ${isClusterType ? createClusterSvg(markerSize) : createMarkerSvg(markerSize)}
       ${isClusterType ? `<div class="marker-icon__child-count">${cluster.getChildCount()}</div>` : ''}
-      <div class="marker-icon__pulse"></div>
+      ${haveShadow ? '<div class="marker-icon__pulse"></div>' : ''}
     </div>
   `
 

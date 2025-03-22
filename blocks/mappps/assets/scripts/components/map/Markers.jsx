@@ -2,7 +2,7 @@ import { Marker } from 'react-leaflet'
 
 import Icon from './Icon'
 
-export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen) {
+export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen, haveShadow) {
   return posts.map((post, index) => {
     const isSelected = selectedPost.id === post.id
 
@@ -29,7 +29,7 @@ export default function Markers(posts, size, markerRefs, postRefs, setSelectedPo
             }
           }
         }}
-        icon={Icon('', size, false, isSelected)}
+        icon={Icon('', haveShadow, size, false, isSelected)}
         position={[post.meta.lat, post.meta.lng]}
       />
     )

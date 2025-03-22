@@ -75,7 +75,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     }
 
     //  Hook the appropriate animation methods.
-    var animate = L.DomUtil.TRANSITION && this.options.animate
+    const animate = L.DomUtil.TRANSITION && this.options.animate
     L.extend(this, animate ? this._withAnimation : this._noAnimation)
     //  Remember which MarkerCluster class to instantiate (animated or not).
     this._markerCluster = animate ? L.MarkerCluster : L.MarkerClusterNonAnimated
@@ -118,8 +118,8 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     this._refreshClustersIcons()
 
     //  Work out what is visible
-    var visibleLayer = layer,
-      currentZoom = this._zoom
+    let visibleLayer = layer
+    const currentZoom = this._zoom
     if (layer.__parent) {
       while (visibleLayer.__parent._zoom >= currentZoom) {
         visibleLayer = visibleLayer.__parent
@@ -192,20 +192,20 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       return this.addLayer(layersArray)
     }
 
-    var fg = this._featureGroup,
-      npg = this._nonPointGroup,
-      chunked = this.options.chunkedLoading,
-      chunkInterval = this.options.chunkInterval,
-      chunkProgress = this.options.chunkProgress,
-      l = layersArray.length,
-      offset = 0,
-      originalArray = true,
-      m
+    const fg = this._featureGroup
+    const npg = this._nonPointGroup
+    const chunked = this.options.chunkedLoading
+    const chunkInterval = this.options.chunkInterval
+    const chunkProgress = this.options.chunkProgress
+    let l = layersArray.length
+    let offset = 0
+    let originalArray = true
+    let m
 
     if (this._map) {
-      var started = new Date().getTime()
-      var process = L.bind(function () {
-        var start = new Date().getTime()
+      const started = new Date().getTime()
+      const process = L.bind(function () {
+        const start = new Date().getTime()
 
         //  Make sure to unspiderfy before starting to add some layers
         if (this._map && this._unspiderfy) {
@@ -215,7 +215,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
         for (; offset < l; offset++) {
           if (chunked && offset % 200 === 0) {
             //  every couple hundred markers, instrument the time elapsed since processing started:
-            var elapsed = new Date().getTime() - start
+            const elapsed = new Date().getTime() - start
             if (elapsed > chunkInterval) {
               break //  been working too hard, time to take a break :-)
             }
@@ -260,8 +260,8 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
           //  If we just made a cluster of size 2 then we need to remove the other marker from the map (if it is) or we never will
           if (m.__parent) {
             if (m.__parent.getChildCount() === 2) {
-              var markers = m.__parent.getAllChildMarkers(),
-                otherMarker = markers[0] === m ? markers[1] : markers[0]
+              const markers = m.__parent.getAllChildMarkers()
+              const otherMarker = markers[0] === m ? markers[1] : markers[0]
               fg.removeLayer(otherMarker)
             }
           }
@@ -287,7 +287,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
       process()
     } else {
-      var needsClustering = this._needsClustering
+      const needsClustering = this._needsClustering
 
       for (; offset < l; offset++) {
         m = layersArray[offset]
@@ -321,12 +321,12 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Takes an array of markers and removes them in bulk
   removeLayers: function (layersArray) {
-    var i,
-      m,
-      l = layersArray.length,
-      fg = this._featureGroup,
-      npg = this._nonPointGroup,
-      originalArray = true
+    let i
+    let m
+    let l = layersArray.length
+    const fg = this._featureGroup
+    const npg = this._nonPointGroup
+    let originalArray = true
 
     if (!this._map) {
       for (i = 0; i < l; i++) {
@@ -357,8 +357,8 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       this._unspiderfy()
 
       //  Work on a copy of the array, so that next loop is not affected.
-      var layersArray2 = layersArray.slice(),
-        l2 = l
+      const layersArray2 = layersArray.slice()
+      let l2 = l
       for (i = 0; i < l2; i++) {
         m = layersArray2[i]
 
@@ -450,13 +450,13 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Override FeatureGroup.getBounds as it doesn't work
   getBounds: function () {
-    var bounds = new L.LatLngBounds()
+    const bounds = new L.LatLngBounds()
 
     if (this._topClusterLevel) {
       bounds.extend(this._topClusterLevel._bounds)
     }
 
-    for (var i = this._needsClustering.length - 1; i >= 0; i--) {
+    for (let i = this._needsClustering.length - 1; i >= 0; i--) {
       bounds.extend(this._needsClustering[i].getLatLng())
     }
 
@@ -467,11 +467,11 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Overrides LayerGroup.eachLayer
   eachLayer: function (method, context) {
-    var markers = this._needsClustering.slice(),
-      needsRemoving = this._needsRemoving,
-      thisNeedsRemoving,
-      i,
-      j
+    const markers = this._needsClustering.slice()
+    const needsRemoving = this._needsRemoving
+    let thisNeedsRemoving
+    let i
+    let j
 
     if (this._topClusterLevel) {
       this._topClusterLevel.getAllChildMarkers(markers)
@@ -497,7 +497,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Overrides LayerGroup.getLayers
   getLayers: function () {
-    var layers = []
+    const layers = []
     this.eachLayer(function (l) {
       layers.push(l)
     })
@@ -506,7 +506,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Overrides LayerGroup.getLayer, WARNING: Really bad performance
   getLayer: function (id) {
-    var result = null
+    let result = null
 
     id = parseInt(id, 10)
 
@@ -525,8 +525,8 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       return false
     }
 
-    var i,
-      anArray = this._needsClustering
+    let i
+    let anArray = this._needsClustering
 
     for (i = anArray.length - 1; i >= 0; i--) {
       if (anArray[i] === layer) {
@@ -546,13 +546,13 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Zoom down to show the given layer (spiderfying if necessary) then calls the callback
   zoomToShowLayer: function (layer, callback) {
-    var map = this._map
+    const map = this._map
 
     if (typeof callback !== 'function') {
-      callback = function () { }
+      callback = function () {}
     }
 
-    var showMarker = function () {
+    const showMarker = function () {
       //  Assumes that map.hasLayer checks for direct appearance on map, not recursively calling
       //  hasLayer on Layer Groups that are on map (typically not calling this MarkerClusterGroup.hasLayer, which would always return true)
       if ((map.hasLayer(layer) || map.hasLayer(layer.__parent)) && !this._inZoomAnimation) {
@@ -585,10 +585,10 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   //  Overrides FeatureGroup.onAdd
   onAdd: function (map) {
     this._map = map
-    var i, l, layer
+    let i, l, layer
 
     if (!isFinite(this._map.getMaxZoom())) {
-      throw 'Map has no maxZoom specified'
+      throw new Error('Map has no maxZoom specified')
     }
 
     this._featureGroup.addTo(map)
@@ -662,7 +662,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   getVisibleParent: function (marker) {
-    var vMarker = marker
+    let vMarker = marker
     while (vMarker && !vMarker._icon) {
       vMarker = vMarker.__parent
     }
@@ -671,7 +671,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   //  Remove the given object from the given array
   _arraySplice: function (anArray, obj) {
-    for (var i = anArray.length - 1; i >= 0; i--) {
+    for (let i = anArray.length - 1; i >= 0; i--) {
       if (anArray[i] === obj) {
         anArray.splice(i, 1)
         return true
@@ -686,9 +686,9 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
    * @private
    */
   _removeFromGridUnclustered: function (marker, z) {
-    var map = this._map,
-      gridUnclustered = this._gridUnclustered,
-      minZoom = Math.floor(this._map.getMinZoom())
+    const map = this._map
+    const gridUnclustered = this._gridUnclustered
+    const minZoom = Math.floor(this._map.getMinZoom())
 
     for (; z >= minZoom; z--) {
       if (!gridUnclustered[z].removeObject(marker, map.project(marker.getLatLng(), z))) {
@@ -703,7 +703,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   _childMarkerMoved: function (e) {
     if (!this._ignoreMove && !e.target.__dragStart) {
-      var isPopupOpen = e.target._popup && e.target._popup.isOpen()
+      const isPopupOpen = e.target._popup && e.target._popup.isOpen()
 
       this._moveChild(e.target, e.oldLatLng, e.latlng)
 
@@ -722,7 +722,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   _childMarkerDragEnd: function (e) {
-    var dragStart = e.target.__dragStart
+    const dragStart = e.target.__dragStart
     delete e.target.__dragStart
     if (dragStart) {
       this._moveChild(e.target, dragStart, e.target._latlng)
@@ -732,11 +732,11 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   //  Internal function for removing a marker from everything.
   //  dontUpdateMap: set to true if you will handle updating the map manually (for bulk functions)
   _removeLayer: function (marker, removeFromDistanceGrid, dontUpdateMap) {
-    var gridClusters = this._gridClusters,
-      gridUnclustered = this._gridUnclustered,
-      fg = this._featureGroup,
-      map = this._map,
-      minZoom = Math.floor(this._map.getMinZoom())
+    const gridClusters = this._gridClusters
+    const gridUnclustered = this._gridUnclustered
+    const fg = this._featureGroup
+    const map = this._map
+    const minZoom = Math.floor(this._map.getMinZoom())
 
     //  Remove the marker from distance clusters it might be in
     if (removeFromDistanceGrid) {
@@ -744,9 +744,9 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     }
 
     //  Work our way up the clusters removing them as we go if required
-    var cluster = marker.__parent,
-      markers = cluster._markers,
-      otherMarker
+    let cluster = marker.__parent
+    const markers = cluster._markers
+    let otherMarker
 
     //  Remove the marker from the immediate parents marker list
     this._arraySplice(markers, marker)
@@ -819,9 +819,9 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   // Default functionality
   _defaultIconCreateFunction: function (cluster) {
-    var childCount = cluster.getChildCount()
+    const childCount = cluster.getChildCount()
 
-    var c = ' marker-cluster-'
+    let c = ' marker-cluster-'
     if (childCount < 10) {
       c += 'small'
     } else if (childCount < 100) {
@@ -834,11 +834,11 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   _bindEvents: function () {
-    var map = this._map,
-      spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom,
-      showCoverageOnHover = this.options.showCoverageOnHover,
-      zoomToBoundsOnClick = this.options.zoomToBoundsOnClick,
-      spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom
+    const map = this._map
+    const spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom
+    const showCoverageOnHover = this.options.showCoverageOnHover
+    const zoomToBoundsOnClick = this.options.zoomToBoundsOnClick
+    const spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom
 
     // Zoom on cluster click or spiderfy if we are at the lowest level
     if (spiderfyOnMaxZoom || zoomToBoundsOnClick || spiderfyOnEveryZoom) {
@@ -854,8 +854,8 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   _zoomOrSpiderfy: function (e) {
-    var cluster = e.layer,
-      bottomCluster = cluster
+    const cluster = e.layer
+    let bottomCluster = cluster
 
     if (e.type === 'clusterkeypress' && e.originalEvent && e.originalEvent.keyCode !== 13) {
       return
@@ -883,7 +883,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   _showCoverage: function (e) {
-    var map = this._map
+    const map = this._map
     if (this._inZoomAnimation) {
       return
     }
@@ -904,11 +904,11 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
   },
 
   _unbindEvents: function () {
-    var spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom,
-      showCoverageOnHover = this.options.showCoverageOnHover,
-      zoomToBoundsOnClick = this.options.zoomToBoundsOnClick,
-      spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom,
-      map = this._map
+    const spiderfyOnMaxZoom = this.options.spiderfyOnMaxZoom
+    const showCoverageOnHover = this.options.showCoverageOnHover
+    const zoomToBoundsOnClick = this.options.zoomToBoundsOnClick
+    const spiderfyOnEveryZoom = this.options.spiderfyOnEveryZoom
+    const map = this._map
 
     if (spiderfyOnMaxZoom || zoomToBoundsOnClick || spiderfyOnEveryZoom) {
       this.off('clusterclick clusterkeypress', this._zoomOrSpiderfy, this)
@@ -936,20 +936,19 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       return
     }
 
-    var newBounds = this._getExpandedVisibleBounds()
+    const newBounds = this._getExpandedVisibleBounds()
 
     this._topClusterLevel._recursivelyRemoveChildrenFromMap(this._currentShownBounds, Math.floor(this._map.getMinZoom()), this._zoom, newBounds)
     this._topClusterLevel._recursivelyAddChildrenToMap(null, Math.round(this._map._zoom), newBounds)
 
     this._currentShownBounds = newBounds
-    return
   },
 
   _generateInitialClusters: function () {
-    var maxZoom = Math.ceil(this._map.getMaxZoom()),
-      minZoom = Math.floor(this._map.getMinZoom()),
-      radius = this.options.maxClusterRadius,
-      radiusFn = radius
+    let maxZoom = Math.ceil(this._map.getMaxZoom())
+    const minZoom = Math.floor(this._map.getMinZoom())
+    const radius = this.options.maxClusterRadius
+    let radiusFn = radius
 
     // If we just set maxClusterRadius to a single number, we need to create
     // a simple function to return that number. Otherwise, we just have to
@@ -968,7 +967,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     this._gridUnclustered = {}
 
     // Set up DistanceGrids for each zoom
-    for (var zoom = maxZoom; zoom >= minZoom; zoom--) {
+    for (let zoom = maxZoom; zoom >= minZoom; zoom--) {
       this._gridClusters[zoom] = new L.DistanceGrid(radiusFn(zoom))
       this._gridUnclustered[zoom] = new L.DistanceGrid(radiusFn(zoom))
     }
@@ -979,11 +978,11 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   // Zoom: Zoom to start adding at (Pass this._maxZoom to start at the bottom)
   _addLayer: function (layer, zoom) {
-    var gridClusters = this._gridClusters,
-      gridUnclustered = this._gridUnclustered,
-      minZoom = Math.floor(this._map.getMinZoom()),
-      markerPoint,
-      z
+    const gridClusters = this._gridClusters
+    const gridUnclustered = this._gridUnclustered
+    const minZoom = Math.floor(this._map.getMinZoom())
+    let markerPoint
+    let z
 
     if (this.options.singleMarkerMode) {
       this._overrideMarkerIcon(layer)
@@ -996,7 +995,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       markerPoint = this._map.project(layer.getLatLng(), zoom) //  calculate pixel position
 
       // Try find a cluster close by
-      var closest = gridClusters[zoom].getNearObject(markerPoint)
+      let closest = gridClusters[zoom].getNearObject(markerPoint)
       if (closest) {
         closest._addChild(layer)
         layer.__parent = closest
@@ -1006,20 +1005,20 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
       // Try find a marker close by to form a new cluster with
       closest = gridUnclustered[zoom].getNearObject(markerPoint)
       if (closest) {
-        var parent = closest.__parent
+        const parent = closest.__parent
         if (parent) {
           this._removeLayer(closest, false)
         }
 
         // Create new cluster with these 2 in it
 
-        var newCluster = new this._markerCluster(this, zoom, closest, layer)
+        const newCluster = new this._markerCluster(this, zoom, closest, layer)
         gridClusters[zoom].addObject(newCluster, this._map.project(newCluster._cLatLng, zoom))
         closest.__parent = newCluster
         layer.__parent = newCluster
 
         // First create any new intermediate parent clusters that don't exist
-        var lastParent = newCluster
+        let lastParent = newCluster
         for (z = zoom - 1; z > parent._zoom; z--) {
           lastParent = new this._markerCluster(this, z, lastParent)
           gridClusters[z].addObject(lastParent, this._map.project(closest.getLatLng(), z))
@@ -1039,7 +1038,6 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     // Didn't get in anything, add us to the top
     this._topClusterLevel._addChild(layer)
     layer.__parent = this._topClusterLevel
-    return
   },
 
   /**
@@ -1063,7 +1061,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     }
   },
   _processQueue: function () {
-    for (var i = 0; i < this._queue.length; i++) {
+    for (let i = 0; i < this._queue.length; i++) {
       this._queue[i].call(this)
     }
     this._queue.length = 0
@@ -1073,7 +1071,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
 
   // Merge and split any existing clusters that are too big or small
   _mergeSplitClusters: function () {
-    var mapZoom = Math.round(this._map._zoom)
+    const mapZoom = Math.round(this._map._zoom)
 
     // In case we are starting to split before the animation finished
     this._processQueue()
@@ -1117,7 +1115,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
    * @private
    */
   _checkBoundsMaxLat: function (bounds) {
-    var maxLat = this._maxLat
+    const maxLat = this._maxLat
 
     if (maxLat !== undefined) {
       if (bounds.getNorth() >= maxLat) {
@@ -1138,7 +1136,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
     } else if (newCluster._childCount === 2) {
       newCluster._addToMap()
 
-      var markers = newCluster.getAllChildMarkers()
+      const markers = newCluster.getAllChildMarkers()
       this._featureGroup.removeLayer(markers[0])
       this._featureGroup.removeLayer(markers[1])
     } else {
@@ -1154,9 +1152,9 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
    * @private
    */
   _extractNonGroupLayers: function (group, output) {
-    var layers = group.getLayers(),
-      i = 0,
-      layer
+    const layers = group.getLayers()
+    let i = 0
+    let layer
 
     output = output || []
 
@@ -1181,7 +1179,7 @@ export const MarkerClusterGroup = (L.MarkerClusterGroup = L.FeatureGroup.extend(
    * @private
    */
   _overrideMarkerIcon: function (layer) {
-    var icon = (layer.options.icon = this.options.iconCreateFunction({
+    const icon = (layer.options.icon = this.options.iconCreateFunction({
       getChildCount: function () {
         return 1
       },
@@ -1232,18 +1230,18 @@ L.MarkerClusterGroup.include({
     },
 
     _animationZoomIn: function (previousZoomLevel, newZoomLevel) {
-      var bounds = this._getExpandedVisibleBounds(),
-        fg = this._featureGroup,
-        minZoom = Math.floor(this._map.getMinZoom()),
-        i
+      const bounds = this._getExpandedVisibleBounds()
+      const fg = this._featureGroup
+      const minZoom = Math.floor(this._map.getMinZoom())
+      let i
 
       this._ignoreMove = true
 
       // Add all children of current clusters to map and remove those clusters from map
       this._topClusterLevel._recursively(bounds, previousZoomLevel, minZoom, function (c) {
-        var startPos = c._latlng,
-          markers = c._markers,
-          m
+        let startPos = c._latlng
+        const markers = c._markers
+        let m
 
         if (!bounds.contains(startPos)) {
           startPos = null
@@ -1309,8 +1307,9 @@ L.MarkerClusterGroup.include({
     },
 
     _animationAddLayer: function (layer, newCluster) {
-      var me = this,
-        fg = this._featureGroup
+      // eslint-disable-next-line @typescript-eslint/no-this-alias
+      const me = this
+      const fg = this._featureGroup
 
       fg.addLayer(layer)
       if (newCluster !== layer) {
@@ -1343,13 +1342,14 @@ L.MarkerClusterGroup.include({
 
   //  Private methods for animated versions.
   _animationZoomOutSingle: function (cluster, previousZoomLevel, newZoomLevel) {
-    var bounds = this._getExpandedVisibleBounds(),
-      minZoom = Math.floor(this._map.getMinZoom())
+    const bounds = this._getExpandedVisibleBounds()
+    const minZoom = Math.floor(this._map.getMinZoom())
 
     // Animate all of the markers in the clusters to move to their cluster center point
     cluster._recursivelyAnimateChildrenInAndAddSelfToMap(bounds, minZoom, previousZoomLevel + 1, newZoomLevel)
 
-    var me = this
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const me = this
 
     // Update the opacity (If we immediately set it they won't animate)
     this._forceLayout()
@@ -1360,7 +1360,7 @@ L.MarkerClusterGroup.include({
     this._enqueue(function () {
       // This cluster stopped being a cluster before the timeout fired
       if (cluster._childCount === 1) {
-        var m = cluster._markers[0]
+        const m = cluster._markers[0]
         // If we were in a cluster animation at the time then the opacity and position of our child could be wrong now, so fix it
         this._ignoreMove = true
         m.setLatLng(m.getLatLng())
