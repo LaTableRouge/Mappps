@@ -119,6 +119,26 @@
     "selectedActiveMarkerColor": {
       "type": "string",
       "default": "#AE2012"
+    },
+    "haveCustomMarkers": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectedMarkerIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerClusterIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerGeolocationIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerSearchIcon": {
+      "type": "object",
+      "default": {}
     }
   },
   "viewScript": "file:./assets/view.js",

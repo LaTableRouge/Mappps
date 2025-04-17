@@ -27,6 +27,8 @@ export default function Map({
   canZoomToMarker,
   cluster,
   clusterSize,
+  customMarker,
+  haveCustomMarkers,
   inEditor,
   isGeolocated,
   isMobileView,
@@ -47,7 +49,7 @@ export default function Map({
   const markerRefs = useRef([])
   markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost, markerShadow)
+  const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost, markerShadow, haveCustomMarkers, customMarker)
   const markerGroup = useMemo(() => {
     return cluster ? MarkerCluster(markers, clusterSize, clusterRef, markerShadow, canZoomToMarker) : markers
   }, [cluster, clusterSize, markers])

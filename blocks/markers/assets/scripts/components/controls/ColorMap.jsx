@@ -1,29 +1,42 @@
 import { PanelColorSettings } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
-export default function ColorMap({ defaultValues, hasGeolocation, hasSearch, isClustered, setAttributes }) {
+export default function ColorMap({
+  defaultValues,
+  hasCustomClusterMarker,
+  hasCustomGeolocationMarker,
+  hasCustomMarker,
+  hasCustomSearchMarker,
+  hasGeolocation,
+  hasSearch,
+  isClustered,
+  setAttributes
+}) {
   const colorSettings = [
-    {
+    !hasCustomMarker && {
       value: defaultValues.marker,
       label: __('Marker', 'mappps'),
       onChange: (value) => setAttributes({ selectedMarkerColor: value })
     },
-    {
+    !hasCustomMarker && {
       value: defaultValues.markerActive,
       label: __('Selected marker', 'mappps'),
       onChange: (value) => setAttributes({ selectedActiveMarkerColor: value })
     },
-    isClustered && {
+    !hasCustomClusterMarker
+      && isClustered && {
       value: defaultValues.cluster,
       label: __('Marker cluster', 'mappps'),
       onChange: (value) => setAttributes({ selectedClusterColor: value })
     },
-    hasSearch && {
+    !hasCustomSearchMarker
+      && hasSearch && {
       value: defaultValues.search,
       label: __('Search marker', 'mappps'),
       onChange: (value) => setAttributes({ selectedSearchColor: value })
     },
-    hasGeolocation && {
+    !hasCustomGeolocationMarker
+      && hasGeolocation && {
       value: defaultValues.geolocation,
       label: __('Geolocation marker', 'mappps'),
       onChange: (value) => setAttributes({ selectedGeolocationColor: value })

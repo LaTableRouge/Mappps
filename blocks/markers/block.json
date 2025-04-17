@@ -39,6 +39,26 @@
       "type": "boolean",
       "default": true
     },
+    "haveCustomMarkers": {
+      "type": "boolean",
+      "default": false
+    },
+    "selectedMarkerIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerClusterIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerGeolocationIcon": {
+      "type": "object",
+      "default": {}
+    },
+    "selectedMarkerSearchIcon": {
+      "type": "object",
+      "default": {}
+    },
     "selectedMarkerColor": {
       "type": "string",
       "default": "#2b82cb"
