@@ -19,8 +19,8 @@
  * />
  */
 
-import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components'
-import { memo, useEffect, useState } from '@wordpress/element'
+import { __experimentalToolsPanel as ToolsPanel, Button } from '@wordpress/components'
+import { memo, useCallback, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
 // Import control components
@@ -28,8 +28,8 @@ import FormTokenAuthor from './controls/FormTokenAuthor'
 // import FormTokenFormat from './controls/FormTokenFormat'
 // import FormTokenParent from './controls/FormTokenParent'
 import { FormTokenTaxonomy } from './controls/FormTokenTaxonomy'
-import NumberOffset from './controls/NumberOffset'
-import NumberPages from './controls/NumberPages'
+// import NumberOffset from './controls/NumberOffset'
+// import NumberPages from './controls/NumberPages'
 import RangePerPage from './controls/RangePerPage'
 import SelectOrder from './controls/SelectOrder'
 import SelectPostType from './controls/SelectPostType'
@@ -41,12 +41,12 @@ import GetPosts from './utils/GetRecords.jsx'
 import { useToolsPanelDropdownMenuProps } from './utils/hooks.js'
 import { isControlAllowed, useAllowedControls, useOrderByOptions, usePostTypes, useTaxonomies, useTerms } from './utils/utils.js'
 
-function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
+function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsConfirmed, setQueriedPosts }) {
   // Initialize query state with default values
   const [query, setQueryState] = useState(attributes.query)
 
   // Destructure query parameters for easier access
-  const { author: authorIds, inherit, offset, order, orderBy, pages, perPage, postType, search, sticky, taxQuery } = query
+  const { author: authorIds, inherit, offset, order, orderBy, perPage, postType, search, sticky, taxQuery } = query
 
   // Get post type related data and options
   const {
@@ -84,33 +84,23 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
 
   // Build and update taxonomy terms from posts
   useEffect(() => {
-    if (postsResolved && posts.length && termsResolved && Object.keys(terms).length) {
+    if (postsResolved && posts?.length && termsResolved && Object.keys(terms).length) {
       const taxonomyTermsFromPosts = buildTaxonomyTermsFromPosts(taxonomies, terms, posts)
       setAttributes({ filtersTerms: taxonomyTermsFromPosts })
     }
   }, [postsResolved, termsResolved, taxonomies])
 
-  // Update selected posts and queried posts
+  // Update selected posts and queried posts only when confirmed
   useEffect(() => {
-    if (postsResolved && posts.length) {
+    if (isConfirmed && postsResolved && posts.length) {
       setAttributes({ selectedPosts: posts.map((post) => post.id) })
       setQueriedPosts(posts)
     }
-  }, [postsResolved])
+  }, [postsResolved, isConfirmed])
 
-  // Update selected posts and queried posts
+  // Update sticky parameters when sticky value changes
   useEffect(() => {
-    const stickyObject = attributes.stickyParams || {}
-
-    if (sticky === 'ignore') {
-      delete stickyObject.sticky
-      stickyObject.ignore_sticky = true
-    } else {
-      delete stickyObject.ignore_sticky
-      stickyObject.sticky = sticky === 'only'
-    }
-
-    setAttributes({ stickyParams: stickyObject })
+    setAttributes({ stickyParams: sticky })
   }, [sticky])
 
   /**
@@ -122,7 +112,14 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
       ...prevQuery,
       ...newQuery
     }))
+    // Reset confirmation when query changes
+    setIsConfirmed(false)
   }
+
+  // Handle confirm button click
+  const handleConfirm = useCallback(() => {
+    setIsConfirmed(true)
+  }, [])
 
   // Get allowed controls based on block attributes
   const allowedControls = useAllowedControls(attributes)
@@ -192,17 +189,17 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
   const dropdownMenuProps = useToolsPanelDropdownMenuProps()
 
   const showPostCountControl = isControlAllowed(allowedControls, 'postCount')
-  const showOffSetControl = isControlAllowed(allowedControls, 'offset')
-  const showPagesControl = isControlAllowed(allowedControls, 'pages')
+  // const showOffSetControl = isControlAllowed(allowedControls, 'offset')
+  // const showPagesControl = isControlAllowed(allowedControls, 'pages')
 
-  const showDisplayPanel = showPostCountControl || showOffSetControl || showPagesControl
+  const showDisplayPanel = showPostCountControl
 
   return (
     <>
       {showSettingsPanel && (
         <ToolsPanel
           dropdownMenuProps={dropdownMenuProps}
-          label={__('Settings')}
+          label={__('Query global settings', 'mappps')}
           resetAll={() => {
             setQuery({
               postType: 'post',
@@ -221,11 +218,11 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
         </ToolsPanel>
       )}
 
-      {!inherit && showDisplayPanel && (
+      {!inherit && !isWizard && showDisplayPanel && (
         <ToolsPanel
           className="block-library-query-toolspanel__display"
           dropdownMenuProps={dropdownMenuProps}
-          label={__('Display')}
+          label={__('Query display settings', 'mappps')}
           resetAll={() => {
             setQuery({
               offset: 0,
@@ -234,16 +231,16 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
           }}
         >
           <RangePerPage defaultValue={perPage} offset={offset} onChange={setQuery} />
-          <NumberOffset defaultValue={offset} onChange={setQuery} />
-          <NumberPages defaultValue={pages} onChange={setQuery} />
+          {/* <NumberOffset defaultValue={offset} onChange={setQuery} /> */}
+          {/* <NumberPages defaultValue={pages} onChange={setQuery} /> */}
         </ToolsPanel>
       )}
 
-      {!inherit && showFiltersPanel && (
+      {!inherit && !isWizard && showFiltersPanel && (
         <ToolsPanel
           className="block-library-query-toolspanel__filters" // unused but kept for backward compatibility
           dropdownMenuProps={dropdownMenuProps}
-          label={__('Filters', 'mappps')}
+          label={__('Query filters settings', 'mappps')}
           resetAll={() => {
             setQuery({
               author: '',
@@ -261,6 +258,13 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
           {/* {showFormatControl && <FormTokenFormat defaultValue={query.format} onChange={setQuery} />} */}
         </ToolsPanel>
       )}
+
+      {/* Confirm button */}
+      <div className="mappps-query-confirm-container" style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center' }}>
+        <Button disabled={postsResolved === false || posts.length === 0} isBusy={postsResolved === false} variant="primary" onClick={handleConfirm}>
+          {isConfirmed ? __('Query settings applied', 'mappps') : __('Apply query settings', 'mappps')}
+        </Button>
+      </div>
     </>
   )
 }

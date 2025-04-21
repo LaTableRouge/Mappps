@@ -5,6 +5,7 @@ import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import Controls from './components/Controls'
+import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
@@ -12,6 +13,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 
   const [wrapperHeight, setWrapperHeight] = useState(0)
   const [queriedPosts, setQueriedPosts] = useState([])
+  const [isConfirmed, setIsConfirmed] = useState(false)
 
   // Get usefull attributes from child blocks
   const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
@@ -74,10 +76,17 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     }
   }, [posts])
 
+  // Auto-confirm if there are already selected posts
+  useEffect(() => {
+    if (isSelected && attributes.selectedPosts.length) {
+      setIsConfirmed(true)
+    }
+  }, [attributes.selectedPosts, isSelected])
+
   if (attributes.selectedPosts.length && Object.keys(attributes.filtersTerms).length) {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+        <Controls attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
 
         <div
           ref={wrapperRef}
@@ -95,7 +104,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   } else {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+        <Wizard attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
       </section>
     )
   }

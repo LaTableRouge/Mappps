@@ -26,13 +26,24 @@ window.addEventListener('DOMContentLoaded', () => {
       const restNamespace = attributes.postTypeRestNamespace
       const restBase = attributes.postTypeRestBase
       const stickyParams = attributes.stickyParams
+      const stickyObject = {
+        sticky: false,
+        ignore_sticky: false
+      }
+      if (stickyParams === 'ignore') {
+        delete stickyObject.sticky
+        stickyObject.ignore_sticky = true
+      } else {
+        delete stickyObject.ignore_sticky
+        stickyObject.sticky = stickyParams === 'only'
+      }
 
       if (postIDs.length && restBase && restNamespace) {
         const args = {
           per_page: postIDs.length,
           include: postIDs,
           _embed: '',
-          ...stickyParams
+          ...stickyObject
         }
 
         fetch(`${fw_data.rest_url}${restNamespace}/${restBase}?${new URLSearchParams(args)}`).then(async (response) => {

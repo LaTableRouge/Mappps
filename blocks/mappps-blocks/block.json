@@ -81,11 +81,8 @@
       "default": {}
     },
     "stickyParams": {
-      "type": "object",
-      "default": {
-        "sticky": "",
-        "ignore_sticky": false
-      }
+      "type": "string",
+      "default": ""
     }
   },
   "textdomain": "mappps",

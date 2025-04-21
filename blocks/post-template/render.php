@@ -10,7 +10,12 @@ if (!isset($block) || !isset($attributes)) {
 $context = $block->context;
 $postIDs = $context['mppps/postIDs'] ?? [];
 $postType = $context['mppps/postType'] ?? '';
-$stickyParams = $context['mppps/stickyParams'] ?? [];
+$stickyParams = $context['mppps/stickyParams'] ?? '';
+
+$ignoreSticky = false;
+if ($stickyParams === 'ignore') {
+    $ignoreSticky = true;
+}
 
 if (empty($postIDs)) {
     return '';
@@ -20,7 +25,7 @@ $query = new WP_Query([
     'post_type' => $postType,
     'post__in' => $postIDs,
     'posts_per_page' => -1,
-    'ignore_sticky_posts' => isset($stickyParams['ignore_sticky']) && $stickyParams['ignore_sticky'] ? 1 : 0
+    'ignore_sticky_posts' => $stickyParams ? 1 : 0
 ]);
 
 if (!$query->have_posts()) {

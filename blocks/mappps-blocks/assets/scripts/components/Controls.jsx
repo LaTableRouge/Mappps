@@ -4,12 +4,12 @@ import { memo } from '@wordpress/element'
 import ColorMap from './controls/ColorMap'
 import ControlQuery from './query/ControlQuery'
 
-function Controls({ attributes, setAttributes, setQueriedPosts }) {
+function Controls({ attributes, isConfirmed, setAttributes, setIsConfirmed, setQueriedPosts }) {
   const { displaySearch, isClustered, limitedSearch, selectedPosts, selectedPrimaryColor, selectedSecondaryColor } = attributes
 
   return (
     <InspectorControls>
-      <ControlQuery attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+      <ControlQuery attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
       {selectedPosts?.length > 0 && (
         <ColorMap
           defaultValues={{

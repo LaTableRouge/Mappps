@@ -9,11 +9,11 @@ const MAX_POSTS_PER_PAGE = 100
 
 export default function RangePerPage({ defaultValue, offset = 0, onChange }) {
   return (
-    <ToolsPanelItem hasValue={() => defaultValue > 0} label={__('Items per page', 'mappps')}>
+    <ToolsPanelItem hasValue={() => defaultValue > 0} label={__('Max items displayed', 'mappps')}>
       <RangeControl
         __next40pxDefaultSize
         __nextHasNoMarginBottom
-        label={__('Items per page', 'mappps')}
+        label={__('Max items displayed', 'mappps')}
         max={MAX_POSTS_PER_PAGE}
         min={MIN_POSTS_PER_PAGE}
         step={1}
