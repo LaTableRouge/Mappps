@@ -65,7 +65,6 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
   }
 
   const isTaxonomyChecked = (taxonomy) => {
-    console.log(taxonomy, 'taxonomy')
     return taxonomy.terms.every((category) => category.checked)
   }
 

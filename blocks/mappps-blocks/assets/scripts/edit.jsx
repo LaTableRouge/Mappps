@@ -4,7 +4,6 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
-import { sortStickyPosts } from '../../../../src/helpers/scripts/functions'
 import Controls from './components/Controls'
 import AlterBlockProps from './utils/AlterBlockProps'
 
@@ -48,10 +47,6 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   let posts = []
   if (attributes.selectedPosts.length) {
     posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(post.id))
-  }
-
-  if (attributes.putStickyFirst) {
-    posts = sortStickyPosts(posts)
   }
 
   useEffect(() => {

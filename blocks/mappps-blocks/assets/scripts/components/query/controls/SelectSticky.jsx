@@ -18,7 +18,9 @@ export default function SelectSticky({ defaultValue, onChange }) {
         label={__('Sticky posts', 'mappps')}
         options={stickyOptions}
         value={defaultValue}
-        onChange={onChange}
+        onChange={(value) => {
+          onChange({ sticky: value })
+        }}
       />
     </ToolsPanelItem>
   )

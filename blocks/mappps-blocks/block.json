@@ -24,7 +24,7 @@
     "mppps/filtersTerms": "filtersTerms",
     "mppps/postIDs": "selectedPosts",
     "mppps/postType": "postType",
-    "mppps/putStickyFirst": "putStickyFirst"
+    "mppps/stickyParams": "stickyParams"
   },
   "attributes": {
     "query": {
@@ -80,9 +80,12 @@
       "type": "object",
       "default": {}
     },
-    "putStickyFirst": {
-      "type": "boolean",
-      "default": true
+    "stickyParams": {
+      "type": "object",
+      "default": {
+        "sticky": "",
+        "ignore_sticky": false
+      }
     }
   },
   "textdomain": "mappps",

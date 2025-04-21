@@ -16,7 +16,7 @@
     "mppps/postIDs",
     "mppps/postType",
     "mppps/blockId",
-    "mppps/putStickyFirst"
+    "mppps/stickyParams"
   ],
   "supports": {
     "reusable": false,

@@ -1,7 +1,29 @@
+/**
+ * ControlQuery Component
+ *
+ * A WordPress block editor component that provides a comprehensive interface for
+ * configuring and managing post queries. It allows users to set various query parameters
+ * such as post type, order, filters, and display settings.
+ *
+ * @component
+ * @param {Object} props - Component props
+ * @param {Object} props.attributes - Block attributes
+ * @param {Function} props.setAttributes - Function to update block attributes
+ * @param {Function} props.setQueriedPosts - Function to update queried posts
+ *
+ * @example
+ * <ControlQuery
+ *   attributes={blockAttributes}
+ *   setAttributes={updateAttributes}
+ *   setQueriedPosts={updateQueriedPosts}
+ * />
+ */
+
 import { __experimentalToolsPanel as ToolsPanel } from '@wordpress/components'
 import { memo, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
+// Import control components
 import FormTokenAuthor from './controls/FormTokenAuthor'
 // import FormTokenFormat from './controls/FormTokenFormat'
 // import FormTokenParent from './controls/FormTokenParent'
@@ -13,16 +35,27 @@ import SelectOrder from './controls/SelectOrder'
 import SelectPostType from './controls/SelectPostType'
 import SelectSticky from './controls/SelectSticky'
 import TextKeyword from './controls/TextKeyword'
+// Import utilities and hooks
 import { buildTaxonomyTermsFromPosts } from './utils/CreateTaxonomyTermsFromPosts'
 import GetPosts from './utils/GetRecords.jsx'
 import { useToolsPanelDropdownMenuProps } from './utils/hooks.js'
 import { isControlAllowed, useAllowedControls, useOrderByOptions, usePostTypes, useTaxonomies, useTerms } from './utils/utils.js'
 
 function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
-  // Initialize query state with proper structure
+  // Initialize query state with default values
   const [query, setQueryState] = useState(attributes.query)
-  const { author: authorIds, inherit, order, orderBy, postType, sticky, taxQuery } = query
-  const { postTypeFormatSupportMap, postTypeRestBaseMap, postTypeRestNamespaceMap, postTypesSelectOptions, postTypesTaxonomiesMap } = usePostTypes()
+
+  // Destructure query parameters for easier access
+  const { author: authorIds, inherit, offset, order, orderBy, pages, perPage, postType, search, sticky, taxQuery } = query
+
+  // Get post type related data and options
+  const {
+    // postTypeFormatSupportMap,
+    postTypeRestBaseMap,
+    postTypeRestNamespaceMap,
+    postTypesSelectOptions,
+    postTypesTaxonomiesMap
+  } = usePostTypes()
 
   // Get taxonomies for the current post type
   const taxonomies = useTaxonomies(postType)
@@ -30,24 +63,26 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
   // Get terms for the taxonomies
   const { resolved: termsResolved, terms } = useTerms(taxonomies?.map((tax) => tax.slug) || [])
 
+  // Update block attributes when query changes
   useEffect(() => {
     setAttributes({ query: query })
   }, [query])
 
+  // Update block attributes when post type or taxonomies change
   useEffect(() => {
     if (Object.keys(postTypeRestBaseMap).length && Object.keys(postTypeRestNamespaceMap).length) {
       setAttributes({
         postType: postType,
         postTypeRestBase: postTypeRestBaseMap[postType],
-        postTypeRestNamespace: postTypeRestNamespaceMap[postType],
-        taxonomies: taxonomies
+        postTypeRestNamespace: postTypeRestNamespaceMap[postType]
       })
     }
-  }, [postType, taxonomies])
+  }, [postType])
 
+  // Get posts based on current query
   const { posts, resolved: postsResolved } = GetPosts(query)
 
-  // Build taxonomy terms from posts when posts are resolved
+  // Build and update taxonomy terms from posts
   useEffect(() => {
     if (postsResolved && posts.length && termsResolved && Object.keys(terms).length) {
       const taxonomyTermsFromPosts = buildTaxonomyTermsFromPosts(taxonomies, terms, posts)
@@ -55,6 +90,7 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
     }
   }, [postsResolved, termsResolved, taxonomies])
 
+  // Update selected posts and queried posts
   useEffect(() => {
     if (postsResolved && posts.length) {
       setAttributes({ selectedPosts: posts.map((post) => post.id) })
@@ -62,25 +98,42 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
     }
   }, [postsResolved])
 
-  // Custom setQuery function that merges new parameters with existing ones
-  const setQuery = (newQuery) => {
-    setQueryState((prevQuery) => {
-      const updatedQuery = {
-        ...prevQuery,
-        ...newQuery
-      }
+  // Update selected posts and queried posts
+  useEffect(() => {
+    const stickyObject = attributes.stickyParams || {}
 
-      return updatedQuery
-    })
+    if (sticky === 'ignore') {
+      delete stickyObject.sticky
+      stickyObject.ignore_sticky = true
+    } else {
+      delete stickyObject.ignore_sticky
+      stickyObject.sticky = sticky === 'only'
+    }
+
+    setAttributes({ stickyParams: stickyObject })
+  }, [sticky])
+
+  /**
+   * Updates the query state by merging new parameters with existing ones
+   * @param {Object} newQuery - New query parameters to merge
+   */
+  const setQuery = (newQuery) => {
+    setQueryState((prevQuery) => ({
+      ...prevQuery,
+      ...newQuery
+    }))
   }
 
+  // Get allowed controls based on block attributes
   const allowedControls = useAllowedControls(attributes)
+
+  // Determine which controls to show
   const showSticky = postType === 'post'
   // const isPostTypeHierarchical = useIsPostTypeHierarchical(postType)
   const onPostTypeChange = (newValue) => {
     const updateQuery = { postType: newValue }
-    // We need to dynamically update the `taxQuery` property,
-    // by removing any not supported taxonomy from the query.
+
+    // Update taxonomies based on new post type
     const supportedTaxonomies = postTypesTaxonomiesMap[newValue]
     const updatedTaxQuery = Object.entries(taxQuery || {}).reduce((accumulator, [taxonomySlug, terms]) => {
       if (supportedTaxonomies.includes(taxonomySlug)) {
@@ -90,18 +143,20 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
     }, {})
     updateQuery.taxQuery = Object.keys(updatedTaxQuery).length ? updatedTaxQuery : undefined
 
+    // Reset sticky posts for non-post types
     if (newValue !== 'post') {
       updateQuery.sticky = ''
     }
-    // We need to reset `parents` because they are tied to each post type.
-    updateQuery.parents = []
+
+    // Reset parents and format
+    // updateQuery.parents = []
     // Post types can register post format support with `add_post_type_support`.
     // But we need to reset the `format` property when switching to post types
     // that do not support post formats.
-    const hasFormatSupport = postTypeFormatSupportMap[newValue]
-    if (!hasFormatSupport) {
-      updateQuery.format = []
-    }
+    // const hasFormatSupport = postTypeFormatSupportMap[newValue]
+    // if (!hasFormatSupport) {
+    //   updateQuery.format = []
+    // }
 
     setQuery(updateQuery)
   }
@@ -178,9 +233,9 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
             })
           }}
         >
-          <RangePerPage defaultValue={query.perPage} offset={query.offset} onChange={setQuery} />
-          <NumberOffset defaultValue={query.offset} onChange={setQuery} />
-          <NumberPages defaultValue={query.pages} onChange={setQuery} />
+          <RangePerPage defaultValue={perPage} offset={offset} onChange={setQuery} />
+          <NumberOffset defaultValue={offset} onChange={setQuery} />
+          <NumberPages defaultValue={pages} onChange={setQuery} />
         </ToolsPanel>
       )}
 
@@ -201,7 +256,7 @@ function ControlQuery({ attributes, setAttributes, setQueriedPosts }) {
         >
           {showTaxControl && <FormTokenTaxonomy query={query} onChange={setQuery} />}
           {showAuthorControl && <FormTokenAuthor defaultValue={authorIds} onChange={setQuery} />}
-          {showSearchControl && <TextKeyword defaultValue={query.search} setQuery={setQuery} />}
+          {showSearchControl && <TextKeyword defaultValue={search} setQuery={setQuery} />}
           {/* {showParentControl && <FormTokenParent defaultValue={query.parents} postType={query.postType} onChange={setQuery} />} */}
           {/* {showFormatControl && <FormTokenFormat defaultValue={query.format} onChange={setQuery} />} */}
         </ToolsPanel>

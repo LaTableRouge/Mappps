@@ -10,8 +10,7 @@ function Controls({ attributes, setAttributes, setQueriedPosts }) {
   return (
     <InspectorControls>
       <ControlQuery attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-
-      {selectedPosts.length > 0 && (
+      {selectedPosts?.length > 0 && (
         <ColorMap
           defaultValues={{
             primary: selectedPrimaryColor,
