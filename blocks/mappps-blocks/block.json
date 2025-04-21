@@ -28,6 +28,12 @@
     "mppps/putStickyFirst": "putStickyFirst"
   },
   "attributes": {
+    "query": {
+      "type": "object",
+      "default": {
+        
+      }
+    },
     "blockId": {
       "type": "string"
     },

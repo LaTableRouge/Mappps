@@ -5,6 +5,7 @@ import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import { sortStickyPosts } from '../../../../src/helpers/scripts/functions'
+import ControlQuery from './components/ControlQuery'
 import Controls from './components/Controls'
 import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
@@ -82,6 +83,12 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
       }
     }
   }, [posts])
+
+  return (
+    <section>
+      <ControlQuery attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} />
+    </section>
+  )
 
   if (attributes.selectedPosts.length) {
     return (
