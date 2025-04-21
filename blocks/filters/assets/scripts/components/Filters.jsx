@@ -68,6 +68,10 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
     return taxonomy.terms.every((category) => category.checked)
   }
 
+  // Check if there's only one taxonomy
+  const taxonomyCount = Object.keys(tempFilters).length
+  const hasOnlyOneTaxonomy = taxonomyCount === 1
+
   return (
     <form className="filters-form" data-open={filtersOpen} onReset={handleReset} onSubmit={handleSubmit}>
       <div className="filters-form__header">
@@ -87,10 +91,19 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
       <ul className="filters-form__list">
         {Object.entries(tempFilters).map(([taxonomy, data], index) => (
           <li key={index} className="list__element">
-            <label htmlFor={taxonomy}>
-              <input checked={isTaxonomyChecked(data)} id={taxonomy} name={taxonomy} type="checkbox" onChange={(e) => handleTaxonomyChange(e.target, taxonomy)} />
-              <span>{data.name}</span>
-            </label>
+            {/* Only show taxonomy checkbox if there's more than one taxonomy */}
+            {!hasOnlyOneTaxonomy
+              ? (
+              <label htmlFor={taxonomy}>
+                <input checked={isTaxonomyChecked(data)} id={taxonomy} name={taxonomy} type="checkbox" onChange={(e) => handleTaxonomyChange(e.target, taxonomy)} />
+                <span>{data.name}</span>
+              </label>
+                )
+              : (
+              <div>
+                <span>{data.name}</span>
+              </div>
+                )}
 
             <ul className="list__sublist">
               {data.terms.map((category, catIndex) => (

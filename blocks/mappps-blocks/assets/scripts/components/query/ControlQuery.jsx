@@ -23,7 +23,6 @@ import { __experimentalToolsPanel as ToolsPanel, Button } from '@wordpress/compo
 import { memo, useCallback, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-// Import control components
 import FormTokenAuthor from './controls/FormTokenAuthor'
 // import FormTokenFormat from './controls/FormTokenFormat'
 // import FormTokenParent from './controls/FormTokenParent'
@@ -35,38 +34,36 @@ import SelectOrder from './controls/SelectOrder'
 import SelectPostType from './controls/SelectPostType'
 import SelectSticky from './controls/SelectSticky'
 import TextKeyword from './controls/TextKeyword'
-// Import utilities and hooks
 import { buildTaxonomyTermsFromPosts } from './utils/CreateTaxonomyTermsFromPosts'
 import GetPosts from './utils/GetRecords.jsx'
 import { useToolsPanelDropdownMenuProps } from './utils/hooks.js'
 import { isControlAllowed, useAllowedControls, useOrderByOptions, usePostTypes, useTaxonomies, useTerms } from './utils/utils.js'
 
-function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsConfirmed, setQueriedPosts }) {
-  // Initialize query state with default values
-  const [query, setQueryState] = useState(attributes.query)
+/**
+ * Custom hook for managing sticky parameters
+ * @param {string} sticky - Sticky value
+ * @param {Function} setAttributes - Function to update block attributes
+ */
+function useStickyParams(sticky, setAttributes) {
+  useEffect(() => {
+    setAttributes({ stickyParams: sticky })
+  }, [sticky])
+}
 
-  // Destructure query parameters for easier access
-  const { author: authorIds, inherit, offset, order, orderBy, perPage, postType, search, sticky, taxQuery } = query
-
-  // Get post type related data and options
-  const {
-    // postTypeFormatSupportMap,
-    postTypeRestBaseMap,
-    postTypeRestNamespaceMap,
-    postTypesSelectOptions,
-    postTypesTaxonomiesMap
-  } = usePostTypes()
+/**
+ * Custom hook for managing post type and taxonomies
+ * @param {string} postType - Current post type
+ * @param {Object} query - Current query
+ * @returns {Object} Post type related data and options
+ */
+function usePostTypeData(postType, query, setQuery, setAttributes) {
+  const { postTypeRestBaseMap, postTypeRestNamespaceMap, postTypesSelectOptions, postTypesTaxonomiesMap } = usePostTypes()
 
   // Get taxonomies for the current post type
   const taxonomies = useTaxonomies(postType)
 
   // Get terms for the taxonomies
   const { resolved: termsResolved, terms } = useTerms(taxonomies?.map((tax) => tax.slug) || [])
-
-  // Update block attributes when query changes
-  useEffect(() => {
-    setAttributes({ query: query })
-  }, [query])
 
   // Update block attributes when post type or taxonomies change
   useEffect(() => {
@@ -79,6 +76,50 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
     }
   }, [postType])
 
+  // Handle post type change
+  const onPostTypeChange = (newValue) => {
+    const updateQueryObj = { postType: newValue }
+
+    // Update taxonomies based on new post type
+    const supportedTaxonomies = postTypesTaxonomiesMap[newValue]
+    const updatedTaxQuery = Object.entries(query.taxQuery || {}).reduce((accumulator, [taxonomySlug, terms]) => {
+      if (supportedTaxonomies.includes(taxonomySlug)) {
+        accumulator[taxonomySlug] = terms
+      }
+      return accumulator
+    }, {})
+    updateQueryObj.taxQuery = Object.keys(updatedTaxQuery).length ? updatedTaxQuery : undefined
+
+    // Reset sticky posts for non-post types
+    if (newValue !== 'post') {
+      updateQueryObj.sticky = ''
+    }
+
+    setQuery(updateQueryObj)
+  }
+
+  return {
+    postTypeRestBaseMap,
+    postTypeRestNamespaceMap,
+    postTypesSelectOptions,
+    postTypesTaxonomiesMap,
+    taxonomies,
+    termsResolved,
+    terms,
+    onPostTypeChange
+  }
+}
+
+/**
+ * Custom hook for managing posts and taxonomy terms
+ * @param {Object} query - Current query
+ * @param {Object} taxonomies - Current taxonomies
+ * @param {Object} terms - Current terms
+ * @param {boolean} termsResolved - Whether terms are resolved
+ * @param {Function} setAttributes - Function to update block attributes
+ * @returns {Object} Posts and resolved state
+ */
+function usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes) {
   // Get posts based on current query
   const { posts, resolved: postsResolved } = GetPosts(query)
 
@@ -90,23 +131,145 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
     }
   }, [postsResolved, termsResolved, taxonomies])
 
-  // Update selected posts and queried posts only when confirmed
-  useEffect(() => {
-    if (isConfirmed && postsResolved && posts.length) {
-      setAttributes({ selectedPosts: posts.map((post) => post.id) })
-      setQueriedPosts(posts)
-    }
-  }, [postsResolved, isConfirmed])
+  return { posts, postsResolved }
+}
 
-  // Update sticky parameters when sticky value changes
-  useEffect(() => {
-    setAttributes({ stickyParams: sticky })
-  }, [sticky])
+/**
+ * Settings Panel Component
+ * @param {Object} props - Component props
+ * @returns {JSX.Element} Settings panel
+ */
+function SettingsPanel({ options, order, orderBy, postType, setQuery, showOrderControl, showPostTypeControl, showStickyControl, sticky }) {
+  const { onPostTypeChange, orderByOptions, postTypesSelectOptions } = options
+  const dropdownMenuProps = useToolsPanelDropdownMenuProps()
 
-  /**
-   * Updates the query state by merging new parameters with existing ones
-   * @param {Object} newQuery - New query parameters to merge
-   */
+  return (
+    <ToolsPanel
+      dropdownMenuProps={dropdownMenuProps}
+      label={__('Query global settings', 'mappps')}
+      resetAll={() => {
+        setQuery({
+          postType: 'post',
+          order: 'desc',
+          orderBy: 'date',
+          sticky: '',
+          inherit: false
+        })
+      }}
+    >
+      {showPostTypeControl && <SelectPostType defaultValue={postType} options={postTypesSelectOptions} onChange={onPostTypeChange} />}
+
+      {showOrderControl && <SelectOrder defaultValue={{ orderBy, order }} options={orderByOptions} onChange={setQuery} />}
+
+      {showStickyControl && <SelectSticky defaultValue={sticky} onChange={setQuery} />}
+    </ToolsPanel>
+  )
+}
+
+/**
+ * Display Panel Component
+ * @param {Object} props - Component props
+ * @returns {JSX.Element} Display panel
+ */
+function DisplayPanel({ offset, perPage, setQuery }) {
+  const dropdownMenuProps = useToolsPanelDropdownMenuProps()
+
+  return (
+    <ToolsPanel
+      className="block-library-query-toolspanel__display"
+      dropdownMenuProps={dropdownMenuProps}
+      label={__('Query display settings', 'mappps')}
+      resetAll={() => {
+        setQuery({
+          offset: 0,
+          pages: 0
+        })
+      }}
+    >
+      <RangePerPage defaultValue={perPage} offset={offset} onChange={setQuery} />
+      {/* <NumberOffset defaultValue={offset} onChange={setQuery} /> */}
+      {/* <NumberPages defaultValue={pages} onChange={setQuery} /> */}
+    </ToolsPanel>
+  )
+}
+
+/**
+ * Filters Panel Component
+ * @param {Object} props - Component props
+ * @returns {JSX.Element} Filters panel
+ */
+function FiltersPanel({ query, setQuery, showAuthorControl, showSearchControl, showTaxControl }) {
+  const dropdownMenuProps = useToolsPanelDropdownMenuProps()
+  const {
+    author: authorIds,
+    search
+    // taxQuery,
+    // parents,
+    // format
+  } = query
+
+  return (
+    <ToolsPanel
+      className="block-library-query-toolspanel__filters"
+      dropdownMenuProps={dropdownMenuProps}
+      label={__('Query filters settings', 'mappps')}
+      resetAll={() => {
+        setQuery({
+          author: '',
+          parents: [],
+          search: '',
+          taxQuery: null,
+          format: []
+        })
+      }}
+    >
+      {showTaxControl && <FormTokenTaxonomy query={query} onChange={setQuery} />}
+      {showAuthorControl && <FormTokenAuthor defaultValue={authorIds} onChange={setQuery} />}
+      {showSearchControl && <TextKeyword defaultValue={search} setQuery={setQuery} />}
+      {/* {showParentControl && <FormTokenParent defaultValue={parents} postType={query.postType} onChange={setQuery} />} */}
+      {/* {showFormatControl && <FormTokenFormat defaultValue={format} onChange={setQuery} />} */}
+    </ToolsPanel>
+  )
+}
+
+/**
+ * Confirm Button Component
+ * @param {Object} props - Component props
+ * @returns {JSX.Element} Confirm button
+ */
+function ConfirmButton({ isBusy, isConfirmed, isDisabled, onConfirm }) {
+  return (
+    <div className="mappps-query-confirm-container" style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center' }}>
+      <Button disabled={isDisabled} isBusy={isBusy} variant="primary" onClick={onConfirm}>
+        {isConfirmed ? __('Query settings applied', 'mappps') : __('Apply query settings', 'mappps')}
+      </Button>
+    </div>
+  )
+}
+
+/**
+ * Main ControlQuery Component
+ * @param {Object} props - Component props
+ * @returns {JSX.Element} ControlQuery component
+ */
+function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsConfirmed, setQueriedPosts }) {
+  // Initialize query state with default values
+  const [query, setQueryState] = useState(attributes.query)
+
+  // Destructure query parameters for easier access
+  const {
+    // author: authorIds,
+    inherit,
+    offset,
+    order,
+    orderBy,
+    perPage,
+    postType,
+    // search,
+    sticky
+    // taxQuery
+  } = query
+
   const setQuery = (newQuery) => {
     setQueryState((prevQuery) => ({
       ...prevQuery,
@@ -116,48 +279,47 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
     setIsConfirmed(false)
   }
 
+  // Update block attributes when query changes
+  useEffect(() => {
+    setAttributes({ query: query })
+  }, [query])
+
+  // Handle sticky parameters
+  useStickyParams(query.sticky, setAttributes)
+
+  // Get post type related data and options
+  const {
+    // postTypeRestBaseMap,
+    // postTypeRestNamespaceMap,
+    onPostTypeChange,
+    // postTypesTaxonomiesMap,
+    postTypesSelectOptions,
+    taxonomies,
+    terms,
+    termsResolved
+  } = usePostTypeData(postType, query, setQuery, setAttributes)
+
+  // Get posts and terms
+  const { posts, postsResolved } = usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes)
+
+  // Update selected posts and queried posts only when confirmed
+  useEffect(() => {
+    if (isConfirmed && postsResolved && posts.length) {
+      setAttributes({ selectedPosts: posts.map((post) => post.id) })
+      setQueriedPosts(posts)
+    }
+  }, [postsResolved, isConfirmed])
+
   // Handle confirm button click
-  const handleConfirm = useCallback(() => {
+  const handleConfirmClick = useCallback(() => {
     setIsConfirmed(true)
-  }, [])
+  }, [setIsConfirmed])
 
   // Get allowed controls based on block attributes
   const allowedControls = useAllowedControls(attributes)
 
   // Determine which controls to show
   const showSticky = postType === 'post'
-  // const isPostTypeHierarchical = useIsPostTypeHierarchical(postType)
-  const onPostTypeChange = (newValue) => {
-    const updateQuery = { postType: newValue }
-
-    // Update taxonomies based on new post type
-    const supportedTaxonomies = postTypesTaxonomiesMap[newValue]
-    const updatedTaxQuery = Object.entries(taxQuery || {}).reduce((accumulator, [taxonomySlug, terms]) => {
-      if (supportedTaxonomies.includes(taxonomySlug)) {
-        accumulator[taxonomySlug] = terms
-      }
-      return accumulator
-    }, {})
-    updateQuery.taxQuery = Object.keys(updatedTaxQuery).length ? updatedTaxQuery : undefined
-
-    // Reset sticky posts for non-post types
-    if (newValue !== 'post') {
-      updateQuery.sticky = ''
-    }
-
-    // Reset parents and format
-    // updateQuery.parents = []
-    // Post types can register post format support with `add_post_type_support`.
-    // But we need to reset the `format` property when switching to post types
-    // that do not support post formats.
-    // const hasFormatSupport = postTypeFormatSupportMap[newValue]
-    // if (!hasFormatSupport) {
-    //   updateQuery.format = []
-    // }
-
-    setQuery(updateQuery)
-  }
-
   const orderByOptions = useOrderByOptions(postType)
   const showPostTypeControl = !inherit && isControlAllowed(allowedControls, 'postType')
   const showOrderControl = !inherit && isControlAllowed(allowedControls, 'order')
@@ -184,87 +346,50 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
   //   },
   //   [allowedControls, postTypeHasFormatSupport]
   // )
-
   const showFiltersPanel = showTaxControl || showAuthorControl || showSearchControl
-  const dropdownMenuProps = useToolsPanelDropdownMenuProps()
-
   const showPostCountControl = isControlAllowed(allowedControls, 'postCount')
   // const showOffSetControl = isControlAllowed(allowedControls, 'offset')
   // const showPagesControl = isControlAllowed(allowedControls, 'pages')
-
   const showDisplayPanel = showPostCountControl
+
+  // Prepare options for panel components
+  const panelOptions = {
+    postTypesSelectOptions,
+    orderByOptions,
+    onPostTypeChange
+  }
 
   return (
     <>
       {showSettingsPanel && (
-        <ToolsPanel
-          dropdownMenuProps={dropdownMenuProps}
-          label={__('Query global settings', 'mappps')}
-          resetAll={() => {
-            setQuery({
-              postType: 'post',
-              order: 'desc',
-              orderBy: 'date',
-              sticky: '',
-              inherit: false
-            })
-          }}
-        >
-          {showPostTypeControl && <SelectPostType defaultValue={postType} options={postTypesSelectOptions} onChange={onPostTypeChange} />}
-
-          {showOrderControl && <SelectOrder defaultValue={{ orderBy, order }} options={orderByOptions} onChange={setQuery} />}
-
-          {showStickyControl && <SelectSticky defaultValue={sticky} onChange={setQuery} />}
-        </ToolsPanel>
+        <SettingsPanel
+          options={panelOptions}
+          order={order}
+          orderBy={orderBy}
+          postType={postType}
+          setQuery={setQuery}
+          showOrderControl={showOrderControl}
+          showPostTypeControl={showPostTypeControl}
+          showStickyControl={showStickyControl}
+          sticky={sticky}
+        />
       )}
 
-      {!inherit && !isWizard && showDisplayPanel && (
-        <ToolsPanel
-          className="block-library-query-toolspanel__display"
-          dropdownMenuProps={dropdownMenuProps}
-          label={__('Query display settings', 'mappps')}
-          resetAll={() => {
-            setQuery({
-              offset: 0,
-              pages: 0
-            })
-          }}
-        >
-          <RangePerPage defaultValue={perPage} offset={offset} onChange={setQuery} />
-          {/* <NumberOffset defaultValue={offset} onChange={setQuery} /> */}
-          {/* <NumberPages defaultValue={pages} onChange={setQuery} /> */}
-        </ToolsPanel>
-      )}
+      {!inherit && !isWizard && showDisplayPanel && <DisplayPanel offset={offset} perPage={perPage} setQuery={setQuery} />}
 
       {!inherit && !isWizard && showFiltersPanel && (
-        <ToolsPanel
-          className="block-library-query-toolspanel__filters" // unused but kept for backward compatibility
-          dropdownMenuProps={dropdownMenuProps}
-          label={__('Query filters settings', 'mappps')}
-          resetAll={() => {
-            setQuery({
-              author: '',
-              parents: [],
-              search: '',
-              taxQuery: null,
-              format: []
-            })
-          }}
-        >
-          {showTaxControl && <FormTokenTaxonomy query={query} onChange={setQuery} />}
-          {showAuthorControl && <FormTokenAuthor defaultValue={authorIds} onChange={setQuery} />}
-          {showSearchControl && <TextKeyword defaultValue={search} setQuery={setQuery} />}
-          {/* {showParentControl && <FormTokenParent defaultValue={query.parents} postType={query.postType} onChange={setQuery} />} */}
-          {/* {showFormatControl && <FormTokenFormat defaultValue={query.format} onChange={setQuery} />} */}
-        </ToolsPanel>
+        <FiltersPanel
+          query={query}
+          setQuery={setQuery}
+          showAuthorControl={showAuthorControl}
+          showFormatControl={false}
+          showParentControl={false}
+          showSearchControl={showSearchControl}
+          showTaxControl={showTaxControl}
+        />
       )}
 
-      {/* Confirm button */}
-      <div className="mappps-query-confirm-container" style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center' }}>
-        <Button disabled={postsResolved === false || posts.length === 0} isBusy={postsResolved === false} variant="primary" onClick={handleConfirm}>
-          {isConfirmed ? __('Query settings applied', 'mappps') : __('Apply query settings', 'mappps')}
-        </Button>
-      </div>
+      <ConfirmButton isBusy={postsResolved === false} isConfirmed={isConfirmed} isDisabled={postsResolved === false || posts.length === 0} onConfirm={handleConfirmClick} />
     </>
   )
 }

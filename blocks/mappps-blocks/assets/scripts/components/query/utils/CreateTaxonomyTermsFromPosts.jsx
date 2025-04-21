@@ -11,16 +11,22 @@ export function buildTaxonomyTermsFromPosts(taxonomies, terms, posts) {
     return {}
   }
 
-  return taxonomies.reduce((filtersObject, { name, rest_base: restBase, slug }) => {
+  const filtersObject = taxonomies.reduce((filtersObject, { name, rest_base: restBase, slug }) => {
     const associatedTerms = terms[slug]
-    if (!associatedTerms?.length) return filtersObject
+    if (!associatedTerms?.length) {
+      return filtersObject
+    }
 
     posts.forEach((post) => {
       const postTerms = post[restBase]
-      if (!postTerms?.length) return
+      if (!postTerms?.length) {
+        return
+      }
 
       associatedTerms.forEach((term) => {
-        if (!postTerms.includes(term.id)) return
+        if (!postTerms.includes(term.id)) {
+          return
+        }
 
         if (!filtersObject[restBase]) {
           filtersObject[restBase] = {
@@ -38,4 +44,15 @@ export function buildTaxonomyTermsFromPosts(taxonomies, terms, posts) {
 
     return filtersObject
   }, {})
+
+  // Filter out taxonomies that have only one term
+  const filteredFiltersObject = Object.entries(filtersObject).reduce((result, [key, value]) => {
+    // Only include taxonomies with more than one term
+    if (value.terms.length > 1) {
+      result[key] = value
+    }
+    return result
+  }, {})
+
+  return filteredFiltersObject
 }
