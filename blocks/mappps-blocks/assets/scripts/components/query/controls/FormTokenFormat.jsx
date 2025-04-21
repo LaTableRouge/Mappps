@@ -1,7 +1,4 @@
-/**
- * WordPress dependencies
- */
-import { FormTokenField } from '@wordpress/components'
+import { __experimentalToolsPanelItem as ToolsPanelItem, FormTokenField } from '@wordpress/components'
 import { store as coreStore } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
 import { __ } from '@wordpress/i18n'
@@ -41,11 +38,11 @@ function formatNamesToValues(names, formats) {
     .filter(Boolean)
 }
 
-export default function FormatControls({ onChange, query: { format } }) {
+export default function FormTokenFormat({ defaultValue, onChange }) {
   // 'format' is expected to be an array. If it is not an array, for example
   // if a user has manually entered an invalid value in the block markup,
   // convert it to an array to prevent JavaScript errors.
-  const normalizedFormats = Array.isArray(format) ? format : [format]
+  const normalizedFormats = Array.isArray(defaultValue) ? defaultValue : [defaultValue]
 
   const { supportedFormats } = useSelect((select) => {
     const themeSupports = select(coreStore).getThemeSupports()
@@ -61,19 +58,21 @@ export default function FormatControls({ onChange, query: { format } }) {
   const suggestions = formats.filter((item) => !normalizedFormats.includes(item.value)).map((item) => item.label)
 
   return (
-    <FormTokenField
-      __experimentalExpandOnFocus
-      __next40pxDefaultSize
-      __nextHasNoMarginBottom
-      __experimentalShowHowTo={false}
-      label={__('Formats')}
-      suggestions={suggestions}
-      value={values}
-      onChange={(newValues) => {
-        onChange({
-          format: formatNamesToValues(newValues, formats)
-        })
-      }}
-    />
+    <ToolsPanelItem hasValue={() => !!defaultValue?.length} label={__('Formats', 'mappps')} onDeselect={() => onChange({ format: [] })}>
+      <FormTokenField
+        __experimentalExpandOnFocus
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        __experimentalShowHowTo={false}
+        label={__('Formats', 'mappps')}
+        suggestions={suggestions}
+        value={values}
+        onChange={(newValues) => {
+          onChange({
+            format: formatNamesToValues(newValues, formats)
+          })
+        }}
+      />
+    </ToolsPanelItem>
   )
 }

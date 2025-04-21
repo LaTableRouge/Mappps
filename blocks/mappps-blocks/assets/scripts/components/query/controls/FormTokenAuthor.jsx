@@ -1,15 +1,9 @@
-import { FormTokenField } from '@wordpress/components'
+import { __experimentalToolsPanelItem as ToolsPanelItem, FormTokenField } from '@wordpress/components'
 import { store as coreStore } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n'
 
-/**
- * Internal dependencies
- */
-import { getEntitiesInfo } from './utils.js'
+import { getEntitiesInfo } from '../utils/utils.js'
 
 const AUTHORS_QUERY = {
   who: 'authors',
@@ -18,7 +12,7 @@ const AUTHORS_QUERY = {
   context: 'view'
 }
 
-function AuthorControl({ onChange, value }) {
+export default function FormTokenAuthor({ defaultValue, onChange }) {
   const authorsList = useSelect((select) => {
     const { getUsers } = select(coreStore)
     return getUsers(AUTHORS_QUERY)
@@ -33,7 +27,7 @@ function AuthorControl({ onChange, value }) {
    * comma(`,`) separated string value and `FormTokenField` needs an
    * array.
    */
-  const normalizedValue = !value ? [] : value.toString().split(',')
+  const normalizedValue = !defaultValue ? [] : defaultValue.toString().split(',')
   // Returns only the existing authors ids. This prevents the component
   // from crashing in the editor, when non existing ids are provided.
   const sanitizedValue = normalizedValue.reduce((accumulator, authorId) => {
@@ -67,16 +61,16 @@ function AuthorControl({ onChange, value }) {
     onChange({ author: ids.join(',') })
   }
   return (
-    <FormTokenField
-      __next40pxDefaultSize
-      __nextHasNoMarginBottom
-      __experimentalShowHowTo={false}
-      label={__('Authors')}
-      suggestions={authorsInfo.names}
-      value={sanitizedValue}
-      onChange={onAuthorChange}
-    />
+    <ToolsPanelItem hasValue={() => !!defaultValue} label={__('Authors', 'mappps')} onDeselect={() => onChange({ author: '' })}>
+      <FormTokenField
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        __experimentalShowHowTo={false}
+        label={__('Authors', 'mappps')}
+        suggestions={authorsInfo.names}
+        value={sanitizedValue}
+        onChange={onAuthorChange}
+      />
+    </ToolsPanelItem>
   )
 }
-
-export default AuthorControl

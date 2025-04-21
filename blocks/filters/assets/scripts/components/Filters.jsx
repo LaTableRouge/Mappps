@@ -8,7 +8,7 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
     const updatedFilters = { ...tempFilters }
     const isChecked = e.checked
 
-    updatedFilters[taxonomy].categories = updatedFilters[taxonomy].categories.map((category) => ({
+    updatedFilters[taxonomy].terms = updatedFilters[taxonomy].terms.map((category) => ({
       ...category,
       checked: isChecked
     }))
@@ -18,10 +18,10 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
 
   const handleCategoryChange = (e, taxonomy, categoryId) => {
     const updatedFilters = { ...tempFilters }
-    const categoryIndex = updatedFilters[taxonomy].categories.findIndex((category) => category.id === Number(categoryId))
+    const categoryIndex = updatedFilters[taxonomy].terms.findIndex((category) => category.id === Number(categoryId))
 
     if (categoryIndex !== -1) {
-      updatedFilters[taxonomy].categories[categoryIndex].checked = e.checked
+      updatedFilters[taxonomy].terms[categoryIndex].checked = e.checked
       updateFilters(updatedFilters)
     }
   }
@@ -37,7 +37,7 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
       acc[key] = {
         ...taxonomy,
         checked: false,
-        categories: taxonomy.categories.map((category) => ({
+        categories: taxonomy.terms.map((category) => ({
           ...category,
           checked: false
         }))
@@ -65,7 +65,8 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
   }
 
   const isTaxonomyChecked = (taxonomy) => {
-    return taxonomy.categories.every((category) => category.checked)
+    console.log(taxonomy, 'taxonomy')
+    return taxonomy.terms.every((category) => category.checked)
   }
 
   return (
@@ -93,7 +94,7 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
             </label>
 
             <ul className="list__sublist">
-              {data.categories.map((category, catIndex) => (
+              {data.terms.map((category, catIndex) => (
                 <li key={catIndex} className="list__element">
                   <label htmlFor={`${taxonomy}---${category.id}`}>
                     <input

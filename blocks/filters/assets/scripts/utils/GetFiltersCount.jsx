@@ -1,3 +1,3 @@
 export default function GetFilterCount(filters = {}) {
-  return Object.values(filters).reduce((count, { categories }) => count + categories.filter((category) => category.checked).length, 0)
+  return Object.values(filters).reduce((count, { terms }) => count + terms.filter((term) => term.checked).length, 0)
 }

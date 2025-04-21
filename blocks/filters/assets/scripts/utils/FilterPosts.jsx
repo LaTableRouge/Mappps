@@ -11,7 +11,7 @@ export default function FilterPosts(posts = [], filterValues = {}, searchValue =
 
       for (const taxonomy in filterValues) {
         if (post[taxonomy]) {
-          const categories = filterValues[taxonomy].categories
+          const categories = filterValues[taxonomy].terms
 
           const checkedCategories = categories.filter((category) => category.checked)
           if (checkedCategories.length) {

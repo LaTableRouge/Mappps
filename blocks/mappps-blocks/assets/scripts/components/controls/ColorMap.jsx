@@ -8,20 +8,20 @@ function ColorMap({ defaultValues, setAttributes }) {
       colorSettings={[
         {
           value: defaultValues.primary,
-          label: __('Primary'),
+          label: __('Primary', 'mappps'),
           onChange: (value) => {
             setAttributes({ selectedPrimaryColor: value })
           }
         },
         {
           value: defaultValues.secondary,
-          label: __('Secondary'),
+          label: __('Secondary', 'mappps'),
           onChange: (value) => {
             setAttributes({ selectedSecondaryColor: value })
           }
         }
       ].filter(Boolean)}
-      title={__('Colors')}
+      title={__('Colors', 'mappps')}
     />
   )
 }

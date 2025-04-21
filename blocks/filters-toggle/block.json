@@ -13,9 +13,7 @@
     "mppps/sidebar"
   ],
   "usesContext": [
-    "mppps/blockId",
-    "mppps/taxonomies",
-    "mppps/categories"
+    "mppps/blockId"
   ],
   "supports": {
     "reusable": false,

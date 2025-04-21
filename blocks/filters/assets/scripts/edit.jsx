@@ -8,7 +8,7 @@ import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, context, setAttributes }) {
-  const { 'mppps/blockId': blockId, 'mppps/categories': categories, 'mppps/taxonomies': taxonomies } = context
+  const { 'mppps/blockId': blockId, 'mppps/filtersTerms': filtersTerms } = context
 
   const blockProps = useBlockProps()
   const alteredProps = AlterBlockProps(blockProps, attributes)
@@ -31,7 +31,7 @@ export default function Edit({ attributes, context, setAttributes }) {
   return (
     <div {...alteredProps}>
       <Controls attributes={attributes} setAttributes={setAttributes} />
-      <Main blockId={blockId} categories={categories} queriedPosts={posts} taxonomies={taxonomies} />
+      <Main blockId={blockId} filtersTerms={filtersTerms} queriedPosts={posts} />
     </div>
   )
 }

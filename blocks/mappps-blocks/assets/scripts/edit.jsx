@@ -5,19 +5,14 @@ import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
 import { sortStickyPosts } from '../../../../src/helpers/scripts/functions'
-import ControlQuery from './components/ControlQuery'
 import Controls from './components/Controls'
-import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
-import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
   const blockProps = useBlockProps()
 
   const [wrapperHeight, setWrapperHeight] = useState(0)
   const [queriedPosts, setQueriedPosts] = useState([])
-
-  const postTypes = GetPostTypes()
 
   // Get usefull attributes from child blocks
   const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
@@ -52,7 +47,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 
   let posts = []
   if (attributes.selectedPosts.length) {
-    posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
+    posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(post.id))
   }
 
   if (attributes.putStickyFirst) {
@@ -84,16 +79,10 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
     }
   }, [posts])
 
-  return (
-    <section>
-      <ControlQuery attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} />
-    </section>
-  )
-
-  if (attributes.selectedPosts.length) {
+  if (attributes.selectedPosts.length && Object.keys(attributes.filtersTerms).length) {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+        <Controls attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
         <div
           ref={wrapperRef}
@@ -111,7 +100,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
   } else {
     return (
       <section {...AlterBlockProps(blockProps, attributes)}>
-        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+        <Controls attributes={attributes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
       </section>
     )
   }

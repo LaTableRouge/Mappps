@@ -1,17 +1,11 @@
-import { FormTokenField } from '@wordpress/components'
+import { __experimentalToolsPanelItem as ToolsPanelItem, FormTokenField } from '@wordpress/components'
 import { useDebounce } from '@wordpress/compose'
 import { store as coreStore } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
 import { useEffect, useMemo, useState } from '@wordpress/element'
-/**
- * WordPress dependencies
- */
 import { __ } from '@wordpress/i18n'
 
-/**
- * Internal dependencies
- */
-import { getEntitiesInfo, mapToIHasNameAndId } from './utils.js'
+import { getEntitiesInfo, mapToIHasNameAndId } from '../utils/utils'
 
 const EMPTY_ARRAY = []
 const BASE_QUERY = {
@@ -20,7 +14,7 @@ const BASE_QUERY = {
   context: 'view'
 }
 
-function ParentControl({ onChange, parents, postType }) {
+export default function FormTokenParent({ defaultValue, onChange, postType }) {
   const [search, setSearch] = useState('')
   const [value, setValue] = useState(EMPTY_ARRAY)
   const [suggestions, setSuggestions] = useState(EMPTY_ARRAY)
@@ -38,7 +32,7 @@ function ParentControl({ onChange, parents, postType }) {
           ...BASE_QUERY,
           search,
           orderby: 'relevance',
-          exclude: parents,
+          exclude: defaultValue,
           per_page: 20
         }
       ]
@@ -47,26 +41,26 @@ function ParentControl({ onChange, parents, postType }) {
         searchHasResolved: hasFinishedResolution('getEntityRecords', selectorArgs)
       }
     },
-    [search, postType, parents]
+    [search, postType, defaultValue]
   )
   const currentParents = useSelect(
     (select) => {
-      if (!parents?.length) {
+      if (!defaultValue?.length) {
         return EMPTY_ARRAY
       }
       const { getEntityRecords } = select(coreStore)
       return getEntityRecords('postType', postType, {
         ...BASE_QUERY,
-        include: parents,
-        per_page: parents.length
+        include: defaultValue,
+        per_page: defaultValue.length
       })
     },
-    [parents, postType]
+    [defaultValue, postType]
   )
   // Update the `value` state only after the selectors are resolved
   // to avoid emptying the input when we're changing parents.
   useEffect(() => {
-    if (!parents?.length) {
+    if (!defaultValue?.length) {
       setValue(EMPTY_ARRAY)
     }
     if (!currentParents?.length) {
@@ -75,7 +69,7 @@ function ParentControl({ onChange, parents, postType }) {
     const currentParentsInfo = getEntitiesInfo(mapToIHasNameAndId(currentParents, 'title.rendered'))
     // Returns only the existing entity ids. This prevents the component
     // from crashing in the editor, when non existing ids are provided.
-    const sanitizedValue = parents.reduce((accumulator, id) => {
+    const sanitizedValue = defaultValue.reduce((accumulator, id) => {
       const entity = currentParentsInfo.mapById[id]
       if (entity) {
         accumulator.push({
@@ -86,7 +80,7 @@ function ParentControl({ onChange, parents, postType }) {
       return accumulator
     }, [])
     setValue(sanitizedValue)
-  }, [parents, currentParents])
+  }, [defaultValue, currentParents])
 
   const entitiesInfo = useMemo(() => {
     if (!searchResults?.length) {
@@ -123,17 +117,17 @@ function ParentControl({ onChange, parents, postType }) {
     onChange({ parents: ids })
   }
   return (
-    <FormTokenField
-      __next40pxDefaultSize
-      __nextHasNoMarginBottom
-      __experimentalShowHowTo={false}
-      label={__('Parents')}
-      suggestions={suggestions}
-      value={value}
-      onChange={onParentChange}
-      onInputChange={debouncedSearch}
-    />
+    <ToolsPanelItem hasValue={() => !!defaultValue?.length} label={__('Parents', 'mappps')} onDeselect={() => onChange({ parents: [] })}>
+      <FormTokenField
+        __next40pxDefaultSize
+        __nextHasNoMarginBottom
+        __experimentalShowHowTo={false}
+        label={__('Parents', 'mappps')}
+        suggestions={suggestions}
+        value={value}
+        onChange={onParentChange}
+        onInputChange={debouncedSearch}
+      />
+    </ToolsPanelItem>
   )
 }
-
-export default ParentControl

@@ -21,8 +21,7 @@
   },
   "providesContext": {
     "mppps/blockId": "blockId",
-    "mppps/taxonomies": "taxonomies",
-    "mppps/categories": "categories",
+    "mppps/filtersTerms": "filtersTerms",
     "mppps/postIDs": "selectedPosts",
     "mppps/postType": "postType",
     "mppps/putStickyFirst": "putStickyFirst"
@@ -31,7 +30,19 @@
     "query": {
       "type": "object",
       "default": {
-        
+        "author": "",
+        "format": [],
+        "inherit": false,
+        "offset": 0,
+        "order": "desc",
+        "orderBy": "date",
+        "pages": 0,
+        "parents": [],
+        "perPage": 100,
+        "postType": "post",
+        "search": "",
+        "sticky": "",
+        "taxQuery": null
       }
     },
     "blockId": {
@@ -49,25 +60,9 @@
       "type": "string",
       "default": "wp/v2"
     },
-    "siteURL": {
-      "type": "string",
-      "default": ""
-    },
-    "taxonomies": {
-      "type": "array",
-      "default": []
-    },
-    "selectedTaxonomies": {
-      "type": "array",
-      "default": []
-    },
-    "categories": {
+    "filtersTerms": {
       "type": "object",
       "default": {}
-    },
-    "selectedCategories": {
-      "type": "array",
-      "default": []
     },
     "selectedPosts": {
       "type": "array",

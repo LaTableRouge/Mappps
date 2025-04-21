@@ -103,6 +103,26 @@ export const usePostTypes = () => {
     const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(({ slug, viewable }) => viewable && !excludedPostTypes.includes(slug))
     return filteredPostTypes
   }, [])
+
+  const postTypeRestBaseMap = useMemo(() => {
+    if (!postTypes?.length) {
+      return {}
+    }
+    return postTypes.reduce((accumulator, type) => {
+      accumulator[type.slug] = type.rest_base
+      return accumulator
+    }, {})
+  }, [postTypes])
+  const postTypeRestNamespaceMap = useMemo(() => {
+    if (!postTypes?.length) {
+      return {}
+    }
+    return postTypes.reduce((accumulator, type) => {
+      accumulator[type.slug] = type.rest_namespace
+      return accumulator
+    }, {})
+  }, [postTypes])
+
   const postTypesTaxonomiesMap = useMemo(() => {
     if (!postTypes?.length) {
       return
@@ -112,6 +132,7 @@ export const usePostTypes = () => {
       return accumulator
     }, {})
   }, [postTypes])
+
   const postTypesSelectOptions = useMemo(
     () =>
       (postTypes || []).map(({ labels, slug }) => ({
@@ -120,6 +141,7 @@ export const usePostTypes = () => {
       })),
     [postTypes]
   )
+
   const postTypeFormatSupportMap = useMemo(() => {
     if (!postTypes?.length) {
       return {}
@@ -129,10 +151,13 @@ export const usePostTypes = () => {
       return accumulator
     }, {})
   }, [postTypes])
+
   return {
     postTypesTaxonomiesMap,
     postTypesSelectOptions,
-    postTypeFormatSupportMap
+    postTypeFormatSupportMap,
+    postTypeRestBaseMap,
+    postTypeRestNamespaceMap
   }
 }
 
@@ -160,6 +185,61 @@ export const useTaxonomies = (postType) => {
   return useMemo(() => {
     return taxonomies?.filter(({ visibility }) => !!visibility?.publicly_queryable)
   }, [taxonomies])
+}
+
+/**
+ * Hook that returns the taxonomies associated with a specific post type.
+ *
+ * @param {string} postType The post type from which to retrieve the associated taxonomies.
+ * @return {Object[]} An array of the associated taxonomies.
+ */
+export const useTerms = (taxonomies = []) => {
+  const { records, resolvedCounter } = useSelect(
+    (select) => {
+      const { getEntityRecords, hasFinishedResolution } = select('core')
+      const groupsArgs = { per_page: -1 }
+
+      const records = []
+      let resolvedCounter = 0
+
+      taxonomies.forEach((taxonomy) => {
+        const record = getEntityRecords('taxonomy', taxonomy, groupsArgs)
+        const resolved = hasFinishedResolution('getEntityRecords', ['taxonomy', taxonomy, groupsArgs])
+
+        if (resolved) {
+          resolvedCounter++
+          if (record) {
+            records.push(record)
+          }
+        }
+      })
+
+      return { records, resolvedCounter }
+    },
+    [taxonomies]
+  )
+
+  const terms = useMemo(() => {
+    const result = {}
+
+    if (records?.length) {
+      const flatArray = records.flat()
+
+      flatArray.forEach(({ id, link, name, taxonomy }) => {
+        if (!result[taxonomy]) {
+          result[taxonomy] = []
+        }
+        result[taxonomy].push({ name, id, link })
+      })
+    }
+
+    return result
+  }, [records])
+
+  return {
+    terms,
+    resolved: taxonomies.length === resolvedCounter
+  }
 }
 
 /**

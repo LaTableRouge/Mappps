@@ -1,7 +1,7 @@
 import { useSelect } from '@wordpress/data'
 import { useMemo } from '@wordpress/element'
 
-const CATEGORIES_TO_EXCLUDE = [1]
+const CATEGORIES_TO_EXCLUDE = []
 
 function getAssociateTaxonomyCategories(taxonomies, categoriesToExclude) {
   const { records, resolvedCounter } = useSelect(

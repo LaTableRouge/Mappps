@@ -14,8 +14,7 @@
   ],
   "usesContext": [
     "mppps/blockId",
-    "mppps/taxonomies",
-    "mppps/categories"
+    "mppps/filtersTerms"
   ],
   "supports": {
     "reusable": false,

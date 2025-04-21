@@ -2,10 +2,9 @@ import { useEffect, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
 import Filters from './components/Filters'
-import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
 
-export default function Main({ blockId, categories, queriedPosts, taxonomies }) {
+export default function Main({ blockId, filtersTerms, queriedPosts }) {
   // State management
   const [filters, setFilters] = useState({})
   const [filtersOpen, setFiltersOpen] = useState(false)
@@ -34,7 +33,7 @@ export default function Main({ blockId, categories, queriedPosts, taxonomies }) 
     return false
   })
 
-  const filtersList = CreateFilters(categories, taxonomies, queriedPosts)
+  const filtersList = filtersTerms
   const tempFilters = Object.keys(filters).length ? filters : filtersList
 
   useEffect(() => {

@@ -1,17 +1,12 @@
-/**
- * WordPress dependencies
- */
-import { __experimentalVStack as VStack, FormTokenField } from '@wordpress/components'
+import { __experimentalToolsPanelItem as ToolsPanelItem, __experimentalVStack as VStack, FormTokenField } from '@wordpress/components'
 import { useDebounce } from '@wordpress/compose'
 import { store as coreStore } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
 import { useEffect, useState } from '@wordpress/element'
 import { decodeEntities } from '@wordpress/html-entities'
+import { __ } from '@wordpress/i18n'
 
-/**
- * Internal dependencies
- */
-import { useTaxonomies } from './utils.js'
+import { useTaxonomies } from '../utils/utils.js'
 
 const EMPTY_ARRAY = []
 const BASE_QUERY = {
@@ -41,7 +36,7 @@ const getTermIdByTermValue = (terms, termValue) => {
   return terms?.find((term) => term.name.toLocaleLowerCase() === termValueLower)?.id
 }
 
-export function TaxonomyControls({ onChange, query }) {
+export function FormTokenTaxonomy({ onChange, query }) {
   const { postType, taxQuery } = query
 
   const taxonomies = useTaxonomies(postType)
@@ -50,20 +45,26 @@ export function TaxonomyControls({ onChange, query }) {
   }
 
   return (
-    <VStack spacing={4}>
-      {taxonomies.map((taxonomy) => {
-        const termIds = taxQuery?.[taxonomy.slug] || []
-        const handleChange = (newTermIds) =>
-          onChange({
-            taxQuery: {
-              ...taxQuery,
-              [taxonomy.slug]: newTermIds
-            }
-          })
+    <ToolsPanelItem
+      hasValue={() => Object.values(taxQuery || {}).some((terms) => !!terms.length)}
+      label={__('Taxonomies', 'mappps')}
+      onDeselect={() => onChange({ taxQuery: null })}
+    >
+      <VStack spacing={4}>
+        {taxonomies.map((taxonomy) => {
+          const termIds = taxQuery?.[taxonomy.slug] || []
+          const handleChange = (newTermIds) =>
+            onChange({
+              taxQuery: {
+                ...taxQuery,
+                [taxonomy.slug]: newTermIds
+              }
+            })
 
-        return <TaxonomyItem key={taxonomy.slug} taxonomy={taxonomy} termIds={termIds} onChange={handleChange} />
-      })}
-    </VStack>
+          return <TaxonomyItem key={taxonomy.slug} taxonomy={taxonomy} termIds={termIds} onChange={handleChange} />
+        })}
+      </VStack>
+    </ToolsPanelItem>
   )
 }
 
