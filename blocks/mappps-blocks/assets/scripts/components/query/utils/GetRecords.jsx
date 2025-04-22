@@ -102,6 +102,28 @@ export default function GetPosts(query) {
       query.ignore_sticky = true
     }
 
+    //   query.meta_query = [
+    //     {
+    //       key: 'lat',
+    //       compare: 'EXISTS'
+    //     },
+    //     {
+    //         key: 'lat',
+    //         value: [0, ''],
+    //         compare: 'NOT IN'
+    //     },
+    //     {
+    //       key: 'lng',
+    //       compare: 'EXISTS'
+    //     },
+    //     {
+    //         key: 'lng',
+    //         value: [0, ''],
+    //         compare: 'NOT IN'
+    //     }
+    // ],
+    // query.meta_query_relation = 'AND'
+
     return {
       ...query,
       ...restQueryArgs

@@ -19,7 +19,7 @@
  * />
  */
 
-import { __experimentalToolsPanel as ToolsPanel, Button } from '@wordpress/components'
+import { __experimentalToolsPanel as ToolsPanel, Button, Notice } from '@wordpress/components'
 import { memo, useCallback, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
@@ -125,7 +125,7 @@ function usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes
 
   // Build and update taxonomy terms from posts
   useEffect(() => {
-    if (postsResolved && posts?.length && termsResolved && Object.keys(terms).length) {
+    if (postsResolved && termsResolved && Object.keys(terms).length) {
       const taxonomyTermsFromPosts = buildTaxonomyTermsFromPosts(taxonomies, terms, posts)
       setAttributes({ filtersTerms: taxonomyTermsFromPosts })
     }
@@ -237,9 +237,20 @@ function FiltersPanel({ query, setQuery, showAuthorControl, showSearchControl, s
  * @param {Object} props - Component props
  * @returns {JSX.Element} Confirm button
  */
-function ConfirmButton({ isBusy, isConfirmed, isDisabled, onConfirm }) {
+function ConfirmButton({ isBusy, isConfirmed, isDisabled, isWizard, noResults, onConfirm }) {
   return (
     <div className="mappps-query-confirm-container" style={{ marginTop: '16px', marginBottom: '16px', textAlign: 'center' }}>
+      {noResults && isConfirmed && (
+        <Notice isDismissible={false} status="error">
+          <p>{__('No results found. Please check the query settings and the lat/lng fields inside the post/record itself.', 'mappps')}</p>
+        </Notice>
+      )}
+      {!isWizard && (
+        <Notice isDismissible={false} status="info">
+          <p>{__('If your post/record is not displayed, please check the query settings and the lat/lng fields inside the post/record itself.', 'mappps')}</p>
+        </Notice>
+      )}
+
       <Button disabled={isDisabled} isBusy={isBusy} variant="primary" onClick={onConfirm}>
         {isConfirmed ? __('Query settings applied', 'mappps') : __('Apply query settings', 'mappps')}
       </Button>
@@ -255,6 +266,7 @@ function ConfirmButton({ isBusy, isConfirmed, isDisabled, onConfirm }) {
 function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsConfirmed, setQueriedPosts }) {
   // Initialize query state with default values
   const [query, setQueryState] = useState(attributes.query)
+  const [noResults, setNoResults] = useState(false)
 
   // Destructure query parameters for easier access
   const {
@@ -304,9 +316,13 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 
   // Update selected posts and queried posts only when confirmed
   useEffect(() => {
-    if (isConfirmed && postsResolved && posts.length) {
+    if (isConfirmed && postsResolved) {
       setAttributes({ selectedPosts: posts.map((post) => post.id) })
       setQueriedPosts(posts)
+    }
+
+    if (postsResolved && isConfirmed) {
+      setNoResults(posts.length === 0)
     }
   }, [postsResolved, isConfirmed])
 
@@ -389,7 +405,7 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
         />
       )}
 
-      <ConfirmButton isBusy={postsResolved === false} isConfirmed={isConfirmed} isDisabled={postsResolved === false || posts.length === 0} onConfirm={handleConfirmClick} />
+      <ConfirmButton isBusy={postsResolved === false} isConfirmed={isConfirmed} isWizard={isWizard} noResults={noResults} onConfirm={handleConfirmClick} />
     </>
   )
 }
