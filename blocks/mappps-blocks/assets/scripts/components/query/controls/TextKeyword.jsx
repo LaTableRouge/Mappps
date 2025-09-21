@@ -1,3 +1,4 @@
+import { __experimentalToolsPanelItem as ToolsPanelItem, TextControl } from '@wordpress/components'
 import { debounce } from '@wordpress/compose'
 import { useMemo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'

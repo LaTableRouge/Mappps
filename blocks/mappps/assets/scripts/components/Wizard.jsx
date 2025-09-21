@@ -1,4 +1,10 @@
+import { Placeholder, Spinner } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
+
+import SelectCategories from './controls/SelectCategories'
+import SelectPosts from './controls/SelectPosts'
+import SelectPostType from './controls/SelectPostType'
+import SelectTaxonomies from './controls/SelectTaxonomies'
 
 export default function Wizard({ attributes, postTypes, setAttributes, setQueriedPosts }) {
 	const selectedPostType = attributes.postType

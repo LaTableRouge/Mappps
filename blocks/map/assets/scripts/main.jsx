@@ -1,6 +1,7 @@
 import { useCallback, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
+import Map from './components/Map'
 
 export default function Main({ attributes, blockId, inEditor = false, queriedPosts }) {
 	// State management

@@ -1,6 +1,7 @@
 import { useEffect, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
+import Filters from './components/Filters'
 import FilterPosts from './utils/FilterPosts'
 
 export default function Main({ blockId, filtersTerms, queriedPosts }) {

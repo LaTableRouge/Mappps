@@ -1,6 +1,12 @@
 import { createRef, useCallback, useEffect, useRef, useState } from '@wordpress/element'
 
 import { sortStickyPosts } from './common/functions'
+import Filters from './components/Filters'
+import Loader from './components/Loader'
+import Map from './components/Map'
+import Popups from './components/Popups'
+import Sidebar from './components/Sidebar'
+import Toggles from './components/Toggles'
 import CreateFilters from './utils/CreateFilters'
 import FilterPosts from './utils/FilterPosts'
 import GetFilterCount from './utils/GetFiltersCount'

@@ -1,3 +1,5 @@
+import { Marker } from 'react-leaflet'
+
 import Icon from './Icon'
 import IconCustom from './IconCustom'
 

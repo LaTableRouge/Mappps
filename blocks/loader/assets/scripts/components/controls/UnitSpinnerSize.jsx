@@ -1,3 +1,4 @@
+import { __experimentalNumberControl as UnitControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function UnitSpinnerSize({ defaultValue, setAttributes }) {

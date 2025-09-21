@@ -1,4 +1,5 @@
 import { __ } from '@wordpress/i18n'
+import { Marker, Popup } from 'react-leaflet'
 
 import Icon from './Icon'
 

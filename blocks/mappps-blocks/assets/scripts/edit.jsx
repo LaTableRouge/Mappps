@@ -1,9 +1,11 @@
 import '../styles/editor.scss'
 
-import { useBlockProps } from '@wordpress/block-editor'
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
+import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {

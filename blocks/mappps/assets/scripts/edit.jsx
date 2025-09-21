@@ -3,6 +3,9 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
+import Wizard from './components/Wizard'
+import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
 

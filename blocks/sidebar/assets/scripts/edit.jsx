@@ -1,8 +1,9 @@
 import '../styles/editor.scss'
 
-import { useBlockProps } from '@wordpress/block-editor'
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useMemo } from '@wordpress/element'
 
+import Controls from './components/Controls'
 import { AlterBlockProps } from './utils/AlterBlockProps'
 
 const TEMPLATE = [

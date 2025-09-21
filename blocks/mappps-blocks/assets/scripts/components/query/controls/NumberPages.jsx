@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies
  */
+import { __experimentalNumberControl as NumberControl, __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function NumberPages({ defaultValue, onChange }) {

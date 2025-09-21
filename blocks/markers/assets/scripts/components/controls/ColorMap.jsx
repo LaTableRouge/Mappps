@@ -1,3 +1,4 @@
+import { PanelColorSettings } from '@wordpress/block-editor'
 import { __ } from '@wordpress/i18n'
 
 export default function ColorMap({ defaultValues, hasCustomClusterMarker, hasCustomGeolocationMarker, hasCustomMarker, hasCustomSearchMarker, hasGeolocation, hasSearch, isClustered, setAttributes }) {

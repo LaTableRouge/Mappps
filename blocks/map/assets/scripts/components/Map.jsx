@@ -5,11 +5,15 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 
 import { createRef, useMemo, useRef, useState } from '@wordpress/element'
+import { MapContainer } from 'react-leaflet'
 
+import ChangeView from '../utils/ChangeView'
+import MapControls from './map/MapControls'
 import MarkerCluster from './map/MarkerCluster'
 import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
+import Tiles from './map/Tiles'
 
 const MAP_DEFAULTS = {
 	doubleClickZoom: false,

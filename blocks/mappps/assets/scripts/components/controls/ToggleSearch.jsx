@@ -1,3 +1,4 @@
+import { ToggleControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function ToggleSearch({ defaultValue, setAttributes }) {

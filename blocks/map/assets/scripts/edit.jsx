@@ -1,9 +1,11 @@
 import '../styles/editor.scss'
 
-import { useBlockProps } from '@wordpress/block-editor'
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 import { useEffect, useMemo, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
+import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 const TEMPLATE = [['mppps/markers', {}]]

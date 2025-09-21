@@ -1,3 +1,4 @@
+import { PanelColorSettings } from '@wordpress/block-editor'
 import { memo, useCallback } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 

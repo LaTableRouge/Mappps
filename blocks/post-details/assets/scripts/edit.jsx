@@ -1,8 +1,11 @@
 import '../styles/editor.scss'
 
-import { useBlockProps } from '@wordpress/block-editor'
+import { BlockContextProvider, useBlockProps } from '@wordpress/block-editor'
 import { memo, useEffect, useMemo, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
+import Header from './components/post/Header'
+import PostTemplateInnerBlocks from './components/PostTemplateInnerBlocks'
 import PostTemplatePreview from './components/PostTemplatePreview'
 import AlterBlockProps from './utils/AlterBlockProps'
 import GetBlocks from './utils/GetBlocks'

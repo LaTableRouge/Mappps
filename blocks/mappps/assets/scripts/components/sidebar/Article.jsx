@@ -1,3 +1,7 @@
+import Excerpt from './article/Excerpt'
+import Thumbnail from './article/Thumbnail'
+import Title from './article/Title'
+
 export default function Article({ post, postRef, selectedPost, setFiltersOpen, setMobileIsMapDisplayed, setSelectedPost }) {
 	const title = post.title.rendered
 	const excerpt = post.excerpt.rendered

@@ -3,6 +3,8 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 
+import Main from './main'
+
 export default function Edit({ attributes, context }) {
 	const blockId = context['mppps/blockId']
 	const blockProps = useBlockProps()

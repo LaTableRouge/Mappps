@@ -1,6 +1,7 @@
 /**
  * WordPress dependencies
  */
+import { __experimentalToolsPanelItem as ToolsPanelItem, RangeControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 const MIN_POSTS_PER_PAGE = 1

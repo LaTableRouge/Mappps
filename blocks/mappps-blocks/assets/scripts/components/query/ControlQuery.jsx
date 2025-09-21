@@ -19,13 +19,21 @@
  * />
  */
 
+import { __experimentalToolsPanel as ToolsPanel, Button, Notice } from '@wordpress/components'
 import { memo, useCallback, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
+import FormTokenAuthor from './controls/FormTokenAuthor'
 // import FormTokenFormat from './controls/FormTokenFormat'
 // import FormTokenParent from './controls/FormTokenParent'
+import { FormTokenTaxonomy } from './controls/FormTokenTaxonomy'
 // import NumberOffset from './controls/NumberOffset'
 // import NumberPages from './controls/NumberPages'
+import RangePerPage from './controls/RangePerPage'
+import SelectOrder from './controls/SelectOrder'
+import SelectPostType from './controls/SelectPostType'
+import SelectSticky from './controls/SelectSticky'
+import TextKeyword from './controls/TextKeyword'
 import { buildTaxonomyTermsFromPosts } from './utils/CreateTaxonomyTermsFromPosts'
 import GetPosts from './utils/GetRecords.jsx'
 import { useToolsPanelDropdownMenuProps } from './utils/hooks.js'

@@ -3,6 +3,8 @@ import '../styles/editor.scss'
 import { useBlockProps } from '@wordpress/block-editor'
 import { useEffect, useState } from '@wordpress/element'
 
+import Controls from './components/Controls'
+import Main from './main'
 import AlterBlockProps from './utils/AlterBlockProps'
 
 export default function Edit({ attributes, context, setAttributes }) {

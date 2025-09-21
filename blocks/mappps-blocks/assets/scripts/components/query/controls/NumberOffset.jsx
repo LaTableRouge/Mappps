@@ -1,3 +1,4 @@
+import { __experimentalNumberControl as NumberControl, __experimentalToolsPanelItem as ToolsPanelItem } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 const MIN_OFFSET = 0

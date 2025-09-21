@@ -1,4 +1,7 @@
+import { InspectorControls } from '@wordpress/block-editor'
 import { memo } from '@wordpress/element'
+
+import ColorMap from './controls/ColorMap'
 
 function Controls({ attributes, setAttributes }) {
 	return (

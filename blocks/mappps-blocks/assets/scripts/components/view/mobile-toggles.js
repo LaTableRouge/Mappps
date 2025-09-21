@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
+import MobileToggles from '../../../../../mobile-toggles/assets/scripts/main'
+
 export default function renderMobileToggles(blockId, parent) {
 	const filtersChildBlock = parent.querySelector('.wp-block-mppps-mobile-toggles')
 	if (filtersChildBlock) {

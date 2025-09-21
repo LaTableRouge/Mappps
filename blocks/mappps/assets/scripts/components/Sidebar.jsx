@@ -1,5 +1,8 @@
 import { __ } from '@wordpress/i18n'
 
+import Article from './sidebar/Article'
+import Search from './sidebar/Search'
+
 export default function Sidebar({ displayFilters, displaySearch, filtersOpen, limitedSearch, postRefs, posts, selectedFiltersCounter, selectedPost, setFiltersOpen, setMobileIsMapDisplayed, setSearchValue, setSelectedPost, setSelectedSearchResult }) {
 	return (
 		<aside className="mappps__sidebar">

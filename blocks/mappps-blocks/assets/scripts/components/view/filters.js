@@ -1,5 +1,7 @@
 import { createRoot } from 'react-dom/client'
 
+import Filters from '../../../../../filters/assets/scripts/main'
+
 export default function renderFilters(blockId, parent, queriedPosts, parentAttributes) {
 	const filtersChildBlock = parent.querySelector('.wp-block-mppps-filters')
 	if (filtersChildBlock) {

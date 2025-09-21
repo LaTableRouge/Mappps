@@ -1,3 +1,4 @@
+import { __experimentalToolsPanelItem as ToolsPanelItem, SelectControl } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function SelectPostType({ defaultValue, onChange, options }) {

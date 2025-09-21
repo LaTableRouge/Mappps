@@ -1,3 +1,5 @@
+import { Marker } from 'react-leaflet'
+
 import Icon from './Icon'
 
 export default function Markers(posts, size, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen, haveShadow) {

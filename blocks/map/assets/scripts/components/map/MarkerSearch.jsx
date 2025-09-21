@@ -1,3 +1,5 @@
+import { Marker, Popup } from 'react-leaflet'
+
 import Icon from './Icon'
 
 export default function MarkerSearch(data, ref, haveShadow) {

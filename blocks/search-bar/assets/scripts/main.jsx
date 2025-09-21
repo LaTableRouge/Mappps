@@ -1,6 +1,7 @@
 import { memo, useState } from '@wordpress/element'
 
 import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStateEventsHandler'
+import Search from './components/Search'
 
 function Main({ attributes, blockId }) {
 	const [selectedSearchResult, setSelectedSearchResult] = useState({})

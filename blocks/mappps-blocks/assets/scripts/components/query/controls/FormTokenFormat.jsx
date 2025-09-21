@@ -1,3 +1,4 @@
+import { __experimentalToolsPanelItem as ToolsPanelItem, FormTokenField } from '@wordpress/components'
 import { store as coreStore } from '@wordpress/core-data'
 import { useSelect } from '@wordpress/data'
 import { __ } from '@wordpress/i18n'

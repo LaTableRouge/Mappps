@@ -1,4 +1,17 @@
+import { InspectorControls } from '@wordpress/block-editor'
+import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
+
+import ColorMap from './controls/ColorMap'
+import MediaMarkerClusterIcon from './controls/MediaMarkerClusterIcon'
+import MediaMarkerGeolocationIcon from './controls/MediaMarkerGeolocationIcon'
+import MediaMarkerIcon from './controls/MediaMarkerIcon'
+import MediaMarkerSearchIcon from './controls/MediaMarkerSearchIcon'
+import ToggleCustomMarkers from './controls/ToggleCustomMarkers'
+import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
+import ToggleMarkerShadow from './controls/ToggleMarkerShadow'
+import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
+import UnitMarkerSize from './controls/UnitMarkerSize'
 
 export default function Controls({ attributes, hasGeolocation, hasSearch, setAttributes }) {
 	const { haveCustomMarkers, haveShadow, isClustered, selectedActiveMarkerColor, selectedClusterColor, selectedGeolocationColor, selectedMarkerClusterIcon, selectedMarkerClusterSize, selectedMarkerColor, selectedMarkerGeolocationIcon, selectedMarkerIcon, selectedMarkerSearchIcon, selectedMarkerSize, selectedSearchColor } = attributes

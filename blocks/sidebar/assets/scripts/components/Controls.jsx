@@ -1,5 +1,9 @@
+import { InspectorControls } from '@wordpress/block-editor'
+import { PanelBody } from '@wordpress/components'
 import { memo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
+
+import UnitSidebarSize from './controls/UnitSidebarSize'
 
 function Controls({ attributes, setAttributes }) {
 	return (

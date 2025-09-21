@@ -1,4 +1,4 @@
-import { useBlockProps } from '@wordpress/block-editor'
+import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 
 import { sortObject } from '../../../../src/helpers/scripts/functions'
 import AlterBlockProps from './utils/AlterBlockProps'

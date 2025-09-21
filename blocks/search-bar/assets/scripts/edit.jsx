@@ -2,6 +2,9 @@ import '../styles/editor.scss'
 
 import { useBlockProps } from '@wordpress/block-editor'
 
+import Controls from './components/Controls'
+import Main from './main'
+
 export default function Edit({ attributes, context, setAttributes }) {
 	const blockProps = useBlockProps()
 	const blockId = context['mppps/blockId']

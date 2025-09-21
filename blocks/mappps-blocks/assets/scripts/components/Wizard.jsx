@@ -1,5 +1,8 @@
+import { Placeholder } from '@wordpress/components'
 import { memo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
+
+import ControlQuery from './query/ControlQuery'
 
 function Wizard({ attributes, isConfirmed, setAttributes, setIsConfirmed, setQueriedPosts }) {
 	return (

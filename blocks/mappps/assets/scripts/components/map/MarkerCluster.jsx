@@ -1,3 +1,4 @@
+import MarkerClusterGroup from '../../../../../../src/helpers/scripts/MarkerCluster'
 import Icon from './Icon'
 
 export default function MarkerCluster(markers, size, clusterRef, haveShadow, canZoomToMarker) {

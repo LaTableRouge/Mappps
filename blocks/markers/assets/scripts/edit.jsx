@@ -1,6 +1,8 @@
 import { useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 
+import Controls from './components/Controls'
+
 export default function Edit({ attributes, context, setAttributes }) {
 	const blockProps = useBlockProps()
 	const blockId = context['mppps/blockId']

@@ -1,4 +1,13 @@
+import { InspectorControls } from '@wordpress/block-editor'
+import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
+
+import InputBoundsPadding from './controls/NumberBoundsPadding'
+import InputMaxMarkerZoom from './controls/NumberMaxMarkerZoom'
+import InputMaxZoom from './controls/NumberMaxZoom'
+import SelectTiles from './controls/SelectTiles'
+import ToggleGeolocation from './controls/ToggleGeolocation'
+import ToggleMarkerZoom from './controls/ToggleMarkerZoom'
 
 export default function Controls({ attributes, setAttributes }) {
 	const { canZoomToMarker, isGeolocated, mapTiles, selectedBoundsPadding, selectedMapTiles, selectedMaxMarkerZoom, selectedMaxZoom } = attributes

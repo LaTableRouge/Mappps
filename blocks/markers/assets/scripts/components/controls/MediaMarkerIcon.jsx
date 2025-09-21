@@ -1,3 +1,5 @@
+import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
+import { Button, Placeholder } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 export default function MediaMarkerIcon({ defaultValue, setAttributes }) {
 	const handleSelect = (picture) => {

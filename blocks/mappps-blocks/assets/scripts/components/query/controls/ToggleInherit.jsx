@@ -1,3 +1,4 @@
+import { __experimentalToggleGroupControl as ToggleGroupControl, __experimentalToggleGroupControlOption as ToggleGroupControlOption, __experimentalToolsPanelItem as ToolsPanelItem, __experimentalVStack as VStack, Notice } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function ToggleInherit({ defaultValue, setQuery }) {

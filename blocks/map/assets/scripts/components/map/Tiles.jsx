@@ -1,3 +1,5 @@
+import { LayersControl, TileLayer } from 'react-leaflet'
+
 export default function Tiles({ inEditor, mapTiles, selectedTiles }) {
 	if (!inEditor) {
 		return <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedTiles} />

@@ -1,6 +1,11 @@
 import { useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
+import Excerpt from './sidebar/article/Excerpt'
+import Terms from './sidebar/article/Terms'
+import Thumbnail from './sidebar/article/Thumbnail'
+import Title from './sidebar/article/Title'
+
 export default function Popups({ isMobileView, popupRef, posts, selectedPost, selectedPostTerms, setSelectedPost }) {
 	const [isExpanded, setIsExpanded] = useState(false)
 
