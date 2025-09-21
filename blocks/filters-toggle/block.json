@@ -1,49 +1,43 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "mppps/filters-toggle",
-  "title": "Filters toggle",
-  "category": "mappps",
-  "description": "The button that'wll open/close the filters.",
-  "textdomain": "mappps",
-  "parent": [
-    "mppps/mappps-blocks"
-  ],
-  "ancestor": [
-    "mppps/sidebar"
-  ],
-  "usesContext": [
-    "mppps/blockId"
-  ],
-  "supports": {
-    "reusable": false,
-    "html": false,
-    "layout": false,
-    "spacing": {
-      "padding": true,
-      "margin": true
-    },
-    "interactivity": {
-      "clientNavigation": true
-    }
-  },
-  "attributes": {
-    "style": {
-      "type": "object",
-      "default": {
-        "spacing": {
-          "margin": {
-            "top": 0,
-            "bottom": "2rem",
-            "left": "2rem",
-            "right": "2rem"
-          }
-        }
-      }
-    }
-  },
-  "viewScript": "file:./assets/view.js",
-  "editorScript": "file:./assets/index.jsx",
-  "editorStyle": "file:./assets/index.css",
-  "style": "file:./assets/style-index.css"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mppps/filters-toggle",
+	"title": "Filters toggle",
+	"category": "mappps",
+	"description": "The button that'wll open/close the filters.",
+	"textdomain": "mappps",
+	"parent": ["mppps/mappps-blocks"],
+	"ancestor": ["mppps/sidebar"],
+	"usesContext": ["mppps/blockId"],
+	"supports": {
+		"reusable": false,
+		"html": false,
+		"layout": false,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"interactivity": {
+			"clientNavigation": true
+		}
+	},
+	"attributes": {
+		"style": {
+			"type": "object",
+			"default": {
+				"spacing": {
+					"margin": {
+						"top": 0,
+						"bottom": "2rem",
+						"left": "2rem",
+						"right": "2rem"
+					}
+				}
+			}
+		}
+	},
+	"viewScript": "file:./assets/view.js",
+	"editorScript": "file:./assets/index.jsx",
+	"editorStyle": "file:./assets/index.css",
+	"style": "file:./assets/style-index.css"
 }

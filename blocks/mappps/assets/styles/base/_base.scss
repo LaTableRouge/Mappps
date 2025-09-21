@@ -41,7 +41,7 @@
     overflow: hidden;
 
     @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
-      --is-mobile: red;
+      --is-mobile: #f00;
     }
 
     @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {

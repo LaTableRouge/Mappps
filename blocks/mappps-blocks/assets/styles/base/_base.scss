@@ -31,7 +31,7 @@
 
   .responsive-wrapper {
     @include container-breakpoint-down(mappps, #{variables.$mobile-breakpoint}) {
-      --is-mobile: red;
+      --is-mobile: #f00;
     }
 
     [class*='wp-block-mppps-'],

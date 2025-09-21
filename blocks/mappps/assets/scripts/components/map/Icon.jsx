@@ -1,23 +1,23 @@
 import L from 'leaflet'
 
 const Icon = (type, haveShadow, markerSize = '40px', cluster, isSelected = false) => {
-  let html = /* html */ '<div class="marker-icon">'
-  let className = ''
+	let html = /* html */ '<div class="marker-icon">'
+	let className = ''
 
-  const markerSizeUnitStrip = parseInt(markerSize, 10)
+	const markerSizeUnitStrip = parseInt(markerSize, 10)
 
-  if (type === 'cluster') {
-    // let isInCluster = false
-    // const clusterChildMarkers = cluster.getAllChildMarkers()
-    // if (isSelected) {
-    //   for (const clusterChildMarker of clusterChildMarkers) {
-    //     if (clusterChildMarker.options.data.id === isSelected.id) {
-    //       isInCluster = true
-    //     }
-    //   }
-    // }
+	if (type === 'cluster') {
+		// let isInCluster = false
+		// const clusterChildMarkers = cluster.getAllChildMarkers()
+		// if (isSelected) {
+		//   for (const clusterChildMarker of clusterChildMarkers) {
+		//     if (clusterChildMarker.options.data.id === isSelected.id) {
+		//       isInCluster = true
+		//     }
+		//   }
+		// }
 
-    html += /* html */ `
+		html += /* html */ `
     <svg
       version="1.1"
       xmlns:serif="http://www.serif.com/"
@@ -45,9 +45,9 @@ const Icon = (type, haveShadow, markerSize = '40px', cluster, isSelected = false
     <div class="marker-icon__child-count">${cluster.getChildCount()}</div>
     ${haveShadow ? '<div class="marker-icon__pulse"></div>' : ''}
     `
-    className = 'custom-marker custom-marker--cluster'
-  } else {
-    html += /* html */ `
+		className = 'custom-marker custom-marker--cluster'
+	} else {
+		html += /* html */ `
       <svg
         version="1.1"
         xmlns:serif="http://www.serif.com/"
@@ -67,18 +67,18 @@ const Icon = (type, haveShadow, markerSize = '40px', cluster, isSelected = false
       </svg>
       ${haveShadow ? '<div class="marker-icon__pulse"></div>' : ''}
     `
-    className = `custom-marker ${type && `custom-marker--${type}`}`
-  }
+		className = `custom-marker ${type && `custom-marker--${type}`}`
+	}
 
-  html += /* html */ '</div>'
+	html += /* html */ '</div>'
 
-  return L.divIcon({
-    html: html,
-    iconSize: [markerSizeUnitStrip, markerSizeUnitStrip],
-    iconAnchor: [markerSizeUnitStrip / 2, markerSizeUnitStrip],
-    className: `${className}${isSelected ? ' custom-marker--active' : ''}`,
-    popupAnchor: [0, -markerSizeUnitStrip]
-  })
+	return L.divIcon({
+		html: html,
+		iconSize: [markerSizeUnitStrip, markerSizeUnitStrip],
+		iconAnchor: [markerSizeUnitStrip / 2, markerSizeUnitStrip],
+		className: `${className}${isSelected ? ' custom-marker--active' : ''}`,
+		popupAnchor: [0, -markerSizeUnitStrip]
+	})
 }
 
 export default Icon

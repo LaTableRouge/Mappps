@@ -1,84 +1,78 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "mppps/markers",
-  "title": "Markers",
-  "category": "mappps",
-  "description": "Customize the map's markers.",
-  "textdomain": "mappps",
-  "parent": [
-    "mppps/mappps-blocks"
-  ],
-  "ancestor": [
-    "mppps/map"
-  ],
-  "usesContext": [
-    "mppps/blockId"
-  ],
-  "supports": {
-    "reusable": false,
-    "html": false,
-    "layout": false,
-    "multiple": false,
-    "lock": false
-  },
-  "attributes": {
-    "selectedMarkerSize": {
-      "type": "string",
-      "default": "40px"
-    },
-    "selectedMarkerClusterSize": {
-      "type": "string",
-      "default": "50px"
-    },
-    "isClustered": {
-      "type": "boolean",
-      "default": true
-    },
-    "haveShadow": {
-      "type": "boolean",
-      "default": true
-    },
-    "haveCustomMarkers": {
-      "type": "boolean",
-      "default": false
-    },
-    "selectedMarkerIcon": {
-      "type": "object",
-      "default": {}
-    },
-    "selectedMarkerClusterIcon": {
-      "type": "object",
-      "default": {}
-    },
-    "selectedMarkerGeolocationIcon": {
-      "type": "object",
-      "default": {}
-    },
-    "selectedMarkerSearchIcon": {
-      "type": "object",
-      "default": {}
-    },
-    "selectedMarkerColor": {
-      "type": "string",
-      "default": "#2b82cb"
-    },
-    "selectedClusterColor": {
-      "type": "string",
-      "default": "#FCA311"
-    },
-    "selectedSearchColor": {
-      "type": "string",
-      "default": "#6ee9a2"
-    },
-    "selectedGeolocationColor": {
-      "type": "string",
-      "default": "#2c4965"
-    },
-    "selectedActiveMarkerColor": {
-      "type": "string",
-      "default": "#AE2012"
-    }
-  },
-  "editorScript": "file:./assets/index.jsx"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mppps/markers",
+	"title": "Markers",
+	"category": "mappps",
+	"description": "Customize the map's markers.",
+	"textdomain": "mappps",
+	"parent": ["mppps/mappps-blocks"],
+	"ancestor": ["mppps/map"],
+	"usesContext": ["mppps/blockId"],
+	"supports": {
+		"reusable": false,
+		"html": false,
+		"layout": false,
+		"multiple": false,
+		"lock": false
+	},
+	"attributes": {
+		"selectedMarkerSize": {
+			"type": "string",
+			"default": "40px"
+		},
+		"selectedMarkerClusterSize": {
+			"type": "string",
+			"default": "50px"
+		},
+		"isClustered": {
+			"type": "boolean",
+			"default": true
+		},
+		"haveShadow": {
+			"type": "boolean",
+			"default": true
+		},
+		"haveCustomMarkers": {
+			"type": "boolean",
+			"default": false
+		},
+		"selectedMarkerIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"selectedMarkerClusterIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"selectedMarkerGeolocationIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"selectedMarkerSearchIcon": {
+			"type": "object",
+			"default": {}
+		},
+		"selectedMarkerColor": {
+			"type": "string",
+			"default": "#2b82cb"
+		},
+		"selectedClusterColor": {
+			"type": "string",
+			"default": "#FCA311"
+		},
+		"selectedSearchColor": {
+			"type": "string",
+			"default": "#6ee9a2"
+		},
+		"selectedGeolocationColor": {
+			"type": "string",
+			"default": "#2c4965"
+		},
+		"selectedActiveMarkerColor": {
+			"type": "string",
+			"default": "#AE2012"
+		}
+	},
+	"editorScript": "file:./assets/index.jsx"
 }

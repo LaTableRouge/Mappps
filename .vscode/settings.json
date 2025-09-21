@@ -17,5 +17,9 @@
         "titleBar.inactiveForeground": "#e7e7e799"
     },
     "peacock.color": "#269d69",
-    "svn.ignoreMissingSvnWarning": true
+    "eslint.options": { "overrideConfigFile": "./web/app/themes/simppple-child/linters/eslint.config.js" },
+	"prettier.ignorePath": "./web/app/themes/simppple-child/linters/.prettierignore",
+	"prettier.configPath": "./web/app/themes/simppple-child/linters/prettier.config.js",
+	"svn.ignoreMissingSvnWarning": true,
+	"git.ignoreLimitWarning": true
 }

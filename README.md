@@ -79,3 +79,5 @@ Resources:
 - [React Leaflet](https://react-leaflet.js.org/)
 - [React leaflet markercluster](https://www.npmjs.com/package/@changey/react-leaflet-markercluster)
 - [Leaflet Providers](https://leaflet-extras.github.io/leaflet-providers/preview/)
+
+powershell New-Item -Path "simppple" -ItemType SymbolicLink -Value "F:\laragon\www\perso\wp-themes\Simppple"

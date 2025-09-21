@@ -38,20 +38,20 @@ import { __ } from '@wordpress/i18n'
  * @return {QueryEntitiesInfo} The object with the entities information.
  */
 export const getEntitiesInfo = (entities) => {
-  const mapping = entities?.reduce(
-    (accumulator, entity) => {
-      const { mapById, mapByName, names } = accumulator
-      mapById[entity.id] = entity
-      mapByName[entity.name] = entity
-      names.push(entity.name)
-      return accumulator
-    },
-    { mapById: {}, mapByName: {}, names: [] }
-  )
-  return {
-    entities,
-    ...mapping
-  }
+	const mapping = entities?.reduce(
+		(accumulator, entity) => {
+			const { mapById, mapByName, names } = accumulator
+			mapById[entity.id] = entity
+			mapByName[entity.name] = entity
+			names.push(entity.name)
+			return accumulator
+		},
+		{ mapById: {}, mapByName: {}, names: [] }
+	)
+	return {
+		entities,
+		...mapping
+	}
 }
 
 /**
@@ -64,12 +64,12 @@ export const getEntitiesInfo = (entities) => {
  * @return {*} Value of the object property at the specified path.
  */
 export const getValueFromObjectPath = (object, path) => {
-  const normalizedPath = path.split('.')
-  let value = object
-  normalizedPath.forEach((fieldName) => {
-    value = value?.[fieldName]
-  })
-  return value
+	const normalizedPath = path.split('.')
+	let value = object
+	normalizedPath.forEach((fieldName) => {
+		value = value?.[fieldName]
+	})
+	return value
 }
 
 /**
@@ -82,10 +82,10 @@ export const getValueFromObjectPath = (object, path) => {
  * @return {IHasNameAndId[]} An array of entities that now implement the `IHasNameAndId` interface.
  */
 export const mapToIHasNameAndId = (entities, path) => {
-  return (entities || []).map((entity) => ({
-    ...entity,
-    name: decodeEntities(getValueFromObjectPath(entity, path))
-  }))
+	return (entities || []).map((entity) => ({
+		...entity,
+		name: decodeEntities(getValueFromObjectPath(entity, path))
+	}))
 }
 
 /**
@@ -97,68 +97,68 @@ export const mapToIHasNameAndId = (entities, path) => {
  * @return {Object} The helper object related to post types.
  */
 export const usePostTypes = () => {
-  const postTypes = useSelect((select) => {
-    const { getPostTypes } = select(coreStore)
-    const excludedPostTypes = ['attachment']
-    const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(({ slug, viewable }) => viewable && !excludedPostTypes.includes(slug))
-    return filteredPostTypes
-  }, [])
+	const postTypes = useSelect((select) => {
+		const { getPostTypes } = select(coreStore)
+		const excludedPostTypes = ['attachment']
+		const filteredPostTypes = getPostTypes({ per_page: -1 })?.filter(({ slug, viewable }) => viewable && !excludedPostTypes.includes(slug))
+		return filteredPostTypes
+	}, [])
 
-  const postTypeRestBaseMap = useMemo(() => {
-    if (!postTypes?.length) {
-      return {}
-    }
-    return postTypes.reduce((accumulator, type) => {
-      accumulator[type.slug] = type.rest_base
-      return accumulator
-    }, {})
-  }, [postTypes])
-  const postTypeRestNamespaceMap = useMemo(() => {
-    if (!postTypes?.length) {
-      return {}
-    }
-    return postTypes.reduce((accumulator, type) => {
-      accumulator[type.slug] = type.rest_namespace
-      return accumulator
-    }, {})
-  }, [postTypes])
+	const postTypeRestBaseMap = useMemo(() => {
+		if (!postTypes?.length) {
+			return {}
+		}
+		return postTypes.reduce((accumulator, type) => {
+			accumulator[type.slug] = type.rest_base
+			return accumulator
+		}, {})
+	}, [postTypes])
+	const postTypeRestNamespaceMap = useMemo(() => {
+		if (!postTypes?.length) {
+			return {}
+		}
+		return postTypes.reduce((accumulator, type) => {
+			accumulator[type.slug] = type.rest_namespace
+			return accumulator
+		}, {})
+	}, [postTypes])
 
-  const postTypesTaxonomiesMap = useMemo(() => {
-    if (!postTypes?.length) {
-      return
-    }
-    return postTypes.reduce((accumulator, type) => {
-      accumulator[type.slug] = type.taxonomies
-      return accumulator
-    }, {})
-  }, [postTypes])
+	const postTypesTaxonomiesMap = useMemo(() => {
+		if (!postTypes?.length) {
+			return
+		}
+		return postTypes.reduce((accumulator, type) => {
+			accumulator[type.slug] = type.taxonomies
+			return accumulator
+		}, {})
+	}, [postTypes])
 
-  const postTypesSelectOptions = useMemo(
-    () =>
-      (postTypes || []).map(({ labels, slug }) => ({
-        label: labels.singular_name,
-        value: slug
-      })),
-    [postTypes]
-  )
+	const postTypesSelectOptions = useMemo(
+		() =>
+			(postTypes || []).map(({ labels, slug }) => ({
+				label: labels.singular_name,
+				value: slug
+			})),
+		[postTypes]
+	)
 
-  const postTypeFormatSupportMap = useMemo(() => {
-    if (!postTypes?.length) {
-      return {}
-    }
-    return postTypes.reduce((accumulator, type) => {
-      accumulator[type.slug] = type.supports?.['post-formats'] || false
-      return accumulator
-    }, {})
-  }, [postTypes])
+	const postTypeFormatSupportMap = useMemo(() => {
+		if (!postTypes?.length) {
+			return {}
+		}
+		return postTypes.reduce((accumulator, type) => {
+			accumulator[type.slug] = type.supports?.['post-formats'] || false
+			return accumulator
+		}, {})
+	}, [postTypes])
 
-  return {
-    postTypesTaxonomiesMap,
-    postTypesSelectOptions,
-    postTypeFormatSupportMap,
-    postTypeRestBaseMap,
-    postTypeRestNamespaceMap
-  }
+	return {
+		postTypesTaxonomiesMap,
+		postTypesSelectOptions,
+		postTypeFormatSupportMap,
+		postTypeRestBaseMap,
+		postTypeRestNamespaceMap
+	}
 }
 
 /**
@@ -168,23 +168,23 @@ export const usePostTypes = () => {
  * @return {Object[]} An array of the associated taxonomies.
  */
 export const useTaxonomies = (postType) => {
-  const taxonomies = useSelect(
-    (select) => {
-      const { getPostType, getTaxonomies } = select(coreStore)
-      // Does the post type have taxonomies?
-      if (getPostType(postType)?.taxonomies?.length > 0) {
-        return getTaxonomies({
-          type: postType,
-          per_page: -1
-        })
-      }
-      return []
-    },
-    [postType]
-  )
-  return useMemo(() => {
-    return taxonomies?.filter(({ visibility }) => !!visibility?.publicly_queryable)
-  }, [taxonomies])
+	const taxonomies = useSelect(
+		(select) => {
+			const { getPostType, getTaxonomies } = select(coreStore)
+			// Does the post type have taxonomies?
+			if (getPostType(postType)?.taxonomies?.length > 0) {
+				return getTaxonomies({
+					type: postType,
+					per_page: -1
+				})
+			}
+			return []
+		},
+		[postType]
+	)
+	return useMemo(() => {
+		return taxonomies?.filter(({ visibility }) => !!visibility?.publicly_queryable)
+	}, [taxonomies])
 }
 
 /**
@@ -194,52 +194,52 @@ export const useTaxonomies = (postType) => {
  * @return {Object[]} An array of the associated taxonomies.
  */
 export const useTerms = (taxonomies = []) => {
-  const { records, resolvedCounter } = useSelect(
-    (select) => {
-      const { getEntityRecords, hasFinishedResolution } = select('core')
-      const groupsArgs = { per_page: -1 }
+	const { records, resolvedCounter } = useSelect(
+		(select) => {
+			const { getEntityRecords, hasFinishedResolution } = select('core')
+			const groupsArgs = { per_page: -1 }
 
-      const records = []
-      let resolvedCounter = 0
+			const records = []
+			let resolvedCounter = 0
 
-      taxonomies.forEach((taxonomy) => {
-        const record = getEntityRecords('taxonomy', taxonomy, groupsArgs)
-        const resolved = hasFinishedResolution('getEntityRecords', ['taxonomy', taxonomy, groupsArgs])
+			taxonomies.forEach((taxonomy) => {
+				const record = getEntityRecords('taxonomy', taxonomy, groupsArgs)
+				const resolved = hasFinishedResolution('getEntityRecords', ['taxonomy', taxonomy, groupsArgs])
 
-        if (resolved) {
-          resolvedCounter++
-          if (record) {
-            records.push(record)
-          }
-        }
-      })
+				if (resolved) {
+					resolvedCounter++
+					if (record) {
+						records.push(record)
+					}
+				}
+			})
 
-      return { records, resolvedCounter }
-    },
-    [taxonomies]
-  )
+			return { records, resolvedCounter }
+		},
+		[taxonomies]
+	)
 
-  const terms = useMemo(() => {
-    const result = {}
+	const terms = useMemo(() => {
+		const result = {}
 
-    if (records?.length) {
-      const flatArray = records.flat()
+		if (records?.length) {
+			const flatArray = records.flat()
 
-      flatArray.forEach(({ id, link, name, taxonomy }) => {
-        if (!result[taxonomy]) {
-          result[taxonomy] = []
-        }
-        result[taxonomy].push({ name, id, link })
-      })
-    }
+			flatArray.forEach(({ id, link, name, taxonomy }) => {
+				if (!result[taxonomy]) {
+					result[taxonomy] = []
+				}
+				result[taxonomy].push({ name, id, link })
+			})
+		}
 
-    return result
-  }, [records])
+		return result
+	}, [records])
 
-  return {
-    terms,
-    resolved: taxonomies.length === resolvedCounter
-  }
+	return {
+		terms,
+		resolved: taxonomies.length === resolvedCounter
+	}
 }
 
 /**
@@ -249,13 +249,13 @@ export const useTerms = (taxonomies = []) => {
  * @return {boolean} Whether a specific post type is hierarchical.
  */
 export function useIsPostTypeHierarchical(postType) {
-  return useSelect(
-    (select) => {
-      const type = select(coreStore).getPostType(postType)
-      return type?.viewable && type?.hierarchical
-    },
-    [postType]
-  )
+	return useSelect(
+		(select) => {
+			const type = select(coreStore).getPostType(postType)
+			return type?.viewable && type?.hierarchical
+		},
+		[postType]
+	)
 }
 
 /**
@@ -265,53 +265,53 @@ export function useIsPostTypeHierarchical(postType) {
  * @return {OrderByOption[]} List of order options.
  */
 export function useOrderByOptions(postType) {
-  const supportsCustomOrder = useSelect(
-    (select) => {
-      const type = select(coreStore).getPostType(postType)
-      return !!type?.supports?.['page-attributes']
-    },
-    [postType]
-  )
+	const supportsCustomOrder = useSelect(
+		(select) => {
+			const type = select(coreStore).getPostType(postType)
+			return !!type?.supports?.['page-attributes']
+		},
+		[postType]
+	)
 
-  return useMemo(() => {
-    const orderByOptions = [
-      {
-        label: __('Newest to oldest'),
-        value: 'date/desc'
-      },
-      {
-        label: __('Oldest to newest'),
-        value: 'date/asc'
-      },
-      {
-        /* translators: Label for ordering posts by title in ascending order. */
-        label: __('A → Z'),
-        value: 'title/asc'
-      },
-      {
-        /* translators: Label for ordering posts by title in descending order. */
-        label: __('Z → A'),
-        value: 'title/desc'
-      }
-    ]
+	return useMemo(() => {
+		const orderByOptions = [
+			{
+				label: __('Newest to oldest'),
+				value: 'date/desc'
+			},
+			{
+				label: __('Oldest to newest'),
+				value: 'date/asc'
+			},
+			{
+				/* translators: Label for ordering posts by title in ascending order. */
+				label: __('A → Z'),
+				value: 'title/asc'
+			},
+			{
+				/* translators: Label for ordering posts by title in descending order. */
+				label: __('Z → A'),
+				value: 'title/desc'
+			}
+		]
 
-    if (supportsCustomOrder) {
-      orderByOptions.push(
-        {
-          /* translators: Label for ordering posts by ascending menu order. */
-          label: __('Ascending by order'),
-          value: 'menu_order/asc'
-        },
-        {
-          /* translators: Label for ordering posts by descending menu order. */
-          label: __('Descending by order'),
-          value: 'menu_order/desc'
-        }
-      )
-    }
+		if (supportsCustomOrder) {
+			orderByOptions.push(
+				{
+					/* translators: Label for ordering posts by ascending menu order. */
+					label: __('Ascending by order'),
+					value: 'menu_order/asc'
+				},
+				{
+					/* translators: Label for ordering posts by descending menu order. */
+					label: __('Descending by order'),
+					value: 'menu_order/desc'
+				}
+			)
+		}
 
-    return orderByOptions
-  }, [supportsCustomOrder])
+		return orderByOptions
+	}, [supportsCustomOrder])
 }
 
 /**
@@ -322,18 +322,18 @@ export function useOrderByOptions(postType) {
  * @return {string[]} An array of the query attributes.
  */
 export function useAllowedControls(attributes) {
-  return useSelect(
-    (select) => select(blocksStore).getActiveBlockVariation('core/query', attributes)?.allowedControls,
+	return useSelect(
+		(select) => select(blocksStore).getActiveBlockVariation('core/query', attributes)?.allowedControls,
 
-    [attributes]
-  )
+		[attributes]
+	)
 }
 export function isControlAllowed(allowedControls, key) {
-  // Every controls is allowed if the list is not defined.
-  if (!allowedControls) {
-    return true
-  }
-  return allowedControls.includes(key)
+	// Every controls is allowed if the list is not defined.
+	if (!allowedControls) {
+		return true
+	}
+	return allowedControls.includes(key)
 }
 
 /**
@@ -351,31 +351,31 @@ export function isControlAllowed(allowedControls, key) {
  * @return {{ newBlocks: WPBlock[], queryClientIds: string[] }} An object with the cloned/transformed blocks and all the Query Loop clients from these blocks.
  */
 export const getTransformedBlocksFromPattern = (blocks, queryBlockAttributes) => {
-  const {
-    namespace,
-    query: { inherit, postType }
-  } = queryBlockAttributes
-  const clonedBlocks = blocks.map((block) => cloneBlock(block))
-  const queryClientIds = []
-  const blocksQueue = [...clonedBlocks]
-  while (blocksQueue.length > 0) {
-    const block = blocksQueue.shift()
-    if (block.name === 'core/query') {
-      block.attributes.query = {
-        ...block.attributes.query,
-        postType,
-        inherit
-      }
-      if (namespace) {
-        block.attributes.namespace = namespace
-      }
-      queryClientIds.push(block.clientId)
-    }
-    block.innerBlocks?.forEach((innerBlock) => {
-      blocksQueue.push(innerBlock)
-    })
-  }
-  return { newBlocks: clonedBlocks, queryClientIds }
+	const {
+		namespace,
+		query: { inherit, postType }
+	} = queryBlockAttributes
+	const clonedBlocks = blocks.map((block) => cloneBlock(block))
+	const queryClientIds = []
+	const blocksQueue = [...clonedBlocks]
+	while (blocksQueue.length > 0) {
+		const block = blocksQueue.shift()
+		if (block.name === 'core/query') {
+			block.attributes.query = {
+				...block.attributes.query,
+				postType,
+				inherit
+			}
+			if (namespace) {
+				block.attributes.namespace = namespace
+			}
+			queryClientIds.push(block.clientId)
+		}
+		block.innerBlocks?.forEach((innerBlock) => {
+			blocksQueue.push(innerBlock)
+		})
+	}
+	return { newBlocks: clonedBlocks, queryClientIds }
 }
 
 /**
@@ -393,23 +393,23 @@ export const getTransformedBlocksFromPattern = (blocks, queryBlockAttributes) =>
  * @return {string} The block name to be used in the patterns suggestions.
  */
 export function useBlockNameForPatterns(clientId, attributes) {
-  return useSelect(
-    (select) => {
-      const activeVariationName = select(blocksStore).getActiveBlockVariation('core/query', attributes)?.name
+	return useSelect(
+		(select) => {
+			const activeVariationName = select(blocksStore).getActiveBlockVariation('core/query', attributes)?.name
 
-      if (!activeVariationName) {
-        return 'core/query'
-      }
+			if (!activeVariationName) {
+				return 'core/query'
+			}
 
-      const { getBlockRootClientId, getPatternsByBlockTypes } = select(blockEditorStore)
+			const { getBlockRootClientId, getPatternsByBlockTypes } = select(blockEditorStore)
 
-      const rootClientId = getBlockRootClientId(clientId)
-      const activePatterns = getPatternsByBlockTypes(`core/query/${activeVariationName}`, rootClientId)
+			const rootClientId = getBlockRootClientId(clientId)
+			const activePatterns = getPatternsByBlockTypes(`core/query/${activeVariationName}`, rootClientId)
 
-      return activePatterns.length > 0 ? `core/query/${activeVariationName}` : 'core/query'
-    },
-    [clientId, attributes]
-  )
+			return activePatterns.length > 0 ? `core/query/${activeVariationName}` : 'core/query'
+		},
+		[clientId, attributes]
+	)
 }
 
 /**
@@ -436,30 +436,30 @@ export function useBlockNameForPatterns(clientId, attributes) {
  * @return {WPBlockVariation[]} The block variations to be suggested in setup flow, when clicking to `start blank`.
  */
 export function useScopedBlockVariations(attributes) {
-  const { activeVariationName, blockVariations } = useSelect(
-    (select) => {
-      const { getActiveBlockVariation, getBlockVariations } = select(blocksStore)
-      return {
-        activeVariationName: getActiveBlockVariation('core/query', attributes)?.name,
-        blockVariations: getBlockVariations('core/query', 'block')
-      }
-    },
-    [attributes]
-  )
-  const variations = useMemo(() => {
-    // Filter out the variations that have defined a `namespace` attribute,
-    // which means they are 'connected' to specific variations of the block.
-    const isNotConnected = (variation) => !variation.attributes?.namespace
-    if (!activeVariationName) {
-      return blockVariations.filter(isNotConnected)
-    }
-    const connectedVariations = blockVariations.filter((variation) => variation.attributes?.namespace?.includes(activeVariationName))
-    if (connectedVariations.length) {
-      return connectedVariations
-    }
-    return blockVariations.filter(isNotConnected)
-  }, [activeVariationName, blockVariations])
-  return variations
+	const { activeVariationName, blockVariations } = useSelect(
+		(select) => {
+			const { getActiveBlockVariation, getBlockVariations } = select(blocksStore)
+			return {
+				activeVariationName: getActiveBlockVariation('core/query', attributes)?.name,
+				blockVariations: getBlockVariations('core/query', 'block')
+			}
+		},
+		[attributes]
+	)
+	const variations = useMemo(() => {
+		// Filter out the variations that have defined a `namespace` attribute,
+		// which means they are 'connected' to specific variations of the block.
+		const isNotConnected = (variation) => !variation.attributes?.namespace
+		if (!activeVariationName) {
+			return blockVariations.filter(isNotConnected)
+		}
+		const connectedVariations = blockVariations.filter((variation) => variation.attributes?.namespace?.includes(activeVariationName))
+		if (connectedVariations.length) {
+			return connectedVariations
+		}
+		return blockVariations.filter(isNotConnected)
+	}, [activeVariationName, blockVariations])
+	return variations
 }
 
 /**
@@ -470,14 +470,14 @@ export function useScopedBlockVariations(attributes) {
  * @return {Object[]} An array of valid block patterns.
  */
 export const usePatterns = (clientId, name) => {
-  return useSelect(
-    (select) => {
-      const { getBlockRootClientId, getPatternsByBlockTypes } = select(blockEditorStore)
-      const rootClientId = getBlockRootClientId(clientId)
-      return getPatternsByBlockTypes(name, rootClientId)
-    },
-    [name, clientId]
-  )
+	return useSelect(
+		(select) => {
+			const { getBlockRootClientId, getPatternsByBlockTypes } = select(blockEditorStore)
+			const rootClientId = getBlockRootClientId(clientId)
+			return getPatternsByBlockTypes(name, rootClientId)
+		},
+		[name, clientId]
+	)
 }
 
 /**
@@ -500,31 +500,31 @@ export const usePatterns = (clientId, name) => {
  * @return {UnsupportedBlocksInfo} The object containing the information.
  */
 export const useUnsupportedBlocks = (clientId) => {
-  return useSelect(
-    (select) => {
-      const { getBlockName, getClientIdsOfDescendants } = select(blockEditorStore)
-      const blocks = {}
-      getClientIdsOfDescendants(clientId).forEach((descendantClientId) => {
-        const blockName = getBlockName(descendantClientId)
-        /*
-         * Client side navigation can be true in two states:
-         *  - supports.interactivity = true;
-         *  - supports.interactivity.clientNavigation = true;
-         */
-        const blockSupportsInteractivity = Object.is(getBlockSupport(blockName, 'interactivity'), true)
-        const blockSupportsInteractivityClientNavigation = getBlockSupport(blockName, 'interactivity.clientNavigation')
-        const blockInteractivity = blockSupportsInteractivity || blockSupportsInteractivityClientNavigation
-        if (!blockInteractivity) {
-          blocks.hasBlocksFromPlugins = true
-        } else if (blockName === 'core/post-content') {
-          blocks.hasPostContentBlock = true
-        }
-      })
-      blocks.hasUnsupportedBlocks = blocks.hasBlocksFromPlugins || blocks.hasPostContentBlock
-      return blocks
-    },
-    [clientId]
-  )
+	return useSelect(
+		(select) => {
+			const { getBlockName, getClientIdsOfDescendants } = select(blockEditorStore)
+			const blocks = {}
+			getClientIdsOfDescendants(clientId).forEach((descendantClientId) => {
+				const blockName = getBlockName(descendantClientId)
+				/*
+				 * Client side navigation can be true in two states:
+				 *  - supports.interactivity = true;
+				 *  - supports.interactivity.clientNavigation = true;
+				 */
+				const blockSupportsInteractivity = Object.is(getBlockSupport(blockName, 'interactivity'), true)
+				const blockSupportsInteractivityClientNavigation = getBlockSupport(blockName, 'interactivity.clientNavigation')
+				const blockInteractivity = blockSupportsInteractivity || blockSupportsInteractivityClientNavigation
+				if (!blockInteractivity) {
+					blocks.hasBlocksFromPlugins = true
+				} else if (blockName === 'core/post-content') {
+					blocks.hasPostContentBlock = true
+				}
+			})
+			blocks.hasUnsupportedBlocks = blocks.hasBlocksFromPlugins || blocks.hasPostContentBlock
+			return blocks
+		},
+		[clientId]
+	)
 }
 
 /**
@@ -535,19 +535,19 @@ export const useUnsupportedBlocks = (clientId) => {
  * @return {Object} An object with isSingular and templateType properties.
  */
 export function getQueryContextFromTemplate(templateSlug) {
-  // In the Post Editor, the template slug is not available.
-  if (!templateSlug) {
-    return { isSingular: true }
-  }
-  let isSingular = false
-  let templateType = templateSlug === 'wp' ? 'custom' : templateSlug
-  const singularTemplates = ['404', 'blank', 'single', 'page', 'custom']
-  const templateTypeFromSlug = templateSlug.includes('-') ? templateSlug.split('-', 1)[0] : templateSlug
-  const queryFromTemplateSlug = templateSlug.includes('-') ? templateSlug.split('-').slice(1).join('-') : ''
-  if (queryFromTemplateSlug) {
-    templateType = templateTypeFromSlug
-  }
-  isSingular = singularTemplates.includes(templateType)
+	// In the Post Editor, the template slug is not available.
+	if (!templateSlug) {
+		return { isSingular: true }
+	}
+	let isSingular = false
+	let templateType = templateSlug === 'wp' ? 'custom' : templateSlug
+	const singularTemplates = ['404', 'blank', 'single', 'page', 'custom']
+	const templateTypeFromSlug = templateSlug.includes('-') ? templateSlug.split('-', 1)[0] : templateSlug
+	const queryFromTemplateSlug = templateSlug.includes('-') ? templateSlug.split('-').slice(1).join('-') : ''
+	if (queryFromTemplateSlug) {
+		templateType = templateTypeFromSlug
+	}
+	isSingular = singularTemplates.includes(templateType)
 
-  return { isSingular, templateType }
+	return { isSingular, templateType }
 }

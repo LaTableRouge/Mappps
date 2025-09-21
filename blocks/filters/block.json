@@ -1,57 +1,50 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "mppps/filters",
-  "title": "Filters",
-  "category": "mappps",
-  "description": "Contains the filters.",
-  "textdomain": "mappps",
-  "parent": [
-    "mppps/mappps-blocks"
-  ],
-  "ancestor": [
-    "mppps/mappps-blocks"
-  ],
-  "usesContext": [
-    "mppps/blockId",
-    "mppps/filtersTerms"
-  ],
-  "supports": {
-    "reusable": false,
-    "html": false,
-    "layout": false,
-    "spacing": {
-      "padding": true,
-      "margin": true
-    },
-    "interactivity": {
-      "clientNavigation": true
-    },
-    "color": {
-      "gradients": true,
-      "link": true,
-      "__experimentalDefaultControls": {
-        "background": true,
-        "text": true
-      }
-    }
-  },
-  "attributes": {
-    "selectedFiltersSize": {
-      "type": "string",
-      "default": "18cqw"
-    },
-    "style": {
-      "type": "object",
-      "default": {
-        "spacing": {
-          "padding": "1rem"
-        }
-      }
-    }
-  },
-  "viewScript": "file:./assets/view.js",
-  "editorScript": "file:./assets/index.jsx",
-  "editorStyle": "file:./assets/index.css",
-  "style": "file:./assets/style-index.css"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mppps/filters",
+	"title": "Filters",
+	"category": "mappps",
+	"description": "Contains the filters.",
+	"textdomain": "mappps",
+	"parent": ["mppps/mappps-blocks"],
+	"ancestor": ["mppps/mappps-blocks"],
+	"usesContext": ["mppps/blockId", "mppps/filtersTerms"],
+	"supports": {
+		"reusable": false,
+		"html": false,
+		"layout": false,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"interactivity": {
+			"clientNavigation": true
+		},
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		}
+	},
+	"attributes": {
+		"selectedFiltersSize": {
+			"type": "string",
+			"default": "18cqw"
+		},
+		"style": {
+			"type": "object",
+			"default": {
+				"spacing": {
+					"padding": "1rem"
+				}
+			}
+		}
+	},
+	"viewScript": "file:./assets/view.js",
+	"editorScript": "file:./assets/index.jsx",
+	"editorStyle": "file:./assets/index.css",
+	"style": "file:./assets/style-index.css"
 }

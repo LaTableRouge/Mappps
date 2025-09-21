@@ -1,209 +1,204 @@
 {
-  "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 3,
-  "name": "mppps/mappps",
-  "title": "Mappps",
-  "category": "mappps",
-  "icon": "block-default",
-  "description": "A bloc that display maps",
-  "supports": {
-    "html": false,
-    "anchor": true,
-    "align": true,
-    "spacing": {
-      "padding": true
-    },
-    "dimensions": {
-      "aspectRatio": true
-    },
-    "interactivity": true
-  },
-  "attributes": {
-    "blockId": {
-      "type": "string"
-    },
-    "postType": {
-      "type": "string",
-      "default": "post"
-    },
-    "postTypeRestBase": {
-      "type": "string",
-      "default": "posts"
-    },
-    "postTypeRestNamespace": {
-      "type": "string",
-      "default": "wp/v2"
-    },
-    "siteURL": {
-      "type": "string",
-      "default": ""
-    },
-    "taxonomies": {
-      "type": "array",
-      "default": []
-    },
-    "selectedTaxonomies": {
-      "type": "array",
-      "default": []
-    },
-    "categories": {
-      "type": "object",
-      "default": {}
-    },
-    "selectedCategories": {
-      "type": "array",
-      "default": []
-    },
-    "selectedPosts": {
-      "type": "array",
-      "default": []
-    },
-    "mapTiles": {
-      "type": "array",
-      "default": [
-        {
-          "label": "OSM",
-          "value": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-          "maxZoom": 18
-        },
-        {
-          "label": "World Imagery",
-          "value": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-          "maxZoom": 18
-        },
-        {
-          "label": "CartoDB Voyager",
-          "value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
-          "maxZoom": 18
-        },
-        {
-          "label": "CartoDB Positron",
-          "value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
-          "maxZoom": 18
-        },
-        {
-          "label": "OSM Mapnik",
-          "value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png",
-          "maxZoom": 18
-        },
-        {
-          "label": "Open Topo Map",
-          "value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
-          "maxZoom": 17
-        }
-      ]
-    },
-    "selectedMapTiles": {
-      "type": "string",
-      "default": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
-    },
-    "selectedMarkerColor": {
-      "type": "string",
-      "default": "#94D2BD"
-    },
-    "selectedActiveMarkerColor": {
-      "type": "string",
-      "default": "#AE2012"
-    },
-    "selectedClusterColor": {
-      "type": "string",
-      "default": "#0A9396"
-    },
-    "selectedSearchColor": {
-      "type": "string",
-      "default": "#CA6702"
-    },
-    "selectedGeolocationColor": {
-      "type": "string",
-      "default": "#C375DA"
-    },
-    "selectedPrimaryColor": {
-      "type": "string",
-      "default": "#EE9B00"
-    },
-    "selectedSecondaryColor": {
-      "type": "string",
-      "default": "#001219"
-    },
-    "isClustered": {
-      "type": "boolean",
-      "default": true
-    },
-    "isGeolocated": {
-      "type": "boolean",
-      "default": true
-    },
-    "putStickyFirst": {
-      "type": "boolean",
-      "default": true
-    },
-    "selectedDisplayType": {
-      "type": "string",
-      "default": "full"
-    },
-    "displayFilters": {
-      "type": "boolean",
-      "default": true
-    },
-    "displaySearch": {
-      "type": "boolean",
-      "default": true
-    },
-    "limitedSearch": {
-      "type": "boolean",
-      "default": false
-    },
-    "selectedMarkerSize": {
-      "type": "string",
-      "default": "40px"
-    },
-    "selectedMarkerClusterSize": {
-      "type": "string",
-      "default": "50px"
-    },
-    "selectedMaxZoom": {
-      "type": "number",
-      "default": 13
-    },
-    "selectedMaxMarkerZoom": {
-      "type": "number",
-      "default": 13
-    },
-    "haveShadow": {
-      "type": "boolean",
-      "default": true
-    },
-    "canZoomToMarker": {
-      "type": "boolean",
-      "default": true
-    },
-    "selectedSidebarSize": {
-      "type": "string",
-      "default": "25cqw"
-    },
-    "selectedPopupsSize": {
-      "type": "string",
-      "default": "20cqw"
-    },
-    "selectedFiltersSize": {
-      "type": "string",
-      "default": "18cqw"
-    },
-    "selectedBoundsPadding": {
-      "type": "number",
-      "default": 70
-    }
-  },
-  "textdomain": "mappps",
-  "keywords": [
-    "mppps",
-    "maps",
-    "leaflet",
-    "mappps"
-  ],
-  "viewScript": "file:./assets/view.js",
-  "editorScript": "file:./assets/index.jsx",
-  "editorStyle": "file:./assets/index.css",
-  "style": "file:./assets/style-index.css",
-  "viewStyle": "file:./assets/view.css"
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mppps/mappps",
+	"title": "Mappps",
+	"category": "mappps",
+	"icon": "block-default",
+	"description": "A bloc that display maps",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": true,
+		"spacing": {
+			"padding": true
+		},
+		"dimensions": {
+			"aspectRatio": true
+		},
+		"interactivity": true
+	},
+	"attributes": {
+		"blockId": {
+			"type": "string"
+		},
+		"postType": {
+			"type": "string",
+			"default": "post"
+		},
+		"postTypeRestBase": {
+			"type": "string",
+			"default": "posts"
+		},
+		"postTypeRestNamespace": {
+			"type": "string",
+			"default": "wp/v2"
+		},
+		"siteURL": {
+			"type": "string",
+			"default": ""
+		},
+		"taxonomies": {
+			"type": "array",
+			"default": []
+		},
+		"selectedTaxonomies": {
+			"type": "array",
+			"default": []
+		},
+		"categories": {
+			"type": "object",
+			"default": {}
+		},
+		"selectedCategories": {
+			"type": "array",
+			"default": []
+		},
+		"selectedPosts": {
+			"type": "array",
+			"default": []
+		},
+		"mapTiles": {
+			"type": "array",
+			"default": [
+				{
+					"label": "OSM",
+					"value": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+					"maxZoom": 18
+				},
+				{
+					"label": "World Imagery",
+					"value": "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+					"maxZoom": 18
+				},
+				{
+					"label": "CartoDB Voyager",
+					"value": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",
+					"maxZoom": 18
+				},
+				{
+					"label": "CartoDB Positron",
+					"value": "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+					"maxZoom": 18
+				},
+				{
+					"label": "OSM Mapnik",
+					"value": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png",
+					"maxZoom": 18
+				},
+				{
+					"label": "Open Topo Map",
+					"value": "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+					"maxZoom": 17
+				}
+			]
+		},
+		"selectedMapTiles": {
+			"type": "string",
+			"default": "https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+		},
+		"selectedMarkerColor": {
+			"type": "string",
+			"default": "#94D2BD"
+		},
+		"selectedActiveMarkerColor": {
+			"type": "string",
+			"default": "#AE2012"
+		},
+		"selectedClusterColor": {
+			"type": "string",
+			"default": "#0A9396"
+		},
+		"selectedSearchColor": {
+			"type": "string",
+			"default": "#CA6702"
+		},
+		"selectedGeolocationColor": {
+			"type": "string",
+			"default": "#C375DA"
+		},
+		"selectedPrimaryColor": {
+			"type": "string",
+			"default": "#EE9B00"
+		},
+		"selectedSecondaryColor": {
+			"type": "string",
+			"default": "#001219"
+		},
+		"isClustered": {
+			"type": "boolean",
+			"default": true
+		},
+		"isGeolocated": {
+			"type": "boolean",
+			"default": true
+		},
+		"putStickyFirst": {
+			"type": "boolean",
+			"default": true
+		},
+		"selectedDisplayType": {
+			"type": "string",
+			"default": "full"
+		},
+		"displayFilters": {
+			"type": "boolean",
+			"default": true
+		},
+		"displaySearch": {
+			"type": "boolean",
+			"default": true
+		},
+		"limitedSearch": {
+			"type": "boolean",
+			"default": false
+		},
+		"selectedMarkerSize": {
+			"type": "string",
+			"default": "40px"
+		},
+		"selectedMarkerClusterSize": {
+			"type": "string",
+			"default": "50px"
+		},
+		"selectedMaxZoom": {
+			"type": "number",
+			"default": 13
+		},
+		"selectedMaxMarkerZoom": {
+			"type": "number",
+			"default": 13
+		},
+		"haveShadow": {
+			"type": "boolean",
+			"default": true
+		},
+		"canZoomToMarker": {
+			"type": "boolean",
+			"default": true
+		},
+		"selectedSidebarSize": {
+			"type": "string",
+			"default": "25cqw"
+		},
+		"selectedPopupsSize": {
+			"type": "string",
+			"default": "20cqw"
+		},
+		"selectedFiltersSize": {
+			"type": "string",
+			"default": "18cqw"
+		},
+		"selectedBoundsPadding": {
+			"type": "number",
+			"default": 70
+		}
+	},
+	"textdomain": "mappps",
+	"keywords": ["mppps", "maps", "leaflet", "mappps"],
+	"viewScript": "file:./assets/view.js",
+	"editorScript": "file:./assets/index.jsx",
+	"editorStyle": "file:./assets/index.css",
+	"style": "file:./assets/style-index.css",
+	"viewStyle": "file:./assets/view.css"
 }

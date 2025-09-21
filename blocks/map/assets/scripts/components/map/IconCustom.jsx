@@ -1,19 +1,19 @@
 import L from 'leaflet'
 
 export default function IconCustom({ cluster, haveShadow = false, isSelected = false, markerSize = 40, picture, type = '' }) {
-  const aspectRatio = 1
-  const markerSizeInt = parseInt(markerSize, 10)
-  const isClusterType = type === 'cluster'
+	const aspectRatio = 1
+	const markerSizeInt = parseInt(markerSize, 10)
+	const isClusterType = type === 'cluster'
 
-  // Calculate dimensions based on aspect ratio
-  const width = markerSizeInt
-  const height = Math.round(markerSizeInt / aspectRatio)
+	// Calculate dimensions based on aspect ratio
+	const width = markerSizeInt
+	const height = Math.round(markerSizeInt / aspectRatio)
 
-  // Calculate icon size and anchor based on the actual dimensions
-  const iconSize = [width, height]
-  const iconAnchor = [width / 2, height]
+	// Calculate icon size and anchor based on the actual dimensions
+	const iconSize = [width, height]
+	const iconAnchor = [width / 2, height]
 
-  const html = `
+	const html = `
     <div class="marker-icon">
       <img
         src="${picture.url}"
@@ -27,13 +27,13 @@ export default function IconCustom({ cluster, haveShadow = false, isSelected = f
     </div>
   `
 
-  const className = `custom-marker ${type ? `custom-marker--${type}` : ''} ${isSelected ? 'custom-marker--active' : ''}`
+	const className = `custom-marker ${type ? `custom-marker--${type}` : ''} ${isSelected ? 'custom-marker--active' : ''}`
 
-  return L.divIcon({
-    html,
-    iconSize,
-    iconAnchor,
-    className: className.trim(),
-    popupAnchor: [0, -height]
-  })
+	return L.divIcon({
+		html,
+		iconSize,
+		iconAnchor,
+		className: className.trim(),
+		popupAnchor: [0, -height]
+	})
 }
