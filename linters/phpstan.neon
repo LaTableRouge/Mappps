@@ -8,3 +8,7 @@ parameters:
         - Timber\Timber
     excludePaths:
         - ../vendor/*
+    ignoreErrors:
+        - '#Constant MPPPS_BASE_NAME not found#'
+        - '#Constant MPPPS_PATH not found#'
+        - '#Constant MPPPS_URL not found#'
