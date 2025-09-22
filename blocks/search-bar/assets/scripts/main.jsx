@@ -12,7 +12,14 @@ function Main({ attributes, blockId }) {
 	GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
 	GlobalStateEventsHandler(blockId, mobileIsMapDisplayed, setMobileIsMapDisplayed, 'mobileIsMapDisplayed')
 
-	return <Search limitedSearch={attributes.limitedSearch} setMobileIsMapDisplayed={setMobileIsMapDisplayed} setSearchValue={setSearchValue} setSelectedSearchResult={setSelectedSearchResult} />
+	return (
+		<Search
+			limitedSearch={attributes.limitedSearch}
+			setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+			setSearchValue={setSearchValue}
+			setSelectedSearchResult={setSelectedSearchResult}
+		/>
+	)
 }
 
 export default memo(Main)

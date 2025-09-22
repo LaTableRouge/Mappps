@@ -13,7 +13,14 @@ function ToggleLimitedSearch({ defaultValue, setAttributes }) {
 		[setAttributes]
 	)
 
-	return <ToggleControl checked={defaultValue} help={defaultValue ? __('Search results will be limited to the selected posts', 'mappps') : ''} label={__('Limit search results?', 'mappps')} onChange={handleChange} />
+	return (
+		<ToggleControl
+			checked={defaultValue}
+			help={defaultValue ? __('Search results will be limited to the selected posts', 'mappps') : ''}
+			label={__('Limit search results?', 'mappps')}
+			onChange={handleChange}
+		/>
+	)
 }
 
 export default memo(ToggleLimitedSearch)

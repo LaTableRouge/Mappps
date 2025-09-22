@@ -3,7 +3,7 @@ import { Marker } from 'react-leaflet'
 import Icon from './Icon'
 import IconCustom from './IconCustom'
 
-export default function Markers(posts, markerRefs, size, selectedPost, setSelectedPost, haveShadow, haveCustomMarkers, customMarker) {
+export default function Markers(posts, markerRefs, size, selectedPost, setSelectedPost, haveShadow, customMarkerIcon) {
 	const handleMarkerClick = (post, isSelected) => {
 		if (!isSelected) {
 			setSelectedPost(post)
@@ -23,7 +23,9 @@ export default function Markers(posts, markerRefs, size, selectedPost, setSelect
 				eventHandlers={{
 					click: () => handleMarkerClick(post, isSelected)
 				}}
-				icon={haveCustomMarkers && Object.keys(customMarker).length ? IconCustom({ picture: customMarker, haveShadow, markerSize: size, isSelected }) : Icon('', haveShadow, size, false, isSelected)}
+				icon={
+					Object.keys(customMarkerIcon).length ? IconCustom({ picture: customMarkerIcon, haveShadow, markerSize: size, isSelected }) : Icon('', haveShadow, size, false, isSelected)
+				}
 				position={position}
 			/>
 		)

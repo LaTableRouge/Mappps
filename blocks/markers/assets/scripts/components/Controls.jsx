@@ -3,49 +3,67 @@ import { PanelBody } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 import ColorMap from './controls/ColorMap'
-import MediaMarkerClusterIcon from './controls/MediaMarkerClusterIcon'
-import MediaMarkerGeolocationIcon from './controls/MediaMarkerGeolocationIcon'
-import MediaMarkerIcon from './controls/MediaMarkerIcon'
-import MediaMarkerSearchIcon from './controls/MediaMarkerSearchIcon'
-import ToggleCustomMarkers from './controls/ToggleCustomMarkers'
+import MediaIcon from './controls/MediaIcon'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleMarkerShadow from './controls/ToggleMarkerShadow'
-import UnitMarkerClusterSize from './controls/UnitMarkerClusterSize'
-import UnitMarkerSize from './controls/UnitMarkerSize'
+import UnitSize from './controls/UnitSize'
 
 export default function Controls({ attributes, hasGeolocation, hasSearch, setAttributes }) {
-	const { haveCustomMarkers, haveShadow, isClustered, selectedActiveMarkerColor, selectedClusterColor, selectedGeolocationColor, selectedMarkerClusterIcon, selectedMarkerClusterSize, selectedMarkerColor, selectedMarkerGeolocationIcon, selectedMarkerIcon, selectedMarkerSearchIcon, selectedMarkerSize, selectedSearchColor } = attributes
-
-	const colorValues = {
-		marker: selectedMarkerColor,
-		markerActive: selectedActiveMarkerColor,
-		cluster: selectedClusterColor,
-		geolocation: selectedGeolocationColor,
-		search: selectedSearchColor
-	}
+	const {
+		haveShadow,
+		isClustered,
+		selectedClusterColor,
+		selectedClusterTextColor,
+		selectedGeolocationColor,
+		selectedMarkerClusterIcon,
+		selectedMarkerClusterSize,
+		selectedMarkerColor,
+		selectedMarkerGeolocationIcon,
+		selectedMarkerIcon,
+		selectedMarkerSearchIcon,
+		selectedMarkerSize,
+		selectedSearchColor
+	} = attributes
 
 	return (
 		<InspectorControls>
-			<PanelBody title={__('Render settings', 'mappps')}>
+			<PanelBody title={__('Global settings', 'mappps')}>
 				<ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
 				<ToggleMarkerShadow defaultValue={haveShadow} setAttributes={setAttributes} />
-				<UnitMarkerSize defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
-				<UnitMarkerClusterSize defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
 			</PanelBody>
 
-			<PanelBody title={__('Icons settings', 'mappps')}>
-				<ToggleCustomMarkers defaultValue={haveCustomMarkers} setAttributes={setAttributes} />
-				{haveCustomMarkers && (
-					<>
-						<MediaMarkerIcon defaultValue={selectedMarkerIcon} setAttributes={setAttributes} />
-						{isClustered && <MediaMarkerClusterIcon defaultValue={selectedMarkerClusterIcon} setAttributes={setAttributes} />}
-						{hasGeolocation && <MediaMarkerGeolocationIcon defaultValue={selectedMarkerGeolocationIcon} setAttributes={setAttributes} />}
-						{hasSearch && <MediaMarkerSearchIcon defaultValue={selectedMarkerSearchIcon} setAttributes={setAttributes} />}
-					</>
-				)}
+			<PanelBody title={__('Marker settings', 'mappps')}>
+				<UnitSize attributeKey={'selectedMarkerSize'} defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
+				<MediaIcon attributeKey={'selectedMarkerIcon'} defaultValue={selectedMarkerIcon} setAttributes={setAttributes} />
+				<ColorMap settings={[{ value: selectedMarkerColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedMarkerColor: value }) }]} />
 			</PanelBody>
 
-			<ColorMap defaultValues={colorValues} hasCustomClusterMarker={Object.keys(selectedMarkerClusterIcon).length} hasCustomGeolocationMarker={Object.keys(selectedMarkerGeolocationIcon).length} hasCustomMarker={Object.keys(selectedMarkerIcon).length} hasCustomSearchMarker={Object.keys(selectedMarkerSearchIcon).length} hasGeolocation={hasGeolocation} hasSearch={hasSearch} isClustered={isClustered} setAttributes={setAttributes} />
+			{isClustered && (
+				<PanelBody title={__('Marker cluster settings', 'mappps')}>
+					<UnitSize attributeKey={'selectedMarkerClusterSize'} defaultValue={selectedMarkerClusterSize} setAttributes={setAttributes} />
+					<MediaIcon attributeKey={'selectedMarkerClusterIcon'} defaultValue={selectedMarkerClusterIcon} setAttributes={setAttributes} />
+					<ColorMap
+						settings={[
+							{ value: selectedClusterColor, label: __('Cluster color', 'mappps'), onChange: (value) => setAttributes({ selectedClusterColor: value }) },
+							{ value: selectedClusterTextColor, label: __('Cluster text color', 'mappps'), onChange: (value) => setAttributes({ selectedClusterTextColor: value }) }
+						]}
+					/>
+				</PanelBody>
+			)}
+
+			{hasGeolocation && (
+				<PanelBody title={__('Marker geolocation settings', 'mappps')}>
+					<MediaIcon attributeKey={'selectedMarkerGeolocationIcon'} defaultValue={selectedMarkerGeolocationIcon} setAttributes={setAttributes} />
+					<ColorMap settings={[{ value: selectedGeolocationColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedGeolocationColor: value }) }]} />
+				</PanelBody>
+			)}
+
+			{hasSearch && (
+				<PanelBody title={__('Marker search settings', 'mappps')}>
+					<MediaIcon attributeKey={'selectedMarkerSearchIcon'} defaultValue={selectedMarkerSearchIcon} setAttributes={setAttributes} />
+					<ColorMap settings={[{ value: selectedSearchColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedSearchColor: value }) }]} />
+				</PanelBody>
+			)}
 		</InspectorControls>
 	)
 }

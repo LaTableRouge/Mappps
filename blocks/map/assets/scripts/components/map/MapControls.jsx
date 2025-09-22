@@ -40,17 +40,49 @@ export default function MapControls({ geolocationCoordinates, isGeolocated, setG
 			<div className="leaflet-top leaflet-left" />
 			<div className="leaflet-top leaflet-right">
 				<div className="leaflet-control-zoom leaflet-bar leaflet-control">
-					<a aria-disabled="false" aria-label={__('Zoom in', 'mappps')} className="leaflet-control-zoom-in" href="#" role="button" title={__('Zoom in', 'mappps')} onClick={handleZoomIn}>
+					<a
+						aria-disabled="false"
+						aria-label={__('Zoom in', 'mappps')}
+						className="leaflet-control-zoom-in"
+						href="#"
+						role="button"
+						title={__('Zoom in', 'mappps')}
+						onClick={handleZoomIn}
+					>
 						<span aria-hidden="true" className="icon-mappps-plus" />
 					</a>
-					<a aria-disabled="false" aria-label={__('Zoom out', 'mappps')} className="leaflet-control-zoom-out" href="#" role="button" title={__('Zoom out', 'mappps')} onClick={handleZoomOut}>
+					<a
+						aria-disabled="false"
+						aria-label={__('Zoom out', 'mappps')}
+						className="leaflet-control-zoom-out"
+						href="#"
+						role="button"
+						title={__('Zoom out', 'mappps')}
+						onClick={handleZoomOut}
+					>
 						<span aria-hidden="true" className="icon-mappps-minus" />
 					</a>
-					<a aria-disabled="false" aria-label={__('Reset view', 'mappps')} className="leaflet-control-reset" href="#" role="button" title={__('Reset view', 'mappps')} onClick={handleReset}>
+					<a
+						aria-disabled="false"
+						aria-label={__('Reset view', 'mappps')}
+						className="leaflet-control-reset"
+						href="#"
+						role="button"
+						title={__('Reset view', 'mappps')}
+						onClick={handleReset}
+					>
 						<span aria-hidden="true" className="icon-mappps-refresh" />
 					</a>
 					{isGeolocated && (
-						<a aria-disabled="false" aria-label={__('Find your position', 'mappps')} className="leaflet-control-geolocation" href="#" role="button" title={__('Find your position', 'mappps')} onClick={handleGeolocation}>
+						<a
+							aria-disabled="false"
+							aria-label={__('Find your position', 'mappps')}
+							className="leaflet-control-geolocation"
+							href="#"
+							role="button"
+							title={__('Find your position', 'mappps')}
+							onClick={handleGeolocation}
+						>
 							<span aria-hidden="true" className="icon-mappps-geolocation" />
 						</a>
 					)}

@@ -6,5 +6,5 @@ module.exports = {
 	semi: false,
 	bracketSpacing: true,
 	experimentalOperatorPosition: 'start',
-	printWidth: 100000
+	printWidth: 180
 }

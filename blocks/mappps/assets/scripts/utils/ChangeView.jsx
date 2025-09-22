@@ -4,7 +4,21 @@ import { useMap } from 'react-leaflet'
 
 import { delay } from '../common/functions'
 
-function ChangeView({ boundsPadding, canZoomToMarker, isMobileView, markerGeolocation, markerOffset, markers, markerSearch, maxMarkerZoom, refCluster = null, refMarkerGeolocation, refMarkerSearch, refsMarker, selectedPost }) {
+function ChangeView({
+	boundsPadding,
+	canZoomToMarker,
+	isMobileView,
+	markerGeolocation,
+	markerOffset,
+	markers,
+	markerSearch,
+	maxMarkerZoom,
+	refCluster = null,
+	refMarkerGeolocation,
+	refMarkerSearch,
+	refsMarker,
+	selectedPost
+}) {
 	const map = useMap()
 
 	async function zoomSmoothly(cluster = null, marker = null, popup) {

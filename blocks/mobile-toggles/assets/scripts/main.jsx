@@ -39,14 +39,24 @@ function Main({ blockId, hasFilters, hasSidebar }) {
 	return (
 		<>
 			{hasSidebar && (
-				<button aria-label={mobileIsMapDisplayed ? __('See the list', 'mappps') : __('See the map', 'mappps')} className={`custom-button custom-button__only-icon toggles__${mobileIsMapDisplayed ? 'list' : 'map'}`} title={mobileIsMapDisplayed ? __('See the list', 'mappps') : __('See the map', 'mappps')} onClick={handleMapToggle}>
+				<button
+					aria-label={mobileIsMapDisplayed ? __('See the list', 'mappps') : __('See the map', 'mappps')}
+					className={`custom-button custom-button__only-icon toggles__${mobileIsMapDisplayed ? 'list' : 'map'}`}
+					title={mobileIsMapDisplayed ? __('See the list', 'mappps') : __('See the map', 'mappps')}
+					onClick={handleMapToggle}
+				>
 					<span className={`icon-mappps-${mobileIsMapDisplayed ? 'list' : 'map'}`} />
 					<span className="screen-reader-text">{mobileIsMapDisplayed ? __('See the list', 'mappps') : __('See the map', 'mappps')}</span>
 				</button>
 			)}
 
 			{hasFilters && (
-				<button aria-label={__('Open filters', 'mappps')} className="custom-button custom-button__only-icon toggles__filters" title={__('Open filters', 'mappps')} onClick={handleFiltersToggle}>
+				<button
+					aria-label={__('Open filters', 'mappps')}
+					className="custom-button custom-button__only-icon toggles__filters"
+					title={__('Open filters', 'mappps')}
+					onClick={handleFiltersToggle}
+				>
 					<span className="icon-mappps-filter" />
 					<span className="screen-reader-text">{__('Open filters', 'mappps')}</span>
 					{!!filtersCount && <span className="counter">{filtersCount}</span>}

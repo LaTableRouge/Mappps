@@ -12,5 +12,13 @@ export default function UnitFiltersSize({ defaultValue, setAttributes }) {
 		setAttributes({ selectedFiltersSize: value })
 	}
 
-	return <UnitControl help={__('Desktop only, set the maximum size for the filter popup', 'mappps')} label={__('Filters size', 'mappps')} units={UNITS} value={defaultValue} onChange={handleChange} />
+	return (
+		<UnitControl
+			help={__('Desktop only, set the maximum size for the filter popup', 'mappps')}
+			label={__('Filters size', 'mappps')}
+			units={UNITS}
+			value={defaultValue}
+			onChange={handleChange}
+		/>
+	)
 }

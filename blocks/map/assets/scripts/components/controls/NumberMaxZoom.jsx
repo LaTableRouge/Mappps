@@ -9,5 +9,16 @@ export default function InputMaxZoom({ defaultValue, max, setAttributes }) {
 		setAttributes({ selectedMaxZoom: value })
 	}
 
-	return <NumberControl help={__('The maximum zoom level allowed for the map', 'mappps')} isShiftStepEnabled={false} label={__('Maximum zoom', 'mappps')} max={max} min={0} step={1} value={defaultValue > max ? max : defaultValue} onChange={handleChange} />
+	return (
+		<NumberControl
+			help={__('The maximum zoom level allowed for the map', 'mappps')}
+			isShiftStepEnabled={false}
+			label={__('Maximum zoom', 'mappps')}
+			max={max}
+			min={0}
+			step={1}
+			value={defaultValue > max ? max : defaultValue}
+			onChange={handleChange}
+		/>
+	)
 }

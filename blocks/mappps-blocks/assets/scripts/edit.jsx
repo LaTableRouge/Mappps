@@ -88,8 +88,16 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 			<section {...AlterBlockProps(blockProps, attributes)}>
 				<Controls attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
 
-				<div ref={wrapperRef} className={`responsive-wrapper in-editor ${isSelected ? ' is-selected' : ''}`} data-has-posts={!!queriedPosts.length} style={{ '--wrapper-height': `${wrapperHeight}px` }}>
-					<InnerBlocks template={[['mppps/loader'], ['mppps/sidebar', {}], ['mppps/map', {}], ['mppps/post-details', {}], ['mppps/filters', {}], ['mppps/mobile-toggles', {}]]} templateLock="all" />
+				<div
+					ref={wrapperRef}
+					className={`responsive-wrapper in-editor ${isSelected ? ' is-selected' : ''}`}
+					data-has-posts={!!queriedPosts.length}
+					style={{ '--wrapper-height': `${wrapperHeight}px` }}
+				>
+					<InnerBlocks
+						template={[['mppps/loader'], ['mppps/sidebar', {}], ['mppps/map', {}], ['mppps/post-details', {}], ['mppps/filters', {}], ['mppps/mobile-toggles', {}]]}
+						templateLock="all"
+					/>
 				</div>
 			</section>
 		)

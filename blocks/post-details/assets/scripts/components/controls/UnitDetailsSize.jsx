@@ -16,7 +16,15 @@ function UnitDetailsSize({ defaultValue, setAttributes }) {
 		[setAttributes]
 	)
 
-	return <UnitControl help={__('Desktop only, set the maximum size for the details popup', 'mappps')} label={__('Popups size', 'mappps')} units={UNITS} value={defaultValue} onChange={handleChange} />
+	return (
+		<UnitControl
+			help={__('Desktop only, set the maximum size for the details popup', 'mappps')}
+			label={__('Popups size', 'mappps')}
+			units={UNITS}
+			value={defaultValue}
+			onChange={handleChange}
+		/>
+	)
 }
 
 export default memo(UnitDetailsSize)

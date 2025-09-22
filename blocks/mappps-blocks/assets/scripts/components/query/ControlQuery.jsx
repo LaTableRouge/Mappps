@@ -377,11 +377,33 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 
 	return (
 		<>
-			{showSettingsPanel && <SettingsPanel options={panelOptions} order={order} orderBy={orderBy} postType={postType} setQuery={setQuery} showOrderControl={showOrderControl} showPostTypeControl={showPostTypeControl} showStickyControl={showStickyControl} sticky={sticky} />}
+			{showSettingsPanel && (
+				<SettingsPanel
+					options={panelOptions}
+					order={order}
+					orderBy={orderBy}
+					postType={postType}
+					setQuery={setQuery}
+					showOrderControl={showOrderControl}
+					showPostTypeControl={showPostTypeControl}
+					showStickyControl={showStickyControl}
+					sticky={sticky}
+				/>
+			)}
 
 			{!inherit && !isWizard && showDisplayPanel && <DisplayPanel offset={offset} perPage={perPage} setQuery={setQuery} />}
 
-			{!inherit && !isWizard && showFiltersPanel && <FiltersPanel query={query} setQuery={setQuery} showAuthorControl={showAuthorControl} showFormatControl={false} showParentControl={false} showSearchControl={showSearchControl} showTaxControl={showTaxControl} />}
+			{!inherit && !isWizard && showFiltersPanel && (
+				<FiltersPanel
+					query={query}
+					setQuery={setQuery}
+					showAuthorControl={showAuthorControl}
+					showFormatControl={false}
+					showParentControl={false}
+					showSearchControl={showSearchControl}
+					showTaxControl={showTaxControl}
+				/>
+			)}
 
 			<ConfirmButton isBusy={postsResolved === false} isConfirmed={isConfirmed} isWizard={isWizard} noResults={noResults} onConfirm={handleConfirmClick} />
 		</>

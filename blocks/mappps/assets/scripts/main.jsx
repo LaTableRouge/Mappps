@@ -100,18 +100,89 @@ export default function Main({ attributes, inEditor = false, isSelected, queried
 
 	return (
 		<>
-			<div ref={wrapperRef} className="responsive-wrapper" data-filters-open={filtersOpen} data-is-mobile={isMobileView} data-mobile-map-display={mobileIsMapDisplayed} data-selected-post={!!Object.keys(selectedPost).length} style={{ '--wrapper-height': `${wrapperHeight}px` }}>
-				{attributes.selectedDisplayType === 'full' && !!posts.length && <Sidebar displayFilters={attributes.displayFilters} displaySearch={attributes.displaySearch} filtersOpen={filtersOpen} limitedSearch={attributes.limitedSearch} postRefs={postRefs} posts={posts} selectedFiltersCounter={filtersCount} selectedPost={selectedPost} setFiltersOpen={setFiltersOpen} setMobileIsMapDisplayed={setMobileIsMapDisplayed} setSearchValue={setSearchValue} setSelectedPost={setSelectedPost} setSelectedSearchResult={setSelectedSearchResult} />}
+			<div
+				ref={wrapperRef}
+				className="responsive-wrapper"
+				data-filters-open={filtersOpen}
+				data-is-mobile={isMobileView}
+				data-mobile-map-display={mobileIsMapDisplayed}
+				data-selected-post={!!Object.keys(selectedPost).length}
+				style={{ '--wrapper-height': `${wrapperHeight}px` }}
+			>
+				{attributes.selectedDisplayType === 'full' && !!posts.length && (
+					<Sidebar
+						displayFilters={attributes.displayFilters}
+						displaySearch={attributes.displaySearch}
+						filtersOpen={filtersOpen}
+						limitedSearch={attributes.limitedSearch}
+						postRefs={postRefs}
+						posts={posts}
+						selectedFiltersCounter={filtersCount}
+						selectedPost={selectedPost}
+						setFiltersOpen={setFiltersOpen}
+						setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+						setSearchValue={setSearchValue}
+						setSelectedPost={setSelectedPost}
+						setSelectedSearchResult={setSelectedSearchResult}
+					/>
+				)}
 
 				{!!posts.length && (
 					<>
-						<Map boundsPadding={attributes.selectedBoundsPadding} canZoomToMarker={attributes.canZoomToMarker} cluster={attributes.isClustered} clusterSize={attributes.selectedMarkerClusterSize} displaySearch={attributes.displaySearch} inEditor={inEditor} isGeolocated={attributes.isGeolocated} isMobileView={isMobileView} limitedSearch={attributes.limitedSearch} mapTiles={attributes.mapTiles} markerOffset={popupOffset} markerRefs={markerRefs} markerShadow={attributes.haveShadow} markerSize={attributes.selectedMarkerSize} maxMarkerZoom={attributes.selectedMaxMarkerZoom} maxZoom={attributes.selectedMaxZoom} mobileIsMapDisplayed={mobileIsMapDisplayed} postRefs={postRefs} posts={posts} selectedPost={selectedPost} selectedSearchResult={selectedSearchResult} selectedTiles={attributes.selectedMapTiles} setFiltersOpen={setFiltersOpen} setSelectedPost={setSelectedPost} setSelectedSearchResult={setSelectedSearchResult} />
+						<Map
+							boundsPadding={attributes.selectedBoundsPadding}
+							canZoomToMarker={attributes.canZoomToMarker}
+							cluster={attributes.isClustered}
+							clusterSize={attributes.selectedMarkerClusterSize}
+							displaySearch={attributes.displaySearch}
+							inEditor={inEditor}
+							isGeolocated={attributes.isGeolocated}
+							isMobileView={isMobileView}
+							limitedSearch={attributes.limitedSearch}
+							mapTiles={attributes.mapTiles}
+							markerOffset={popupOffset}
+							markerRefs={markerRefs}
+							markerShadow={attributes.haveShadow}
+							markerSize={attributes.selectedMarkerSize}
+							maxMarkerZoom={attributes.selectedMaxMarkerZoom}
+							maxZoom={attributes.selectedMaxZoom}
+							mobileIsMapDisplayed={mobileIsMapDisplayed}
+							postRefs={postRefs}
+							posts={posts}
+							selectedPost={selectedPost}
+							selectedSearchResult={selectedSearchResult}
+							selectedTiles={attributes.selectedMapTiles}
+							setFiltersOpen={setFiltersOpen}
+							setSelectedPost={setSelectedPost}
+							setSelectedSearchResult={setSelectedSearchResult}
+						/>
 
-						{attributes.selectedDisplayType === 'full' && attributes.displayFilters && <Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />}
+						{attributes.selectedDisplayType === 'full' && attributes.displayFilters && (
+							<Filters filtersOpen={filtersOpen} setFilters={setFilters} setFiltersOpen={setFiltersOpen} tempFilters={tempFilters} />
+						)}
 
-						{attributes.selectedDisplayType === 'full' && !!posts.length && <Popups isMobileView={isMobileView} popupRef={popupRef} posts={posts} selectedPost={selectedPost} selectedPostTerms={selectedPostTerms} setSelectedPost={setSelectedPost} />}
+						{attributes.selectedDisplayType === 'full' && !!posts.length && (
+							<Popups
+								isMobileView={isMobileView}
+								popupRef={popupRef}
+								posts={posts}
+								selectedPost={selectedPost}
+								selectedPostTerms={selectedPostTerms}
+								setSelectedPost={setSelectedPost}
+							/>
+						)}
 
-						{isMobileView && <Toggles displayFilters={attributes.displayFilters} hasSidebar={attributes.selectedDisplayType === 'full'} mobileIsMapDisplayed={mobileIsMapDisplayed} selectedFiltersCounter={filtersCount} setFiltersOpen={setFiltersOpen} setMobileIsMapDisplayed={setMobileIsMapDisplayed} setSelectedPost={setSelectedPost} />}
+						{isMobileView && (
+							<Toggles
+								displayFilters={attributes.displayFilters}
+								hasSidebar={attributes.selectedDisplayType === 'full'}
+								mobileIsMapDisplayed={mobileIsMapDisplayed}
+								selectedFiltersCounter={filtersCount}
+								setFiltersOpen={setFiltersOpen}
+								setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+								setSelectedPost={setSelectedPost}
+							/>
+						)}
 					</>
 				)}
 			</div>

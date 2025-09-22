@@ -98,6 +98,10 @@
 			"type": "string",
 			"default": "#FCA311"
 		},
+		"selectedClusterTextColor": {
+			"type": "string",
+			"default": "#ffffff"
+		},
 		"selectedSearchColor": {
 			"type": "string",
 			"default": "#6ee9a2"
@@ -113,10 +117,6 @@
 		"selectedActiveMarkerColor": {
 			"type": "string",
 			"default": "#AE2012"
-		},
-		"haveCustomMarkers": {
-			"type": "boolean",
-			"default": false
 		},
 		"selectedMarkerIcon": {
 			"type": "object",

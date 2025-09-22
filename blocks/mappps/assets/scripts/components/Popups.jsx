@@ -70,7 +70,13 @@ export default function Popups({ isMobileView, popupRef, posts, selectedPost, se
 										<span className="screen-reader-text">{__('Open in new tab', 'mappps')}</span>
 									</a>
 
-									<a className="custom-button custom-button__only-icon cta-wrapper__map" href={`https://maps.google.com/maps?daddr=${lat},${lng}&amp;ll=`} rel="noreferrer" target="_blank" title={__('View itinerary', 'mappps')}>
+									<a
+										className="custom-button custom-button__only-icon cta-wrapper__map"
+										href={`https://maps.google.com/maps?daddr=${lat},${lng}&amp;ll=`}
+										rel="noreferrer"
+										target="_blank"
+										title={__('View itinerary', 'mappps')}
+									>
 										<span className="icon-mappps-map"></span>
 										<span className="screen-reader-text">{__('View itinerary', 'mappps')}</span>
 									</a>

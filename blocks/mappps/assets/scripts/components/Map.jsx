@@ -14,7 +14,33 @@ import MarkerGeolocation from './map/MarkerGeolocation'
 import Markers from './map/Markers'
 import MarkerSearch from './map/MarkerSearch'
 
-const Map = ({ boundsPadding, canZoomToMarker, cluster, clusterSize, displaySearch, inEditor, isGeolocated, isMobileView, limitedSearch, mapTiles, markerOffset, markerRefs, markerShadow, markerSize, maxMarkerZoom, maxZoom, mobileIsMapDisplayed, postRefs, posts, selectedPost, selectedSearchResult, selectedTiles, setFiltersOpen, setSelectedPost, setSelectedSearchResult }) => {
+const Map = ({
+	boundsPadding,
+	canZoomToMarker,
+	cluster,
+	clusterSize,
+	displaySearch,
+	inEditor,
+	isGeolocated,
+	isMobileView,
+	limitedSearch,
+	mapTiles,
+	markerOffset,
+	markerRefs,
+	markerShadow,
+	markerSize,
+	maxMarkerZoom,
+	maxZoom,
+	mobileIsMapDisplayed,
+	postRefs,
+	posts,
+	selectedPost,
+	selectedSearchResult,
+	selectedTiles,
+	setFiltersOpen,
+	setSelectedPost,
+	setSelectedSearchResult
+}) => {
 	const clusterRef = useRef(null)
 
 	const markers = Markers(posts, markerSize, markerRefs, postRefs, setSelectedPost, selectedPost, setFiltersOpen, markerShadow)
@@ -45,7 +71,22 @@ const Map = ({ boundsPadding, canZoomToMarker, cluster, clusterSize, displaySear
 	return (
 		<div className="mappps__leaflet" data-map-shown={mobileIsMapDisplayed}>
 			<MapContainer doubleClickZoom={false} maxZoom={maxZoom} scrollWheelZoom={false} zoomControl={false} zoomSnap={0.1}>
-				<ChangeView boundsPadding={boundsPadding} canZoomToMarker={canZoomToMarker} isMobileView={isMobileView} markerGeolocation={markerGeolocationMemo} markerOffset={markerOffset} markers={markers} markerSearch={markerSearchMemo} maxMarkerZoom={maxMarkerZoom} posts={posts} refCluster={clusterRef} refMarkerGeolocation={refMarkerGeolocation} refMarkerSearch={refMarkerSearch} refsMarker={markerRefs} selectedPost={selectedPost} />
+				<ChangeView
+					boundsPadding={boundsPadding}
+					canZoomToMarker={canZoomToMarker}
+					isMobileView={isMobileView}
+					markerGeolocation={markerGeolocationMemo}
+					markerOffset={markerOffset}
+					markers={markers}
+					markerSearch={markerSearchMemo}
+					maxMarkerZoom={maxMarkerZoom}
+					posts={posts}
+					refCluster={clusterRef}
+					refMarkerGeolocation={refMarkerGeolocation}
+					refMarkerSearch={refMarkerSearch}
+					refsMarker={markerRefs}
+					selectedPost={selectedPost}
+				/>
 
 				{!inEditor && <TileLayer attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors' className="mapTiles" url={selectedTiles} />}
 
@@ -59,7 +100,13 @@ const Map = ({ boundsPadding, canZoomToMarker, cluster, clusterSize, displaySear
 					</LayersControl>
 				)}
 
-				<MapControls geolocationCoordinates={geolocationCoordinates} isGeolocated={isGeolocated} setGeolocationCoordinates={setGeolocationCoordinates} setSelectedPost={setSelectedPost} setSelectedSearchResult={setSelectedSearchResult} />
+				<MapControls
+					geolocationCoordinates={geolocationCoordinates}
+					isGeolocated={isGeolocated}
+					setGeolocationCoordinates={setGeolocationCoordinates}
+					setSelectedPost={setSelectedPost}
+					setSelectedSearchResult={setSelectedSearchResult}
+				/>
 
 				{/* Posts markers */}
 				{markerGroup}

@@ -33,10 +33,6 @@
 			"type": "boolean",
 			"default": true
 		},
-		"haveCustomMarkers": {
-			"type": "boolean",
-			"default": false
-		},
 		"selectedMarkerIcon": {
 			"type": "object",
 			"default": {}
@@ -61,6 +57,10 @@
 			"type": "string",
 			"default": "#FCA311"
 		},
+		"selectedClusterTextColor": {
+			"type": "string",
+			"default": "#ffffff"
+		},
 		"selectedSearchColor": {
 			"type": "string",
 			"default": "#6ee9a2"
@@ -74,5 +74,7 @@
 			"default": "#AE2012"
 		}
 	},
-	"editorScript": "file:./assets/index.jsx"
+	"editorScript": "file:./assets/index.jsx",
+	"editorStyle": "file:./assets/index.css",
+	"style": "file:./assets/style-index.css"
 }

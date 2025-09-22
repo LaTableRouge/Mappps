@@ -55,7 +55,12 @@ export default function Edit({ attributes, clientId, context, setAttributes }) {
 				{blockContexts?.map((blockContext) => (
 					<BlockContextProvider key={blockContext.postId} value={blockContext}>
 						{blockContext.postId === activePostId && <PostTemplateInnerBlocks />}
-						<MemorizedPostTemplateBlockPreview blockContextId={blockContext.postId} blocks={blocks} isHidden={blockContext.postId === activePostId} setActiveBlockContextId={setActiveBlockContextId} />
+						<MemorizedPostTemplateBlockPreview
+							blockContextId={blockContext.postId}
+							blocks={blocks}
+							isHidden={blockContext.postId === activePostId}
+							setActiveBlockContextId={setActiveBlockContextId}
+						/>
 					</BlockContextProvider>
 				))}
 			</ul>

@@ -40,5 +40,17 @@ export default function Main({ blockId, filtersTerms, queriedPosts }) {
 		setPosts(FilterPosts(queriedPosts, tempFilters, searchValue))
 	}, [searchValue])
 
-	return <Filters filtersOpen={filtersOpen} posts={queriedPosts} queriedPosts={queriedPosts} searchValue={searchValue} setFilters={setFilters} setFiltersCount={setFiltersCount} setFiltersOpen={setFiltersOpen} setPosts={setPosts} tempFilters={tempFilters} />
+	return (
+		<Filters
+			filtersOpen={filtersOpen}
+			posts={queriedPosts}
+			queriedPosts={queriedPosts}
+			searchValue={searchValue}
+			setFilters={setFilters}
+			setFiltersCount={setFiltersCount}
+			setFiltersOpen={setFiltersOpen}
+			setPosts={setPosts}
+			tempFilters={tempFilters}
+		/>
+	)
 }

@@ -1,5 +1,6 @@
 export default function AlterBlockProps(blockProps = {}, attributes) {
-	const { selectedActiveMarkerColor, selectedClusterColor, selectedGeolocationColor, selectedMarkerClusterSize, selectedMarkerColor, selectedMarkerSize, selectedSearchColor } = attributes
+	const { selectedActiveMarkerColor, selectedClusterColor, selectedGeolocationColor, selectedMarkerClusterSize, selectedMarkerColor, selectedMarkerSize, selectedSearchColor }
+		= attributes
 
 	return {
 		...blockProps,

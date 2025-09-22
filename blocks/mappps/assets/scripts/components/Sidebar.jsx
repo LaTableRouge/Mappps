@@ -3,11 +3,32 @@ import { __ } from '@wordpress/i18n'
 import Article from './sidebar/Article'
 import Search from './sidebar/Search'
 
-export default function Sidebar({ displayFilters, displaySearch, filtersOpen, limitedSearch, postRefs, posts, selectedFiltersCounter, selectedPost, setFiltersOpen, setMobileIsMapDisplayed, setSearchValue, setSelectedPost, setSelectedSearchResult }) {
+export default function Sidebar({
+	displayFilters,
+	displaySearch,
+	filtersOpen,
+	limitedSearch,
+	postRefs,
+	posts,
+	selectedFiltersCounter,
+	selectedPost,
+	setFiltersOpen,
+	setMobileIsMapDisplayed,
+	setSearchValue,
+	setSelectedPost,
+	setSelectedSearchResult
+}) {
 	return (
 		<aside className="mappps__sidebar">
 			<header className="sidebar__heading">
-				{displaySearch && <Search limitedSearch={limitedSearch} setMobileIsMapDisplayed={setMobileIsMapDisplayed} setSearchValue={setSearchValue} setSelectedSearchResult={setSelectedSearchResult} />}
+				{displaySearch && (
+					<Search
+						limitedSearch={limitedSearch}
+						setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+						setSearchValue={setSearchValue}
+						setSelectedSearchResult={setSelectedSearchResult}
+					/>
+				)}
 
 				{displayFilters && (
 					<>
@@ -34,7 +55,15 @@ export default function Sidebar({ displayFilters, displaySearch, filtersOpen, li
 
 			<div className="sidebar__articles-wrapper">
 				{posts.map((post, index) => (
-					<Article key={index} post={post} postRef={postRefs.current[index]} selectedPost={selectedPost} setFiltersOpen={setFiltersOpen} setMobileIsMapDisplayed={setMobileIsMapDisplayed} setSelectedPost={setSelectedPost} />
+					<Article
+						key={index}
+						post={post}
+						postRef={postRefs.current[index]}
+						selectedPost={selectedPost}
+						setFiltersOpen={setFiltersOpen}
+						setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+						setSelectedPost={setSelectedPost}
+					/>
 				))}
 			</div>
 		</aside>

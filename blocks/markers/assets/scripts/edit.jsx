@@ -1,3 +1,5 @@
+import '../styles/editor.scss'
+
 import { useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 

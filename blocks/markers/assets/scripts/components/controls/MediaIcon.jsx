@@ -1,10 +1,10 @@
 import { MediaUpload, MediaUploadCheck } from '@wordpress/block-editor'
 import { Button, Placeholder } from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
-export default function MediaMarkerGeolocationIcon({ defaultValue, setAttributes }) {
+export default function MediaIcon({ attributeKey, defaultValue, setAttributes }) {
 	const handleSelect = (picture) => {
 		setAttributes({
-			selectedMarkerGeolocationIcon: {
+			[attributeKey]: {
 				id: picture.id,
 				width: picture.width,
 				height: picture.height,
@@ -15,7 +15,7 @@ export default function MediaMarkerGeolocationIcon({ defaultValue, setAttributes
 	}
 
 	const handleRemoveClick = () => {
-		setAttributes({ selectedMarkerGeolocationIcon: {} })
+		setAttributes({ [attributeKey]: {} })
 	}
 
 	return (
@@ -23,7 +23,7 @@ export default function MediaMarkerGeolocationIcon({ defaultValue, setAttributes
 			<MediaUpload
 				allowedTypes={['image']}
 				render={({ open }) => (
-					<Placeholder icon="images-alt" instructions={__('Select a picture', 'mappps')} label={__('Geolocation icon', 'mappps')}>
+					<Placeholder icon="images-alt" instructions={__('Select a picture', 'mappps')} label={__('Icon', 'mappps')}>
 						{defaultValue.url && <img alt={defaultValue.alt} src={defaultValue.url} />}
 						<Button isLarge isSecondary icon="edit" onClick={open}>
 							{__('Select', 'mappps')}

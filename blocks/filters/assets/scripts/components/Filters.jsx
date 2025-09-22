@@ -76,7 +76,13 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
 		<form className="filters-form" data-open={filtersOpen} onReset={handleReset} onSubmit={handleSubmit}>
 			<div className="filters-form__header">
 				<div className="header__title">{__('Filters', 'mappps')}</div>
-				<button aria-label={__('Close filters', 'mappps')} className="custom-button custom-button__only-icon header__close" title={__('Close filters', 'mappps')} type="button" onClick={handleClose}>
+				<button
+					aria-label={__('Close filters', 'mappps')}
+					className="custom-button custom-button__only-icon header__close"
+					title={__('Close filters', 'mappps')}
+					type="button"
+					onClick={handleClose}
+				>
 					<span className="icon-mappps-cross" />
 					<span className="screen-reader-text">{__('Close filters', 'mappps')}</span>
 				</button>
@@ -101,7 +107,13 @@ export default function Filters({ filtersOpen, posts, queriedPosts, searchValue,
 							{data.terms.map((category, catIndex) => (
 								<li key={catIndex} className="list__element">
 									<label htmlFor={`${taxonomy}---${category.id}`}>
-										<input checked={category.checked ?? false} id={`${taxonomy}---${category.id}`} name={`${taxonomy}---${category.id}`} type="checkbox" onChange={(e) => handleCategoryChange(e.target, taxonomy, category.id)} />
+										<input
+											checked={category.checked ?? false}
+											id={`${taxonomy}---${category.id}`}
+											name={`${taxonomy}---${category.id}`}
+											type="checkbox"
+											onChange={(e) => handleCategoryChange(e.target, taxonomy, category.id)}
+										/>
 										<span>{category.name}</span>
 									</label>
 								</li>

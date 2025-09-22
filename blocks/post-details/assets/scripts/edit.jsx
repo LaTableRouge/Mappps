@@ -65,7 +65,12 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
 						{/* Editable block */}
 						{blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId) ? <PostTemplateInnerBlocks /> : null}
 						{/* Other blocks just for the preview */}
-						<MemorizedPostTemplateBlockPreview blockContextId={blockContext.postId} blocks={blocks} isHidden={blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId)} setActiveBlockContextId={setActiveBlockContextId} />
+						<MemorizedPostTemplateBlockPreview
+							blockContextId={blockContext.postId}
+							blocks={blocks}
+							isHidden={blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId)}
+							setActiveBlockContextId={setActiveBlockContextId}
+						/>
 					</BlockContextProvider>
 				))}
 		</div>

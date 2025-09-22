@@ -4,7 +4,12 @@ export default function SettingsPage() {
 	return (
 		<>
 			<h1>{__('Getting Started with the Mappps Plugin', 'mappps')}</h1>
-			<p>{__('Welcome to the comprehensive guide on how to get started with our Mappps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively.', 'mappps')}</p>
+			<p>
+				{__(
+					'Welcome to the comprehensive guide on how to get started with our Mappps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively.',
+					'mappps'
+				)}
+			</p>
 
 			<h2>{__('Table of Contents', 'mappps')}</h2>
 			<ul>
@@ -35,7 +40,12 @@ export default function SettingsPage() {
 					<strong>{__('Add Custom Fields:', 'mappps')}</strong>
 					<ol>
 						<li>{__('Scroll down to the "Custom Fields" section.', 'mappps')}</li>
-						<li>{__('If the "Custom Fields" section is not visible, enable it by clicking on "Screen Options" at the top right of the screen (the three dots) and go to "Preferences" then check "Custom Fields".', 'mappps')}</li>
+						<li>
+							{__(
+								'If the "Custom Fields" section is not visible, enable it by clicking on "Screen Options" at the top right of the screen (the three dots) and go to "Preferences" then check "Custom Fields".',
+								'mappps'
+							)}
+						</li>
 						<li>
 							{__('Click on "Add Custom Field".', 'mappps')} {__('In the "Name" field, enter or select "lat" and in the "Value" field, enter the latitude coordinate.', 'mappps')}
 						</li>
@@ -115,7 +125,11 @@ export default function SettingsPage() {
 			<br />
 
 			<p>
-				{__('We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github.', 'mappps')} <a href="https://github.com/LaTableRouge/Mappps/issues">{__('Submit an issue', 'mappps')}</a>
+				{__(
+					'We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github.',
+					'mappps'
+				)}{' '}
+				<a href="https://github.com/LaTableRouge/Mappps/issues">{__('Submit an issue', 'mappps')}</a>
 			</p>
 		</>
 	)

@@ -27,14 +27,27 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
 		<>
 			{postTypes.resolved ? (
 				postTypes.types.length ? (
-					<Placeholder className="mappps__wizard" instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')} label={__('Data source', 'mappps')}>
+					<Placeholder
+						className="mappps__wizard"
+						instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')}
+						label={__('Data source', 'mappps')}
+					>
 						<SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
 						{!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
 
 						{!!selectedTaxonomies.length && <SelectCategories setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={selectedTaxonomies} />}
 
-						{!!selectedCategories.length && <SelectPosts categories={selectedCategories} defaultValue={[]} postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} taxonomies={sanitizedSelectedTaxonomies} />}
+						{!!selectedCategories.length && (
+							<SelectPosts
+								categories={selectedCategories}
+								defaultValue={[]}
+								postType={selectedPostType}
+								setAttributes={setAttributes}
+								setQueriedPosts={setQueriedPosts}
+								taxonomies={sanitizedSelectedTaxonomies}
+							/>
+						)}
 					</Placeholder>
 				) : (
 					__('No post types could be recovered.', 'mappps')

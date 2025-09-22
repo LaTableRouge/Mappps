@@ -62,7 +62,15 @@ export default function FormTokenAuthor({ defaultValue, onChange }) {
 	}
 	return (
 		<ToolsPanelItem hasValue={() => !!defaultValue} label={__('Authors', 'mappps')} onDeselect={() => onChange({ author: '' })}>
-			<FormTokenField __next40pxDefaultSize __nextHasNoMarginBottom __experimentalShowHowTo={false} label={__('Authors', 'mappps')} suggestions={authorsInfo.names} value={sanitizedValue} onChange={onAuthorChange} />
+			<FormTokenField
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
+				__experimentalShowHowTo={false}
+				label={__('Authors', 'mappps')}
+				suggestions={authorsInfo.names}
+				value={sanitizedValue}
+				onChange={onAuthorChange}
+			/>
 		</ToolsPanelItem>
 	)
 }

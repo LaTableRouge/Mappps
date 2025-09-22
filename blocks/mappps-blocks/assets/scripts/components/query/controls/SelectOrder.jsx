@@ -25,7 +25,12 @@ const defaultOrderByOptions = [
 export default function SelectOrder({ defaultValue, onChange, options = defaultOrderByOptions }) {
 	const { order, orderBy } = defaultValue
 	return (
-		<ToolsPanelItem isShownByDefault hasValue={() => order !== 'desc' || orderBy !== 'date'} label={__('Order by', 'mappps')} onDeselect={() => onChange({ order: 'desc', orderBy: 'date' })}>
+		<ToolsPanelItem
+			isShownByDefault
+			hasValue={() => order !== 'desc' || orderBy !== 'date'}
+			label={__('Order by', 'mappps')}
+			onDeselect={() => onChange({ order: 'desc', orderBy: 'date' })}
+		>
 			<SelectControl
 				__next40pxDefaultSize
 				__nextHasNoMarginBottom

@@ -1,4 +1,10 @@
-import { __experimentalToggleGroupControl as ToggleGroupControl, __experimentalToggleGroupControlOption as ToggleGroupControlOption, __experimentalToolsPanelItem as ToolsPanelItem, __experimentalVStack as VStack, Notice } from '@wordpress/components'
+import {
+	__experimentalToggleGroupControl as ToggleGroupControl,
+	__experimentalToggleGroupControlOption as ToggleGroupControlOption,
+	__experimentalToolsPanelItem as ToolsPanelItem,
+	__experimentalVStack as VStack,
+	Notice
+} from '@wordpress/components'
 import { __ } from '@wordpress/i18n'
 
 export default function ToggleInherit({ defaultValue, setQuery }) {
@@ -11,7 +17,11 @@ export default function ToggleInherit({ defaultValue, setQuery }) {
 					__next40pxDefaultSize
 					__nextHasNoMarginBottom
 					isBlock
-					help={defaultValue ? __('Display a list of posts or custom post types based on the current template (like in a archive page).', 'mappps') : __('Display a list of posts or custom post types based on specific criteria.', 'mappps')}
+					help={
+						defaultValue
+							? __('Display a list of posts or custom post types based on the current template (like in a archive page).', 'mappps')
+							: __('Display a list of posts or custom post types based on specific criteria.', 'mappps')
+					}
 					label={__('Query type', 'mappps')}
 					value={defaultValue ? 'default' : 'custom'}
 					onChange={(value) => {

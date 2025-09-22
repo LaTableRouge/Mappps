@@ -59,7 +59,31 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
 
 	return (
 		<div ref={handleResize}>
-			<Map boundsPadding={attributes.selectedBoundsPadding} canZoomToMarker={attributes.canZoomToMarker} cluster={attributes.isClustered} clusterSize={attributes.selectedMarkerClusterSize} customMarker={attributes.selectedMarkerIcon} haveCustomMarkers={attributes.haveCustomMarkers} inEditor={inEditor} isGeolocated={attributes.isGeolocated} isMobileView={isMobileView} mapTiles={attributes.mapTiles} markerOffset={popupOffset} markerShadow={attributes.haveShadow} markerSize={attributes.selectedMarkerSize} maxMarkerZoom={attributes.selectedMaxMarkerZoom} maxZoom={attributes.selectedMaxZoom} posts={posts || queriedPosts} selectedPost={selectedPost} selectedSearchResult={selectedSearchResult} selectedTiles={attributes.selectedMapTiles} setSelectedPost={setSelectedPost} setSelectedSearchResult={setSelectedSearchResult} />
+			<Map
+				boundsPadding={attributes.selectedBoundsPadding}
+				canZoomToMarker={attributes.canZoomToMarker}
+				cluster={attributes.isClustered}
+				clusterSize={attributes.selectedMarkerClusterSize}
+				customMarkerClusterIcon={attributes.selectedMarkerClusterIcon}
+				customMarkerGeolocationIcon={attributes.selectedMarkerGeolocationIcon}
+				customMarkerIcon={attributes.selectedMarkerIcon}
+				customMarkerSearchIcon={attributes.selectedMarkerSearchIcon}
+				inEditor={inEditor}
+				isGeolocated={attributes.isGeolocated}
+				isMobileView={isMobileView}
+				mapTiles={attributes.mapTiles}
+				markerOffset={popupOffset}
+				markerShadow={attributes.haveShadow}
+				markerSize={attributes.selectedMarkerSize}
+				maxMarkerZoom={attributes.selectedMaxMarkerZoom}
+				maxZoom={attributes.selectedMaxZoom}
+				posts={posts || queriedPosts}
+				selectedPost={selectedPost}
+				selectedSearchResult={selectedSearchResult}
+				selectedTiles={attributes.selectedMapTiles}
+				setSelectedPost={setSelectedPost}
+				setSelectedSearchResult={setSelectedSearchResult}
+			/>
 		</div>
 	)
 }

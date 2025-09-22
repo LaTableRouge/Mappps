@@ -45,7 +45,11 @@ export function FormTokenTaxonomy({ onChange, query }) {
 	}
 
 	return (
-		<ToolsPanelItem hasValue={() => Object.values(taxQuery || {}).some((terms) => !!terms.length)} label={__('Taxonomies', 'mappps')} onDeselect={() => onChange({ taxQuery: null })}>
+		<ToolsPanelItem
+			hasValue={() => Object.values(taxQuery || {}).some((terms) => !!terms.length)}
+			label={__('Taxonomies', 'mappps')}
+			onDeselect={() => onChange({ taxQuery: null })}
+		>
 			<VStack spacing={4}>
 				{taxonomies.map((taxonomy) => {
 					const termIds = taxQuery?.[taxonomy.slug] || []
@@ -162,7 +166,17 @@ function TaxonomyItem({ onChange, taxonomy, termIds }) {
 	}
 	return (
 		<div className="block-library-query-inspector__taxonomy-control">
-			<FormTokenField __next40pxDefaultSize __nextHasNoMarginBottom __experimentalShowHowTo={false} displayTransform={decodeEntities} label={taxonomy.name} suggestions={suggestions} value={value} onChange={onTermsChange} onInputChange={debouncedSearch} />
+			<FormTokenField
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
+				__experimentalShowHowTo={false}
+				displayTransform={decodeEntities}
+				label={taxonomy.name}
+				suggestions={suggestions}
+				value={value}
+				onChange={onTermsChange}
+				onInputChange={debouncedSearch}
+			/>
 		</div>
 	)
 }

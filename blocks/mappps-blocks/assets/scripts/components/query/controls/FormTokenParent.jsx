@@ -118,7 +118,16 @@ export default function FormTokenParent({ defaultValue, onChange, postType }) {
 	}
 	return (
 		<ToolsPanelItem hasValue={() => !!defaultValue?.length} label={__('Parents', 'mappps')} onDeselect={() => onChange({ parents: [] })}>
-			<FormTokenField __next40pxDefaultSize __nextHasNoMarginBottom __experimentalShowHowTo={false} label={__('Parents', 'mappps')} suggestions={suggestions} value={value} onChange={onParentChange} onInputChange={debouncedSearch} />
+			<FormTokenField
+				__next40pxDefaultSize
+				__nextHasNoMarginBottom
+				__experimentalShowHowTo={false}
+				label={__('Parents', 'mappps')}
+				suggestions={suggestions}
+				value={value}
+				onChange={onParentChange}
+				onInputChange={debouncedSearch}
+			/>
 		</ToolsPanelItem>
 	)
 }

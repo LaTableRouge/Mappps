@@ -12,7 +12,12 @@ function Header({ isExpanded, setIsExpanded }) {
 
 	return (
 		<div className="header__cta-wrapper">
-			<button aria-label={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')} className="custom-button custom-button__only-icon cta-wrapper__expand" title={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')} onClick={handleExpandClick}>
+			<button
+				aria-label={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
+				className="custom-button custom-button__only-icon cta-wrapper__expand"
+				title={isExpanded ? __('Shrink', 'mappps') : __('Expand', 'mappps')}
+				onClick={handleExpandClick}
+			>
 				<span className={isExpanded ? 'icon-mappps-shrink' : 'icon-mappps-enlarge'} />
 				<span className="screen-reader-text">{__('Expand/Shrink', 'mappps')}</span>
 			</button>
