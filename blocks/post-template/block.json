@@ -8,7 +8,7 @@
 	"ancestor": ["mppps/sidebar"],
 	"description": "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more. For better preview performances only 2 posts will be displayed here",
 	"textdomain": "mappps",
-	"usesContext": ["mppps/postIDs", "mppps/postType", "mppps/blockId", "mppps/stickyParams"],
+	"usesContext": ["mppps/postIDs", "mppps/postType", "mppps/blockId", "mppps/stickyParams", "mppps/orderParams", "mppps/orderByParams"],
 	"supports": {
 		"reusable": false,
 		"html": false,

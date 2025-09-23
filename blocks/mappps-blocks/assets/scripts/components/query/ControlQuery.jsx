@@ -23,31 +23,21 @@ import { __experimentalToolsPanel as ToolsPanel, Button, Notice } from '@wordpre
 import { memo, useCallback, useEffect, useState } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-import FormTokenAuthor from './controls/FormTokenAuthor'
-// import FormTokenFormat from './controls/FormTokenFormat'
-// import FormTokenParent from './controls/FormTokenParent'
+// import FormTokenAuthor from './controls/FormTokenAuthor'
 import { FormTokenTaxonomy } from './controls/FormTokenTaxonomy'
-// import NumberOffset from './controls/NumberOffset'
-// import NumberPages from './controls/NumberPages'
 import RangePerPage from './controls/RangePerPage'
 import SelectOrder from './controls/SelectOrder'
 import SelectPostType from './controls/SelectPostType'
 import SelectSticky from './controls/SelectSticky'
 import TextKeyword from './controls/TextKeyword'
-import { buildTaxonomyTermsFromPosts } from './utils/CreateTaxonomyTermsFromPosts'
 import GetPosts from './utils/GetRecords.jsx'
 import { useToolsPanelDropdownMenuProps } from './utils/hooks.js'
 import { isControlAllowed, useAllowedControls, useOrderByOptions, usePostTypes, useTaxonomies, useTerms } from './utils/utils.js'
 
-/**
- * Custom hook for managing sticky parameters
- * @param {string} sticky - Sticky value
- * @param {Function} setAttributes - Function to update block attributes
- */
-function useStickyParams(sticky, setAttributes) {
+function useQueryParams(paramName, paramValue, setAttributes) {
 	useEffect(() => {
-		setAttributes({ stickyParams: sticky })
-	}, [sticky])
+		setAttributes({ [paramName]: paramValue })
+	}, [paramValue])
 }
 
 /**
@@ -124,12 +114,25 @@ function usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes
 	const { posts, resolved: postsResolved } = GetPosts(query)
 
 	// Build and update taxonomy terms from posts
+	// Only update when taxonomies or terms change, not when posts change
 	useEffect(() => {
-		if (postsResolved && termsResolved && Object.keys(terms).length) {
-			const taxonomyTermsFromPosts = buildTaxonomyTermsFromPosts(taxonomies, terms, posts)
-			setAttributes({ filtersTerms: taxonomyTermsFromPosts })
+		if (termsResolved && Object.keys(terms).length && taxonomies?.length) {
+			// Build filter terms based on all available terms, not just current search results
+			// This ensures filtersTerms remain stable during searches
+			const allTerms = {}
+			taxonomies.forEach(({ name, rest_base: restBase, slug }) => {
+				const associatedTerms = terms[slug]
+				if (associatedTerms?.length > 1) {
+					allTerms[restBase] = {
+						name,
+						slug,
+						terms: associatedTerms
+					}
+				}
+			})
+			setAttributes({ filtersTerms: allTerms })
 		}
-	}, [postsResolved, termsResolved, taxonomies])
+	}, [termsResolved, taxonomies])
 
 	return { posts, postsResolved }
 }
@@ -158,9 +161,7 @@ function SettingsPanel({ options, order, orderBy, postType, setQuery, showOrderC
 			}}
 		>
 			{showPostTypeControl && <SelectPostType defaultValue={postType} options={postTypesSelectOptions} onChange={onPostTypeChange} />}
-
 			{showOrderControl && <SelectOrder defaultValue={{ orderBy, order }} options={orderByOptions} onChange={setQuery} />}
-
 			{showStickyControl && <SelectSticky defaultValue={sticky} onChange={setQuery} />}
 		</ToolsPanel>
 	)
@@ -187,8 +188,6 @@ function DisplayPanel({ offset, perPage, setQuery }) {
 			}}
 		>
 			<RangePerPage defaultValue={perPage} offset={offset} onChange={setQuery} />
-			{/* <NumberOffset defaultValue={offset} onChange={setQuery} /> */}
-			{/* <NumberPages defaultValue={pages} onChange={setQuery} /> */}
 		</ToolsPanel>
 	)
 }
@@ -198,15 +197,9 @@ function DisplayPanel({ offset, perPage, setQuery }) {
  * @param {Object} props - Component props
  * @returns {JSX.Element} Filters panel
  */
-function FiltersPanel({ query, setQuery, showAuthorControl, showSearchControl, showTaxControl }) {
+function FiltersPanel({ query, setQuery, showSearchControl, showTaxControl }) {
 	const dropdownMenuProps = useToolsPanelDropdownMenuProps()
-	const {
-		author: authorIds,
-		search
-		// taxQuery,
-		// parents,
-		// format
-	} = query
+	const { search } = query
 
 	return (
 		<ToolsPanel
@@ -224,10 +217,7 @@ function FiltersPanel({ query, setQuery, showAuthorControl, showSearchControl, s
 			}}
 		>
 			{showTaxControl && <FormTokenTaxonomy query={query} onChange={setQuery} />}
-			{showAuthorControl && <FormTokenAuthor defaultValue={authorIds} onChange={setQuery} />}
 			{showSearchControl && <TextKeyword defaultValue={search} setQuery={setQuery} />}
-			{/* {showParentControl && <FormTokenParent defaultValue={parents} postType={query.postType} onChange={setQuery} />} */}
-			{/* {showFormatControl && <FormTokenFormat defaultValue={format} onChange={setQuery} />} */}
 		</ToolsPanel>
 	)
 }
@@ -269,18 +259,7 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 	const [noResults, setNoResults] = useState(false)
 
 	// Destructure query parameters for easier access
-	const {
-		// author: authorIds,
-		inherit,
-		offset,
-		order,
-		orderBy,
-		perPage,
-		postType,
-		// search,
-		sticky
-		// taxQuery
-	} = query
+	const { inherit, offset, order, orderBy, perPage, postType, sticky } = query
 
 	const setQuery = (newQuery) => {
 		setQueryState((prevQuery) => ({
@@ -296,20 +275,13 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 		setAttributes({ query: query })
 	}, [query])
 
-	// Handle sticky parameters
-	useStickyParams(query.sticky, setAttributes)
+	// Handle sticky, order, and orderBy parameters
+	useQueryParams('stickyParams', query.sticky, setAttributes)
+	useQueryParams('orderParams', query.order, setAttributes)
+	useQueryParams('orderByParams', query.orderBy, setAttributes)
 
 	// Get post type related data and options
-	const {
-		// postTypeRestBaseMap,
-		// postTypeRestNamespaceMap,
-		onPostTypeChange,
-		// postTypesTaxonomiesMap,
-		postTypesSelectOptions,
-		taxonomies,
-		terms,
-		termsResolved
-	} = usePostTypeData(postType, query, setQuery, setAttributes)
+	const { onPostTypeChange, postTypesSelectOptions, taxonomies, terms, termsResolved } = usePostTypeData(postType, query, setQuery, setAttributes)
 
 	// Get posts and terms
 	const { posts, postsResolved } = usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes)
@@ -342,30 +314,9 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 	const showStickyControl = !inherit && showSticky && isControlAllowed(allowedControls, 'sticky')
 	const showSettingsPanel = showPostTypeControl || showOrderControl || showStickyControl
 	const showTaxControl = !!taxonomies?.length && isControlAllowed(allowedControls, 'taxQuery')
-	const showAuthorControl = isControlAllowed(allowedControls, 'author')
 	const showSearchControl = isControlAllowed(allowedControls, 'search')
-	// const showParentControl = isControlAllowed(allowedControls, 'parents') && isPostTypeHierarchical
-
-	// const postTypeHasFormatSupport = postTypeFormatSupportMap[postType]
-	// const showFormatControl = useSelect(
-	//   (select) => {
-	//     // Check if the post type supports post formats and if the control is allowed.
-	//     if (!postTypeHasFormatSupport || !isControlAllowed(allowedControls, 'format')) {
-	//       return false
-	//     }
-
-	//     const themeSupports = select(coreStore).getThemeSupports()
-
-	//     // If there are no supported formats, getThemeSupports still includes the default 'standard' format,
-	//     // and in this case the control should not be shown since the user has no other formats to choose from.
-	//     return themeSupports.formats && themeSupports.formats.length > 0 && themeSupports.formats.some((type) => type !== 'standard')
-	//   },
-	//   [allowedControls, postTypeHasFormatSupport]
-	// )
-	const showFiltersPanel = showTaxControl || showAuthorControl || showSearchControl
+	const showFiltersPanel = showTaxControl || showSearchControl
 	const showPostCountControl = isControlAllowed(allowedControls, 'postCount')
-	// const showOffSetControl = isControlAllowed(allowedControls, 'offset')
-	// const showPagesControl = isControlAllowed(allowedControls, 'pages')
 	const showDisplayPanel = showPostCountControl
 
 	// Prepare options for panel components
@@ -391,18 +342,10 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 				/>
 			)}
 
-			{!inherit && !isWizard && showDisplayPanel && <DisplayPanel offset={offset} perPage={perPage} setQuery={setQuery} />}
+			{!inherit && showDisplayPanel && <DisplayPanel offset={offset} perPage={perPage} setQuery={setQuery} />}
 
-			{!inherit && !isWizard && showFiltersPanel && (
-				<FiltersPanel
-					query={query}
-					setQuery={setQuery}
-					showAuthorControl={showAuthorControl}
-					showFormatControl={false}
-					showParentControl={false}
-					showSearchControl={showSearchControl}
-					showTaxControl={showTaxControl}
-				/>
+			{!inherit && showFiltersPanel && (
+				<FiltersPanel query={query} setQuery={setQuery} showFormatControl={false} showParentControl={false} showSearchControl={showSearchControl} showTaxControl={showTaxControl} />
 			)}
 
 			<ConfirmButton isBusy={postsResolved === false} isConfirmed={isConfirmed} isWizard={isWizard} noResults={noResults} onConfirm={handleConfirmClick} />

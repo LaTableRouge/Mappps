@@ -11,6 +11,8 @@ $context = $block->context;
 $postIDs = $context['mppps/postIDs'] ?? [];
 $postType = $context['mppps/postType'] ?? '';
 $stickyParams = $context['mppps/stickyParams'] ?? '';
+$order = $context['mppps/orderParams'] ?? 'desc';
+$orderBy = $context['mppps/orderByParams'] ?? 'date';
 
 $ignoreSticky = false;
 if ($stickyParams === 'ignore') {
@@ -25,7 +27,9 @@ $query = new WP_Query([
     'post_type' => $postType,
     'post__in' => $postIDs,
     'posts_per_page' => -1,
-    'ignore_sticky_posts' => $stickyParams ? 1 : 0
+    'ignore_sticky_posts' => $stickyParams ? 1 : 0,
+    'order' => $order,
+    'orderby' => $orderBy
 ]);
 
 if (!$query->have_posts()) {

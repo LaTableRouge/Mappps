@@ -24,7 +24,9 @@
 		"mppps/filtersTerms": "filtersTerms",
 		"mppps/postIDs": "selectedPosts",
 		"mppps/postType": "postType",
-		"mppps/stickyParams": "stickyParams"
+		"mppps/stickyParams": "stickyParams",
+		"mppps/orderParams": "orderParams",
+		"mppps/orderByParams": "orderByParams"
 	},
 	"attributes": {
 		"query": {
@@ -83,6 +85,14 @@
 		"stickyParams": {
 			"type": "string",
 			"default": ""
+		},
+		"orderParams": {
+			"type": "string",
+			"default": "desc"
+		},
+		"orderByParams": {
+			"type": "string",
+			"default": "date"
 		}
 	},
 	"textdomain": "mappps",

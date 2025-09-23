@@ -2,13 +2,14 @@ import { __experimentalToolsPanelItem as ToolsPanelItem, TextControl } from '@wo
 import { debounce } from '@wordpress/compose'
 import { useMemo } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
+
 export default function TextKeyword({ defaultValue, setQuery }) {
 	const debouncedQuerySearch = useMemo(() => {
 		return debounce((newQuerySearch) => {
 			setQuery({
 				search: newQuerySearch
 			})
-		}, 250)
+		}, 10)
 	}, [setQuery])
 
 	return (

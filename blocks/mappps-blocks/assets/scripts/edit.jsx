@@ -48,7 +48,8 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 
 	let posts = []
 	if (attributes.selectedPosts.length) {
-		posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(post.id))
+		// Filter and sort posts to maintain the order from selectedPosts
+		posts = attributes.selectedPosts.map((postId) => queriedPosts.find((post) => post.id === postId)).filter((post) => post !== undefined)
 	}
 
 	useEffect(() => {
@@ -83,7 +84,7 @@ export default function Edit({ attributes, clientId, isSelected, setAttributes }
 		}
 	}, [attributes.selectedPosts, isSelected])
 
-	if (attributes.selectedPosts.length && Object.keys(attributes.filtersTerms).length) {
+	if (attributes.selectedPosts.length) {
 		return (
 			<section {...AlterBlockProps(blockProps, attributes)}>
 				<Controls attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />

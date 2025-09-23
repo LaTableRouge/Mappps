@@ -59,6 +59,16 @@ const TEMPLATE = [
 							style: {
 								spacing: { margin: { top: '0', bottom: '0' } },
 								typography: { fontSize: '14px' }
+							},
+							metadata: {
+								bindings: {
+									datetime: {
+										source: 'core/post-data',
+										args: {
+											key: 'date'
+										}
+									}
+								}
 							}
 						}
 					],
