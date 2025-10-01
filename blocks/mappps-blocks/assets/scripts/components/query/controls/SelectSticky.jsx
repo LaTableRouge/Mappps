@@ -2,10 +2,10 @@ import { __experimentalToolsPanelItem as ToolsPanelItem, SelectControl } from '@
 import { __ } from '@wordpress/i18n'
 
 const stickyOptions = [
-	{ label: __('Include'), value: '' },
-	{ label: __('Ignore'), value: 'ignore' },
-	{ label: __('Exclude'), value: 'exclude' },
-	{ label: __('Only'), value: 'only' }
+	{ label: __('Include', 'mappps'), value: '' },
+	{ label: __('Ignore', 'mappps'), value: 'ignore' },
+	{ label: __('Exclude', 'mappps'), value: 'exclude' },
+	{ label: __('Only', 'mappps'), value: 'only' }
 ]
 
 export default function SelectSticky({ defaultValue, onChange }) {

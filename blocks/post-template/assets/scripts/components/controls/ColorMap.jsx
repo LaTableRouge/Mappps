@@ -13,12 +13,12 @@ function ColorMap({ defaultValue, setAttributes }) {
 	const colorSettings = [
 		{
 			value: defaultValue,
-			label: __('Hover'),
+			label: __('Hover', 'mappps'),
 			onChange: handleColorChange
 		}
 	].filter(Boolean)
 
-	return <PanelColorSettings colorSettings={colorSettings} title={__('Colors')} />
+	return <PanelColorSettings colorSettings={colorSettings} title={__('Colors', 'mappps')} />
 }
 
 export default memo(ColorMap)

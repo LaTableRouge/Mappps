@@ -3,8 +3,8 @@ import { __ } from '@wordpress/i18n'
 
 export default function SelectDisplayType({ defaultValue, setAttributes }) {
 	const options = [
-		{ label: __('Map + Sidebar'), value: 'full' },
-		{ label: __('Map'), value: 'map' }
+		{ label: __('Map + Sidebar', 'mappps'), value: 'full' },
+		{ label: __('Map', 'mappps'), value: 'map' }
 	]
 
 	return (

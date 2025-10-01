@@ -276,21 +276,21 @@ export function useOrderByOptions(postType) {
 	return useMemo(() => {
 		const orderByOptions = [
 			{
-				label: __('Newest to oldest'),
+				label: __('Newest to oldest', 'mappps'),
 				value: 'date/desc'
 			},
 			{
-				label: __('Oldest to newest'),
+				label: __('Oldest to newest', 'mappps'),
 				value: 'date/asc'
 			},
 			{
 				/* translators: Label for ordering posts by title in ascending order. */
-				label: __('A → Z'),
+				label: __('A → Z', 'mappps'),
 				value: 'title/asc'
 			},
 			{
 				/* translators: Label for ordering posts by title in descending order. */
-				label: __('Z → A'),
+				label: __('Z → A', 'mappps'),
 				value: 'title/desc'
 			}
 		]
@@ -299,12 +299,12 @@ export function useOrderByOptions(postType) {
 			orderByOptions.push(
 				{
 					/* translators: Label for ordering posts by ascending menu order. */
-					label: __('Ascending by order'),
+					label: __('Ascending by order', 'mappps'),
 					value: 'menu_order/asc'
 				},
 				{
 					/* translators: Label for ordering posts by descending menu order. */
-					label: __('Descending by order'),
+					label: __('Descending by order', 'mappps'),
 					value: 'menu_order/desc'
 				}
 			)

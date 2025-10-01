@@ -8,6 +8,20 @@
 @use '/src/helpers/styles/abstracts/keyframes';
 @use 'abstracts/keyframes' as keyframes2;
 
+html[dir='rtl'] {
+  .wp-block-mppps-map {
+    .leaflet-control-container {
+      .leaflet-right {
+        right: initial;
+      }
+
+      .leaflet-left {
+        left: initial;
+      }
+    }
+  }
+}
+
 .wp-block-mppps-map {
   display: grid;
   height: var(--wrapper-height, 100%);

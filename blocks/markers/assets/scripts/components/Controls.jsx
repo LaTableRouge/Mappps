@@ -35,7 +35,9 @@ export default function Controls({ attributes, hasGeolocation, hasSearch, setAtt
 			<PanelBody title={__('Marker settings', 'mappps')}>
 				<UnitSize attributeKey={'selectedMarkerSize'} defaultValue={selectedMarkerSize} setAttributes={setAttributes} />
 				<MediaIcon attributeKey={'selectedMarkerIcon'} defaultValue={selectedMarkerIcon} setAttributes={setAttributes} />
-				<ColorMap settings={[{ value: selectedMarkerColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedMarkerColor: value }) }]} />
+				{!Object.keys(selectedMarkerIcon).length && (
+					<ColorMap settings={[{ value: selectedMarkerColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedMarkerColor: value }) }]} />
+				)}
 			</PanelBody>
 
 			{isClustered && (
@@ -44,9 +46,11 @@ export default function Controls({ attributes, hasGeolocation, hasSearch, setAtt
 					<MediaIcon attributeKey={'selectedMarkerClusterIcon'} defaultValue={selectedMarkerClusterIcon} setAttributes={setAttributes} />
 					<ColorMap
 						settings={[
-							{ value: selectedClusterColor, label: __('Cluster color', 'mappps'), onChange: (value) => setAttributes({ selectedClusterColor: value }) },
+							!Object.keys(selectedMarkerClusterIcon).length
+								? { value: selectedClusterColor, label: __('Cluster color', 'mappps'), onChange: (value) => setAttributes({ selectedClusterColor: value }) }
+								: false,
 							{ value: selectedClusterTextColor, label: __('Cluster text color', 'mappps'), onChange: (value) => setAttributes({ selectedClusterTextColor: value }) }
-						]}
+						].filter(Boolean)}
 					/>
 				</PanelBody>
 			)}
@@ -54,14 +58,18 @@ export default function Controls({ attributes, hasGeolocation, hasSearch, setAtt
 			{hasGeolocation && (
 				<PanelBody title={__('Marker geolocation settings', 'mappps')}>
 					<MediaIcon attributeKey={'selectedMarkerGeolocationIcon'} defaultValue={selectedMarkerGeolocationIcon} setAttributes={setAttributes} />
-					<ColorMap settings={[{ value: selectedGeolocationColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedGeolocationColor: value }) }]} />
+					{!Object.keys(selectedMarkerGeolocationIcon).length && (
+						<ColorMap settings={[{ value: selectedGeolocationColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedGeolocationColor: value }) }]} />
+					)}
 				</PanelBody>
 			)}
 
 			{hasSearch && (
 				<PanelBody title={__('Marker search settings', 'mappps')}>
 					<MediaIcon attributeKey={'selectedMarkerSearchIcon'} defaultValue={selectedMarkerSearchIcon} setAttributes={setAttributes} />
-					<ColorMap settings={[{ value: selectedSearchColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedSearchColor: value }) }]} />
+					{!Object.keys(selectedMarkerSearchIcon).length && (
+						<ColorMap settings={[{ value: selectedSearchColor, label: __('Color', 'mappps'), onChange: (value) => setAttributes({ selectedSearchColor: value }) }]} />
+					)}
 				</PanelBody>
 			)}
 		</InspectorControls>

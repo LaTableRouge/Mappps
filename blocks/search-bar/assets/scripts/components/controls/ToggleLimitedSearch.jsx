@@ -6,8 +6,7 @@ function ToggleLimitedSearch({ defaultValue, setAttributes }) {
 	const handleChange = useCallback(
 		(value) => {
 			setAttributes({
-				limitedSearch: value,
-				selectedSearchResult: {}
+				limitedSearch: value
 			})
 		},
 		[setAttributes]

@@ -6,8 +6,8 @@
 	"category": "mappps",
 	"description": "Contains search bar.",
 	"textdomain": "mappps",
-	"parent": ["mppps/mappps-blocks"],
-	"ancestor": ["mppps/sidebar"],
+	"ancestor": ["mppps/mappps-blocks"],
+	"parent": ["mppps/sidebar"],
 	"usesContext": ["mppps/blockId"],
 	"supports": {
 		"reusable": false,

@@ -7,55 +7,55 @@ export default function ColorMap({ defaultValues, hasSearchColor, isClustered, i
 			colorSettings={[
 				{
 					value: defaultValues.primary,
-					label: __('Primary'),
+					label: __('Primary', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedPrimaryColor: value })
 					}
 				},
 				{
 					value: defaultValues.secondary,
-					label: __('Secondary'),
+					label: __('Secondary', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedSecondaryColor: value })
 					}
 				},
 				{
 					value: defaultValues.marker,
-					label: __('Map marker'),
+					label: __('Map marker', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedMarkerColor: value })
 					}
 				},
 				{
 					value: defaultValues.markerActive,
-					label: __('Map selected marker'),
+					label: __('Map selected marker', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedActiveMarkerColor: value })
 					}
 				},
 				isClustered && {
 					value: defaultValues.cluster,
-					label: __('Map marker cluster'),
+					label: __('Map marker cluster', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedClusterColor: value })
 					}
 				},
 				hasSearchColor && {
 					value: defaultValues.search,
-					label: __('Map search marker'),
+					label: __('Map search marker', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedSearchColor: value })
 					}
 				},
 				isGeolocated && {
 					value: defaultValues.geolocation,
-					label: __('Map geolocation marker'),
+					label: __('Map geolocation marker', 'mappps'),
 					onChange: (value) => {
 						setAttributes({ selectedGeolocationColor: value })
 					}
 				}
 			].filter(Boolean)}
-			title={__('Colors')}
+			title={__('Colors', 'mappps')}
 		/>
 	)
 }

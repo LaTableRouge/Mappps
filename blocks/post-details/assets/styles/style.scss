@@ -33,13 +33,18 @@
 
     top: 0;
     bottom: 0;
-    left: initial;
     inset-inline-start: var(--sidebar-size, 25cqw);
     width: var(--details-size, max-content);
     height: var(--wrapper-height);
     transform: translateX(var(--details-transform, -100%));
     border-radius: 0;
     border-inline-start: 1px solid var(--color-gray-300);
+  }
+
+  html[dir='rtl'] & {
+    @include container-breakpoint-up(mappps, #{variables.$mobile-breakpoint}) {
+      left: initial;
+    }
   }
 
   &[data-expanded='true'] {

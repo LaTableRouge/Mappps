@@ -11,7 +11,7 @@ export default function ToggleInherit({ defaultValue, setQuery }) {
 	const hasInheritanceWarning = defaultValue
 
 	return (
-		<ToolsPanelItem isShownByDefault hasValue={() => !defaultValue} label={__('Query type')} onDeselect={() => setQuery({ inherit: true })}>
+		<ToolsPanelItem isShownByDefault hasValue={() => !defaultValue} label={__('Query type', 'mappps')} onDeselect={() => setQuery({ inherit: true })}>
 			<VStack spacing={4}>
 				<ToggleGroupControl
 					__next40pxDefaultSize
@@ -30,8 +30,8 @@ export default function ToggleInherit({ defaultValue, setQuery }) {
 						})
 					}}
 				>
-					<ToggleGroupControlOption label={__('Inherit')} value="default" />
-					<ToggleGroupControlOption label={__('Custom')} value="custom" />
+					<ToggleGroupControlOption label={__('Inherit', 'mappps')} value="default" />
+					<ToggleGroupControlOption label={__('Custom', 'mappps')} value="custom" />
 				</ToggleGroupControl>
 				{hasInheritanceWarning && (
 					<Notice isDismissible={false} status="warning">
