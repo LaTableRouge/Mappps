@@ -1,1 +1,30 @@
-{"translation-revision-date":"2025-01-27 14:37+0100","generator":"WP-CLI\/2.9.0","source":"build\/blocks\/markers\/assets\/index.js","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","lang":"fr_FR","plural-forms":"nplurals=2; plural=(n != 1);"},"Render settings":["R\u00e9glages d'affichage"],"Markers will not be clustered":["Les marqueurs ne seront pas agr\u00e9g\u00e9s"],"Marker clustering":["Agr\u00e9gation de marqueurs"],"The displayed sizes of the cluster icons":["Taille affich\u00e9e des ic\u00f4nes agr\u00e9g\u00e9es"],"Cluster icon size":["Taille d'ic\u00f4ne agr\u00e9g\u00e9e"],"The displayed sizes of the marker icons":["Taille affich\u00e9e des ic\u00f4nes de marqueurs"],"Marker icon size":["Taille de l'ic\u00f4ne de marqueur"],"Marker":["Marqueur"],"Selected marker":["Marqueur s\u00e9lectionn\u00e9"],"Marker cluster":["Agr\u00e9gation de marqueurs"],"Search marker":["Marqueur de recherche"],"Geolocation marker":["Marqueur de g\u00e9olocalisation"],"Markers will be clustered":["Les marqueurs seront agr\u00e9g\u00e9s"],"Markers will have a shadow beneath them":["Les marqueurs auront une ombre en dessous d'eux"],"Marker shadow":["Ombre du marqueur"]}}}
+{
+	"translation-revision-date": "2025-10-01 10:31+0200",
+	"generator": "WP-CLI\/2.12.0",
+	"source": "build\/blocks\/markers\/assets\/index.js",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": { "domain": "messages", "lang": "fr_FR", "plural-forms": "nplurals=2; plural=(n != 1);" },
+			"Markers will not be clustered": ["Les marqueurs ne seront pas agr\u00e9g\u00e9s"],
+			"Marker clustering": ["Agr\u00e9gation de marqueurs"],
+			"Markers will have a shadow beneath them": ["Les marqueurs auront une ombre en dessous d'eux"],
+			"Marker shadow": ["Ombre du marqueur"],
+			"Select a picture": ["Selectionner une image"],
+			"Icon": ["Ic\u00f4ne"],
+			"Select": ["Selectionner"],
+			"Remove picture": ["Supprimer l'image"],
+			"Markers will be clustered": ["Les marqueurs seront agr\u00e9g\u00e9s"],
+			"The displayed sizes of the icons": ["Taille affich\u00e9e des ic\u00f4nes de marqueurs"],
+			"Icon size": ["Taille de l'ic\u00f4ne"],
+			"Global settings": ["R\u00e9glages globaux"],
+			"Marker settings": ["R\u00e9glages du marqueur"],
+			"Color": ["Couleur"],
+			"Marker cluster settings": ["R\u00e9glages de l'agr\u00e9gation de marqueurs"],
+			"Cluster color": ["Couleur de l'agr\u00e9gation de marqueurs"],
+			"Cluster text color": ["Couleur du texte de l'agr\u00e9gation de marqueurs"],
+			"Marker geolocation settings": ["R\u00e9glages du marqueur de g\u00e9olocalisation"],
+			"Marker search settings": ["R\u00e9glages du marqueur de recherche"]
+		}
+	}
+}

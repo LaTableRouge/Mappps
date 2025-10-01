@@ -1,1 +1,49 @@
-{"translation-revision-date":"2025-01-27 14:37+0100","generator":"WP-CLI\/2.9.0","source":"build\/blocks\/mappps-blocks\/assets\/index.js","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","lang":"fr_FR","plural-forms":"nplurals=2; plural=(n != 1);"},"Categories":["Cat\u00e9gories"],"No categories could be recovered.":["Aucune cat\u00e9gorie n'a pu \u00eatre r\u00e9cup\u00e9r\u00e9e."],"Posts":["Articles"],"Confirm selection":["Confirmer la s\u00e9lection"],"No posts could be recovered.":["Aucune publication n'a pu \u00eatre r\u00e9cup\u00e9r\u00e9e."],"Post type":["Type de publication"],"Taxonomies":["Taxonomies"],"No taxonomies could be recovered.":["Aucunes taxonomies n'a pu \u00eatre r\u00e9cup\u00e9r\u00e9e."],"Data source":["Source de donn\u00e9es"],"No post types could be recovered.":["Aucun type de publication n'a pu \u00eatre r\u00e9cup\u00e9r\u00e9."],"Select the data source of the items to be displayed on the map.":["S\u00e9lectionnez la source de donn\u00e9es des \u00e9l\u00e9ments \u00e0 afficher sur la carte."]}}}
+{
+	"translation-revision-date": "2025-10-01 10:31+0200",
+	"generator": "WP-CLI\/2.12.0",
+	"source": "build\/blocks\/mappps-blocks\/assets\/index.js",
+	"domain": "messages",
+	"locale_data": {
+		"messages": {
+			"": { "domain": "messages", "lang": "fr_FR", "plural-forms": "nplurals=2; plural=(n != 1);" },
+			"Primary": ["Primaire"],
+			"Secondary": ["Secondaire"],
+			"Colors": ["Couleurs"],
+			"Taxonomies": ["Taxonomies"],
+			"Max items displayed": ["Nombre max d'entit\u00e9s affich\u00e9s"],
+			"Newest to oldest": ["Des plus r\u00e9cents aux plus anciens"],
+			"Oldest to newest": ["Des plus anciens aux plus r\u00e9cents"],
+			"A \u2192 Z": ["A \u2192 Z"],
+			"Z \u2192 A": ["Z \u2192 A"],
+			"Order by": ["Ordonner par"],
+			"Post type": ["Type de publication"],
+			"Select the type of content to display: posts, pages, or custom post types.": [
+				"S\u00e9lectionner le type de contenu \u00e0 afficher\u00a0: articles, pages ou types de publication personnalis\u00e9s."
+			],
+			"Include": ["Inclure"],
+			"Ignore": ["Ignorer"],
+			"Exclude": ["Exclure"],
+			"Only": ["Uniquement"],
+			"Sticky posts": ["Articles \u00e9pingl\u00e9s"],
+			"Sticky posts always appear first, regardless of their publish date.": [
+				"Les publications \u00e9pingl\u00e9es apparaissent toujours en premier, quelle que soit leur date de publication."
+			],
+			"Keyword": ["Mot-cl\u00e9"],
+			"Query global settings": ["R\u00e9glages globaux de la requ\u00eate"],
+			"Query display settings": ["R\u00e9glages d'affichages de la requ\u00eate"],
+			"Query filters settings": ["R\u00e9glages des filtres de la requ\u00eate"],
+			"No results found. Please check the query settings and the lat\/lng fields inside the post\/record itself.": [
+				"Aucun r\u00e9sultat trouv\u00e9. Veuillez v\u00e9rifier les param\u00e8tres de la requ\u00eate et les champs lat\/lng dans la publication."
+			],
+			"If your post\/record is not displayed, please check the query settings and the lat\/lng fields inside the post\/record itself.": [
+				"Si votre publication ne s'affiche pas, veuillez v\u00e9rifier les param\u00e8tres de requ\u00eate et les champs lat\/lng dans la publication."
+			],
+			"Query settings applied": ["Param\u00e8tres de requ\u00eate appliqu\u00e9s"],
+			"Apply query settings": ["Appliquer les param\u00e8tres de requ\u00eate"],
+			"Ascending by order": ["Ordre croissant"],
+			"Descending by order": ["Ordre d\u00e9croissant"],
+			"Select the data source of the items to be displayed on the map.": ["S\u00e9lectionnez la source de donn\u00e9es des \u00e9l\u00e9ments \u00e0 afficher sur la carte."],
+			"Data source": ["Source de donn\u00e9es"]
+		}
+	}
+}

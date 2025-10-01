@@ -19,6 +19,8 @@
 		"lint-staged:php": [
 			"vendor/bin/phpstan --configuration=linters/phpstan.neon analyse --memory-limit=2048M",
 			"vendor/bin/php-cs-fixer.bat fix --using-cache=no --config=linters/.php-cs-fixer.php"
-		]
+		],
+		"generate:i18n": "vendor/bin/wp i18n make-pot . lang/mappps.pot --domain=mappps --exclude=node_modules,vendor,lang --include=*.php,build --skip-block-json",
+		"generate:i18n:json": "vendor/bin/wp i18n make-json lang/ --no-purge"
 	}
 }
