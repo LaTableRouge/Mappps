@@ -5,14 +5,14 @@ msgstr ""
 "Project-Id-Version: Mappps 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
 "POT-Creation-Date: 2025-10-01T08:15:00+00:00\n"
-"PO-Revision-Date: 2025-10-01 10:31+0200\n"
+"PO-Revision-Date: 2025-10-08 12:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.7\n"
+"X-Generator: Poedit 3.5\n"
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
@@ -96,7 +96,7 @@ msgstr "Configuration"
 
 #: includes/register-page.php:53
 msgid "Loading…"
-msgstr "Chargement..."
+msgstr "Chargement…"
 
 #: build/blocks/filters-toggle/assets/index.js:1
 #: build/blocks/filters/assets/index.js:1
@@ -150,7 +150,7 @@ msgstr "Filtrer"
 
 #: build/blocks/loader/assets/index.js:1
 msgid "The displayed size of the loader's spinner"
-msgstr "Taille affichée de l'icône de chargement"
+msgstr "Taille d'affichage de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1
 msgid "Spinner size"
@@ -199,7 +199,7 @@ msgstr "Zoom maximal"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Map tiles"
-msgstr "Carreaux de la carte"
+msgstr "Style des carreaux de la carte"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Users will be able to geolocate themselves"
@@ -211,7 +211,7 @@ msgstr "Géolocalisation"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "The map will zoom to the marker when clicked"
-msgstr "La carte est zoomée sur le marqueur lorsque l'on clique dessus."
+msgstr "La carte zoomera sur le marqueur lorsque l'on clique dessus"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Zoom to marker"
@@ -270,7 +270,7 @@ msgstr "Taxonomies"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 msgid "Max items displayed"
-msgstr "Nombre max d'entités affichés"
+msgstr "Nombre maximum d'entités affichés"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps-blocks/assets/index.js:5
@@ -477,11 +477,11 @@ msgstr "Confirmer la sélection"
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "No posts could be recovered."
-msgstr "Aucune publication n'a pu être récupérée."
+msgstr "Aucune publication n'ont pu être récupérées."
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "No taxonomies could be recovered."
-msgstr "Aucunes taxonomies n'a pu être récupérée."
+msgstr "Aucunes taxonomies n'ont pu être récupérées."
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "A filter dropdown will be displayed"
@@ -495,7 +495,7 @@ msgstr "Afficher les filtres ?"
 #: build/blocks/search-bar/assets/index.js:1
 msgid "Search results will be limited to the selected posts"
 msgstr ""
-"Les résultats de la recherche seront limités aux publications sélectionnés"
+"Les résultats de la recherche seront limités aux publications sélectionnées"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/search-bar/assets/index.js:1
@@ -518,7 +518,7 @@ msgstr "Agrégation de marqueurs"
 
 #: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
 msgid "Markers will have a shadow beneath them"
-msgstr "Les marqueurs auront une ombre en dessous d'eux"
+msgstr "Les marqueurs auront une ombre en-dessous d'eux"
 
 #: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
 msgid "Marker shadow"
@@ -563,7 +563,7 @@ msgstr "Taille de l'icône de marqueur"
 msgid "Desktop only, set the maximum size for the details popup"
 msgstr ""
 "Réglage pour ordinateur seulement, définissez la taille maximum de la "
-"fenêtre surgissante des informations"
+"fenêtre surgissante d'information"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -600,7 +600,7 @@ msgstr "Icône"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Select"
-msgstr "Selectionner"
+msgstr "Sélectionner"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Remove picture"
@@ -636,7 +636,7 @@ msgstr "Réglages de l'agrégation de marqueurs"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Cluster color"
-msgstr "Couleur de l'agrégation de marqueurs"
+msgstr "Couleur des marqueurs agrégés"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Cluster text color"
@@ -865,7 +865,7 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Go to \"Field groups\" and add a new one:"
-msgstr "Allez dans \"Groupe de champs\" et créez en un nouveau :"
+msgstr "Allez dans \"Groupe de champs\" et créez-en un nouveau :"
 
 #: build/index.js:1
 msgid ""

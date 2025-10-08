@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-10-01 10:31+0200",
+	"translation-revision-date": "2025-10-08 12:13+0200",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/post-details\/assets\/index.js",
 	"domain": "messages",
@@ -14,7 +14,7 @@
 			"Close preview": ["Fermer la pr\u00e9visualisation"],
 			"Data settings": ["R\u00e9glages des donn\u00e9es"],
 			"Desktop only, set the maximum size for the details popup": [
-				"R\u00e9glage pour ordinateur seulement, d\u00e9finissez la taille maximum de la fen\u00eatre surgissante des informations"
+				"R\u00e9glage pour ordinateur seulement, d\u00e9finissez la taille maximum de la fen\u00eatre surgissante d'information"
 			],
 			"Popups size": ["Taille des fen\u00eatres surgissantes"],
 			"Read more": ["En savoir plus"]

@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-10-01 10:31+0200",
+	"translation-revision-date": "2025-10-08 12:13+0200",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/mappps-blocks\/assets\/index.js",
 	"domain": "messages",
@@ -10,7 +10,7 @@
 			"Secondary": ["Secondaire"],
 			"Colors": ["Couleurs"],
 			"Taxonomies": ["Taxonomies"],
-			"Max items displayed": ["Nombre max d'entit\u00e9s affich\u00e9s"],
+			"Max items displayed": ["Nombre maximum d'entit\u00e9s affich\u00e9s"],
 			"Newest to oldest": ["Des plus r\u00e9cents aux plus anciens"],
 			"Oldest to newest": ["Des plus anciens aux plus r\u00e9cents"],
 			"A \u2192 Z": ["A \u2192 Z"],
