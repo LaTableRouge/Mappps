@@ -44,20 +44,20 @@ const createClusterSvg = (markerSize) => `
 `
 
 export default function Icon(type, haveShadow, markerSize = '40px', cluster, isSelected = false) {
-  // let isInCluster = false
-  // const clusterChildMarkers = cluster.getAllChildMarkers()
-  // if (isSelected) {
-  //   for (const clusterChildMarker of clusterChildMarkers) {
-  //     if (clusterChildMarker.options.data.id === isSelected.id) {
-  //       isInCluster = true
-  //     }
-  //   }
-  // }
+	// let isInCluster = false
+	// const clusterChildMarkers = cluster.getAllChildMarkers()
+	// if (isSelected) {
+	//   for (const clusterChildMarker of clusterChildMarkers) {
+	//     if (clusterChildMarker.options.data.id === isSelected.id) {
+	//       isInCluster = true
+	//     }
+	//   }
+	// }
 
-  const markerSizeInt = parseInt(markerSize, 10)
-  const isClusterType = type === 'cluster'
+	const markerSizeInt = parseInt(markerSize, 10)
+	const isClusterType = type === 'cluster'
 
-  const html = `
+	const html = `
     <div class="marker-icon">
       ${isClusterType ? createClusterSvg(markerSize) : createMarkerSvg(markerSize)}
       ${isClusterType ? `<div class="marker-icon__child-count">${cluster.getChildCount()}</div>` : ''}
@@ -65,13 +65,13 @@ export default function Icon(type, haveShadow, markerSize = '40px', cluster, isS
     </div>
   `
 
-  const className = `custom-marker ${type ? `custom-marker--${type}` : ''} ${isSelected ? 'custom-marker--active' : ''}`
+	const className = `custom-marker ${type ? `custom-marker--${type}` : ''} ${isSelected ? 'custom-marker--active' : ''}`
 
-  return L.divIcon({
-    html,
-    iconSize: [markerSizeInt, markerSizeInt],
-    iconAnchor: [markerSizeInt / 2, markerSizeInt],
-    className: className.trim(),
-    popupAnchor: [0, -markerSizeInt]
-  })
+	return L.divIcon({
+		html,
+		iconSize: [markerSizeInt, markerSizeInt],
+		iconAnchor: [markerSizeInt / 2, markerSizeInt],
+		className: className.trim(),
+		popupAnchor: [0, -markerSizeInt]
+	})
 }

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2025-01-27T13:35:52+00:00\n"
-"PO-Revision-Date: 2025-01-27 15:08+0100\n"
+"POT-Creation-Date: 2025-10-01T08:15:00+00:00\n"
+"PO-Revision-Date: 2025-10-08 12:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -16,83 +16,87 @@ msgstr ""
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
-#: includes/register-page.php:32
+#: mappps.php includes/register-page.php:35
 msgid "Mappps"
 msgstr "Mappps"
 
 #. Plugin URI of the plugin
+#: mappps.php
 msgid "https://github.com/LaTableRouge/Mappps"
 msgstr "https://github.com/LaTableRouge/Mappps"
 
 #. Description of the plugin
-msgid "A plugin that display maps"
+#: mappps.php
+msgid "A plugin that displays maps"
 msgstr "Une extension pour afficher des cartes"
 
 #. Author of the plugin
+#: mappps.php
 msgid "latablerouge"
 msgstr "latablerouge"
 
 #. Author URI of the plugin
+#: mappps.php
 msgid "https://mlnop.fr/"
 msgstr "https://mlnop.fr/"
 
-#: blocks/post-details/render.php:71 blocks/post-details/render.php:73
-#: blocks/post-details/render.php:75 build/blocks/post-details/render.php:71
-#: build/blocks/post-details/render.php:73
-#: build/blocks/post-details/render.php:75
+#: blocks/post-details/render.php:75 blocks/post-details/render.php:77
+#: blocks/post-details/render.php:79 build/blocks/post-details/render.php:75
+#: build/blocks/post-details/render.php:77
+#: build/blocks/post-details/render.php:79
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand"
 msgstr "Déplier"
 
-#: blocks/post-details/render.php:74 build/blocks/post-details/render.php:74
+#: blocks/post-details/render.php:78 build/blocks/post-details/render.php:78
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Shrink"
 msgstr "Réduire"
 
-#: blocks/post-details/render.php:80 build/blocks/post-details/render.php:80
+#: blocks/post-details/render.php:84 build/blocks/post-details/render.php:84
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand/Shrink"
 msgstr "Déplier/Réduire"
 
-#: blocks/post-details/render.php:87 blocks/post-details/render.php:90
-#: build/blocks/post-details/render.php:87
-#: build/blocks/post-details/render.php:90
+#: blocks/post-details/render.php:91 blocks/post-details/render.php:94
+#: build/blocks/post-details/render.php:91
+#: build/blocks/post-details/render.php:94
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Open in new tab"
 msgstr "Ouvrir dans un nouvel onglet"
 
-#: blocks/post-details/render.php:98 blocks/post-details/render.php:101
-#: build/blocks/post-details/render.php:98
-#: build/blocks/post-details/render.php:101
+#: blocks/post-details/render.php:102 blocks/post-details/render.php:105
+#: build/blocks/post-details/render.php:102
+#: build/blocks/post-details/render.php:105
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "View itinerary"
 msgstr "Voir l'itinéraire"
 
-#: blocks/post-details/render.php:105 blocks/post-details/render.php:107
-#: blocks/post-details/render.php:110 build/blocks/post-details/render.php:105
-#: build/blocks/post-details/render.php:107
-#: build/blocks/post-details/render.php:110
+#: blocks/post-details/render.php:109 blocks/post-details/render.php:111
+#: blocks/post-details/render.php:114 build/blocks/post-details/render.php:109
+#: build/blocks/post-details/render.php:111
+#: build/blocks/post-details/render.php:114
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Close preview"
 msgstr "Fermer la prévisualisation"
 
-#: includes/blocks/categories-register.php:34
+#: includes/blocks/categories-register.php:37
 msgid "Mappps - Blocks"
 msgstr "Mappps - Blocs"
 
-#: includes/register-page.php:31
+#: includes/register-page.php:34
 msgid "Setup"
 msgstr "Configuration"
 
-#: includes/register-page.php:50
+#: includes/register-page.php:53
 msgid "Loading…"
-msgstr "Chargement..."
+msgstr "Chargement…"
 
 #: build/blocks/filters-toggle/assets/index.js:1
 #: build/blocks/filters/assets/index.js:1
@@ -146,14 +150,14 @@ msgstr "Filtrer"
 
 #: build/blocks/loader/assets/index.js:1
 msgid "The displayed size of the loader's spinner"
-msgstr "Taille affichée de l'icône de chargement"
+msgstr "Taille d'affichage de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1
 msgid "Spinner size"
 msgstr "Taille de l'icône de chargement"
 
 #: build/blocks/loader/assets/index.js:1 build/blocks/map/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
 msgid "Render settings"
 msgstr "Réglages d'affichage"
 
@@ -195,7 +199,7 @@ msgstr "Zoom maximal"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Map tiles"
-msgstr "Carreaux de la carte"
+msgstr "Style des carreaux de la carte"
 
 #: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Users will be able to geolocate themselves"
@@ -205,11 +209,11 @@ msgstr "Les utilisateurs pourront se géolocaliser"
 msgid "Geolocation"
 msgstr "Géolocalisation"
 
-#: build/blocks/map/assets/index.js:1
+#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "The map will zoom to the marker when clicked"
-msgstr "La carte est zoomée sur le marqueur lorsque l'on clique dessus."
+msgstr "La carte zoomera sur le marqueur lorsque l'on clique dessus"
 
-#: build/blocks/map/assets/index.js:1
+#: build/blocks/map/assets/index.js:1 build/blocks/mappps/assets/index.js:1
 msgid "Zoom to marker"
 msgstr "Zoomer sur le marqueur"
 
@@ -245,33 +249,19 @@ msgstr "Vous êtes ici"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "Categories"
-msgstr "Catégories"
+msgid "Primary"
+msgstr "Primaire"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "No categories could be recovered."
-msgstr "Aucune catégorie n'a pu être récupérée."
+msgid "Secondary"
+msgstr "Secondaire"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-msgid "Posts"
-msgstr "Articles"
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Confirm selection"
-msgstr "Confirmer la sélection"
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No posts could be recovered."
-msgstr "Aucune publication n'a pu être récupérée."
-
-#: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Post type"
-msgstr "Type de publication"
+#: build/blocks/post-template/assets/index.js:1
+msgid "Colors"
+msgstr "Couleurs"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
@@ -279,25 +269,133 @@ msgid "Taxonomies"
 msgstr "Taxonomies"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No taxonomies could be recovered."
-msgstr "Aucunes taxonomies n'a pu être récupérée."
+msgid "Max items displayed"
+msgstr "Nombre maximum d'entités affichés"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "Data source"
-msgstr "Source de données"
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Newest to oldest"
+msgstr "Des plus récents aux plus anciens"
 
 #: build/blocks/mappps-blocks/assets/index.js:1
-#: build/blocks/mappps/assets/index.js:1
-msgid "No post types could be recovered."
-msgstr "Aucun type de publication n'a pu être récupéré."
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Oldest to newest"
+msgstr "Des plus anciens aux plus récents"
 
-#: build/blocks/mappps-blocks/assets/index.js:1
+#. translators: Label for ordering posts by title in ascending order.
+#: build/blocks/mappps-blocks/assets/index.js:3
+#: build/blocks/mappps-blocks/assets/index.js:7
+msgid "A → Z"
+msgstr "A → Z"
+
+#. translators: Label for ordering posts by title in descending order.
+#: build/blocks/mappps-blocks/assets/index.js:5
+#: build/blocks/mappps-blocks/assets/index.js:9
+msgid "Z → A"
+msgstr "Z → A"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Order by"
+msgstr "Ordonner par"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+#: build/blocks/mappps/assets/index.js:1
+msgid "Post type"
+msgstr "Type de publication"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid ""
+"Select the type of content to display: posts, pages, or custom post types."
+msgstr ""
+"Sélectionner le type de contenu à afficher : articles, pages ou types de "
+"publication personnalisés."
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Include"
+msgstr "Inclure"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Ignore"
+msgstr "Ignorer"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Exclude"
+msgstr "Exclure"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Only"
+msgstr "Uniquement"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Sticky posts"
+msgstr "Articles épinglés"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Sticky posts always appear first, regardless of their publish date."
+msgstr ""
+"Les publications épinglées apparaissent toujours en premier, quelle que soit "
+"leur date de publication."
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Keyword"
+msgstr "Mot-clé"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Query global settings"
+msgstr "Réglages globaux de la requête"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Query display settings"
+msgstr "Réglages d'affichages de la requête"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Query filters settings"
+msgstr "Réglages des filtres de la requête"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid ""
+"No results found. Please check the query settings and the lat/lng fields "
+"inside the post/record itself."
+msgstr ""
+"Aucun résultat trouvé. Veuillez vérifier les paramètres de la requête et les "
+"champs lat/lng dans la publication."
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid ""
+"If your post/record is not displayed, please check the query settings and "
+"the lat/lng fields inside the post/record itself."
+msgstr ""
+"Si votre publication ne s'affiche pas, veuillez vérifier les paramètres de "
+"requête et les champs lat/lng dans la publication."
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Query settings applied"
+msgstr "Paramètres de requête appliqués"
+
+#: build/blocks/mappps-blocks/assets/index.js:5
+msgid "Apply query settings"
+msgstr "Appliquer les paramètres de requête"
+
+#. translators: Label for ordering posts by ascending menu order.
+#: build/blocks/mappps-blocks/assets/index.js:11
+msgid "Ascending by order"
+msgstr "Ordre croissant"
+
+#. translators: Label for ordering posts by descending menu order.
+#: build/blocks/mappps-blocks/assets/index.js:13
+msgid "Descending by order"
+msgstr "Ordre décroissant"
+
+#: build/blocks/mappps-blocks/assets/index.js:13
 #: build/blocks/mappps/assets/index.js:1
 msgid "Select the data source of the items to be displayed on the map."
 msgstr ""
 "Sélectionnez la source de données des éléments à afficher sur la carte."
+
+#: build/blocks/mappps-blocks/assets/index.js:13
+#: build/blocks/mappps/assets/index.js:1
+msgid "Data source"
+msgstr "Source de données"
 
 #: build/blocks/mappps-blocks/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
@@ -330,8 +428,60 @@ msgid "Search"
 msgstr "Rechercher"
 
 #: build/blocks/mappps/assets/index.js:1
+msgid "Map marker"
+msgstr "Marqueur"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map selected marker"
+msgstr "Marqueur sélectionné"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map marker cluster"
+msgstr "Agrégation de marqueurs"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map search marker"
+msgstr "Marqueur de recherche"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map geolocation marker"
+msgstr "Marqueur de géolocalisation"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Categories"
+msgstr "Catégories"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "No categories could be recovered."
+msgstr "Aucune catégorie n'a pu être récupérée."
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map + Sidebar"
+msgstr "Carte + Colonne latérale"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Map"
+msgstr "Carte"
+
+#: build/blocks/mappps/assets/index.js:1
 msgid "Display mode"
 msgstr "Mode d'affichage"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Posts"
+msgstr "Articles"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "Confirm selection"
+msgstr "Confirmer la sélection"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "No posts could be recovered."
+msgstr "Aucune publication n'ont pu être récupérées."
+
+#: build/blocks/mappps/assets/index.js:1
+msgid "No taxonomies could be recovered."
+msgstr "Aucunes taxonomies n'ont pu être récupérées."
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "A filter dropdown will be displayed"
@@ -345,7 +495,7 @@ msgstr "Afficher les filtres ?"
 #: build/blocks/search-bar/assets/index.js:1
 msgid "Search results will be limited to the selected posts"
 msgstr ""
-"Les résultats de la recherche seront limités aux publications sélectionnés"
+"Les résultats de la recherche seront limités aux publications sélectionnées"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/search-bar/assets/index.js:1
@@ -366,6 +516,14 @@ msgstr "Les marqueurs ne seront pas agrégés"
 msgid "Marker clustering"
 msgstr "Agrégation de marqueurs"
 
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Markers will have a shadow beneath them"
+msgstr "Les marqueurs auront une ombre en-dessous d'eux"
+
+#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+msgid "Marker shadow"
+msgstr "Ombre du marqueur"
+
 #: build/blocks/mappps/assets/index.js:1
 msgid "A search bar will be displayed"
 msgstr "Une barre de recherche sera affichée"
@@ -384,19 +542,19 @@ msgstr ""
 msgid "Sticky first"
 msgstr "Publications épinglées en premier"
 
-#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
 msgid "The displayed sizes of the cluster icons"
 msgstr "Taille affichée des icônes agrégées"
 
-#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
 msgid "Cluster icon size"
 msgstr "Taille d'icône agrégée"
 
-#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
 msgid "The displayed sizes of the marker icons"
 msgstr "Taille affichée des icônes de marqueurs"
 
-#: build/blocks/mappps/assets/index.js:1 build/blocks/markers/assets/index.js:1
+#: build/blocks/mappps/assets/index.js:1
 msgid "Marker icon size"
 msgstr "Taille de l'icône de marqueur"
 
@@ -405,7 +563,7 @@ msgstr "Taille de l'icône de marqueur"
 msgid "Desktop only, set the maximum size for the details popup"
 msgstr ""
 "Réglage pour ordinateur seulement, définissez la taille maximum de la "
-"fenêtre surgissante des informations"
+"fenêtre surgissante d'information"
 
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -428,41 +586,77 @@ msgstr "Réglages de la carte"
 msgid "Sidebar settings"
 msgstr "Réglages de la barre latérale"
 
-#: build/blocks/markers/assets/index.js:1
-msgid "Marker"
-msgstr "Marqueur"
+#: build/blocks/mappps/assets/index.js:1
+msgid "No post types could be recovered."
+msgstr "Aucun type de publication n'a pu être récupéré."
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Selected marker"
-msgstr "Marqueur sélectionné"
+msgid "Select a picture"
+msgstr "Selectionner une image"
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Marker cluster"
-msgstr "Agrégation de marqueurs"
+msgid "Icon"
+msgstr "Icône"
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Search marker"
-msgstr "Marqueur de recherche"
+msgid "Select"
+msgstr "Sélectionner"
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Geolocation marker"
-msgstr "Marqueur de géolocalisation"
+msgid "Remove picture"
+msgstr "Supprimer l'image"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Markers will be clustered"
 msgstr "Les marqueurs seront agrégés"
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Markers will have a shadow beneath them"
-msgstr "Les marqueurs auront une ombre en dessous d'eux"
+msgid "The displayed sizes of the icons"
+msgstr "Taille affichée des icônes de marqueurs"
 
 #: build/blocks/markers/assets/index.js:1
-msgid "Marker shadow"
-msgstr "Ombre du marqueur"
+msgid "Icon size"
+msgstr "Taille de l'icône"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Global settings"
+msgstr "Réglages globaux"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker settings"
+msgstr "Réglages du marqueur"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Color"
+msgstr "Couleur"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker cluster settings"
+msgstr "Réglages de l'agrégation de marqueurs"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Cluster color"
+msgstr "Couleur des marqueurs agrégés"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Cluster text color"
+msgstr "Couleur du texte de l'agrégation de marqueurs"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker geolocation settings"
+msgstr "Réglages du marqueur de géolocalisation"
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Marker search settings"
+msgstr "Réglages du marqueur de recherche"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "Read more"
 msgstr "En savoir plus"
+
+#: build/blocks/post-template/assets/index.js:1
+msgid "Hover"
+msgstr "Survol"
 
 #: build/index.js:1
 msgid "Getting Started with the Mappps Plugin"
@@ -671,7 +865,7 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Go to \"Field groups\" and add a new one:"
-msgstr "Allez dans \"Groupe de champs\" et créez en un nouveau :"
+msgstr "Allez dans \"Groupe de champs\" et créez-en un nouveau :"
 
 #: build/index.js:1
 msgid ""
@@ -766,156 +960,122 @@ msgstr ""
 msgid "Submit an issue"
 msgstr "Envoyer un bug"
 
-#: build/blocks/filters-toggle/block.json
-msgctxt "block title"
-msgid "Filters toggle"
-msgstr "Permutateur des filtres"
+#~ msgctxt "block title"
+#~ msgid "Filters toggle"
+#~ msgstr "Permutateur des filtres"
 
-#: build/blocks/filters-toggle/block.json
-msgctxt "block description"
-msgid "The button that'wll open/close the filters."
-msgstr "Le bouton qui ouvrira/fermera les filtres."
+#~ msgctxt "block description"
+#~ msgid "The button that'wll open/close the filters."
+#~ msgstr "Le bouton qui ouvrira/fermera les filtres."
 
-#: build/blocks/filters/block.json
-msgctxt "block title"
-msgid "Filters"
-msgstr "Filtres"
+#~ msgctxt "block title"
+#~ msgid "Filters"
+#~ msgstr "Filtres"
 
-#: build/blocks/filters/block.json
-msgctxt "block description"
-msgid "Contains the filters."
-msgstr "Contient les filtres."
+#~ msgctxt "block description"
+#~ msgid "Contains the filters."
+#~ msgstr "Contient les filtres."
 
-#: build/blocks/loader/block.json
-msgctxt "block title"
-msgid "Loader"
-msgstr "Icône de chargement"
+#~ msgctxt "block title"
+#~ msgid "Loader"
+#~ msgstr "Icône de chargement"
 
-#: build/blocks/loader/block.json
-msgctxt "block description"
-msgid "Contains the global loader."
-msgstr "Contient l'icône de chargement principale."
+#~ msgctxt "block description"
+#~ msgid "Contains the global loader."
+#~ msgstr "Contient l'icône de chargement principale."
 
-#: build/blocks/map/block.json
-msgctxt "block title"
-msgid "Map"
-msgstr "Carte"
+#~ msgctxt "block description"
+#~ msgid "Contains the map."
+#~ msgstr "Contient la carte."
 
-#: build/blocks/map/block.json
-msgctxt "block description"
-msgid "Contains the map."
-msgstr "Contient la carte."
+#~ msgctxt "block title"
+#~ msgid "Mappps (blocks)"
+#~ msgstr "Mappps - (version blocs)"
 
-#: build/blocks/mappps-blocks/block.json
-msgctxt "block title"
-msgid "Mappps (blocks)"
-msgstr "Mappps - (version blocs)"
+#~ msgctxt "block description"
+#~ msgid "A bloc that display maps"
+#~ msgstr "Un bloc pour afficher des cartes"
 
-#: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
-msgctxt "block description"
-msgid "A bloc that display maps"
-msgstr "Un bloc pour afficher des cartes"
+#~ msgctxt "block keyword"
+#~ msgid "mppps"
+#~ msgstr "mppps"
 
-#: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "mppps"
-msgstr "mppps"
+#~ msgctxt "block keyword"
+#~ msgid "maps"
+#~ msgstr "cartes"
 
-#: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "maps"
-msgstr "cartes"
+#~ msgctxt "block keyword"
+#~ msgid "leaflet"
+#~ msgstr "leaflet"
 
-#: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "leaflet"
-msgstr "leaflet"
+#~ msgctxt "block keyword"
+#~ msgid "mappps"
+#~ msgstr "mappps"
 
-#: build/blocks/mappps-blocks/block.json build/blocks/mappps/block.json
-msgctxt "block keyword"
-msgid "mappps"
-msgstr "mappps"
+#~ msgctxt "block title"
+#~ msgid "Mappps"
+#~ msgstr "Mappps"
 
-#: build/blocks/mappps/block.json
-msgctxt "block title"
-msgid "Mappps"
-msgstr "Mappps"
+#~ msgctxt "block title"
+#~ msgid "Markers"
+#~ msgstr "Marqueurs"
 
-#: build/blocks/markers/block.json
-msgctxt "block title"
-msgid "Markers"
-msgstr "Marqueurs"
+#~ msgctxt "block description"
+#~ msgid "Customize the map's markers."
+#~ msgstr "Personnaliser les marqueurs de la carte."
 
-#: build/blocks/markers/block.json
-msgctxt "block description"
-msgid "Customize the map's markers."
-msgstr "Personnaliser les marqueurs de la carte."
+#~ msgctxt "block title"
+#~ msgid "Mobile toggles"
+#~ msgstr "Permutateurs pour mobile"
 
-#: build/blocks/mobile-toggles/block.json
-msgctxt "block title"
-msgid "Mobile toggles"
-msgstr "Permutateurs pour mobile"
+#~ msgctxt "block description"
+#~ msgid "Contains mobile toggles buttons."
+#~ msgstr "Contient les boutons de permutations pour mobile."
 
-#: build/blocks/mobile-toggles/block.json
-msgctxt "block description"
-msgid "Contains mobile toggles buttons."
-msgstr "Contient les boutons de permutations pour mobile."
+#~ msgctxt "block title"
+#~ msgid "Post Details"
+#~ msgstr "Informations de la publication"
 
-#: build/blocks/post-details/block.json
-msgctxt "block title"
-msgid "Post Details"
-msgstr "Informations de la publication"
+#~ msgctxt "block description"
+#~ msgid ""
+#~ "Contains the block elements used to render more details from a post, like "
+#~ "the title, date, featured image, content or excerpt, and more."
+#~ msgstr ""
+#~ "Contient les éléments du bloc utilisés pour afficher les informations de "
+#~ "la publication, comme le titre, la date, l'image mise en avant, le "
+#~ "contenu ou l'extrait de la publication etc."
 
-#: build/blocks/post-details/block.json
-msgctxt "block description"
-msgid ""
-"Contains the block elements used to render more details from a post, like "
-"the title, date, featured image, content or excerpt, and more."
-msgstr ""
-"Contient les éléments du bloc utilisés pour afficher les informations de la "
-"publication, comme le titre, la date, l'image mise en avant, le contenu ou "
-"l'extrait de la publication etc."
+#~ msgctxt "block title"
+#~ msgid "Post Template"
+#~ msgstr "Modèle de publication"
 
-#: build/blocks/post-template/block.json
-msgctxt "block title"
-msgid "Post Template"
-msgstr "Modèle de publication"
+#~ msgctxt "block description"
+#~ msgid ""
+#~ "Contains the block elements used to render a post, like the title, date, "
+#~ "featured image, content or excerpt, and more. For better preview "
+#~ "performances only 2 posts will be displayed here"
+#~ msgstr ""
+#~ "Contient les éléments du bloc utilisés pour afficher les informations de "
+#~ "la publication, comme le titre, la date, l'image mise en avant, le "
+#~ "contenu ou l'extrait de la publication etc. Pour de meilleures "
+#~ "performances de prévisualisation, 2 publications seulement seront "
+#~ "affichées ici"
 
-#: build/blocks/post-template/block.json
-msgctxt "block description"
-msgid ""
-"Contains the block elements used to render a post, like the title, date, "
-"featured image, content or excerpt, and more. For better preview "
-"performances only 2 posts will be displayed here"
-msgstr ""
-"Contient les éléments du bloc utilisés pour afficher les informations de la "
-"publication, comme le titre, la date, l'image mise en avant, le contenu ou "
-"l'extrait de la publication etc. Pour de meilleures performances de "
-"prévisualisation, 2 publications seulement seront affichées ici"
+#~ msgctxt "block title"
+#~ msgid "Search bar"
+#~ msgstr "Barre de recherche"
 
-#: build/blocks/search-bar/block.json
-msgctxt "block title"
-msgid "Search bar"
-msgstr "Barre de recherche"
+#~ msgctxt "block description"
+#~ msgid "Contains search bar."
+#~ msgstr "Contient la barre de recherche."
 
-#: build/blocks/search-bar/block.json
-msgctxt "block description"
-msgid "Contains search bar."
-msgstr "Contient la barre de recherche."
-
-#: build/blocks/sidebar/block.json
-msgctxt "block title"
-msgid "Sidebar"
-msgstr "Colonne latérale"
-
-#: build/blocks/sidebar/block.json
-msgctxt "block description"
-msgid ""
-"Contains the block elements used to render the sidebar, like the posts, "
-"search bar, title, and filters."
-msgstr ""
-"Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
-"comme les publications, la barre de recherche, le titre et les filtres."
+#~ msgctxt "block description"
+#~ msgid ""
+#~ "Contains the block elements used to render the sidebar, like the posts, "
+#~ "search bar, title, and filters."
+#~ msgstr ""
+#~ "Contient les éléments du bloc utilisés pour afficher la colonne latérale, "
+#~ "comme les publications, la barre de recherche, le titre et les filtres."
 
 #~ msgid "Nope."
 #~ msgstr "Non."
@@ -997,8 +1157,3 @@ msgstr ""
 #~ msgstr ""
 #~ "Oui, vous pouvez personnaliser la couleur et la taille du marqueur dans "
 #~ "\"Réglages du bloc\" > \"Réglages d'affichage\"."
-
-#, fuzzy
-#~| msgid "Map settings"
-#~ msgid "Block settings"
-#~ msgstr "Réglages de la carte"

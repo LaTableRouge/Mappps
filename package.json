@@ -1,392 +1,163 @@
 {
-  "name": "mappps",
-  "version": "1.4.0",
-  "description": "A plugin that display maps",
-  "main": "index.js",
-  "keywords": [
-    "Wordpress plugin",
-    "Gutenberg blocks",
-    "leaflet",
-    "maps",
-    "openstreetmap"
-  ],
-  "author": "LaTableRouge",
-  "license": "GNU GENERAL PUBLIC LICENSE",
-  "repository": {
-    "url": "https://github.com/LaTableRouge/Mappps"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "wp-scripts start",
-    "build": "wp-scripts build",
-    "watch:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
-    "build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
-    "lint:scss": "npx stylelint --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
-    "prettier:scss": "npx prettier --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
-    "lint:js": "npx eslint --no-error-on-unmatched-pattern --fix {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
-    "prettier:js": "npx prettier --no-error-on-unmatched-pattern --write {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
-    "beautify:all": "npm run prettier:scss && npm run lint:scss && npm run prettier:js && npm run lint:js && composer prettier:php && composer lint:php",
-    "plugin-zip": "wp-scripts plugin-zip",
-    "prepare": "husky install && composer install && npm run build && npm run build:blocks"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.8.0",
-    "@commitlint/config-conventional": "^19.8.0",
-    "@wordpress/scripts": "^30.13.0",
-    "browserslist": "^4.24.4",
-    "eslint": "^8.57.1",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-import": "^2.29.0",
-    "eslint-plugin-n": "^16.2.0",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.34.3",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-sort-destructure-keys": "^2.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "git-precommit-checks": "^3.1.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.0",
-    "prettier": "^3.5.3",
-    "sass": "^1.85.1",
-    "sass-loader": "^16.0.5",
-    "stylelint": "^16.16.0",
-    "stylelint-config-property-sort-order-smacss": "^10.0.0",
-    "stylelint-config-sass-guidelines": "^12.1.0",
-    "stylelint-config-standard": "^37.0.0",
-    "stylelint-order": "^6.0.4",
-    "validate-branch-name": "^1.3.2"
-  },
-  "dependencies": {
-    "@react-leaflet/core": "^2.1.0",
-    "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.2",
-    "leaflet-fullscreen": "^1.0.2",
-    "leaflet-geosearch": "^4.0.0",
-    "leaflet-gesture-handling": "^1.2.2",
-    "react-leaflet": "^4.2.1"
-  },
-  "files": [
-    "mappps.php",
-    "lang/",
-    "build/",
-    "includes/",
-    "license.txt",
-    "readme.txt"
-  ],
-  "lint-staged": {
-    "**/*.php": [
-      "composer lint-staged:php"
-    ],
-    "{blocks/**/*.scss,src/**/*.scss}": [
-      "npx stylelint --allow-empty-input --fix",
-      "npx prettier --no-error-on-unmatched-pattern --write",
-      "npx stylelint --allow-empty-input --fix"
-    ],
-    "{src/**/*.{js,jsx,ts,tsx},blocks/**/*.{js,jsx,ts,tsx}}": [
-      "npx prettier --no-error-on-unmatched-pattern --write",
-      "npx eslint --no-error-on-unmatched-pattern --fix"
-    ]
-  },
-  "validate-branch-name": {
-    "pattern": "^(main|master|srv/dev|srv/pre)$|^(feature|fix|hotfix|experimental|minor|major|release)/.+$",
-    "errorMsg": "🤨 The branch you're trying to push doesn't respect our conventions, you can rename it with `git branch -m <current-name> <new-name>`"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "type-enum": [
-        2,
-        "always",
-        [
-          "build",
-          "chore",
-          "docs",
-          "feat",
-          "fix",
-          "refactor",
-          "revert",
-          "style",
-          "wordpress",
-          "wp"
-        ]
-      ]
-    }
-  },
-  "git-precommit-checks": {
-    "display": {
-      "notifications": true,
-      "offendingContent": true,
-      "rulesSummary": false,
-      "shortStats": true,
-      "verbose": false
-    },
-    "rules": [
-      {
-        "message": "Have you forgotten to finish some tasks?",
-        "nonBlocking": true,
-        "regex": "/(?:FIXME|TODO)/"
-      },
-      {
-        "message": "You have conflict markers lying around",
-        "regex": "/^[<>|=]{4,}/m"
-      },
-      {
-        "message": "Commit stopped: you've entered information that must not be committed!",
-        "regex": "/do not commit/i"
-      },
-      {
-        "filter": "/\\.js$/",
-        "message": "🤔 Hum! Didn't you forget to remove from \"console.log(...)\"?",
-        "nonBlocking": true,
-        "regex": "/^\\s*console\\.log/"
-      }
-    ]
-  },
-  "browserslist": [
-    "last 2 version"
-  ],
-  "prettier": {
-    "trailingComma": "none",
-    "printWidth": 180,
-    "tabWidth": 2,
-    "singleQuote": true,
-    "semi": false,
-    "bracketSpacing": true
-  },
-  "prettierIgnore": [],
-  "stylelint": {
-    "extends": [
-      "stylelint-config-property-sort-order-smacss",
-      "stylelint-config-sass-guidelines"
-    ],
-    "plugins": [
-      "stylelint-order"
-    ],
-    "rules": {
-      "at-rule-empty-line-before": [
-        "always",
-        {
-          "except": [
-            "blockless-after-same-name-blockless"
-          ],
-          "ignore": [
-            "after-comment",
-            "first-nested"
-          ],
-          "ignoreAtRules": [
-            "else",
-            "if"
-          ],
-          "severity": "warning"
-        }
-      ],
-      "block-no-empty": true,
-      "color-named": null,
-      "custom-property-empty-line-before": [
-        "always",
-        {
-          "except": [
-            "after-custom-property"
-          ],
-          "ignore": [
-            "after-comment",
-            "first-nested",
-            "inside-single-line-block"
-          ],
-          "severity": "warning"
-        }
-      ],
-      "declaration-empty-line-before": [
-        "always",
-        {
-          "except": [
-            "after-declaration"
-          ],
-          "ignore": [
-            "after-comment",
-            "first-nested",
-            "inside-single-line-block"
-          ],
-          "severity": "warning"
-        }
-      ],
-      "declaration-no-important": [
-        true,
-        {
-          "message": "Do you really need this to be important ? 🤔",
-          "severity": "warning"
-        }
-      ],
-      "declaration-property-value-disallowed-list": null,
-      "max-nesting-depth": null,
-      "order/properties-alphabetical-order": null,
-      "order/order": [
-        "dollar-variables",
-        "custom-properties",
-        "declarations",
-        "at-rules",
-        "rules"
-      ],
-      "property-no-unknown": null,
-      "property-no-vendor-prefix": null,
-      "rule-empty-line-before": [
-        "always",
-        {
-          "ignore": [
-            "after-comment",
-            "first-nested"
-          ],
-          "severity": "warning"
-        }
-      ],
-      "scss/at-extend-no-missing-placeholder": null,
-      "scss/at-function-pattern": null,
-      "scss/at-import-partial-extension-blacklist": null,
-      "scss/at-mixin-pattern": null,
-      "scss/dollar-variable-pattern": null,
-      "scss/no-global-function-names": null,
-      "scss/percent-placeholder-pattern": null,
-      "scss/selector-no-redundant-nesting-selector": null,
-      "selector-class-pattern": null,
-      "selector-disallowed-list": [
-        "/\\*/",
-        {
-          "message": "The universal selector (*) is known to be slow 🦥",
-          "severity": "warning"
-        }
-      ],
-      "selector-max-compound-selectors": null,
-      "selector-max-id": null,
-      "selector-no-qualifying-type": null,
-      "shorthand-property-no-redundant-values": null,
-      "value-no-vendor-prefix": null
-    },
-    "ignoreFiles": [
-      "src/**/abstracts/**/*.scss",
-      "assets/**/abstracts/**/*.scss"
-    ]
-  },
-  "stylelintIgnore": [
-    "src/**/abstracts/**/*.scss",
-    "assets/**/abstracts/**/*.scss"
-  ],
-  "tsconfig": {
-    "compilerOptions": {
-      "target": "ES2015",
-      "module": "ESNext",
-      "moduleResolution": "node",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true,
-      "jsx": "react-jsx",
-      "types": [
-        "react",
-        "react-dom"
-      ],
-      "baseUrl": ".",
-      "paths": {
-        "@/*": [
-          "src/*",
-          "blocks/*"
-        ]
-      }
-    },
-    "include": [
-      "**/*.ts",
-      "**/*.tsx"
-    ],
-    "exclude": [
-      "node_modules"
-    ]
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true
-    },
-    "extends": [
-      "standard",
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended"
-    ],
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true,
-        "ts": true,
-        "tsx": true
-      },
-      "sourceType": "module"
-    },
-    "globals": {
-      "wp": true,
-      "jQuery": true,
-      "block_params": true,
-      "plugin_params": true,
-      "fw_data": true
-    },
-    "plugins": [
-      "react",
-      "unused-imports",
-      "simple-import-sort",
-      "sort-destructure-keys",
-      "@typescript-eslint"
-    ],
-    "rules": {
-      "object-shorthand": 0,
-      "space-before-function-paren": "off",
-      "comma-dangle": [
-        "error",
-        "only-multiline"
-      ],
-      "generator-star-spacing": [
-        "error",
-        {
-          "before": false,
-          "after": true
-        }
-      ],
-      "unused-imports/no-unused-imports": "warn",
-      "simple-import-sort/imports": "error",
-      "simple-import-sort/exports": "error",
-      "no-console": "warn",
-      "operator-linebreak": [
-        "error",
-        "before"
-      ],
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-      "react/jsx-sort-props": [
-        1,
-        {
-          "ignoreCase": true,
-          "callbacksLast": true,
-          "shorthandFirst": true,
-          "multiline": "ignore",
-          "reservedFirst": true
-        }
-      ],
-      "sort-destructure-keys/sort-destructure-keys": [
-        2,
-        {
-          "caseSensitive": false
-        }
-      ]
-    }
-  },
-  "eslintIgnore": [
-    "build/"
-  ]
+	"name": "mappps",
+	"version": "1.5.0",
+	"description": "A plugin that display maps",
+	"main": "index.js",
+	"keywords": [
+		"Wordpress plugin",
+		"Gutenberg blocks",
+		"leaflet",
+		"maps",
+		"openstreetmap"
+	],
+	"author": "LaTableRouge",
+	"license": "GNU GENERAL PUBLIC LICENSE",
+	"repository": {
+		"url": "https://github.com/LaTableRouge/Mappps"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"watch": "wp-scripts start",
+		"build": "wp-scripts build",
+		"watch:blocks": "wp-scripts start --webpack-src-dir=blocks --output-path=build/blocks",
+		"build:blocks": "wp-scripts build --webpack-src-dir=blocks --output-path=build/blocks",
+		"lint:scss": "npx stylelint --config linters/stylelint.config.js --allow-empty-input --fix {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
+		"prettier:scss": "npx prettier --config linters/prettier.config.js --no-error-on-unmatched-pattern --write {src/styles/**,blocks/**/assets/styles/**,src/styles,blocks/**/assets/styles}/*.scss",
+		"lint:js": "npx eslint --config linters/eslint.config.js --no-error-on-unmatched-pattern --fix {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
+		"prettier:js": "npx prettier --config linters/prettier.config.js --no-error-on-unmatched-pattern --write {src/helpers/scripts/**,src/scripts/**,blocks/**/assets/scripts/**,src,src/scripts,blocks/**/assets/scripts}/*.{js,jsx,ts,tsx}",
+		"prettier:json": "npx prettier --config linters/prettier.config.js --ignore-path linters/.prettierignore --no-error-on-unmatched-pattern --write {composer.json,package.json,blocks/**/*.json,acf-json/**/*.json}",
+		"lint:md": "npx markdownlint-cli2 --config linters/.markdownlint.json --fix */**/*.md !**/node_modules/** !**/vendor/**",
+		"beautify:all": "npm run prettier:scss && npm run lint:scss && npm run prettier:js && npm run lint:js && npm run prettier:json && npm run lint:md && composer prettier:php && composer lint:php",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"prepare": "husky install && composer install && npm run build && npm run build:blocks"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
+		"@wordpress/scripts": "^30.20.0",
+		"browserslist": "^4.25.1",
+		"copy-webpack-plugin": "^13.0.0",
+		"git-precommit-checks": "^3.1.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.5.0",
+		"validate-branch-name": "^1.3.2",
+		"eslint": "^9.32.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-import": "^2.32.0",
+		"eslint-plugin-n": "^17.21.3",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^5.5.3",
+		"eslint-plugin-promise": "^7.2.1",
+		"eslint-plugin-react": "^7.37.5",
+		"eslint-plugin-simple-import-sort": "^12.1.1",
+		"eslint-plugin-sort-destructure-keys": "^2.0.0",
+		"eslint-plugin-unused-imports": "^4.1.4",
+		"globals": "^16.3.0",
+		"markdownlint-cli2": "^0.18.1",
+		"prettier": "^3.6.2",
+		"sass": "^1.89.2",
+		"sass-loader": "^16.0.5",
+		"stylelint": "^16.22.0",
+		"stylelint-config-property-sort-order-smacss": "^10.0.0",
+		"stylelint-config-sass-guidelines": "^12.1.0",
+		"stylelint-config-standard": "^38.0.0",
+		"stylelint-order": "^7.0.0"
+	},
+	"dependencies": {
+		"@react-leaflet/core": "^2.1.0",
+		"leaflet": "^1.9.4",
+		"leaflet-defaulticon-compatibility": "^0.1.2",
+		"leaflet-fullscreen": "^1.0.2",
+		"leaflet-geosearch": "^4.0.0",
+		"leaflet-gesture-handling": "^1.2.2",
+		"react-leaflet": "^4.2.1"
+	},
+	"files": [
+		"mappps.php",
+		"lang/",
+		"build/",
+		"includes/",
+		"license.txt",
+		"readme.txt"
+	],
+	"lint-staged": {
+		"**/*.php": [
+			"composer lint-staged:php"
+		],
+		"{blocks/**/*.scss,src/**/*.scss}": [
+			"npx stylelint --config linters/stylelint.config.js --allow-empty-input --fix",
+			"npx prettier --config linters/prettier.config.js --no-error-on-unmatched-pattern --write",
+			"npx stylelint --config linters/stylelint.config.js --allow-empty-input --fix"
+		],
+		"{src/**/*.{js,jsx,ts,tsx},blocks/**/*.{js,jsx,ts,tsx}}": [
+			"npx prettier --config linters/prettier.config.js --no-error-on-unmatched-pattern --write",
+			"npx eslint --config linters/eslint.config.js --no-error-on-unmatched-pattern --fix"
+		],
+		"**/*.json": [
+			"npx prettier --config linters/prettier.config.js --ignore-path linters/.prettierignore --no-error-on-unmatched-pattern --write"
+		],
+		"**/*.md": [
+			"npx markdownlint-cli2 --config linters/.markdownlint.json --fix"
+		]
+	},
+	"validate-branch-name": {
+		"pattern": "^(main|master|srv/dev|srv/pre)$|^(feature|fix|hotfix|experimental|minor|major|release)/.+$",
+		"errorMsg": "🤨 The branch you're trying to push doesn't respect our conventions, you can rename it with `git branch -m <current-name> <new-name>`"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		],
+		"rules": {
+			"type-enum": [
+				2,
+				"always",
+				[
+					"build",
+					"chore",
+					"docs",
+					"feat",
+					"fix",
+					"refactor",
+					"revert",
+					"style",
+					"wordpress",
+					"wp"
+				]
+			]
+		}
+	},
+	"git-precommit-checks": {
+		"display": {
+			"notifications": true,
+			"offendingContent": true,
+			"rulesSummary": false,
+			"shortStats": true,
+			"verbose": false
+		},
+		"rules": [
+			{
+				"message": "Have you forgotten to finish some tasks?",
+				"nonBlocking": true,
+				"regex": "/(?:FIXME|TODO)/"
+			},
+			{
+				"message": "You have conflict markers lying around",
+				"regex": "/^[<>|=]{4,}/m"
+			},
+			{
+				"message": "Commit stopped: you've entered information that must not be committed!",
+				"regex": "/do not commit/i"
+			},
+			{
+				"filter": "/\\.js$/",
+				"message": "🤔 Hum! Didn't you forget to remove from \"console.log(...)\"?",
+				"nonBlocking": true,
+				"regex": "/^\\s*console\\.log/"
+			}
+		]
+	},
+	"browserslist": [
+		"last 2 version"
+	]
 }

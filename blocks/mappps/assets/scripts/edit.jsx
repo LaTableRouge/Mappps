@@ -10,36 +10,36 @@ import AlterBlockProps from './utils/AlterBlockProps'
 import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, isSelected, setAttributes }) {
-  // ---------- attributes are the states stored by Wordpress
-  // They are defined in the block.json
-  // ----------
+	// ---------- attributes are the states stored by Wordpress
+	// They are defined in the block.json
+	// ----------
 
-  // ---------- BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
-  const blockProps = useBlockProps()
-  // ----------
+	// ---------- BlockProps are the data that will be inserted into the main html tag of the block (style, data-attr, etc...)
+	const blockProps = useBlockProps()
+	// ----------
 
-  // ----------States that aren't stored by Wordrpess
-  // They are only usefull for the preview
-  const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
-  // ----------
+	// ----------States that aren't stored by Wordrpess
+	// They are only usefull for the preview
+	const [queriedPosts, setQueriedPosts] = useState([]) // all posts fetched by the query
+	// ----------
 
-  // ---------- Other variables
-  const postTypes = GetPostTypes()
-  // ----------
+	// ---------- Other variables
+	const postTypes = GetPostTypes()
+	// ----------
 
-  if (attributes.selectedPosts.length) {
-    return (
-      <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} postTypes={postTypes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+	if (attributes.selectedPosts.length) {
+		return (
+			<section {...AlterBlockProps(blockProps, attributes)}>
+				<Controls attributes={attributes} postTypes={postTypes} queriedPosts={queriedPosts} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
-        <Main attributes={attributes} inEditor={true} isSelected={isSelected} queriedPosts={queriedPosts} />
-      </section>
-    )
-  } else {
-    return (
-      <section {...AlterBlockProps(blockProps, attributes)}>
-        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-      </section>
-    )
-  }
+				<Main attributes={attributes} inEditor={true} isSelected={isSelected} queriedPosts={queriedPosts} />
+			</section>
+		)
+	} else {
+		return (
+			<section {...AlterBlockProps(blockProps, attributes)}>
+				<Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
+			</section>
+		)
+	}
 }

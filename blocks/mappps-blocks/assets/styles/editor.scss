@@ -5,6 +5,28 @@
 @use '/src/helpers/styles/abstracts/mixins';
 @use '/src/helpers/styles/abstracts/responsive' as *;
 
+.mappps-query-confirm-container {
+  .components-notice {
+    position: relative;
+    margin-bottom: 1rem;
+    margin-inline: 1rem;
+    text-align: start;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      opacity: 0.1;
+      background-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9));
+      inset: 0;
+    }
+
+    p:nth-last-child(2) {
+      margin: 0;
+    }
+  }
+}
+
 .wp-block-mppps-mappps-blocks {
   --mobile-height: 750px;
 

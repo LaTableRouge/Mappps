@@ -4,22 +4,22 @@ import GlobalStateEventsHandler from '../../../../src/helpers/scripts/GlobalStat
 import Search from './components/Search'
 
 function Main({ attributes, blockId }) {
-  const [selectedSearchResult, setSelectedSearchResult] = useState({})
-  const [searchValue, setSearchValue] = useState('')
-  const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(true)
+	const [selectedSearchResult, setSelectedSearchResult] = useState({})
+	const [searchValue, setSearchValue] = useState('')
+	const [mobileIsMapDisplayed, setMobileIsMapDisplayed] = useState(true)
 
-  GlobalStateEventsHandler(blockId, selectedSearchResult, setSelectedSearchResult, 'selectedSearchResult')
-  GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
-  GlobalStateEventsHandler(blockId, mobileIsMapDisplayed, setMobileIsMapDisplayed, 'mobileIsMapDisplayed')
+	GlobalStateEventsHandler(blockId, selectedSearchResult, setSelectedSearchResult, 'selectedSearchResult')
+	GlobalStateEventsHandler(blockId, searchValue, setSearchValue, 'searchValue')
+	GlobalStateEventsHandler(blockId, mobileIsMapDisplayed, setMobileIsMapDisplayed, 'mobileIsMapDisplayed')
 
-  return (
-    <Search
-      limitedSearch={attributes.limitedSearch}
-      setMobileIsMapDisplayed={setMobileIsMapDisplayed}
-      setSearchValue={setSearchValue}
-      setSelectedSearchResult={setSelectedSearchResult}
-    />
-  )
+	return (
+		<Search
+			limitedSearch={attributes.limitedSearch}
+			setMobileIsMapDisplayed={setMobileIsMapDisplayed}
+			setSearchValue={setSearchValue}
+			setSelectedSearchResult={setSelectedSearchResult}
+		/>
+	)
 }
 
 export default memo(Main)

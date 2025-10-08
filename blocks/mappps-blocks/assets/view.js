@@ -5,7 +5,6 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import '../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 import './styles/view.scss'
 
-import { sortStickyPosts } from '../../../src/helpers/scripts/functions'
 import Filters from './scripts/components/view/filters'
 import FiltersToggle from './scripts/components/view/filters-toggle'
 import Loader from './scripts/components/view/loader'
@@ -16,92 +15,104 @@ import PostTemplate from './scripts/components/view/post-template'
 import SearchBar from './scripts/components/view/search-bar'
 
 window.addEventListener('DOMContentLoaded', () => {
-  const blocks = document.querySelectorAll('.wp-block-mppps-mappps-blocks:not(.is-init)')
-  if (blocks.length) {
-    blocks.forEach((parentBlock) => {
-      parentBlock.classList.add('is-init')
+	const blocks = document.querySelectorAll('.wp-block-mppps-mappps-blocks:not(.is-init)')
+	if (blocks.length) {
+		blocks.forEach((parentBlock) => {
+			parentBlock.classList.add('is-init')
 
-      const attributes = JSON.parse(parentBlock.dataset.attributes)
-      const blockId = attributes.blockId
-      const postIDs = attributes.selectedPosts
-      const restNamespace = attributes.postTypeRestNamespace
-      const restBase = attributes.postTypeRestBase
-      const putStickyFirst = attributes.putStickyFirst
+			const attributes = JSON.parse(parentBlock.dataset.attributes)
+			const blockId = attributes.blockId
+			const postIDs = attributes.selectedPosts
+			const restNamespace = attributes.postTypeRestNamespace
+			const restBase = attributes.postTypeRestBase
+			const stickyParams = attributes.stickyParams
+			const order = attributes.orderParams || 'desc'
+			const orderBy = attributes.orderByParams || 'date'
+			const stickyObject = {
+				sticky: false,
+				ignore_sticky: false
+			}
+			if (stickyParams === 'ignore') {
+				delete stickyObject.sticky
+				stickyObject.ignore_sticky = true
+			} else {
+				delete stickyObject.ignore_sticky
+				stickyObject.sticky = stickyParams === 'only'
+			}
 
-      if (postIDs.length && restBase && restNamespace) {
-        const args = {
-          per_page: postIDs.length,
-          include: postIDs,
-          _embed: ''
-        }
+			if (postIDs.length && restBase && restNamespace) {
+				const args = {
+					per_page: postIDs.length,
+					include: postIDs,
+					_embed: '',
+					order: order,
+					orderby: orderBy,
+					...stickyObject
+				}
 
-        fetch(`${fw_data.rest_url}${restNamespace}/${restBase}?${new URLSearchParams(args)}`).then(async (response) => {
-          response = await response.json()
+				fetch(`${fw_data.rest_url}${restNamespace}/${restBase}?${new URLSearchParams(args)}`).then(async (response) => {
+					response = await response.json()
 
-          if (response.length) {
-            // Put ACF/SCF coordinates fields in the corresponding meta fields
-            let records = response.map((record) => {
-              if ('acf' in record) {
-                if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
-                  record.meta.lat = Number(record.acf.mappps_lat)
-                  record.meta.lng = Number(record.acf.mappps_lng)
-                }
-              }
+					if (response.length) {
+						// Put ACF/SCF coordinates fields in the corresponding meta fields
+						const records = response.map((record) => {
+							if ('acf' in record) {
+								if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
+									record.meta.lat = Number(record.acf.mappps_lat)
+									record.meta.lng = Number(record.acf.mappps_lng)
+								}
+							}
 
-              return record
-            })
+							return record
+						})
 
-            if (putStickyFirst) {
-              records = sortStickyPosts(records)
-            }
+						const resizeObserver = new ResizeObserver(() => {
+							parentBlock.style.setProperty('--wrapper-height', `${parentBlock.clientHeight}px`)
+						})
+						resizeObserver.observe(parentBlock)
 
-            const resizeObserver = new ResizeObserver(() => {
-              parentBlock.style.setProperty('--wrapper-height', `${parentBlock.clientHeight}px`)
-            })
-            resizeObserver.observe(parentBlock)
+						document.addEventListener('mppps-mobileIsMapDisplayed', async (e) => {
+							await e
+							const details = e.detail
+							if (details.id === blockId) {
+								parentBlock.setAttribute('data-mobile-map-display', details.mobileIsMapDisplayed)
+							}
+						})
 
-            document.addEventListener('mppps-mobileIsMapDisplayed', async (e) => {
-              await e
-              const details = e.detail
-              if (details.id === blockId) {
-                parentBlock.setAttribute('data-mobile-map-display', details.mobileIsMapDisplayed)
-              }
-            })
+						document.addEventListener('mppps-filtersOpen', async (e) => {
+							await e
+							const details = e.detail
+							if (details.id === blockId) {
+								parentBlock.setAttribute('data-filters-open', details.filtersOpen)
+							}
+						})
 
-            document.addEventListener('mppps-filtersOpen', async (e) => {
-              await e
-              const details = e.detail
-              if (details.id === blockId) {
-                parentBlock.setAttribute('data-filters-open', details.filtersOpen)
-              }
-            })
+						// Filters rendering
+						Filters(blockId, parentBlock, records, attributes)
 
-            // Filters rendering
-            Filters(blockId, parentBlock, records, attributes)
+						// Filters toggle rendering
+						FiltersToggle(blockId, parentBlock)
 
-            // Filters toggle rendering
-            FiltersToggle(blockId, parentBlock)
+						// Map rendering
+						Map(blockId, parentBlock, records)
 
-            // Map rendering
-            Map(blockId, parentBlock, records)
+						// SearchBar rendering
+						SearchBar(blockId, parentBlock)
 
-            // SearchBar rendering
-            SearchBar(blockId, parentBlock)
+						// Post Template rendering
+						PostTemplate(blockId, parentBlock, records)
 
-            // Post Template rendering
-            PostTemplate(blockId, parentBlock, records)
+						// Post Details rendering
+						PostDetails(blockId, parentBlock)
 
-            // Post Details rendering
-            PostDetails(blockId, parentBlock)
+						// Post Details rendering
+						MobileToggles(blockId, parentBlock)
 
-            // Post Details rendering
-            MobileToggles(blockId, parentBlock)
-
-            // Loader rendering (!! always in last !!)
-            Loader(parentBlock)
-          }
-        })
-      }
-    })
-  }
+						// Loader rendering (!! always in last !!)
+						Loader(parentBlock)
+					}
+				})
+			}
+		})
+	}
 })

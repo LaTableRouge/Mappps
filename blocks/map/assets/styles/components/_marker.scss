@@ -72,7 +72,7 @@
         top: 40cqw;
         left: 50cqw;
         transform: translate(-50%, -50%);
-        color: var(--color-white);
+        color: var(--color-cluster-text, var(--color-white));
       }
     }
   }

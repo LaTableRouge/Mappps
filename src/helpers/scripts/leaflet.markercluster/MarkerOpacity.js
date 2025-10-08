@@ -9,14 +9,14 @@
 import L from 'leaflet'
 
 L.Marker.include({
-  clusterHide: function () {
-    const backup = this.options.opacity
-    this.setOpacity(0)
-    this.options.opacity = backup
-    return this
-  },
+	clusterHide: function () {
+		const backup = this.options.opacity
+		this.setOpacity(0)
+		this.options.opacity = backup
+		return this
+	},
 
-  clusterShow: function () {
-    return this.setOpacity(this.options.opacity)
-  }
+	clusterShow: function () {
+		return this.setOpacity(this.options.opacity)
+	}
 })

@@ -6,153 +6,153 @@ import { useMap } from 'react-leaflet'
 import { delay } from '../../../../../src/helpers/scripts/functions'
 
 function ChangeView({
-  boundsPadding,
-  canZoomToMarker,
-  isMobileView,
-  markerGeolocation,
-  markerOffset,
-  markers,
-  markerSearch,
-  maxMarkerZoom,
-  refCluster = null,
-  refMarkerGeolocation,
-  refMarkerSearch,
-  refsMarker,
-  selectedPost
+	boundsPadding,
+	canZoomToMarker,
+	isMobileView,
+	markerGeolocation,
+	markerOffset,
+	markers,
+	markerSearch,
+	maxMarkerZoom,
+	refCluster = null,
+	refMarkerGeolocation,
+	refMarkerSearch,
+	refsMarker,
+	selectedPost
 }) {
-  const map = useMap()
+	const map = useMap()
 
-  async function zoomSmoothly(cluster = null, marker = null, popup) {
-    if (cluster && marker) {
-      if (canZoomToMarker) {
-        await cluster.zoomToShowLayer(marker, () => {
-          // Fix the cluster offset, but it's a bit clunky
-          // const cluster = e.cluster
-          // if (cluster) {
-          //   addBoundsOffset(cluster)
-          // }
-        })
+	async function zoomSmoothly(cluster = null, marker = null, popup) {
+		if (cluster && marker) {
+			if (canZoomToMarker) {
+				await cluster.zoomToShowLayer(marker, () => {
+					// Fix the cluster offset, but it's a bit clunky
+					// const cluster = e.cluster
+					// if (cluster) {
+					//   addBoundsOffset(cluster)
+					// }
+				})
 
-        await delay(300)
-      } else {
-        const parentElement = cluster.getVisibleParent(marker)
-        parentElement.spiderfy()
-      }
-    }
-    if (popup) {
-      map.openPopup(popup)
-    }
-  }
+				await delay(300)
+			} else {
+				const parentElement = cluster.getVisibleParent(marker)
+				parentElement.spiderfy()
+			}
+		}
+		if (popup) {
+			map.openPopup(popup)
+		}
+	}
 
-  const addBoundsOffset = (mapElement) => {
-    const zoomLevel = canZoomToMarker ? maxMarkerZoom : map.getZoom()
+	const addBoundsOffset = (mapElement) => {
+		const zoomLevel = canZoomToMarker ? maxMarkerZoom : map.getZoom()
 
-    if (isMobileView) {
-      map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: zoomLevel })
-    } else {
-      map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: zoomLevel })
-    }
-  }
+		if (isMobileView) {
+			map.fitBounds([mapElement.getLatLng()], { paddingBottomRight: [0, markerOffset / 2], maxZoom: zoomLevel })
+		} else {
+			map.fitBounds([mapElement.getLatLng()], { paddingTopLeft: [markerOffset, 0], maxZoom: zoomLevel })
+		}
+	}
 
-  async function openPopup(marker) {
-    await delay(300)
+	async function openPopup(marker) {
+		await delay(300)
 
-    if (marker && marker._popup) {
-      marker.openPopup()
-    }
-  }
+		if (marker && marker._popup) {
+			marker.openPopup()
+		}
+	}
 
-  async function zoomOntoMarker() {
-    await delay(300)
+	async function zoomOntoMarker() {
+		await delay(300)
 
-    refsMarker.current.forEach((markerRef) => {
-      const marker = markerRef.current
-      if (marker) {
-        const popup = marker._popup
-        if (marker.options.data.id === selectedPost.id) {
-          if (refCluster && refCluster.current) {
-            const cluster = refCluster.current
-            const parentElement = cluster.getVisibleParent(marker)
-            if (parentElement) {
-              if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
-                zoomSmoothly(cluster, marker, popup)
-              } else {
-                zoomSmoothly(null, null, popup)
-              }
-            }
-          } else {
-            zoomSmoothly(null, null, popup)
-          }
-        }
-      }
-    })
-  }
+		refsMarker.current.forEach((markerRef) => {
+			const marker = markerRef.current
+			if (marker) {
+				const popup = marker._popup
+				if (marker.options.data.id === selectedPost.id) {
+					if (refCluster && refCluster.current) {
+						const cluster = refCluster.current
+						const parentElement = cluster.getVisibleParent(marker)
+						if (parentElement) {
+							if (!parentElement._preSpiderfyLatlng && parentElement._childCount) {
+								zoomSmoothly(cluster, marker, popup)
+							} else {
+								zoomSmoothly(null, null, popup)
+							}
+						}
+					} else {
+						zoomSmoothly(null, null, popup)
+					}
+				}
+			}
+		})
+	}
 
-  const [bounds, setBounds] = useState(() => {
-    const markerBounds = latLngBounds([])
-    if (markers.length) {
-      markers.forEach((marker) => {
-        if (marker != null) {
-          markerBounds.extend([marker.props.position])
-        }
-      })
-    }
-    return markerBounds
-  })
+	const [bounds, setBounds] = useState(() => {
+		const markerBounds = latLngBounds([])
+		if (markers.length) {
+			markers.forEach((marker) => {
+				if (marker != null) {
+					markerBounds.extend([marker.props.position])
+				}
+			})
+		}
+		return markerBounds
+	})
 
-  useEffect(() => {
-    map.addHandler('gestureHandling', GestureHandling)
-    map.gestureHandling.enable()
-    map.invalidateSize()
-  }, [map])
+	useEffect(() => {
+		map.addHandler('gestureHandling', GestureHandling)
+		map.gestureHandling.enable()
+		map.invalidateSize()
+	}, [map])
 
-  const markerBounds = latLngBounds([])
+	const markerBounds = latLngBounds([])
 
-  useEffect(() => {
-    if (markers.length) {
-      markers.forEach((marker) => {
-        if (marker != null) {
-          markerBounds.extend([marker.props.position])
-        }
-      })
-      setBounds(markerBounds)
-    }
-  }, [markers])
+	useEffect(() => {
+		if (markers.length) {
+			markers.forEach((marker) => {
+				if (marker != null) {
+					markerBounds.extend([marker.props.position])
+				}
+			})
+			setBounds(markerBounds)
+		}
+	}, [markers])
 
-  useEffect(() => {
-    if (refMarkerGeolocation.current) {
-      const marker = refMarkerGeolocation.current
-      map.setView(marker.getLatLng(), maxMarkerZoom)
-      openPopup(marker)
-    }
-  }, [markerGeolocation])
+	useEffect(() => {
+		if (refMarkerGeolocation.current) {
+			const marker = refMarkerGeolocation.current
+			map.setView(marker.getLatLng(), maxMarkerZoom)
+			openPopup(marker)
+		}
+	}, [markerGeolocation])
 
-  useEffect(() => {
-    if (refMarkerSearch.current) {
-      const marker = refMarkerSearch.current
-      map.setView(marker.getLatLng(), maxMarkerZoom)
-      openPopup(marker)
-    }
-  }, [markerSearch])
+	useEffect(() => {
+		if (refMarkerSearch.current) {
+			const marker = refMarkerSearch.current
+			map.setView(marker.getLatLng(), maxMarkerZoom)
+			openPopup(marker)
+		}
+	}, [markerSearch])
 
-  useEffect(() => {
-    if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {
-      let selectedMarker = refsMarker.current.find((markerRef) => {
-        return markerRef.current && markerRef.current.options.data.id === selectedPost.id
-      })
-      if (selectedMarker) {
-        selectedMarker = selectedMarker.current
+	useEffect(() => {
+		if (refsMarker.current && refsMarker.current.length && Object.keys(selectedPost).length) {
+			let selectedMarker = refsMarker.current.find((markerRef) => {
+				return markerRef.current && markerRef.current.options.data.id === selectedPost.id
+			})
+			if (selectedMarker) {
+				selectedMarker = selectedMarker.current
 
-        addBoundsOffset(selectedMarker)
+				addBoundsOffset(selectedMarker)
 
-        zoomOntoMarker()
-      }
-    } else {
-      map.fitBounds(bounds, { padding: [boundsPadding, boundsPadding] })
-    }
-  }, [selectedPost])
+				zoomOntoMarker()
+			}
+		} else {
+			map.fitBounds(bounds, { padding: [boundsPadding, boundsPadding] })
+		}
+	}, [selectedPost])
 
-  return null
+	return null
 }
 
 export default ChangeView

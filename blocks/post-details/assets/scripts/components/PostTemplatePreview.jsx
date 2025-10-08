@@ -2,16 +2,16 @@ import { __experimentalUseBlockPreview as useBlockPreview } from '@wordpress/blo
 import { useCallback } from '@wordpress/element'
 
 export default function PostTemplatePreview({ blockContextId, blocks, isHidden, setActiveBlockContextId }) {
-  const blockPreviewProps = useBlockPreview({
-    blocks,
-    props: {
-      className: 'post-details__record'
-    }
-  })
+	const blockPreviewProps = useBlockPreview({
+		blocks,
+		props: {
+			className: 'post-details__record'
+		}
+	})
 
-  const handleClick = useCallback(() => {
-    setActiveBlockContextId(blockContextId)
-  }, [blockContextId, setActiveBlockContextId])
+	const handleClick = useCallback(() => {
+		setActiveBlockContextId(blockContextId)
+	}, [blockContextId, setActiveBlockContextId])
 
-  return <div {...blockPreviewProps} role="button" style={{ display: isHidden ? 'none' : undefined }} tabIndex={0} onClick={handleClick} onKeyPress={handleClick} />
+	return <div {...blockPreviewProps} role="button" style={{ display: isHidden ? 'none' : undefined }} tabIndex={0} onClick={handleClick} onKeyPress={handleClick} />
 }

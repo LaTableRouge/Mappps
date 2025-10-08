@@ -99,6 +99,9 @@ Depending on which library is called first, the other takes priority and the fir
 
 == Upgrade Notice ==
 
+= 1.5.0 =
+* Maybe you'll need to delete and recreate the block in your gutenberg editor.
+
 = 1.4.0 =
 * Maybe you'll need to delete and recreate the block in your gutenberg editor.
 
@@ -106,6 +109,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.5.0 =
+* Released: March 22, 2025
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.5.0
+* Adding icons selector for markers
 
 = 1.4.0 =
 * Released: March 22, 2025

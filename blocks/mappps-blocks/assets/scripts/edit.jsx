@@ -4,108 +4,109 @@ import { InnerBlocks, useBlockProps } from '@wordpress/block-editor'
 import { useSelect } from '@wordpress/data'
 import { useCallback, useEffect, useState } from '@wordpress/element'
 
-import { sortStickyPosts } from '../../../../src/helpers/scripts/functions'
 import Controls from './components/Controls'
 import Wizard from './components/Wizard'
 import AlterBlockProps from './utils/AlterBlockProps'
-import GetPostTypes from './utils/GetPostTypes'
 
 export default function Edit({ attributes, clientId, isSelected, setAttributes }) {
-  const blockProps = useBlockProps()
+	const blockProps = useBlockProps()
 
-  const [wrapperHeight, setWrapperHeight] = useState(0)
-  const [queriedPosts, setQueriedPosts] = useState([])
+	const [wrapperHeight, setWrapperHeight] = useState(0)
+	const [queriedPosts, setQueriedPosts] = useState([])
+	const [isConfirmed, setIsConfirmed] = useState(false)
 
-  const postTypes = GetPostTypes()
+	// Get usefull attributes from child blocks
+	const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
+	useEffect(() => {
+		let innerBlocksAttributes = {}
+		if (innerBlocks.length) {
+			innerBlocks.forEach(({ attributes, name }) => {
+				if (name === 'mppps/sidebar' || name === 'mppps/post-details') {
+					innerBlocksAttributes = { ...innerBlocksAttributes, ...attributes }
+				}
+			})
+		}
 
-  // Get usefull attributes from child blocks
-  const innerBlocks = useSelect((select) => select('core/block-editor').getBlock(clientId).innerBlocks)
-  useEffect(() => {
-    let innerBlocksAttributes = {}
-    if (innerBlocks.length) {
-      innerBlocks.forEach(({ attributes, name }) => {
-        if (name === 'mppps/sidebar' || name === 'mppps/post-details') {
-          innerBlocksAttributes = { ...innerBlocksAttributes, ...attributes }
-        }
-      })
-    }
+		setAttributes({ sharedAttributes: innerBlocksAttributes })
+	}, [innerBlocks])
 
-    setAttributes({ sharedAttributes: innerBlocksAttributes })
-  }, [innerBlocks])
+	// Check if the wrapper is in mobile view (container query check)
+	const wrapperRef = useCallback((node) => {
+		if (!node) {
+			return
+		}
+		const resizeObserver = new ResizeObserver(() => {
+			setWrapperHeight(node.clientHeight)
+		})
+		resizeObserver.observe(node)
+	}, [])
 
-  // Check if the wrapper is in mobile view (container query check)
-  const wrapperRef = useCallback((node) => {
-    if (!node) {
-      return
-    }
-    const resizeObserver = new ResizeObserver(() => {
-      setWrapperHeight(node.clientHeight)
-    })
-    resizeObserver.observe(node)
-  }, [])
+	// Set an unique block ID
+	useEffect(() => {
+		setAttributes({ blockId: clientId })
+	}, [clientId])
 
-  // Set an unique block ID
-  useEffect(() => {
-    setAttributes({ blockId: clientId })
-  }, [clientId])
+	let posts = []
+	if (attributes.selectedPosts.length) {
+		// Filter and sort posts to maintain the order from selectedPosts
+		posts = attributes.selectedPosts.map((postId) => queriedPosts.find((post) => post.id === postId)).filter((post) => post !== undefined)
+	}
 
-  let posts = []
-  if (attributes.selectedPosts.length) {
-    posts = queriedPosts.filter((post) => attributes.selectedPosts.includes(`${post.id}`))
-  }
+	useEffect(() => {
+		const listViewExpandButton = document.querySelector(`.block-editor-list-view-tree tr[data-block="${attributes.blockId}"] .block-editor-list-view__expander`)
 
-  if (attributes.putStickyFirst) {
-    posts = sortStickyPosts(posts)
-  }
+		if (posts.length) {
+			document.dispatchEvent(
+				new CustomEvent('mppps-queried-posts', {
+					detail: {
+						id: attributes.blockId,
+						posts
+					}
+				})
+			)
 
-  useEffect(() => {
-    const listViewExpandButton = document.querySelector(`.block-editor-list-view-tree tr[data-block="${attributes.blockId}"] .block-editor-list-view__expander`)
+			// Enable the possibility to toggle between child blocks
+			if (listViewExpandButton) {
+				listViewExpandButton.removeAttribute('style')
+			}
+		} else {
+			// Disable the possibility to toggle between child blocks
+			if (listViewExpandButton) {
+				listViewExpandButton.style.pointerEvents = 'none'
+			}
+		}
+	}, [posts])
 
-    if (posts.length) {
-      document.dispatchEvent(
-        new CustomEvent('mppps-queried-posts', {
-          detail: {
-            id: attributes.blockId,
-            posts
-          }
-        })
-      )
+	// Auto-confirm if there are already selected posts
+	useEffect(() => {
+		if (isSelected && attributes.selectedPosts.length) {
+			setIsConfirmed(true)
+		}
+	}, [attributes.selectedPosts, isSelected])
 
-      // Enable the possibility to toggle between child blocks
-      if (listViewExpandButton) {
-        listViewExpandButton.removeAttribute('style')
-      }
-    } else {
-      // Disable the possibility to toggle between child blocks
-      if (listViewExpandButton) {
-        listViewExpandButton.style.pointerEvents = 'none'
-      }
-    }
-  }, [posts])
+	if (attributes.selectedPosts.length) {
+		return (
+			<section {...AlterBlockProps(blockProps, attributes)}>
+				<Controls attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
 
-  if (attributes.selectedPosts.length) {
-    return (
-      <section {...AlterBlockProps(blockProps, attributes)}>
-        <Controls attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-
-        <div
-          ref={wrapperRef}
-          className={`responsive-wrapper in-editor ${isSelected ? ' is-selected' : ''}`}
-          data-has-posts={!!queriedPosts.length}
-          style={{ '--wrapper-height': `${wrapperHeight}px` }}
-        >
-          <InnerBlocks
-            template={[['mppps/loader'], ['mppps/sidebar', {}], ['mppps/map', {}], ['mppps/post-details', {}], ['mppps/filters', {}], ['mppps/mobile-toggles', {}]]}
-            templateLock="all"
-          />
-        </div>
-      </section>
-    )
-  } else {
-    return (
-      <section {...AlterBlockProps(blockProps, attributes)}>
-        <Wizard attributes={attributes} postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
-      </section>
-    )
-  }
+				<div
+					ref={wrapperRef}
+					className={`responsive-wrapper in-editor ${isSelected ? ' is-selected' : ''}`}
+					data-has-posts={!!queriedPosts.length}
+					style={{ '--wrapper-height': `${wrapperHeight}px` }}
+				>
+					<InnerBlocks
+						template={[['mppps/loader'], ['mppps/sidebar', {}], ['mppps/map', {}], ['mppps/post-details', {}], ['mppps/filters', {}], ['mppps/mobile-toggles', {}]]}
+						templateLock="all"
+					/>
+				</div>
+			</section>
+		)
+	} else {
+		return (
+			<section {...AlterBlockProps(blockProps, attributes)}>
+				<Wizard attributes={attributes} isConfirmed={isConfirmed} setAttributes={setAttributes} setIsConfirmed={setIsConfirmed} setQueriedPosts={setQueriedPosts} />
+			</section>
+		)
+	}
 }
