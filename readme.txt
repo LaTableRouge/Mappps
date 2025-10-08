@@ -1,9 +1,9 @@
 === Mappps ===
 Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
-Tested up to: 6.8
+Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -111,9 +111,10 @@ Depending on which library is called first, the other takes priority and the fir
 == Changelog ==
 
 = 1.5.0 =
-* Released: March 22, 2025
+* Released: October 09, 2025
 * https://github.com/LaTableRouge/Mappps/releases/tag/1.5.0
-* Adding icons selector for markers
+* Adding icons selector for markers on 'mappps-block'
+* Better posts selection on 'mappps-block'
 
 = 1.4.0 =
 * Released: March 22, 2025

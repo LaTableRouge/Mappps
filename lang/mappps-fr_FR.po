@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2025-10-01T08:15:00+00:00\n"
-"PO-Revision-Date: 2025-10-08 12:13+0200\n"
+"POT-Creation-Date: 2025-10-08T12:29:58+00:00\n"
+"PO-Revision-Date: 2025-10-08 14:32+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.7\n"
 "X-Domain: mappps\n"
 
 #. Plugin Name of the plugin
@@ -89,6 +89,24 @@ msgstr "Fermer la prévisualisation"
 #: includes/blocks/categories-register.php:37
 msgid "Mappps - Blocks"
 msgstr "Mappps - Blocs"
+
+#: includes/links.php:30
+msgid "Go to Mappps settings page"
+msgstr "Accédez à la page des paramètres de Mappps"
+
+#: includes/links.php:31
+msgid "Settings"
+msgstr "Paramètres"
+
+#: includes/links.php:51
+msgid "View Mappps changelog on WordPress.org (opens in a new tab)"
+msgstr ""
+"Consultez le journal des modifications de Mappps sur WordPress.org (s'ouvre "
+"dans un nouvel onglet)"
+
+#: includes/links.php:52
+msgid "Changelog"
+msgstr "Journal des modifications"
 
 #: includes/register-page.php:34
 msgid "Setup"
