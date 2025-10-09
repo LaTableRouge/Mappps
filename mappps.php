@@ -68,5 +68,6 @@ require_once MPPPS_PATH . 'includes/links.php';
 * Enqueue react blocks
 */
 require_once MPPPS_PATH . 'includes/custom-fields/coordinates.php';
+require_once MPPPS_PATH . 'includes/custom-fields/image.php';
 require_once MPPPS_PATH . 'includes/blocks/categories-register.php';
 require_once MPPPS_PATH . 'includes/blocks/blocks-register.php';
