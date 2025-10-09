@@ -116,23 +116,35 @@ function usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes
 	// Build and update taxonomy terms from posts
 	// Only update when taxonomies or terms change, not when posts change
 	useEffect(() => {
-		if (termsResolved && Object.keys(terms).length && taxonomies?.length) {
-			// Build filter terms based on all available terms, not just current search results
-			// This ensures filtersTerms remain stable during searches
+		if (termsResolved && Object.keys(terms).length && taxonomies?.length && postsResolved) {
+			// Build filter terms based on posts with lat/lng coordinates only
+			// Filter posts to only include those with coordinates
+			const postsWithCoordinates = posts.filter((post) => !!post.meta?.lat && !!post.meta?.lng)
+
 			const allTerms = {}
 			taxonomies.forEach(({ name, rest_base: restBase, slug }) => {
 				const associatedTerms = terms[slug]
 				if (associatedTerms?.length > 1) {
-					allTerms[restBase] = {
-						name,
-						slug,
-						terms: associatedTerms
+					// Filter terms to only include those used by posts with coordinates
+					const usedTerms = associatedTerms.filter((term) => {
+						return postsWithCoordinates.some((post) => {
+							const postTerms = post[restBase] || []
+							return postTerms.includes(term.id)
+						})
+					})
+
+					if (usedTerms.length > 0) {
+						allTerms[restBase] = {
+							name,
+							slug,
+							terms: usedTerms
+						}
 					}
 				}
 			})
 			setAttributes({ filtersTerms: allTerms })
 		}
-	}, [termsResolved, taxonomies])
+	}, [termsResolved, taxonomies, postsResolved])
 
 	return { posts, postsResolved }
 }

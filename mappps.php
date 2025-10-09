@@ -14,7 +14,7 @@ if (!defined('ABSPATH')) {
  * Author: latablerouge
  * Author URI: https://mlnop.fr/
  * Requires at least: 6.2
- * Tested up to: 6.8
+ * Tested up to: 6.8.3
  * Requires PHP: 8.0
  * Version: 1.5.0
  * Stable tag: 1.5.0
@@ -49,6 +49,7 @@ define('MPPPS_URL', plugin_dir_url(__FILE__));
 define('MPPPS_BLOCKS_PATH', MPPPS_PATH . 'build/blocks');
 define('MPPPS_LANG_PATH', MPPPS_PATH . 'lang');
 define('MPPPS_BASE_NAME', basename(dirname(__FILE__)));
+define('MPPPS_BASE_FILE', __FILE__);
 
 require_once MPPPS_PATH . 'includes/load-textdomain.php';
 
@@ -59,6 +60,7 @@ require_once MPPPS_PATH . 'includes/load-textdomain.php';
 */
 require_once MPPPS_PATH . 'includes/register-page.php';
 require_once MPPPS_PATH . 'includes/enqueue-assets.php';
+require_once MPPPS_PATH . 'includes/links.php';
 
 /*
 * ====== Blocks
