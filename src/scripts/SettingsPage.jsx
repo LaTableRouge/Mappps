@@ -90,6 +90,60 @@ export default function SettingsPage() {
 				</li>
 			</ul>
 
+			<h2 id="adding-polylines">{__('Adding Polylines to Posts', 'mappps')}</h2>
+			<p>{__('Polylines allow you to draw routes, paths, or boundaries on your map. You can add multiple polylines to a single post.', 'mappps')}</p>
+			<ol>
+				<li>
+					<strong>{__('Add Polyline Custom Field:', 'mappps')}</strong>
+					<ol>
+						<li>{__('In the "Custom Fields" section, click on "Add Custom Field".', 'mappps')}</li>
+						<li>{__('In the "Name" field, enter "polylines".', 'mappps')}</li>
+						<li>
+							{__('In the "Value" field, enter a JSON array with your polyline data. Example:', 'mappps')}
+							<pre>
+								<code>{`[
+  {
+    "id": "route_1",
+    "name": "Main Route",
+    "coordinates": [[51.505, -0.09], [51.51, -0.1], [51.51, -0.12]],
+    "color": "#lime",
+    "weight": 3,
+    "opacity": 0.8
+  }
+]`}</code>
+							</pre>
+						</li>
+					</ol>
+				</li>
+				<li>
+					<strong>{__('Polyline Properties:', 'mappps')}</strong>
+					<ul>
+						<li>
+							<strong>id:</strong> {__('Unique identifier for the polyline (optional)', 'mappps')}
+						</li>
+						<li>
+							<strong>name:</strong> {__('Display name for the polyline (optional)', 'mappps')}
+						</li>
+						<li>
+							<strong>coordinates:</strong> {__('Array of [latitude, longitude] pairs defining the path', 'mappps')}
+						</li>
+						<li>
+							<strong>color:</strong> {__('Line color in hex format (e.g., "#lime", "#blue")', 'mappps')}
+						</li>
+						<li>
+							<strong>weight:</strong> {__('Line thickness in pixels (default: 3)', 'mappps')}
+						</li>
+						<li>
+							<strong>opacity:</strong> {__('Line transparency from 0 to 1 (default: 0.8)', 'mappps')}
+						</li>
+					</ul>
+				</li>
+				<li>
+					<strong>{__('Multiple Polylines:', 'mappps')}</strong>{' '}
+					{__('You can add multiple polylines by including them in the same JSON array. Each polyline can have different colors and properties.', 'mappps')}
+				</li>
+			</ol>
+
 			<h2 id="faqs">{__('FAQs', 'mappps')}</h2>
 			<h3>{__('Advanced Custom Field (ACF/SCF) compatibility', 'mappps')}</h3>
 			<p>

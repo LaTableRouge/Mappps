@@ -5,7 +5,7 @@ import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css'
 import '../../../../../src/helpers/scripts/leaflet.markercluster/dist/MarkerCluster.css'
 
 import { createRef, useMemo, useRef, useState } from '@wordpress/element'
-import { MapContainer } from 'react-leaflet'
+import { MapContainer, Polyline } from 'react-leaflet'
 
 import ChangeView from '../utils/ChangeView'
 import MapControls from './map/MapControls'
@@ -50,6 +50,15 @@ export default function Map({
 	const clusterRef = useRef(null)
 	const markerRefs = useRef([])
 	markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
+	console.log(posts)
+
+	posts.forEach((post) => {
+		console.log(post.meta.coordinates)
+		if (post.meta.coordinates) {
+			const coordinates = JSON.parse(post.meta.coordinates)
+			console.log(coordinates)
+		}
+	})
 
 	const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost, markerShadow, customMarkerIcon)
 	const markerGroup = useMemo(() => {
@@ -72,6 +81,14 @@ export default function Map({
 		}
 		return null
 	}, [selectedSearchResult])
+
+	const limeOptions = { color: 'lime' }
+
+	const polyline = [
+		[51.505, -0.09],
+		[51.51, -0.1],
+		[51.51, -0.12]
+	]
 
 	return (
 		<MapContainer {...MAP_DEFAULTS} maxZoom={maxZoom}>
@@ -105,6 +122,8 @@ export default function Map({
 			{markerGroup}
 			{markerGeolocationMemo}
 			{markerSearchMemo}
+
+			<Polyline pathOptions={limeOptions} positions={polyline} />
 		</MapContainer>
 	)
 }
