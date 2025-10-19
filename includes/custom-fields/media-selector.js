@@ -1,114 +1,116 @@
 document.addEventListener('DOMContentLoaded', function () {
-	console.log('Mappps media selector ready')
+  const mapppsMediaSelector = window.mapppsMediaSelector
 
-	// EXERCISE: Find all custom field name inputs with value "mappps_image"
-	// This targets the "Name" column in WordPress custom fields
-	console.log(document.querySelectorAll('input[value="mappps_image"]'))
-	// EXERCISE: Main function to add media selectors to custom fields
-	function addMediaSelector() {
-		// Find all name inputs with value "mappps_image" and loop through them
-		// These are the inputs in the "Name" column of WordPress custom fields
-		const nameInputs = document.querySelectorAll('input[value="mappps_image"]')
+  if (!mapppsMediaSelector) {
+    return
+  }
 
-		// Return early if no name inputs are found
-		if (!nameInputs.length) {
-			return
-		}
+  function addMediaSelector() {
+    const nameInputs = document.querySelectorAll('input[value="mappps_image"]')
 
-		nameInputs.forEach((nameInput) => {
-			const parentRow = nameInput.closest('tr')
-			if (parentRow) {
-				// Return early if the media selector container already exists
-				if (parentRow.querySelector('.media-selector-container')) {
-					return
-				}
+    // Return early if no name inputs are found
+    if (!nameInputs.length) {
+      return
+    }
 
-				const textarea = parentRow.querySelector('textarea')
-				if (textarea) {
-					const mediaSelectorDiv = document.createElement('div')
-					mediaSelectorDiv.classList.add('media-selector-container')
+    nameInputs.forEach((nameInput) => {
+      const parentRow = nameInput.closest('tr')
+      if (parentRow) {
+        // Return early if the media selector container already exists
+        if (parentRow.querySelector('.media-selector-container')) {
+          return
+        }
 
-					const mediaSelectorbutton = document.createElement('button')
-					mediaSelectorbutton.classList.add('media-selector-button')
-					mediaSelectorbutton.innerText = 'Select Image'
+        const textarea = parentRow.querySelector('textarea')
+        if (textarea) {
+          const mediaSelectorDiv = document.createElement('div')
+          mediaSelectorDiv.classList.add('media-selector-container')
 
-					const mediaSelectorPreview = document.createElement('img')
-					mediaSelectorPreview.classList.add('media-selector-preview')
+          const mediaSelectorbutton = document.createElement('button')
+          mediaSelectorbutton.classList.add('media-selector-button')
+          mediaSelectorbutton.innerText = 'Select Image'
 
-					textarea.after(mediaSelectorDiv)
-					mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton)
+          const mediaSelectorPreview = document.createElement('img')
+          mediaSelectorPreview.classList.add('media-selector-preview')
 
-					openMediaSelector(parentRow, textarea)
-				}
-			}
-		})
-	}
+          textarea.after(mediaSelectorDiv)
+          mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton)
 
-	// Event listener for the "Select Image" button
-	const openMediaSelector = (container, textarea) => {
-		const button = container.querySelector('.media-selector-button')
-		const preview = container.querySelector('.media-selector-preview')
+          openMediaSelector(parentRow, textarea)
+        }
 
-		if (!button || !preview) {
-			return
-		}
+        setPictureFromId(textarea.innerText)
+      }
+    })
+  }
 
-		button.addEventListener('click', function (e) {
-			e.preventDefault()
-			console.log('Opening media library')
+  // Event listener for the "Select Image" button
+  const openMediaSelector = (container, textarea) => {
+    const button = container.querySelector('.media-selector-button')
+    const preview = container.querySelector('.media-selector-preview')
 
-			// wp.media is WordPress's built-in media library API
-			const frame = wp.media({
-				title: 'Select Image',
-				button: {
-					text: 'Use this image'
-				},
-				multiple: false, // Only allow single image selection
-				library: {
-					type: 'image' // Only show images, not other media types
-				}
-			})
+    // Return early if the button or preview is not found
+    if (!button || !preview) {
+      return
+    }
 
-			frame.on('select', function () {
-				// Get the selected attachment object
-				const attachment = frame.state().get('selection').first().toJSON()
+    button.addEventListener('click', function (e) {
+      e.preventDefault()
+      console.log('Opening media library')
 
-				// Store the attachment ID in the textarea
-				textarea.innerText = attachment?.id ?? ''
+      // wp.media is WordPress's built-in media library API
+      const frame = wp.media({
+        title: 'Select Image',
+        button: {
+          text: 'Use this image'
+        },
+        multiple: false, // Only allow single image selection
+        library: {
+          type: 'image' // Only show images, not other media types
+        }
+      })
 
-				// Update the preview with the new image
-				preview.src = attachment?.url ?? ''
+      frame.on('select', function () {
+        // Get the selected attachment object
+        const attachment = frame.state().get('selection').first().toJSON()
 
-				// Use WordPress REST API to get attachment details
-				// WordPress REST API endpoint: /wp-json/wp/v2/media/{id}
-				// const restUrl = mapppsMediaSelector.restUrl + 'media/' + imageId;
-				// console.log('REST API URL:', restUrl);
+        // Store the attachment ID in the textarea
+        textarea.innerText = attachment?.id ?? ''
 
-				// // Fetch API call to WordPress REST API
-				// fetch(restUrl, {
-				//   method: 'GET',
-				//   headers: {
-				//     // WordPress REST API requires X-WP-Nonce header for authentication
-				//     'X-WP-Nonce': mapppsMediaSelector.nonce
-				//   }
-				// })
-				//   .then(response => response.json()) // Convert response to JSON
-				//   .then(attachment => {
-				//     console.log('REST API response:', attachment);
+        // Update the preview with the new image
+        preview.src = attachment?.url ?? ''
+      })
 
-				//     // Extract image URL from REST API response and display it
-				//     // Put the picture ID in the textarea
+      // Open the media library
+      frame.open()
+    })
+  }
 
-				//   })
-				//   .catch(error => {
-				//     console.log('REST API error:', error);
-				//   });
-			})
+  const setPictureFromId = (pictureId) => {
+    const restUrl = mapppsMediaSelector.restUrl + 'media/' + pictureId;
 
-			// Open the media library
-			frame.open()
-		})
-	}
+    fetch(restUrl, {
+      method: 'GET',
+      headers: {
+        // WordPress REST API requires X-WP-Nonce header for authentication
+        'X-WP-Nonce': mapppsMediaSelector.nonce
+      }
+    })
+      .then(response => response.json()) // Convert response to JSON
+      .then(attachment => {
+        console.log('REST API response:', attachment);
+        // Put the picture src in the preview
 
-	addMediaSelector()
+      })
+      .catch(error => {
+        console.log('REST API error:', error);
+      });
+  }
+
+  addMediaSelector()
+
+
+  // TODO :  add a remove button
+  // TODO : in the setPictureFromId function, put the picture src in the preview (this function is called on load)
+  // TODO mais vraiment s'il y a le temps et la motivation, changer tout le fichier en class
 })
