@@ -4,44 +4,40 @@ document.addEventListener('DOMContentLoaded', function () {
   // EXERCISE: Find all custom field name inputs with value "mappps_image"
   // This targets the "Name" column in WordPress custom fields
   console.log(document.querySelectorAll('input[value="mappps_image"]'))
-
   // EXERCISE: Main function to add media selectors to custom fields
   function addMediaSelector() {
     // Find all name inputs with value "mappps_image" and loop through them
     // These are the inputs in the "Name" column of WordPress custom fields
     const nameInputs = document.querySelectorAll('input[value="mappps_image"]');
-    let mediaSelectorExists = false;
 
     if (!nameInputs.length) { return };
-
+    if (document.querySelectorAll('.media-selector-container').length) { return };
     nameInputs.forEach(nameInput => {
-      console.log(nameInput.value);
-      console.log(nameInput.id);
+
       const getTextArea = document.getElementById(`${nameInput.id.replace("key", "value")}`);
-      console.log(getTextArea);
-      if (!document.querySelectorAll('.media-selector-container').length) { return };
       const mediaSelectorDiv = document.createElement('div');
       mediaSelectorDiv.classList.add('media-selector-container');
 
       const mediaSelectorbutton = document.createElement('button');
       mediaSelectorbutton.classList.add('media-selector-button');
       mediaSelectorbutton.innerText = "Select Image";
-      mediaSelectorbutton.setAttribute('data-id', buttonCounter);
-      const mediaSelectorPreview = document.createElement('span');
+      const mediaSelectorPreview = document.createElement('img');
       mediaSelectorPreview.classList.add('media-selector-preview');
 
-      //NAMEINPIUT. closest tr en tant que sélecteur parent, avec le sélecteur parent tu get la textarea.
-      const parentNodeTextArea = getTextArea.parentNode;
-      console.log(parentNodeTextArea);
-      // NE PAS SUPPRIMER LA TEXTAREA, juste la HIDE.
-      parentNodeTextArea.replaceChild(mediaSelectorDiv, getTextArea);
+
+      const textAreaContainer = getTextArea.closest("td");
+
+      const hideTextArea = () => {
+        textAreaContainer.querySelector("textarea").style.display = "none";
+
+      };
+      hideTextArea();
+
+      textAreaContainer.appendChild(mediaSelectorDiv);
       mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton);
       openMediaSelector(mediaSelectorbutton);
 
 
-      //KEEP LAST
-
-      mediaSelectorExists = true;
     });
 
 
@@ -56,49 +52,46 @@ document.addEventListener('DOMContentLoaded', function () {
   //  - Create image preview area
   //  - Create "Select Image" button
   //  - Append the interface to the container
-  const getMediaSelectorButtons = document.querySelectorAll('.media-selector-button');
-  console.log(getMediaSelectorButtons)
-
+  let textAreaId = null;
+  let imageId = null;
   function updatePreview() {
-    // Get the current image ID from the textarea
-    // const imageId = input.value;
-    // if (imageId && imageId !== '') {
-    //   console.log('Updating preview for image ID:', imageId);
+    //  Get the current image ID from the textarea
 
-    //   // Use WordPress REST API to get attachment details
-    //   // WordPress REST API endpoint: /wp-json/wp/v2/media/{id}
-    //   const restUrl = mapppsMediaSelector.restUrl + 'media/' + imageId;
-    //   console.log('REST API URL:', restUrl);
+    imageId = document.getElementById(`${textAreaId}`).value;
+    if (imageId && imageId !== '') {
+      console.log('Updating preview for image ID:', imageId);
 
-    //   // Fetch API call to WordPress REST API
-    //   fetch(restUrl, {
-    //     method: 'GET',
-    //     headers: {
-    //       // WordPress REST API requires X-WP-Nonce header for authentication
-    //       'X-WP-Nonce': mapppsMediaSelector.nonce
-    //     }
-    //   })
-    //     .then(response => response.json()) // Convert response to JSON
-    //     .then(attachment => {
-    //       console.log('REST API response:', attachment);
+      // Use WordPress REST API to get attachment details
+      // WordPress REST API endpoint: /wp-json/wp/v2/media/{id}
+      const restUrl = mapppsMediaSelector.restUrl + 'media/' + imageId;
+      console.log('REST API URL:', restUrl);
 
-    //       // Extract image URL from REST API response and display it
-    //       // Put the picture ID in the textarea
+      // Fetch API call to WordPress REST API
+      fetch(restUrl, {
+        method: 'GET',
+        headers: {
+          // WordPress REST API requires X-WP-Nonce header for authentication
+          'X-WP-Nonce': mapppsMediaSelector.nonce
+        }
+      })
+        .then(response => response.json()) // Convert response to JSON
+        .then(attachment => {
+          console.log('REST API response:', attachment);
 
-    //     })
-    //     .catch(error => {
-    //       console.log('REST API error:', error);
-    //     });
-    // } else {
-    //   // No image selected, hide preview and remove button
-    //   preview.innerHTML = '';
-    //   removeButton.style.display = 'none';
-    // }
+          // Extract image URL from REST API response and display it
+          // Put the picture ID in the textarea
+
+        })
+        .catch(error => {
+          console.log('REST API error:', error);
+        });
+    } else {
+      // No image selected, hide preview and remove button
+      preview.innerHTML = '';
+      removeButton.style.display = 'none';
+    }
   }
-  // function handleButtonClick(event) {
-  //   const mediaButton = event.target;
-  // };
-  // const buttonId = mediaButton.getAttribute('data-id');
+
 
   // Event listener for the "Select Image" button
 
@@ -122,13 +115,16 @@ document.addEventListener('DOMContentLoaded', function () {
       frame.on('select', function () {
         // Get the selected attachment object
         const attachment = frame.state().get('selection').first().toJSON();
-        console.log('Selected attachment:', attachment);
+
 
         // Store the attachment ID in the textarea
-        input.value = attachment.id;
 
+        const getClosestTextarea = mediaSelectorbutton.closest('td').querySelector('textarea');
+        getClosestTextarea.innerText = attachment.id;
+        let textAreaId = getClosestTextarea.id;
+        let imageID = document.getElementById(`${textAreaId}`).value;
         // Update the preview with the new image
-        updatePreview();
+        updatePreview(imageID);
       });
 
       // Open the media library
