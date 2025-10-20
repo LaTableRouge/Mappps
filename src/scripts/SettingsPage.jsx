@@ -20,6 +20,9 @@ export default function SettingsPage() {
 					<a href="#displaying-the-map">{__('Displaying the Map', 'mappps')}</a>
 				</li>
 				<li>
+					<a href="#individual-marker-pictures">{__('Individual Marker Pictures', 'mappps')}</a>
+				</li>
+				<li>
 					<a href="#troubleshooting">{__('Troubleshooting', 'mappps')}</a>
 				</li>
 				<li>
@@ -59,6 +62,32 @@ export default function SettingsPage() {
 
 			<h2 id="displaying-the-map">{__('Displaying the Map', 'mappps')}</h2>
 			<p>{__('To display the map on your site, you can use the provided Gutenberg block.', 'mappps')}</p>
+
+			<h3 id="individual-marker-pictures">{__('Individual Marker Pictures', 'mappps')}</h3>
+			<p>
+				{__(
+					'For the "Mappps (blocks)" block, you can set individual marker pictures for each post. This feature allows each marker to display a unique image instead of using the global marker settings.',
+					'mappps'
+				)}
+			</p>
+			<ol>
+				<li>
+					<strong>{__('Add Custom Field:', 'mappps')}</strong> {__('In your post editor, scroll down to the "Custom Fields" section and add a new custom field.', 'mappps')}
+				</li>
+				<li>
+					<strong>{__('Set Field Name:', 'mappps')}</strong> {__('Use "mappps_marker" as the field name (this is the exact name required).', 'mappps')}
+				</li>
+				<li>
+					<strong>{__('Set Field Value:', 'mappps')}</strong> {__('Enter the attachment ID of the image you want to use as the marker picture.', 'mappps')}
+				</li>
+				<li>
+					<strong>{__('Enable Individual Pictures:', 'mappps')}</strong>{' '}
+					{__(
+						'In the "Mappps (blocks)" block, select the "Markers" block and in the "Marker settings" section, toggle "Individual marker pictures" to enable this feature.',
+						'mappps'
+					)}
+				</li>
+			</ol>
 
 			<h3>{__('Using Gutenberg Block', 'mappps')}</h3>
 			<ol>

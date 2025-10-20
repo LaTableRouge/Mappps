@@ -83,6 +83,7 @@ export default function Main({ attributes, blockId, inEditor = false, queriedPos
 				selectedTiles={attributes.selectedMapTiles}
 				setSelectedPost={setSelectedPost}
 				setSelectedSearchResult={setSelectedSearchResult}
+				useIndividualMarkerPictures={attributes.useIndividualMarkerPictures}
 			/>
 		</div>
 	)
