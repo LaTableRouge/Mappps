@@ -4,6 +4,7 @@ import { __ } from '@wordpress/i18n'
 
 import ColorMap from './controls/ColorMap'
 import MediaIcon from './controls/MediaIcon'
+import ToggleIndividualMarkerPictures from './controls/ToggleIndividualMarkerPictures'
 import ToggleMarkerCluster from './controls/ToggleMarkerCluster'
 import ToggleMarkerShadow from './controls/ToggleMarkerShadow'
 import UnitSize from './controls/UnitSize'
@@ -22,7 +23,8 @@ export default function Controls({ attributes, hasGeolocation, hasSearch, setAtt
 		selectedMarkerIcon,
 		selectedMarkerSearchIcon,
 		selectedMarkerSize,
-		selectedSearchColor
+		selectedSearchColor,
+		useIndividualMarkerPictures
 	} = attributes
 
 	return (
@@ -30,6 +32,7 @@ export default function Controls({ attributes, hasGeolocation, hasSearch, setAtt
 			<PanelBody title={__('Global settings', 'mappps')}>
 				<ToggleMarkerCluster defaultValue={isClustered} setAttributes={setAttributes} />
 				<ToggleMarkerShadow defaultValue={haveShadow} setAttributes={setAttributes} />
+				<ToggleIndividualMarkerPictures defaultValue={useIndividualMarkerPictures} setAttributes={setAttributes} />
 			</PanelBody>
 
 			<PanelBody title={__('Marker settings', 'mappps')}>

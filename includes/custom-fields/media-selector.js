@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function addMediaSelector() {
-    const nameInputs = document.querySelectorAll('input[value="mappps_image"]')
+    const nameInputs = document.querySelectorAll('input[value="mappps_marker"]')
 
     // Return early if no name inputs are found
     if (!nameInputs.length) {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
           openMediaSelector(parentRow, textarea)
         }
 
-        setPictureFromId(textarea.innerText)
+        setPictureFromStoredData(textarea)
       }
     })
   }
@@ -74,11 +74,20 @@ document.addEventListener('DOMContentLoaded', function () {
         // Get the selected attachment object
         const attachment = frame.state().get('selection').first().toJSON()
 
-        // Store the attachment ID in the textarea
-        textarea.innerText = attachment?.id ?? ''
+        // Create a complete picture object with all needed data
+        const pictureObject = {
+          id: attachment?.id ?? '',
+          width: attachment?.media_details?.width ?? 0,
+          height: attachment?.media_details?.height ?? 0,
+          url: attachment?.source_url ?? attachment?.url ?? '',
+          alt: attachment?.alt_text ?? ''
+        }
+
+        // Store the complete picture object as stringified JSON
+        textarea.innerText = JSON.stringify(pictureObject)
 
         // Update the preview with the new image
-        preview.src = attachment?.url ?? ''
+        preview.src = pictureObject.url
       })
 
       // Open the media library
@@ -86,31 +95,30 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
-  const setPictureFromId = (pictureId) => {
-    const restUrl = mapppsMediaSelector.restUrl + 'media/' + pictureId;
+  const setPictureFromStoredData = (textarea) => {
+    const container = textarea.closest('tr')
+    const preview = container.querySelector('.media-selector-preview')
 
-    fetch(restUrl, {
-      method: 'GET',
-      headers: {
-        // WordPress REST API requires X-WP-Nonce header for authentication
-        'X-WP-Nonce': mapppsMediaSelector.nonce
+    if (!preview) return
+
+    try {
+      // Try to parse the stored JSON object
+      const pictureData = JSON.parse(textarea.innerText)
+
+      if (pictureData && pictureData.url) {
+        // Set the preview image from stored data
+        preview.src = pictureData.url
+        preview.alt = pictureData.alt || ''
       }
-    })
-      .then(response => response.json()) // Convert response to JSON
-      .then(attachment => {
-        console.log('REST API response:', attachment);
-        // Put the picture src in the preview
-
-      })
-      .catch(error => {
-        console.log('REST API error:', error);
-      });
+    } catch (error) {
+      // If parsing fails, it might be just an ID (legacy data)
+      console.log('Could not parse stored data, might be legacy ID format:', error)
+    }
   }
 
   addMediaSelector()
 
-
-  // TODO :  add a remove button
-  // TODO : in the setPictureFromId function, put the picture src in the preview (this function is called on load)
+  // TODO : add a remove button
+  // TODO : style (demander un emplacement ou le faire)
   // TODO mais vraiment s'il y a le temps et la motivation, changer tout le fichier en class
 })

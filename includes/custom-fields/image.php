@@ -18,12 +18,12 @@ function register_image_field(): void {
         ) {
             register_meta(
                 $post_type,
-                'mappps_image',
+                'mappps_marker',
                 [
                     'show_in_rest' => true,
                     'single' => true,
-                    'type' => 'number',
-                    'sanitize_callback' => 'absint',
+                    'type' => 'string',
+                    'sanitize_callback' => 'wp_strip_all_tags',
                     'description' => __('Mappps custom image field for posts/pages', 'mappps')
                 ]
             );
