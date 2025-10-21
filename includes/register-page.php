@@ -49,7 +49,7 @@ add_action('admin_menu', __NAMESPACE__ . '\register_admin_page');
  */
 function admin_page_callback(): void {
     printf(
-        '<article class="mps-admin-wrap" id="mppps_root">%s</article>',
+        '<article class="mppps-admin-page-wrap" id="mppps_page-root">%s</article>',
         esc_html__('Loading…', 'mappps')
     );
 }
