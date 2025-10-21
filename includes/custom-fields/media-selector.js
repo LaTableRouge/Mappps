@@ -33,8 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
           const mediaSelectorPreview = document.createElement('img')
           mediaSelectorPreview.classList.add('media-selector-preview')
 
+          const removePictureButton = document.createElement('button')
+          removePictureButton.innerText = 'Remove Image'
+          removePictureButton.classList.add('remove-media-button')
+
           textarea.after(mediaSelectorDiv)
-          mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton)
+          mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton, removePictureButton)
 
           openMediaSelector(parentRow, textarea)
         }
@@ -92,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Open the media library
       frame.open()
+      removeMedia(preview, textarea);
     })
   }
 
@@ -118,6 +123,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   addMediaSelector()
 
+  function removeMedia(preview, textarea) {
+    const getRemoveButton = document.querySelectorAll('.remove-media-button');
+
+    if (!getRemoveButton.length) { return }
+    else {
+      getRemoveButton.forEach(function (button) {
+        button.addEventListener('click', function () {
+          textarea.innerText = ''
+          preview.src = ''
+        });
+      });
+
+    }
+
+  }
   // TODO : add a remove button
   // TODO : style (demander un emplacement ou le faire)
   // TODO mais vraiment s'il y a le temps et la motivation, changer tout le fichier en class
