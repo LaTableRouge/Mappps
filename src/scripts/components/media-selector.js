@@ -18,9 +18,10 @@ export default function addMediaSelector() {
 			if (textarea) {
 				const mediaSelectorDiv = document.createElement('div')
 				mediaSelectorDiv.classList.add('media-selector-container')
-
+				const buttonContainerDiv = document.createElement('div')
+				buttonContainerDiv.classList.add('media-button-container')
 				const mediaSelectorbutton = document.createElement('button')
-				mediaSelectorbutton.classList.add('media-selector-button')
+				mediaSelectorbutton.classList.add('media-selector-button', 'button', 'button-small')
 				mediaSelectorbutton.innerText = 'Select Image'
 
 				const mediaSelectorPreview = document.createElement('img')
@@ -28,12 +29,13 @@ export default function addMediaSelector() {
 
 				const removePictureButton = document.createElement('button')
 				removePictureButton.innerText = 'Remove Image'
-				removePictureButton.classList.add('remove-media-button')
+				removePictureButton.classList.add('remove-media-button', 'is-destructive', 'is-secondary', 'components-button', 'button-small')
 
 				textarea.after(mediaSelectorDiv)
-				mediaSelectorDiv.append(mediaSelectorPreview, mediaSelectorbutton, removePictureButton)
-
+				mediaSelectorDiv.append(mediaSelectorPreview, buttonContainerDiv)
+				buttonContainerDiv.append(mediaSelectorbutton, removePictureButton)
 				openMediaSelector(parentRow, textarea)
+				removeMedia(removePictureButton, mediaSelectorPreview, textarea)
 			}
 
 			setPictureFromStoredData(textarea)
@@ -89,7 +91,6 @@ const openMediaSelector = (container, textarea) => {
 
 		// Open the media library
 		frame.open()
-		removeMedia(preview, textarea)
 	})
 }
 
@@ -114,20 +115,18 @@ const setPictureFromStoredData = (textarea) => {
 	}
 }
 
-function removeMedia(preview, textarea) {
-	const getRemoveButton = document.querySelectorAll('.remove-media-button')
-
-	if (!getRemoveButton.length) {
+function removeMedia(button, preview, textarea) {
+	if (!button || !preview || !textarea) {
 		return
-	} else {
-		getRemoveButton.forEach(function (button) {
-			button.addEventListener('click', function () {
-				textarea.innerText = ''
-				preview.src = ''
-			})
-		})
 	}
+
+	button.addEventListener('click', (e) => {
+		e.preventDefault()
+		textarea.innerText = ''
+		preview.src = ''
+	})
 }
+
 // TODO : add a remove button
 // TODO : style (demander un emplacement ou le faire)
 // TODO mais vraiment s'il y a le temps et la motivation, changer tout le fichier en class

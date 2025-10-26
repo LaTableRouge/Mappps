@@ -1,0 +1,43 @@
+@use '/src/helpers/styles/abstracts/functions';
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/mixins';
+@use '/src/helpers/styles/abstracts/responsive';
+
+@include media-breakpoint-up(sm) {
+  .remove-media-button {
+    height: 26px;
+    font-size: 11px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .remove-media-button {
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+.media-selector-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 0 8px 8px;
+}
+
+.block-editor__container {
+  .media-selector-preview {
+    width: 500px;
+    height: 300px;
+    margin: 8px 8px 16px 8px;
+    border: solid 1px rgb(140, 143, 148);
+    border-radius: 4px;
+    background-color: #dfdfdf;
+    object-fit: cover;
+    object-position: center;
+  }
+}
