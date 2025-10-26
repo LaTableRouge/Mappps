@@ -1,3 +1,5 @@
+import { __ } from '@wordpress/i18n'
+
 export default function addMediaSelector() {
 	const nameInputs = document.querySelectorAll('input[value="mappps_marker"]')
 
@@ -16,24 +18,34 @@ export default function addMediaSelector() {
 
 			const textarea = parentRow.querySelector('textarea')
 			if (textarea) {
+				textarea.style.display = 'none'
+
 				const mediaSelectorDiv = document.createElement('div')
 				mediaSelectorDiv.classList.add('media-selector-container')
-				const buttonContainerDiv = document.createElement('div')
-				buttonContainerDiv.classList.add('media-button-container')
-				const mediaSelectorbutton = document.createElement('button')
-				mediaSelectorbutton.classList.add('media-selector-button', 'button', 'button-small')
-				mediaSelectorbutton.innerText = 'Select Image'
 
-				const mediaSelectorPreview = document.createElement('img')
-				mediaSelectorPreview.classList.add('media-selector-preview')
+				const buttonContainerDiv = document.createElement('div')
+				buttonContainerDiv.classList.add('media-selector-container__button-wrapper')
+
+				const mediaSelectorbutton = document.createElement('button')
+				mediaSelectorbutton.classList.add('button-wrapper__button', 'button-wrapper__button--add', 'button', 'button-small')
+				mediaSelectorbutton.setAttribute('aria-label', __('Select image', 'mappps'))
+				mediaSelectorbutton.innerText = __('Select Image', 'mappps')
 
 				const removePictureButton = document.createElement('button')
-				removePictureButton.innerText = 'Remove Image'
-				removePictureButton.classList.add('remove-media-button', 'is-destructive', 'is-secondary', 'components-button', 'button-small')
+				removePictureButton.setAttribute('aria-label', __('Remove image', 'mappps'))
+				removePictureButton.classList.add('button-wrapper__button', 'button-wrapper__button--remove', 'is-destructive', 'is-secondary', 'components-button', 'button-small')
+				removePictureButton.innerText = __('Remove Image', 'mappps')
+
+				const mediaSelectorPreview = document.createElement('img')
+				mediaSelectorPreview.alt = __('Marker image preview', 'mappps')
+				mediaSelectorPreview.style.width = '100px'
+				mediaSelectorPreview.style.height = '100px'
+				mediaSelectorPreview.classList.add('media-selector-container__preview')
 
 				textarea.after(mediaSelectorDiv)
 				mediaSelectorDiv.append(mediaSelectorPreview, buttonContainerDiv)
 				buttonContainerDiv.append(mediaSelectorbutton, removePictureButton)
+
 				openMediaSelector(parentRow, textarea)
 				removeMedia(removePictureButton, mediaSelectorPreview, textarea)
 			}
@@ -45,8 +57,8 @@ export default function addMediaSelector() {
 
 // Event listener for the "Select Image" button
 const openMediaSelector = (container, textarea) => {
-	const button = container.querySelector('.media-selector-button')
-	const preview = container.querySelector('.media-selector-preview')
+	const button = container.querySelector('.button-wrapper__button--add')
+	const preview = container.querySelector('.media-selector-container__preview')
 
 	// Return early if the button or preview is not found
 	if (!button || !preview) {
@@ -55,13 +67,12 @@ const openMediaSelector = (container, textarea) => {
 
 	button.addEventListener('click', function (e) {
 		e.preventDefault()
-		console.log('Opening media library')
 
 		// wp.media is WordPress's built-in media library API
 		const frame = wp.media({
-			title: 'Select Image',
+			title: __('Select Image', 'mappps'),
 			button: {
-				text: 'Use this image'
+				text: __('Use this image', 'mappps')
 			},
 			multiple: false, // Only allow single image selection
 			library: {
@@ -96,7 +107,7 @@ const openMediaSelector = (container, textarea) => {
 
 const setPictureFromStoredData = (textarea) => {
 	const container = textarea.closest('tr')
-	const preview = container.querySelector('.media-selector-preview')
+	const preview = container.querySelector('.media-selector-container__preview')
 
 	if (!preview) return
 
@@ -111,7 +122,7 @@ const setPictureFromStoredData = (textarea) => {
 		}
 	} catch (error) {
 		// If parsing fails, it might be just an ID (legacy data)
-		console.log('Could not parse stored data, might be legacy ID format:', error)
+		console.warn('Could not parse stored data, might be legacy ID format:', error)
 	}
 }
 
@@ -127,6 +138,5 @@ function removeMedia(button, preview, textarea) {
 	})
 }
 
-// TODO : add a remove button
-// TODO : style (demander un emplacement ou le faire)
+// TODO : style essayer avec des icones
 // TODO mais vraiment s'il y a le temps et la motivation, changer tout le fichier en class
