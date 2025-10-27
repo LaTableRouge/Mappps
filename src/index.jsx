@@ -3,7 +3,7 @@ import './styles/index.scss'
 import domReady from '@wordpress/dom-ready'
 import { createRoot } from '@wordpress/element'
 
-import addMediaSelector from './scripts/components/media-selector'
+import MediaSelector from './scripts/components/media-selector'
 import SettingsPage from './scripts/SettingsPage'
 
 domReady(() => {
@@ -13,7 +13,12 @@ domReady(() => {
 	}
 
 	if (args.supports_custom_fields) {
-		addMediaSelector()
+		// Initialize media selectors and watch for new fields
+		MediaSelector.init(['mappps_marker'], {
+			previewSize: '100px',
+			mediaTypes: ['image'],
+			allowMultiple: false
+		})
 	}
 
 	// Render the settings page
