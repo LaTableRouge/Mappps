@@ -22,7 +22,7 @@ jobs:
         # Compile the plugin
       - name: Compile CSS and Javascript
         run: |
-          npm ci --ignore-scripts
+          npm ci --ignore-scripts --legacy-peer-deps
           npm run build && npm run build:blocks
 
       # Zip le plugin dans une release clean de tout fichiers inutiles
