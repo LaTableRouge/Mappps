@@ -18,22 +18,25 @@ if (!defined('ABSPATH')) {
 /**
  * Add a settings link on the plugins list page.
  *
- * @param array $links Existing plugin action links.
+ * @param array $actions Existing plugin action links.
+ * @param string $plugin_file The plugin file.
  * @return array Modified plugin action links.
  */
 
-function add_settings_link(array $links): array {
-    $url = admin_url('admin.php?page=mppps_admin');
-    $links[] = sprintf(
-        '<a href="%s" aria-label="%s">%s</a>',
-        esc_url($url),
-        esc_attr__('Go to Mappps settings page', 'mappps'),
-        esc_html__('Settings', 'mappps')
-    );
+function add_settings_link(array $actions, string $plugin_file): array {
+    if ($plugin_file === plugin_basename(\MPPPS_BASE_FILE)) {
+        $url = admin_url('admin.php?page=mppps_admin');
+        $actions[] = sprintf(
+            '<a href="%s" aria-label="%s">%s</a>',
+            esc_url($url),
+            esc_attr__('Go to Mappps settings page', 'mappps'),
+            esc_html__('Settings', 'mappps')
+        );
+    }
 
-    return $links;
+    return $actions;
 }
-add_filter('plugin_action_links', __NAMESPACE__ . '\add_settings_link');
+add_filter('plugin_action_links', __NAMESPACE__ . '\add_settings_link', 10, 2);
 
 /**
  * Add extra links under the plugin description on the plugins page.

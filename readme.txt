@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.8.3
 Requires PHP: 7.4
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -109,6 +109,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.5.1 =
+* Released: November 11, 2025
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.5.1
+* Fixing the scope of plugin links
 
 = 1.5.0 =
 * Released: October 09, 2025
