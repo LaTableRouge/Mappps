@@ -11,6 +11,8 @@ $context = $block->context;
 $postIDs = $context['mppps/postIDs'];
 $postType = $context['mppps/postType'];
 $detailsSize = $attributes['selectedDetailsSize'];
+$showViewItinerary = isset($attributes['showViewItinerary']) ? (bool) $attributes['showViewItinerary'] : true;
+$showOpenInNewTab = isset($attributes['showOpenInNewTab']) ? (bool) $attributes['showOpenInNewTab'] : true;
 
 if (empty($postIDs)) {
     return '';
@@ -82,8 +84,10 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-enlarge"></span>
             <span class="screen-reader-text">' . esc_html__('Expand/Shrink', 'mappps') . '</span>
-        </button>
+        </button>';
 
+    if ($showOpenInNewTab) {
+        $cta_header .= '
         <a
             class="custom-button custom-button__only-icon cta-wrapper__new-tab"
             href="' . esc_url(get_permalink($post_id)) . '"
@@ -92,8 +96,11 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-new-tab"></span>
             <span class="screen-reader-text">' . esc_html__('Open in new tab', 'mappps') . '</span>
-        </a>
+        </a>';
+    }
 
+    if ($showViewItinerary) {
+        $cta_header .= '
         <a
             class="custom-button custom-button__only-icon cta-wrapper__map"
             href="https://maps.google.com/maps?daddr=' . esc_attr($lat) . ',' . esc_attr($lng) . '&amp;ll="
@@ -103,8 +110,10 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-map"></span>
             <span class="screen-reader-text">' . esc_html__('View itinerary', 'mappps') . '</span>
-        </a>
+        </a>';
+    }
 
+    $cta_header .= '
         <button
             aria-label="' . esc_attr__('Close preview', 'mappps') . '"
             class="custom-button custom-button__only-icon cta-wrapper__close"

@@ -58,8 +58,15 @@ window.addEventListener('DOMContentLoaded', () => {
 						const records = response.map((record) => {
 							if ('acf' in record) {
 								if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
-									record.meta.lat = Number(record.acf.mappps_lat)
-									record.meta.lng = Number(record.acf.mappps_lng)
+									if (record.meta) {
+										record.meta.lat = Number(record.acf.mappps_lat)
+										record.meta.lng = Number(record.acf.mappps_lng)
+									} else {
+										record.meta = {
+											lat: Number(record.acf.mappps_lat),
+											lng: Number(record.acf.mappps_lng)
+										}
+									}
 								}
 							}
 

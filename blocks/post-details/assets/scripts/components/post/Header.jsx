@@ -1,7 +1,7 @@
 import { memo, useCallback } from '@wordpress/element'
 import { __ } from '@wordpress/i18n'
 
-function Header({ isExpanded, setIsExpanded }) {
+function Header({ isExpanded, setIsExpanded, showOpenInNewTab = true, showViewItinerary = true }) {
 	const handleExpandClick = useCallback(
 		(e) => {
 			e.preventDefault()
@@ -22,15 +22,19 @@ function Header({ isExpanded, setIsExpanded }) {
 				<span className="screen-reader-text">{__('Expand/Shrink', 'mappps')}</span>
 			</button>
 
-			<a className="custom-button custom-button__only-icon cta-wrapper__new-tab" rel="noopener noreferrer" target="_blank" title={__('Open in new tab', 'mappps')}>
-				<span className="icon-mappps-new-tab" />
-				<span className="screen-reader-text">{__('Open in new tab', 'mappps')}</span>
-			</a>
+			{showOpenInNewTab && (
+				<a className="custom-button custom-button__only-icon cta-wrapper__new-tab" rel="noopener noreferrer" target="_blank" title={__('Open in new tab', 'mappps')}>
+					<span className="icon-mappps-new-tab" />
+					<span className="screen-reader-text">{__('Open in new tab', 'mappps')}</span>
+				</a>
+			)}
 
-			<a className="custom-button custom-button__only-icon cta-wrapper__map" rel="noreferrer" target="_blank" title={__('View itinerary', 'mappps')}>
-				<span className="icon-mappps-map" />
-				<span className="screen-reader-text">{__('View itinerary', 'mappps')}</span>
-			</a>
+			{showViewItinerary && (
+				<a className="custom-button custom-button__only-icon cta-wrapper__map" rel="noreferrer" target="_blank" title={__('View itinerary', 'mappps')}>
+					<span className="icon-mappps-map" />
+					<span className="screen-reader-text">{__('View itinerary', 'mappps')}</span>
+				</a>
+			)}
 
 			<button aria-label={__('Close preview', 'mappps')} className="custom-button custom-button__only-icon cta-wrapper__close" title={__('Close preview', 'mappps')}>
 				<span className="icon-mappps-cross" />

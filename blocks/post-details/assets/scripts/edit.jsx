@@ -60,7 +60,7 @@ export default function Edit({ attributes, clientId, context, isSelected, setAtt
 			{blockContexts
 				&& blockContexts.map((blockContext) => (
 					<BlockContextProvider key={blockContext.postId} value={blockContext}>
-						<Header isExpanded={isExpanded} setIsExpanded={setIsExpanded} />
+						<Header isExpanded={isExpanded} setIsExpanded={setIsExpanded} showOpenInNewTab={attributes.showOpenInNewTab} showViewItinerary={attributes.showViewItinerary} />
 
 						{/* Editable block */}
 						{blockContext.postId === (activeBlockContextId || blockContexts[0]?.postId) ? <PostTemplateInnerBlocks /> : null}

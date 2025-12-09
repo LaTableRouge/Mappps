@@ -44,6 +44,14 @@
 		"selectedDetailsSize": {
 			"type": "string",
 			"default": "20cqw"
+		},
+		"showViewItinerary": {
+			"type": "boolean",
+			"default": true
+		},
+		"showOpenInNewTab": {
+			"type": "boolean",
+			"default": true
 		}
 	},
 	"viewScript": "file:./assets/view.js",
