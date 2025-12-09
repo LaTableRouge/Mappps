@@ -11,9 +11,7 @@ if (!defined('ABSPATH')) {
 // See: https://developer.wordpress.org/news/2024/03/26/how-to-use-wordpress-react-components-for-plugin-pages/
 
 function enqueue_assets(string $admin_page): void {
-    if ($admin_page !== 'toplevel_page_mppps_admin') {
-        return;
-    }
+    global $post;
 
     $asset_file = MPPPS_PATH . 'build/index.asset.php';
 
@@ -57,5 +55,10 @@ function enqueue_assets(string $admin_page): void {
         'mappps',
         MPPPS_LANG_PATH
     );
+
+    wp_localize_script($scripts_handle, 'mappps_admin_args', [
+        'is_admin_page' => $admin_page === 'toplevel_page_mppps_admin' ? 'true' : 'false',
+        'supports_custom_fields' => $post && post_type_supports($post->post_type, 'custom-fields') ? 'true' : 'false'
+    ]);
 }
 add_action('admin_enqueue_scripts', __NAMESPACE__ . '\enqueue_assets');

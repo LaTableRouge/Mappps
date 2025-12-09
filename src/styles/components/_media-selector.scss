@@ -1,0 +1,56 @@
+@use '/src/helpers/styles/abstracts/variables';
+@use '/src/helpers/styles/abstracts/responsive' as *;
+
+.media-selector-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &__button-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 0 8px 8px;
+
+    .button-wrapper__button {
+      &--remove {
+        height: 40px;
+        border-radius: 3px;
+        background-color: #f6f7f7;
+        font-size: 14px;
+
+        @media screen and (min-width: 782px) {
+          height: 26px;
+          font-size: 11px;
+        }
+      }
+
+      // &--remove, &--add{
+      //   &::before{
+      //     font-family: dashicons;
+      //   }
+      // }
+      // &--remove{
+      //   &::before{
+      //     content: "\f14f";
+      //   }
+      // }
+      // &--add{
+      //   &::before{
+      //     content: "\f464";
+      //   }
+      // }
+    }
+  }
+
+  &__preview {
+    aspect-ratio: 1/1;
+    max-width: 100px;
+    margin: 8px 8px 16px 8px;
+    border: solid 1px rgb(140, 143, 148);
+    border-radius: 4px;
+    background-color: #dfdfdf;
+    object-fit: contain;
+    object-position: center;
+  }
+}

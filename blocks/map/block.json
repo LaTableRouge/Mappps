@@ -133,6 +133,10 @@
 		"selectedMarkerSearchIcon": {
 			"type": "object",
 			"default": {}
+		},
+		"useIndividualMarkerPictures": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"viewScript": "file:./assets/view.js",

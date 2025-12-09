@@ -2,7 +2,7 @@ import MarkerClusterGroup from '../../../../../../src/helpers/scripts/MarkerClus
 import Icon from './Icon'
 import IconCustom from './IconCustom'
 
-export default function MarkerCluster(markers, size, clusterRef, haveShadow, canZoomToMarker, customMarkerClusterIcon) {
+export default function MarkerCluster({ canZoomToMarker, clusterRef, clusterSize: size, customMarkerClusterIcon, markers, markerShadow: haveShadow }) {
 	const clusterIcon = (cluster) =>
 		Object.keys(customMarkerClusterIcon).length
 			? IconCustom({ picture: customMarkerClusterIcon, haveShadow, markerSize: size, type: 'cluster', cluster })

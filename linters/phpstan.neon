@@ -12,3 +12,4 @@ parameters:
         - '#Constant MPPPS_BASE_NAME not found#'
         - '#Constant MPPPS_PATH not found#'
         - '#Constant MPPPS_URL not found#'
+        - '#Constant MPPPS_LANG_PATH not found#'

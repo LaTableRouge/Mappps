@@ -3,7 +3,7 @@ import { Marker } from 'react-leaflet'
 import Icon from './Icon'
 import IconCustom from './IconCustom'
 
-export default function Markers(posts, markerRefs, size, selectedPost, setSelectedPost, haveShadow, customMarkerIcon) {
+export default function Markers({ customMarkerIcon, haveShadow, markerRefs, posts, selectedPost, setSelectedPost, size, useIndividualMarkerPictures = false }) {
 	const handleMarkerClick = (post, isSelected) => {
 		if (!isSelected) {
 			setSelectedPost(post)
@@ -15,6 +15,36 @@ export default function Markers(posts, markerRefs, size, selectedPost, setSelect
 		const isSelected = selectedPost.id === id
 		const position = [meta.lat, meta.lng]
 
+		let markerPicture = post.meta?.mappps_marker || null
+		try {
+			markerPicture = JSON.parse(markerPicture)
+		} catch (error) {
+			console.error('Error parsing marker picture:', error)
+			markerPicture = null
+		}
+
+		let iconComponent
+		if (useIndividualMarkerPictures && markerPicture) {
+			// Use individual marker picture
+			iconComponent = IconCustom({
+				picture: markerPicture,
+				haveShadow,
+				markerSize: size,
+				isSelected
+			})
+		} else if (Object.keys(customMarkerIcon).length) {
+			// Use global marker icon
+			iconComponent = IconCustom({
+				picture: customMarkerIcon,
+				haveShadow,
+				markerSize: size,
+				isSelected
+			})
+		} else {
+			// Use default icon
+			iconComponent = Icon('', haveShadow, size, false, isSelected)
+		}
+
 		return (
 			<Marker
 				key={index}
@@ -23,9 +53,7 @@ export default function Markers(posts, markerRefs, size, selectedPost, setSelect
 				eventHandlers={{
 					click: () => handleMarkerClick(post, isSelected)
 				}}
-				icon={
-					Object.keys(customMarkerIcon).length ? IconCustom({ picture: customMarkerIcon, haveShadow, markerSize: size, isSelected }) : Icon('', haveShadow, size, false, isSelected)
-				}
+				icon={iconComponent}
 				position={position}
 			/>
 		)
