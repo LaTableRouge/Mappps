@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) {
 
 function register_coordinates_field(): void {
     $post_types = get_post_types(['show_in_rest' => true]);
-    $meta_fields = ['lat', 'lng'];
+    $meta_fields = ['lat', 'lng', 'mappps_lat', 'mappps_lng'];
 
     foreach ($post_types as $post_type) {
         // Only register the meta field if the post type supports the editor, custom fields, and revisions.

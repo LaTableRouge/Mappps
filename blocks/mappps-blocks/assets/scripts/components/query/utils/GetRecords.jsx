@@ -115,13 +115,28 @@ export default function GetPosts(query) {
 		if (records?.length) {
 			const filteredRecords = records
 				.map((record) => {
+					// Ensure meta object exists
+					const meta = record.meta || {}
+
+					// Use mappps_lat/mappps_lng meta fields if lat/lng are not available
+					if ((!meta.lat || !meta.lng) && meta.mappps_lat && meta.mappps_lng) {
+						return {
+							...record,
+							meta: {
+								...meta,
+								lat: Number(meta.mappps_lat),
+								lng: Number(meta.mappps_lng)
+							}
+						}
+					}
+
 					// Handle ACF/SCF coordinates fields
 					if ('acf' in record) {
 						if (record.acf?.mappps_lat && record.acf?.mappps_lng) {
 							return {
 								...record,
 								meta: {
-									...record.meta,
+									...meta,
 									lat: Number(record.acf.mappps_lat),
 									lng: Number(record.acf.mappps_lng)
 								}
