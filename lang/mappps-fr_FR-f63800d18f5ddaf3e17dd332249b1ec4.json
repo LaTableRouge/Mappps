@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-10-08 14:32+0200",
+	"translation-revision-date": "2025-12-15 10:13+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/markers\/assets\/index.js",
 	"domain": "messages",
@@ -14,6 +14,9 @@
 			"Icon": ["Ic\u00f4ne"],
 			"Select": ["S\u00e9lectionner"],
 			"Remove picture": ["Supprimer l'image"],
+			"Each marker will use its individual picture": ["Chaque marqueur utilisera sa propre image."],
+			"All markers will use the general marker settings": ["Tous les marqueurs utiliseront les param\u00e8tres g\u00e9n\u00e9raux des marqueurs."],
+			"Individual marker pictures": ["Images individuelles des marqueurs"],
 			"Markers will be clustered": ["Les marqueurs seront agr\u00e9g\u00e9s"],
 			"The displayed sizes of the icons": ["Taille affich\u00e9e des ic\u00f4nes de marqueurs"],
 			"Icon size": ["Taille de l'ic\u00f4ne"],

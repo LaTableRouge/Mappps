@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.5.0\n"
+"Project-Id-Version: Mappps 1.5.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-08T12:29:58+00:00\n"
+"POT-Creation-Date: 2025-12-15T09:12:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mappps\n"
@@ -17,6 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: mappps.php
 #: includes/register-page.php:35
+#: build/index.js:1
 msgid "Mappps"
 msgstr ""
 
@@ -40,60 +41,60 @@ msgstr ""
 msgid "https://mlnop.fr/"
 msgstr ""
 
-#: blocks/post-details/render.php:75
-#: blocks/post-details/render.php:77
-#: blocks/post-details/render.php:79
-#: build/blocks/post-details/render.php:75
-#: build/blocks/post-details/render.php:77
-#: build/blocks/post-details/render.php:79
+#: blocks/post-details/render.php:92
+#: blocks/post-details/render.php:94
+#: blocks/post-details/render.php:96
+#: build/blocks/post-details/render.php:92
+#: build/blocks/post-details/render.php:94
+#: build/blocks/post-details/render.php:96
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand"
 msgstr ""
 
-#: blocks/post-details/render.php:78
-#: build/blocks/post-details/render.php:78
+#: blocks/post-details/render.php:95
+#: build/blocks/post-details/render.php:95
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Shrink"
 msgstr ""
 
-#: blocks/post-details/render.php:84
-#: build/blocks/post-details/render.php:84
+#: blocks/post-details/render.php:101
+#: build/blocks/post-details/render.php:101
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Expand/Shrink"
 msgstr ""
 
-#: blocks/post-details/render.php:91
-#: blocks/post-details/render.php:94
-#: build/blocks/post-details/render.php:91
-#: build/blocks/post-details/render.php:94
+#: blocks/post-details/render.php:110
+#: blocks/post-details/render.php:113
+#: build/blocks/post-details/render.php:110
+#: build/blocks/post-details/render.php:113
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "Open in new tab"
 msgstr ""
 
-#: blocks/post-details/render.php:102
-#: blocks/post-details/render.php:105
-#: build/blocks/post-details/render.php:102
-#: build/blocks/post-details/render.php:105
+#: blocks/post-details/render.php:124
+#: blocks/post-details/render.php:127
+#: build/blocks/post-details/render.php:124
+#: build/blocks/post-details/render.php:127
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
 msgid "View itinerary"
 msgstr ""
 
-#: blocks/post-details/render.php:109
-#: blocks/post-details/render.php:111
-#: blocks/post-details/render.php:114
-#: build/blocks/post-details/render.php:109
-#: build/blocks/post-details/render.php:111
-#: build/blocks/post-details/render.php:114
+#: blocks/post-details/render.php:133
+#: blocks/post-details/render.php:135
+#: blocks/post-details/render.php:138
+#: build/blocks/post-details/render.php:133
+#: build/blocks/post-details/render.php:135
+#: build/blocks/post-details/render.php:138
 #: build/blocks/mappps/assets/index.js:1
 #: build/blocks/mappps/assets/view.js:1
 #: build/blocks/post-details/assets/index.js:1
@@ -104,19 +105,24 @@ msgstr ""
 msgid "Mappps - Blocks"
 msgstr ""
 
-#: includes/links.php:30
+#: includes/custom-fields/image.php:27
+msgid "Mappps custom image field for posts/pages"
+msgstr ""
+
+#: includes/links.php:32
 msgid "Go to Mappps settings page"
 msgstr ""
 
-#: includes/links.php:31
+#: includes/links.php:33
 msgid "Settings"
 msgstr ""
 
-#: includes/links.php:51
+#: includes/links.php:54
+#: build/index.js:1
 msgid "View Mappps changelog on WordPress.org (opens in a new tab)"
 msgstr ""
 
-#: includes/links.php:52
+#: includes/links.php:55
 msgid "Changelog"
 msgstr ""
 
@@ -164,7 +170,6 @@ msgstr ""
 
 #: build/blocks/filters/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
-#: build/blocks/post-details/assets/index.js:1
 #: build/blocks/search-bar/assets/index.js:1
 #: build/blocks/sidebar/assets/index.js:1
 msgid "Data settings"
@@ -195,6 +200,7 @@ msgstr ""
 #: build/blocks/loader/assets/index.js:1
 #: build/blocks/map/assets/index.js:1
 #: build/blocks/mappps/assets/index.js:1
+#: build/blocks/post-details/assets/index.js:1
 msgid "Render settings"
 msgstr ""
 
@@ -650,6 +656,18 @@ msgid "Remove picture"
 msgstr ""
 
 #: build/blocks/markers/assets/index.js:1
+msgid "Each marker will use its individual picture"
+msgstr ""
+
+#: build/blocks/markers/assets/index.js:1
+msgid "All markers will use the general marker settings"
+msgstr ""
+
+#: build/blocks/markers/assets/index.js:1
+msgid "Individual marker pictures"
+msgstr ""
+
+#: build/blocks/markers/assets/index.js:1
 msgid "Markers will be clustered"
 msgstr ""
 
@@ -694,11 +712,67 @@ msgid "Marker search settings"
 msgstr ""
 
 #: build/blocks/post-details/assets/index.js:1
+msgid "The \"Open in new tab\" button will be displayed"
+msgstr ""
+
+#: build/blocks/post-details/assets/index.js:1
+msgid "Display \"Open in new tab\" button?"
+msgstr ""
+
+#: build/blocks/post-details/assets/index.js:1
+msgid "The \"View itinerary\" button will be displayed"
+msgstr ""
+
+#: build/blocks/post-details/assets/index.js:1
+msgid "Display \"View itinerary\" button?"
+msgstr ""
+
+#: build/blocks/post-details/assets/index.js:1
 msgid "Read more"
 msgstr ""
 
 #: build/blocks/post-template/assets/index.js:1
 msgid "Hover"
+msgstr ""
+
+#: build/index.js:1
+msgid "Select image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use this image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Remove image"
+msgstr ""
+
+#: build/index.js:1
+msgid "Image preview"
+msgstr ""
+
+#: build/index.js:1
+msgid "Version"
+msgstr ""
+
+#: build/index.js:1
+msgid "What's new ?"
+msgstr ""
+
+#: build/index.js:1
+msgid "Read the Mappps documentation (opens in a new tab)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Documentation"
+msgstr ""
+
+#: build/index.js:1
+msgid "Leave a review for Mappps on WordPress.org (opens in a new tab)"
+msgstr ""
+
+#: build/index.js:1
+msgid "Leave a review"
 msgstr ""
 
 #: build/index.js:1
@@ -719,6 +793,10 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Displaying the Map"
+msgstr ""
+
+#: build/index.js:1
+msgid "Individual Marker Pictures"
 msgstr ""
 
 #: build/index.js:1
@@ -766,11 +844,11 @@ msgid "Click on \"Add Custom Field\"."
 msgstr ""
 
 #: build/index.js:1
-msgid "In the \"Name\" field, enter or select \"lat\" and in the \"Value\" field, enter the latitude coordinate."
+msgid "In the \"Name\" field, enter or select \"lat\" or \"mappps_lat\" and in the \"Value\" field, enter the latitude coordinate."
 msgstr ""
 
 #: build/index.js:1
-msgid "Repeat the above step for the \"lng\" field."
+msgid "Repeat the above step for the \"lng\" or \"mappps_lng\" field."
 msgstr ""
 
 #: build/index.js:1
@@ -783,6 +861,42 @@ msgstr ""
 
 #: build/index.js:1
 msgid "To display the map on your site, you can use the provided Gutenberg block."
+msgstr ""
+
+#: build/index.js:1
+msgid "For the \"Mappps (blocks)\" block, you can set individual marker pictures for each post. This feature allows each marker to display a unique image instead of using the global marker settings."
+msgstr ""
+
+#: build/index.js:1
+msgid "Add Custom Field:"
+msgstr ""
+
+#: build/index.js:1
+msgid "In your post editor, scroll down to the \"Custom Fields\" section and add a new custom field."
+msgstr ""
+
+#: build/index.js:1
+msgid "Set Field Name:"
+msgstr ""
+
+#: build/index.js:1
+msgid "Use \"mappps_marker\" as the field name (this is the exact name required)."
+msgstr ""
+
+#: build/index.js:1
+msgid "Set Field Value:"
+msgstr ""
+
+#: build/index.js:1
+msgid "Select the image you want to use as the marker picture in the media library."
+msgstr ""
+
+#: build/index.js:1
+msgid "Enable Individual Pictures:"
+msgstr ""
+
+#: build/index.js:1
+msgid "In the \"Mappps (blocks)\" block, select the \"Markers\" block and in the \"Marker settings\" section, toggle \"Individual marker pictures\" to enable this feature."
 msgstr ""
 
 #: build/index.js:1
@@ -919,4 +1033,168 @@ msgstr ""
 
 #: build/index.js:1
 msgid "Submit an issue"
+msgstr ""
+
+#: build/index.js:1
+msgid "Made with"
+msgstr ""
+
+#: build/index.js:1
+msgid " by LaTableRouge"
+msgstr ""
+
+#: build/index.js:1
+msgid "Visit the developer website"
+msgstr ""
+
+#: build/index.js:1
+msgid "My website"
+msgstr ""
+
+#: build/index.js:1
+msgid "Review the code on Github"
+msgstr ""
+
+#: build/index.js:1
+msgid "Code repository"
+msgstr ""
+
+#: build/blocks/filters-toggle/block.json
+msgctxt "block title"
+msgid "Filters toggle"
+msgstr ""
+
+#: build/blocks/filters-toggle/block.json
+msgctxt "block description"
+msgid "The button that'wll open/close the filters."
+msgstr ""
+
+#: build/blocks/filters/block.json
+msgctxt "block title"
+msgid "Filters"
+msgstr ""
+
+#: build/blocks/filters/block.json
+msgctxt "block description"
+msgid "Contains the filters."
+msgstr ""
+
+#: build/blocks/loader/block.json
+msgctxt "block title"
+msgid "Loader"
+msgstr ""
+
+#: build/blocks/loader/block.json
+msgctxt "block description"
+msgid "Contains the global loader."
+msgstr ""
+
+#: build/blocks/map/block.json
+msgctxt "block title"
+msgid "Map"
+msgstr ""
+
+#: build/blocks/map/block.json
+msgctxt "block description"
+msgid "Contains the map."
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+msgctxt "block title"
+msgid "Mappps (blocks)"
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block description"
+msgid "A bloc that display maps"
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "mppps"
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "maps"
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "leaflet"
+msgstr ""
+
+#: build/blocks/mappps-blocks/block.json
+#: build/blocks/mappps/block.json
+msgctxt "block keyword"
+msgid "mappps"
+msgstr ""
+
+#: build/blocks/mappps/block.json
+msgctxt "block title"
+msgid "Mappps"
+msgstr ""
+
+#: build/blocks/markers/block.json
+msgctxt "block title"
+msgid "Markers"
+msgstr ""
+
+#: build/blocks/markers/block.json
+msgctxt "block description"
+msgid "Customize the map's markers."
+msgstr ""
+
+#: build/blocks/mobile-toggles/block.json
+msgctxt "block title"
+msgid "Mobile toggles"
+msgstr ""
+
+#: build/blocks/mobile-toggles/block.json
+msgctxt "block description"
+msgid "Contains mobile toggles buttons."
+msgstr ""
+
+#: build/blocks/post-details/block.json
+msgctxt "block title"
+msgid "Post Details"
+msgstr ""
+
+#: build/blocks/post-details/block.json
+msgctxt "block description"
+msgid "Contains the block elements used to render more details from a post, like the title, date, featured image, content or excerpt, and more."
+msgstr ""
+
+#: build/blocks/post-template/block.json
+msgctxt "block title"
+msgid "Post Template"
+msgstr ""
+
+#: build/blocks/post-template/block.json
+msgctxt "block description"
+msgid "Contains the block elements used to render a post, like the title, date, featured image, content or excerpt, and more. For better preview performances only 2 posts will be displayed here"
+msgstr ""
+
+#: build/blocks/search-bar/block.json
+msgctxt "block title"
+msgid "Search bar"
+msgstr ""
+
+#: build/blocks/search-bar/block.json
+msgctxt "block description"
+msgid "Contains search bar."
+msgstr ""
+
+#: build/blocks/sidebar/block.json
+msgctxt "block title"
+msgid "Sidebar"
+msgstr ""
+
+#: build/blocks/sidebar/block.json
+msgctxt "block description"
+msgid "Contains the block elements used to render the sidebar, like the posts, search bar, title, and filters."
 msgstr ""
