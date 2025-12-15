@@ -24,22 +24,6 @@
           font-size: 11px;
         }
       }
-
-      // &--remove, &--add{
-      //   &::before{
-      //     font-family: dashicons;
-      //   }
-      // }
-      // &--remove{
-      //   &::before{
-      //     content: "\f14f";
-      //   }
-      // }
-      // &--add{
-      //   &::before{
-      //     content: "\f464";
-      //   }
-      // }
     }
   }
 
@@ -52,5 +36,6 @@
     background-color: #dfdfdf;
     object-fit: contain;
     object-position: center;
+    cursor: pointer;
   }
 }

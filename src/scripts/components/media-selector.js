@@ -121,10 +121,10 @@ export default class MediaSelector {
 		this.fieldName = fieldName
 		this.options = {
 			previewSize: '100px',
-			mediaLibraryTitle: __('Select Image', 'mappps'),
+			mediaLibraryTitle: __('Select image', 'mappps'),
 			mediaLibraryButtonText: __('Use this image', 'mappps'),
-			selectButtonText: __('Select Image', 'mappps'),
-			removeButtonText: __('Remove Image', 'mappps'),
+			selectButtonText: __('Select image', 'mappps'),
+			removeButtonText: __('Remove image', 'mappps'),
 			previewAltText: __('Image preview', 'mappps'),
 			selectButtonAriaLabel: __('Select image', 'mappps'),
 			removeButtonAriaLabel: __('Remove image', 'mappps'),
