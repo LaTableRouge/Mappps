@@ -45,15 +45,34 @@ export default function Map({
 	selectedSearchResult,
 	selectedTiles,
 	setSelectedPost,
-	setSelectedSearchResult
+	setSelectedSearchResult,
+	useIndividualMarkerPictures
 }) {
 	const clusterRef = useRef(null)
 	const markerRefs = useRef([])
 	markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-	const markers = Markers(posts, markerRefs, markerSize, selectedPost, setSelectedPost, markerShadow, customMarkerIcon)
+	const markers = Markers({
+		posts,
+		markerRefs,
+		size: markerSize,
+		selectedPost,
+		setSelectedPost,
+		haveShadow: markerShadow,
+		customMarkerIcon,
+		useIndividualMarkerPictures
+	})
 	const markerGroup = useMemo(() => {
-		return cluster ? MarkerCluster(markers, clusterSize, clusterRef, markerShadow, canZoomToMarker, customMarkerClusterIcon) : markers
+		return cluster
+			? MarkerCluster({
+					markers,
+					clusterSize,
+					clusterRef,
+					markerShadow,
+					canZoomToMarker,
+					customMarkerClusterIcon
+				})
+			: markers
 	}, [cluster, clusterSize, markers])
 
 	const refMarkerGeolocation = useRef(null)

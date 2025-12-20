@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-10-08 14:32+0200",
+	"translation-revision-date": "2025-12-20 10:39+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/mappps-blocks\/assets\/index.js",
 	"domain": "messages",
@@ -30,7 +30,7 @@
 			],
 			"Keyword": ["Mot-cl\u00e9"],
 			"Query global settings": ["R\u00e9glages globaux de la requ\u00eate"],
-			"Query display settings": ["R\u00e9glages d'affichages de la requ\u00eate"],
+			"Query display settings": ["R\u00e9glages d'affichage de la requ\u00eate"],
 			"Query filters settings": ["R\u00e9glages des filtres de la requ\u00eate"],
 			"No results found. Please check the query settings and the lat\/lng fields inside the post\/record itself.": [
 				"Aucun r\u00e9sultat trouv\u00e9. Veuillez v\u00e9rifier les param\u00e8tres de la requ\u00eate et les champs lat\/lng dans la publication."

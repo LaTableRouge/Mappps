@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.5.2
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -99,6 +99,9 @@ Depending on which library is called first, the other takes priority and the fir
 
 == Upgrade Notice ==
 
+= 1.6.0 =
+* If you're using the "Mappps (blocks)" block, you'll need to recreate It.
+
 = 1.5.0 =
 * Maybe you'll need to delete and recreate the block in your gutenberg editor.
 
@@ -109,6 +112,16 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.6.0 =
+* Released: December 16, 2025
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.6.0
+* Refreshed settings page with header/footer navigation and compact layout
+* Added compatibility with posts using `mappps_lat` / `mappps_lng` meta fields (including ACF/SCF) across blocks and post details the old "lat" and "lng" will still be working
+* Added a media selector for the new "mappps_marker" custom field, you can now have a specific marker per post
+* Added a toggle for the "View itinerary" and "Open in new tab" for the "Mappps (blocks)" block
+* Fixed the link click in the "Mappps (blocks)" post-template block
+* Fixed ACF field use for the "Mappps (blocks)" block
 
 = 1.5.2 =
 * Released: November 28, 2025

@@ -3,12 +3,7 @@ includes:
 
 parameters:
     level: 5
-    universalObjectCratesClasses:
-        - Timber\Post
-        - Timber\Timber
+    bootstrapFiles:
+        - phpstan-bootstrap.php
     excludePaths:
         - ../vendor/*
-    ignoreErrors:
-        - '#Constant MPPPS_BASE_NAME not found#'
-        - '#Constant MPPPS_PATH not found#'
-        - '#Constant MPPPS_URL not found#'

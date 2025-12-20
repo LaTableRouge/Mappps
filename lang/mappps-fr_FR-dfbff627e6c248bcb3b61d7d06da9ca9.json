@@ -1,11 +1,23 @@
 {
-	"translation-revision-date": "2025-10-08 14:32+0200",
+	"translation-revision-date": "2025-12-20 10:39+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/index.js",
 	"domain": "messages",
 	"locale_data": {
 		"messages": {
 			"": { "domain": "messages", "lang": "fr_FR", "plural-forms": "nplurals=2; plural=(n != 1);" },
+			"Mappps": ["Mappps"],
+			"View Mappps changelog on WordPress.org (opens in a new tab)": ["Consultez le journal des modifications de Mappps sur WordPress.org (s'ouvre dans un nouvel onglet)"],
+			"Select image": ["S\u00e9lectionner une image"],
+			"Use this image": ["Utilisez cette image"],
+			"Remove image": ["Supprimer l'image"],
+			"Image preview": ["Aper\u00e7u de l'image"],
+			"Version": ["Version"],
+			"What's new ?": ["Quoi de neuf ?"],
+			"Read the Mappps documentation (opens in a new tab)": ["Lire la documentation Mappps (s'ouvre dans un nouvel onglet)"],
+			"Documentation": ["Documentation"],
+			"Leave a review for Mappps on WordPress.org (opens in a new tab)": ["Laissez un avis sur Mappps sur WordPress.org (s'ouvre dans un nouvel onglet)"],
+			"Leave a review": ["Laisser un avis"],
 			"Getting Started with the Mappps Plugin": ["Premiers pas avec l'extension Mappps"],
 			"Welcome to the comprehensive guide on how to get started with our Mappps Plugin. This plugin allows you to display maps with markers based on the latitude and longitude provided in your posts. Follow the steps below to set up and utilize the plugin effectively.": [
 				"Bienvenue dans le guide de d\u00e9marrage de l'extension Mappps. Cette extension vous permet d'afficher des cartes avec des marqueurs bas\u00e9s sur des latitudes et longitudes fournies dans vos publications. Suivez les \u00e9tapes ci-dessous pour configurer le plugin et apprendre \u00e0 l'utiliser."
@@ -13,6 +25,7 @@
 			"Table of Contents": ["Table des mati\u00e8res"],
 			"Creating Posts with Location Data": ["Cr\u00e9er des publications avec des donn\u00e9es g\u00e9ographiques"],
 			"Displaying the Map": ["Afficher la carte"],
+			"Individual Marker Pictures": ["Images individuelles des marqueurs"],
 			"Troubleshooting": ["D\u00e9pannage"],
 			"FAQs": ["FAQ"],
 			"To display markers on the map, you need to add latitude and longitude custom fields to your posts. Follow these steps:": [
@@ -28,13 +41,30 @@
 				"Si la section \"Champs personnalis\u00e9s\" n'est pas visible, activez-la en cliquant sur \"Options\" en haut \u00e0 droite de l'\u00e9cran (les trois points), puis allez dans \"Pr\u00e9f\u00e9rences\" et cochez \"Champs personnalis\u00e9s\"."
 			],
 			"Click on \"Add Custom Field\".": ["Cliquez sur \"Ajouter un champ personnalis\u00e9\"."],
-			"In the \"Name\" field, enter or select \"lat\" and in the \"Value\" field, enter the latitude coordinate.": [
-				"Dans le champ \"Nom\", ajoutez ou s\u00e9lectionnez \"lat\" puis ajoutez la coordonn\u00e9e de latitude."
+			"In the \"Name\" field, enter or select \"lat\" or \"mappps_lat\" and in the \"Value\" field, enter the latitude coordinate.": [
+				"Dans le champ \"Nom\", ajoutez ou s\u00e9lectionnez \"lat\" ou \"mappps_lat\" puis ajoutez la coordonn\u00e9e de latitude."
 			],
-			"Repeat the above step for the \"lng\" field.": ["R\u00e9p\u00e9tez l'\u00e9tape ci-dessus pour le champ \"lng\"."],
+			"Repeat the above step for the \"lng\" or \"mappps_lng\" field.": ["R\u00e9p\u00e9tez l'\u00e9tape ci-dessus pour le champ \"lng\" ou \"mappps_lng\"."],
 			"Publish the Post:": ["Publiez l'article :"],
 			"Once all details are filled in, click on \"Publish\".": ["Une fois toutes les informations remplis, cliquez sur \"Publier\"."],
 			"To display the map on your site, you can use the provided Gutenberg block.": ["Pour afficher la carte sur votre site, vous pouvez utiliser le bloc Gutenberg fourni."],
+			"For the \"Mappps (blocks)\" block, you can set individual marker pictures for each post. This feature allows each marker to display a unique image instead of using the global marker settings.": [
+				"Pour le bloc \u00ab Mappps (blocs) \u00bb, vous pouvez d\u00e9finir des images de marqueurs individuelles pour chaque publication. Cette fonctionnalit\u00e9 permet \u00e0 chaque marqueur d'afficher une image unique au lieu d'utiliser les param\u00e8tres globaux des marqueurs."
+			],
+			"Add Custom Field:": ["Ajouter un champ personnalis\u00e9 :"],
+			"In your post editor, scroll down to the \"Custom Fields\" section and add a new custom field.": [
+				"Dans votre \u00e9diteur de publication, faites d\u00e9filer vers le bas jusqu'\u00e0 la section \u00ab Champs personnalis\u00e9s \u00bb et ajoutez un nouveau champ personnalis\u00e9."
+			],
+			"Set Field Name:": ["D\u00e9finir le nom du champ :"],
+			"Use \"mappps_marker\" as the field name (this is the exact name required).": ["Utilisez \u00ab mappps_marker \u00bb comme nom de champ (il s'agit du nom exact requis)."],
+			"Set Field Value:": ["D\u00e9finir la valeur du champ :"],
+			"Select the image you want to use as the marker picture in the media library.": [
+				"S\u00e9lectionnez l'image que vous souhaitez utiliser comme image de marqueur dans la biblioth\u00e8que multim\u00e9dia."
+			],
+			"Enable Individual Pictures:": ["Activer les images individuelles :"],
+			"In the \"Mappps (blocks)\" block, select the \"Markers\" block and in the \"Marker settings\" section, toggle \"Individual marker pictures\" to enable this feature.": [
+				"Dans le bloc \u00ab Mappps (blocs) \u00bb, s\u00e9lectionnez le bloc \u00ab Marqueurs \u00bb et, dans la section \u00ab Param\u00e8tres des marqueurs \u00bb, activez l'option \u00ab Images de marqueurs individuelles \u00bb pour activer cette fonctionnalit\u00e9."
+			],
 			"Using Gutenberg Block": ["Utilisation du bloc Gutenberg"],
 			"Edit Page\/Post:": ["Modifier la publication :"],
 			"Open the page or post where you want to add the map.": ["S\u00e9lectionnez la page ou l'article o\u00f9 vous souhaitez afficher la carte."],
@@ -86,15 +116,21 @@
 			],
 			"Known bug": ["Bug connu"],
 			"Leaflet is not compatible with Gridjs somehow Gridjs and Leaflet both uses the property \"window.L\".": [
-				"Leaflet n'est pas compatible avec Gridjs d'une mani\u00e8re ou d'une autre. Gridjs et Leaflet utilisent tous deux la propri\u00e9t\u00e9 \u00ab window.L \u00bb."
+				"Leaflet n'est pas compatible avec Gridjs \u00e9tonnamment car Gridjs et Leaflet utilisent tous deux la propri\u00e9t\u00e9 \u00ab window.L \u00bb."
 			],
 			"Depending on which library is called first, the other takes priority and the first one don't work.": [
-				"Selon la biblioth\u00e8que appel\u00e9e en premier, l'autre est prioritaire et la premi\u00e8re ne fonctionne pas."
+				"Selon quelle biblioth\u00e8que est appel\u00e9e en premier, l'autre sera prioritaire et la premi\u00e8re ne fonctionnera pas."
 			],
 			"We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github.": [
 				"Nous esp\u00e9rons que ce guide a pu vous aider \u00e0 comprendre le fonctionnement de l'extension Mappps. Si vous avez des questions ou besoin d'aide avec cette extension, merci d'utiliser la section Issue sur GitHub."
 			],
-			"Submit an issue": ["Envoyer un bug"]
+			"Submit an issue": ["Envoyer un bug"],
+			"Made with": ["Fabriqu\u00e9 avec"],
+			" by LaTableRouge": [" par LaTableRouge"],
+			"Visit the developer website": ["Visitez le site Web du d\u00e9veloppeur"],
+			"My website": ["Mon site web"],
+			"Review the code on Github": ["Consultez le code sur Github"],
+			"Code repository": ["R\u00e9f\u00e9rentiel de code"]
 		}
 	}
 }

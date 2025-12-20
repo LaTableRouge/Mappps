@@ -11,6 +11,8 @@ $context = $block->context;
 $postIDs = $context['mppps/postIDs'];
 $postType = $context['mppps/postType'];
 $detailsSize = $attributes['selectedDetailsSize'];
+$showViewItinerary = isset($attributes['showViewItinerary']) ? (bool) $attributes['showViewItinerary'] : true;
+$showOpenInNewTab = isset($attributes['showOpenInNewTab']) ? (bool) $attributes['showOpenInNewTab'] : true;
 
 if (empty($postIDs)) {
     return '';
@@ -39,9 +41,24 @@ while ($query->have_posts()) {
     $lat = get_post_meta($post_id, 'lat', true);
     $lng = get_post_meta($post_id, 'lng', true);
 
-    if (function_exists('get_field')) {
-        $lat = get_field('mappps_lat', $post_id);
-        $lng = get_field('mappps_lng', $post_id);
+    // Fallback to mappps_lat/mappps_lng meta fields if lat/lng are not available
+    if (empty($lat) || empty($lng)) {
+        $mappps_lat = get_post_meta($post_id, 'mappps_lat', true);
+        $mappps_lng = get_post_meta($post_id, 'mappps_lng', true);
+        if (!empty($mappps_lat) && !empty($mappps_lng)) {
+            $lat = $mappps_lat;
+            $lng = $mappps_lng;
+        }
+    }
+
+    // Fallback to ACF fields if available
+    if ((empty($lat) || empty($lng)) && function_exists('get_field')) {
+        $acf_lat = get_field('mappps_lat', $post_id);
+        $acf_lng = get_field('mappps_lng', $post_id);
+        if (!empty($acf_lat) && !empty($acf_lng)) {
+            $lat = $acf_lat;
+            $lng = $acf_lng;
+        }
     }
 
     // Get an instance of the current Post Template block.
@@ -82,8 +99,10 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-enlarge"></span>
             <span class="screen-reader-text">' . esc_html__('Expand/Shrink', 'mappps') . '</span>
-        </button>
+        </button>';
 
+    if ($showOpenInNewTab) {
+        $cta_header .= '
         <a
             class="custom-button custom-button__only-icon cta-wrapper__new-tab"
             href="' . esc_url(get_permalink($post_id)) . '"
@@ -92,8 +111,11 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-new-tab"></span>
             <span class="screen-reader-text">' . esc_html__('Open in new tab', 'mappps') . '</span>
-        </a>
+        </a>';
+    }
 
+    if ($showViewItinerary) {
+        $cta_header .= '
         <a
             class="custom-button custom-button__only-icon cta-wrapper__map"
             href="https://maps.google.com/maps?daddr=' . esc_attr($lat) . ',' . esc_attr($lng) . '&amp;ll="
@@ -103,8 +125,10 @@ while ($query->have_posts()) {
         >
             <span class="icon-mappps-map"></span>
             <span class="screen-reader-text">' . esc_html__('View itinerary', 'mappps') . '</span>
-        </a>
+        </a>';
+    }
 
+    $cta_header .= '
         <button
             aria-label="' . esc_attr__('Close preview', 'mappps') . '"
             class="custom-button custom-button__only-icon cta-wrapper__close"

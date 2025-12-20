@@ -72,6 +72,10 @@
 		"selectedActiveMarkerColor": {
 			"type": "string",
 			"default": "#AE2012"
+		},
+		"useIndividualMarkerPictures": {
+			"type": "boolean",
+			"default": false
 		}
 	},
 	"editorScript": "file:./assets/index.jsx",

@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-10-08 14:32+0200",
+	"translation-revision-date": "2025-12-20 10:39+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/post-details\/assets\/index.js",
 	"domain": "messages",
@@ -12,11 +12,15 @@
 			"Open in new tab": ["Ouvrir dans un nouvel onglet"],
 			"View itinerary": ["Voir l'itin\u00e9raire"],
 			"Close preview": ["Fermer la pr\u00e9visualisation"],
-			"Data settings": ["R\u00e9glages des donn\u00e9es"],
+			"Render settings": ["R\u00e9glages d'affichage"],
 			"Desktop only, set the maximum size for the details popup": [
 				"R\u00e9glage pour ordinateur seulement, d\u00e9finissez la taille maximum de la fen\u00eatre surgissante d'information"
 			],
 			"Popups size": ["Taille des fen\u00eatres surgissantes"],
+			"The \"Open in new tab\" button will be displayed": ["Afficher le bouton \u00ab Ouvrir dans un nouvel onglet \u00bb"],
+			"Display \"Open in new tab\" button?": ["Afficher le bouton \u00ab Ouvrir dans un nouvel onglet \u00bb ?"],
+			"The \"View itinerary\" button will be displayed": ["Afficher le bouton \u00ab Voir l'itin\u00e9raire \u00bb"],
+			"Display \"View itinerary\" button?": ["Afficher le bouton \u00ab Voir l'itin\u00e9raire \u00bb ?"],
 			"Read more": ["En savoir plus"]
 		}
 	}

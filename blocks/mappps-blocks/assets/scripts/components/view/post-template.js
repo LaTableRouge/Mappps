@@ -58,6 +58,16 @@ export default function renderPostTemplate(blockId, parent, queriedPosts) {
 
 		postChildBlocks.forEach((childBlock) => {
 			childBlock.addEventListener('click', (e) => {
+				// Don't prevent default if clicking on a link or button
+				const target = e.target
+				const isLink = target.closest('a') !== null
+				const isButton = target.closest('button') !== null
+				const isInput = target.closest('input, textarea, select') !== null
+
+				if (isLink || isButton || isInput) {
+					return
+				}
+
 				e.preventDefault()
 
 				let postID = childBlock.dataset.wpKey
