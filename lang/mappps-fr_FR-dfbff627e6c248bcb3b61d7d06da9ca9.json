@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2025-12-15 10:13+0100",
+	"translation-revision-date": "2025-12-20 10:39+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/index.js",
 	"domain": "messages",
@@ -116,10 +116,10 @@
 			],
 			"Known bug": ["Bug connu"],
 			"Leaflet is not compatible with Gridjs somehow Gridjs and Leaflet both uses the property \"window.L\".": [
-				"Leaflet n'est pas compatible avec Gridjs d'une mani\u00e8re ou d'une autre. Gridjs et Leaflet utilisent tous deux la propri\u00e9t\u00e9 \u00ab window.L \u00bb."
+				"Leaflet n'est pas compatible avec Gridjs \u00e9tonnamment car Gridjs et Leaflet utilisent tous deux la propri\u00e9t\u00e9 \u00ab window.L \u00bb."
 			],
 			"Depending on which library is called first, the other takes priority and the first one don't work.": [
-				"Selon la biblioth\u00e8que appel\u00e9e en premier, l'autre est prioritaire et la premi\u00e8re ne fonctionne pas."
+				"Selon quelle biblioth\u00e8que est appel\u00e9e en premier, l'autre sera prioritaire et la premi\u00e8re ne fonctionnera pas."
 			],
 			"We hope this guide helps you get started with the Mappps Plugin. Should you have any questions or need further assistance, please use the issue section in the Github.": [
 				"Nous esp\u00e9rons que ce guide a pu vous aider \u00e0 comprendre le fonctionnement de l'extension Mappps. Si vous avez des questions ou besoin d'aide avec cette extension, merci d'utiliser la section Issue sur GitHub."

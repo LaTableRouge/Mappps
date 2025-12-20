@@ -2,10 +2,10 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.4.0\n"
+"Project-Id-Version: Mappps 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
 "POT-Creation-Date: 2025-12-15T09:12:36+00:00\n"
-"PO-Revision-Date: 2025-12-15 10:13+0100\n"
+"PO-Revision-Date: 2025-12-20 10:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -368,7 +368,7 @@ msgstr "Réglages globaux de la requête"
 
 #: build/blocks/mappps-blocks/assets/index.js:5
 msgid "Query display settings"
-msgstr "Réglages d'affichages de la requête"
+msgstr "Réglages d'affichage de la requête"
 
 #: build/blocks/mappps-blocks/assets/index.js:5
 msgid "Query filters settings"
@@ -499,7 +499,7 @@ msgstr "Confirmer la sélection"
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "No posts could be recovered."
-msgstr "Aucune publication n'ont pu être récupérées."
+msgstr "Aucunes publications n'ont pu être récupérées."
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "No taxonomies could be recovered."
@@ -630,11 +630,11 @@ msgstr "Supprimer l'image"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Each marker will use its individual picture"
-msgstr "Chaque marqueur utilisera sa propre image."
+msgstr "Chaque marqueur utilisera sa propre image"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "All markers will use the general marker settings"
-msgstr "Tous les marqueurs utiliseront les paramètres généraux des marqueurs."
+msgstr "Tous les marqueurs utiliseront les paramètres globaux des marqueurs"
 
 #: build/blocks/markers/assets/index.js:1
 msgid "Individual marker pictures"
@@ -686,7 +686,7 @@ msgstr "Réglages du marqueur de recherche"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "The \"Open in new tab\" button will be displayed"
-msgstr "Le bouton « Ouvrir dans un nouvel onglet » s'affichera."
+msgstr "Afficher le bouton « Ouvrir dans un nouvel onglet »"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "Display \"Open in new tab\" button?"
@@ -694,7 +694,7 @@ msgstr "Afficher le bouton « Ouvrir dans un nouvel onglet » ?"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "The \"View itinerary\" button will be displayed"
-msgstr "Le bouton « Voir l'itinéraire » s'affichera."
+msgstr "Afficher le bouton « Voir l'itinéraire »"
 
 #: build/blocks/post-details/assets/index.js:1
 msgid "Display \"View itinerary\" button?"
@@ -1089,16 +1089,16 @@ msgid ""
 "Leaflet is not compatible with Gridjs somehow Gridjs and Leaflet both uses "
 "the property \"window.L\"."
 msgstr ""
-"Leaflet n'est pas compatible avec Gridjs d'une manière ou d'une autre. "
-"Gridjs et Leaflet utilisent tous deux la propriété « window.L »."
+"Leaflet n'est pas compatible avec Gridjs étonnamment car Gridjs et Leaflet "
+"utilisent tous deux la propriété « window.L »."
 
 #: build/index.js:1
 msgid ""
 "Depending on which library is called first, the other takes priority and the "
 "first one don't work."
 msgstr ""
-"Selon la bibliothèque appelée en premier, l'autre est prioritaire et la "
-"première ne fonctionne pas."
+"Selon quelle bibliothèque est appelée en premier, l'autre sera prioritaire "
+"et la première ne fonctionnera pas."
 
 #: build/index.js:1
 msgid ""
