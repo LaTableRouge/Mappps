@@ -16,12 +16,8 @@ export default class MediaSelector {
 
 		// Initialize existing fields
 		fields.forEach((fieldName) => {
+			// Initialize WordPress native custom fields
 			const nameInputs = document.querySelectorAll(`input[value="${fieldName}"]`)
-
-			// Return early if no name inputs are found
-			if (!nameInputs.length) {
-				return
-			}
 
 			nameInputs.forEach((nameInput) => {
 				const parentRow = nameInput.closest('tr')
@@ -33,8 +29,23 @@ export default class MediaSelector {
 
 					const textarea = parentRow.querySelector('textarea')
 					if (textarea) {
-						new MediaSelector(parentRow, textarea, fieldName, options)
+						new MediaSelector(parentRow, textarea, fieldName, options, 'native')
 					}
+				}
+			})
+
+			// Initialize ACF fields
+			const acfFields = document.querySelectorAll(`.acf-field[data-name="${fieldName}"]`)
+
+			acfFields.forEach((acfField) => {
+				// Return early if the media selector container already exists
+				if (acfField.querySelector('.media-selector-container')) {
+					return
+				}
+
+				const input = acfField.querySelector('input[type="text"]')
+				if (input) {
+					new MediaSelector(acfField, input, fieldName, options, 'acf')
 				}
 			})
 		})
@@ -55,30 +66,52 @@ export default class MediaSelector {
 		const observer = new MutationObserver(function (mutationsList) {
 			mutationsList.forEach(function (mutation) {
 				mutation.addedNodes.forEach(function (addedNode) {
-					// Check if the added node is a table row or contains table rows
+					// Check if the added node is an element
 					if (addedNode.nodeType === Node.ELEMENT_NODE) {
-						let rowsToCheck = []
+						fieldNames.forEach((fieldName) => {
+							// Check for WordPress native custom fields (table rows)
+							let rowsToCheck = []
 
-						// If it's a table row, check it directly
-						if (addedNode.tagName === 'TR') {
-							rowsToCheck.push(addedNode)
-						}
-						// If it's a container, find all table rows within it
-						else {
-							rowsToCheck = addedNode.querySelectorAll('tr')
-						}
+							// If it's a table row, check it directly
+							if (addedNode.tagName === 'TR') {
+								rowsToCheck.push(addedNode)
+							}
+							// If it's a container, find all table rows within it
+							else {
+								rowsToCheck = addedNode.querySelectorAll('tr')
+							}
 
-						rowsToCheck.forEach((row) => {
-							fieldNames.forEach((fieldName) => {
+							rowsToCheck.forEach((row) => {
 								const nameInput = row.querySelector(`input[value="${fieldName}"]`)
 								if (nameInput) {
 									// Check if media selector already exists
 									if (!row.querySelector('.media-selector-container')) {
 										const textarea = row.querySelector('textarea')
 										if (textarea) {
-											console.log(`New ${fieldName} field detected, initializing media selector`)
-											new MediaSelector(row, textarea, fieldName, options)
+											new MediaSelector(row, textarea, fieldName, options, 'native')
 										}
+									}
+								}
+							})
+
+							// Check for ACF fields
+							let acfFieldsToCheck = []
+
+							// If it's an ACF field, check it directly
+							if (addedNode.classList?.contains('acf-field') && addedNode.getAttribute('data-name') === fieldName) {
+								acfFieldsToCheck.push(addedNode)
+							}
+							// If it's a container, find all ACF fields within it
+							else {
+								acfFieldsToCheck = addedNode.querySelectorAll?.(`.acf-field[data-name="${fieldName}"]`) || []
+							}
+
+							acfFieldsToCheck.forEach((acfField) => {
+								// Check if media selector already exists
+								if (!acfField.querySelector('.media-selector-container')) {
+									const input = acfField.querySelector('input[type="text"]')
+									if (input) {
+										new MediaSelector(acfField, input, fieldName, options, 'acf')
 									}
 								}
 							})
@@ -110,15 +143,18 @@ export default class MediaSelector {
 
 	/**
 	 * Create a new MediaSelector instance
-	 * @param {HTMLElement} container - The parent row element
-	 * @param {HTMLTextAreaElement} textarea - The textarea element to store data
+	 * @param {HTMLElement} container - The parent row/field element
+	 * @param {HTMLTextAreaElement|HTMLInputElement} inputElement - The textarea or input element to store data
 	 * @param {string} fieldName - The field name this selector is for
 	 * @param {Object} options - Configuration options
+	 * @param {string} fieldType - The field type: 'native' (WordPress custom fields) or 'acf' (ACF fields)
 	 */
-	constructor(container, textarea, fieldName = 'mappps_marker', options = {}) {
+	constructor(container, inputElement, fieldName = 'mappps_marker', options = {}, fieldType = 'native') {
 		this.container = container
-		this.textarea = textarea
+		this.inputElement = inputElement
 		this.fieldName = fieldName
+		this.fieldType = fieldType
+		this.isTextarea = inputElement.tagName === 'TEXTAREA'
 		this.options = {
 			previewSize: '100px',
 			mediaLibraryTitle: __('Select image', 'mappps'),
@@ -147,17 +183,17 @@ export default class MediaSelector {
 	 * Initialize the media selector by creating DOM elements and setting up event listeners
 	 */
 	init() {
-		this.hideTextarea()
+		this.hideInputElement()
 		this.createMediaSelectorElements()
 		this.setupEventListeners()
 		this.loadStoredData()
 	}
 
 	/**
-	 * Hide the original textarea
+	 * Hide the original textarea or input element
 	 */
-	hideTextarea() {
-		this.textarea.style.display = 'none'
+	hideInputElement() {
+		this.inputElement.style.display = 'none'
 	}
 
 	/**
@@ -193,7 +229,7 @@ export default class MediaSelector {
 		this.preview.classList.add('media-selector-container__preview')
 
 		// Assemble the DOM structure
-		this.textarea.after(this.mediaSelectorDiv)
+		this.inputElement.after(this.mediaSelectorDiv)
 		this.mediaSelectorDiv.append(this.preview, this.buttonContainerDiv)
 		this.buttonContainerDiv.append(this.selectButton, this.removeButton)
 	}
@@ -226,7 +262,7 @@ export default class MediaSelector {
 	 * Set up the remove button click event listener
 	 */
 	setupRemoveButtonListener() {
-		if (!this.removeButton || !this.preview || !this.textarea) {
+		if (!this.removeButton || !this.preview || !this.inputElement) {
 			return
 		}
 
@@ -278,7 +314,12 @@ export default class MediaSelector {
 		}
 
 		// Store the complete picture object as stringified JSON
-		this.textarea.innerText = JSON.stringify(pictureObject)
+		// Use innerText for textarea, value for input
+		if (this.isTextarea) {
+			this.inputElement.innerText = JSON.stringify(pictureObject)
+		} else {
+			this.inputElement.value = JSON.stringify(pictureObject)
+		}
 
 		// Update the preview with the new image
 		this.preview.src = pictureObject.url
@@ -288,7 +329,12 @@ export default class MediaSelector {
 	 * Clear the selected media
 	 */
 	clearMedia() {
-		this.textarea.innerText = ''
+		// Use innerText for textarea, value for input
+		if (this.isTextarea) {
+			this.inputElement.innerText = ''
+		} else {
+			this.inputElement.value = ''
+		}
 		this.preview.src = ''
 	}
 
@@ -299,8 +345,11 @@ export default class MediaSelector {
 		if (!this.preview) return
 
 		try {
+			// Get stored value - use innerText for textarea, value for input
+			const storedValue = this.isTextarea ? this.inputElement.innerText : this.inputElement.value
+
 			// Try to parse the stored JSON object
-			const pictureData = JSON.parse(this.textarea.innerText)
+			const pictureData = JSON.parse(storedValue)
 
 			if (pictureData && pictureData.url) {
 				// Set the preview image from stored data
@@ -319,7 +368,9 @@ export default class MediaSelector {
 	 */
 	getMediaData() {
 		try {
-			return JSON.parse(this.textarea.innerText)
+			// Get stored value - use innerText for textarea, value for input
+			const storedValue = this.isTextarea ? this.inputElement.innerText : this.inputElement.value
+			return JSON.parse(storedValue)
 		} catch (error) {
 			// If parsing fails, it might be just an ID (legacy data)
 			console.warn('Could not parse stored data, might be legacy ID format:', error)
@@ -332,7 +383,12 @@ export default class MediaSelector {
 	 * @param {Object} mediaData - The media data to set
 	 */
 	setMediaData(mediaData) {
-		this.textarea.innerText = JSON.stringify(mediaData)
+		// Use innerText for textarea, value for input
+		if (this.isTextarea) {
+			this.inputElement.innerText = JSON.stringify(mediaData)
+		} else {
+			this.inputElement.value = JSON.stringify(mediaData)
+		}
 		if (this.preview && mediaData.url) {
 			this.preview.src = mediaData.url
 			this.preview.alt = mediaData.alt || ''
@@ -365,8 +421,8 @@ export default class MediaSelector {
 			this.mediaSelectorDiv.remove()
 		}
 
-		// Show textarea again
-		this.textarea.style.display = ''
+		// Show input element again
+		this.inputElement.style.display = ''
 
 		// Clear references
 		this.mediaSelectorDiv = null

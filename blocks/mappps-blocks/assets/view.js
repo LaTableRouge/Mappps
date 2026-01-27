@@ -69,10 +69,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
 							// Handle ACF/SCF coordinates fields
 							if ('acf' in record) {
-								if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
+								if (record.acf?.mappps_lat && record.acf?.mappps_lng) {
 									record.meta.lat = Number(record.acf.mappps_lat)
 									record.meta.lng = Number(record.acf.mappps_lng)
 								}
+
+                if (record.acf?.mappps_marker) {
+                  record.meta.mappps_marker = record.acf.mappps_marker
+                }
 							}
 
 							return record
