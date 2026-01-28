@@ -142,15 +142,15 @@ export default function GetPosts(query) {
 								}
 							}
 						}
-            if (record.acf?.mappps_marker) {
-              return {
-                ...record,
-                meta: {
-                  ...meta,
-                  marker: record.acf.mappps_marker
-                }
-              }
-            }
+						if (record.acf?.mappps_marker) {
+							return {
+								...record,
+								meta: {
+									...meta,
+									marker: record.acf.mappps_marker
+								}
+							}
+						}
 					}
 					return record
 				})
