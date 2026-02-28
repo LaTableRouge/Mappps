@@ -16,8 +16,8 @@ if (!defined('ABSPATH')) {
  * Requires at least: 6.2
  * Tested up to: 6.9
  * Requires PHP: 8.0
- * Version: 1.6.0
- * Stable tag: 1.6.0
+ * Version: 1.7.0
+ * Stable tag: 1.7.0
  * Text Domain: mappps
  * Domain Path: /lang
  * License: GPLv2 or later
@@ -41,7 +41,6 @@ Copyright 2025 Monzilla Media. All rights reserved.
 */
 
 if (!function_exists('get_plugin_data')) {
-    // @phpstan-ignore requireOnce.fileNotFound
     require_once ABSPATH . 'wp-admin/includes/plugin.php';
 }
 define('MPPPS_PATH', plugin_dir_path(__FILE__));

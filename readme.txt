@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 1.6.0
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -112,6 +112,12 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.7.0 =
+* Released: March 1, 2026
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.7.0
+* Added compatibility with posts using `mappps_marker` meta fields (including ACF/SCF) across blocks and post details the old "lat" and "lng" will still be working
+* Updated code quality in scss
 
 = 1.6.0 =
 * Released: December 16, 2025

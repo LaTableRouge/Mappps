@@ -177,6 +177,8 @@ export default function SettingsPage() {
 					<br />
 					{__('Add another one and name it "mappps_lng".', 'mappps')}
 					<br />
+					{__('It is also possible to add a new field for the marker picture, name it "mappps_marker".', 'mappps')}
+					<br />
 					{__('In the "Settings" below, go to the "Group Settings" tab and check "Show in REST API".', 'mappps')}
 				</p>
 
