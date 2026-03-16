@@ -298,22 +298,44 @@ function ControlQuery({ attributes, isConfirmed, isWizard, setAttributes, setIsC
 	// Get posts and terms
 	const { posts, postsResolved } = usePostsAndTerms(query, taxonomies, terms, termsResolved, setAttributes)
 
-	// Update selected posts and queried posts only when confirmed
+	// When the block is already configured (selectedPosts saved) and confirmed,
+	// hydrate queriedPosts automatically on load so the map shows markers
+	// without having to click Confirm again.
 	useEffect(() => {
-		if (isConfirmed && postsResolved) {
-			setAttributes({ selectedPosts: posts.map((post) => post.id) })
+		if (!isConfirmed || !postsResolved) {
+			return
+		}
+
+		if (!attributes.selectedPosts || !attributes.selectedPosts.length) {
+			return
+		}
+
+		const selectedIds = attributes.selectedPosts
+		const postIds = posts.map((post) => post.id)
+
+		const sameSelection = selectedIds.length === postIds.length && selectedIds.every((id, index) => id === postIds[index])
+
+		if (sameSelection) {
 			setQueriedPosts(posts)
 		}
+	}, [attributes.selectedPosts, isConfirmed, posts, postsResolved, setQueriedPosts])
 
-		if (postsResolved && isConfirmed) {
-			setNoResults(posts.length === 0)
-		}
-	}, [postsResolved, isConfirmed])
-
-	// Handle confirm button click
+	// Handle confirm button click:
+	// - mark query as confirmed
+	// - snapshot the current posts into attributes.selectedPosts and queriedPosts
+	//   without relying on an effect that can re-trigger on every render
 	const handleConfirmClick = useCallback(() => {
+		if (!postsResolved) {
+			return
+		}
+
+		const newSelectedIds = posts.map((post) => post.id)
+
+		setAttributes({ selectedPosts: newSelectedIds })
+		setQueriedPosts(posts)
+		setNoResults(posts.length === 0)
 		setIsConfirmed(true)
-	}, [setIsConfirmed])
+	}, [posts, postsResolved, setAttributes, setIsConfirmed, setQueriedPosts])
 
 	// Get allowed controls based on block attributes
 	const allowedControls = useAllowedControls(attributes)
