@@ -7,18 +7,18 @@
 		}
 	],
 	"require-dev": {
-		"friendsofphp/php-cs-fixer": "3.84.0",
+		"friendsofphp/php-cs-fixer": "3.94.2",
 		"wp-cli/wp-cli-bundle": "2.12.0",
-		"phpstan/phpstan": "^2.1.20",
-		"szepeviktor/phpstan-wordpress": "2.0.2",
-		"squizlabs/php_codesniffer": "^3.13.2"
+		"phpstan/phpstan": "^2.1.42",
+		"szepeviktor/phpstan-wordpress": "2.0.3",
+		"squizlabs/php_codesniffer": "^4.0.1"
 	},
 	"scripts": {
-		"prettier:php": "vendor/bin/php-cs-fixer.bat fix -v --show-progress=dots --using-cache=no --config=linters/.php-cs-fixer.php mappps.php includes blocks",
+		"prettier:php": "vendor/bin/php-cs-fixer fix -v --show-progress=dots --using-cache=no --config=linters/.php-cs-fixer.php mappps.php includes blocks",
 		"lint:php": "vendor/bin/phpstan --configuration=linters/phpstan.neon analyse -v --memory-limit=2048M mappps.php includes blocks",
 		"lint-staged:php": [
 			"vendor/bin/phpstan --configuration=linters/phpstan.neon analyse --memory-limit=2048M",
-			"vendor/bin/php-cs-fixer.bat fix --using-cache=no --config=linters/.php-cs-fixer.php"
+			"vendor/bin/php-cs-fixer fix --using-cache=no --config=linters/.php-cs-fixer.php"
 		],
 		"generate:i18n": "vendor/bin/wp i18n make-pot . lang/mappps.pot --domain=mappps --exclude=node_modules,vendor,lang --include=*.php,build --skip-block-json",
 		"generate:i18n:json": "vendor/bin/wp i18n make-json lang/ --no-purge"
