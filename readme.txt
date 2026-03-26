@@ -87,7 +87,7 @@ Depending on which library is called first, the other takes priority and the fir
 4. This is a desktop view of the plugin in front-end, with the filters opened
 5. This is a desktop view of the plugin in front-end, with a post selected
 6. This is a desktop RTL view of the plugin in front-end
-7. This the loader of the plugin
+7. This is the loader of the plugin
 8. This is a mobile view of the plugin in front-end
 9. This is a mobile view of the plugin in front-end, with the filters opened
 10. This is a mobile view of the plugin in front-end, with the posts list opened
@@ -112,6 +112,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.7.1 =
+* Released: March 19, 2026
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.7.1
+* Fixing translations
 
 = 1.7.0 =
 * Released: March 19, 2026

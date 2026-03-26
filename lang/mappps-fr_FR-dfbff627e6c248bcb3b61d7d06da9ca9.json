@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2026-02-28 10:27+0100",
+	"translation-revision-date": "2026-03-26 09:42+0100",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/index.js",
 	"domain": "messages",
@@ -8,9 +8,9 @@
 			"": { "domain": "messages", "lang": "fr_FR", "plural-forms": "nplurals=2; plural=(n != 1);" },
 			"Mappps": ["Mappps"],
 			"View Mappps changelog on WordPress.org (opens in a new tab)": ["Consultez le journal des modifications de Mappps sur WordPress.org (s'ouvre dans un nouvel onglet)"],
-			"Select image": ["S\u00e9lectionner une image"],
-			"Use this image": ["Utilisez cette image"],
-			"Remove image": ["Supprimer l'image"],
+			"Remove picture": ["Supprimer l'image"],
+			"Select picture": ["Selectionner une image"],
+			"Use this picture": ["Utilisez cette image"],
 			"Image preview": ["Aper\u00e7u de l'image"],
 			"Version": ["Version"],
 			"What's new ?": ["Quoi de neuf ?"],
@@ -27,7 +27,7 @@
 			"Displaying the Map": ["Afficher la carte"],
 			"Individual Marker Pictures": ["Images individuelles des marqueurs"],
 			"Troubleshooting": ["D\u00e9pannage"],
-			"FAQs": ["FAQ"],
+			"Q&A": ["FAQ"],
 			"To display markers on the map, you need to add latitude and longitude custom fields to your posts. Follow these steps:": [
 				"Pour afficher des marqueurs sur la carte, vous devez ajouter des champs personnalis\u00e9s de latitude et de longitude \u00e0 vos publications. Voici comment proc\u00e9der :"
 			],
@@ -51,7 +51,6 @@
 			"For the \"Mappps (blocks)\" block, you can set individual marker pictures for each post. This feature allows each marker to display a unique image instead of using the global marker settings.": [
 				"Pour le bloc \u00ab Mappps (blocs) \u00bb, vous pouvez d\u00e9finir des images de marqueurs individuelles pour chaque publication. Cette fonctionnalit\u00e9 permet \u00e0 chaque marqueur d'afficher une image unique au lieu d'utiliser les param\u00e8tres globaux des marqueurs."
 			],
-			"Add Custom Field:": ["Ajouter un champ personnalis\u00e9 :"],
 			"In your post editor, scroll down to the \"Custom Fields\" section and add a new custom field.": [
 				"Dans votre \u00e9diteur de publication, faites d\u00e9filer vers le bas jusqu'\u00e0 la section \u00ab Champs personnalis\u00e9s \u00bb et ajoutez un nouveau champ personnalis\u00e9."
 			],
