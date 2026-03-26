@@ -69,7 +69,7 @@ export default function SettingsPage() {
 								<a href="#troubleshooting">{__('Troubleshooting', 'mappps')}</a>
 							</li>
 							<li>
-								<a href="#faqs">{__('FAQs', 'mappps')}</a>
+								<a href="#qa">{__('Q&A', 'mappps')}</a>
 							</li>
 						</menu>
 					</nav>
@@ -118,7 +118,7 @@ export default function SettingsPage() {
 				</p>
 				<ol>
 					<li>
-						<strong>{__('Add Custom Field:', 'mappps')}</strong> {__('In your post editor, scroll down to the "Custom Fields" section and add a new custom field.', 'mappps')}
+						<strong>{__('Add Custom Fields:', 'mappps')}</strong> {__('In your post editor, scroll down to the "Custom Fields" section and add a new custom field.', 'mappps')}
 					</li>
 					<li>
 						<strong>{__('Set Field Name:', 'mappps')}</strong> {__('Use "mappps_marker" as the field name (this is the exact name required).', 'mappps')}
@@ -166,7 +166,7 @@ export default function SettingsPage() {
 					</li>
 				</ul>
 
-				<h3 id="faqs">{__('FAQs', 'mappps')}</h3>
+				<h3 id="qa">{__('Q&A', 'mappps')}</h3>
 				<h4>{__('Advanced Custom Field (ACF/SCF) compatibility', 'mappps')}</h4>
 				<p>
 					{__("In order to make the plugin work with ACF (or SCF), you'll need to create new fields for your desired post types.", 'mappps')}

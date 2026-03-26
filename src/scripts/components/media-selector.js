@@ -157,13 +157,13 @@ export default class MediaSelector {
 		this.isTextarea = inputElement.tagName === 'TEXTAREA'
 		this.options = {
 			previewSize: '100px',
-			mediaLibraryTitle: __('Select image', 'mappps'),
-			mediaLibraryButtonText: __('Use this image', 'mappps'),
-			selectButtonText: __('Select image', 'mappps'),
-			removeButtonText: __('Remove image', 'mappps'),
+			mediaLibraryTitle: __('Select picture', 'mappps'),
+			mediaLibraryButtonText: __('Use this picture', 'mappps'),
+			selectButtonText: __('Select picture', 'mappps'),
+			removeButtonText: __('Remove picture', 'mappps'),
 			previewAltText: __('Image preview', 'mappps'),
-			selectButtonAriaLabel: __('Select image', 'mappps'),
-			removeButtonAriaLabel: __('Remove image', 'mappps'),
+			selectButtonAriaLabel: __('Select picture', 'mappps'),
+			removeButtonAriaLabel: __('Remove picture', 'mappps'),
 			mediaTypes: ['image'],
 			allowMultiple: false,
 			...options

@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Mappps 1.7.0\n"
+"Project-Id-Version: Mappps 1.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-28T10:26:02+01:00\n"
+"POT-Creation-Date: 2026-03-26T09:41:22+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: mappps\n"
@@ -652,6 +652,7 @@ msgid "Select"
 msgstr ""
 
 #: build/blocks/markers/assets/index.js:1
+#: build/index.js:1
 msgid "Remove picture"
 msgstr ""
 
@@ -736,15 +737,11 @@ msgid "Hover"
 msgstr ""
 
 #: build/index.js:1
-msgid "Select image"
+msgid "Select picture"
 msgstr ""
 
 #: build/index.js:1
-msgid "Use this image"
-msgstr ""
-
-#: build/index.js:1
-msgid "Remove image"
+msgid "Use this picture"
 msgstr ""
 
 #: build/index.js:1
@@ -804,7 +801,7 @@ msgid "Troubleshooting"
 msgstr ""
 
 #: build/index.js:1
-msgid "FAQs"
+msgid "Q&A"
 msgstr ""
 
 #: build/index.js:1
@@ -865,10 +862,6 @@ msgstr ""
 
 #: build/index.js:1
 msgid "For the \"Mappps (blocks)\" block, you can set individual marker pictures for each post. This feature allows each marker to display a unique image instead of using the global marker settings."
-msgstr ""
-
-#: build/index.js:1
-msgid "Add Custom Field:"
 msgstr ""
 
 #: build/index.js:1

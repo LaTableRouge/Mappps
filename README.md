@@ -36,13 +36,13 @@ Blocks should be created and edited in the `blocks/` directory ([see README](./b
 To generate the .pot file (from the plugin's directory):
 
 ```bash
-wp i18n make-pot . lang/mappps.pot --domain=mappps --exclude=node_modules,vendor,lang --include=*.php,build
+wp i18n make-pot . lang/mappps.pot --domain=mappps --exclude=node_modules,vendor,lang --include=*.php,build --allow-root
 ```
 
 To generate the translation json files for JS (from the plugin's directory):
 
 ```bash
-wp i18n make-json lang/ --no-purge
+wp i18n make-json lang/ --no-purge --allow-root
 ```
 
 ## Roadmap
