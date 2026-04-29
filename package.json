@@ -1,6 +1,6 @@
 {
 	"name": "mappps",
-	"version": "1.7.2",
+	"version": "1.7.3",
 	"description": "A plugin that display maps",
 	"main": "index.js",
 	"keywords": [
