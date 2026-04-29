@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.7.6
+Stable tag: 1.7.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -100,6 +100,9 @@ Depending on which library is called first, the other takes priority and the fir
 
 == Upgrade Notice ==
 
+= 1.7.7 =
+* Includes translation updates and documentation improvements.
+
 = 1.6.0 =
 * If you're using the "Mappps (blocks)" block, you'll need to recreate It.
 
@@ -113,6 +116,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.7.7 =
+* Released: April 29, 2026
+* Added missing wizard translation strings.
+* Updated plugin documentation.
 
 = 1.7.6 =
 * Released: April 29, 2026

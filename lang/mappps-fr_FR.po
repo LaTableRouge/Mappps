@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mappps 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/Mappps\n"
-"POT-Creation-Date: 2026-03-26T09:41:22+01:00\n"
-"PO-Revision-Date: 2026-03-26 09:42+0100\n"
+"POT-Creation-Date: 2026-04-29T12:40:02+02:00\n"
+"PO-Revision-Date: 2026-04-29 12:40+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -419,6 +419,13 @@ msgstr ""
 msgid "Data source"
 msgstr "Source de données"
 
+#: build/blocks/mappps-blocks/assets/index.js:13
+msgid ""
+"On multilingual sites, the results can include posts from all the languages."
+msgstr ""
+"Sur les sites multilingues, les resultats peuvent inclure des publications "
+"de toutes les langues."
+
 #: build/blocks/mappps-blocks/assets/view.js:1
 #: build/blocks/mappps/assets/index.js:1 build/blocks/mappps/assets/view.js:1
 #: build/blocks/mobile-toggles/assets/index.js:1
@@ -607,6 +614,13 @@ msgstr "Réglages de la carte"
 #: build/blocks/mappps/assets/index.js:1
 msgid "Sidebar settings"
 msgstr "Réglages de la barre latérale"
+
+#: build/blocks/mappps/assets/index.js:1
+msgid ""
+"On multilingual sites, posts are selected based on the current page language."
+msgstr ""
+"Sur les sites multilingues, les publications sont selectionnees selon la "
+"langue de la page courante."
 
 #: build/blocks/mappps/assets/index.js:1
 msgid "No post types could be recovered."

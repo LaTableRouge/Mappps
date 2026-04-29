@@ -1,5 +1,5 @@
 {
-	"translation-revision-date": "2026-03-26 09:42+0100",
+	"translation-revision-date": "2026-04-29 12:40+0200",
 	"generator": "WP-CLI\/2.12.0",
 	"source": "build\/blocks\/mappps\/assets\/index.js",
 	"domain": "messages",
@@ -92,6 +92,9 @@
 			"Sidebar size": ["Taille de la colonne lat\u00e9rale"],
 			"Map settings": ["R\u00e9glages de la carte"],
 			"Sidebar settings": ["R\u00e9glages de la barre lat\u00e9rale"],
+			"On multilingual sites, posts are selected based on the current page language.": [
+				"Sur les sites multilingues, les publications sont selectionnees selon la langue de la page courante."
+			],
 			"No post types could be recovered.": ["Aucun type de publication n'a pu \u00eatre r\u00e9cup\u00e9r\u00e9."]
 		}
 	}
