@@ -11,6 +11,7 @@ function Wizard({ attributes, isConfirmed, setAttributes, setIsConfirmed, setQue
 			instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')}
 			label={__('Data source', 'mappps')}
 		>
+			<p>{__('On multilingual sites, the results can include posts from all the languages.', 'mappps')}</p>
 			<ControlQuery
 				attributes={attributes}
 				isConfirmed={isConfirmed}

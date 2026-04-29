@@ -100,8 +100,6 @@ function ChangeView({
 	})
 
 	useEffect(() => {
-		// map.addHandler('gestureHandling', GestureHandling)
-		// map.gestureHandling.enable()
 		map.invalidateSize()
 	}, [map])
 

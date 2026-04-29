@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.7.5
+Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -14,6 +14,7 @@ It's main purpose is to quickly make store locator for Wordpress websites.
 == Description ==
 
 A simple way to add custom maps or store locators to your WordPress posts and pages with our intuitive plugin. Ideal for contact pages, showcasing business locations, event venues, and more!
+Mappps includes both a simple map block and an advanced composable block, with support for custom markers, clustering, geolocation, filters, and ACF/SCF coordinates out of the box.
 
 ## Block Features
 
@@ -112,6 +113,11 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.7.6 =
+* Released: April 29, 2026
+* Improved map stability by preventing gesture-handling runtime crashes when Leaflet globals are overridden by third-party scripts.
+* Adding wizard information about multilingual websites
 
 = 1.7.3 =
 * Released: March 19, 2026

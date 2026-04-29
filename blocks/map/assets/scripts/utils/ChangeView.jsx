@@ -1,6 +1,5 @@
 import { useEffect, useState } from '@wordpress/element'
 import { latLngBounds } from 'leaflet'
-import { GestureHandling } from 'leaflet-gesture-handling'
 import { useMap } from 'react-leaflet'
 
 import { delay } from '../../../../../src/helpers/scripts/functions'
@@ -101,8 +100,6 @@ function ChangeView({
 	})
 
 	useEffect(() => {
-		map.addHandler('gestureHandling', GestureHandling)
-		map.gestureHandling.enable()
 		map.invalidateSize()
 	}, [map])
 
