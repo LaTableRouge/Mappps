@@ -32,6 +32,7 @@ export default function Wizard({ attributes, postTypes, setAttributes, setQuerie
 						instructions={__('Select the data source of the items to be displayed on the map.', 'mappps')}
 						label={__('Data source', 'mappps')}
 					>
+						<p>{__('On multilingual sites, posts are selected based on the current page language.', 'mappps')}</p>
 						<SelectPostType postTypes={postTypes} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />
 
 						{!!selectedPostType && <SelectTaxonomies postType={selectedPostType} setAttributes={setAttributes} setQueriedPosts={setQueriedPosts} />}
