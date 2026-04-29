@@ -1,0 +1,39 @@
+name: Build plugin
+
+on:
+  workflow_call:
+    outputs:
+      artifact-name:
+        description: Build artifact name
+        value: ${{ jobs.build.outputs.artifact-name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.artifact-name.outputs.value }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.0.0
+
+      - name: Compile CSS and Javascript
+        run: |
+          npm ci --ignore-scripts --legacy-peer-deps
+          npm run build
+          npm run build:blocks
+
+      - name: Set artifact name
+        id: artifact-name
+        run: echo "value=plugin-build" >> "$GITHUB_OUTPUT"
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-build
+          path: build/
+          if-no-files-found: error
