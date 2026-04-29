@@ -3,7 +3,7 @@ Contributors: latablerouge, bobbymcbobbyface
 Requires at least: 6.2
 Tested up to: 7.0
 Requires PHP: 8.0
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Repository: https://github.com/LaTableRouge/Mappps
@@ -112,6 +112,13 @@ Depending on which library is called first, the other takes priority and the fir
 * This version fix RTL styles, please upgrade immediately.
 
 == Changelog ==
+
+= 1.7.3 =
+* Released: March 19, 2026
+* https://github.com/LaTableRouge/Mappps/releases/tag/1.7.3
+* enhancing perf on query for the mappps block
+* removing react calls
+* cleaning console logs
 
 = 1.7.1 =
 * Released: March 19, 2026

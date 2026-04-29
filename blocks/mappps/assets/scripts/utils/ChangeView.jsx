@@ -1,5 +1,5 @@
+import { useEffect, useState } from '@wordpress/element'
 import { latLngBounds } from 'leaflet'
-import { useEffect, useState } from 'react'
 import { useMap } from 'react-leaflet'
 
 import { delay } from '../common/functions'

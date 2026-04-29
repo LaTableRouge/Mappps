@@ -7,23 +7,24 @@ on:
       - '[0-9]+.[0-9]+.[0-9]+-beta'
 
 jobs:
+  build-plugin:
+    uses: ./.github/workflows/build-plugin.yml
+
   build-zip-upload:
+    needs: build-plugin
     runs-on: ubuntu-latest
     env:
       RELEASE_NAME: 'mappps'
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 24.0.0
+      - uses: actions/checkout@v4
 
-        # Compile the plugin
-      - name: Compile CSS and Javascript
-        run: |
-          npm ci --ignore-scripts --legacy-peer-deps
-          npm run build && npm run build:blocks
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-plugin.outputs.artifact-name }}
+          path: build/
 
       # Zip le plugin dans une release clean de tout fichiers inutiles
       - name: Zip release

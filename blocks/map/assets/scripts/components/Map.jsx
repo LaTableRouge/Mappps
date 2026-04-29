@@ -52,8 +52,6 @@ export default function Map({
 	const markerRefs = useRef([])
 	markerRefs.current = posts.map((_, i) => markerRefs.current[i] ?? createRef())
 
-	console.log(posts)
-
 	const markers = Markers({
 		posts,
 		markerRefs,

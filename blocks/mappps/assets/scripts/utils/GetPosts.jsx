@@ -1,61 +1,75 @@
-import { useEntityRecords } from '@wordpress/core-data'
+import { useSelect } from '@wordpress/data'
 
 // Get posts/records by Post Types, Taxonomies & Categories
 export default function GetPosts(postType = '', taxonomies = [], categories = []) {
 	let hasGlobResolved = false
-	let resolvedCounter = 0
-	const globRecords = []
 
-	taxonomies.forEach((taxonomy) => {
-		const args = {
-			per_page: -1,
-			status: 'publish',
-			tax_relation: 'OR',
-			_embed: ''
-		}
-		args[taxonomy] = categories
+	const { globRecords, resolvedCounter } = useSelect(
+		(select) => {
+			const { getEntityRecords, hasFinishedResolution } = select('core')
+			const records = []
+			let currentResolvedCounter = 0
 
-		const { hasResolved, records } = useEntityRecords('postType', postType, args)
-		if (hasResolved) {
-			resolvedCounter++
-			let filteredRecords = []
-			if (records.length) {
-				// Put ACF/SCF coordinates fields and mappps_lat/mappps_lng meta fields in the corresponding meta fields
-				filteredRecords = records.map((record) => {
-					// Ensure meta object exists
-					if (!record.meta) {
-						record.meta = {}
+			taxonomies.forEach((taxonomy) => {
+				const args = {
+					per_page: -1,
+					status: 'publish',
+					tax_relation: 'OR',
+					_embed: ''
+				}
+				args[taxonomy] = categories
+
+				const taxonomyRecords = getEntityRecords('postType', postType, args)
+				const taxonomyResolved = hasFinishedResolution('getEntityRecords', ['postType', postType, args])
+
+				if (taxonomyResolved) {
+					currentResolvedCounter++
+
+					if (taxonomyRecords && taxonomyRecords.length) {
+						records.push(...taxonomyRecords)
 					}
+				}
+			})
 
-					// Use mappps_lat/mappps_lng meta fields if lat/lng are not available
-					if ((!record.meta.lat || !record.meta.lng) && record.meta.mappps_lat && record.meta.mappps_lng) {
-						record.meta.lat = Number(record.meta.mappps_lat)
-						record.meta.lng = Number(record.meta.mappps_lng)
-					}
+			return { globRecords: records, resolvedCounter: currentResolvedCounter }
+		},
+		[postType, categories, taxonomies]
+	)
 
-					// Handle ACF/SCF coordinates fields
-					if ('acf' in record) {
-						if (!!record.acf.mappps_lat && !!record.acf.mappps_lng) {
-							record.meta.lat = Number(record.acf.mappps_lat)
-							record.meta.lng = Number(record.acf.mappps_lng)
-						}
-					}
+	if (taxonomies.length === resolvedCounter) {
+		hasGlobResolved = true
+	}
 
-					return record
-				})
+	let filteredGlobRecords = []
+	if (globRecords && globRecords.length) {
+		// Put ACF/SCF coordinates fields and mappps_lat/mappps_lng meta fields in the corresponding meta fields.
+		filteredGlobRecords = globRecords.map((record) => {
+			// Ensure meta object exists.
+			const normalizedMeta = record.meta ? { ...record.meta } : {}
 
-				filteredRecords = filteredRecords.filter((record) => !!record.meta.lat && !!record.meta.lng)
+			// Use mappps_lat/mappps_lng meta fields if lat/lng are not available.
+			if ((!normalizedMeta.lat || !normalizedMeta.lng) && normalizedMeta.mappps_lat && normalizedMeta.mappps_lng) {
+				normalizedMeta.lat = Number(normalizedMeta.mappps_lat)
+				normalizedMeta.lng = Number(normalizedMeta.mappps_lng)
 			}
-			globRecords.push(...filteredRecords)
-		}
 
-		if (taxonomies.length === resolvedCounter) {
-			hasGlobResolved = true
-		}
-	})
+			// Handle ACF/SCF coordinates fields.
+			if ('acf' in record && record.acf?.mappps_lat && record.acf?.mappps_lng) {
+				normalizedMeta.lat = Number(record.acf.mappps_lat)
+				normalizedMeta.lng = Number(record.acf.mappps_lng)
+			}
+
+			return {
+				...record,
+				meta: normalizedMeta
+			}
+		})
+
+		filteredGlobRecords = filteredGlobRecords.filter((record) => !!record.meta.lat && !!record.meta.lng)
+	}
 
 	return {
 		resolved: hasGlobResolved,
-		posts: [...new Set(globRecords)] // remove duplicates
+		posts: [...new Set(filteredGlobRecords)] // remove duplicates
 	}
 }
