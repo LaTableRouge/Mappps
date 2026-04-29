@@ -13,30 +13,18 @@ jobs:
   build-zip-upload:
     needs: build-plugin
     runs-on: ubuntu-latest
-    env:
-      RELEASE_NAME: 'mappps'
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Download build artifacts
+      - name: Download canonical zip artifact
         uses: actions/download-artifact@v4
         with:
-          name: ${{ needs.build-plugin.outputs.artifact-name }}
-          path: build/
-
-      # Zip le plugin dans une release clean de tout fichiers inutiles
-      - name: Zip release
-        uses: thedoctor0/zip-release@0.7.1
-        with:
-          type: 'zip'
-          filename: '${{ env.RELEASE_NAME }}.zip'
-          path: 'mappps.php license.txt readme.txt lang/ build/ includes/'
+          name: ${{ needs.build-plugin.outputs.zip-artifact-name }}
+          path: .
 
       # Publie la release
       - name: Publish release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: '${{ env.RELEASE_NAME }}.zip'
+          artifacts: ${{ needs.build-plugin.outputs.zip-file-name }}
           generateReleaseNotes: true

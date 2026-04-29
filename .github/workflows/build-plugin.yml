@@ -3,15 +3,19 @@ name: Build plugin
 on:
   workflow_call:
     outputs:
-      artifact-name:
-        description: Build artifact name
-        value: ${{ jobs.build.outputs.artifact-name }}
+      zip-artifact-name:
+        description: Zip artifact name
+        value: ${{ jobs.build.outputs.zip-artifact-name }}
+      zip-file-name:
+        description: Zip file name
+        value: ${{ jobs.build.outputs.zip-file-name }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      artifact-name: ${{ steps.artifact-name.outputs.value }}
+      zip-artifact-name: ${{ steps.zip-artifact-name.outputs.value }}
+      zip-file-name: ${{ steps.zip-file-name.outputs.value }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,13 +31,27 @@ jobs:
           npm run build
           npm run build:blocks
 
-      - name: Set artifact name
-        id: artifact-name
-        run: echo "value=plugin-build" >> "$GITHUB_OUTPUT"
+      - name: Prepare deploy directory
+        run: |
+          mkdir -p .wporg-build
+          cp -R mappps.php license.txt readme.txt lang includes build .wporg-build/
 
-      - name: Upload build artifacts
+      - name: Build canonical plugin zip
+        run: |
+          cd .wporg-build
+          zip -r "../mappps.zip" .
+
+      - name: Set zip artifact name
+        id: zip-artifact-name
+        run: echo "value=plugin-zip" >> "$GITHUB_OUTPUT"
+
+      - name: Set zip file name
+        id: zip-file-name
+        run: echo "value=mappps.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Upload zip artifact
         uses: actions/upload-artifact@v4
         with:
-          name: plugin-build
-          path: build/
+          name: plugin-zip
+          path: mappps.zip
           if-no-files-found: error

@@ -45,16 +45,16 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Download build artifacts
+    - name: Download canonical zip artifact
       uses: actions/download-artifact@v4
       with:
-        name: ${{ needs.build-plugin.outputs.artifact-name }}
-        path: build/
+        name: ${{ needs.build-plugin.outputs.zip-artifact-name }}
+        path: .
 
-    - name: Prepare deploy directory
+    - name: Extract canonical zip for deploy
       run: |
         mkdir -p .wporg-build
-        cp -R mappps.php license.txt readme.txt lang includes build .wporg-build/
+        unzip -q "${{ needs.build-plugin.outputs.zip-file-name }}" -d .wporg-build
 
     # Optional: If your plugin is using composer dependencies, we want to include them
     # WITHOUT the dev dependencies.
