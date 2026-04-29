@@ -51,6 +51,14 @@ jobs:
         name: ${{ needs.build-plugin.outputs.artifact-name }}
         path: build/
 
+    - name: Prepare deploy directory
+      run: |
+        mkdir -p .wporg-build
+        cp -R mappps.php license.txt readme.txt lang includes build .wporg-build/
+        if [ -d ".wordpress-org" ]; then
+          cp -R .wordpress-org .wporg-build/
+        fi
+
     # Optional: If your plugin is using composer dependencies, we want to include them
     # WITHOUT the dev dependencies.
     #- name: Build
@@ -78,6 +86,7 @@ jobs:
       #
       # To learn more about setting and using secrets with Github Actions, check out: https://docs.github.com/en/actions/security-guides/encrypted-secrets?tool=webui#about-encrypted-secrets
       env:
+        BUILD_DIR: .wporg-build
         SLUG: mappps
         SVN_USERNAME: ${{ secrets.SVN_USERNAME }}
         SVN_PASSWORD: ${{ secrets.SVN_PASSWORD }}
